@@ -38,6 +38,19 @@ sidebarPlaceholder.innerHTML = `
     <li><a href="amc10combinatorics.html">Probability</a></li>
   </ul>
 </li>
+<li>
+  <button class="dropdown-btn" onclick="toggleSubMenu(this)">
+    <span>Advanced Prep</span>
+    <svg class =  xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+      <path d="M480-360 280-560h400L480-360Z"/>
+    </svg>
+  </button>
+
+  <ul class="sub-menu">
+    <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+    <li><a href="amc10practicetest.html">Practice Test</a></li>
+  </ul>
+</li>
 <p></p>
 </nav>
 `;

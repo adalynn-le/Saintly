@@ -1101,7 +1101,7 @@ input{
   background-color: #fff8f6;
   color: #ffd5c4;
   border: #ffd5c4 solid 2px;
-  cursor: pointer;
+  cursor: default !important;
 }
 .material-symbols-rounded{
     font-variation-settings:
@@ -1143,7 +1143,7 @@ input{
 }
 .dataCard:hover{
   color: var(--accent-color);
-  cursor: pointer;
+  cursor: default !important;
 }
 hr {
   border: none;
@@ -1756,112 +1756,4 @@ text-align: vertical;
 }
 .top-bar{
   width: calc(100%-0px)
-}
-/* ============================================
-   MOBILE — iPhone and small screens
-   ============================================ */
-@media (max-width: 768px) {
-
-  /* Hide sidebar completely on mobile */
-  #sidebar {
-    display: none;
-  }
-
-  /* Main takes full width */
-  main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    padding: 12px !important;
-    margin-top: 55px !important;
-  }
-
-  /* Top bar full width */
-  #top-bar {
-    margin-left: 0 !important;
-    width: 100% !important;
-    padding: 0 12px;
-  }
-
-  /* Hero text — way too big at 150px */
-  .rounded-text {
-    font-size: 48px !important;
-  }
-  .cursive-text {
-    font-size: 48px !important;
-    margin-top: -10px !important;
-  }
-
-  /* amc10 page titles */
-  .amc10title {
-    font-size: 48px !important;
-  }
-
-  /* Data cards row → wrap */
-  .dataCards {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .vertical-hr {
-    display: none;
-  }
-
-  /* How it works cards → single column */
-  #howworkcards {
-    flex-direction: column !important;
-  }
-  .howworkcard {
-    width: 100% !important;
-    margin: 0 0 12px 0 !important;
-  }
-
-  /* Topic cards → single column */
-  .topicsCards {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* AMC cards → single column */
-  .amc10cards {
-    flex-direction: column !important;
-  }
-
-  /* Problem card full width */
-  .problem-wrapper {
-    width: 100% !important;
-  }
-
-  /* Stats dashboard full width */
-  #stats-dashboard {
-    width: 90% !important;
-  }
-
-  /* Carousel — make it scrollable instead */
-  .carousel-track-wrapper {
-    overflow-x: auto;
-  }
-
-  /* Info sections stack vertically */
-  .info {
-    flex-direction: column !important;
-  }
-  #info4 {
-    flex-direction: column !important;
-  }
-
-  /* People card full width */
-  .people-card {
-    width: 100% !important;
-  }
-
-  /* Help panel full width */
-  .helpPannel {
-    width: 90% !important;
-    left: 5% !important;
-  }
-
-  /* Score wrapper doesn't overlap */
-  .score-wrapper {
-    position: static !important;
-    display: inline-flex;
-    margin-top: 8px;
-  }
 }
