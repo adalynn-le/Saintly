@@ -83,8 +83,8 @@ function updateMainMargin() {
         console.log("closed")
     } else {
       if (width > 768) {
-        main.style.marginLeft = '20px';
-        main.style.width = 'calc(100% - 200px)';
+        main.style.marginLeft = '175px';
+        main.style.width = 'calc(100% - 175px)';
       } else {
         main.style.marginLeft='80px';
         main.style.width = 'calc(100% - 80px)';
@@ -105,8 +105,8 @@ function updateTopBar(){
         console.log("closed")
     } else {
       if (width > 768) {
-        topBar.style.marginLeft = '200px';
-        topBar.style.width = 'calc(100% - 200px)';
+        topBar.style.marginLeft = '175px';
+        topBar.style.width = 'calc(100% - 175px)';
       } else {
         topBar.style.marginLeft='80px';
         topBar.style.width = 'calc(100% - 80px)';

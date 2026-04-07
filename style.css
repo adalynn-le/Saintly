@@ -2078,3 +2078,6 @@ input{
   margin-top: 50px !important;
 }
 
+#sidebar:not(.close) {
+  margin-left: -25px !important;
+}
