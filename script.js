@@ -202,32 +202,13 @@ const problemsCheckbox = document.getElementById("toggle");
 const problemsCard = document.getElementById("problems-card");
 const problemsWrapper = document.getElementById("problems-card");
 function toggleProblems() {
-    // Show by default
-// Only toggle the wrapper
-problemsWrapper.classList.toggle("hidden", !problemsCheckbox.checked);
+loadQuestion(currentQuestion)
+};
 
-problemsCheckbox.addEventListener("change", function () {
-    problemsWrapper.classList.toggle("hidden", !this.checked);
-
-    // Load question only if the wrapper is now visible
-    if (this.checked) {
-        loadQuestion(currentQuestion);
-
-    }
-});
-
-}
 let currentQuestion = 0;
 
 // Set initial state on page load
-problemsCard.classList.toggle("hidden", !problemsCheckbox.checked);
-
 // Add event listener to toggle visibility
-problemsCheckbox.addEventListener("change", function () {
-    problemsCard.classList.toggle("hidden", !this.checked);
-});
-
-
 
 
 
@@ -2970,7 +2951,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-        text: `<p>There exists a unique strictly increasing sequence of nonnegative integers \\(a_{1} < a_{2}} < ... < a_{k}}\\) such that 
+        text: `<p>There exists a unique strictly increasing sequence of nonnegative integers \\(a_{1} < a_{2}} < ... < a_{k}\\) such that 
         </p>
         $$
         \\frac{2^289+1}{2^17+1}=2^{a_{1}}+2^{a_{2}}+...+2^{a_{k}}.

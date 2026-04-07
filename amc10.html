@@ -8,28 +8,33 @@
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=balance,dashboard_2_gear,draw_abstract,function,functions,ifl,leaderboard,send" />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
- 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <div id="sidebarPlaceholder"></div>
     <script src="sidebar.js"></script>
    
 <nav id = "top-bar">
-  <a href="index.html">Home</a>
-  <p>•</p>
-  <a href = "amc10.html">AMC 10</a>
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "amc10.html">AMC 10</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
     <span class="material-symbols-outlined airplane helpButton" id="helpButton">
 send
 </span>
 </nav>
 <main>
-      <h1 class="amc10title">AMC 10</h1>
-<p>The AMC 10 (American Mathematics Competition)is a 25-question, 75-minute multiple-choice test that covers high school math. 
+  <div class="amc10container">      <h1 class="amc10title">AMC 10</h1>
+<p class="par">The AMC 10 (American Mathematics Competition)is a 25-question, 75-minute multiple-choice test that covers high school math. 
 The test is designed to <mark class="blue">challenge critical thinking</mark> in addition to knowledge.
  It is taken by students in grades 10 and below. There are also several variants of the AMC 10. These include the AMC 8 for 8th and below and the AMC 12 for 12th and below.</p>
 <span class="info">
   <span class="amc10cardscontainer">
-      <h2 class="amc10subtitle">Quick Info</h2>
+      <h2 class="amc10subtitle quickInfo">Quick Info</h2>
  <span class="am10cards">
     <span class="amc10card">
     <div class="howworkcardicon">
@@ -143,6 +148,7 @@ The test is designed to <mark class="blue">challenge critical thinking</mark> in
   <p>Email: <input type="text" id="answer-input-email" placeholder="youremail@gmail.com"></p>
   <p>Message: <input type="text" id="answer-input-message" placeholder="What do you want us to know? Please be as specific as possible"></p>
   <p>Or contact us at <a href="mailto:adalynn.k.le@gmail.com">adalynn.k.le@gmail.com</a></p>
+</div>
 </div>
 </main>
 

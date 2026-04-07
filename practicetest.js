@@ -7573,9 +7573,9 @@ overlay.addEventListener("click", function(){
         overlay.style.display = "none";
         helpOn = false;
     } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
+        testFinished = true;
+        overlay.style.display="none"
+        scorePannel.style.display="none";
     }
 });
 if (--timer < 0) {

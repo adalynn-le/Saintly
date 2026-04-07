@@ -405,8 +405,6 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         \\sqrt{8^2+8^2}
         $$
         $$
-        \\sqrt{128}
-        $$
         <p>Since the area of a square is just the side length squared, we know that the area of the square is \\(128\\).
 
         <p>Notice that this is squared. The most important thing about squares is that it makes everything positive. Since \\(49\\) is a perfect square, we can take that as a hint to take the square root of the equation. This gives us

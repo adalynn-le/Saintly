@@ -5,6 +5,7 @@
     <title>AMC 10 Practice Test</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=ads_click,lab_profile,playlist_add_check,send" />
     
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -15,16 +16,24 @@
 <div id="sidebarPlaceholder"></div>
 <script src="sidebar.js"></script>
 <nav id = "top-bar">
+  <div class="aContainer">
   <a href="index.html">Home</a>
   <p>•</p>
   <a href = "amc10.html">AMC 10</a>
   <p>•</p>
   <a href = "amc10praticetest.html">Practice Test</a>
+  </div>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
     <span class="material-symbols-outlined airplane helpButton" id="helpButton">
 send
 </span>
 </nav>
 <main>
+<div class="amc10container">
   <div id = "timerContainer" class = "timerContainer">
     <div id = "timer" class = "timer" class = "ui-btn">75:00</div>
     <button id = "startTimer" class = "startTimer problemBtn">Start Test</button>
@@ -506,6 +515,7 @@ send
     <h2>Test finished!</h2>
     <p id = "scoreText">Score: </p>
     <p id="timeElapsed">Time Elapsed: </p>
+</div>
 </div>
   </main>
 <div id="overlay"></div>

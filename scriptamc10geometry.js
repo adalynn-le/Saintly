@@ -162,30 +162,9 @@ const problemsCheckbox = document.getElementById("toggle");
 const problemsCard = document.getElementById("problems-card");
 const problemsWrapper = document.getElementById("problems-card");
 function toggleProblems() {
-    // Show by default
-// Only toggle the wrapper
-problemsWrapper.classList.toggle("hidden", !problemsCheckbox.checked);
-
-problemsCheckbox.addEventListener("change", function () {
-    problemsWrapper.classList.toggle("hidden", !this.checked);
-
-    // Load question only if the wrapper is now visible
-    if (this.checked) {
-        loadQuestion(currentQuestion);
-
-    }
-});
-
+loadQuestion(currentQuestion)
 }
 let currentQuestion = 0;
-
-// Set initial state on page load
-problemsCard.classList.toggle("hidden", !problemsCheckbox.checked);
-
-// Add event listener to toggle visibility
-problemsCheckbox.addEventListener("change", function () {
-    problemsCard.classList.toggle("hidden", !this.checked);
-});
 
 
 // ---------- Question Data ----------

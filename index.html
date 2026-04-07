@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <title>Saintly | Home</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <!-- Math rendering -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -19,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=ads_click,lab_profile,playlist_add_check,send" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 <script>
   window.addEventListener("load", function () {
@@ -45,7 +46,14 @@
 <div id="sidebarPlaceholder"></div>
 <script src="sidebar.js"></script>
 <nav id = "top-bar">
+  <div class="aContainer">
   <a href="index.html" class = "top-text">Home</a>
+  </div>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
   <div class="right-align">
   <button class="start-practice" onclick = "window.location.href='amc10adaptivepractice.html'">Start Practicing</button>
   <span class="material-symbols-outlined airplane helpButton" id="helpButton">

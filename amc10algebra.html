@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AMC 10 - Algebra</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -16,11 +17,16 @@
 <div id="sidebarPlaceholder"></div>
 <script src="sidebar.js"></script>
 <nav id = "top-bar">
-  <a href="index.html">Home</a>
-  <p>•</p>
-  <a href = "amc10.html">AMC 10</a>
-  <p>•</p>
-  <a href = "amc10algebra.html">Algebra</a>
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "amc10.html">AMC 10</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "amc10algebra.html">Algebra</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
     <span class="material-symbols-outlined airplane helpButton" id="helpButton">
 send
 </span>
@@ -49,13 +55,6 @@ local_fire_department
   <p>In AMC 10, the algebra covered spans from <mark class="blue">basic arithmetic to Integrated Math 2 or Algebra 2 content.</mark> The most essential algebraic skills to know are <mark class="blue">solving systems of equations, sequences, and inequalities.</mark></p>
   <h2 class="amc10subtitle">Practice Problems </h2>
 
-  <!-- Toggle -->
-  <div class="toggle-switch">
-    <input type="checkbox" id="toggle" class="toggle-input">
-    <label for="toggle" class="toggle-label">
-      <span class="toggle-slider"></span>
-    </label>
-  </div>
 
   <!-- Problem Card -->
   <div class="problem problem-wrapper" id="problems-card">
@@ -91,7 +90,7 @@ local_fire_department
   <p>Longest Streak: <span id="longest-streak">0</span></p>
   <button class = "restartButton" id="restart-btn">Restart</button>
 </div>
-<h2 class="amc10subtitle">5 Quick Things to Remember</h2>
+<h2 class="amc10subtitle fiveQuick">5 Quick Things to Remember</h2>
 </div>
 <!--Ref Cards-->
 <div class="carousel-wrapper">
