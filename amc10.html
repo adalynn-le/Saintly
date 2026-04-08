@@ -150,4 +150,27 @@ The test is designed to <mark class="blue">challenge critical thinking</mark> in
 
 <div id="overlay"></div>
     </body>
-<script src="script.js"></script>
+<script>
+  console.log("script running")
+      let helpOn = false;
+  let helpBtn = document.getElementById('helpButton')
+  helpBtn.addEventListener("click", function () {
+    console.log("clicked")
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
+});
+let overlay = document.getElementById('overlay');
+overlay.addEventListener("click", function () {
+    helpPannel.style.display = "none";
+    overlay.style.display = "none"; 
+    helpOn = false;
+});
+
+</script>
