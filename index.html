@@ -3,7 +3,13 @@
   <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <title>Competition Math Help</title>
+    <title>Saintly | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+
 
     <!-- Math rendering -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -17,81 +23,56 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=ads_click" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=ads_click" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=ads_click,lab_profile,playlist_add_check,send,star,update" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-
+<script>
+  window.addEventListener("load", function () {
+    const loader = document.getElementById("loader");
+    loader.style.opacity = "0";
+    setTimeout(() => loader.style.display = "none", 400);
+  });
+</script>
     <body>
-<nav id="sidebar" class = "close">
-  <ul>
-    <li>
-      <span class="logo">Saintly Math</span>
-      <button onclick=toggleSidebar() id="side-bar-toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-      </button>
-    </li>
-    <li>
-      <a href="index.html">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
-        <span>Home</span>
-      </a>
-
-    </li>
-    <li>
-      <a href="amc10.html">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm80-80h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm200-190q13 0 21.5-8.5T510-820q0-13-8.5-21.5T480-850q-13 0-21.5 8.5T450-820q0 13 8.5 21.5T480-790ZM200-200v-560 560Z"/></svg>
-        <span>AMC 10</span>
-      </a>
-    </li>
-<li>
-  <button class="dropdown-btn" onclick="toggleSubMenu(this)">
-    <span>Subjects</span>
-    <svg class =  xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-      <path d="M480-360 280-560h400L480-360Z"/>
-    </svg>
-  </button>
-
-  <ul class="sub-menu">
-    <li><a href="amc10algebra.html">Algebra</a></li>
-    <li><a href="amc10geometry.html">Geometry</a></li>
-    <li><a href="amc10numbertheory.html">Number Theory</a></li>
-    <li><a href="amc10combinatorics.html">Probability</a></li>
-  </ul>
-</li>
-<p></p>
-      <a href="mathcounts.html">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"    
-"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm80-80h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm200-190q13 0 21.5-8.5T510-820q0-13-8.5-21.5T480-850q-13 0-21.5 8.5T450-820q0 13 8.5 21.5T480-790ZM200-200v-560 560Z"/></svg>
-        <span>Math Counts</span>
-      </a>
-    </li>
-<li>
-  <button class="dropdown-btn" onclick="toggleSubMenu(this)">
-    <span>Subjects</span>
-    <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 -960 960 960">
-      <path d="M480-360 280-560h400L480-360Z"/>
-    </svg>
-  </button>
-
-  <ul class="sub-menu">
-    <li><a href="mathcountsalgebra.html">Algebra</a></li>
-    <li><a href="mathcountsgeometry.html">Geometry</a></li>
-    <li><a href="mathcountsnumbertheory.html">Number Theory</a></li>
-    <li><a href="mathcountscombinatorics.html">Probability</a></li>
-  </ul>
-</li>
-
-  </ul>
-</nav>
+      <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(245,245,251);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script src="sidebar.js"></script>
 <nav id = "top-bar">
+  <div class="aContainer">
   <a href="index.html" class = "top-text">Home</a>
+  </div>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
+  <div class="right-align">
+  <button class="start-practice" onclick = "window.location.href='amc10adaptivepractice.html'">Start Practicing</button>
+  <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+
+send
+</span>
+    </div>
 </nav>
 
-  <main>
+  <main id="main">
+    <div id="titlepage">
     <div id = "dot-backround" class = "dot-background"></div>
     <div id = "mainTitle" class = "mainTitle">
 <h1 style="text-align: center;" class="rounded-text">Competition that</h1>
-<h1 style="text-align: center;" class="cursive-text">doesn't cost <span class="highlight-phrase">a thing</span></h1>
+<h1 style="text-align: center;" class="cursive-text">doesn't <span class="highlight-phrase cursor typewriter-animation">cost a thing</span></h1>
 </div>
    <div id = "tags" class = "tags">
   <span class="tag"> <span class="material-symbols-rounded">
@@ -107,7 +88,7 @@ stars
 stars
 </span>Adaptive Study</span>
    </div>
-<hr>
+<hr class="annoyingsht">
 <div id = "dataCards" class = "dataCards">
 <span class = "dataCard">
   <p class = "dataNum">1</p>
@@ -123,46 +104,175 @@ stars
   <p class = "dataNum">275+</p>
   <p class = "dataText">Practice Questions</p>
 </span>
-<hr class="vertical-hr">
-<span class = "dataCard">
-  <p class = "dataNum">0</p>
-  <p class = "dataText">Users</p>
-</span>
 </div>
-<hr>
-<div id="info1">
-<span id="whatis">
-  <h5 class = "tinytitle" id="whatis">WHAT IS SAINTLY MATH?</h5>
-  <h2 class="subtitle" id="whatistitle">100% Rigorous Prep, 0% Cost</h2>
-  <p class = "par" id="whatispar">Saintly Math is a free program built to make Olympiads, competitions, and learning <mark class = "blue">accessible to all students.</mark> Saintly delivers <mark class="blue">free, high-quality content</mark> in the form of 
-    real AMC 10/12 practice problems and <mark class="blue">comprehensive, student-written solutions.</mark> Saintly's adaptive learning system identifies and trains students on their weaknesses, guranteeing them
-    efficient and effective practice. 
+<hr class="annoyingsht">
+</div>
+<div id="info2">
+  <div class="tinytitle" id="whatis">WHAT IS SAINTLY?</div>
+ <h2 class="subtitle" id="whatistitle">100% Rigorous Prep, 0% Cost</h2>
+  <p class = "par" id="whatispar">Saintly is a free program built to make Olympiads, competitions, and learning <mark class = "blue">accessible to all students.</mark> Saintly delivers <mark class="blue">free, high-quality content</mark> in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written <mark class="blue">by students, for students</mark>. We're driven by a mission to make competition math so friendly, engaging, and accessible that it feels <mark class="saintly">saintly</mark>
   </p>
 </span>
-<span id = "whatiscards">
-  <span class="whatiscard">
-    <span class="material-symbols-outlined">ads_click</span>
-    <span class="whatiscardtitle">Adaptive Practice</span>
-    <div class= "whatiscardtext">Saintly's adaptive practice is built to be an effective and efficient approach to learning. With questions
-      that increase in difficulty as you proceed, Saintly ensures that you are always being challenged at the right level. Our adaptive practice
-      tracks the mistakes you make and records the topics, allowing you to see the best ways to focus your learning and practice topics that you struggle with.</div>
-  </span>
-  <span class="whatiscard">2</span>
-  <span class="whatiscard">3</span>
-  <span class = "whatiscard">4</span>
+</div>
+<hr class="section-divider">
+
+<div id="info1"class="info">
+<span id="whysaintly">
+  <h5 class="tinytitle" id="whysaintlytitle">WHY SAINTLY?</h5>
+  <h2 class="subtitle" id="whysaintlysubtitle">A New Approach to Competition Math</h2>
+    <p class = "par" id="whysaintlypar">There have been significant strides to make typical, baseline education free. While that is a thorough effort, a lot elite competitions have been left behind.
+      Saintly is built to bridge that gap by introducing <mark class="blue"></mark>first-of-its-kind interactive and free competition math help for all students.</mark>
+  </p>
 </span>
+<span id="howwork">
+  <h5 class = "tinytitle" id="howwork">HOW DOES IT WORK?</h5>
+  <h2 class="subtitle" id="howworktitle">A Personalized Approach to Learning</h2>
+
+<span id = "howworkcards">
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">ads_click</span>
+    <span class="howworkcardtitle">Adaptive Practice</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Saintly's adaptive practice is built to be an effective and efficient approach to learning. With questions
+      that <mark class="orange">increase in difficulty</mark> as you proceed and an algorithim to <mark class = "orange">track your weakest topics</mark>, saintly ensures 
+    you can get personalized learning.</div>
+  </span>
+  <span class="howworkcard">
+  <div class="howworkcardicon">
+<span class="material-symbols-outlined">playlist_add_check</span>
+    <span class="howworkcardtitle">Real Problems, Original Solutions</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Saintly is built <mark class="orange">by students for students</mark>. All of our 270+ problems are taken from real AMC tests and every solution is personally written by
+    a <mark class="orange"> real student</mark> in order to be <mark class="orange">clear, understandable, and helpful</mark></div>
+  </span>  
+  <span class="howworkcard">
+  <div class="howworkcardicon">
+<span class="material-symbols-outlined">lab_profile</span>
+    <span class="howworkcardtitle">Realistic Practice Tests</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Our practice tests take questions from the past 5 years and compile them into realistic exams <mark class="orange">get real experience</mark>
+    Our practice tests are equipped with the same <mark class="orange">thoughtful and elaborate solutions</mark> as all of Saintly's exam questions</div>
+</span>
+<span class="howworkcard">
+<div class="howworkcardicon">
+<span class="material-symbols-outlined">lab_profile</span>
+    <span class="howworkcardtitle">Monitored Progress</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Saintly monitors your progress and encourages growth through <mark class="orange">detailed analytics, playful streaks, and monitored topic trackers</mark>. With Saintly, you will always know where
+    you stand and how to grow.</mark>
+</span>
+</span>
+</span>
+</div>
+</div>
+<hr class="section-divider">
+  <span id="sampleproblem">
+  <h5 class = "tinytitle" id="howwork">HOW WILL IT LOOK?</h5>
+  <h2 class="subtitle" id="howworktitle">A Realisitc Look At Our Practice Tests</h2>
+<div class="problem problem-wrapper problem-static" id="problems-card">
+
+    <h3 id="question-title" class="amc10title small">AMC 10A 2020 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span></h3>
+    <p id="question-text"><p><p>There exists a unique strictly increasing sequence of nonneg integers 
+\(a_1 &lt; a_2 &lt; \cdots &lt; a_k\) such that</p>
+\[\frac{2^{289}+1}{2^{17}+1} = 2^{a_1} + 2^{a_2} + \cdots + 2^{a_k}\]</p>
+    <img id="question-image"></img>
+    <input type="text" id="answer-input-static" placeholder="Your answer">
+<div id="mc-container" class="hidden">
+  <button class="mc-choice" id = "mc-choice"></button>
+  <button class="mc-choice" id = "mc-choice"></button>
+  <button class="mc-choice" id = "mc-choice"></button>
+  <button class="mc-choice" id = "mc-choice"></button>
+  <button class="mc-choice" id = "mc-choice"></button>
+</div>
+
+    <button id="check-btn-static" class="problemBtn">Check Answer</button>
+
+    <div class="solution" id="solution" style="display:none;">
+      <h2>Solution</h2>
+      <p id="solution-text"></p>
+      <p>Video explanation: <a id="solution-link" href="#" target="_blank">Watch here</a></p>
+    </div>
+
+    <button id="next-btn" style="display:none;">Next Question</button>
+  </div>
+
+  </span>
+</div>
+<hr class="section-divider">
+<div class="info" id="info4">
+  <span id="whoarewe">
+  <h5 class="tinytitle">WHO ARE WE?</h5>
+  <h2 class="subtitle">Real, Dedicated Highschoolers</h2>
+  <p class="par">Meet the creators of Saintly Math!</p>
+  <div class="people-card">
+  <span class="person-card">
+    <div class="person">
+      
+      <img src="adalynn_le.jpeg" class="person-img">
+      <h3 class="person-name tinytitle">Adalynn Le</h3>
+      <p class="person-bio par">Hi! I'm Adalynn, the founder of Saintly. I'm a freshman at Santa Teresa Highschool. When I was studying for my first AMC 10, I felt beind
+        my friends who took expensive paid classes, classes I didn't have access to. I created Saintly as a free and helpful resource so that nobody would have to feel that way again. I hope you enjoy using Saintly!
+      </p>
+      </div>
+    </div>
+  </span>
+</span>
+  <span id="whywebuilt">
+  <h5 class="tinytitle">WHY DID WE BUILD SAINTLY?</h5>
+  <h2 class="subtitle">A Project Turned Product</h2>
+  <p class="par">Shortly after I finished my first AMC 10 Math Competition, I realized that self-studying hadn't been enough. I didn't know how, where, and what to study. That being said, I wasn't about to ask my parents
+    to spend thousands on expensive tutors. From there, Saintly was born. As a project to help my high school math club, I named Saintly after my school (Santa Teresa) and built it around providing Santa Teresa students with free, quality
+    education. About halfway through developing the project, I realized Saintly had much bigger applications. I've since been working on scaling Saintly into a global tool that others from around the world can use. 
+  </p>
+  </span>
 </div>
 <div id = "helpPannel" class = "helpPannel">
   <h2>Need Some Help?</h2>
-  <p>Contact us at <a href="/cdn-cgi/l/email-protection#731217121f0a1d1d5d185d1f1633141e121a1f5d101c1e"><span class="__cf_email__" data-cfemail="3d5c595c5144535313561351587d5a505c5451135e5250">[email&#160;protected]</span></a></p>
+  <p>Contact us at <a href="mailto:saintly.math@gmail.com">saintly.math@gmail.com</a></p>
 </div>
   </main>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const sidebar = document.getElementById("sidebar");
-  function toggleSidebar() {
-    sidebar.classList.toggle("close");
-  }
 
-  function toggleSubMenu(button) {
-    const subMenu = button.nextElementSibling;
-    if(s
+<div id="overlay"></div>
+    </body>
+  </body>
+</html>
+<script>
+  console.log("script running")
+      let helpOn = false;
+  let helpBtn = document.getElementById('helpButton')
+  helpBtn.addEventListener("click", function () {
+    console.log("clicked")
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
+});
+let overlay = document.getElementById('overlay');
+overlay.addEventListener("click", function () {
+    helpPannel.style.display = "none";
+    overlay.style.display = "none"; 
+    helpOn = false;
+});
+
+</script>
