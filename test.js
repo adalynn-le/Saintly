@@ -75,7 +75,13 @@ const myConfetti = confetti.create(confettiCanvas, {
 
 const questions = [
     {
-title: `AMC 10A 2020 Problem 17 ⭐⭐⭐`,
+title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `<p>Define</p>
@@ -92,7 +98,13 @@ answer: '\\(E) 5100\\)',
 topic: 'counting',
     },
     {
-    title:"AMC 10A 2021 Problem 15 ⭐⭐⭐", 
+    title:`AMC 10A 2021 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
     used: false, 
     difficulty: 3,
     text: `Values for \\(A,B,C,\\) and \\(D\\) are to be selected from \\({1,2,3,4,5,6}\\) without replacement (i.e. no two letters have the same value). How many ways are there to make such choices so that the two curves \\(y=Ax^2+b\\) and \\(y=Cx^2+D\\) intersect? (The order in which the curves are listed does not matter; for example, the choices \\(A=3, B=2, C=4, D=1)\\) is considered the same as the choices \\(A=4, B=1, C=3, D=2)\\)`, 
@@ -103,7 +115,11 @@ topic: 'counting',
     topic: 'logic', 
     },
     {
-        title: "AMC 10B 2024 Problem 9 ⭐⭐",
+        title: `AMC 10B 2024 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Real numbers \\(a,b,\\) and \\(c\\) have arithmetic mean of \\(0\\). The arithmetic mean of \\(a^2,b^2\\) and \\(c^2\\) is \\(10\\). What is the arithmetic 
@@ -116,7 +132,11 @@ topic: 'counting',
         topic: 'factoring',
     },
 { 
-    title: 'AMC 10A 2025 Problem 7 ⭐⭐', 
+    title: `AMC 10A 2025 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
     used: false, 
     difficulty: 2, 
     text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`, 
@@ -127,7 +147,9 @@ topic: 'counting',
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2025 Problem 4 ⭐",
+        title: `AMC 10A 2025 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `A team of students is going to compete against a team of teachers in a trivia contest. The 
         total number of students and teachers is \\(15\\). Ash, a cousin of one of the students, wants to 
         join the contest. If ash plays with the students, the average age on that team will increase from 
@@ -142,7 +164,9 @@ topic: 'counting',
     {
         used: false,
         difficulty: 1,
-        title: `AMC 10B 2022 Problem 4 ⭐`,
+        title: `AMC 10B 2022 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 <p>A donkey suffers an attack of hiccups and the first hiccup happens at 4:00 one afternoon.</p>
 <p>Suppose that the donkey hiccups regularly every 5 seconds.</p>
@@ -164,7 +188,9 @@ topic: 'counting',
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2021 Spring Problem 3 ⭐",
+        title: `AMC 10A 2021 Spring Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 <p>The sum of two natural numbers is 17402.</p>
 <p>One of the two numbers is divisible by 10.</p>
@@ -187,7 +213,9 @@ topic: 'counting',
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2021 Spring Problem 1 ⭐",
+        title: `AMC 10A 2021 Spring Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 <p>Compute the value of:</p>
 $$
@@ -218,7 +246,9 @@ $$
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2023 Problem 1 ⭐",
+        title: `AMC 10A 2023 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \\(1:30\\) traveling due north at a steady \\(8\\) miles per hour. Betsy leaves on her bicycle from the same point at \\(2:30\\), traveling due east at a steady \\(12\\) miles per hour. At what time will they be exactly the same distance from their common starting point?
         `,
@@ -256,7 +286,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 2,
-        title: "AMC 10A 2025 Problem 9 ⭐⭐",
+        title: `AMC 10A 2025 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `Let \\(f(x)=100x^3-300x^2+200x\\). For how many real numbers \\(a\\) does the graph of \\(y=f(x-a)\\) pass through the point \\((1,25)\\)`,
         answer: "3",
         type: "fr",
@@ -288,7 +322,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 1,
-        title:"AMC 10B 2024 Problem 2 ⭐",
+        title:`AMC 10B 2024 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         text: "What is \\(10! - 7! \\cdot 6!\\)",
         type: "mc",
         choices: ["\\(A) -120\\)", "\\(B) 0\\)", "\\(C) 120\\)", "\\(D) 600\\)", "\\(E) 720\\)"],
@@ -316,7 +352,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10B 2024 Problem 3 ⭐",
+        title: `AMC 10B 2024 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         text: "For how many integer values \\(x\\) is \\(|2x| \\le 7\\pi \\)",
         type: "fr",
         answer: "19",
@@ -343,7 +381,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 3,
-        title: "AMC 10B 2024 Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Positive integers \\(x\\) and \\(y\\) satisfy the equation \\(\\sqrt{x} + \\sqrt{y} = \\sqrt{1183}\\). What is the minimum possible value of \\(x + y\\)?",
         type: "mc",
         choices: ["\\(A) 585\\)", "\\(B) 595\\)", "\\(C) 623\\)", "\\(D) 700\\)", "\\(E) 791\\)"],
@@ -391,7 +435,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 3,
-        title: "AMC 10B 2024 Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `A dartboard is the region \\(B\\) in the coordinate plane consisting of points \\((x,y)\\) such that \\(|x|+|y| \\le 8 \\). A target \\(T\\) is the region where \\((x^2+y^2-25)^2 \\le 49\\). A dart is thrown and lands at a random point in \\(B\\). The probability that the dart lands in \\(T\\) can be expressed as \\(frac{m}{n} \\cdot \\pi \\) where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n\\)?
         `,
         type: "mc",
@@ -436,7 +486,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 5,
-        title: "AMC 10B 2024 Problem 24 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `<p>Let </p>
         $$
         P(m) = \\frac{m}{2}+\\frac{m^2}{4}+\\frac{m^4}{8}+\\frac{m^8}{8}
@@ -459,7 +519,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {   
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2024 Problem 1 ⭐",
+        title: `AMC 10A 2024 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         text: "What is the value of \\(9901 \\cdot 101 - 99 \\cdot 10101 \\)?",
         answer: "2",
         solution: `<b>2</b>
@@ -471,7 +533,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {   
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2024 Problem 2 ⭐",
+        title: `AMC 10A 2024 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `A model used to estimate the time it will take to hike to the top of a mountain on a trail is
         of the form \\(T = aL + bG\\), where \\(a\\) and \\(b\\) are constants, \\(T\\) is the time in minutes, \\(L\\) is the length of the trail in miles, and \\(G\\) is the altitude gain in feet. The model estimates that it will take \\(69\\) minutes to hike to the top if a trail is 
         \\(1.5\\) miles long and ascends \\(800\\) feet, as well as if a trail is \\(1.2\\) miles long and ascends \\(1100\\) feet. how many minutes does the model estimate it will take to hike
@@ -531,7 +595,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations",
     },
     {
-        title: "AMC 10A 2024 Problem 7 ⭐⭐",
+        title: `AMC 10A 2024 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "The product of \\(3\\) integers is \\(60\\). What is the least posible positive sum of the 3 integers.",
         type: "mc",
         used: false,
@@ -555,7 +623,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "prime factorization",
     },
     {
-        title: "AMC 10A 2024 Problem 8 ⭐⭐",
+        title: `AMC 10A 2024 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Amy, Bomani, Charlie, and Daria work in a chocolate factory. On Monday, Amy, Bombani, and Charlie started working at \\(1:00 PM\\) and were able to pack \\(4, 3\\) and \\(3\\) packages, respectively, every \\(3\\) minutes. At some later time Daria joined the group and was able to pack \\(5\\) packages every \\(4\\) minutes. Together they finished packing \\(450\\) packages at exactly \\(2:45 PM\\). At what time did Daria join the group?",
         type: "mc",
         used: false,
@@ -568,7 +640,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations",
     },
     {
-        title: "AMC 10A 2024 Problem 11 ⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "How many ordered pairs of integers \\((m,n)\\) satisfy \\(\\sqrt{n^2-49}=m\\)",
         type: "mc",
         used: false,
@@ -598,7 +676,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10A 2024 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Zelda played the <i>Adventures of Math</i> game on August 1 and scored \\(1,700\\) points. She continued to play daily over the next \\(5\\) days. The bar chart below shows the daily change in her score compared to the day before. (For example, Zelda's score on August 2 was \\(1,700+80=1,780\\) points.) What was Zelda's average score in points over the \\(6\\) days? <b>Do not put a comma in your answer</b> ",
         type: "fr",
         used: false,
@@ -613,7 +697,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-        title: "AMC 10A 2024 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Integers \\(a, b,\\) and \\(c\\) satisfy \\(ab+c=100\\), \\(bc+a=87\\), and \\(ca+b=60\\). What is \\(ab+bc+ca\\)?",
         type: "mc",
         choices: ["\\(A) 212\\)", "\\(B) 247\\)", "\\(C) 258\\)", "\\(D) 276\\)", "\\(E) 284\\)"],
@@ -682,7 +776,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10B 2023 Problem 1 ⭐",
+        title: `AMC 10B 2023 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `Mrs. Jones is pouring orange juice into four identical glasses for her four sons. She fills the first three glasses completely but runs out of juice when the fourth glass is only \\(\\frac{1}{3}\\) full. What fraction of a glass must Mrs. Jones pour from each of the first three glasses into the fourth glass so that all four glasses will have the same amount of juice?`,
         type: "mc",
         used: false,
@@ -702,7 +798,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations",
     },
     {
-        title: "AMC 10B 2023 Problem 2 ⭐",
+        title: `AMC 10B 2023 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `Carlos went to a sports store to buy running shoes. Running shoes were on sale with prices reduced by \\(20%\\) on every pair of shoes. Carlos also knew that he had to pay a 
         \\(7.5%\\) sales tax on the discounted price. He had \\(43\\) dollars. What is the origina (before discount) price of the most expensive shoes he could afford to buy?`,
         used: false,
@@ -722,7 +820,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "percents"
     },
     {
-        title: "AMC 10B 2023 Problem 5 ⭐",
+        title: `AMC 10B 2023 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `Maddy and Lara see a list of numbers written on a blackboard. Maddy adds \\(3\\) to each number in the list and finds that the sum of her new numbers is \\(45\\). Lara multiplies each number in the list by \\(3\\) and finds that the sum of her new numbers is also \\(45\\). How many numbers are written on the blcakboard?`,
         used: false,
         difficulty: 1,
@@ -751,7 +851,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         choices: ['\\(A) 10\\)', '\\(B) 11\\)', '\\(C) 12\\)', '\\(D) 13\\)', '\\(E) 14\\)'],
     },
     {
-        title:"AMC 10B 2023 Problem 12 ⭐⭐⭐",
+        title:`AMC 10B 2023 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `<p>When the roots of the polynomial</p>
         $$
         P(x)=(x-1)^1(x-2)^2(x-3)^3...(x-10)^10
@@ -771,7 +877,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "inequalities",
     },
     {
-        title: "AMC 10B 2023 Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         text: `What is the area of the region on the coordinate plane defined by
         $$
@@ -785,7 +897,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "graphing",
     },
     {
-        title: "AMC 10B 2023 Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         text: "How many ordered pairs of integers \\((m,n)\\) satisfy the equation \\(m^2+mn+n^2=m^2n^2\\)",
         used: false,
@@ -803,7 +921,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10B 2023 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         text: "How many distinct values \\(x\\) satisfy \\(\\lfloor{x}^2\\rfloor-3x+2=0\\) where \\(\\lfloor{x}\\rfloor\\) denotes the largest integer less than or equal to \\(x\\)",
         used: false,
@@ -817,7 +945,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "floor functions",
     },
     {
-        title: "AMC 10A 2023 Problem 1 ⭐",
+        title: `AMC 10A 2023 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         text: "Cities \\(A\\) and \\(B\\) are \\(45\\) miles apart. Alicia lives in \\(A\\) and Beth lives in \\(B\\). Alicia bikes towards \\(B\\) at \\(18\\) miles per hour. Leaving at the same time, Beth bikes toward \\(A\\) at \\(12\\) miles per hour. How many miles from City \\(A\\) will they be when they meet?",
@@ -851,7 +981,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "speed-distance-time"
     },
     {
-        title: "AMC 10A 2023 Problem 2 ⭐",
+        title: `AMC 10A 2023 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         dificulty: 1,
         used: false,
         text: "The weight of \\(\\frac{1}{3}\\) of a large pizza together with \\(3 \\frac{1}{2}\\) of orange slices is the same weight of \\(\\frac{3}{4}\\) of a large pizza together with \\(\\frac{1}{2}\\) cups of orange slices. A cup of orange slies weigh \\(\\frac{1}{4}\\) of a pound. What is the weight, in pounds, of a large pizza?",
@@ -880,7 +1012,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations"
     },
     {
-        title: "AMC 10A 2023 Problem 8 ⭐⭐",
+        title: `AMC 10A 2023 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `Barb the baker has developed a new temperature scale for her bakery called the Breadus scale, which is a linear function of the Fahrenheit scale. Bread rises at \\(110\\) degrees Fahrenheit which is \\(0\\) degrees on the Breadus scale. Bread is baked at \\(350\\) degrees Fahrenheit, which is \\(100\\) degrees on the Breadus scale. Breada is done when its internal temperature is \\(200\\) degrees Farenheit. What is this, in degrees, on the Breadus scale? Answer as a decimal.`,
         used: false,
         difficulty: 2,
@@ -906,7 +1042,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
 
     },
     {
-        title: "AMC 10A 2023 Problem 10 ⭐⭐",
+        title: `AMC 10A 2023 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an \\(11\\) on the next quiz, her mean will increase by \\(1\\). If she scores an \\(11\\) on each of the next three quizzes, her mean will increase by \\(2\\). What is the mean of her scores currently?`,
         used: false,
         difficulty: 2,
@@ -957,7 +1097,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "averages"
     },
     {
-        title: "AMC 10B 2022 Problem 2 ⭐",
+        title: `AMC 10B 2022 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         text: `Define \\(x \\diamond y\\) to be \\(|x-y|\\) for all real numbers \\(x\\) and \\(y\\). What is the value of
@@ -980,7 +1122,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         type: "fr",
     },
     {
-        title: "AMC 10B 2022 Problem 5 ⭐",
+        title: `AMC 10B 2022 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         text: `What is the value of 
@@ -1021,7 +1165,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation"
     },
     {
-        title: "AMC 10B 2022 Problem 7 ⭐⭐",
+        title: `AMC 10B 2022 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 2,
         used: false,
         text: `For how many values of the constant \\(k\\) will the polynomial \\(x^2+kx+36\\) have two distinct integer roots?`,
@@ -1033,7 +1181,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         
     },
     {
-        title: `AMC 10B 2022 Problem 9 ⭐⭐`, 
+        title: `AMC 10B 2022 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         difficulty: 2,
         used: false,
         type: `mc`,
@@ -1050,7 +1202,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "induction",
     }, 
     {
-        title: "AMC 10B 2022 Problem 15 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         used: false,
         type: "fr",
@@ -1089,7 +1247,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "series",
     },
     {
-        title: "AMC 10B 2022 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         used: false,
         type: "fr",
@@ -1153,7 +1321,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10B 2022 Problem 24 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         used: false,
         text: `<p>Consider functions \\(f\\) that satisfy</p>
@@ -1193,7 +1371,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "functions", 
     }, 
     {
-        title: "AMC 10A 2022 Problem 1 ⭐",
+        title: `AMC 10A 2022 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1, 
         used: false,
         text: `<p>What is the value of</p>
@@ -1227,7 +1407,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-    title: "AMC 10A 2022 Problem 2 ⭐",
+    title: `AMC 10A 2022 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
     difficulty: 1,
     used: false,
     text: `Mike cycled \\(15\\) laps in \\(57\\) minutes. Assume he cycled at a constant speed throughout. Approximately how many laps did he complete in the first \\(27\\) minutes?`,
@@ -1248,7 +1430,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     topic: "speed-distance-time"
     }, 
     {
-        title: "AMC 10A 2022 Problem 3 ⭐", 
+        title: `AMC 10A 2022 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`, 
         difficulty: 3,
         used: false,
         text: `The sum of three numbers is \\(96\\). The first number is \\(6\\) times the third number,
@@ -1290,7 +1474,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     
     },
     {
-        title: "AMC 10A 2022 Problem 4 ⭐",
+        title: `AMC 10A 2022 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `In some countries, automobile fuel efficiency is measured in liters per \\(100\\) kilometers while other countries use miles per gallon.
@@ -1305,7 +1491,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
 
     },
     {
-        title: "AMC 10A 2022 Problem 6 ⭐⭐",
+        title: `AMC 10A 2022 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,     
         text: `<p>Which expression is equal to</p>
@@ -1321,7 +1511,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
 
     },
     {
-        title: "AMC 10A 2022 Problem 11 ⭐⭐⭐", 
+        title: `AMC 10A 2022 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 3,
         text: "Ted mistakenly wrote \\(2^m \\cdot \\sqrt{\\frac{1}{4096}}\\) as \\(2 \\cdot \\sqrt[m]{\\frac{1}{4096}}\\). What is the sum of all real numbers \\(m\\) for which these two expressions have the same value?",
@@ -1354,7 +1550,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "exponents"
     },
     {
-        title: "AMC 10A 2022 Problem 20 ⭐⭐⭐⭐", 
+        title: `AMC 10A 2022 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         text: `A four term sequence is formed by adding each term of a four-term arithmetic sequence of positive integers to the corresponding term of a four-term geometric sequence
@@ -1428,7 +1632,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "series",
     },
     {
-        title: "AMC 10B Fall 2021 Problem 1 ⭐",
+        title: `AMC 10B Fall 2021 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
@@ -1440,7 +1646,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-        title: "AMC 10B Fall 2021 Problem 3 ⭐",
+        title: `AMC 10B Fall 2021 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) where \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
@@ -1455,7 +1663,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-        title: "AMC 10B Fall 2021 Problem 4 ⭐",
+        title: `AMC 10B Fall 2021 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text:`At noon on a certain day, Minneapolis is \\(N\\) degrees warmer than St. Louis. At \\(4:00\\) the temperature in Minneapolis has fallen by 
@@ -1470,7 +1680,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'logic',
     },
     {
-        title: "AMC 10B Fall 2021 Problem 9 ⭐⭐",
+        title: `AMC 10B Fall 2021 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The knights in a certain kingdom come in two colors. \\(\\frac{2}{7}\\) of them are red, and the rest are blue. Furthermore, \\(\\frac{1}{6}\\) of the knights are magical, 
@@ -1504,7 +1718,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "word problems",
     },
     {
-        title: "AMC 10B Fall 2021 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B Fall 2021 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         used: false,   
         text: `For each integer \\(n \\ge 2\\), let \\(S_{n}\\) be the sum of all products \\(jk\\), where \\(j\\) and \\(k\\) are integers and
@@ -1524,7 +1748,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "modular arithmetic"
     },
     {
-        title: "AMC 10A Fall 2021 Problem 1 ⭐",
+        title: `AMC 10A Fall 2021 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `What is the value of \\(\\frac{(2112-2021)^2}{69}\\)?`,
@@ -1545,7 +1771,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-        title: "AMC 10A Fall 2024 Problem 4 ⭐",
+        title: `AMC 10A Fall 2024 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `Mr. Lopez has a choice of two routes to get to work. Route A is \\(6\\) miles long, and his average speed along this route is \\(30\\) miles per hour. Route
@@ -1601,7 +1829,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "speed-distance-time"
     },
     {
-        title: "AMC 10A Fall 2021 Problem 6 ⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Elmer the emu takes\\(44\\) equal strides to walk between consecutive telephone poles on a rural road. Oscar the ostritch can cover the same distance in \\(12\\) equal leaps.
@@ -1631,7 +1863,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "word problems",
     },
     {
-        title: "AMC 10A Fall 2021 Problem 11  ⭐⭐⭐", 
+        title: `AMC 10A Fall 2021 Problem 11  <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 3,
         text: `Emily sees a ship traveling at a constant speed along a straight section of a river. She walks parallel to the riverbank at a uniform rate faster than 
@@ -1659,7 +1897,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "word problems",
     },
     {
-        title: "AMC 10A 2021 Fall Problem 14 ⭐⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3, 
         answer: "5",
@@ -1697,7 +1941,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "graphing",
     },
     {
-        title: "AMC 10A Fall 2021 Problem 16⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 16<span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<p>The graph of</p>
@@ -1716,7 +1968,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "floor function",
     },
     {
-        title: "AMC 10A Fall 2021 Problem 20 ⭐⭐⭐⭐", 
+        title: `AMC 10A Fall 2021 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         text: `For how many ordered pairs \\((b,c)\\) of positive integers does neither \\(x^2+bx+c=0\\) nor \\(x^2+cx+b=0\\) have two distinct real solutions?`,
@@ -1737,7 +1997,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "discriminant",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 1 ⭐",
+        title: `AMC 10B Spring 2021 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many integer values of \\(x\\) satisfy \\(|x| < 3\\pi\\)?`,
@@ -1747,7 +2009,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         type: "fr",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 2 ⭐",
+        title: `AMC 10B Spring 2021 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         type: "mc",
@@ -1763,7 +2027,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "squares",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 3 ⭐",
+        title: `AMC 10B Spring 2021 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `In an after-school program for juniors and seniors, there is a debate team with equal numbers of students from each class on team. Among \\(28\\) students in the program,
@@ -1787,7 +2053,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 4 ⭐",
+        title: `AMC 10B Spring 2021 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `At a math contest, 57 students are wearing blue shirts, and another 75 students are wearing yellow shirts. The 132 students are assigned into 66 pairs. 
@@ -1799,7 +2067,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "word problems",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 6 ⭐⭐",
+        title: `AMC 10B Spring 2021 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Mr. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is \\(84\\), and the afternoon class's mean score is \\(70\\). The ratio of the number of students in the 
@@ -1814,7 +2086,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "averages",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 15 ⭐⭐",
+        title: `AMC 10B Spring 2021 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The real number \\(x\\) satisfies the equation \\(x+ \\frac{1}{x} = \\sqrt{5}\\). What is the value of \\(x^11-7x^7+x^3)?`,
@@ -1864,7 +2140,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10B Spring 2021 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Suppose that \\(S\\) is a fininte set of positive integers. If the greatest integer in \\(S\\) is removed from \\(S\\), then the average value (arithmetic mean) of the integers
@@ -1933,7 +2217,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         answer:"36.8",
     },
     {
-        title: "AMC 10A 2021 Spring Problem 2 ⭐",
+        title: `AMC 10A 2021 Spring Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 2,
         used: false,
         text: `Portia's high school has \\(3\\) times as many students as Lara's high school. The two high schools have a total of 
@@ -1959,7 +2245,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations"
     },
     {
-        title: "AMC 10A 2021 Spring Problem 4 ⭐",
+        title: `AMC 10A 2021 Spring Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `A cart rolls down a hill, traveling \\(5\\) inches the first second and accelerating so that during each successive \\(1\\) second time interval, it travels \\(7\\) inches more than during the previous \\(1\\) second interval.
@@ -1981,7 +2269,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `series`,
     },
     {
-        title: "AMC 10A 2021 Spring Problem 5 ⭐",
+        title: `AMC 10A 2021 Spring Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The quiz scores of a class with \\(k>12\\) students have  a mean of \\(8\\). The mean of a collection of \\(12\\) of these quiz scores is \\(14\\). What is the mean of the reamining 
@@ -1997,7 +2287,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `algebraic manipulation`,
     },
     {
-        title: "AMC 10A Spring 2021 Problem 6 ⭐⭐",
+        title: `AMC 10A Spring 2021 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Chantal and Jean start hiking from a trailhead toward a fire tower. Jean is wearing a heavy backpack and walks slower. Chantal starts walking at \\(4\\) miles per hour. Halfway to the tower, the trail
@@ -2014,7 +2308,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `speed-distance-time`,
     },
     {
-        title: "AMC 10A Spring 2021 Problem 9 ⭐⭐",
+        title: `AMC 10A Spring 2021 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `What is the least possible value of \\((xy-1)^2+(x+y)^2\\) for real numbers \\(x\\) and \\(y\\)?`,
@@ -2040,7 +2338,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10A 2021 Spring Problem 13 ⭐⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 3,
         text: `All the roots of the polynomial \\(z^6-10z^5+Az^4+Bz^3+Cz^2+Dz+16\\) are positive integers, possibly repeated. What is the value of \\(B\\)?`,
@@ -2064,7 +2368,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         discipline: 'algebra',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<p>In the following list of numbers, the integer \\(n\\) appears \\(n\\) times in the list for \\(1 \\le n \\le 200\\).</p>
@@ -2095,7 +2407,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `series`,
     },
     {
-        title: "AMC 10A 2021 Spring Problem 18 ⭐⭐⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         type: 'mc',
@@ -2140,7 +2460,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `composite functions`,
     },
     {
-        title: "AMC 10A 2021 Spring Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 4,
         used: false,
         type: 'mc',
@@ -2217,7 +2545,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
 
     },
     {
-        title: `AMC 10A 2021 Spring Problem 22 ⭐⭐⭐⭐⭐`,
+        title: `AMC 10A 2021 Spring Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5, 
         used: false,
         type: `mc`,
@@ -2234,7 +2572,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'word problems',
     },
     {
-        title: `AMC 10B 2020 Problem 1 ⭐`,
+        title: `AMC 10B 2020 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         type: 'fr',
@@ -2253,7 +2593,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'arithmetic',
     },
     {
-        title: 'AMC 10B 2020 Problem 3 ⭐',
+        title: `AMC 10B 2020 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         text: 'The ratio of \\(w\\) to \\(x\\) is \\(4:3\\), the ratio of \\(y\\) to \\(z\\) is \\(3:2\\) and the ratio of \\(z\\) to \\(x\\) is \\(1:6\\). What is the ratio of \\(w:y\\)?',
         type: 'mc',
         choices: ['\\(A) 4:3\\)', '\\(B) 3:2\\)', '\\(C) 8:3\\)', '\\(D) 4:1\\)', '\\(E) 16:3\\)'],
@@ -2264,7 +2606,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         difficulty: 1,
     },
     {
-        title: `AMC 10B 2020 Problem 9 ⭐⭐`,
+        title: `AMC 10B 2020 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `How many ordered pairs of integers \\((x,y)\\) satisfy the equation \\(x^2020 + y^2 =2y\\)?`,
@@ -2287,7 +2633,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'squares',
     },
     {
-        title: `AMC 10A 2020 Problem 1 ⭐`,
+        title: `AMC 10A 2020 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>What is the value of</p>
@@ -2313,7 +2661,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'arithmetic',
     },
     {
-        title: `AMC 10A 2020 Problem 2 ⭐`,
+        title: `AMC 10A 2020 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1, 
         text: `The numbers \\(3, 5, 7, a\\) and \\(b\\) have an average (arithmetic mean) of \\(15\\). What is the average of \\(a\\) and \\(b\\)?`,
@@ -2323,7 +2673,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'averages',
     },
     {
-        title: 'AMC 10A 2020 Problem 3 ⭐',
+        title: `AMC 10A 2020 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1, 
         text: `<p>Assuming \\(a \\neq 3, b \\neq 4, c \\neq 5\\), what is the value in simplest form of the following expression?</p>
@@ -2338,7 +2690,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'algebraic manipulation',
     },
     {
-        title: 'AMC 10A 2020 Problem 4 ⭐',
+        title: `AMC 10A 2020 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `A driver travels for \\(2\\) hours at \\(60\\) miles per hour, during which her car gets \\(30\\) miles per gallon of 
@@ -2350,7 +2704,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     topic: 'speed-distance-time',
     },
     {
-        title: 'AMC 10A 2020 Problem 5 ⭐',
+        title: `AMC 10A 2020 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>What is the sum of all real numbers \\(x\\) for which</p>
@@ -2384,7 +2740,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'casework',
     },
     {
-        title: 'AMC 10A 2020 Problem 8 ⭐⭐',
+        title: `AMC 10A 2020 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         type: 'fr',
@@ -2417,7 +2777,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'series',
     },
     {
-        title: `AMC 10A 2020 Problem 11 ⭐⭐⭐`,
+        title: `AMC 10A 2020 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         type: 'mc',
@@ -2435,7 +2801,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'medians',
     },
     {
-        title: `AMC 10A 2020 Problem 14 ⭐⭐⭐`,
+        title: `AMC 10A 2020 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         type: 'mc',
@@ -2487,7 +2859,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'algebraic manipulation',
     },
     {
-        title: 'AMC 10A 2020 Problem 21 ⭐⭐⭐⭐⭐',
+        title: `AMC 10A 2020 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `<p>There exists a unique strictly increasing sequence of nonnegative integers \\(a_{1} < a_{2}} < ... < a_{k}}\\) such that 
@@ -2550,7 +2932,11 @@ shuffleArray(questions);
 
 const geometryQ = [
     {
-        title: "AMC 10B 2020 Problem 8 ⭐⭐",
+        title: `AMC 10B 2020 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Points \\(P\\) and \\(Q\\) lie in a plane with \\(PQ=8\\). How many locations for point \\(R\\) in this plane are there such that the triangle with vertices \\(P, Q,\\) and \\(R\\) is a right triangle with 
@@ -2563,7 +2949,11 @@ const geometryQ = [
         topic: 'triangles',  
     },
     {
-        title: "AMC 10A 2025 Problem 10 ⭐⭐",
+        title: `AMC 10A 2025 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 <p>A semicircle has diameter \\(\\overline{AB}\\) and chord \\(\\overline{CD}\\) of length \\(16\\) parallel to \\(\\overline{AB}\\). A smaller semicircle with diameter on \\(\\overline{AB}\\) and tangent to \\(\\overline{CD}\\) is cut from the larger semicircle, as shown below. What is the area of the shaded space?
         `,
@@ -2591,7 +2981,13 @@ const geometryQ = [
         topic: "estimation",
     },
     {
-        title: "AMC 10A 2025 Problem 13 ⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 In the figure below, the outside square contains infinitely many squares, each of them with the same center and sides parallel to the outside square. The ratio of the side length of a square to the side length of the next inner square is \\(k\\) where \\(0\\lt k\\lt1\\). The spaces between squares are alternately shaded, as shown in the figure (which is not necessarily drawn to scale). The amount shaded is \\(64\\%\\). What is \\(k\\)? Write your answer as a decimal.
         `,
@@ -2629,7 +3025,13 @@ topic: "series",
         video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "AMC 10A 2025 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `In the figure below \\(ABEF\\) is a rectangle, \\(\\overline{AD}\\perp\\overline{DE}=7\\), \\(AB=1\\), and \\(AD=5\\). What is the area of \\(\\triangle ABC\\)? Answer as a decimal.
         `,
         image: "AMC10A202515.png",
@@ -2676,7 +3078,15 @@ topic: "series",
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10A 2024 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text:"The first three terms of a geometric sequence are the integers \\(a, 720\\) and \\(b\\) where \\(a<720<b\\). What is the sum of the digits of the least possible value of \\(b\\)?",
         used: false,
         difficulty: 4,
@@ -2690,7 +3100,11 @@ topic: "series",
         topic: "geometric sequences",
     },
     {
-        title: "AMC 10A 2020 Problem 10 ⭐⭐",
+        title: `AMC 10A 2020 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Seven cubes whose volumes are \\(1, 8, 27, 64, 216,\\) and \\(343\\) cubic units are stacked vertically to form a tower in which the volumes of the cubes decrease from bottom to top. Except for the bottom cube, the bottom face
@@ -2718,7 +3132,13 @@ topic: "series",
         topic: 'surface area',
     },
     {
-        title: "AMC 10A 2020 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2020 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: 'Triangle \\(AMC\\) is isoceles with \\(AM = CM\\). Medians \\(\\overline{MV}\\) and \\(\\overline{CU}\\) are perpendicular to each other, and \\(MV\=CU=12\\). What is the area of \\(\\triangle AMC\\)?',
@@ -2739,7 +3159,15 @@ topic: "series",
 
     },
     {
-     title: "AMC 10A 2020 Problem 19 ⭐⭐⭐⭐",
+     title: `AMC 10A 2020 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
      used: false,
      difficulty: 4,
      text: `As shown in the figure below, a rectangular dodecahedron (the polyhedron consisting of \\(12\\) congruent rectangular pentagonal faces) floats in space with two horizontal faces. Note
@@ -2758,7 +3186,15 @@ topic: "series",
      topic: 'counting',
     },
     {
-        title: 'AMC 10A 2020 Problem 20 ⭐⭐⭐⭐',
+        title: `AMC 10A 2020 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Quadrilateral \\(ABCD\\) satisfies \\(\\angle ABC = 90^\\circ\\), \\(AC = 20\\), and \\(CD = 30\\).
@@ -2777,7 +3213,17 @@ topic: "series",
         topic: 'area of composite shapes',
     },
     {
-        title: 'AMC 10A 2020 Problem 23 ⭐⭐⭐⭐⭐',
+        title: `AMC 10A 2020 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Let \\(T\\) be the triangle with verticies at \\((0,0), (4,0)\\) and \\((0,3)\\). Consider the following five isometries (rigid transformations) of the plane:
@@ -2800,7 +3246,9 @@ topic: "series",
         topic: 'transformations',
     },
     {
-        title: `AMC 10B 2020 Problem 2 ⭐`,
+        title: `AMC 10B 2020 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `Carl has \\(5\\) cubes of sidelenght \\(1\\), and Kate has \\(5\\) cubes of side length \\(2\\). What is the total volume of the \\(10\\) cubes?`,
@@ -2810,7 +3258,9 @@ topic: "series",
         topic: 'volume',
     },
     {
-        title: 'AMC 10B 2020 Problem 4 ⭐',
+        title: `AMC 10B 2020 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>The acute angles of a right triangle are \\(a^\\circ\\) and \\(b^\\circ\\), where \\(a > b\\) and both \\(a\\) and \\(b\\) are prime numbers. What is the least possible value of \\(b\\)?`,
@@ -2823,7 +3273,11 @@ topic: "series",
         topic: 'prime numbers',
     },
     {
-        title: `AMC 10B 2020 Problem 10 ⭐⭐`,
+        title: `AMC 10B 2020 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A three quarter section of a circle of radius \\(4\\) inches together with its interior can be rolled up to form the lateral surface area of a right circular cone by taping together along the two radii shown. 
@@ -2845,7 +3299,13 @@ topic: "series",
 
     },
     {
-        title: "AMC 10B 2020 Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Andy the Ant lives on a coordinate plane and is currently at \\(-20,20\\) facing east (that is, in the positive \\(x\\) - direction). Andy moves 
@@ -2864,7 +3324,13 @@ topic: "series",
         topic: 'coordinate grid',
     },
     {
-        title: "AMC 10B 2020 Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `As shown in the figure below, six semicircles lie in the interior of a rectangular hexagon with side length \\(2\\) so that the diameters of the semicircles coincide with the sides of the hexagon.
@@ -2886,7 +3352,15 @@ topic: "series",
         topic: `hexagons`,
     },
     {
-        title: "AMC 10B 2020 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 4,
         used: false,
         text: `Let \\(B\\) be a right rectangular prism (box) with edges lengths \\(1, 3\\) and \\(4,\\) together with its interior. For
@@ -2912,7 +3386,17 @@ topic: "series",
         topic: 'rounded rectangles',
     },
     {
-        title: "AMC 10B 2020 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         used: false,
         text: `In square \\(ABCD\\), points \\(E\\) and \\(H\\) lie on \\(\\overline{AB}\\) and \\(\\overline{DA}\\), respectively, so that \\(AE=AH\\). Points
@@ -2931,7 +3415,13 @@ topic: "series",
         topic: 'geometric manipulation',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Two right circular cones with verticies facing down as shown in the figure below contain the same amount of liquid. The radii of the tops of the liquid surfaces are \\(3\\) cm and \\(6\\) cm. Into
@@ -2946,7 +3436,13 @@ topic: "series",
         topic: 'volume relationships',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 13 ⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: 'What is the volume of a tetrahedron \\(ABCD\\) with edge lengths \\(AB=2, AC=3, AD=4, BC=\\sqrt{13}, BD=2\\sqrt{5}\\), and \\(CD=5\\)?',
@@ -2958,7 +3454,15 @@ topic: "series",
         topic: 'pyramids',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Trapezoid \\(ABCD\\) has \\(\\overline{AB} || \\overline{CD}, BC = CD = 43\\), and \\(\\overline{AD} \\perp \\overline{BD}\\). Let
@@ -2971,7 +3475,17 @@ topic: "series",
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Let \\(ABCDEF\\) be an equiangular hexagon. The lines \\(AB\\), \\(CD\\), and \\(EF\\) determine a triangle with area \\(192\\sqrt{3}\\), and the lines \\(BC\\), \\(DE\\), and \\(FA\\) determine a triangle with area 
@@ -2984,7 +3498,11 @@ topic: "series",
         topic: `hexagons`,
     },
     {
-        title: "AMC 10B 2021 Spring  Problem 7 ⭐⭐",
+        title: `AMC 10B 2021 Spring  Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `In a plane, four circles with radii \\(1, 3, 5,\\) and \\(7\\) are tangent at line \\(l\\) at the same point \\(A\\) but they may be on either side of \\(l\\). Region \\(S\\) consists of all the 
@@ -3012,7 +3530,11 @@ topic: "series",
         topic: 'optimization',
     },
     {
-        title: "AMX 10B 2021 Spring Problem 9 ⭐⭐",
+        title: `AMX 10B 2021 Spring Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The point \\(P(a,b)\\) in the \\(xy\\) plane is first rotated counterclockwise by \\(90^\\circ\\) around the point \\((1,5)\\) and then reflected about the line \\(y=-x\\). The image of 
@@ -3027,7 +3549,11 @@ topic: "series",
         answer: '7',
     },
     {
-        title: 'AMC 10B 2021 Spring Problem 10 ⭐⭐',
+        title: `AMC 10B 2021 Spring Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `An inverted cone with base radius \\(12\\)cm and height \\(18\\)cm is full of water. The water is poured into a tall cylinder whose horizontal base has a radius of \\(24\\) cm. What is the height in centimeters of the water in the cylinder?`,
@@ -3037,7 +3563,13 @@ topic: "series",
         topic: 'volume',
     },
     {
-        title: 'AMC 10B 2021 Spring Problem 11 ⭐⭐⭐',
+        title: `AMC 10B 2021 Spring Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Grandma has just finished baking a large rectangular pan of brownies. She is planning to make rectangular pieces of equal size and shape, with straight cuts parallel to the sidesof the pan. 
@@ -3075,7 +3607,13 @@ topic: "series",
    topic: 'optimization',
     },
     {
-        title: 'AMC 10B Spring 2021 Problem 14 ⭐⭐⭐',
+        title: `AMC 10B Spring 2021 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Three equally spaced parallel llines intersect a circle, creating three chords of lengths \\(38\\), \\(38\\), and \\(34\\). What is the distance between two adjacnet parallel lines?`,
@@ -3101,7 +3639,15 @@ topic: "series",
         topic: 'chords',
     },
     {
-        title: "AMC 10B 2021 Spring 2021 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10B 2021 Spring 2021 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 4,
         used: false,
         text: 'The figure is constructed from 11 line segments, each of which has length \\(2\\). The area of pentagon \\(ABCDE\\) can be written as \\(\\sqrt{m}+\\sqrt{n}\\) where \\(m\\) and \\(n\\) are positive integers. What is \\(m+n\\)?',
@@ -3125,7 +3671,9 @@ topic: "series",
         topic: 'trigonometry',
     },
     {
-        title: 'AMC 10A Fall 2021 Problem 2 ⭐',
+        title: `AMC 10A Fall 2021 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `Menakara has a \\(4 \\times 6\\) index card. If she shortens the length of one side of this card by \\(1\\) inch, the 
@@ -3135,7 +3683,11 @@ topic: "series",
         topic: 'area',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 7 ⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `As shown in the figure below, point \\(E\\) lies on the opposite half plane determined by line \\(CD\\) from point \\(A\\) so that \\(\\angle CDE = 110^\\circ\\). Point
@@ -3146,7 +3698,13 @@ topic: "series",
         topic: 'angle relationships',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         used: false,
         text: `Isoceles triangle \\(ABC\\) has \\(AB = AC = 3\\sqrt{6}\\), and a circle with radius \\(5\\sqrt{2}\\) is tangent to line \\(AB\\) at \\(B\\) and to line \\(AC\\) at \\(C\\). What is the
@@ -3161,7 +3719,15 @@ topic: "series",
         topic: 'circumcircles',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `An architect is building a structure that will place vertical pillars at the verticies of regular hexagon \\(ABCDEF\\), which is lying horizontally on the ground. The six pillars will hold up a flat solar panel that
@@ -3174,7 +3740,15 @@ topic: "series",
         topic: "slope",
     },
     {
-        title: "AMC 10A Fall 2021 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A disk of radius \\(1\\) rolls all the way around the inside of a square of side length \\(s > 4\\) and sweeps out a region of area \\(A\\). A second 
@@ -3208,7 +3782,17 @@ topic: "series",
         topic: 'rounded rectangles',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Inside a right circular cone with bae radius \\(5\\) and height \\(12\\) are three congruent spheres with radius \\(r\\). Each sphere is tangent to the other two spheres and also tangent to the
@@ -3252,7 +3836,9 @@ topic: "series",
         answer: "\\(B)\\frac{90=40\\sqrt{3}}{11}\\)"
     },
     {
-        title: "AMC 10B 2021 Fall Problem 1 ⭐",
+        title: `AMC 10B 2021 Fall Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         text: `What is the area of the shaded figure shown below?`,
@@ -3265,7 +3851,13 @@ topic: "series",
         topic: 'area',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 11 ⭐⭐⭐", 
+        title: `AMC 10B 2021 Fall Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         difficulty: 3,
         used: false,
         text: `A regular hexagon of side length \\(1\\) is inscribed in a circle. Each minor arc of the circle determined by a side of the heexagon is reflected over that side. What is the area of the region bounded by these \\(6\\) reflected arcs?`,
@@ -3286,7 +3878,13 @@ topic: "series",
         choices: ["\\(A) \\frac{5\\sqrt{3}}{2}-\\pi\\)", "\\(B) 3\\sqrt{3}-\\pi\\)", "\\(C) 4\\sqrt{3}-\\frac{3\\pi}{2}\\)", "\\(D) \\pi-\\sqrt{3}{2}\\)", "\\(E) \\frac{\\pi+\\sqrt{3}}{2}\\)"],
     },
     {
-        title: "AMC 10B 2021 Fall Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         used: false,
         text: `A square with side length \\(3\\) is inscribed in an isoceles triangle with one side of the square along the bae ofthe triangle. A square with side length \\(2\\) has two vertices on the other square and the other two sides of the triangle, as shown. What is the area of the triangle?`,
@@ -3300,7 +3898,13 @@ topic: "series",
         topic: 'area',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 15 ⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `In square \\(ABCD\\), points \\(P\\) and \\(Q\\) lie on \\(\\overline{AD}\\) and \\(\\overline{BC}\\), respectively.
@@ -3343,7 +3947,15 @@ topic: "series",
     topic: 'similar triangles',
     },
     {
-     title: 'AMC 10B Fall 2021 Problem 18 ⭐⭐⭐⭐',
+     title: `AMC 10B Fall 2021 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
      used: false, 
      difficulty: 4,
      text: `Three identical square sheets of paper each with side length \\(6\\) are stacked on top of each other. The middle sheet is rotated clockwise \\(30^\\circ\\) about its center and the top sheet is rotated clockwise \\(60^\\circ\\) about its center, resulting in the $24$-sided polygon shown in the figure below. 
@@ -3359,7 +3971,17 @@ topic: "series",
     topic: 'trigonometry',
     },
     {
-       title: "AMC 10B Fall 2021 Problem 21 ⭐⭐⭐⭐⭐",
+       title: `AMC 10B Fall 2021 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 5,
        text: `Regular polygons with \\(5, 6, 7\\) and \\(8\\) sides are inscribed in the same circle. No two of the regular polygons share a vertex, and no three of their
@@ -3378,7 +4000,17 @@ topic: "series",
        topic: 'inscribed shapes', 
     },
     {
-        title: "AMC 10B Fall 2021 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B Fall 2021 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `A rectangle with side lengths \\(1\\) and \\(3\\), a square with side length \\(1\\), and a rectangle \\(R\\) are inscribed inside a 
@@ -3402,7 +4034,9 @@ topic: "series",
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10A 2022 Problem 5 ⭐", 
+        title: `AMC 10A 2022 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 1,
         text: `Square \\(ABCD\\) has side length \\(1\\). Points \\(P, Q, R, S\\) each lie on a side of \\(ABCD\\) such that \\(APQCRS\\) is an equilateral convex
@@ -3439,7 +4073,11 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10A 2022 Problem 10 ⭐⭐",
+        title: `AMC 10A 2022 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `DDR Daniel finds a rectangular index card and measures its diagonal to be \\(8\\) centimeters. DDR Daniel then cuts out equal squares of
@@ -3482,7 +4120,13 @@ topic: "series",
         image: 'amc10202210.png',
     },
     {
-        title: 'AMC 10A 2022 Problem 13 ⭐⭐⭐',
+        title: `AMC 10A 2022 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         used: false,
         text: `Let \\(\\triangle ABC\\) be a scalene triangle. Point \\(P\\) lies on \\(\\overline{BC}\\) so that \\(\\overline{AP}\\) bisects \\(\\angle BAC).
@@ -3497,7 +4141,13 @@ topic: "series",
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10A 2022 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Quadrilateral \\(ABCD\\) with side lengths \\(AB=7, BC=24, CD=20, DA=15\\) is inscribed in a circle. The area interior to the circle but exterior to the quadrilateral can be
@@ -3519,7 +4169,15 @@ topic: "series",
         answer:'\\(D) 1565\\)',
     },
     {
-        title: "AMC 10A 2022 Problem 21 ⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 4,
         used: false,
         text: `A bowl is formed by attatching four rectangular hexagons of side \\(1\\) to aquire a square of side \\(1\\). The edges of the adjacent hexagons coincide, as shown in the figure. 
@@ -3534,7 +4192,17 @@ topic: "series",
         answer: '\\(B) 7\\)',
     },
     {
-        title: "AMC 10A 2022 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Isoceles trapezoid \\(ABCD\\) has parallel sides \\(\\overline{AD}\\) and \\(\\overline{BC}\\), with \\(BC<AD\\) and 
@@ -3550,7 +4218,17 @@ topic: "series",
         topic: 'forced simplification',
     },
     {
-        title: "AMC 10A 2022 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `<p>Let \\(R, S\\) and \\(T\\) be squares that have vertices at lattice points (i.e., points whose coordinates are both integers) in the coordinate plane, together with their interiors. The
@@ -3571,7 +4249,9 @@ topic: "series",
         topic: 'squares',
     },
     {
-        title: "AMC 10B 2022 Problem 2 ⭐", 
+        title: `AMC 10B 2022 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 1,
         text: `In rhombus \\(ABCD\\), point \\(P\\) lies on segment \\(\\overline{AD}\\) so that \\(\\overline{BP} \\perp \\overline{AD}, AP=3\\), and
@@ -3585,7 +4265,15 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10B 2022 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `The diagram below shows a rectangle with side lengths \\(4\\) and \\(8\\) and a square with side length \\(5\\). Three vertices of the square lie on three different sides of the
@@ -3603,7 +4291,15 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10B 2022 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<b>113</b><p>We can extend lines \\(\\overline{AD}\\) and \\(\\overline{BE}\\) until they intersect at a point we call point \\(G\\).
@@ -3614,7 +4310,13 @@ topic: "series",
         type: 'fr',
     },
     {
-        title: "AMC 10A 2023 Problem 11 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A square of area \\(2\\) is inscribed in a circle of area \\(3\\), creating four congruent triangles, as shown below. What
@@ -3631,7 +4333,13 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10A 2023 Problem 13 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Abdul and Chiang are standing \\(48\\) feet apart in a field. Bharat is standing in the same field as far from Abdul as possible so that the angle formed
@@ -3642,7 +4350,13 @@ topic: "series",
         topic: 'trigonometry',
     },
     {
-        title: "AMC 10A 2023 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `An even number of circles are nested, starting with a radius of \\(1\\) and increasing by \\(1\\) each time, all sharing a common point. The region between every other circle is shaded, starting with the 
@@ -3674,7 +4388,15 @@ topic: "series",
         topic: 'arithmetic series',
     },
     {
-        title: "AMC 10A 2023 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Let \\(ABCD\\) be a rectangle with \\(AB=30\\) and \\(BC=28\\). Point \\(P\\) and \\(Q\\) lie on \\(\\overline{BC}\\) and \\(\\overline{CD}\\) respectively so that all sides of \\(\\triangle ABP, \\triangle PCQ,\\) and \\(\\triangle QDA\\) have integer lengths.
@@ -3695,7 +4417,15 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10A 2023 Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A rhombic dodecahedron is a solid with \\(12\\) congruent rhombus faces. At every vertex, \\(3\\) or \\(4\\) edges meet, depending on the vertex. How many vertices have exactly \\(3\\) edges meet?`,
@@ -3723,7 +4453,15 @@ topic: "series",
         topic: "Euler's formula",
     },
     {
-        title: "AMC 10A 2023 Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Circle \\(C_{1}\\) and \\(C_{2}\\) each have radius \\(1\\), and the distance betwen their centers is \\(\\frac{1}{2}\\). Circle \\(C_{3}\\) is the largest circle internally tangent to both \\(C_{1}\\) and \\(C_{2}\\).
@@ -3751,7 +4489,17 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10A 2023 Problem 24 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Six regular hexagonal blocks of side length \\(1\\) unit are arranged inside a regular hexagonal frame. Each block lies along an inside edge of the frame and is aligned with two other blocks, as shown in the figure below. The distance from any corner of the frame to the nearest vertex of a block is \\(\\frac{3}{7} unit). What is 
@@ -3766,7 +4514,9 @@ topic: "series",
         answer: '\\(C) \\frac{9\\sqrt{3}}{2}\\)',
     },
     {
-        title: "AMC 10B 2023 Problem 3 ⭐",
+        title: `AMC 10B 2023 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `A \\(3-4-5\\) right triangle is inscribed in circle \\(A\\), and a \\(5-12-13\\) right triangle is inscribed in circle \\(B\\). What is the ratio of the area of circle 
@@ -3792,7 +4542,11 @@ topic: "series",
         topic: 'circumcircles',
     },
     {
-        title: "AMC 10B 2023 Problem 7 ⭐⭐", 
+        title: `AMC 10B 2023 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 1,
         text: `Square \\(ABCD\\) is rotated \\(20^\\circ\\) clockwise about its center to obtain square \\(EFGH\\), as shown below. What is the degree measure of \\(\\angle EAB\\)?`,
@@ -3807,7 +4561,15 @@ topic: "series",
         topic: 'power of a point',
     },
     {
-        title: "AMC 10B 2023 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A rectangular box \\(P\\) has distinct edge lengths \\(a, b,\\) and \\(c\\). The sum of the lengths of all \\(12\\) edges of 
@@ -3834,7 +4596,15 @@ topic: "series",
          answer: '\\(D) \\frac{9}{4}\\)',
     },
     {
-        title: "AMC 10B 2023 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Four coungruent semicircles are drawn on the surface of a sphere with radius \\(2\\), as shown, creating a close curve that divides the surface into two congruent regions. The
@@ -3850,7 +4620,17 @@ topic: "series",
         topic: 'arc length',
     },
     {
-     title: "AMC 10B 2023 Problem 25 ⭐⭐⭐⭐⭐",
+     title: `AMC 10B 2023 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
      used: false,
      difficulty: 5,
      text: 'A regular pentagon with area \\(1+\\sqrt{5}\\) is printed on paper and cut out. All five vertices are folded to the center of the pentagon, creating a smaller pentagon. What is the area of the new pentagon?',
@@ -3868,7 +4648,13 @@ topic: "series",
       topic: 'trigonometry',
     },
     {
-        title: "AMC 10A 2024 Problem 14 ⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `One side of an equilateral triangle of height \\(24\\) lies on line \\(l\\). A circle of radius \\(12\\) is tangent to line \\(l\\) and is externally tangent to the triangle. The area of the region exterior to the trinagle and the circle and bounded by the triangle, the circle, and line \\(l\\) can be
@@ -3883,7 +4669,15 @@ topic: "series",
         topic: 'area'
     },
     {
-        title: "AMC 10A 2024 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: 'All of the rectangles in the figure below, which is drawn to scale, are similar to the enclosing rectangle. Each number represents the area of the rectangle. What is length \\(AB\\)?',
@@ -3908,7 +4702,11 @@ choices: ['\\(A) 4+4\\sqrt{5}\\)', '\\(B) 10\\sqrt{2}\\)', '\\(C) 5+5\\sqrt{5}\\
 topic: 'similarity',
     },
     {
-        title: "AMC 10B 2024 Problem 6 ⭐⭐",
+        title: `AMC 10B 2024 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A rectangle has integer length sides and an area of 2024. What is the least possible perimeter of the rectangle?`,
@@ -3919,7 +4717,11 @@ topic: 'similarity',
         answer: '180',
     },
     {
-        title: "AMC 10B 2024 Problem 10 ⭐⭐", 
+        title: `AMC 10B 2024 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `Quadrilateral \\(ABCD\\) is a parallelogram, and \\(E\\) is the midpoint of the side \\(\\overline{AD}\\). Let \\(F\\) be the intersection of lines \\(EB\\) and \\(AC\\). What
@@ -3935,7 +4737,13 @@ topic: 'similarity',
 
     },
     {
-        title: "AMC 10B 2024 Problem 11 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `In the figure below \\(WXYZ\\) is a rectangle with \\(WX=4\\) and \\(WZ=8\\). Point \\(M\\) lies \\(\\overline{XY}\\),
@@ -3963,7 +4771,17 @@ topic: 'similarity',
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10B 2024 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Two straight pipes (circular cylinders) with radii \\(1\\) and \\(\\frac{1}{4}\\), lie parallel in contact on a flat floor. The 
@@ -3991,7 +4809,17 @@ topic: 'similarity',
         topic: 'tangent circles',
     },
     {
-        title: "AMC 10B 2024 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         text: `Each of \\(27\\) bricks (right rectangular prisms) has dimensions \\(a\\times b \\times c\\), where \\(a, b,\\) and \\(c\\) are pairwise relatively prime positive integers. These bricks are arragned to form a 
         \\(3 \\times 3 \\times 3\\) block, as shown on the left below. A \\(28\\)th brick with the same dimensions is introduced, and these bricks are reconfigured into a \\(2 \\times 2 \\times 7) block, shown on the right. The new 
@@ -4042,7 +4870,9 @@ topic: 'similarity',
         topic: 'systems of equations',
     },
     {
-        title: "AMC 10A 2025 Problem 3 ⭐",
+        title: `AMC 10A 2025 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many isosceles triangles are there with positive area whose side lengths are all positive integers and whose longest side has length \\(2025\\)?`,
@@ -4053,7 +4883,11 @@ topic: 'similarity',
         answer: '3037',
     },
     {
-        title: "AMC 10A 2025 Problem 6 ⭐⭐",
+        title: `AMC 10A 2025 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `In an equilateral triangle, each interior angle is trisected by a pair of rays. The intersection of the interiors of the middle \\(20^\\circ\\)-angle at each evertex is the
@@ -4071,7 +4905,13 @@ topic: 'similarity',
 shuffleArray(geometryQ);
 const numTheoryQ = [
     {
-title: "AMC 10A 2025 Problem 11 ⭐⭐⭐",
+title: `AMC 10A 2025 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `The sequence \\(1,x,y,z\\) is arithmetic. The sequence \\(1,p,q,z\\) is geometric. Both sequences are strictly increasing and contain only integers, and 
@@ -4084,7 +4924,11 @@ answer: '\\(E) 149\\)',
 topic: 'series',
     },
     {
-title: "AMC 10B 2023 Problem 9 ⭐⭐",
+title: `AMC 10B 2023 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 2,
 text: `The numbers \\(16\\) and \\(25\\) are a pair of consecutive positive squares whose difference is \\(9\\). How many pairs of consectuve positive perfect squares have a distance of less than or 
@@ -4097,7 +4941,11 @@ topic: 'squares',
 
     },
     {
-        title: "AMC 10A 2020 Problem 9 ⭐⭐",
+        title: `AMC 10A 2020 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A single bench section at a school event can hold either \\(7\\) addults or \\(11\\) children. When \\(N\\) bench sections are connected end to end, an equal number of adults and children seated together will occupy the bench space. What is the least positive
@@ -4109,7 +4957,11 @@ topic: 'squares',
         topic: 'LCM',
     },
     {
-title: "AMC 10B 2020 Problem 7 ⭐⭐",
+title: `AMC 10B 2020 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 2,
 text: 'How many positive even multipes of \\(3\\) less than \\(2020\\) are perfect squares?',
@@ -4121,7 +4973,11 @@ answer: '\\(A) 7\\)',
 topic: 'squares',
     },
     {
-        title: "AMC 10B 2023 Problem 6 ⭐⭐",
+        title: `AMC 10B 2023 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Let \\(L_{1}=3, L_{2}=3\\) and \\(L_{n+2}=L_{n+1}+L_{n}\\) for \\(n \\geq 1\\). How many terms in the sequence \\(L_{1},L_{2},L_{3}...L_{2023}\\) are even>`,
@@ -4132,7 +4988,11 @@ topic: 'squares',
         topic: 'induction',
     },
     {
-        title: "AMC 10A 2023 Problem 6 ⭐⭐",
+        title: `AMC 10A 2023 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `An integer is assigned to each vertex of a cube. The value of an edge is defined to be the
@@ -4148,7 +5008,11 @@ topic: 'squares',
     
     },
     {
-        title: "AMC 10A 2020 Problem 6 ⭐⭐",
+        title: `AMC 10A 2020 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `How many \\(4\\)-digit positive integers (that is integers between \\(1000\\) and \\(9999\\), inclusive) having only even digits are 
@@ -4161,7 +5025,11 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2020 Problem 7 ⭐⭐",
+        title: `AMC 10A 2020 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The \\(25\\) integers from \\(-10\\) to \\(14\\), inclusive, can be arranged to form a \\(5\\)-by-\\(5\\) square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the
@@ -4187,7 +5055,15 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2024 Problem 24 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `<p>Let \\(n\\) be the least positive integer greater than \\(1000\\) for which \\(\\textup{gcd}(63, n + 120)=21 \\textup {and gcd}(n+63, 120)=60\\)`,
         choices: ['\\(A) 12\\)', '\\(B) 15\\)', '\\(C) 18\\)', '\\(D) 21\\)', '\\(E) 24\\)'],
         answer: '\\(C) 18\\)',
@@ -4200,7 +5076,11 @@ topic: 'squares',
         difficulty: 4,
     },
     {
-        title: "AMC 10B 2020 Problem 6 ⭐⭐",
+        title: `AMC 10B 2020 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Driving along a highway, Megan noticed that her odometer showed \\(1591\\) (miles). This number is a palindrome-it reads the same forward and backward. Then \\(2\\) hours later,
@@ -4211,7 +5091,13 @@ topic: 'squares',
         type: 'fr',
     },
     {
-        title: "AMC 10B 2020 Problem 12 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `<p>The decimal representation of</p>
@@ -4228,7 +5114,13 @@ topic: 'squares',
         topic: 'exponents',
     },
     {
-        title: "AMC 10B 2020 Problem 15 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Steve wrote the digits \\(1, 2, 3, 4,\\) and \\(5\\) in order repeatedly from left to right, forming a list of \\(10,000\\) digits beginning \\(123451234512...\\) He then erased every third digit from his list (that is the \\(3\\)rd, \\(6\\)th, \\(9\\)th...digits from the left),
@@ -4253,7 +5145,15 @@ topic: 'squares',
         topic: 'modular arithmetic',
     },
     {
-        title: "AMC 10B 2020 Problem 16 ⭐⭐⭐⭐", 
+        title: `AMC 10B 2020 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         text: `Bela and Jenn play the following game on the closed interval \\([0,n]\\) of the real number line, where \\(n\\) is a fixed integer greater than \\(4\\). They take turns playing, with Bela going first. At his first turn,
@@ -4265,7 +5165,17 @@ topic: 'squares',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2020 Problem 22 ⭐⭐⭐⭐⭐", 
+        title: `AMC 10B 2020 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 5,
         text: `What is the remainder when \\(2^202 + 202\\) is idivided by \\(2^101+2^51+1\\)?`,
@@ -4275,7 +5185,11 @@ topic: 'squares',
 
     }, 
     {
-        title: "AMC 10A 2021 Spring Problem 7 ⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `<p>Tom has a collection of \\(13\\) snakes, \\(4\\) of which are purple and \\(5\\) of which are happy. He observes that</p>
@@ -4290,7 +5204,11 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 8 ⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `<p>When a student multiplied the number \\(66\\) by the repeating decimal,</p>
@@ -4317,7 +5235,11 @@ topic: 'squares',
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 10 ⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `<p>Which of the following is equivalent to</p>
@@ -4332,7 +5254,13 @@ topic: 'squares',
         topic: 'factoring'
     },
     {
-        title: "AMC 10A 2021 Spring Problem 11 ⭐⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `For which of the following integers \\(b\\) is the base-\\(b\\) number \\(2021_{b}-221_{b}\\) not divisible by \\(3\\)?`,
@@ -4347,7 +5275,11 @@ topic: 'squares',
 
     }, 
     {
-        title: "AMC 10B 2021 Spring Problem 8 ⭐⭐", 
+        title: `AMC 10B 2021 Spring Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `Mr. Zhou places all the integers from \\(1\\) to \\(225\\) into a \\(15\\) by \\(15\\) grid. he places \\(1\\) in the middle square (eighth row and eighth column) and places other numbers one by one clockwise, as shown in part in the diagram below.
@@ -4359,7 +5291,13 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2021 Spring Problem 12 ⭐⭐⭐", 
+        title: `AMC 10B 2021 Spring Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 3,
         text: 'Let \\(N=34\\cdot 34 \\cdot 63 \\cdot 270\\). What is the ratio of the sum of the odd divisors of \\(N\\) to the sum of the even divisors of \\(N\\)',
@@ -4371,7 +5309,13 @@ topic: 'squares',
         topic: "prime factorization",    
     },
     {
-        title: "AMC 10B 2021 Spring Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2021 Spring Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Let \\(n\\) be a positive integer and \\(d\\) be a digit such that the value of the numeral \\(32d\\) in base \\(n\\) equals \\(263\\), and the value of the numeral \\(324\\) in base \\(n\\) equals the value of the numeral  \\(11d1\\) in base six. What is \\(n+d\\)",
         used: false,
         difficulty: 3,
@@ -4410,7 +5354,15 @@ topic: 'squares',
         topic: 'bases'
     },
     {
-        title: `AMC 10B 2021 Spring Problem 16 ⭐⭐⭐⭐`, 
+        title: `AMC 10B 2021 Spring Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         text: `Call a positive integer an uphill integer if every digit is strictly greater than the previous digit. For example, \\(1357\\), \\(89\\) and \\(5\\) are all uphill integers, but \\(32\\), \\(1240\\) and \\(466\\), are not. How many uphill integers are divisble by \\(15\\)`,
@@ -4424,7 +5376,15 @@ topic: 'squares',
         answer: '6',
     },
     {
-        title: "AMC 10B 2021 Spring Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2021 Spring Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Ravon, Oscar, Aditi, Tyrone, and Kim play a card game. Each persion is given \\(2\\) cards out of a set of cards numbered \\(1, 2, 3, ..., 10\\). The score of a player is the sum of the numbers of their cards. The 
@@ -4438,7 +5398,9 @@ topic: 'squares',
         topic: "casework",
     },
     {
-        title: "AMC 10A 2021 Fall Problem 5 ⭐",
+        title: `AMC 10A 2021 Fall Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: "The six-digit number \\(20210A\\) is prime for only one digit \\(A\\). What is \\(A\\)?",
@@ -4452,7 +5414,11 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2021 Fall Problem 8 ⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A two-digit positive integer is said to be \\(cuddly\\) if it is equal to the sum of its nonzero tens digit and the square of its units digit. How many two-digit positive integers are cuddly?`,
@@ -4473,7 +5439,13 @@ topic: 'squares',
         topic: 'algebraic manipulation',
     },
     {
-       title: "AMC 10A 2021 Fall Problem 12 ⭐⭐⭐",
+       title: `AMC 10A 2021 Fall Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 3,
        text: `The base-nine representaiton of the number \\(N\\) is  \\(27,006,000,052_{nine}\\). What is the remainder when \\(N\\) is divided by \\(5\\)?`,
@@ -4496,7 +5468,15 @@ topic: 'squares',
        topic: 'bases',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 23 ⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `For each positive integer \\(n\\), let \\(f_{1}(n)\\) be twice the number of positive integer divisors of \\(n\\), and for \\(j \\ge 2\\), let \\(f_{j}(n)=f_{1}(f_{j-1}(n))\\). For how many values of \\(n \\ge 50\\) is \\(f_{50}(n)=12\\)?`,
@@ -4522,7 +5502,9 @@ topic: 'squares',
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 3 ⭐",
+        title: `AMC 10A Fall 2021 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) in which \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
@@ -4532,7 +5514,9 @@ topic: 'squares',
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 5 ⭐",
+        title: `AMC 10A Fall 2021 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `Let \\(n=8^2022\\). Which of the following is equal to \\(\\frac{n}{4}\\)?`,
@@ -4544,7 +5528,11 @@ topic: 'squares',
         topic: 'exponents',
     },
     {
-        title: "AMC 10B Fall 2021 Problem 6 ⭐⭐",
+        title: `AMC 10B Fall 2021 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The least positive integer with exactly \\(2021\\) distinct positive divisors can be written in the form of \\(m \\cdot 6^k\\), where \\(m\\) and \\(k\\) are integers and \\(6\\) is not a divisor of \\(m\\). What is \\(m+k\\)?`,
@@ -4554,7 +5542,11 @@ topic: 'squares',
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10 Fall 2021 Problem 7 ⭐⭐",
+        title: `AMC 10 Fall 2021 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Call a fraction \\(\\frac{a}{b}\\), not nescessarily in simpplest form, special if \\(a\\) and \\(b\\) are positive integers whose sum is \\(15\\). How many distinct integers can be written as the sum of two, not nescessarily different, special fractions?`,
@@ -4573,7 +5565,11 @@ topic: 'squares',
         topic: 'casework',
     },
     {
-        title: "AMC 10A 2022 Fall 2021 Problem 8 ⭐⭐",
+        title: `AMC 10A 2022 Fall 2021 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficutly: 2,
         text: `The greatest prime number that is a divisor of \\(16384\\) is \\(2\\) because \\(16384=2^14\\). What is the sum of the digits of the greatest prime number that is a divisor of \\(16.383\\)?`,
@@ -4584,7 +5580,11 @@ topic: 'squares',
         answer: 10,
     },
     {
-        title: "AMC 10A 2022 Fall 2021 10 ⭐⭐",
+        title: `AMC 10A 2022 Fall 2021 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Forty slips of paper numbered \\(1\\) to \\(40\\) are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other.
@@ -4598,7 +5598,13 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 12 ⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Which of the following conditions is sufficient to guarantee that integers \\(x, y,\\) and \\(z\\) satisfy the equation \\(x(x-y)+y(y-z)+z(z-x)=1\\)?`,
@@ -4617,7 +5623,15 @@ topic: 'squares',
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10B Fall 2021 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10B Fall 2021 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Let \\(N\\) be a positive integer \\(7777...777\\) a \\(313\\)-digit number where each digit is a \\(7\\). Let \\(f(r)\\) be the leading digit of the \\(r\\)th root of \\(N\\). What is \\(f(2)+f(3)+f(4)+f(5)+f(6)\\)?`,
@@ -4629,7 +5643,9 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2022 Problem 7 ⭐",
+        title: `AMC 10A 2022 Problem 7 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The least common multiple of a positive integer \\(n\\) and \\(18\\)  is \\(180\\) and te greatest common divisor of \\(n\\) and \\(45\\) is \\(15\\). What is the sum of digits of \\(n\\)?`,
@@ -4638,7 +5654,11 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2022 Problem 8 ⭐⭐",
+        title: `AMC 10A 2022 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A dataset consists of \\(6\\) (not distinct) positive integers \\(1,7,5,2,5\\) and \\(X\\). The average (arithmetic mean) of the \\(6\\) numbers equals a value in the data set. What is the sum of all possible values of \\(X\\)?`,
@@ -4647,7 +5667,13 @@ topic: 'squares',
         topic: 'averages',
     },
     {
-        title: "AMC 10A 2022 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `<p>On Halloween, \\(31\\) children walked into the principal's office asking for candy. They can be classified into three types: Some always lie; some always tell the truth; and some alternately lie and tell the truth. The alternaters arbitrarily choose their first response, either a lie or the truth, but each subsequent statement has the opposite truth value from its predecessor. The principal asked everyone the same three questions in this order.</p>
@@ -4663,7 +5689,15 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2022 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `How many three-digit positive integers \\(abc\\) are there whose nonzero digits \\(a, b,\\) and \\(c\\) satisfy \\(0.\\overline{abc}=\\frac{1}{3}(0.\\overline{a}+0.\\overline{b}+0.\\overline{c})\\)?`,
@@ -4674,7 +5708,15 @@ topic: 'squares',
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A 2022 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<p>Define L_{n} as the least common multiple of all the integers from \\(1\\) to \\(n\\) inclusive. There is a unique integer \\(h\\) such that</p>
@@ -4696,7 +5738,17 @@ topic: 'squares',
         topic: 'prime factorization',
     },
     {
-        title: 'AMC 10A 2022 Problem 24 ⭐⭐⭐⭐⭐',
+        title: `AMC 10A 2022 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `How many strings of length \\(5\\) formed from the digits \\(0,1,2,3,4\\) are there such that for each \\(j \\in {1,2,3,4},\\) at least \\(j\\) of the digits are less than \\(j\\)?
@@ -4716,7 +5768,9 @@ topic: 'squares',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2022 Problem 3 ⭐",
+        title: `AMC 10B 2022 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many three-digit positive integers have an odd number of even digits?`,
@@ -4729,7 +5783,11 @@ topic: 'squares',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2022 Problem 6 ⭐⭐",
+        title: `AMC 10B 2022 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `How many of the first ten numbers of the sequence \\(121, 11211, 1112111,...\\) are prime numbers?`,
@@ -4740,7 +5798,11 @@ topic: 'squares',
         topic: 'factoring',
     },
     {
-        title: "AMC 10B 2022 Problem 8 ⭐⭐",
+        title: `AMC 10B 2022 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `<p>Consider the following \\(100\\) sets of \\(10\\) elements each:</p>
@@ -4767,7 +5829,11 @@ topic: 'squares',
         topic: 'patterns',
     },
     {
-        title: "AMC 10B 2022 Problem 10 ⭐⭐",
+        title: `AMC 10B 2022 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Camila writes down five positive integers. The unique mode of these integers is \\(2\\) greater than their median, and the median is \\(2\\) greater than their arithmetic mean. What is the least possible value for the mode?`,
@@ -4782,7 +5848,13 @@ topic: 'squares',
         topic: 'averages',
     },
     {
-        title: "AMC 10B 2022 Problem 11 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `All the high schools in a large school district are involved in a fundraiser selling T-shirts. Which of the choices below is logically equivalent to the statement "No school bigger than Euclid HS sold more T-shirts than Euclid HS"?`,
@@ -4795,7 +5867,13 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2022 Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `The positive difference between a pair of primes is equal to \\(2\\), and the positive difference between the cubes of the two primes is \\(31106\\). What is the sum of the digits of the least prime that is greater than those two primes?`,
@@ -4814,7 +5892,13 @@ topic: 'squares',
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10B 2022 Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Suppose that \\(S\\) is a subset of \\({1,2,3,...,25}\\) such that the sum of any two (not nescessarily distinct) elements of \\(S\\) is never an element of \\(S\\) What is the maximum number of elements \\(S\\) may contain?`,
@@ -4823,7 +5907,15 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2022 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `One of the following numbers is not divisible by any prime number less than \\(10\\). Which is it?`,
@@ -4835,7 +5927,9 @@ topic: 'squares',
         topic: 'modular arithmetic',
     },
     {
-        title: "AMC 10A 2023 Problem 3 ⭐",
+        title: `AMC 10A 2023 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: "How many positive perfect squares less than \\(2023\\) are divisible by \\(5\\)?",
@@ -4845,7 +5939,9 @@ topic: 'squares',
         topic: "squares",
     },
     {
-        title: "AMC 10A 2023 Problem 5 ⭐",
+        title: `AMC 10A 2023 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many digits are in the base \\(10\\) representation of \\(8^5 \\cdot 5^1- \\cdot 15^5\\)?`,
@@ -4857,7 +5953,11 @@ topic: 'squares',
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10A 2023 Problem 9 ⭐⭐",
+        title: `AMC 10A 2023 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A digital display shows the current date as an \\(8\\)-digit integer consisting of a \\(4\\)-digit year, followed by a \\(2\\)idigit month, followed by a \\(2\\)-digit date within the month. For example, Arbor Day this year
@@ -4867,7 +5967,13 @@ topic: 'squares',
         topic: "casework",
     },
     {
-        title: "AMC 10A 2023 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `<p>How many three-digit positive integers \\(N\\) satisfy the following properties?</p>
@@ -4887,7 +5993,15 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2023 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `In a table tennis tournament every participant played every other participant exactly once. Although there were twice as many right-handed players as left-handed players, the number of games won by left-handed players was \\(40%\\) more than the number of games won by right-handed players. (There were no ties and no ambidextrous players.) What is the total number of games played?`,
@@ -4899,7 +6013,17 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2023 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `<b></b><p>If the positive integer \\(c\\) has positive integer divisors \\(a\\) and \\(b\\) with \\(c=ab\\), then \\(a\\) and \\(b\\) are said to be \\(complementary\\) divisors of \\(c\\). Suppose that \\(N\\) is a positive integer that has one complementary pair of divisors that differ by \\(20\\) and another pair of complementary divisors that differ by \\(23\\). What is the sum of the digits of \\(N\\)?`,
@@ -4922,7 +6046,11 @@ topic: 'squares',
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10B 2023 Problem 8 ⭐⭐",
+        title: `AMC 10B 2023 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `What is the units digit of \\(2022^2023 + 2023^2022\\)?`,
@@ -4931,7 +6059,11 @@ topic: 'squares',
         topic: 'powers'
     },
     {
-        title: "AMC 10B 2023 Problem 10 ⭐⭐",
+        title: `AMC 10B 2023 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text:`You are playing a game. A \\(2 \\times 1\\) rectangle covers two adjacent squares (oriented either horizontally or vertically) of a\\(3\\times 3\\) grid of squares, but you are
@@ -4943,7 +6075,13 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2023 Problem 11 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Suzzane went to the bank and withdrew \\($800\\). The teller gave her this amount of using \\($20\\) bills, \\($50\\) bills, and \\($100\\) bills, with at least one of each denominator. How many different collections of bills could Suzanne have recieved?`,
@@ -4958,7 +6096,11 @@ topic: 'squares',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2023 Problem 15 ⭐⭐",
+        title: `AMC 10B 2023 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `What is the least positive integer \\(m\\) such that \\(m \\cdot 2! \\cdot 3! \\cdot 4! \\cdot 5! ... 16!\\) is a perfect square?`,
@@ -4968,7 +6110,13 @@ topic: 'squares',
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10B 2023 Problem 16 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Define an \\(upno\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly increasing moving left to right. Similarly, define a \\(downo\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly decreasing moving eft to right. For instance, the number
@@ -4980,7 +6128,13 @@ topic: 'squares',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2023 Problem 18 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `<p>Suppose \\(a, b,\\) and \\(c\\) are positive integers such that</p>
@@ -5000,7 +6154,9 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2024 Problem 3 ⭐",
+        title: `AMC 10A 2024 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `What is the sum of the digits of the smallest prime that can be written as a sum of \\(5\\) distinct primes?`,
@@ -5009,7 +6165,9 @@ topic: 'squares',
         topic: 'primes',
     },
     {
-        title: "AMC 10A 2024 Problem 4 ⭐",
+        title: `AMC 10A 2024 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The number \\(2024\\) is written as the sum of not nescessarily distinct two-digit numbers. What is the least number of two-digit numbers need to write this sum?`,
@@ -5018,7 +6176,9 @@ topic: 'squares',
         topic: 'arithmetic',
     },
     {
-        title: "AMC 10A 2024 Problem 5 ⭐",
+        title: `AMC 10A 2024 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `What is the least value of \\(n\\) such that \\(n!\\) is a multiple of \\(2024\\)?`,
@@ -5027,7 +6187,11 @@ topic: 'squares',
         topic: 'prime factorization'
     },
     {
-        title: "AMC 10A 2024 Problem 7 ⭐⭐",
+        title: `AMC 10A 2024 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The product of three integers is \\(60\\). What is the least possible positive sum of the three integers?`,
@@ -5039,7 +6203,11 @@ topic: 'squares',
         topic: "optimization"
     },
     {
-        title: "AMC 10A 2024 Problem 10 ⭐⭐",
+        title: `AMC 10A 2024 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Consider the following operation. Given a positive integer \\(n\\), if \\(n\\) is a multiple of \\(3\\), then you replace \\(n\\) by \\(\\frac{n}{3}\\). If \\(n\\) is not a multiple of \\(3\\), then you replace \\(n\\) by \\(n+10\\).
@@ -5050,7 +6218,11 @@ topic: 'squares',
         topic: 'modular arithmetic',
     },
     {
-        title: "AMC 10A 2024 Problem 15 ⭐⭐",
+        title: `AMC 10A 2024 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Let \\(M\\) be the greatest integer such that both \\(M+1213\\) and \\(M+3773\\) are perfect squares. What is the units digit of \\(M\\)?`,
@@ -5082,7 +6254,13 @@ topic: 'squares',
         topic: 'powers',
     },
     {
-        title: "AMC 10A 2024 Problem 18 ⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `There are exactly \\(K\\) positive integers \\(5 \\le b \\le 2024\\) such that the base-\\(b\\) integer \\(2024_{b}\\) is divisible by \\(16\\)(where \\(16\\) is in base ten). What is the sum of the digits of \\(K\\)?`,
@@ -5106,7 +6284,15 @@ topic: 'squares',
         topic: 'bases',
     },
     {
-        title: "AMC 10A 2024 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<p>Let \\(S\\) be a subset of \\({1,2,3,...,2024}\\) such that the following two conditions hold:</p>
@@ -5125,7 +6311,17 @@ topic: 'squares',
         topic: 'optimization',
     },
     {
-        title: "AMC 10A 2024 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `The numbers, in order, of each row and the numbers, in order, of each column of a \\(5 \\times 5\\) array of integers form an arithmetic progression of length \\(5\\). The numbers in positions \\((5,5), (2,4), (4,3),\\) and \\((3,1)\\) are \\(0,47,16,\\) and \\(12\\) respectively. What number 
@@ -5153,7 +6349,9 @@ topic: 'squares',
         topic: 'series',
     },
     {
-        title: "AMC 10B 2024 Problem 1 ⭐",
+        title: `AMC 10B 2024 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `In a long line of people arranged left to right, the \\(1013\\)th person from the left is also the \\(1010\\)th person from the right. How many people are in the line?`,
@@ -5166,7 +6364,9 @@ topic: 'squares',
         answer: '\\(D) 2024\\)',
     },
     {
-        title: "AMC 10B 2024 Problem 5 ⭐",
+        title: `AMC 10B 2024 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>In the following expression, Melanie changed some of the plus signs to minus signs:</p>
@@ -5191,7 +6391,11 @@ topic: 'squares',
         topic: 'inequalities',
     },
     {
-        title: "AMC 10B 2024 Problem 7 ⭐⭐",
+        title: `AMC 10B 2024 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `What is the remainder when \\(7^2024 + 7^2025 + 7^2026\\) is divided by \\(19\\)?`,
@@ -5200,7 +6404,11 @@ topic: 'squares',
         answer: '0',
     },
     {
-       title: "AMC 10B 2024 Problem 8 ⭐⭐",
+       title: `AMC 10B 2024 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 2,
        text: `Let \\(N\\) be the product of all the positive integer divisors of \\(42\\). What is the units digit of \\(N\\)?`,
@@ -5211,7 +6419,13 @@ topic: 'squares',
        topic: 'prime factorization',
     },
     {
-        title: "AMC 10B 2024 Problem 12 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A group of \\(100\\) students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students \\(A\\) and \\(B\\), student \\(A\\)
@@ -5225,7 +6439,13 @@ topic: 'squares',
         topic: 'combinations',
     },
     {
-        title: "AMC 10B 2024 Problem 15 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A list of \\(9\\) real numbers consists of \\(1, 2.2, 3.2, 5.2, 6.2\\) and \\(7\\) as well as \\(x, y,\\) and \\(z\\) with \\(x \\le y \\le z\\). The range of the list is \\(7\\) and the mean and the median are both positive integers. how many ordered triples \\(x,y,z\\) are possible?`,
@@ -5238,7 +6458,15 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2024 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Jerry likes to play with numbers. One day, he wrote all the integers from \\(1\\) to \\(2024\\) on the whiteboard. Then he repeatedly chose four numbers on the whiteboard, erased them, and replaced them by either their sum or their product. (For example, Jerry's first step might have been to erase
@@ -5252,7 +6480,15 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2024 Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: "How many different remainders can result when the \\(100\\textup{th}\\) power of any integer is divided by \\(125\\)?",
@@ -5262,7 +6498,17 @@ topic: 'squares',
         video_solution: `https://artofproblemsolving.com/wiki/index.php?title=2024_AMC_10B_Problems/Problem_18`,
     },
     {
-        title: "AMC 10B 2024 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `<p>The Fibonacci numbers are defined by \\(F_{1}=1, F_{2}=1,\\) and \\(F_{n}=F_{n-1}+F_{n-2}\\) for \\(n \\ge 3\\) What is</p>
@@ -5276,7 +6522,9 @@ topic: 'squares',
         topic: 'patterns',
     },
     {
-        title: "AMC 10A 2025 Problem 5 ⭐",
+        title: `AMC 10A 2025 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>Consider the sequence of positive integers</p>
@@ -5297,7 +6545,11 @@ topic: 'squares',
         topic: 'patterns',
     },
     {
-        title: "AMC 10A 2025 Problem 8 ⭐⭐",
+        title: `AMC 10A 2025 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `<p>Agnes writes the following four statements on a blank piece of paper</p>
@@ -5318,7 +6570,15 @@ topic: 'squares',
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2025 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Let \\(N\\) be the unique positive integer such that dividng \\(273436\\) by \\(N\\) leaves a remainder of \\(16\\) and dividing \\(272760\\) by \\(N\\) leaves a remainder of \\(15\\). What is the tens digit of \\(N\\)?`,
@@ -5329,7 +6589,17 @@ topic: 'squares',
         topic: `prime factorization`,
     },
     {
-        title: "AMC 10A 2025 Problem 24 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Call a positive integer fair if no digit is used more than once, it has no \\(0\\)s and no digit is adjacent to two
@@ -5342,7 +6612,9 @@ topic: 'squares',
         topic: 'series',
     },
     {
-        title: "AMC 10B 2021 Spring Problem 5 ⭐",
+        title: `AMC 10B 2021 Spring Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The ages of Jonie's four cousins are distinct single-digit positive integers. Two of the cousin's
@@ -5357,7 +6629,13 @@ topic: 'squares',
 shuffleArray(numTheoryQ);
 const probabilityQ = [
     {
-title: "AMC 10B 2021 Fall Problem 16 ⭐⭐⭐",
+title: `AMC 10B 2021 Fall Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `Five balls are arranged around a circle. Chris chooses two adjacent balls at random and
@@ -5374,7 +6652,13 @@ answer: '\\(D) 2.2\\)',
 topic: 'expected value',
     },
     {
-title: "AMC 10A 2025 Problem 14 ⭐⭐⭐",
+title: `AMC 10A 2025 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `Six chairs are arranged around a round table. Two students and two teachers randomly select four of the chairs to
@@ -5388,7 +6672,13 @@ answer: '\\(B) \\frac{1}{5}\\)',
 topic: 'counting',
     },
     {
-title: "AMC 10A 2020 Problem 13 ⭐⭐⭐",
+title: `AMC 10A 2020 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `A frog sitting at the point \\((1,2)\\) begins a sequence of jumps, where each jump is parallel to one of the cordinate axes and has length \\(1\\), and the
@@ -5406,7 +6696,13 @@ solution: `<b>\\(\\frac{5}{8}\\)</b><p>We do casework based on the first jump.</
 answer: '\\(B) \\frac{5}{8}\\)',
     },
     {
-        title: "AMC 10A 2020 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A 2020 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         uesd: false,
         difficulty: 3,
         text: `A positive integer divisor of \\(12!\\) is chosen at random. The probability that the divisor chosen is a perfecct square can be expressed as \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are relatively prime
@@ -5435,7 +6731,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10A 2020 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2020 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A point is chosen at random witin the square in the coordinate plane whose vertices are \\((0,0), (2020,0), (2020,2020),\\) and \\((0,2020)\\). The 
@@ -5449,7 +6753,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'composite shapes',
     },
     {
-        title: "AMC 10A 2020 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2020 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if
@@ -5483,7 +6797,9 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2020 Problem 5 ⭐",
+        title: `AMC 10B 2020 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many distinguishable arrangements are there of \\(1\\) brown tile, \\(1\\) purple tile, \\(2\\) green tiles, and \\(3\\) yellow tiles in a row from left to right?`,
@@ -5494,7 +6810,13 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'counting'
     },
     {
-        title: "AMC 10B 2020 Problem 11 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Ms. Carr asks her students to read any \\(5\\) of the \\(10\\) books on a reading list. Harold randomly selects \\(5\\) books from the list, and Betty does the same. What is the probability that there are exactly \\(2\\) books that they select?`,
@@ -5506,7 +6828,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'combinations',
     },
     {
-        title: "AMC 10B 2020 Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `An urn cotains one red ball and one blue ball. A box of extra red and blue balls lies nearby. Geogre performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?`,
@@ -5521,7 +6851,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2020 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `There are \\(10\\) people standing equally spaced around a circle. Each person knows exactly \\(3\\) of the other \\(9\\) people: the \\(2\\) people standing next to him or her, as well as the person directly across the circle.
@@ -5534,7 +6872,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2020 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `In a certain card game, a player is dealt a hand of \\(10\\) cards from a deck of \\(52\\) distinct cards. The number of distinct (unordered) hands that can be deal to the player can be written as \\(158A00A4AA0\\). What is the digit \\(A\\)?`,
@@ -5543,7 +6889,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'modular arithmetic',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `In how many ways can the sequence \\(1,2,3,4,5\\) be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?`,
@@ -5554,7 +6908,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Frieda the frog begins a sequence of hops on a \\(3 \\times 3\\) grid of squares, moving one square on each hope and choosing at random the direction of each hop-up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she "wraps around" and jumps to the opposite edge.
@@ -5571,7 +6935,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: "casework",
     },
     {
-        title: "AMC 10A 2021 Spring Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `How many ways are there to place \\(3\\) indistinguihsable red chips, \\(3\\) indistinguishable blue chips, and \\(3\\) indistinguishable green chips in the squares of a \\(3 \\times 3\\) grid so that no two chips of the same color
@@ -5585,7 +6959,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Ang, Ben, and Jasmin each have \\(5\\) blocks, colored red, blue, yellow, white, and green; and there are \\(5\\) empty boxes. Each of the people randomly and indepenedently of the other two people places one of their blocks into each box. The probability that at least one box 
@@ -5604,7 +6988,11 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'counting',
     },
     {
-        title: "AMC 10A 2021 Fall Problem 9 ⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `When a certain unfair die is rolled, an even number is \\(3\\) times as likely to appear as an odd number. The die is rolled twice. What is the probability that the sum of the numbers rolled is even?</p>`,
@@ -5617,7 +7005,11 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A 2021 Fall Problem 10 ⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A school has \\(100\\) students and \\(5\\) teachers. In the first period, each studentis taking one class and each teacher is teacing one class. The
@@ -5632,7 +7024,13 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'expected outcome'
     },
     {
-     title: "AMC 10A 2021 Fall Problem 13 ⭐⭐⭐",
+     title: `AMC 10A 2021 Fall Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
      used: false,
      difficulty: 3,
      text: `Each of \\(6\\) balls is randomly and independently painted either black or white with equal probability. What is the probability that every ball is different in color from more than half of the other \\(5\\) balls?`,
@@ -5646,7 +7044,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
      topic: 'combinations',  
     },
     {
-        title: "AMC 10A 2021 Fall Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A farmer's rectangular field is partitioned into a \\(2\\) by \\(2\\) grid of \\(4\\) rectangular sections as shown in the figure. In
@@ -5668,7 +7074,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10A 2021 Fall Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Each of the \\(20\\) balls is tossed independently and at random into one of the \\(5\\) bins. Let \\(p\\) be the probability that some bin ends up with \\(3\\) balls, another with \\(5\\) balls, and the other three with \\(4\\) balls each. Let
@@ -5681,7 +7097,13 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'combinations',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4\\)?`,
@@ -5696,7 +7118,11 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'complementary counting',
     },
     {
-        title: "AMC 10A 2022 Problem 9 ⭐⭐",
+        title: `AMC 10A 2022 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A rectangle is partitioned into \\(5\\) regions as shown.  
@@ -5713,7 +7139,13 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-       title: "AMC 10A 2022 Problem 14 ⭐⭐⭐",
+       title: `AMC 10A 2022 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 3,
         text: `How many ways are there to split the integers \\(1\\) through \\(14\\) into \\(7\\) pairs such that in each pair, the greater number is at least \\(2\\) times the lesser number?`,
@@ -5723,7 +7155,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'logic'
     },
     {
-        title: "AMC 10A 2022 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Suppose that \\(13\\) cards numbered \\(1,2,3,...,13\\) are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards \\(1,2,3\\) are picked up on the first pass, \\(4\\) and \\(5\\)
@@ -5734,7 +7176,13 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'patterns',
     },
     {
-        title: "AMC 10B 2022 Problem 12 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A pair of fair \\(6\\)-sided dice is rolled \\(n\\) times. What is the least value of \\(n\\) such that the probability that the sum of the numbers face up on a roll equals \\(7\\) at least once is greater than \\(\\frac{1}{2}\\)</p>`,
@@ -5746,7 +7194,11 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'complementary counting',
     },
     {
-        title: "AMC 10A 2023 Problem 7 ⭐⭐",
+        title: `AMC 10A 2023 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Janet rolls a standard \\(6\\)-sided die \\(4\\) times and keeps a running total of the numbers she rolls. What is the probability that at some point, her runing total will equal \\(3\\)?`,
@@ -5761,7 +7213,13 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10A 2023 Problem 14 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A number is chosen at random from among the first \\(100\\) positive integers, and a positive integer divisor of that number is chosen at
@@ -5778,7 +7236,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'induction',
     },
     {
-       title: "AMC 10A 2023 Problem 20 ⭐⭐⭐⭐",
+       title: `AMC 10A 2023 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 4,
        text: `Each \\(3 \\times 3\\) grid of squares is colored red, white, blue, or green so that every \\(2 \\times 2\\) square contains one square of each color. One such coloring is shown on the right below.
@@ -5788,7 +7254,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
        topic: 'counting', 
     },
     {
-        title: "AMC 10B 2023 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Sonya the frog chooses a point uniformly at random lying within the square \\([0,6] \\times [0,6]\\) in the coordinate plane and hops to that point. She then randomly chooses a distance uniformly at random from \\([0,1]\\), and a direction
@@ -5802,7 +7276,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2023 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Each of \\(2023\\) balls is randomly placed into one of \\(3\\) bins. Which of the following is closets to the probability that each of the bings will contain an odd number of balls?`,
@@ -5814,7 +7298,11 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'combinations',
     }, 
     {
-        title: "AMC 10A 2024 Problem 6 ⭐⭐",
+        title: `AMC 10A 2024 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         title: `What is the minimum number of successive swaps of adjacent letters in the string \\(ABCDEF\\) that are needed to change the string to \\(FEDCBA\\)? (For example, \\(3\\) swapps are required to chance \\(ABC\\) to \\(CBA\\); one such sequence of swaps is \\(ABC --> BAC --> BCA --> CBA\\).)`,
@@ -5823,7 +7311,11 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'logic',
     },
     {
-       title: "AMC 10A 2024 Problem 9 ⭐⭐",
+       title: `AMC 10A 2024 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 2,
        text: `In how many ways can \\(6\\) juniors and \\(6\\) seniors form \\(3\\) disjoint teams of \\(4\\) people so that each team has \\(2\\) juniors and \\(2\\) seniors?`,
@@ -5836,7 +7328,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
        answer: '\\(E) 1350\\)',
     },
     {
-        title: "AMC 10A 2024 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Two teams are in a best-two-out-of-three playoff: the teams will play at most \\(3\\) games, and the winner of the playoff is the first team to win \\(2\\) games. The 
@@ -5853,7 +7353,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2024 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `In a race among \\(5\\) snails, there is at most one tie, but that tie can involve any number of snails. For example,
@@ -5869,7 +7377,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'casework',
     },
     {
-        title: 'AMC 10B 2024 Problem 20 ⭐⭐⭐⭐',
+        title: `AMC 10B 2024 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Three different pairs of shoes are placed in a row so that no left shoe is next to a right shoe from a different pair. In how many ways can these six shoes be lined up?`,
@@ -5885,7 +7401,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'induction',
     },
     {
-        title: "AMC 10B 2024 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `A group of \\(16\\) people will be partitioned into \\(4\\) indistinguishable \\(4\\)-person committees. Each committee will have one chairperson and one secretary. 
@@ -5896,7 +7422,13 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'prime factorization'
     },
     {
-        title: "AMC 10A 2025 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Carlos uses a \\(4\\)-digit passcode to unlock his computer. In his pascode, exatly one digit is even, exactly one (possibly different) digit is prime, and
@@ -5908,7 +7440,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
     topic: 'casework',
     },
     {
-        title: "AMC 10A 2025 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `There are three jars. Each of three coins is placed in one of the three jars, chosen at random and independently of the placements of the other coins. What is the expected number of coins in a jar with the most coins?`,
@@ -5923,7 +7463,17 @@ answer: '\\(B) \\frac{5}{8}\\)',
         topic: 'expected outcome',
     },
     {
-        title: "AMC 10A 2025 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `A point \\(P\\) is chosen at random inside square \\(ABCD\\). The probability that \\(\\overline{AP}\\) is neither the shortest nor the longest side of \\(\\triangle APB\\) can be written as 
@@ -5949,7 +7499,15 @@ answer: '\\(B) \\frac{5}{8}\\)',
 
 const allQ = [
     {
-title: "AMC 10A 2020 Problem 17 ⭐⭐⭐⭐",
+title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `<p>Define</p>
@@ -5966,7 +7524,13 @@ answer: '\\(E) 5100\\)',
 topic: 'counting',
     },
     {
-title: "AMC 10B 2021 Fall Problem 16 ⭐⭐⭐",
+title: `AMC 10B 2021 Fall Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `Five balls are arranged around a circle. Chris chooses two adjacent balls at random and
@@ -5983,7 +7547,13 @@ answer: '\\(D) 2.2\\)',
 topic: 'expected value',
     },
     {
-    title:"AMC 10A 2021 Problem 15 ⭐⭐⭐", 
+    title:`AMC 10A 2021 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
     used: false, 
     difficulty: 3,
     text: `Values for \\(A,B,C,\\) and \\(D\\) are to be selected from \\({1,2,3,4,5,6}\\) without replacement (i.e. no two letters have the same value). How many ways are there to make such choices so that the two curves \\(y=Ax^2+b\\) and \\(y=Cx^2+D\\) intersect? (The order in which the curves are listed does not matter; for example, the choices \\(A=3, B=2, C=4, D=1)\\) is considered the same as the choices \\(A=4, B=1, C=3, D=2)\\)`, 
@@ -5994,7 +7564,13 @@ topic: 'expected value',
     topic: 'logic', 
     },
 {
-title: "AMC 10A 2025 Problem 14 ⭐⭐⭐",
+title: `AMC 10A 2025 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `Six chairs are arranged around a round table. Two students and two teachers randomly select four of the chairs to
@@ -6008,7 +7584,13 @@ answer: '\\(B) \\frac{1}{5}\\)',
 topic: 'counting',
 },
 {
-title: "AMC 10A 2020 Problem 13 ⭐⭐⭐",
+title: `AMC 10A 2020 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `A frog sitting at the point \\((1,2)\\) begins a sequence of jumps, where each jump is parallel to one of the cordinate axes and has length \\(1\\), and the
@@ -6025,7 +7607,13 @@ solution: `<b>\\(\\frac{5}{8}\\)</b><p>We do casework based on the first jump.</
 answer: '\\(B) \\frac{5}{8}\\)',
 },
     {
-title: "AMC 10A 2025 Problem 11 ⭐⭐⭐",
+title: `AMC 10A 2025 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 3,
 text: `The sequence \\(1,x,y,z\\) is arithmetic. The sequence \\(1,p,q,z\\) is geometric. Both sequences are strictly increasing and contain only integers, and 
@@ -6038,7 +7626,11 @@ answer: '\\(E) 149\\)',
 topic: 'series',
     },
     {
-        title: "AMC 10B 2024 Problem 9 ⭐⭐",
+        title: `AMC 10B 2024 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Real numbers \\(a,b,\\) and \\(c\\) have arithmetic mean of \\(0\\). The arithmetic mean of \\(a^2,b^2\\) and \\(c^2\\) is \\(10\\). What is the arithmetic 
@@ -6051,7 +7643,11 @@ topic: 'series',
         topic: 'factoring',
     },
     {
-title: "AMC 10B 2023 Problem 9 ⭐⭐",
+title: `AMC 10B 2023 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 2,
 text: `The numbers \\(16\\) and \\(25\\) are a pair of consecutive positive squares whose difference is \\(9\\). How many pairs of consectuve positive perfect squares have a distance of less than or 
@@ -6064,7 +7660,11 @@ topic: 'squares',
     },
 
         {
-        title: "AMC 10A 2020 Problem 9 ⭐⭐",
+        title: `AMC 10A 2020 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A single bench section at a school event can hold either \\(7\\) addults or \\(11\\) children. When \\(N\\) bench sections are connected end to end, an equal number of adults and children seated together will occupy the bench space. What is the least positive
@@ -6076,7 +7676,11 @@ topic: 'squares',
         topic: 'LCM',
     },
     {
-        title: "AMC 10B 2020 Problem 8 ⭐⭐",
+        title: `AMC 10B 2020 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Points \\(P\\) and \\(Q\\) lie in a plane with \\(PQ=8\\). How many locations for point \\(R\\) in this plane are there such that the triangle with vertices \\(P, Q,\\) and \\(R\\) is a right triangle with 
@@ -6089,7 +7693,11 @@ topic: 'squares',
         topic: 'triangles',  
     },
     {
-    title: 'AMC 10A 2025 Problem 7 ⭐⭐', 
+    title: `AMC 10A 2025 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
     used: false, 
     difficulty: 2, 
     text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`, 
@@ -6098,7 +7706,11 @@ topic: 'squares',
     answer: '\\(E) 18\\)', 
     topic: 'division' },
     {
-title: "AMC 10B 2020 Problem 7 ⭐⭐",
+title: `AMC 10B 2020 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
 used: false,
 difficulty: 2,
 text: 'How many positive even multipes of \\(3\\) less than \\(2020\\) are perfect squares?',
@@ -6110,10 +7722,18 @@ answer: '\\(A) 7\\)',
 topic: 'squares',
     },
     {
-title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an equilateral triangle, each interior angle is trisected by a pair of rays. The intersection of the interiors of the middle \\(20^\\circ\\)-angle at each evertex is the interior of a convex hexagon. What is the degree measure of the smallest angle of this hexxagon?`, choices: ['\\(A) 80\\)', '\\(B) 90\\)', '\\(C) 100\\)', '\\(D) 110\\)', '\\(E) 120\\)'], answer: '\\(C) 100\\)', type: 'mc', solution:  `<b>100</b><p>We notice that there is an isoceles triangle formed withthe base of the equilateral triangle and the two rays that make a \\(20^\\circ\\) angle off out it (I recommend drawing this). The vertex angle is \\(180-20-20=140\\). By vertical angles, one of the angles of the hexagon is equal to that. Doing this for each side gives \\(3\\) angles of \\(140^\\circ\\). Since we know that the sum of the angles must be \\((6-2)(180)=720\\) we find \\(\\frac{720-140-140-140}{3}=100\\)`, topic: 'triangles',
+title: `AMC 10A 2025 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, used: false, difficulty: 2, text: `In an equilateral triangle, each interior angle is trisected by a pair of rays. The intersection of the interiors of the middle \\(20^\\circ\\)-angle at each evertex is the interior of a convex hexagon. What is the degree measure of the smallest angle of this hexxagon?`, choices: ['\\(A) 80\\)', '\\(B) 90\\)', '\\(C) 100\\)', '\\(D) 110\\)', '\\(E) 120\\)'], answer: '\\(C) 100\\)', type: 'mc', solution:  `<b>100</b><p>We notice that there is an isoceles triangle formed withthe base of the equilateral triangle and the two rays that make a \\(20^\\circ\\) angle off out it (I recommend drawing this). The vertex angle is \\(180-20-20=140\\). By vertical angles, one of the angles of the hexagon is equal to that. Doing this for each side gives \\(3\\) angles of \\(140^\\circ\\). Since we know that the sum of the angles must be \\((6-2)(180)=720\\) we find \\(\\frac{720-140-140-140}{3}=100\\)`, topic: 'triangles',
     },
     {
-        title: "AMC 10B 2023 Problem 6 ⭐⭐",
+        title: `AMC 10B 2023 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Let \\(L_{1}=3, L_{2}=3\\) and \\(L_{n+2}=L_{n+1}+L_{n}\\) for \\(n \\geq 1\\). How many terms in the sequence \\(L_{1},L_{2},L_{3}...L_{2023}\\) are even>`,
@@ -6124,7 +7744,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'induction',
     },
     {
-        title: "AMC 10A 2023 Problem 6 ⭐⭐",
+        title: `AMC 10A 2023 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `An integer is assigned to each vertex of a cube. The value of an edge is defined to be the
@@ -6139,7 +7763,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2020 Problem 6 ⭐⭐",
+        title: `AMC 10A 2020 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `How many \\(4\\)-digit positive integers (that is integers between \\(1000\\) and \\(9999\\), inclusive) having only even digits are 
@@ -6152,7 +7780,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-                title: "AMC 10B 2021 Spring Problem 5 ⭐",
+                title: `AMC 10B 2021 Spring Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The ages of Jonie's four cousins are distinct single-digit positive integers. Two of the cousin's
@@ -6166,7 +7796,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
     {
                 used: false,
         difficulty: 1,
-        title: "AMC 10A 2025 Problem 4 ⭐",
+        title: `AMC 10A 2025 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `A team of students is going to compete against a team of teachers in a trivia contest. The 
         total number of students and teachers is \\(15\\). Ash, a cousin of one of the students, wants to 
         join the contest. If ash plays with the students, the average age on that team will increase from 
@@ -6179,7 +7811,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
    {
-        title: "AMC 10A 2020 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A 2020 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         uesd: false,
         difficulty: 3,
         text: `A positive integer divisor of \\(12!\\) is chosen at random. The probability that the divisor chosen is a perfecct square can be expressed as \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are relatively prime
@@ -6208,7 +7846,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10A 2020 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2020 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A point is chosen at random witin the square in the coordinate plane whose vertices are \\((0,0), (2020,0), (2020,2020),\\) and \\((0,2020)\\). The 
@@ -6222,7 +7868,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'composite shapes',
     },
     {
-        title: "AMC 10A 2020 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2020 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if
@@ -6256,7 +7912,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2020 Problem 5 ⭐",
+        title: `AMC 10B 2020 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many distinguishable arrangements are there of \\(1\\) brown tile, \\(1\\) purple tile, \\(2\\) green tiles, and \\(3\\) yellow tiles in a row from left to right?`,
@@ -6267,7 +7925,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'counting'
     },
     {
-        title: "AMC 10B 2020 Problem 11 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Ms. Carr asks her students to read any \\(5\\) of the \\(10\\) books on a reading list. Harold randomly selects \\(5\\) books from the list, and Betty does the same. What is the probability that there are exactly \\(2\\) books that they select?`,
@@ -6279,7 +7943,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'combinations',
     },
     {
-        title: "AMC 10B 2020 Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `An urn cotains one red ball and one blue ball. A box of extra red and blue balls lies nearby. Geogre performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?`,
@@ -6294,7 +7966,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2020 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `There are \\(10\\) people standing equally spaced around a circle. Each person knows exactly \\(3\\) of the other \\(9\\) people: the \\(2\\) people standing next to him or her, as well as the person directly across the circle.
@@ -6307,7 +7987,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2020 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `In a certain card game, a player is dealt a hand of \\(10\\) cards from a deck of \\(52\\) distinct cards. The number of distinct (unordered) hands that can be deal to the player can be written as \\(158A00A4AA0\\). What is the digit \\(A\\)?`,
@@ -6316,7 +8004,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'modular arithmetic',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `In how many ways can the sequence \\(1,2,3,4,5\\) be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?`,
@@ -6327,7 +8023,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Frieda the frog begins a sequence of hops on a \\(3 \\times 3\\) grid of squares, moving one square on each hope and choosing at random the direction of each hop-up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she "wraps around" and jumps to the opposite edge.
@@ -6344,7 +8050,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: "casework",
     },
     {
-        title: "AMC 10A 2021 Spring Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `How many ways are there to place \\(3\\) indistinguihsable red chips, \\(3\\) indistinguishable blue chips, and \\(3\\) indistinguishable green chips in the squares of a \\(3 \\times 3\\) grid so that no two chips of the same color
@@ -6358,7 +8074,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Ang, Ben, and Jasmin each have \\(5\\) blocks, colored red, blue, yellow, white, and green; and there are \\(5\\) empty boxes. Each of the people randomly and indepenedently of the other two people places one of their blocks into each box. The probability that at least one box 
@@ -6377,7 +8103,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'counting',
     },
     {
-        title: "AMC 10A 2021 Fall Problem 9 ⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `When a certain unfair die is rolled, an even number is \\(3\\) times as likely to appear as an odd number. The die is rolled twice. What is the probability that the sum of the numbers rolled is even?</p>`,
@@ -6390,7 +8120,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A 2021 Fall Problem 10 ⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A school has \\(100\\) students and \\(5\\) teachers. In the first period, each studentis taking one class and each teacher is teacing one class. The
@@ -6405,7 +8139,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'expected outcome'
     },
     {
-     title: "AMC 10A 2021 Fall Problem 13 ⭐⭐⭐",
+     title: `AMC 10A 2021 Fall Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
      used: false,
      difficulty: 3,
      text: `Each of \\(6\\) balls is randomly and independently painted either black or white with equal probability. What is the probability that every ball is different in color from more than half of the other \\(5\\) balls?`,
@@ -6419,7 +8159,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
      topic: 'combinations',  
     },
     {
-        title: "AMC 10A 2021 Fall Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A farmer's rectangular field is partitioned into a \\(2\\) by \\(2\\) grid of \\(4\\) rectangular sections as shown in the figure. In
@@ -6441,7 +8189,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10A 2021 Fall Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Each of the \\(20\\) balls is tossed independently and at random into one of the \\(5\\) bins. Let \\(p\\) be the probability that some bin ends up with \\(3\\) balls, another with \\(5\\) balls, and the other three with \\(4\\) balls each. Let
@@ -6454,7 +8212,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'combinations',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4\\)?`,
@@ -6469,7 +8233,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'complementary counting',
     },
     {
-        title: "AMC 10A 2022 Problem 9 ⭐⭐",
+        title: `AMC 10A 2022 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A rectangle is partitioned into \\(5\\) regions as shown.  
@@ -6486,7 +8254,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-       title: "AMC 10A 2022 Problem 14 ⭐⭐⭐",
+       title: `AMC 10A 2022 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 3,
         text: `How many ways are there to split the integers \\(1\\) through \\(14\\) into \\(7\\) pairs such that in each pair, the greater number is at least \\(2\\) times the lesser number?`,
@@ -6496,7 +8270,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic'
     },
     {
-        title: "AMC 10A 2022 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Suppose that \\(13\\) cards numbered \\(1,2,3,...,13\\) are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards \\(1,2,3\\) are picked up on the first pass, \\(4\\) and \\(5\\)
@@ -6507,7 +8291,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'patterns',
     },
     {
-        title: "AMC 10A 2022 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A pair of fair \\(6\\)-sided dice is rolled \\(n\\) times. What is the least value of \\(n\\) such that the probability that the sum of the numbers face up on a roll equals \\(7\\) at least once is greater than \\(\\frac{1}{2}\\)</p>`,
@@ -6519,7 +8309,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'complementary counting',
     },
     {
-        title: "AMC 10A 2023 Problem 7 ⭐⭐",
+        title: `AMC 10A 2023 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Janet rolls a standard \\(6\\)-sided die \\(4\\) times and keeps a running total of the numbers she rolls. What is the probability that at some point, her runing total will equal \\(3\\)?`,
@@ -6534,7 +8328,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10A 2023 Problem 13 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A number ic chosen at random from among the first \\(100\\) positive integers, and a positive integer divisor of that number is chosen at
@@ -6551,7 +8351,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'induction',
     },
     {
-       title: "AMC 10A 2023 Problem 20 ⭐⭐⭐⭐",
+       title: `AMC 10A 2023 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 4,
        text: `Each \\(3 \\times 3\\) grid of squares is colored red, white, blue, or green so that every \\(2 \\times 2\\) square contains one square of each color. One such coloring is shown on the right below.
@@ -6561,7 +8369,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
        topic: 'counting', 
     },
     {
-        title: "AMC 10B 2023 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Sonya the frog chooses a point uniformly at random lying within the square \\([0,6] \\times [0,6]\\) in the coordinate plane and hops to that point. She then randomly chooses a distance uniformly at random from \\([0,1]\\), and a direction
@@ -6575,7 +8391,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2023 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Each of \\(2023\\) balls is randomly placed into one of \\(3\\) bins. Which of the following is closets to the probability that each of the bings will contain an odd number of balls?`,
@@ -6587,7 +8413,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'combinations',
     }, 
     {
-        title: "AMC 10A 2024 Problem 6 ⭐⭐",
+        title: `AMC 10A 2024 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         title: `What is the minimum number of successive swaps of adjacent letters in the string \\(ABCDEF\\) that are needed to change the string to \\(FEDCBA\\)? (For example, \\(3\\) swapps are required to chance \\(ABC\\) to \\(CBA\\); one such sequence of swaps is \\(ABC --> BAC --> BCA --> CBA\\).)`,
@@ -6596,7 +8426,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-       title: "AMC 10A 2024 Problem 9 ⭐⭐",
+       title: `AMC 10A 2024 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 2,
        text: `In how many ways can \\(6\\) juniors and \\(6\\) seniors form \\(3\\) disjoint teams of \\(4\\) people so that each team has \\(2\\) juniors and \\(2\\) seniors?`,
@@ -6609,7 +8443,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
        answer: '\\(E) 1350\\)',
     },
     {
-        title: "AMC 10A 2024 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Two teams are in a best-two-out-of-three playoff: the teams will play at most \\(3\\) games, and the winner of the playoff is the first team to win \\(2\\) games. The 
@@ -6626,7 +8468,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2024 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `In a race among \\(5\\) snails, there is at most one tie, but that tie can involve any number of snails. For example,
@@ -6642,7 +8492,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: 'AMC 10B 2024 Problem 20 ⭐⭐⭐⭐',
+        title: `AMC 10B 2024 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Three different pairs of shoes are placed in a row so that no left shoe is next to a right shoe from a different pair. In how many ways can these six shoes be lined up?`,
@@ -6658,7 +8516,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'induction',
     },
     {
-        title: "AMC 10B 2024 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `A group of \\(16\\) people will be partitioned into \\(4\\) indistinguishable \\(4\\)-person committees. Each committee will have one chairperson and one secretary. 
@@ -6669,7 +8537,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'prime factorization'
     },
     {
-        title: "AMC 10A 2025 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Carlos uses a \\(4\\)-digit passcode to unlock his computer. In his pascode, exatly one digit is even, exactly one (possibly different) digit is prime, and
@@ -6681,7 +8555,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
     topic: 'casework',
     },
     {
-        title: "AMC 10A 2025 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `There are three jars. Each of three coins is placed in one of the three jars, chosen at random and independently of the placements of the other coins. What is the expected number of coins in a jar with the most coins?`,
@@ -6696,7 +8578,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'expected outcome',
     },
     {
-        title: "AMC 10A 2025 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `A point \\(P\\) is chosen at random inside square \\(ABCD\\). The probability that \\(\\overline{AP}\\) is neither the shortest nor the longest side of \\(\\triangle APB\\) can be written as 
@@ -6717,7 +8609,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'composite shapes',
     },
     {
-        title: "AMC 10A 2020 Problem 7 ⭐⭐",
+        title: `AMC 10A 2020 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The \\(25\\) integers from \\(-10\\) to \\(14\\), inclusive, can be arranged to form a \\(5\\)-by-\\(5\\) square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the
@@ -6743,7 +8639,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 4 ⭐⭐⭐⭐",
+        title: `AMC 10A 4 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `<p>Let \\(n\\) be the least positive integer greater than \\(1000\\) for which \\(\\textup{gcd}(63, n + 120)=21 \\textup {and gcd}(n+63, 120)=60\\)`,
         choices: ['\\(A) 12\\)', '\\(B) 15\\)', '\\(C) 18\\)', '\\(D) 21\\)', '\\(E) 24\\)'],
         answer: '\\(C) 18\\)',
@@ -6756,7 +8660,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         difficulty: 4,
     },
     {
-        title: "AMC 10B 2020 Problem 6 ⭐⭐",
+        title: `AMC 10B 2020 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Driving along a highway, Megan noticed that her odometer showed \\(1591\\) (miles). This number is a palindrome-it reads the same forward and backward. Then \\(2\\) hours later,
@@ -6767,7 +8675,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         type: 'fr',
     },
     {
-        title: "AMC 10B 2020 Problem 12 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `<p>The decimal representation of</p>
@@ -6784,7 +8698,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'exponents',
     },
     {
-        title: "AMC 10B 2020 Problem 15 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Steve wrote the digits \\(1, 2, 3, 4,\\) and \\(5\\) in order repeatedly from left to right, forming a list of \\(10,000\\) digits beginning \\(123451234512...\\) He then erased every third digit from his list (that is the \\(3\\)rd, \\(6\\)th, \\(9\\)th...digits from the left),
@@ -6809,7 +8729,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'modular arithmetic',
     },
     {
-        title: "AMC 10B Problem 2020 Problem 16 ⭐⭐⭐⭐", 
+        title: `AMC 10B Problem 2020 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         text: `Bela and Jenn play the following game on the closed interval \\([0,n]\\) of the real number line, where \\(n\\) is a fixed integer greater than \\(4\\). They take turns playing, with Bela going first. At his first turn,
@@ -6821,7 +8749,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B Problem 2020 Problem 22 ⭐⭐⭐⭐⭐", 
+        title: `AMC 10B Problem 2020 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 5,
         text: `What is the remainder when \\(2^202 + 202\\) is idivided by \\(2^101+2^51+1\\)?`,
@@ -6831,7 +8769,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
 
     }, 
     {
-        title: "AMC 10A 2021 Spring Problem 7 ⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `<p>Tom has a collection of \\(13\\) snakes, \\(4\\) of which are purple and \\(5\\) of which are happy. He observes that</p>
@@ -6846,7 +8788,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 8 ⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `<p>When a student multiplied the number \\(66\\) by the repeating decimal,</p>
@@ -6873,7 +8819,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 10 ⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `<p>Which of the following is equivalent to</p>
@@ -6888,7 +8838,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'factoring'
     },
     {
-        title: "AMC 10A 2021 Spring Problem 11 ⭐⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `For which of the following integers \\(b\\) is the base-\\(b\\) number \\(2021_{b}-221_{b}\\) not divisible by \\(3\\)?`,
@@ -6903,7 +8859,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
 
     }, 
     {
-        title: "AMC 10B 2021 Spring Problem 8 ⭐⭐", 
+        title: `AMC 10B 2021 Spring Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `Mr. Zhou places all the integers from \\(1\\) to \\(225\\) into a \\(15\\) by \\(15\\) grid. he places \\(1\\) in the middle square (eighth row and eighth column) and places other numbers one by one clockwise, as shown in part in the diagram below.
@@ -6915,7 +8875,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2021 Spring Problem 12 ⭐⭐⭐", 
+        title: `AMC 10B 2021 Spring Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 3,
         text: 'Let \\(N=34\\cdot 34 \\cdot 63 \\cdot 270\\). What is the ratio of the sum of the odd divisors of \\(N\\) to the sum of the even divisors of \\(N\\)',
@@ -6927,7 +8893,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: "prime factorization",    
     },
     {
-        title: "AMC 10B 2021 Spring Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2021 Spring Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Let \\(n\\) be a positive integer and \\(d\\) be a digit such that the value of the numeral \\(32d\\) in base \\(n\\) equals \\(263\\), and the value of the numeral \\(324\\) in base \\(n\\) equals the value of the numeral  \\(11d1\\) in base six. What is \\(n+d\\)",
         used: false,
         difficulty: 3,
@@ -6966,7 +8938,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'bases'
     },
     {
-        title: `AMC 10B 2021 Spring Problem 16 ⭐⭐⭐⭐`, 
+        title: `AMC 10B 2021 Spring Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         text: `Call a positive integer an uphill integer if every digit is strictly greater than the previous digit. For example, \\(1357\\), \\(89\\) and \\(5\\) are all uphill integers, but \\(32\\), \\(1240\\) and \\(466\\), are not. How many uphill integers are divisble by \\(15\\)`,
@@ -6980,7 +8960,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         answer: '6',
     },
     {
-        title: "AMC 10B 2021 Spring Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2021 Spring Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Ravon, Oscar, Aditi, Tyrone, and Kim play a card game. Each persion is given \\(2\\) cards out of a set of cards numbered \\(1, 2, 3, ..., 10\\). The score of a player is the sum of the numbers of their cards. The 
@@ -6994,7 +8982,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: "casework",
     },
     {
-        title: "AMC 10A 2021 Fall Problem 5 ⭐",
+        title: `AMC 10A 2021 Fall Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: "The six-digit number \\(20210A\\) is prime for only one digit \\(A\\). What is \\(A\\)?",
@@ -7008,7 +8998,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2021 Fall Problem 8 ⭐⭐",
+        title: `AMC 10A 2021 Fall Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A two-digit positive integer is said to be \\(cuddly\\) if it is equal to the sum of its nonzero tens digit and the square of its units digit. How many two-digit positive integers are cuddly?`,
@@ -7029,7 +9023,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
     {
-       title: "AMC 10A 2021 Fall Problem 12 ⭐⭐⭐",
+       title: `AMC 10A 2021 Fall Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 3,
        text: `The base-nine representaiton of the number \\(N\\) is  \\(27,006,000,052_{nine}\\). What is the remainder when \\(N\\) is divided by \\(5\\)?`,
@@ -7052,7 +9052,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
        topic: 'bases',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 23 ⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `For each positive integer \\(n\\), let \\(f_{1}(n)\\) be twice the number of positive integer divisors of \\(n\\), and for \\(j \\ge 2\\), let \\(f_{j}(n)=f_{1}(f_{j-1}(n))\\). For how many values of \\(n \\ge 50\\) is \\(f_{50}(n)=12\\)?`,
@@ -7078,7 +9086,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 3 ⭐",
+        title: `AMC 10A Fall 2021 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) in which \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
@@ -7088,7 +9098,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 5 ⭐",
+        title: `AMC 10A Fall 2021 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `Let \\(n=8^2022\\). Which of the following is equal to \\(\\frac{n}{4}\\)?`,
@@ -7100,7 +9112,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'exponents',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 6 ⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The least positive integer with exactly \\(2021\\) distinct positive divisors can be written in the form of \\(m \\cdot 6^k\\), where \\(m\\) and \\(k\\) are integers and \\(6\\) is not a divisor of \\(m\\). What is \\(m+k\\)?`,
@@ -7110,7 +9126,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 7 ⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Call a fraction \\(\\frac{a}{b}\\), not nescessarily in simpplest form, special if \\(a\\) and \\(b\\) are positive integers whose sum is \\(15\\). How many distinct integers can be written as the sum of two, not nescessarily different, special fractions?`,
@@ -7129,7 +9149,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10A 2022 Fall 2021 8 ⭐⭐",
+        title: `AMC 10A 2022 Fall 2021 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficutly: 2,
         text: `The greatest prime number that is a divisor of \\(16384\\) is \\(2\\) because \\(16384=2^14\\). What is the sum of the digits of the greatest prime number that is a divisor of \\(16.383\\)?`,
@@ -7140,7 +9164,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         answer: 10,
     },
     {
-        title: "AMC 10B 2021 Fall Problem 10 ⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Forty slips of paper numbered \\(1\\) to \\(40\\) are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other.
@@ -7154,7 +9182,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Which of the following conditions is sufficient to guarantee that integers \\(x, y,\\) and \\(z\\) satisfy the equation \\(x(x-y)+y(y-z)+z(z-x)=1\\)?`,
@@ -7173,7 +9207,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Let \\(N\\) be a positive integer \\(7777...777\\) a \\(313\\)-digit number where each digit is a \\(7\\). Let \\(f(r)\\) be the leading digit of the \\(r\\)th root of \\(N\\). What is \\(f(2)+f(3)+f(4)+f(5)+f(6)\\)?`,
@@ -7185,7 +9227,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2022 Problem 7 ⭐",
+        title: `AMC 10A 2022 Problem 7 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The least common multiple of a positive integer \\(n\\) and \\(18\\)  is \\(180\\) and te greatest common divisor of \\(n\\) and \\(45\\) is \\(15\\). What is the sum of digits of \\(n\\)?`,
@@ -7194,7 +9238,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2022 Problem 8 ⭐⭐",
+        title: `AMC 10A 2022 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A dataset consists of \\(6\\) (not distinct) positive integers \\(1,7,5,2,5\\) and \\(X\\). The average (arithmetic mean) of the \\(6\\) numbers equals a value in the data set. What is the sum of all possible values of \\(X\\)?`,
@@ -7203,7 +9251,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'averages',
     },
     {
-        title: "AMC 10A 2022 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `<p>On Halloween, \\(31\\) children walked into the principal's office asking for candy. They can be classified into three types: Some always lie; some always tell the truth; and some alternately lie and tell the truth. The alternaters arbitrarily choose their first response, either a lie or the truth, but each subsequent statement has the opposite truth value from its predecessor. The principal asked everyone the same three questions in this order.</p>
@@ -7219,7 +9273,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2022 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `How many three-digit positive integers \\(abc\\) are there whose nonzero digits \\(a, b,\\) and \\(c\\) satisfy \\(0.\\overline{abc}=\\frac{1}{3}(0.\\overline{a}+0.\\overline{b}+0.\\overline{c})\\)?`,
@@ -7230,7 +9292,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10A 2022 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<p>Define L_{n} as the least common multiple of all the integers from \\(1\\) to \\(n\\) inclusive. There is a unique integer \\(h\\) such that</p>
@@ -7252,7 +9322,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'prime factorization',
     },
     {
-        title: 'AMC 10A 2022 Problem 24 ⭐⭐⭐⭐⭐',
+        title: `AMC 10A 2022 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `How many strings of length \\(5\\) formed from the digits \\(0,1,2,3,4\\) are there such that for each \\(j \\in {1,2,3,4},\\) at least \\(j\\) of the digits are less than \\(j\\)?
@@ -7272,7 +9352,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2022 Problem 3 ⭐",
+        title: `AMC 10B 2022 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many three-digit positive integers have an odd number of even digits?`,
@@ -7285,7 +9367,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2022 Problem 6 ⭐⭐",
+        title: `AMC 10B 2022 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `How many of the first ten numbers of the sequence \\(121, 11211, 1112111,...\\) are prime numbers?`,
@@ -7296,7 +9382,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'factoring',
     },
     {
-        title: "AMC 10B 2022 Problem 8 ⭐⭐",
+        title: `AMC 10B 2022 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `<p>Consider the following \\(100\\) sets of \\(10\\) elements each:</p>
@@ -7323,7 +9413,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'patterns',
     },
     {
-        title: "AMC 10B 2022 Problem 10 ⭐⭐",
+        title: `AMC 10B 2022 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Camila writes down five positive integers. The unique mode of these integers is \\(2\\) greater than their median, and the median is \\(2\\) greater than their arithmetic mean. What is the least possible value for the mode?`,
@@ -7338,7 +9432,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'averages',
     },
     {
-        title: "AMC 10B 2022 Problem 11 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `All the high schools in a large school district are involved in a fundraiser selling T-shirts. Which of the choices below is logically equivalent to the statement "No school bigger than Euclid HS sold more T-shirts than Euclid HS"?`,
@@ -7351,7 +9451,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2022 Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `The positive difference between a pair of primes is equal to \\(2\\), and the positive difference between the cubes of the two primes is \\(31106\\). What is the sum of the digits of the least prime that is greater than those two primes?`,
@@ -7370,7 +9476,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10B 2022 Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Suppose that \\(S\\) is a subset of \\({1,2,3,...,25}\\) such that the sum of any two (not nescessarily distinct) elements of \\(S\\) is never an element of \\(S\\) What is the maximum number of elements \\(S\\) may contain?`,
@@ -7379,7 +9491,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2022 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `One of the following numbers is not divisible by any prime number less than \\(10\\). Which is it?`,
@@ -7391,7 +9511,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'modular arithmetic',
     },
     {
-        title: "AMC 10A 2023 Problem 3 ⭐",
+        title: `AMC 10A 2023 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: "How many positiveperfect squares less than \\(2023\\) are divisible by \\(5\\)?",
@@ -7401,7 +9523,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: "squares",
     },
     {
-        title: "AMC 10A 2023 Problem 5 ⭐",
+        title: `AMC 10A 2023 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many digits are in the base \\(10\\) representation of \\(8^5 \\cdot 5^1- \\cdot 15^5\\)?`,
@@ -7413,7 +9537,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10A 2023 Problem 9 ⭐⭐",
+        title: `AMC 10A 2023 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A digital display shows the current date as an \\(8\\)-digit integer consisting of a \\(4\\)-digit year, followed by a \\(2\\)idigit month, followed by a \\(2\\)-digit date within the month. For example, Arbor Day this year
@@ -7423,7 +9551,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: "casework",
     },
     {
-        title: "AMC 10A 2023 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `<p>How many three-digit positive integers \\(N\\) satisfy the following properties?</p>
@@ -7443,7 +9577,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2023 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `In a table tennis tournament every participant played every other participant exactly once. Although there were twice as many right-handed players as left-handed players, the number of games won by left-handed players was \\(40%\\) more than the number of games won by right-handed players. (There were no ties and no ambidextrous players.) What is the total number of games played?`,
@@ -7455,7 +9597,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2023 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `<b></b><p>If the positive integer \\(c\\) has positive integer divisors \\(a\\) and \\(b\\) with \\(c=ab\\), then \\(a\\) and \\(b\\) are said to be \\(complementary\\) divisors of \\(c\\). Suppose that \\(N\\) is a positive integer that has one complementary pair of divisors that differ by \\(20\\) and another pair of complementary divisors that differ by \\(23\\). What is the sum of the digits of \\(N\\)?`,
@@ -7478,7 +9630,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'algebraic manipulation',
     },
     {
-        title: "AMC 10B 2023 Problem 8 ⭐⭐",
+        title: `AMC 10B 2023 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `What is the units digit of \\(2022^2023 + 2023^2022\\)?`,
@@ -7487,7 +9643,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'powers'
     },
     {
-        title: "AMC 10B 2023 Problem 10 ⭐⭐",
+        title: `AMC 10B 2023 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text:`You are playing a game. A \\(2 \\times 1\\) rectangle covers two adjacent squares (oriented either horizontally or vertically) of a\\(3\\times 3\\) grid of squares, but you are
@@ -7499,7 +9659,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2023 Problem 11 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Suzzane went to the bank and withdrew \\($800\\). The teller gave her this amount of using \\($20\\) bills, \\($50\\) bills, and \\($100\\) bills, with at least one of each denominator. How many different collections of bills could Suzanne have recieved?`,
@@ -7514,7 +9680,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2023 Problem 15 ⭐⭐",
+        title: `AMC 10B 2023 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `What is the least positive integer \\(m\\) such that \\(m \\cdot 2! \\cdot 3! \\cdot 4! \\cdot 5! ... 16!\\) is a perfect square?`,
@@ -7524,7 +9694,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'prime factorization',
     },
     {
-        title: "AMC 10B 2023 Problem 16 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Define an \\(upno\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly increasing moving left to right. Similarly, define a \\(downo\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly decreasing moving eft to right. For instance, the number
@@ -7536,7 +9712,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'casework',
     },
     {
-        title: "AMC 10B 2023 Problem 18 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `<p>Suppose \\(a, b,\\) and \\(c\\) are positive integers such that</p>
@@ -7556,7 +9738,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2024 Problem 3 ⭐",
+        title: `AMC 10A 2024 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `What is the sum of the digits of the smallest prime that can be written as a sum of \\(5\\) distinct primes?`,
@@ -7565,7 +9749,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'primes',
     },
     {
-        title: "AMC 10A 2024 Problem 4 ⭐",
+        title: `AMC 10A 2024 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The number \\(2024\\) is written as the sum of not nescessarily distinct two-digit numbers. What is the least number of two-digit numbers need to write this sum?`,
@@ -7574,7 +9760,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'arithmetic',
     },
     {
-        title: "AMC 10A 2024 Problem 5 ⭐",
+        title: `AMC 10A 2024 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `What is the least value of \\(n\\) such that \\(n!\\) is a multiple of \\(2024\\)?`,
@@ -7583,7 +9771,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'prime factorization'
     },
     {
-        title: "AMC 10A 2024 Problem 7 ⭐⭐",
+        title: `AMC 10A 2024 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The product of three integers is \\(60\\). What is the least possible positive sum of the three integers?`,
@@ -7595,7 +9787,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: "optimization"
     },
     {
-        title: "AMC 10A 2024 Problem 10 ⭐⭐",
+        title: `AMC 10A 2024 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Consider the following operation. Given a positive integer \\(n\\), if \\(n\\) is a multiple of \\(3\\), then you replace \\(n\\) by \\(\\frac{n}{3}\\). If \\(n\\) is not a multiple of \\(3\\), then you replace \\(n\\) by \\(n+10\\).
@@ -7606,7 +9802,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'modular arithmetic',
     },
     {
-        title: "AMC 10A 2024 Problem 15 ⭐⭐",
+        title: `AMC 10A 2024 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Let \\(M\\) be the greatest integer such that both \\(M+1213\\) and \\(M+3773\\) are perfect squares. What is the units digit of \\(M\\)?`,
@@ -7638,7 +9838,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'powers',
     },
     {
-        title: "AMC 10A 2024 Problem 18 ⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `There are exactly \\(K\\) positive integers \\(5 \\le b \\le 2024\\) such that the base-\\(b\\) integer \\(2024_{b}\\) is divisible by \\(16\\)(where \\(16\\) is in base ten). What is the sum of the digits of \\(K\\)?`,
@@ -7662,7 +9868,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'bases',
     },
     {
-        title: "AMC 10A 2024 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<p>Let \\(S\\) be a subset of \\({1,2,3,...,2024}\\) such that the following two conditions hold:</p>
@@ -7681,7 +9895,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'optimization',
     },
     {
-        title: "AMC 10A 2024 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `The numbers, in order, of each row and the numbers, in order, of each column of a \\(5 \\times 5\\) array of integers form an arithmetic progression of length \\(5\\). The numbers in positions \\((5,5), (2,4), (4,3),\\) and \\((3,1)\\) are \\(0,47,16,\\) and \\(12\\) respectively. What number 
@@ -7709,7 +9933,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'series',
     },
     {
-        title: "AMC 10B 2024 Problem 1 ⭐",
+        title: `AMC 10B 2024 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `In a long line of people arranged left to right, the \\(1013\\)th person from the left is also the \\(1010\\)th person from the right. How many people are in the line?`,
@@ -7722,7 +9948,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         answer: '\\(D) 2024\\)',
     },
     {
-        title: "AMC 10B 2024 Problem 5 ⭐",
+        title: `AMC 10B 2024 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>In the following expression, Melanie changed some of the plus signs to minus signs:</p>
@@ -7747,7 +9975,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'inequalities',
     },
     {
-        title: "AMC 10B 2024 Problem 7 ⭐⭐",
+        title: `AMC 10B 2024 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `What is the remainder when \\(7^2024 + 7^2025 + 7^2026\\) is divided by \\(19\\)?`,
@@ -7756,7 +9988,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         answer: '0',
     },
     {
-       title: "AMC 10B 2024 Problem 8 ⭐⭐",
+       title: `AMC 10B 2024 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 2,
        text: `Let \\(N\\) be the product of all the positive integer divisors of \\(42\\). What is the units digit of \\(N\\)?`,
@@ -7767,7 +10003,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
        topic: 'prime factorization',
     },
     {
-        title: "AMC 10B 2024 Problem 12 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A group of \\(100\\) students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students \\(A\\) and \\(B\\), student \\(A\\)
@@ -7781,7 +10023,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'combinations',
     },
     {
-        title: "AMC 10B 2024 Problem 15 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A list of \\(9\\) real numbers consists of \\(1, 2.2, 3.2, 5.2, 6.2\\) and \\(7\\) as well as \\(x, y,\\) and \\(z\\) with \\(x \\le y \\le z\\). The range of the list is \\(7\\) and the mean and the median are both positive integers. how many ordered triples \\(x,y,z\\) are possible?`,
@@ -7794,7 +10042,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2024 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Jerry likes to play with numbers. One day, he wrote all the integers from \\(1\\) to \\(2024\\) on the whiteboard. Then he repeatedly chose four numbers on the whiteboard, erased them, and replaced them by either their sum or their product. (For example, Jerry's first step might have been to erase
@@ -7808,7 +10064,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2024 Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: "How many different remainders can result when the \\(100\\textup{th}\\) power of any integer is divided by \\(125\\)?",
@@ -7818,7 +10082,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         video_solution: `https://artofproblemsolving.com/wiki/index.php?title=2024_AMC_10B_Problems/Problem_18`,
     },
     {
-        title: "AMC 10B 2024 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `<p>The Fibonacci numbers are defined by \\(F_{1}=1, F_{2}=1,\\) and \\(F_{n}=F_{n-1}+F_{n-2}\\) for \\(n \\ge 3\\) What is</p>
@@ -7832,7 +10106,9 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'patterns',
     },
     {
-        title: "AMC 10A 2025 Problem 5 ⭐",
+        title: `AMC 10A 2025 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>Consider the sequence of positive integers</p>
@@ -7853,7 +10129,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'patterns',
     },
     {
-        title: "AMC 10A 2025 Problem 8 ⭐⭐",
+        title: `AMC 10A 2025 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `<p>Agnes writes the following four statements on a blank piece of paper</p>
@@ -7874,7 +10154,15 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'logic',
     },
     {
-        title: "AMC 10A 2025 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Let \\(N\\) be the unique positive integer such that dividng \\(273436\\) by \\(N\\) leaves a remainder of \\(16\\) and dividing \\(272760\\) by \\(N\\) leaves a remainder of \\(15\\). What is the tens digit of \\(N\\)?`,
@@ -7885,7 +10173,17 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: `prime factorization`,
     },
     {
-        title: "AMC 10A 2024 Problem 24 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Call a positive integer fair if no digit is used more than once, it has no \\(0\\)s and no digit is adjacent to two
@@ -7898,7 +10196,11 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: 'series',
     },
   {
-        title: "AMC 10A 2025 Problem 10 ⭐⭐",
+        title: `AMC 10A 2025 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 <p>A semicircle has diameter \\(\\overline{AB}\\) and chord \\(\\overline{CD}\\) of length \\(16\\) parallel to \\(\\overline{AB}\\). A smaller semicircle with diameter on \\(\\overline{AB}\\) and tangent to \\(\\overline{CD}\\) is cut from the larger semicircle, as shown below. What is the area of the shaded space (Answer in terms of \\(\\pi\\) (e.g. 12pi))?
         `,
@@ -7924,7 +10226,13 @@ title: "AMC 10A 2025 Problem 6 ⭐⭐", used: false, difficulty: 2, text: `In an
         topic: "estimation",
     },
     {
-        title: "AMC 10A 2025 Problem 13 ⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 In the figure below, the outside square contains infinitely many squares, each of them with the same center and sides parallel to the outside square. The ratio of the side length of a square to the side length of the next inner square is \\(k\\) where \\(0\\lt k\\lt1\\). The spaces between squares are alternately shaded, as shown in the figure (which is not necessarily drawn to scale). The amount shaded is \\(64\\%\\). What is \\(k\\)? Write your answer as a decimal.
         `,
@@ -7962,7 +10270,13 @@ topic: "series",
         video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
-        title: "AMC 10A 2025 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A 2025 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `In the figure below \\(ABEF\\) is a rectangle, \\(\\overline{AD}\\perp\\overline{DE}=7\\), \\(AB=1\\), and \\(AD=5\\). What is the area of \\(\\triangle ABC\\)? Answer as a decimal.
         `,
         image: "AMC10A202515.png",
@@ -8009,7 +10323,15 @@ topic: "series",
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10A 2024 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text:"The first three terms of a geometric sequence are the integers \\(a, 720\\) and \\(b\\) where \\(a<720<b\\). What is the sum of the digits of the least possible value of \\(b\\)?",
         used: false,
         difficulty: 4,
@@ -8023,7 +10345,11 @@ topic: "series",
         topic: "geometric sequences",
     },
     {
-        title: "AMC 10 2020 Problem 10 ⭐⭐",
+        title: `AMC 10 2020 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Seven cubes whose volumes are \\(1, 8, 27, 64, 216,\\) and \\(343\\) cubic units are stacked vertically to form a tower in which the volumes of the cubes decrease from bottom to top. Except for the bottom cube, the bottom face
@@ -8051,7 +10377,13 @@ topic: "series",
         topic: 'surface area',
     },
     {
-        title: "AMC 10A 2020 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2020 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: 'Triangle \\(AMC\\) is isoceles with \\(AM = CM\\). Medians \\(\\overline{MV}\\) and \\(\\overline{CU}\\) are perpendicular to each other, and \\(MV\=CU=12\\). What is the area of \\(\\triangle AMC\\)?',
@@ -8072,7 +10404,15 @@ topic: "series",
 
     },
     {
-     title: "AMC 10A 2020 Problem 19 ⭐⭐⭐⭐",
+     title: `AMC 10A 2020 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
      used: false,
      difficulty: 4,
      text: `As shown in the figure below, a rectangular dodecahedron (the polyhedron consisting of \\(12\\) congruent rectangular pentagonal faces) floats in space with two horizontal faces. Note
@@ -8091,7 +10431,15 @@ topic: "series",
      topic: 'counting',
     },
     {
-        title: 'AMC 10A 2020 Problem 20 ⭐⭐⭐⭐',
+        title: `AMC 10A 2020 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Quadrilateral \\(ABCD\\) satisfies \\(\\angle ABC = 90^\\circ\\), \\(AC = 20\\), and \\(CD = 30\\).
@@ -8110,7 +10458,17 @@ topic: "series",
         topic: 'area of composite shapes',
     },
     {
-        title: 'AMC 10A 2020 Problem 23 ⭐⭐⭐⭐⭐',
+        title: `AMC 10A 2020 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Let \\(T\\) be the triangle with verticies at \\((0,0), (4,0)\\) and \\((0,3)\\). Consider the following five isometries (rigid transformations) of the plane:
@@ -8133,7 +10491,9 @@ topic: "series",
         topic: 'transformations',
     },
     {
-        title: `AMC 10B 2020 Problem 2 ⭐`,
+        title: `AMC 10B 2020 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `Carl has \\(5\\) cubes of sidelenght \\(1\\), and Kate has \\(5\\) cubes of side length \\(2\\). What is the total volume of the \\(10\\) cubes?`,
@@ -8143,7 +10503,9 @@ topic: "series",
         topic: 'volume',
     },
     {
-        title: 'AMC 10B 2020 Problem 4 ⭐',
+        title: `AMC 10B 2020 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>The acute angles of a right triangle are \\(a^\\circ\\) and \\(b^\\circ\\), where \\(a > b\\) and both \\(a\\) and \\(b\\) are prime numbers. What is the least possible value of \\(b\\)?`,
@@ -8156,7 +10518,11 @@ topic: "series",
         topic: 'prime numbers',
     },
     {
-        title: `AMC 10B 2020 Problem 10 ⭐⭐`,
+        title: `AMC 10B 2020 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A three quarter section of a circle of radius \\(4\\) inches together with its interior can be rolled up to form the lateral surface area of a right circular cone by taping together along the two radii shown. 
@@ -8178,7 +10544,13 @@ topic: "series",
 
     },
     {
-        title: "AMC 10B 2020 Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Andy the Ant lives on a coordinate plane and is currently at \\(-20,20\\) facing east (that is, in the positive \\(x\\) - direction). Andy moves 
@@ -8197,7 +10569,13 @@ topic: "series",
         topic: 'coordinate grid',
     },
     {
-        title: "AMC 10B 2020 Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `As shown in the figure below, six semicircles lie in the interior of a rectangular hexagon with side length \\(2\\) so that the diameters of the semicircles coincide with the sides of the hexagon.
@@ -8219,7 +10597,15 @@ topic: "series",
         topic: `hexagons`,
     },
     {
-        title: "AMC 10B 2020 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 4,
         used: false,
         text: `Let \\(B\\) be a right rectangular prism (box) with edges lengths \\(1, 3\\) and \\(4,\\) together with its interior. For
@@ -8245,7 +10631,17 @@ topic: "series",
         topic: 'rounded rectangles',
     },
     {
-        title: "AMC 10B 2020 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2020 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         used: false,
         text: `In square \\(ABCD\\), points \\(E\\) and \\(H\\) lie on \\(\\overline{AB}\\) and \\(\\overline{DA}\\), respectively, so that \\(AE=AH\\). Points
@@ -8264,7 +10660,13 @@ topic: "series",
         topic: 'geometric manipulation',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Two right circular cones with verticies facing down as shown in the figure below contain the same amount of liquid. The radii of the tops of the liquid surfaces are \\(3\\) cm and \\(6\\) cm. Into
@@ -8279,7 +10681,13 @@ topic: "series",
         topic: 'volume relationships',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 13 ⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: 'What is the volume of a tetrahedron \\(ABCD\\) with edge lengths \\(AB=2, AC=3, AD=4, BC=\\sqrt{13}, BD=2\\sqrt{5}\\), and \\(CD=5\\)?',
@@ -8291,7 +10699,15 @@ topic: "series",
         topic: 'pyramids',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Trapezoid \\(ABCD\\) has \\(\\overline{AB} || \\overline{CD}, BC = CD = 43\\), and \\(\\overline{AD} \\perp \\overline{BD}\\). Let
@@ -8304,7 +10720,17 @@ topic: "series",
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10A 2021 Spring Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Let \\(ABCDEF\\) be an equiangular hexagon. The lines \\(AB\\), \\(CD\\), and \\(EF\\) determine a triangle with area \\(192\\sqrt{3}\\), and the lines \\(BC\\), \\(DE\\), and \\(FA\\) determine a triangle with area 
@@ -8317,7 +10743,11 @@ topic: "series",
         topic: `hexagons`,
     },
     {
-        title: "AMC 10B 2021 Spring Problem 7 ⭐⭐",
+        title: `AMC 10B 2021 Spring Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `In a plane, four circles with radii \\(1, 3, 5,\\) and \\(7\\) are tangent at line \\(l\\) at the same point \\(A\\) but they may be on either side of \\(l\\). Region \\(S\\) consists of all the 
@@ -8345,7 +10775,11 @@ topic: "series",
         topic: 'optimization',
     },
     {
-        title: "AMC 10B 2021 Spring Problem 9 ⭐⭐",
+        title: `AMC 10B 2021 Spring Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The point \\(P(a,b)\\) in the \\(xy\\) plane is first rotated counterclockwise by \\(90^\\circ\\) around the point \\((1,5)\\) and then reflected about the line \\(y=-x\\). The image of 
@@ -8360,7 +10794,11 @@ topic: "series",
         answer: '7',
     },
     {
-        title: 'AMC 10B 2021 Spring Problem 10 ⭐⭐',
+        title: `AMC 10B 2021 Spring Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `An inverted cone with base radius \\(12\\)cm and height \\(18\\)cm is full of water. The water is poured into a tall cylinder whose horizontal base has a radius of \\(24\\) cm. What is the height in centimeters of the water in the cylinder?`,
@@ -8370,7 +10808,13 @@ topic: "series",
         topic: 'volume',
     },
     {
-        title: 'AMC 10B 2021 Spring Problem 11 ⭐⭐⭐',
+        title: `AMC 10B 2021 Spring Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Grandma has just finished baking a large rectangular pan of brownies. She is planning to make rectangular pieces of equal size and shape, with straight cuts parallel to the sidesof the pan. 
@@ -8408,7 +10852,13 @@ topic: "series",
    topic: 'optimization',
     },
     {
-        title: 'AMC 10B Spring 2021 Problem 14 ⭐⭐⭐',
+        title: `AMC 10B Spring 2021 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Three equally spaced parallel llines intersect a circle, creating three chords of lengths \\(38\\), \\(38\\), and \\(34\\). What is the distance between two adjacnet parallel lines?`,
@@ -8434,7 +10884,15 @@ topic: "series",
         topic: 'chords',
     },
     {
-        title: "AMC 10B 2021 Spring 2021 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10B 2021 Spring 2021 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 4,
         used: false,
         text: 'The figure is constructed from 11 line segments, each of which has length \\(2\\). The area of pentagon \\(ABCDE\\) can be written as \\(\\sqrt{m}+\\sqrt{n}\\) where \\(m\\) and \\(n\\) are positive integers. What is \\(m+n\\)?',
@@ -8458,7 +10916,9 @@ topic: "series",
         topic: 'trigonometry',
     },
     {
-        title: 'AMC 10A Fall 2021 Problem 2 ⭐',
+        title: `AMC 10A Fall 2021 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `Menakara has a \\(4 \\times 6\\) index card. If she shortens the length of one side of this card by \\(1\\) inch, the 
@@ -8468,7 +10928,11 @@ topic: "series",
         topic: 'area',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 7 ⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `As shown in the figure below, point \\(E\\) lies on the opposite half plane determined by line \\(CD\\) from point \\(A\\) so that \\(\\angle CDE = 110^\\circ\\). Point
@@ -8479,7 +10943,13 @@ topic: "series",
         topic: 'angle relationships',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         used: false,
         text: `Isoceles triangle \\(ABC\\) has \\(AB = AC = 3\\sqrt{6}\\), and a circle with radius \\(5\\sqrt{2}\\) is tangent to line \\(AB\\) at \\(B\\) and to line \\(AC\\) at \\(C\\). What is the
@@ -8494,7 +10964,15 @@ topic: "series",
         topic: 'circumcircles',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `An architect is building a structure that will place vertical pillars at the verticies of regular hexagon \\(ABCDEF\\), which is lying horizontally on the ground. The six pillars will hold up a flat solar panel that
@@ -8507,7 +10985,15 @@ topic: "series",
         topic: "slope",
     },
     {
-        title: "AMC 10A Fall 2021 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A disk of radius \\(1\\) rolls all the way around the inside of a square of side length \\(s > 4\\) and sweeps out a region of area \\(A\\). A second 
@@ -8541,7 +11027,17 @@ topic: "series",
         topic: 'rounded rectangles',
     },
     {
-        title: "AMC 10A Fall 2021 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Inside a right circular cone with bae radius \\(5\\) and height \\(12\\) are three congruent spheres with radius \\(r\\). Each sphere is tangent to the other two spheres and also tangent to the
@@ -8585,7 +11081,9 @@ topic: "series",
         answer: "\\(B)\\frac{90=40\\sqrt{3}}{11}\\)"
     },
     {
-        title: "AMC 10B 2021 Fall Problem 1 ⭐",
+        title: `AMC 10B 2021 Fall Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         text: `What is the area of the shaded figure shown below?`,
@@ -8598,7 +11096,13 @@ topic: "series",
         topic: 'area',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 11 ⭐⭐⭐", 
+        title: `AMC 10B 2021 Fall Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         difficulty: 3,
         used: false,
         text: `A regular hexagon of side length \\(1\\) is inscribed in a circle. Each minor arc of the circle determined by a side of the heexagon is reflected over that side. What is the area of the region bounded by these \\(6\\) reflected arcs?`,
@@ -8619,7 +11123,13 @@ topic: "series",
         choices: ["\\(A) \\frac{5\\sqrt{3}}{2}-\\pi\\)", "\\(B) 3\\sqrt{3}-\\pi\\)", "\\(C) 4\\sqrt{3}-\\frac{3\\pi}{2}\\)", "\\(D) \\pi-\\sqrt{3}{2}\\)", "\\(E) \\frac{\\pi+\\sqrt{3}}{2}\\)"],
     },
     {
-        title: "AMC 10B 2021 Fall Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         used: false,
         text: `A square with side length \\(3\\) is inscribed in an isoceles triangle with one side of the square along the bae ofthe triangle. A square with side length \\(2\\) has two vertices on the other square and the other two sides of the triangle, as shown. What is the area of the triangle?`,
@@ -8633,7 +11143,13 @@ topic: "series",
         topic: 'area',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 15 ⭐⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `In square \\(ABCD\\), points \\(P\\) and \\(Q\\) lie on \\(\\overline{AD}\\) and \\(\\overline{BC}\\), respectively.
@@ -8676,7 +11192,15 @@ topic: "series",
     topic: 'similar triangles',
     },
     {
-     title: 'AMC 10B Fall 2021 Problem 18 ⭐⭐⭐⭐',
+     title: `AMC 10B Fall 2021 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
      used: false, 
      difficulty: 4,
      text: `Three identical square sheets of paper each with side length \\(6\\) are stacked on top of each other. The middle sheet is rotated clockwise \\(30^\\circ\\) about its center and the top sheet is rotated clockwise \\(60^\\circ\\) about its center, resulting in the $24$-sided polygon shown in the figure below. 
@@ -8692,7 +11216,17 @@ topic: "series",
     topic: 'trigonometry',
     },
     {
-       title: "AMC 10B Fall 2021 Problem 21 ⭐⭐⭐⭐⭐",
+       title: `AMC 10B Fall 2021 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
        used: false,
        difficulty: 5,
        text: `Regular polygons with \\(5, 6, 7\\) and \\(8\\) sides are inscribed in the same circle. No two of the regular polygons share a vertex, and no three of their
@@ -8711,7 +11245,17 @@ topic: "series",
        topic: 'inscribed shapes', 
     },
     {
-        title: "AMC 10B Fall 2021 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B Fall 2021 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `A rectangle with side lengths \\(1\\) and \\(3\\), a square with side length \\(1\\), and a rectangle \\(R\\) are inscribed inside a 
@@ -8735,7 +11279,9 @@ topic: "series",
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10A 2022 Problem 5 ⭐", 
+        title: `AMC 10A 2022 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 1,
         text: `Square \\(ABCD\\) has side length \\(1\\). Points \\(P, Q, R, S\\) each lie on a side of \\(ABCD\\) such that \\(APQCRS\\) is an equilateral convex
@@ -8772,7 +11318,11 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10A 2022 Problem 10 ⭐⭐",
+        title: `AMC 10A 2022 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `DDR Daniel finds a rectangular index card and measures its diagonal to be \\(8\\) centimeters. DDR Daniel then cuts out equal squares of
@@ -8815,7 +11365,13 @@ topic: "series",
         image: 'amc10202210.png',
     },
     {
-        title: 'AMC 10A 2022 Problem 13 ⭐⭐⭐',
+        title: `AMC 10A 2022 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         used: false,
         text: `Let \\(\\triangle ABC\\) be a scalene triangle. Point \\(P\\) lies on \\(\\overline{BC}\\) so that \\(\\overline{AP}\\) bisects \\(\\angle BAC).
@@ -8830,7 +11386,13 @@ topic: "series",
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10A 2022 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Quadrilateral \\(ABCD\\) with side lengths \\(AB=7, BC=24, CD=20, DA=15\\) is inscribed in a circle. The area interior to the circle but exterior to the quadrilateral can be
@@ -8852,7 +11414,15 @@ topic: "series",
         answer:'\\(D) 1565\\)',
     },
     {
-        title: "AMC 10A 2022 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 4,
         used: false,
         text: `A bowl is formed by attatching four rectangular hexagons of side \\(1\\) to aquire a square of side \\(1\\). The edges of the adjacent hexagons coincide, as shown in the figure. 
@@ -8867,7 +11437,17 @@ topic: "series",
         answer: '\\(B) 7\\)',
     },
     {
-        title: "AMC 10A 2022 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Isoceles trapezoid \\(ABCD\\) has parallel sides \\(\\overline{AD}\\) and \\(\\overline{BC}\\), with \\(BC<AD\\) and 
@@ -8883,7 +11463,17 @@ topic: "series",
         topic: 'forced simplification',
     },
     {
-        title: "AMC 10A 2022 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2022 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `<p>Let \\(R, S\\) and \\(T\\) be squares that have vertices at lattice points (i.e., points whose coordinates are both integers) in the coordinate plane, together with their interiors. The
@@ -8904,7 +11494,9 @@ topic: "series",
         topic: 'squares',
     },
     {
-        title: "AMC 10B 2022 Problem 2 ⭐", 
+        title: `AMC 10B 2022 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 1,
         text: `In rhombus \\(ABCD\\), point \\(P\\) lies on segment \\(\\overline{AD}\\) so that \\(\\overline{BP} \\perp \\overline{AD}, AP=3\\), and
@@ -8918,7 +11510,15 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10B 2022 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `The diagram below shows a rectangle with side lengths \\(4\\) and \\(8\\) and a square with side length \\(5\\). Three vertices of the square lie on three different sides of the
@@ -8936,7 +11536,15 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10B 2022 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<b>113</b><p>We can extend lines \\(\\overline{AD}\\) and \\(\\overline{BE}\\) until they intersect at a point we call point \\(G\\).
@@ -8947,7 +11555,13 @@ topic: "series",
         type: 'fr',
     },
     {
-        title: "AMC 10A 2023 Problem 11 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `A square of area \\(2\\) is inscribed in a circle of area \\(3\\), creating four congruent triangles, as shown below. What
@@ -8964,7 +11578,13 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10A 2023 Problem 13 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `Abdul and Chiang are standing \\(48\\) feet apart in a field. Bharat is standing in the same field as far from Abdul as possible so that the angle formed
@@ -8975,7 +11595,13 @@ topic: "series",
         topic: 'trigonometry',
     },
     {
-        title: "AMC 10A 2023 Problem 15 ⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `An even number of circles are nested, starting with a radius of \\(1\\) and increasing by \\(1\\) each time, all sharing a common point. The region between every other circle is shaded, starting with the 
@@ -9007,7 +11633,15 @@ topic: "series",
         topic: 'arithmetic series',
     },
     {
-        title: "AMC 10A 2023 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Let \\(ABCD\\) be a rectangle with \\(AB=30\\) and \\(BC=28\\). Point \\(P\\) and \\(Q\\) lie on \\(\\overline{BC}\\) and \\(\\overline{CD}\\) respectively so that all sides of \\(\\triangle ABP, \\triangle PCQ,\\) and \\(\\triangle QDA\\) have integer lengths.
@@ -9028,7 +11662,15 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10A 2023 Problem 18 ⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A rhombic dodecahedron is a solid with \\(12\\) congruent rhombus faces. At every vertex, \\(3\\) or \\(4\\) edges meet, depending on the vertex. How many vertices have exactly \\(3\\) edges meet?`,
@@ -9056,7 +11698,17 @@ topic: "series",
         topic: "Euler's formula",
     },
     {
-        title: "AMC 10A 2023 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Circle \\(C_{1}\\) and \\(C_{2}\\) each have radius \\(1\\), and the distance betwen their centers is \\(\\frac{1}{2}\\). Circle \\(C_{3}\\) is the largest circle internally tangent to both \\(C_{1}\\) and \\(C_{2}\\).
@@ -9084,7 +11736,17 @@ topic: "series",
         topic: 'pythagorean theorem',
     },
     {
-        title: "AMC 10A 2023 Problem 24 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2023 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Six regular hexagonal blocks of side length \\(1\\) unit are arranged inside a regular hexagonal frame. Each block lies along an inside edge of the frame and is aligned with two other blocks, as shown in the figure below. The distance from any corner of the frame to the nearest vertex of a block is \\(\\frac{3}{7} unit). What is 
@@ -9099,7 +11761,9 @@ topic: "series",
         answer: '\\(C) \\frac{9\\sqrt{3}}{2}\\)',
     },
     {
-        title: "AMC 10B 2023 Problem 3 ⭐",
+        title: `AMC 10B 2023 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `A \\(3-4-5\\) right triangle is inscribed in circle \\(A\\), and a \\(5-12-13\\) right triangle is inscribed in circle \\(B\\). What is the ratio of the area of circle 
@@ -9125,7 +11789,11 @@ topic: "series",
         topic: 'circumcircles',
     },
     {
-        title: "AMC 10B 2023 Problem 7 ⭐⭐", 
+        title: `AMC 10B 2023 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 1,
         text: `Square \\(ABCD\\) is rotated \\(20^\\circ\\) clockwise about its center to obtain square \\(EFGH\\), as shown below. What is the degree measure of \\(\\angle EAB\\)?`,
@@ -9140,7 +11808,15 @@ topic: "series",
         topic: 'power of a point',
     },
     {
-        title: "AMC 10B 2023 Problem 17 ⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 17 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `A rectangular box \\(P\\) has distinct edge lengths \\(a, b,\\) and \\(c\\). The sum of the lengths of all \\(12\\) edges of 
@@ -9167,7 +11843,15 @@ topic: "series",
          answer: '\\(D) \\frac{9}{4}\\)',
     },
     {
-        title: "AMC 10B 2023 Problem 20 ⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Four coungruent semicircles are drawn on the surface of a sphere with radius \\(2\\), as shown, creating a close curve that divides the surface into two congruent regions. The
@@ -9183,7 +11867,17 @@ topic: "series",
         topic: 'arc length',
     },
     {
-     title: "AMC 10B 2023 Problem 25 ⭐⭐⭐⭐⭐",
+     title: `AMC 10B 2023 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
      used: false,
      difficulty: 5,
      text: 'A regular pentagon with area \\(1+\\sqrt{5}\\) is printed on paper and cut out. All five vertices are folded to the center of the pentagon, creating a smaller pentagon. What is the area of the new pentagon?',
@@ -9201,7 +11895,13 @@ topic: "series",
       topic: 'trigonometry',
     },
     {
-        title: "AMC 10A 2024 Problem 14 ⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `One side of an equilateral triangle of height \\(24\\) lies on line \\(l\\). A circle of radius \\(12\\) is tangent to line \\(l\\) and is externally tangent to the triangle. The area of the region exterior to the trinagle and the circle and bounded by the triangle, the circle, and line \\(l\\) can be
@@ -9216,7 +11916,15 @@ topic: "series",
         topic: 'area'
     },
     {
-        title: "AMC 10A 2024 Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: 'All of the rectangles in the figure below, which is drawn to scale, are similar to the enclosing rectangle. Each number represents the area of the rectangle. What is length \\(AB\\)?',
@@ -9241,7 +11949,11 @@ choices: ['\\(A) 4+4\\sqrt{5}\\)', '\\(B) 10\\sqrt{2}\\)', '\\(C) 5+5\\sqrt{5}\\
 topic: 'similarity',
     },
     {
-        title: "AMC 10B 2024 Problem 6 ⭐⭐",
+        title: `AMC 10B 2024 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `A rectangle has integer length sides and an area of 2024. What is the least possible perimeter of the rectangle?`,
@@ -9252,7 +11964,11 @@ topic: 'similarity',
         answer: '180',
     },
     {
-        title: "AMC 10B 2024 Problem 10 ⭐⭐", 
+        title: `AMC 10B 2024 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 2,
         text: `Quadrilateral \\(ABCD\\) is a parallelogram, and \\(E\\) is the midpoint of the side \\(\\overline{AD}\\). Let \\(F\\) be the intersection of lines \\(EB\\) and \\(AC\\). What
@@ -9268,7 +11984,13 @@ topic: 'similarity',
 
     },
     {
-        title: "AMC 10B 2024 Problem 11 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         text: `In the figure below \\(WXYZ\\) is a rectangle with \\(WX=4\\) and \\(WZ=8\\). Point \\(M\\) lies \\(\\overline{XY}\\),
@@ -9296,7 +12018,17 @@ topic: 'similarity',
         topic: 'similar triangles',
     },
     {
-        title: "AMC 10B 2024 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `Two straight pipes (circular cylinders) with radii \\(1\\) and \\(\\frac{1}{4}\\), lie parallel in contact on a flat floor. The 
@@ -9324,7 +12056,17 @@ topic: 'similarity',
         topic: 'tangent circles',
     },
     {
-        title: "AMC 10B 2024 Problem 25 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 25 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         text: `Each of \\(27\\) bricks (right rectangular prisms) has dimensions \\(a\\times b \\times c\\), where \\(a, b,\\) and \\(c\\) are pairwise relatively prime positive integers. These bricks are arragned to form a 
         \\(3 \\times 3 \\times 3\\) block, as shown on the left below. A \\(28\\)th brick with the same dimensions is introduced, and these bricks are reconfigured into a \\(2 \\times 2 \\times 7) block, shown on the right. The new 
@@ -9375,7 +12117,9 @@ topic: 'similarity',
         topic: 'systems of equations',
     },
     {
-        title: "AMC 10A 2025 Problem 3 ⭐",
+        title: `AMC 10A 2025 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many isosceles triangles are there with positive area whose side lengths are all positive integers and whose longest side has length \\(2025\\)?`,
@@ -9388,7 +12132,9 @@ topic: 'similarity',
        {
         used: false,
         difficulty: 1,
-        title: `AMC 10B 2022 Problem 4 ⭐`,
+        title: `AMC 10B 2022 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 <p>A donkey suffers an attack of hiccups and the first hiccup happens at 4:00 one afternoon.</p>
 <p>Suppose that the donkey hiccups regularly every 5 seconds.</p>
@@ -9410,7 +12156,9 @@ topic: 'similarity',
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2021 Problem 3 ⭐",
+        title: `AMC 10A 2021 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 <p>The sum of two natural numbers is 17402.</p>
 <p>One of the two numbers is divisible by 10.</p>
@@ -9433,7 +12181,9 @@ topic: 'similarity',
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2021 Spring Problem 1 ⭐",
+        title: `AMC 10A 2021 Spring Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 <p>Compute the value of:</p>
 $$
@@ -9464,7 +12214,9 @@ $$
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2025 Problem 1 ⭐",
+        title: `AMC 10A 2025 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `
 Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \\(1:30\\) traveling due north at a steady \\(8\\) miles per hour. Betsy leaves on her bicycle from the same point at \\(2:30\\), traveling due east at a steady \\(12\\) miles per hour. At what time will they be exactly the same distance from their common starting point?
         `,
@@ -9502,7 +12254,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 2,
-        title: "AMC 10A 2025 Problem 9 ⭐⭐",
+        title: `AMC 10A 2025 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `Let \\(f(x)=100x^3-300x^2+200x\\). For how many real numbers \\(a\\) does the graph of \\(y=f(x-a)\\) pass through the point \\((1,25)\\)`,
         answer: "3",
         type: "fr",
@@ -9534,7 +12290,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 1,
-        title:"AMC 10B 2024 Problem 2 ⭐",
+        title:`AMC 10B 2024 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         text: "What is \\(10! - 7! \\cdot 6!\\)",
         type: "mc",
         choices: ["\\(A) -120\\)", "\\(B) 0\\)", "\\(C) 120\\)", "\\(D) 600\\)", "\\(E) 720\\)"],
@@ -9562,7 +12320,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 1,
-        title: "AMC 10B 2024 Problem 3 ⭐",
+        title: `AMC 10B 2024 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         text: "For how many integer values \\(x\\) is \\(|2x| \\le 7\\pi \\)",
         type: "fr",
         answer: "19",
@@ -9589,7 +12349,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 3,
-        title: "AMC 10B 2024 Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Positive integers \\(x\\) and \\(y\\) satisfy the equation \\(\\sqrt{x} + \\sqrt{y} = \\sqrt{1183}\\). What is the minimum possible value of \\(x + y\\)?",
         type: "mc",
         choices: ["\\(A) 585\\)", "\\(B) 595\\)", "\\(C) 623\\)", "\\(D) 700\\)", "\\(E) 791\\)"],
@@ -9637,7 +12403,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 3,
-        title: "AMC 10B 2024 Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2024 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `A dartboard is the region \\(B\\) in the coordinate plane consisting of points \\((x,y)\\) such that \\(|x|+|y| \\le 8 \\). A target \\(T\\) is the region where \\((x^2+y^2-25)^2 \\le 49\\). A dart is thrown and lands at a random point in \\(B\\). The probability that the dart lands in \\(T\\) can be expressed as \\(frac{m}{n} \\cdot \\pi \\) where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n\\)?
         `,
         type: "mc",
@@ -9684,7 +12456,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 5,
-        title: "AMC 10B Problem 24 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `<p>Let </p>
         $$
         P(m) = \\frac{m}{2}+\\frac{m^2}{4}+\\frac{m^4}{8}+\\frac{m^8}{8}
@@ -9707,7 +12489,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {   
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2024 Problem 1 ⭐",
+        title: `AMC 10A 2024 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         text: "What is the value of \\(9901 \\cdot 101 - 99 \\cdot 10101 \\)?",
         answer: "2",
         solution: `<b>2</b>
@@ -9719,7 +12503,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {   
         used: false,
         difficulty: 1,
-        title: "AMC 10A 2024 Problem 2 ⭐",
+        title: `AMC 10A 2024 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `A model used to estimate the time it will take to hike to the top of a mountain on a trail is
         of the form \\(T = aL + bG\\), where \\(a\\) and \\(b\\) are constants, \\(T\\) is the time in minutes, \\(L\\) is the length of the trail in miles, and \\(G\\) is the altitude gain in feet. The model estimates that it will take \\(69\\) minutes to hike to the top if a trail is 
         \\(1.5\\) miles long and ascends \\(800\\) feet, as well as if a trail is \\(1.2\\) miles long and ascends \\(1100\\) feet. how many minutes does the model estimate it will take to hike
@@ -9779,7 +12565,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations",
     },
     {
-        title: "AMC 10A 2024 Problem 7 ⭐⭐",
+        title: `AMC 10A 2024 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "The product of \\(3\\) integers is \\(60\\). What is the least posible positive sum of the 3 integers.",
         type: "mc",
         used: false,
@@ -9803,7 +12593,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "prime factorization",
     },
     {
-        title: "AMC 10A 2024 Problem 8 ⭐⭐",
+        title: `AMC 10A 2024 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Amy, Bomani, Charlie, and Daria work in a chocolate factory. On Monday, Amy, Bombani, and Charlie started working at \\(1:00 PM\\) and were able to pack \\(4, 3\\) and \\(3\\) packages, respectively, every \\(3\\) minutes. At some later time Daria joined the group and was able to pack \\(5\\) packages every \\(4\\) minutes. Together they finished packing \\(450\\) packages at exactly \\(2:45 PM\\). At what time did Daria join the group?",
         type: "mc",
         used: false,
@@ -9816,7 +12610,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations",
     },
     {
-        title: "AMC 10A 2024 Problem 11 ⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "How many ordered pairs of integers \\((m,n)\\) satisfy \\(\\sqrt{n^2-49}=m\\)",
         type: "mc",
         used: false,
@@ -9846,7 +12646,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10A 2024 Problem 12 ⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Zelda played the <i>Adventures of Math</i> game on August 1 and scored \\(1,700\\) points. She continued to play daily over the next \\(5\\) days. The bar chart below shows the daily change in her score compared to the day before. (For example, Zelda's score on August 2 was \\(1,700+80=1,780\\) points.) What was Zelda's average score in points over the \\(6\\) days? <b>Do not put a comma in your answer</b> ",
         type: "fr",
         used: false,
@@ -9861,7 +12667,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-        title: "AMC 10A 2024 Problem 23 ⭐⭐⭐⭐⭐",
+        title: `AMC 10A 2024 Problem 23 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: "Integers \\(a, b,\\) and \\(c\\) satisfy \\(ab+c=100\\), \\(bc+a=87\\), and \\(ca+b=60\\). What is \\(ab+bc+ca\\)?",
         type: "mc",
         choices: ["\\(A) 212\\)", "\\(B) 247\\)", "\\(C) 258\\)", "\\(D) 276\\)", "\\(E) 284\\)"],
@@ -9930,7 +12746,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10B 2023 Problem 1 ⭐",
+        title: `AMC 10B 2023 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `Mrs. Jones is pouring orange juice into four identical glasses for her four sons. She fills the first three glasses completely but runs out of juice when the fourth glass is only \\(\\frac{1}{3}\\) full. What fraction of a glass must Mrs. Jones pour from each of the first three glasses into the fourth glass so that all four glasses will have the same amount of juice?`,
         type: "mc",
         used: false,
@@ -9950,7 +12768,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations",
     },
     {
-        title: "AMC 10B 2023 Problem 2 ⭐",
+        title: `AMC 10B 2023 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `Carlos went to a sports store to buy running shoes. Running shoes were on sale with prices reduced by \\(20%\\) on every pair of shoes. Carlos also knew that he had to pay a 
         \\(7.5%\\) sales tax on the discounted price. He had \\(43\\) dollars. What is the origina (before discount) price of the most expensive shoes he could afford to buy?`,
         used: false,
@@ -9970,7 +12790,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "percents"
     },
     {
-        title: "AMC 10B 2023 Problem 5 ⭐",
+        title: `AMC 10B 2023 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         text: `Maddy and Lara see a list of numbers written on a blackboard. Maddy adds \\(3\\) to each number in the list and finds that the sum of her new numbers is \\(45\\). Lara multiplies each number in the list by \\(3\\) and finds that the sum of her new numbers is also \\(45\\). How many numbers are written on the blcakboard?`,
         used: false,
         difficulty: 1,
@@ -9998,7 +12820,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic:"systems of equations",
     },
     {
-        title:"AMC 10B 2023 Problem 12 ⭐⭐⭐",
+        title:`AMC 10B 2023 Problem 12 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `<p>When the roots of the polynomial</p>
         $$
         P(x)=(x-1)^1(x-2)^2(x-3)^3...(x-10)^10
@@ -10018,7 +12846,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "inequalities",
     },
     {
-        title: "AMC 10B 2023 Problem 13 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         text: `What is the area of the region on the coordinate plane defined by
         $$
@@ -10032,7 +12866,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "graphing",
     },
     {
-        title: "AMC 10B 2023 Problem 14 ⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         text: "How many ordered pairs of integers \\((m,n)\\) satisfy the equation \\(m^2+mn+n^2=m^2n^2\\)",
         used: false,
@@ -10050,7 +12890,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10B 2023 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2023 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         text: "How many distinct values \\(x\\) satisfy \\(\\lfloor{x}^2\\rfloor-3x+2=0\\) where \\(\\lfloor{x}\\rfloor\\) denotes the largest integer less than or equal to \\(x\\)",
         used: false,
@@ -10064,7 +12914,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "floor functions",
     },
     {
-        title: "AMC 10A 2023 Problem 1 ⭐",
+        title: `AMC 10A 2023 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         text: "Cities \\(A\\) and \\(B\\) are \\(45\\) miles apart. Alicia lives in \\(A\\) and Beth lives in \\(B\\). Alicia bikes towards \\(B\\) at \\(18\\) miles per hour. Leaving at the same time, Beth bikes toward \\(A\\) at \\(12\\) miles per hour. How many miles from City \\(A\\) will they be when they meet?",
@@ -10098,7 +12950,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "speed-distance-time"
     },
     {
-        title: "AMC 10A 2023 Problem 2 ⭐",
+        title: `AMC 10A 2023 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         dificulty: 1,
         used: false,
         text: "The weight of \\(\\frac{1}{3}\\) of a large pizza together with \\(3 \\frac{1}{2}\\) of orange slices is the same weight of \\(\\frac{3}{4}\\) of a large pizza together with \\(\\frac{1}{2}\\) cups of orange slices. A cup of orange slies weigh \\(\\frac{1}{4}\\) of a pound. What is the weight, in pounds, of a large pizza?",
@@ -10127,7 +12981,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations"
     },
     {
-        title: "AMC 10A 2023 Problem 8 ⭐⭐",
+        title: `AMC 10A 2023 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `Barb the baker has developed a new temperature scale for her bakery called the Breadus scale, which is a linear function of the Fahrenheit scale. Bread rises at \\(110\\) degrees Fahrenheit which is \\(0\\) degrees on the Breadus scale. Bread is baked at \\(350\\) degrees Fahrenheit, which is \\(100\\) degrees on the Breadus scale. Breada is done when its internal temperature is \\(200\\) degrees Farenheit. What is this, in degrees, on the Breadus scale? Answer as a decimal.`,
         used: false,
         difficulty: 2,
@@ -10153,7 +13011,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
 
     },
     {
-        title: "AMC 10A 2023 Problem 10 ⭐⭐",
+        title: `AMC 10A 2023 Problem 10 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         text: `Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an \\(11\\) on the next quiz, her mean will increase by \\(1\\). If she scores an \\(11\\) on each of the next three quizzes, her mean will increase by \\(2\\). What is the mean of her scores currently?`,
         used: false,
         difficulty: 2,
@@ -10204,7 +13066,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "averages"
     },
     {
-        title: "AMC 10B 2022 Problem 2 ⭐",
+        title: `AMC 10B 2022 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         text: `Define \\(x \\diamond y\\) to be \\(|x-y|\\) for all real numbers \\(x\\) and \\(y\\). What is the value of
@@ -10227,7 +13091,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         type: "fr",
     },
     {
-        title: "AMC 10B 2022 Problem 5 ⭐",
+        title: `AMC 10B 2022 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         text: `What is the value of 
@@ -10268,7 +13134,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation"
     },
     {
-        title: "AMC 10B 2022 Problem 7 ⭐⭐",
+        title: `AMC 10B 2022 Problem 7 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 2,
         used: false,
         text: `For how many values of the constant \\(k\\) will the polynomial \\(x^2+kx+36\\) have two distinct integer roots?`,
@@ -10280,7 +13150,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         
     },
     {
-        title: `AMC 10B 2022 Problem 9 ⭐⭐`, 
+        title: `AMC 10B 2022 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         difficulty: 2,
         used: false,
         type: `mc`,
@@ -10297,7 +13171,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "induction",
     }, 
     {
-        title: "AMC 10B 2022 Problem 15 ⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 3,
         used: false,
         type: "fr",
@@ -10336,7 +13216,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "series",
     },
     {
-        title: "AMC 10B 2022 Problem 21 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         used: false,
         type: "fr",
@@ -10400,7 +13290,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10B 2022 Problem 24 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B 2022 Problem 24 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         used: false,
         text: `<p>Consider functions \\(f\\) that satisfy</p>
@@ -10440,7 +13340,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "functions", 
     }, 
     {
-        title: "AMC 10A 2022 Problem 1 ⭐",
+        title: `AMC 10A 2022 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1, 
         used: false,
         text: `<p>What is the value of</p>
@@ -10474,7 +13376,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-    title: "AMC 10A 2022 Problem 2 ⭐",
+    title: `AMC 10A 2022 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
     difficulty: 1,
     used: false,
     text: `Mike cycled \\(15\\) laps in \\(57\\) minutes. Assume he cycled at a constant speed throughout. Approximately how many laps did he complete in the first \\(27\\) minutes?`,
@@ -10495,7 +13399,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     topic: "speed-distance-time"
     }, 
     {
-        title: "AMC 10A 2022 Problem 3 ⭐", 
+        title: `AMC 10A 2022 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`, 
         difficulty: 3,
         used: false,
         text: `The sum of three numbers is \\(96\\). The first number is \\(6\\) times the third number,
@@ -10537,7 +13443,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     
     },
     {
-        title: "AMC 10A 2022 Problem 4 ⭐",
+        title: `AMC 10A 2022 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `In some countries, automobile fuel efficiency is measured in liters per \\(100\\) kilometers while other countries use miles per gallon.
@@ -10552,7 +13460,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
 
     },
     {
-        title: "AMC 10A 2022 Problem 6 ⭐⭐",
+        title: `AMC 10A 2022 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,     
         text: `<p>Which expression is equal to</p>
@@ -10568,7 +13480,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
 
     },
     {
-        title: "AMC 10A 2022 Problem 11 ⭐⭐⭐", 
+        title: `AMC 10A 2022 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 3,
         text: "Ted mistakenly wrote \\(2^m \\cdot \\sqrt{\\frac{1}{4096}}\\) as \\(2 \\cdot \\sqrt[m]{\\frac{1}{4096}}\\). What is the sum of all real numbers \\(m\\) for which these two expressions have the same value?",
@@ -10601,7 +13519,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "exponents"
     },
     {
-        title: "AMC 10A 2022 Problem 20 ⭐⭐⭐⭐", 
+        title: `AMC 10A 2022 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         text: `A four term sequence is formed by adding each term of a four-term arithmetic sequence of positive integers to the corresponding term of a four-term geometric sequence
@@ -10675,7 +13601,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "series",
     },
     {
-        title: "AMC 10B Fall 2021 Problem 1 ⭐",
+        title: `AMC 10B Fall 2021 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
@@ -10687,7 +13615,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-        title: "AMC 10B Fall 2021 Problem 3 ⭐",
+        title: `AMC 10B Fall 2021 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) where \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
@@ -10702,7 +13632,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-        title: "AMC 10B Fall 2021 Problem 4 ⭐",
+        title: `AMC 10B Fall 2021 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text:`At noon on a certain day, Minneapolis is \\(N\\) degrees warmer than St. Louis. At \\(4:00\\) the temperature in Minneapolis has fallen by 
@@ -10717,7 +13649,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'logic',
     },
     {
-        title: "AMC 10B 2021 Fall Problem 9 ⭐⭐",
+        title: `AMC 10B 2021 Fall Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The knights in a certain kingdom come in two colors. \\(\\frac{2}{7}\\) of them are red, and the rest are blue. Furthermore, \\(\\frac{1}{6}\\) of the knights are magical, 
@@ -10751,7 +13687,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "word problems",
     },
     {
-        title: "AMC 10B Fall 2021 Problem 22 ⭐⭐⭐⭐⭐",
+        title: `AMC 10B Fall 2021 Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5,
         used: false,   
         text: `For each integer \\(n \\ge 2\\), let \\(S_{n}\\) be the sum of all products \\(jk\\), where \\(j\\) and \\(k\\) are integers and
@@ -10771,7 +13717,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "modular arithmetic"
     },
     {
-        title: "AMC 10A Fall 2021 Problem 1 ⭐",
+        title: `AMC 10A Fall 2021 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `What is the value of \\(\\frac{(2112-2021)^2}{69}\\)?`,
@@ -10792,7 +13740,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "arithmetic",
     },
     {
-        title: "AMC 10A Fall 2024 Problem 4 ⭐",
+        title: `AMC 10A Fall 2024 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `Mr. Lopez has a choice of two routes to get to work. Route A is \\(6\\) miles long, and his average speed along this route is \\(30\\) miles per hour. Route
@@ -10848,7 +13798,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "speed-distance-time"
     },
     {
-        title: "AMC 10A Fall 2021 Problem 6 ⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Elmer the emu takes\\(44\\) equal strides to walk between consecutive telephone poles on a rural road. Oscar the ostritch can cover the same distance in \\(12\\) equal leaps.
@@ -10878,7 +13832,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "word problems",
     },
     {
-        title: "AMC 10A 2021 Fall Problem 11  ⭐⭐⭐", 
+        title: `AMC 10A 2021 Fall Problem 11  <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 3,
         text: `Emily sees a ship traveling at a constant speed along a straight section of a river. She walks parallel to the riverbank at a uniform rate faster than 
@@ -10906,7 +13866,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "word problems",
     },
     {
-        title: "AMC 10A Fall 2021 Problem 14 ⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3, 
         answer: "5",
@@ -10944,7 +13910,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "graphing",
     },
     {
-        title: "AMC 10A Fall 2021 Problem 16⭐⭐⭐⭐",
+        title: `AMC 10A Fall 2021 Problem 16<span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<p>The graph of</p>
@@ -10963,7 +13937,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "floor function",
     },
     {
-        title: "AMC 10A Fall 2021 Problem 20 ⭐⭐⭐⭐", 
+        title: `AMC 10A Fall 2021 Problem 20 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         text: `For how many ordered pairs \\((b,c)\\) of positive integers does neither \\(x^2+bx+c=0\\) nor \\(x^2+cx+b=0\\) have two distinct real solutions?`,
@@ -10984,7 +13966,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "discriminant",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 1 ⭐",
+        title: `AMC 10B Spring 2021 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `How many integer values of \\(x\\) satisfy \\(|x| < 3\\pi\\)?`,
@@ -10994,7 +13978,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         type: "fr",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 2 ⭐",
+        title: `AMC 10B Spring 2021 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         type: "mc",
@@ -11010,7 +13996,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "squares",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 3 ⭐",
+        title: `AMC 10B Spring 2021 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `In an after-school program for juniors and seniors, there is a debate team with equal numbers of students from each class on team. Among \\(28\\) students in the program,
@@ -11034,7 +14022,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 4 ⭐",
+        title: `AMC 10B Spring 2021 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `At a math contest, 57 students are wearing blue shirts, and another 75 students are wearing yellow shirts. The 132 students are assigned into 66 pairs. 
@@ -11046,7 +14036,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "word problems",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 6 ⭐⭐",
+        title: `AMC 10B Spring 2021 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Mr. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is \\(84\\), and the afternoon class's mean score is \\(70\\). The ratio of the number of students in the 
@@ -11061,7 +14055,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "averages",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 15 ⭐⭐",
+        title: `AMC 10B Spring 2021 Problem 15 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `The real number \\(x\\) satisfies the equation \\(x+ \\frac{1}{x} = \\sqrt{5}\\). What is the value of \\(x^11-7x^7+x^3)?`,
@@ -11111,7 +14109,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10B Spring 2021 Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10B Spring 2021 Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `Suppose that \\(S\\) is a fininte set of positive integers. If the greatest integer in \\(S\\) is removed from \\(S\\), then the average value (arithmetic mean) of the integers
@@ -11180,7 +14186,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         answer:"36.8",
     },
     {
-        title: "AMC 10A 2021 Spring Problem 2 ⭐",
+        title: `AMC 10A 2021 Spring Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 2,
         used: false,
         text: `Portia's high school has \\(3\\) times as many students as Lara's high school. The two high schools have a total of 
@@ -11206,7 +14214,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "systems of equations"
     },
     {
-        title: "AMC 10A 2021 Spring Problem 4 ⭐",
+        title: `AMC 10A 2021 Spring Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `A cart rolls down a hill, traveling \\(5\\) inches the first second and accelerating so that during each successive \\(1\\) second time interval, it travels \\(7\\) inches more than during the previous \\(1\\) second interval.
@@ -11228,7 +14238,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `series`,
     },
     {
-        title: "AMC 10A 2021 Spring Problem 5 ⭐",
+        title: `AMC 10A 2021 Spring Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `The quiz scores of a class with \\(k>12\\) students have  a mean of \\(8\\). The mean of a collection of \\(12\\) of these quiz scores is \\(14\\). What is the mean of the reamining 
@@ -11244,7 +14256,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `algebraic manipulation`,
     },
     {
-        title: "AMC 10A Spring 2021 Problem 6 ⭐⭐",
+        title: `AMC 10A Spring 2021 Problem 6 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `Chantal and Jean start hiking from a trailhead toward a fire tower. Jean is wearing a heavy backpack and walks slower. Chantal starts walking at \\(4\\) miles per hour. Halfway to the tower, the trail
@@ -11261,7 +14277,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `speed-distance-time`,
     },
     {
-        title: "AMC 10A Spring 2021 Problem 9 ⭐⭐",
+        title: `AMC 10A Spring 2021 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `What is the least possible value of \\((xy-1)^2+(x+y)^2\\) for real numbers \\(x\\) and \\(y\\)?`,
@@ -11287,7 +14307,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "algebraic manipulation",
     },
     {
-        title: "AMC 10A Spring 2021 Problem 13 ⭐⭐⭐", 
+        title: `AMC 10A Spring 2021 Problem 13 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 3,
         text: `All the roots of the polynomial \\(z^6-10z^5+Az^4+Bz^3+Cz^2+Dz+16\\) are positive integers, possibly repeated. What is the value of \\(B\\)?`,
@@ -11310,7 +14336,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: "factoring",
     },
     {
-        title: "AMC 10A 2021 Spring Problem 16 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 16 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 4,
         text: `<p>In the following list of numbers, the integer \\(n\\) appears \\(n\\) times in the list for \\(1 \\le n \\le 200\\).</p>
@@ -11341,7 +14375,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `series`,
     },
     {
-        title: "AMC 10A 2021 Spring Problem 18 ⭐⭐⭐⭐", 
+        title: `AMC 10A 2021 Spring Problem 18 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`, 
         used: false,
         difficulty: 4,
         type: 'mc',
@@ -11386,7 +14428,15 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: `composite functions`,
     },
     {
-        title: "AMC 10A 2021 Spring Problem 19 ⭐⭐⭐⭐",
+        title: `AMC 10A 2021 Spring Problem 19 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 4,
         used: false,
         type: 'mc',
@@ -11463,7 +14513,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
 
     },
     {
-        title: `AMC 10A 2021 Spring Problem 22 ⭐⭐⭐⭐⭐`,
+        title: `AMC 10A 2021 Spring Problem 22 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 5, 
         used: false,
         type: `mc`,
@@ -11480,7 +14540,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'word problems',
     },
     {
-        title: `AMC 10B 2020 Problem 1 ⭐`,
+        title: `AMC 10B 2020 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         difficulty: 1,
         used: false,
         type: 'fr',
@@ -11499,7 +14561,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'arithmetic',
     },
     {
-        title: 'AMC 10B 2020 Problem 3 ⭐',
+        title: `AMC 10B 2020 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         text: 'The ratio of \\(w\\) to \\(x\\) is \\(4:3\\), the ratio of \\(y\\) to \\(z\\) is \\(3:2\\) and the ratio of \\(z\\) to \\(x\\) is \\(1:6\\). What is the ratio of \\(w:y\\)?',
         type: 'mc',
         choices: ['\\(A) 4:3\\)', '\\(B) 3:2\\)', '\\(C) 8:3\\)', '\\(D) 4:1\\)', '\\(E) 16:3\\)'],
@@ -11510,7 +14574,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         difficulty: 1,
     },
     {
-        title: `AMC 10B 2020 Problem 9 ⭐⭐`,
+        title: `AMC 10B 2020 Problem 9 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         text: `How many ordered pairs of integers \\((x,y)\\) satisfy the equation \\(x^2020 + y^2 =2y\\)?`,
@@ -11533,7 +14601,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'squares',
     },
     {
-        title: `AMC 10A 2020 Problem 1 ⭐`,
+        title: `AMC 10A 2020 Problem 1 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>What is the value of</p>
@@ -11559,7 +14629,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'arithmetic',
     },
     {
-        title: `AMC 10A 2020 Problem 2 ⭐`,
+        title: `AMC 10A 2020 Problem 2 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1, 
         text: `The numbers \\(3, 5, 7, a\\) and \\(b\\) have an average (arithmetic mean) of \\(15\\). What is the average of \\(a\\) and \\(b\\)?`,
@@ -11569,7 +14641,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'averages',
     },
     {
-        title: 'AMC 10A 2020 Problem 3 ⭐',
+        title: `AMC 10A 2020 Problem 3 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1, 
         text: `<p>Assuming \\(a \\neq 3, b \\neq 4, c \\neq 5\\), what is the value in simplest form of the following expression?</p>
@@ -11584,7 +14658,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'algebraic manipulation',
     },
     {
-        title: 'AMC 10A 2020 Problem 4 ⭐',
+        title: `AMC 10A 2020 Problem 4 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `A driver travels for \\(2\\) hours at \\(60\\) miles per hour, during which her car gets \\(30\\) miles per gallon of 
@@ -11596,7 +14672,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     topic: 'speed-distance-time',
     },
     {
-        title: 'AMC 10A 2020 Problem 5 ⭐',
+        title: `AMC 10A 2020 Problem 5 <span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 1,
         text: `<p>What is the sum of all real numbers \\(x\\) for which</p>
@@ -11630,7 +14708,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'casework',
     },
     {
-        title: 'AMC 10A 2020 Problem 8 ⭐⭐',
+        title: `AMC 10A 2020 Problem 8 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 2,
         type: 'fr',
@@ -11663,7 +14745,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'series',
     },
     {
-        title: `AMC 10A 2020 Problem 11 ⭐⭐⭐`,
+        title: `AMC 10A 2020 Problem 11 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         type: 'mc',
@@ -11681,7 +14769,13 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'medians',
     },
     {
-        title: `AMC 10A 2020 Problem 14 ⭐⭐⭐`,
+        title: `AMC 10A 2020 Problem 14 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 3,
         type: 'mc',
@@ -11733,7 +14827,17 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         topic: 'algebraic manipulation',
     },
     {
-        title: 'AMC 10A 2020 Problem 21 ⭐⭐⭐⭐⭐',
+        title: `AMC 10A 2020 Problem 21 <span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span><span class="material-symbols-outlined">
+star
+</span>`,
         used: false,
         difficulty: 5,
         text: `<p>There exists a unique strictly increasing sequence of nonnegative integers \\(a_{1} < a_{2}} < ... < a_{k}}\\) such that 
@@ -11813,7 +14917,7 @@ let scoreCount = document.getElementById("score-count");
 const TOPIC_GLOSSARY = [
     {
         id: "word problems",
-        title: "Word Problems",
+        title: `Word Problems`,
         description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
         workOn: [
             "Identifying keywords",
@@ -11824,7 +14928,7 @@ const TOPIC_GLOSSARY = [
     },
     {
         id: "algebraic manipulation",
-        title: "Algebraic Manipulation",
+        title: `Algebraic Manipulation`,
         description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
         workOn: [
             "Factoring",
@@ -11835,7 +14939,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: "arithmetic"  ,  
-    title: "Arithmetic",
+    title: `Arithmetic`,
         description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
         workOn: [
             "Mental/Quick Math",
@@ -11846,7 +14950,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: "systems of equations",    
-    title: "Systems of Equations",
+    title: `Systems of Equations`,
         description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
         workOn: [
             "Logic",
@@ -11857,7 +14961,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'functions',   
-    title: "Functions",
+    title: `Functions`,
         description: "Recognizing and manipulating popular parent functions and being able to identify them",
         workOn: [
             "Parent Functions",
@@ -11868,7 +14972,7 @@ const TOPIC_GLOSSARY = [
     },
      {
         id: 'logic',
-        title: "Logic",
+        title: `Logic`,
         description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
         workOn: [
             "Recognizing Patterns", 
@@ -11878,7 +14982,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'inequalities',    
-    title: "Inequalities",
+    title: `Inequalities`,
         description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
         workOn: [
             "Graphing Inequalities",
@@ -11889,7 +14993,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'modular arithmetic',
-    title: "Modular Arithmetic",
+    title: `Modular Arithmetic`,
         description: "These problems pertain to the remainders (mods) of operations (typically division)",
         workOn: [
             "Modular Arithmetic Rules",
@@ -11898,7 +15002,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'factoring' , 
-    title: "Factoring",
+    title: `Factoring`,
         description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
         workOn: [
             "Sum/difference of squares",
@@ -11908,7 +15012,7 @@ const TOPIC_GLOSSARY = [
     },
     {
         id: 'prime factorization',
-        title: "Prime Factorization",
+        title: `Prime Factorization`,
         description: "Reducing a number to its prime factors and using it to solve problems",
         workOn: [
             "Factor Trees (or whatever method you like to use)",
@@ -11918,7 +15022,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'percents',    
-    title: "Percents",
+    title: `Percents`,
         description: "A different representation of fractions and ratios, make sure you understand what percents are",
         workOn: [
             "Decimal Multiplication",
@@ -11928,7 +15032,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'graphing'  ,  
-    title: "Graphing",
+    title: `Graphing`,
         description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
         workOn: [
             "Parent Functions",
@@ -11938,7 +15042,7 @@ const TOPIC_GLOSSARY = [
     },
     {
        id: 'floor functions',
-        title: "Floor Functions",
+        title: `Floor Functions`,
         description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
         workOn:[
             'Graphing',
@@ -11948,7 +15052,7 @@ const TOPIC_GLOSSARY = [
     },
      {
        id: 'speed-distance-time',
-        title: "Speed Distance Time",
+        title: `Speed Distance Time`,
         description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
         workOn: [
             "Memorizing the speed, distance, time equation",
@@ -11958,7 +15062,7 @@ const TOPIC_GLOSSARY = [
         errors: 0,
     },{
         id: 'averages',
-        title: "Averages",
+        title: `Averages`,
         description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
         workOn: [
             'Deriving equations',
@@ -11969,7 +15073,7 @@ const TOPIC_GLOSSARY = [
     },
  {
         id: 'induction',
-        title: "Induction",
+        title: `Induction`,
         description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
         workOn: [
             "Making educated guesses",
@@ -11980,7 +15084,7 @@ const TOPIC_GLOSSARY = [
     }, 
  {
         id: 'series',
-        title: "Series",
+        title: `Series`,
         description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
         workOn: [
             "Memorizing equations for series",
@@ -11991,7 +15095,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'absolute value',    
-    title: "Absolute Value",
+    title: `Absolute Value`,
         description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
         workOn:
         [ 
@@ -12002,7 +15106,7 @@ const TOPIC_GLOSSARY = [
     },
  {
         id: 'exponents',
-        title: "Exponents",
+        title: `Exponents`,
         description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
         workOn: 
         [
@@ -12015,7 +15119,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'discriminant' ,   
-    title: "Discriminant",
+    title: `Discriminant`,
         description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
         workOn:[
             "Quadratic Formula"
@@ -12024,7 +15128,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'casework',    
-    title: "Casework",
+    title: `Casework`,
         description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
         workOn: [
             'Absolute Value Questions',
@@ -12034,7 +15138,7 @@ const TOPIC_GLOSSARY = [
     },
  {
   id: 'medians',
-    title: "Medians",
+    title: `Medians`,
         description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
         workOn: [
             'Statistics',
@@ -12044,7 +15148,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'similar triangles'  , 
-    title: "Similar Triangles",
+    title: `Similar Triangles`,
         description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
         workOn: [
             "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
@@ -12054,7 +15158,7 @@ const TOPIC_GLOSSARY = [
     },
 {
         id: 'surface area',
-        title: "Surface Area",
+        title: `Surface Area`,
         description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
         workOn: [
             "Surface Area equations (for spheres and cones in addition to typical polygons)",
@@ -12064,7 +15168,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'triangle lines'  , 
-    title: "Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors",
+    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors`,
         description: `<p>Remember the following lines that you can add to a triangle</p>
         <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
         <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
@@ -12079,7 +15183,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'counting',
-        title: "Counting",
+        title: `Counting`,
         description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
         workOn: [
             "Optimization",
@@ -12090,7 +15194,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'composite shapes',
-        title: "Composite Shapes",
+        title: `Composite Shapes`,
         description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
         workOn: [
             "Area",
@@ -12099,7 +15203,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'transformations',
-        title: "Transformations",
+        title: `Transformations`,
         description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
         workOn: [
             "Translations",
@@ -12110,7 +15214,7 @@ const TOPIC_GLOSSARY = [
     },
     {
         id: 'volume',
-        title: "Volume",
+        title: `Volume`,
         description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
         workOn: [
             "Volume Formulas",
@@ -12119,7 +15223,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'prime numbers',
-        title: "Prime Numbers",
+        title: `Prime Numbers`,
         description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
         workOn: [
             "Factoring"
@@ -12128,7 +15232,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'hexagons',
-        title: "Hexagons",
+        title: `Hexagons`,
         description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
         workOn: [
             "Area of a hexagon",
@@ -12138,7 +15242,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'optimization',
-        title: "Optimization",
+        title: `Optimization`,
         description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
         workOn: [
             "Casework",
@@ -12148,7 +15252,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'volume relationships',
-        title: "Volume Relationships",
+        title: `Volume Relationships`,
         description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
         workOn: [
             "ratios"
@@ -12157,7 +15261,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'pyramids',
-        title: "Pyramids",
+        title: `Pyramids`,
         description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
         workOn: [
             "Pythagorean theorem",
@@ -12167,7 +15271,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'trigonometry',
-        title: "Trigonometry",
+        title: `Trigonometry`,
         description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
         workOn: [
             "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
@@ -12178,7 +15282,7 @@ const TOPIC_GLOSSARY = [
     },
 {
     id: 'coordinate plane',
-        title: "Coordinate Plane",
+        title: `Coordinate Plane`,
         description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
         workOn: [
             "Slope",
@@ -12188,8 +15292,8 @@ const TOPIC_GLOSSARY = [
         errors: 0,
     },
 {
+    title: "Pythagorean Theorem",
     id: 'pythagorean theorem',
-        title: "Pythagorean Theorem",
         description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
         workOn: [
             "Pythagorean Triples",
@@ -12199,7 +15303,7 @@ const TOPIC_GLOSSARY = [
     },
     {
         id: 'forced simplification',
-        title: "Forced Simplification",
+        title: `Forced Simplification`,
         description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
         workOn: [
             "Logic",
@@ -12209,7 +15313,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'power of a point',
-        title: "Power of A Point",
+        title: `Power of A Point`,
         description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
         workOn: [
             "Chords",
@@ -12220,7 +15324,7 @@ const TOPIC_GLOSSARY = [
  },
  {
     id: 'bases',
-        title: "Bases",
+        title: `Bases`,
         description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
         <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
         workOn: [
@@ -12232,7 +15336,7 @@ const TOPIC_GLOSSARY = [
     },
  {
     id: 'combinations',
-        title: "Combinations",
+        title: `Combinations`,
         description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
         workOn:
             [
@@ -12243,7 +15347,7 @@ const TOPIC_GLOSSARY = [
     },
     {
         id: 'counting',
-        title: "Counting",
+        title: `Counting`,
         description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
         workOn:
         [
@@ -12255,7 +15359,7 @@ const TOPIC_GLOSSARY = [
     },
     {
         id: 'expected outcome',
-        title: "Expected Outcome",
+        title: `Expected Outcome`,
         description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
         workOn:
         [
@@ -12265,7 +15369,7 @@ const TOPIC_GLOSSARY = [
     },
     {
         id: 'complementary counting',
-        title: "Complementary Counting",
+        title: `Complementary Counting`,
         description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
         workOn: [
             "Saving time"
@@ -13090,21 +16194,22 @@ const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
         wrapper.className = "topic-item";
     let show = info.errors;
 wrapper.innerHTML = `
-    <button class="topic-button">
-        ${info.title}
-        <svg class="dropdown-icon" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M7 10l5 5 5-5z"/>
-        </svg>
-    </button>
-    <div class="topic-content">
-        <p>${info.description}</p>
-        <h4>Errors:</h4>
-        <p>${show}</p>
-        <h4>How to Improve:</h4>
-        <ul>
-            ${info.workOn.map(skill => `<li>${skill}</li>`).join("")}
-        </ul>
+  <button class="topic-button">
+    ${info.title}
+    <svg class="dropdown-icon" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+    </svg>
+  </button>
+  <div class="topic-content">
+    <p>${info.description}</p>
+    <h4>Errors: ${show}</h4>
+    <h4>How to Improve:</h4>
+    <ul>${info.workOn.map(skill => `<li>${skill}</li>`).join("")}</ul>
+    <h4>Practice a question from this topic:</h4>
+    <div id="mini-practice-${info.id.replace(/\s+/g, '-')}" class='problem problem-wrapper deactivated'>
+      <button class="problemBtn" onclick="loadTopicQuestion('${info.id}')">Practice This Topic</button>
     </div>
+  </div>
 `;
 
 
@@ -13245,7 +16350,132 @@ overlay.addEventListener("click", function(){
     
 });
 shuffleArray(probabilityQ)
+function loadTopicQuestion(topic) {
+    // 1. Combine all arrays and filter by topic
+    const topicQuestions = allQ.filter(q => q.topic === topic)
+    // 2. Select a random question
+    const q = topicQuestions[Math.floor(Math.random() * topicQuestions.length)];
 
+    // 3. Find the container
+    const containerId = `mini-practice-${topic.replace(/\s+/g, '-')}`;
+    const checkBtnId = `mini-check-${topic.replace(/\s+/g, '-')}`;
+    const container = document.getElementById(containerId);
+    container.classList.remove('deactivated')
+    if (!container) return;
+
+    // 4. Build answer UI
+    let answerHTML = '';
+    if (q.type === 'mc' && q.choices) {
+        answerHTML = `
+            <div class="mini-mc">
+                ${q.choices.map(choice => `
+                    <button class="mc-choice problemBtn mini-mc-btn" id="${choice}">
+                        ${choice}
+                    </button>
+                `).join('')}
+                            </div>`;
+    } else {
+        answerHTML = `
+            <div class="mini-fr">
+                <input type="text" class="mini-answer" placeholder="Your answer">
+                <button class="problemBtn checkBtnMini" id="mini-check-${topic.replace(/\s+/g, '-')}">
+                    Check
+                </button>
+            </div>`;
+}
+
+    container.innerHTML = `
+<div class="miniTitleContainer">
+        <p class="amc10title mini">${q.title}</p>
+                <div class="miniTag">${topic}</div>
+                </div>
+        <p class="mini-question-text par">${q.text}</p>
+        ${answerHTML}
+        <div class="mini-solution solution" style="display:none; margin-top:10px;"></div>
+        <button class="problemBtn next-topic-btn" style="display:none; margin-top:10px;" 
+            onclick="loadTopicQuestion('${topic}')">
+            Next Question
+        </button>
+    `;
+    if (window.MathJax) MathJax.typesetPromise([container]).catch(()=>{});
+    if (q.type != 'mc'){
+    const checkBtnMini = document.getElementById(checkBtnId)
+    checkBtnMini.addEventListener("click", function () {
+        console.log('clicked')
+        checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
+    })
+}
+if (q.type === 'mc'){
+    const option1 = document.getElementById(q.choices[0])
+    const option2 = document.getElementById(q.choices[1])
+    const option3 = document.getElementById(q.choices[2])
+    const option4 = document.getElementById(q.choices[3])
+    const option5 = document.getElementById(q.choices[4])
+    option1.addEventListener("click", function() {
+        checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
+        console.log('mcq1clicked')
+    })
+    option2.addEventListener("click", function() {
+        checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
+                console.log('mcq2clicked')
+    })
+    option3.addEventListener("click", function() {
+        checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
+        console.log('mcq3clicked')
+    })
+    option4.addEventListener("click", function() {
+        checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
+        console.log("mcq4clicked")
+    })
+    option5.addEventListener("click", function() {
+        checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
+        console.log('mcq5clicked')
+    })
+}
+}
+    // 5. Update Container HTML
+
+
+function checkMiniMC(selected, correct, solution, containerId) {
+    console.log('checkinganswers')
+    const container = document.getElementById(containerId);
+    
+    // Disable all choice buttons
+    container.querySelectorAll('.mini-mc-btn').forEach(b => b.disabled = true);
+    const solutionDiv = container.querySelector('.mini-solution');
+    const nextBtn = container.querySelector('.next-topic-btn');
+
+
+    if (selected.trim() === correct.trim()) {
+        solutionDiv.innerHTML = `✅ Correct! ${solution}`;
+    } else {
+        solutionDiv.innerHTML = `❌ Incorrect. ${solution}`;
+    }
+
+    solutionDiv.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
+    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
+}
+
+function checkMiniAnswer(btn, answer, solution, containerId) {
+    const container = document.getElementById(containerId)
+    const input = container.querySelector('.mini-answer');
+    const solutionDiv = container.querySelector('.mini-solution');
+    const nextBtn = container.querySelector('.next-topic-btn');
+
+    if (input.value.trim().toLowerCase() === answer.trim().toLowerCase()) {
+        solutionDiv.innerHTML = `✅ Correct! ${solution}`;
+    } else {
+        solutionDiv.innerHTML = `❌ Incorrect. ${solution}`;
+    }
+
+    input.disabled = true;
+    btn.disabled = true;
+    solutionDiv.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
+    
+    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
+}
 // ---------- Start ----------
 shuffleArray(questions);
 shuffleArray(allQ)
