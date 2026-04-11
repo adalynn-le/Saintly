@@ -62,10 +62,6 @@ function showHighlight() {
 
 
 
-
-
-
-
 // ---------- Question Data ----------
 const confettiCanvas = document.getElementById("confetti-canvas");
 const myConfetti = confetti.create(confettiCanvas, {
@@ -14875,7 +14871,6 @@ const answerInput = document.getElementById("answer-input");
 const checkBtn = document.getElementById("check-btn");
 const solutionDiv = document.getElementById("solution");
 const solutionText = document.getElementById("solution-text");
-const solutionLink = document.getElementById("solution-link");
 const nextBtn = document.getElementById("next-btn");
 const toggleStreakBtn = document.getElementById("toggle-streak");
 const streakWrapper = document.getElementById("streak-wrapper");
@@ -14896,6 +14891,9 @@ const problemsWrapper = document.getElementById("problems-card");
 const helpBtn = document.getElementById("helpButton");
 const helpPannel = document.getElementById("helpPannel");
 const overlay = document.getElementById("overlay");
+const submitSolutionButton = document.getElementById("submit-a-solution");
+const submitSolutionForm = document.getElementById("submit-a-solution-form");
+
 
 
 helpBtn.addEventListener("click", function () {
@@ -15815,8 +15813,6 @@ function checkAnswerAlgebra() {
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }
-
-    solutionLink.href = algebraQuestion.video;
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 
@@ -15881,8 +15877,6 @@ function checkAnswerAll() {
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }
-
-    solutionLink.href = allQuestion.video;
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 
@@ -15948,7 +15942,6 @@ function checkAnswerProb() {
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }
 
-    solutionLink.href = probQuestion.video;
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 
@@ -16014,7 +16007,6 @@ function checkAnswerGeometry() {
         questionType = "geometry"
     }
 
-    solutionLink.href = geometryQuestion.video;
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 
@@ -16080,7 +16072,6 @@ function checkAnswerNum() {
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }
 
-    solutionLink.href = numQuestion.video;
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 
@@ -16319,6 +16310,8 @@ probCurrent = 0;
 
 //------------Switch Subjects--------------
 function loadQuestion() {
+    submitSolutionForm.style.display = "none";
+    submitSolutionButton.style.display='block'
 if (questionType === "probability"){
         loadProb(probCurrent);
         questionType = "probability"
@@ -16476,6 +16469,11 @@ function checkMiniAnswer(btn, answer, solution, containerId) {
     
     if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
 }
+submitSolutionButton.addEventListener("click", function() {
+        submitSolutionForm.style.display = 'block';
+        submitSolutionButton.style.display = 'none';
+})
+
 // ---------- Start ----------
 shuffleArray(questions);
 shuffleArray(allQ)

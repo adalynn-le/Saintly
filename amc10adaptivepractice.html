@@ -90,7 +90,40 @@ send
     <div class="solution" id="solution" style="display:none;">
       <h2>Solution</h2>
       <p id="solution-text"></p>
-      <p>Video explanation: <a id="solution-link" href="#" target="_blank">Watch here</a></p>
+      <button id="submit-a-solution">Submit a Solution</button>
+      <div id="submit-a-solution-form" class="submit-a-solution-form">
+  <form
+  action="https://formspree.io/f/xjgpnzvp"
+  method="POST"
+>
+  <label class="formsubmission">
+    Name (whatever you're comftorable with displaying on the website):
+    <input type="text" name="name" placeholder="First Last" required>
+  </label>
+  <label class="formsubmission">
+    Email:
+    <input name="email" type="text" placeholder="youremail@gmail.com" required></input>
+  </label>
+  <label class="formsubmission">
+    Problem Title:
+    <input name="title" type="text" placeholder="AMC 10[A or B] [year] Problem #" required></input>
+  </label>
+  <label class="formsubmission">
+    Solution: (can be an outline, if approved, I will ask for a formatted LaTex answer)
+    <textarea name="solution" type="text" required></textarea>
+  </label>
+  <label class="formsubmission">
+    Do you consent to your solution being published on Saintly's website WITH your name/display name?
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 25px;">
+    <input name="consent" type="radio" class="radio-option" required>Yes</input>
+    <input name="consent" type="radio" class="radio-option" required>Yes, but do not include my name or display name</input>
+    <input name="consent" type="radio" class="radio-option" required>No</input>
+    </div>
+  </label>
+  <!-- your other form fields go here -->
+  <button class="problemBtn" type="submit">Submit Solution</button>
+</form>
+      </div>
     </div>
 
     <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
@@ -107,8 +140,61 @@ leaderboard
 <div id="topics-dropdown">You haven't gotten anything wrong yet, keep up the good work</div>
 <div id = "helpPannel" class = "helpPannel">
   <h2>Need Some Help?</h2>
-  <p>Contact us at <a href="mailto:saintly.math@gmail.com">saintly.math@gmail.com</a></p>
+  <p class="par">Contact us through our form</p>
+<div data-fs-success></div>
+<div data-fs-error></div>
+
+<form
+  action="https://formspree.io/f/mwvwgrwr"
+  method="POST"
+>
+<label class="formsubmission">
+  Name:
+  <input type="text" name="name" placeholder="First Last">
+</label>
+  <label class="formsubmission">
+    Email:
+    <input type="email" name="email" placeholder="youremail@gmail.com">
+  </label>
+  <label class="formsubmission">
+    Message:
+    <input type="text"name="message" required></input>
+  </label>
+  <!-- your other form fields go here -->
+<label class="formsubmission">
+  <p>What type of message is this?</p>
+  <div class="mcqwrapper" style="display: flex; flex-wrap: wrap; gap: 8px 16px;">
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType" required> Reporting an Error
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Suggesting an addition
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Feedback or Review
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Other
+    </label>
+  </div>
+</label>
+
+<label class="formsubmission">
+  <p>Do you want to be contacted back?</p>
+  <div style="display: flex; gap: 16px;">
+    <label class="radio-option">
+      <input type="radio" name="contact" required> Yes
+    </label>
+    <label class="radio-option">
+      <input type="radio" name="contact"> No
+    </label>
+  </div>
+</label>
+  <button type="submit" class="problemBtn">Send</button>
+</form>
+  <p>Or email us at <a href="mailto:saintly.math@gmail.com">saintly.math@gmail.com</a></p>
 </div>
+
 </main>
 </div>
 </body>

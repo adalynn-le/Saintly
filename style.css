@@ -964,6 +964,7 @@ margin-bottom: 0px;
   z-index: 20;
   display: none;
   width: auto;
+  text-align: left !important;
 }
 #overlay {
   position: fixed;        /* Stays in place while scrolling */
@@ -976,29 +977,32 @@ margin-bottom: 0px;
   display: none;
 }
 #answer-input{
-  border: 2px solid var(--accent-color);
+  border: 1px solid var(--accent-color);
   color: var(--accent-color);
   border-radius: 0.5em;
+  font-family: 'National Park', sans-serif
 }
 ::placeholder{
   color: #ffc6af
 }
-input:focus {
+input:focus, textarea:focus {
   outline: none;
-  border: 2px solid var(--primary-color);
+  border: 1px solid var(--primary-color) !important;
   color: var(--primary-color);
   border-radius: 0.5em;
+  caret-color: var(--primary-color) !important;
 }
 input:focus::placeholder{
   color: var(--primary-color);
 }
-input{
-  border: 2px solid var(--accent-color);
+input, textarea{
+  border: 1px solid var(--accent-color);
   color: var(--accent-color);
   border-radius: 0.5em;
   padding: 7.5px; 
   width: 70ch;
   font-size: medium;
+  outline: none !important;
 }
 .timerContainer{
   color:var(--primary-color);
@@ -1515,7 +1519,7 @@ body{
   text-decoration: underline;
   text-decoration-color: var(--primary-color)
 }
-button {
+.start-practice {
   display: inline-block;
   margin: 20px auto;
   background: transparent;
@@ -1526,6 +1530,24 @@ button {
   font-family: "National Park", sans-serif;
   font-size: 15px;  
   font-weight: 500;
+}
+#submit-a-solution{
+  display: inline-block;
+  margin: 20px auto;
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-family: "National Park", sans-serif;
+  font-size: 15px;  
+  font-weight: 500;
+}
+#submit-a-solution:hover{
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
 }
 button:not(.dropdown-btn):hover{
   background-color: var(--primary-color);
@@ -1670,7 +1692,7 @@ text-align: vertical;
     position: relative !important;
     top: -32.5px !important; /* adjust up/down as needed */
 }
-.problemBtn{
+.problemBtn, form button{
   background-color: var(--primary-color);
   color: var(--background-color) !important;
   cursor: pointer;
@@ -1679,10 +1701,11 @@ text-align: vertical;
   padding-right: 10px !important;
   padding-top: 5px !important;
   padding-bottom: 5px !important;
-  border: none !important
+  border: none !important;
+  margin-top: 5px;
 
 }
-.problemBtn:hover{
+.problemBtn:hover .formsubmission button{
   background-color: var(--accent-color) !important;
   border: none !important;
 }
@@ -2196,6 +2219,29 @@ input{
 .miniTag{
   display: none;
 }
+.formsubmission input[type="radio"],
+.formsubmission input[type='checkbox']{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 10px !important;
+  height: 10px !important;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.formsubmission input[type="checkbox"]:checked,
+.formsubmission input[type="radio"]:checked {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  background-position: center;
+}
+.mcqwrapper{
+  display: block !important;
+  overflow: scroll;
+}
 }
 
 .streak-wrapper{
@@ -2206,3 +2252,91 @@ input{
   margin-left: -25px !important;
 }
 
+label{
+  display: block;
+}
+.formsubmission{
+  margin-top: 10px;
+}
+/* ===== Form inputs ===== */
+.formsubmission {
+  display: flex;
+  flex-direction: column;
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--text-color);
+  font-family: "National Park", sans-serif;
+}
+.formsubmission input[type="text"]:focus,
+.formsubmission input[type="email"]:focus {
+  border-color: var(--primary-color);
+}
+
+/* ===== Checkbox & Radio custom styling ===== */
+.formsubmission input[type="checkbox"],
+.formsubmission input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.formsubmission input[type="radio"] {
+  border-radius: 50%;
+}
+
+.formsubmission input[type="checkbox"]:checked,
+.formsubmission input[type="radio"]:checked {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='1.5,5 4,7.5 8.5,2.5' fill='none' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
+.formsubmission input[type="radio"]:checked {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='2.5' fill='white'/%3E%3C/svg%3E");
+}
+
+/* Each checkbox/radio option as its own row */
+.checkbox-option,
+.radio-option {
+  display: inline-flex;
+  text-align: end;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  margin: 4px 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.checkbox-option,
+.radio-option {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px;
+  margin-right: 16px;
+  cursor: pointer;
+  font-size: 13px;
+}
+#submit-a-solution-form input[type="text"]{
+  width: 100%;
+  border: 1px solid var(--accent-color);
+  height: fit-content !important;
+  white-space: wrap;
+  min-height: 20px;
+  resize: vertical;
+  font-family: 'National Park', sans-serif
+
+}
+#submit-a-solution-form input[type="text"]:focus{
+  width: 100%;
+  border: 1px solid var(--primary-color) !important
+}
