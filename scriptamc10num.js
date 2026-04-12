@@ -1672,8 +1672,7 @@ star
         text: "How many different remainders can result when the \\(100\\textup{th}\\) power of any integer is divided by \\(125\\)?",
         solution: `<b>2</b><p>Any integer can be written as \\(5x, 5x+1, 5x+2, 5x+3, 5x+4\\). When we raise these to the \\(100\\)th power, they will leave specific remainders. For \\(5x\\) it leaves \\(0\\) because the \\(5\\) effectively "handles" the \\(125\\). Not quite sure how else to explain it. We also notice that \\(5x+4 = 5(x+1)-1\\) and the same logic for \\(5x+3\\). \\(5x \\pm 1\\) or \\(2\\) give remainder of \\(1\\) (see link for more complex proof)</p>`,
         answer: '2',
-        topic: 'factoring',
-        video_solution: `https://artofproblemsolving.com/wiki/index.php?title=2024_AMC_10B_Problems/Problem_18`,
+        topic: 'factoring'
     },
     {
         title: `AMC 10B 2024 Problem 23 <span class="material-symbols-outlined">
@@ -1812,6 +1811,13 @@ const questionChoices = document.getElementById("mc-container")
 const helpBtn = document.getElementById("helpButton");
 const helpPannel = document.getElementById("helpPannel");
 const overlay = document.getElementById("overlay");
+const submitSolutionButton = document.getElementById("submit-a-solution");
+const submitSolutionForm = document.getElementById("submit-a-solution-form");
+submitSolutionButton.addEventListener("click", function() {
+        submitSolutionForm.style.display = 'block';
+        submitSolutionButton.style.display = 'none';
+})
+
 
 
 helpBtn.addEventListener("click", function () {
@@ -1843,6 +1849,8 @@ console.log(questionsAnswered);
 
 // ---------- Load Question ----------
 function loadQuestion(index) {
+    submitSolutionForm.style.display = "none";
+    submitSolutionButton.style.display='block'
     const q = questions[index];
     mcChoices.forEach(btn => btn.disabled = false);
 
@@ -1946,8 +1954,6 @@ checkBtn.addEventListener("click", function () {
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }
-
-    solutionLink.href = questions[currentQuestion].video;
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 

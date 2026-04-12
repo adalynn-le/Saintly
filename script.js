@@ -3001,6 +3001,8 @@ const questionChoices = document.getElementById("mc-container")
 const helpBtn = document.getElementById("helpButton");
 const helpPannel = document.getElementById("helpPannel");
 const overlay = document.getElementById("overlay");
+const submitSolutionButton = document.getElementById("submit-a-solution");
+const submitSolutionForm = document.getElementById("submit-a-solution-form");
 
 console.log(helpOn)
 helpBtn.addEventListener("click", function () {
@@ -3030,6 +3032,9 @@ console.log(questionsAnswered);
 
 // ---------- Load Question ----------
 function loadQuestion(index) {
+    
+    submitSolutionForm.style.display = "none";
+    submitSolutionButton.style.display='block'
     console.log("question loading")
     const q = questions[index];
     mcChoices.forEach(btn => btn.disabled = false);
@@ -3131,8 +3136,6 @@ checkBtn.addEventListener("click", function () {
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }
-
-    solutionLink.href = questions[currentQuestion].video;
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 
@@ -3327,6 +3330,10 @@ overlay.addEventListener("click", function(){
         helpOn = true
     }
 });
+submitSolutionButton.addEventListener("click", function() {
+        submitSolutionForm.style.display = 'block';
+        submitSolutionButton.style.display = 'none';
+})
 
 console.log(questions.length)
 progressBar.style.width = "0%"

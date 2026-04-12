@@ -8,7 +8,10 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=kid_star" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=ads_click,lab_profile,local_fire_department,playlist_add_check,send,star,star_shine" />
-    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
  
@@ -77,7 +80,40 @@ local_fire_department
     <div class="solution" id="solution" style="display:none;">
       <h2>Solution</h2>
       <p id="solution-text"></p>
-      <p>Video explanation: <a id="solution-link" href="#" target="_blank">Watch here</a></p>
+     <button id="submit-a-solution">Submit a Solution</button>
+      <div id="submit-a-solution-form" class="submit-a-solution-form">
+  <form
+  action="https://formspree.io/f/xjgpnzvp"
+  method="POST"
+>
+  <label class="formsubmission">
+    Name (whatever you're comftorable with displaying on the website):
+    <input type="text" name="name" placeholder="First Last" required>
+  </label>
+  <label class="formsubmission">
+    Email:
+    <input name="email" type="text" placeholder="youremail@gmail.com" required></input>
+  </label>
+  <label class="formsubmission">
+    Problem Title:
+    <input name="title" type="text" placeholder="AMC 10[A or B] [year] Problem #" required></input>
+  </label>
+  <label class="formsubmission">
+    Solution: (can be an outline, if approved, I will ask for a formatted LaTex answer)
+    <textarea name="solution" type="text" required></textarea>
+  </label>
+  <label class="formsubmission">
+    Do you consent to your solution being published on Saintly's website WITH your name/display name?
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 25px;">
+    <input name="consent" type="radio" class="radio-option">Yes</input>
+    <input name="consent" type="radio" class="radio-option" >Yes, but do not include my name or display name</input>
+    <input name="consent" type="radio" class="radio-option">No</input>
+    </div>
+  </label>
+  <!-- your other form fields go here -->
+  <button class="problemBtn" type="submit">Submit Solution</button>
+</form>
+      </div>
     </div>
 
     <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
@@ -145,7 +181,7 @@ local_fire_department
   <p>What type of message is this?</p>
   <div class="mcqwrapper" style="display: flex; flex-wrap: wrap; gap: 8px 16px;">
     <label class="checkbox-option">
-      <input type="checkbox" name="messageType" required> Reporting an Error
+      <input type="checkbox" name="messageType"> Reporting an Error
     </label>
     <label class="checkbox-option">
       <input type="checkbox" name="messageType"> Suggesting an addition
@@ -163,7 +199,7 @@ local_fire_department
   <p>Do you want to be contacted back?</p>
   <div style="display: flex; gap: 16px;">
     <label class="radio-option">
-      <input type="radio" name="contact" required> Yes
+      <input type="radio" name="contact"> Yes
     </label>
     <label class="radio-option">
       <input type="radio" name="contact"> No

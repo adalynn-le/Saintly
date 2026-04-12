@@ -2129,7 +2129,14 @@ const progressBar = document.getElementById("progress-bar");
 const helpBtn = document.getElementById("helpButton");
 const helpPannel = document.getElementById("helpPannel");
 const overlay = document.getElementById("overlay");
+const submitSolutionButton = document.getElementById("submit-a-solution");
+const submitSolutionForm = document.getElementById("submit-a-solution-form");
 
+submitSolutionButton.addEventListener("click", function() {
+    console.log("work pls")
+        submitSolutionForm.style.display = 'block';
+        submitSolutionButton.style.display = 'none';
+})
 
 helpBtn.addEventListener("click", function () {
     if (helpOn === true){
@@ -2155,6 +2162,8 @@ console.log(questionsAnswered);
 }
 // ---------- Load Question ----------
 function loadQuestion(index) {
+    submitSolutionForm.style.display = "none";
+    submitSolutionButton.style.display='block'
     const q = geometryQ[index];
     questionTitle.innerHTML = q.title;
     questionText.innerHTML = q.text;
@@ -2223,8 +2232,6 @@ checkBtn.addEventListener("click", function () {
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }
-
-    solutionLink.href = geometryQ[currentQuestion].video;
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 

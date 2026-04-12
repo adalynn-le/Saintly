@@ -15799,6 +15799,7 @@ function checkAnswerAlgebra() {
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+        
         recordWrongTopic(algebraQuestion.topic);
         topicsToWorkOnVar.innerHTML = topicsToWorkOn
         score = score - algebraQuestion.difficulty;

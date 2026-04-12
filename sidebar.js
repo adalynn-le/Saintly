@@ -128,3 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // Set correct margin on load (sidebar starts closed)
 document.addEventListener('DOMContentLoaded', updateMainMargin);
+submitSolutionButton.addEventListener("click", function() {
+        submitSolutionForm.style.display = 'block';
+        submitSolutionButton.style.display = 'none';
+})
