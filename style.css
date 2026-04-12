@@ -24,6 +24,7 @@
 html{
   overflow-x:hidden;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -1974,6 +1975,9 @@ li{
   margin-top: 45px !important;
   margin-left: 5px !important;
   margin-right: 5px !important;
+}
+.containerPractice{
+  margin-top: 50px !important;
 }
 @media (max-width: 768px) {
 .tag{

@@ -1,8 +1,7 @@
 
 const sidebarPlaceholder = document.getElementById('sidebarPlaceholder');
 const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-sidebarPlaceholder.innerHTML = `
-<nav id="sidebar" class = "close">
+sidebarPlaceholder.innerHTML = `<nav id="sidebar" class = "close">
   <ul>
     <li>
     <div id="sidebar-header" class='sidebar-header'>
