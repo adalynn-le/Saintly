@@ -21,6 +21,7 @@ let allQuestion = 0;
 let difficultyAll = 0;
 let difficultyProgressAll = 0;
 let allCurrent = 0;
+let wrongQuestions = []
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
@@ -15808,6 +15809,8 @@ function checkAnswerAlgebra() {
         difficultyProgress = 0;
         streakCount = 0;
         wrongCount++;
+        wrongQuestions.push(algebraQuestion)
+        console.log(wrongQuestions)
         topicWrong = capitalizeFirstLetter(algebraQuestion.topic)
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "❌ Incorrect. " + algebraQuestion.solution;
