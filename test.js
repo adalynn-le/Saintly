@@ -21,7 +21,11 @@ let allQuestion = 0;
 let difficultyAll = 0;
 let difficultyProgressAll = 0;
 let allCurrent = 0;
-let wrongQuestions = []
+let wrongQuestionsAlgebra = []
+let wrongQuestionsGeometry = []
+let wrongQuestionsNum = []
+let wrongQuestionsProb = []
+let wrongQuestionsAll = []
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
@@ -2897,6 +2901,7 @@ star
     },
 ];
 
+
 function getNextQuestion(questions, targetDifficulty) {
     // Try to find an unused question at this difficulty
     let available = questions.filter(
@@ -2925,6 +2930,7 @@ function getNextQuestion(questions, targetDifficulty) {
 
 
 shuffleArray(questions);
+            algebraQuestion = getNextQuestion(questions, difficulty);
 // ---------- Question Data Geometry----------
 
 const geometryQ = [
@@ -7302,7 +7308,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-        title: `What is the minimum number of successive swaps of adjacent letters in the string \\(ABCDEF\\) that are needed to change the string to \\(FEDCBA\\)? (For example, \\(3\\) swapps are required to chance \\(ABC\\) to \\(CBA\\); one such sequence of swaps is \\(ABC --> BAC --> BCA --> CBA\\).)`,
+        text: `What is the minimum number of successive swaps of adjacent letters in the string \\(ABCDEF\\) that are needed to change the string to \\(FEDCBA\\)? (For example, \\(3\\) swapps are required to chance \\(ABC\\) to \\(CBA\\); one such sequence of swaps is \\(ABC --> BAC --> BCA --> CBA\\).)`,
         solution: `<b>15</b><p>The easiest way to do this is to start by moving \\(A\\), and then \\(B\\), and then \\(C\\) and so on, which takes \\(5+4+3+2+1=15\\)`,
         answer: `15`,
         topic: 'logic',
@@ -7701,6 +7707,7 @@ star
     solution: `<b>18</b><p>We do synthetic division division, effectively treating \\(a\\) and \\(b\\) like numbers. We end up with \\(a+b+2=4\\) and \\(2a+b+12=6\\). We solve for \\(a=-8\\), \\(b=10\\), so \\(10-(-8)=18\\)`, 
     choices: ['\\(A) 14\\)','\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'], 
     answer: '\\(E) 18\\)', 
+    type: 'mc',
     topic: 'division' },
     {
 title: `AMC 10B 2020 Problem 7 <span class="material-symbols-outlined">
@@ -14894,7 +14901,7 @@ const helpPannel = document.getElementById("helpPannel");
 const overlay = document.getElementById("overlay");
 const submitSolutionButton = document.getElementById("submit-a-solution");
 const submitSolutionForm = document.getElementById("submit-a-solution-form");
-
+const prevError = document.getElementById("prevError")
 
 
 helpBtn.addEventListener("click", function () {
@@ -15423,11 +15430,13 @@ function buttonsWork(){
     algButton.addEventListener("click", function() {
         questionType = "algebra";
         updateColors();
+        prevError.style.display = "none"
         loadQuestion();
     });
     geometryButton.addEventListener("click", function() {
         questionType = "geometry";
         updateColors();
+        prevError.style.display = "none"
         loadQuestion();
     });
     numButton.addEventListener("click", function() {
@@ -15438,55 +15447,53 @@ function buttonsWork(){
     probButton.addEventListener("click", function() {
         questionType = "probability"
         updateColors();
+        prevError.style.display = "none"
         loadQuestion();
     });
     allButton.addEventListener("click", function() {
-        console.log('here')
         questionType = "all"
         updateColors();
+        prevError.style.display = "none"
         loadQuestion();
     });
 }
 function updateColors(){
     if (questionType === "algebra"){
-        algButton.style.backgroundColor = "#ffb192"
-        geometryButton.style.backgroundColor = "#6495ED"
-        probButton.style.backgroundColor = "#6495ED"
-        numButton.style.backgroundColor = "#6495ED";
-        allButton.style.backgroundColor = "#6495ED";
+        algButton.classList.add("topicEnabled")
+        geometryButton.classList.remove("topicEnabled")
+        probButton.classList.remove("topicEnabled")
+        numButton.classList.remove("topicEnabled")
+        allButton.classList.remove("topicEnabled")
     } else if (questionType === "geometry") {
-        geometryButton.style.backgroundColor = "#ffb192"
-        algButton.style.backgroundColor = "#6495ED"
-        probButton.style.backgroundColor = "#6495ED"
-        numButton.style.backgroundColor = "#6495ED";
-        allButton.style.backgroundColor = "#6495ED";
-
+        geometryButton.classList.add("topicEnabled")
+        algButton.classList.remove("topicEnabled")
+        probButton.classList.remove("topicEnabled")
+        numButton.classList.remove("topicEnabled")
+        allButton.classList.remove("topicEnabled")
     } else if (questionType === "numTheory"){
-        numButton.style.backgroundColor = "#ffb192"
-        algButton.style.backgroundColor = "#6495ED"
-        probButton.style.backgroundColor = "#6495ED"
-        geometryButton.style.backgroundColor = "#6495ED";
-        allButton.style.backgroundColor = "#6495ED";
+        numButton.classList.add("topicEnabled")
+        geometryButton.classList.remove("topicEnabled")
+        probButton.classList.remove("topicEnabled")
+        algButton.classList.remove("topicEnabled")
+        allButton.classList.remove("topicEnabled")
     } else if (questionType === "probability") {
-        probButton.style.backgroundColor = "#ffb192"
-        algButton.style.backgroundColor = "#6495ED"
-        geometryButton.style.backgroundColor = "#6495ED"
-        numButton.style.backgroundColor = "#6495ED";
-        allButton.style.backgroundColor = "#6495ED";
+        probButton.classList.add("topicEnabled")
+        geometryButton.classList.remove("topicEnabled")
+        algButton.classList.remove("topicEnabled")
+        numButton.classList.remove("topicEnabled")
+        allButton.classList.remove("topicEnabled")
     } else if (questionType === "all") {
-        allButton.style.backgroundColor = "#ffb192"
-        algButton.style.backgroundColor = "#6495ED"
-        geometryButton.style.backgroundColor = "#6495ED"
-        numButton.style.backgroundColor = "#6495ED";
-        probButton.style.backgroundColor = "#6495ED";
+        allButton.classList.add("topicEnabled")
+        geometryButton.classList.remove("topicEnabled")
+        probButton.classList.remove("topicEnabled")
+        numButton.classList.remove("topicEnabled")
+        algButton.classList.remove("topicEnabled")
     }
 }
 
 // ---------- Load Question ----------
 function loadAlgebra() {
-    algebraQuestion = getNextQuestion(questions, difficulty);
     mcChoices.forEach(btn => btn.disabled = false);
-
     questionTitle.innerHTML = algebraQuestion.title;
     questionText.innerHTML = algebraQuestion.text;
 
@@ -15528,8 +15535,8 @@ function loadAlgebra() {
         MathJax.typesetPromise([questionChoices]).catch(()=>{});
     }
 }
+allQuestion = getNextQuestion(questions, difficulty);
 function loadAll() {
-    allQuestion = getNextQuestion(questions, difficulty);
     mcChoices.forEach(btn => btn.disabled = false);
 
     questionTitle.innerHTML = allQuestion.title;
@@ -15573,11 +15580,10 @@ function loadAll() {
         MathJax.typesetPromise([questionChoices]).catch(()=>{});
     }
 }
-
+geometryQuestion = getNextQuestion(geometryQ, difficultyG);
 
 function loadGeometry() {
     questionType = "geometry",
-    geometryQuestion = getNextQuestion(geometryQ, difficultyG);
     mcChoices.forEach(btn => btn.disabled = false);
 
     questionTitle.innerHTML = geometryQuestion.title;
@@ -15621,9 +15627,8 @@ function loadGeometry() {
         MathJax.typesetPromise([questionChoices]).catch(()=>{});
     }
 }
-
+numQuestion = getNextQuestion(numTheoryQ, difficultyN);
 function loadNumTheory() {
-    numQuestion = getNextQuestion(numTheoryQ, difficultyN);
     mcChoices.forEach(btn => btn.disabled = false);
 
     questionTitle.innerHTML = numQuestion.title;
@@ -15677,9 +15682,9 @@ mcChoices.forEach(btn => btn.disabled = true);
 
 }
 
-
-function loadProb() {
     probQuestion = getNextQuestion(probabilityQ, difficultyP);
+function loadProb() {
+    console.log("loading prob")
     mcChoices.forEach(btn => btn.disabled = false);
 
     questionTitle.innerHTML = probQuestion.title;
@@ -15757,13 +15762,13 @@ const originalString = "hello world";
 const capitalizedString = capitalizeFirstLetter(originalString);
 
 // ---------- Check Answer ----------
-function checkAnswerAlgebra() {
+function checkAnswerAlgebra(){
     const userAnswer = answerInput.value.trim();
     const correctAnswer = algebraQuestion.answer.trim();
     difficultyDash.innerHTML = difficulty
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-            score = score + algebraQuestion.difficulty;
-            scoreCount.innerHTML = score;
+        score = score + algebraQuestion.difficulty;
+        scoreCount.innerHTML = score;
             streakCount++;
             correctCount++;
             difficultyProgress++;
@@ -15800,26 +15805,41 @@ function checkAnswerAlgebra() {
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-        
         recordWrongTopic(algebraQuestion.topic);
-        topicsToWorkOnVar.innerHTML = topicsToWorkOn
-        score = score - algebraQuestion.difficulty;
-        scoreCount.innerHTML = score;
         difficulty = Math.max(1, difficulty - 1);
         difficultyProgress = 0;
+        score = score - difficulty;
+        scoreCount.innerHTML = score;
         streakCount = 0;
+        topicWrong = capitalizeFirstLetter(algebraQuestion.topic);
         wrongCount++;
-        wrongQuestions.push(algebraQuestion)
-        console.log(wrongQuestions)
-        topicWrong = capitalizeFirstLetter(algebraQuestion.topic)
+        const wrongEntryTrueAlgebra = wrongQuestionsAlgebra.some(item => item.title === wrongQuestionsAlgebra.title);
+        if (wrongEntryTrueAlgebra === false){
+        wrongQuestionsAlgebra.push(algebraQuestion)
+        wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].errorCount = 1;
+        wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].countdown = 3
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "❌ Incorrect. " + algebraQuestion.solution;
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "algebra"
     }
+
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
-
+const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+        if (mistakesAlgebraTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsAlgebra.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                    }
+                }
+            })
+        }
     if (window.MathJax) {
         MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
     }
@@ -15827,10 +15847,10 @@ function checkAnswerAlgebra() {
 function checkAnswerAll() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = allQuestion.answer.trim();
-    difficultyDash.innerHTML = difficultyAll
+    difficultyDash.innerHTML = difficulty
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-            score = score + allQuestion.difficulty;
-            scoreCount.innerHTML = score;
+        score = score + allQuestion.difficulty;
+        scoreCount.innerHTML = score;
             streakCount++;
             correctCount++;
             difficultyProgressAll++;
@@ -15847,7 +15867,7 @@ function checkAnswerAll() {
                 difficultyProgressAll = 0;
                 showLevelUp();
             } else if (difficultyAll == 4 && difficultyProgressAll == 1){
-                difficultyAll++;
+                difficultyAll ++;
                 difficultyProgressAll = 0;
                 showLevelUp();
             }
@@ -15868,22 +15888,40 @@ function checkAnswerAll() {
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         recordWrongTopic(allQuestion.topic);
-        topicsToWorkOnVar.innerHTML = topicsToWorkOn
-        score = score - allQuestion.difficulty;
-        scoreCount.innerHTML = score;
         difficultyAll = Math.max(1, difficultyAll - 1);
         difficultyProgressAll = 0;
+        score = score - difficulty;
+        scoreCount.innerHTML = score;
         streakCount = 0;
+        topicWrong = capitalizeFirstLetter(allQuestion.topic);
         wrongCount++;
-        topicWrong = capitalizeFirstLetter(allQuestion.topic)
+        const wrongEntryTrueAll = wrongQuestionsAll.some(item => item.title === wrongQuestionsAll.title);
+        if (wrongEntryTrueAll === false){
+        wrongQuestionsAll.push(allQuestion)
+        wrongQuestionsAll[wrongQuestionsAll.length - 1].errorCount = 1;
+        wrongQuestionsAll[wrongQuestionsAll.length - 1].countdown = 3
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "❌ Incorrect. " + allQuestion.solution;
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "all"
     }
+
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
-
+const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
+        if (mistakesAllTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsAll.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                    }
+                }
+            })
+        }
     if (window.MathJax) {
         MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
     }
@@ -15891,27 +15929,27 @@ function checkAnswerAll() {
 function checkAnswerProb() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = probQuestion.answer.trim();
-    difficultyDash.innerHTML = difficulty
+    difficultyDash.innerHTML = difficultyP
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-            score = score + probQuestion.difficulty;
-            scoreCount.innerHTML = score;
+        score = score + probQuestion.difficulty;
+        scoreCount.innerHTML = score;
             streakCount++;
             correctCount++;
             difficultyProgressP++;
-            if (difficultyP == 1 && difficultyProgressP == 4){
+            if (difficultyP == 1 && difficultyProgressP == 1){
                 difficultyP++;
                 difficultyProgressP = 0;
                 showLevelUp();
             } else if (difficultyP == 2 && difficultyProgressP  == 3){
-                difficultyP++;
+                difficultyN++;
                 difficultyProgressP = 0;
                 showLevelUp();
             } else if (difficultyP == 3 && difficultyProgressP  == 2){
-                difficultyP ++;
+                difficultyP++;
                 difficultyProgressP = 0;
                 showLevelUp();
             } else if (difficultyP == 4 && difficultyProgressP == 1){
-                difficultyP++;
+                difficultyP ++;
                 difficultyProgressP = 0;
                 showLevelUp();
             }
@@ -15932,102 +15970,57 @@ function checkAnswerProb() {
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         recordWrongTopic(probQuestion.topic);
-        topicsToWorkOnVar.innerHTML = topicsToWorkOn
-        score = score - probQuestion.difficulty;
-        scoreCount.innerHTML = score;
         difficultyP = Math.max(1, difficultyP - 1);
         difficultyProgressP = 0;
+        score = score - difficultyP;
+        scoreCount.innerHTML = score;
         streakCount = 0;
+        topicWrong = capitalizeFirstLetter(probQuestion.topic);
         wrongCount++;
-        topicWrong = capitalizeFirstLetter(probQuestion.topic)
+        const wrongEntryTrueProb = wrongQuestionsProb.some(item => item.title === probQuestion.title);
+        if (wrongEntryTrueProb === false){
+        wrongQuestionsProb.push(probQuestion)
+        wrongQuestionsProb[wrongQuestionsProb.length - 1].errorCount = 1;
+        wrongQuestionsProb[wrongQuestionsProb.length - 1].countdown = 3
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "❌ Incorrect. " + probQuestion.solution;
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "numTheory"
     }
 
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
-
-    if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
-    }
-}
-function checkAnswerGeometry() {
-    const userAnswer = answerInput.value.trim();
-    const correctAnswer = geometryQuestion.answer.trim();
-    difficultyDash.innerHTML = difficulty
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-        score = score + geometryQuestion.difficulty;
-        scoreCount.innerHTML = score;
-            streakCount++;
-            correctCount++;
-            difficultyProgressG++;
-            if (difficultyG == 1 && difficultyProgressG == 4){
-                difficultyG++;
-                difficultyProgressG = 0;
-                showLevelUp();
-            } else if (difficultyG == 2 && difficultyProgressG  == 3){
-                difficultyG++;
-                difficultyProgressG = 0;
-                showLevelUp();
-            } else if (difficultyG == 3 && difficultyProgressG  == 2){
-                difficultyG++;
-                difficultyProgressG = 0;
-                showLevelUp();
-            } else if (difficultyG == 4 && difficultyProgressG == 1){
-                difficultyG ++;
-                difficultyProgressG = 0;
-                showLevelUp();
-            }
-        document.getElementById("streak-count").innerHTML = streakCount;
-        solutionText.innerHTML = "✅ Correct! " + geometryQuestion.solution;
-
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
-        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
-
-    // Your existing streak bar animation
-        showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+        if (mistakesProbTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsProb.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                        console.log(item.errorCount)
+                        console.log(item.countdown)
+                    }
+                }
+            })
         }
-
-
-
-    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-        recordWrongTopic(geometryQuestion.topic);
-        difficultyG = Math.max(1, difficulty - 1);
-        difficultyProgressG = 0;
-        score = score - difficultyG;
-        scoreCount.innerHTML = score;
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(geometryQuestion.topic);
-        wrongCount++;
-        document.getElementById("streak-count").innerHTML = streakCount;
-        solutionText.innerHTML = "❌ Incorrect. " + geometryQuestion.solution;
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "geometry"
-    }
-
-    solutionDiv.style.display = "block";
-    nextBtn.style.display = "inline-block";
-
     if (window.MathJax) {
         MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
     }
+    questionType = "probability"
 }
 function checkAnswerNum() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = numQuestion.answer.trim();
     difficultyDash.innerHTML = difficulty
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-            score = score + numQuestion.difficulty;
-            scoreCount.innerHTML = score;
+        score = score + numQuestion.difficulty;
+        scoreCount.innerHTML = score;
             streakCount++;
             correctCount++;
-            difficultyProgressN++;
+            difficultyProgressG++;
             if (difficultyN == 1 && difficultyProgressN == 4){
                 difficultyN++;
                 difficultyProgressN = 0;
@@ -16037,11 +16030,11 @@ function checkAnswerNum() {
                 difficultyProgressN = 0;
                 showLevelUp();
             } else if (difficultyN == 3 && difficultyProgressN  == 2){
-                difficulty++;
-                difficultyProgress = 0;
+                difficultyN++;
+                difficultyProgressN = 0;
                 showLevelUp();
             } else if (difficultyN == 4 && difficultyProgressN == 1){
-                difficulty ++;
+                difficultyN ++;
                 difficultyProgressN = 0;
                 showLevelUp();
             }
@@ -16062,23 +16055,42 @@ function checkAnswerNum() {
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         recordWrongTopic(numQuestion.topic);
-        topicsToWorkOnVar.innerHTML = topicsToWorkOn
-        score = score - numQuestion.difficulty;
+        difficultyN = Math.max(1, difficultyN - 1);
+        difficultyProgressN = 0;
+        score = score - difficultyN;
         scoreCount.innerHTML = score;
-        difficulty = Math.max(1, difficulty - 1);
-        difficultyProgress = 0;
         streakCount = 0;
+        topicWrong = capitalizeFirstLetter(numQuestion.topic);
         wrongCount++;
-        topicWrong = capitalizeFirstLetter(numQuestion.topic)
+        const wrongEntryTrueNum = wrongQuestionsNum.some(item => item.title === numQuestion.title);
+        if (wrongEntryTrueNum === false){
+        wrongQuestionsNum.push(numQuestion)
+        wrongQuestionsNum[wrongQuestionsNum.length - 1].errorCount = 1;
+        wrongQuestionsNum[wrongQuestionsNum.length - 1].countdown = 3
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "❌ Incorrect. " + numQuestion.solution;
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "numTheory"
     }
 
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
-
+const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+        if (mistakesNumTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsNum.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                        console.log(item.errorCount)
+                        console.log(item.countdown)
+                    }
+                }
+            })
+        }
     if (window.MathJax) {
         MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
     }
@@ -16117,63 +16129,109 @@ function restart(){
 }
 // ---------- Next Question ----------
 nextBtn.addEventListener("click", function () {
+    console.log(questionType)
 difficultyDash.innerHTML = difficulty;
     if (questionType === "algebra"){
         algebraNext();
+        wrongQuestionsAlgebra.forEach(item => {
+            item.countdown -= 1;
+        })
     } else if (questionType === "geometry"){
         geometryNext();
+        wrongQuestionsGeometry.forEach(item =>{
+            item.countdown -= 1;
+        })
 
     } else if (questionType === "numTheory"){
         numNext();
+        wrongQuestionsNum.forEach(item =>{
+            item.countdown -= 1;
+        })
     } else if (questionType === "probability"){
         probNext();
+        wrongQuestionsProb.forEach(item =>{
+            item.countdown -= 1;
+        })
     } else if (questionType === 'all'){
         allNext();
+        wrongQuestionsAll.forEach(item =>{
+            item.countdown -= 1;
+        })
     }
 });
+
 function algebraNext() {
-    // Slide out
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
-        currentQuestion++;
-
-        if (currentQuestion < questions.filter(questions => questions.difficulty === difficulty).length) {
+        geometryCurrent++;
+        const mistakeAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+        if (mistakeAlgebraTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsAlgebra.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        algebraQuestion = item
+                        prevError.style.display = "inline"
+                        loadAlgebra();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (currentQuestion < questions.length) {
+            prevError.style.display = 'none'
+    algebraQuestion = getNextQuestion(questions, difficulty);
             loadQuestion();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
-        } else{
-            restart();
+        } else {
+restart();
 }
 
-
     }, 300); // matches slide-out duration
+questionType = "algebra";
 }
 function findTopic(topic){
     return topic.name === topic;
-}function allNext() {
-    // Slide out
+}
+function allNext() {
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
-        currentQuestion++;
-
-        if (currentQuestion < questions.filter(questions => questions.difficulty === difficulty).length) {
-            loadQuestion();
+        allCurrent++;
+        const mistakeAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
+        if (mistakeAllTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsAll.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        allQuestion = item
+                        prevError.style.display = "inline"
+                        loadAll();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (currentQuestion < allQ.length) {
+            prevError.style.display = 'none'
+    allQuestion = getNextQuestion(allQ, difficultyAll);
+            loadAll();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
-        } else{
-            restart();
+        } else {
+restart();
 }
 
-
     }, 300); // matches slide-out duration
+questionType = "all";
 }
 function updateTopicsDropdown() {
 
@@ -16225,16 +16283,29 @@ document.getElementById("topics-dropdown").addEventListener("click", function(e)
 
 // ---------- Next Question Geometry ----------
 function geometryNext(){
-nextBtn.addEventListener("click", function () {
     // Slide out
     problemsWrapper.classList.add("slide-out");
-
     setTimeout(() => {
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         geometryCurrent++;
-
-        if (geometryCurrent < geometryQ.length) {
+        const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+        if (mistakesGeometryTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsGeometry.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        geometryQuestion = item
+                        prevError.style.display = "inline"
+                        loadGeometry();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (geometryCurrent < geometryQ.length) {
+            prevError.style.display = 'none  '
+    geometryQuestion = getNextQuestion(geometryQ, difficultyG);
             loadQuestion(geometryCurrent);
 
             // Slide in effect
@@ -16245,31 +16316,33 @@ restart();
 }
 
     }, 300); // matches slide-out duration
-});
 questionType = "geometry";
 }
 function probNext() {
-    problemsWrapper.classList.add("slide-out");
-    setTimeout(() => {
-        problemsWrapper.classList.remove("slide-out");
-        loadProb(); // uses getNextQuestion internally
-
-        problemsWrapper.classList.add("slide-in");
-        setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
-    }, 300);
-}
-function numNext(){
-nextBtn.addEventListener("click", function () {
     // Slide out
     problemsWrapper.classList.add("slide-out");
-
     setTimeout(() => {
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
-        numCurrent++;
-
-        if (numCurrent < numTheoryQ.length) {
-            loadQuestion(numCurrent);
+        probCurrent++;
+        const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+        if (mistakesProbTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsProb.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        probQuestion = item
+                        prevError.style.display = "inline"
+                        loadProb();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (probCurrent < probabilityQ.length) {
+            prevError.style.display = 'none'
+    probQuestion = getNextQuestion(probabilityQ, difficultyP);
+            loadProb();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
@@ -16277,12 +16350,42 @@ nextBtn.addEventListener("click", function () {
         } else {
 restart();
 }
-
-    }, 300); // matches slide-out duration
-});
-questionType = "numTheory";
+})
 }
+function numNext(){
+    // Slide out
+    problemsWrapper.classList.add("slide-out");
+    setTimeout(() => {
+        // Remove slide-out and load next question
+        problemsWrapper.classList.remove("slide-out");
+        numCurrent++;
+        const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+        if (mistakesNumTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsNum.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        numQuestion = item
+                        prevError.style.display = "inline"
+                        loadNumTheory();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (numCurrent < numTheoryQ.length) {
+            prevError.style.display = 'none'
+    numQuestion = getNextQuestion(numTheoryQ, difficultyN);
+            loadQuestion();
 
+            // Slide in effect
+            problemsWrapper.classList.add("slide-in");
+            setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
+        } else {
+restart();
+}
+})
+}
 
 // ---------- Enter Key ----------
 answerInput.addEventListener("keydown", function (e) {
@@ -16398,7 +16501,6 @@ function loadTopicQuestion(topic) {
     if (q.type != 'mc'){
     const checkBtnMini = document.getElementById(checkBtnId)
     checkBtnMini.addEventListener("click", function () {
-        console.log('clicked')
         checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
     })
 }
@@ -16410,23 +16512,18 @@ if (q.type === 'mc'){
     const option5 = document.getElementById(q.choices[4])
     option1.addEventListener("click", function() {
         checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
-        console.log('mcq1clicked')
     })
     option2.addEventListener("click", function() {
         checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
-                console.log('mcq2clicked')
     })
     option3.addEventListener("click", function() {
         checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
-        console.log('mcq3clicked')
     })
     option4.addEventListener("click", function() {
         checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
-        console.log("mcq4clicked")
     })
     option5.addEventListener("click", function() {
         checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
-        console.log('mcq5clicked')
     })
 }
 }
@@ -16434,7 +16531,6 @@ if (q.type === 'mc'){
 
 
 function checkMiniMC(selected, correct, solution, containerId) {
-    console.log('checkinganswers')
     const container = document.getElementById(containerId);
     
     // Disable all choice buttons

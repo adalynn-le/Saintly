@@ -851,7 +851,8 @@ button.btn2 {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  height: auto
+  height: auto;
+  padding-bottom: 20px;
 }
 
 #adaptive-stats #topics-to-work{
@@ -2246,6 +2247,20 @@ input{
   display: block !important;
   overflow: scroll;
 }
+#num404, #num0{
+  font-size: 100px !important;
+}
+.error404text{
+  white-space: wrap;
+  text-align: center;
+  font-size: 30px !important;
+}
+.topicBtn{
+  font-size: 15px !important;
+  padding: 5px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
 }
 
 .streak-wrapper{
@@ -2343,4 +2358,39 @@ label{
 #submit-a-solution-form input[type="text"]:focus{
   width: 100%;
   border: 1px solid var(--primary-color) !important
+}
+.error{
+  margin-top: 20px;
+  margin-bottom: 0px !important;
+  width: 175px !important;
+  white-space: nowrap;
+  gap: 1px !important;
+  padding-left: 0px !important;
+
+}
+.miniTag .material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24;
+  color: var(--primary-color) !important;
+  font-size: 15px !important;
+  margin-bottom: -80px !important;
+  margin-right: 0px !important;
+}
+.topicBtn{
+  background-color: transparent !important;
+  color: var(--primary-color) !important;
+  border: 1.5px solid var(--primary-color) !important
+}
+.topicEnabled{
+  background-color: var(--primary-color) !important;
+  color: var(--background-color) !important; 
+  border: 1.5px solid var(--primary-color) !important;
+}
+.btnsWrapper{
+  width: 100%;
+  white-space: nowrap;
+  overflow: scroll;
 }
