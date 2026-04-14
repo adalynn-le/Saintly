@@ -463,6 +463,9 @@ footer{
   margin-top: 10px;
   border-radius: 5px;
 }
+.amc10container{
+  margin-top: 20px !important;
+}
 #confetti-canvas {
     position: fixed;
     top: 0;
