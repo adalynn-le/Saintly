@@ -26,6 +26,11 @@ let wrongQuestionsGeometry = []
 let wrongQuestionsNum = []
 let wrongQuestionsProb = []
 let wrongQuestionsAll = []
+let userRating = 800
+let userRatingGeometry = 800;
+let userRatingProbability = 800;
+let userRatingNumTheory = 800;
+let userRatingAll = 800
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
@@ -33,6 +38,9 @@ let score = 0;
 function toggleSubMenu(button){
     button.nextElementSibling.classList.toggle('show');
     button.classList.toggle('rotate');
+}
+function updateAllRating(){
+    userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
 }
 // ---------- Shuffle Function ----------
 const highlight = document.getElementById("highlight");
@@ -85,6 +93,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `<p>Define</p>
 $$
 P(x)=(x-1^2)(x-2^2)...(x-100^2)
@@ -108,6 +117,7 @@ star
 </span>`, 
     used: false, 
     difficulty: 3,
+rating: 1200,
     text: `Values for \\(A,B,C,\\) and \\(D\\) are to be selected from \\({1,2,3,4,5,6}\\) without replacement (i.e. no two letters have the same value). How many ways are there to make such choices so that the two curves \\(y=Ax^2+b\\) and \\(y=Cx^2+D\\) intersect? (The order in which the curves are listed does not matter; for example, the choices \\(A=3, B=2, C=4, D=1)\\) is considered the same as the choices \\(A=4, B=1, C=3, D=2)\\)`, 
     type: 'mc', 
     choices: ['\\(A) 30\\)', '\\(B) 60\\)', '\\(C) 90\\)', '\\(D) 180\\)', '\\(E) 360\\)'], 
@@ -123,6 +133,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Real numbers \\(a,b,\\) and \\(c\\) have arithmetic mean of \\(0\\). The arithmetic mean of \\(a^2,b^2\\) and \\(c^2\\) is \\(10\\). What is the arithmetic 
         mean of \\(ab, ac, bc\\)?`,
         type: 'mc',
@@ -139,7 +150,8 @@ star
 star
 </span>`, 
     used: false, 
-    difficulty: 2, 
+    difficulty: 2,
+rating: 1000, 
     text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`, 
     solution: `<b>18</b><p>We do synthetic division division, effectively treating \\(a\\) and \\(b\\) like numbers. We end up with \\(a+b+2=4\\) and \\(2a+b+12=6\\). We solve for \\(a=-8\\), \\(b=10\\), so \\(10-(-8)=18\\)`, 
     choices: ['\\(A) 14\\)','\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'], 
@@ -148,6 +160,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2025 Problem 4 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -165,6 +178,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10B 2022 Problem 4 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -189,6 +203,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2021 Spring Problem 3 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -214,6 +229,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2021 Spring Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -247,6 +263,7 @@ $$
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2023 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -287,6 +304,7 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 2,
+rating: 1000,
         title: `AMC 10A 2025 Problem 9 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -323,6 +341,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title:`AMC 10B 2024 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -353,6 +372,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10B 2024 Problem 3 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -382,6 +402,7 @@ star
     {
         used: false,
         difficulty: 3,
+rating: 1200,
         title: `AMC 10B 2024 Problem 13 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -436,6 +457,7 @@ star
     {
         used: false,
         difficulty: 3,
+rating: 1200,
         title: `AMC 10B 2024 Problem 14 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -487,6 +509,7 @@ star
     {
         used: false,
         difficulty: 5,
+rating: 1600,
         title: `AMC 10B 2024 Problem 24 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -520,6 +543,7 @@ star
     {   
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2024 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -534,6 +558,7 @@ star
     {   
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2024 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -605,6 +630,7 @@ star
         type: "mc",
         used: false,
         difficulty: 2,
+rating: 1000,
         choices: ["\\(A) 2\\)", "\\(B) 3\\)", "\\(C)5\\)", "\\(D) 6\\)", "\\(E) 13\\)"],
         answer: "\\(B) 3\\)",
         solution: `<b>3</b><p>First start by finding the prime factorization of \\(60\\). Doing this should yield</p>
@@ -633,6 +659,7 @@ star
         type: "mc",
         used: false,
         difficulty: 2,
+rating: 1000,
         choices: ["\\(A) 1:25 PM\\)", "\\(B) 1:35 PM\\)", "\\(C) 1:45 PM\\)", "\\(D) 1:55 PM\\)", "\\(E) 2:05 PM\\)"],
         answer: "\\(A) 1:25 PM\\)",
         solution: `<b> 1:25 PM </b><p>To solve this, let's first find out how many packages Amy, Bomani, and Charlie made in total. We know that they worked for \\(1\\) hour and \\(45\\) minutes, or \\(105\\) minutes. We don't really have to find the 
@@ -652,6 +679,7 @@ star
         type: "mc",
         used: false,
         difficulty: 3,
+rating: 1200,
         choices: ["\\(A) 1\\)", "\\(B) 2\\)", "\\(C) 3\\)", "\\(D) 4\\)", "\\(E) Infinitely Many\\)"],
         answer:"\\(D) 4\\)",
         solution: `<b>4</b><p>Does this expression look a little bit familiar..? What is we rewrite it?</p>
@@ -689,6 +717,7 @@ star
         used: false,
         image: "202412.png",
         difficulty: 3,
+rating: 1200,
         answer: "1715",
         solution: `<b>1715</b><p>Notice that we do not have to actually calculate the totals on each day. If we calculate the averages of the scores relative to the original \\(1700\\) and add that to \\(1700\\) it will have the same effect. Recall that the numbers are relative to the day before, not the starting score. WIth this, set up the following equation:
         $$
@@ -714,6 +743,7 @@ star
         choices: ["\\(A) 212\\)", "\\(B) 247\\)", "\\(C) 258\\)", "\\(D) 276\\)", "\\(E) 284\\)"],
         used: false,
         difficulty: 5,
+rating: 1600,
         answer: "\\(C) 258\\)",
         solution: `<b>276</b><p>Start by adding the first two equations. This gets us
         $$
@@ -784,6 +814,7 @@ star
         type: "mc",
         used: false,
         difficulty: 1,
+rating: 800,
         choices: ["A) \\(\\frac{1}{12}\\)", "B) \\(\\frac{1}{4}\\)", "C) \\(\\frac{1}{6}\\)", "D) \\(\\frac{1}{8}\\)", "E) \\(\\frac{2}{9}\\)"],
         answer:"B) \\(\\frac{1}{4}\\)",
         solution: `<b\\(\\frac{1}{4})></b><p>Let's call the fraction of how much juice Mrs. Jones pours out \\(x\\). We can say that after she evens out the amount of juice in each cup, each of the \\(3\\) filled cups, the cup that was \\(\\frac{1}{3}\\) full will then be \\(\\frac{1}{3}+3x\\) full and the rest will be \\(1-x\\) full. Since we want them all to be equal, we can set these equations to be equal to each other and solve</p>
@@ -806,6 +837,7 @@ star
         \\(7.5%\\) sales tax on the discounted price. He had \\(43\\) dollars. What is the origina (before discount) price of the most expensive shoes he could afford to buy?`,
         used: false,
         difficulty: 1,
+rating: 800,
         type: "fr",
         answer: "50",
         solution: `<b>50</b><p>We can set the original value of the shoes to \\(x\\). The discount takes off \\(20%\\), meaning that we multiply \\(x  \\cdot 0.8\\) to find the discounted price. Now we add the sales tax. we multiply the discounted price, \\(0.8x\\) by \\(1.075\\) and know that this must be equal to \\($43\\) in order for Carlos to be paying the most expensive shoes he can get. Now, solve: </p>
@@ -827,6 +859,7 @@ star
         text: `Maddy and Lara see a list of numbers written on a blackboard. Maddy adds \\(3\\) to each number in the list and finds that the sum of her new numbers is \\(45\\). Lara multiplies each number in the list by \\(3\\) and finds that the sum of her new numbers is also \\(45\\). How many numbers are written on the blcakboard?`,
         used: false,
         difficulty: 1,
+rating: 800,
         type: "fr",
         answer: "10",
         solution: `<b>10</b><p>Let's call the total amount of numbers on the board \\(x\\) and the sum of the numbers on the board, without any altering \\(y\\). </p>
@@ -866,6 +899,7 @@ star
         <p>are removed from the number line, what remains is the union of 11 disjoint open interavls. On how many of these intervals is \\(P(x)\\) positive?`,
         used: false,
         difficulty: 3,
+rating: 1200,
         type: "fr",
         answer: "6",
         solution: `<b>6</b><p>Recognize that \\(P(x)\\) is positive when there is an even number of negative factors. None of the factors within parentheseis raised to an even power will ever be negative, so we only have to worry about the odd powers. Let's take all the even powers out of our equation:
@@ -886,6 +920,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         text: `What is the area of the region on the coordinate plane defined by
         $$
         ||x|-1|+||y|-1| \\le 1?
@@ -906,6 +941,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         text: "How many ordered pairs of integers \\((m,n)\\) satisfy the equation \\(m^2+mn+n^2=m^2n^2\\)",
         used: false,
         type: "fr",
@@ -934,6 +970,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         text: "How many distinct values \\(x\\) satisfy \\(\\lfloor{x}^2\\rfloor-3x+2=0\\) where \\(\\lfloor{x}\\rfloor\\) denotes the largest integer less than or equal to \\(x\\)",
         used: false,
         type: "mc",
@@ -950,6 +987,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         text: "Cities \\(A\\) and \\(B\\) are \\(45\\) miles apart. Alicia lives in \\(A\\) and Beth lives in \\(B\\). Alicia bikes towards \\(B\\) at \\(18\\) miles per hour. Leaving at the same time, Beth bikes toward \\(A\\) at \\(12\\) miles per hour. How many miles from City \\(A\\) will they be when they meet?",
         type: "fr",
@@ -1021,6 +1059,7 @@ star
         text: `Barb the baker has developed a new temperature scale for her bakery called the Breadus scale, which is a linear function of the Fahrenheit scale. Bread rises at \\(110\\) degrees Fahrenheit which is \\(0\\) degrees on the Breadus scale. Bread is baked at \\(350\\) degrees Fahrenheit, which is \\(100\\) degrees on the Breadus scale. Breada is done when its internal temperature is \\(200\\) degrees Farenheit. What is this, in degrees, on the Breadus scale? Answer as a decimal.`,
         used: false,
         difficulty: 2,
+rating: 1000,
         type: "fr",
         answer: "37.5",
         solution: `<b>37.5</b><p>We know that the equation is linear, and thus that it can be expressed as \\(y=mx+b\\). We'll call \\(y\\) the degrees in Farenheit and \\(x\\) the degrees on the Breadus scale. We know that \\(110=0m+b\\), so \\(b\\) is equal to \\(110\\). We plug this in to
@@ -1051,6 +1090,7 @@ star
         text: `Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an \\(11\\) on the next quiz, her mean will increase by \\(1\\). If she scores an \\(11\\) on each of the next three quizzes, her mean will increase by \\(2\\). What is the mean of her scores currently?`,
         used: false,
         difficulty: 2,
+rating: 1000,
         type: "fr",
         solution: `<b>7</b><p>We know that the mean, which we'll call \\(m\\) is the sum of her total scores, \\(x\\), divided by the number of tests she's taken, \\(n\\). We set up the following equation:</p>
         $$
@@ -1102,6 +1142,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         text: `Define \\(x \\diamond y\\) to be \\(|x-y|\\) for all real numbers \\(x\\) and \\(y\\). What is the value of
         $$
@@ -1127,6 +1168,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         text: `What is the value of 
         $$
@@ -1172,6 +1214,7 @@ star
 star
 </span>`,
         difficulty: 2,
+rating: 1000,
         used: false,
         text: `For how many values of the constant \\(k\\) will the polynomial \\(x^2+kx+36\\) have two distinct integer roots?`,
         answer: "8",
@@ -1188,6 +1231,7 @@ star
 star
 </span>`, 
         difficulty: 2,
+rating: 1000,
         used: false,
         type: `mc`,
         choices: ["\\(A) 2020\\)", "\\(B) 2021\\)", "\\(C) 2022\\)", "\\(D) 2023\\)", "\\(E) 2024\\)"],
@@ -1211,6 +1255,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         used: false,
         type: "fr",
         text: "Let \\(S_{n}\\) be the sum of the first \\(n\\) terms of an arithmetic sequence that has a common difference of \\(2\\). The quotient \\(\\frac{S_{3n}}{S_{n}}\\) does not depend on \\(n\\). What is \\(S_{20}\\)?",
@@ -1260,6 +1305,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         used: false,
         type: "fr",
         text: `Let \\(P(x)\\) be a polynomial with rational coefficients such that when \\(P(x)\\) is divided by the polynomial \\(x^2+x+1\\), the remainder is \\(x+2\\), and when \\(P(x)\\) is divided by
@@ -1334,6 +1380,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         used: false,
         text: `<p>Consider functions \\(f\\) that satisfy</p>
         $$
@@ -1375,7 +1422,8 @@ star
         title: `AMC 10A 2022 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
-        difficulty: 1, 
+        difficulty: 1,
+rating: 800, 
         used: false,
         text: `<p>What is the value of</p>
         $$
@@ -1412,6 +1460,7 @@ star
 star
 </span>`,
     difficulty: 1,
+rating: 800,
     used: false,
     text: `Mike cycled \\(15\\) laps in \\(57\\) minutes. Assume he cycled at a constant speed throughout. Approximately how many laps did he complete in the first \\(27\\) minutes?`,
     type: `mc`,
@@ -1435,6 +1484,7 @@ star
 star
 </span>`, 
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `The sum of three numbers is \\(96\\). The first number is \\(6\\) times the third number,
         and the third number is \\(40\\) less than the second number. What is the absolute value ofthe difference beween the 
@@ -1480,6 +1530,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `In some countries, automobile fuel efficiency is measured in liters per \\(100\\) kilometers while other countries use miles per gallon.
         Suppose that \\(1\\) kilometer equals \\(m\\) miles, and \\(1\\) gallon equals \\(l\\) liters. Which of the following gives the fuel efficiency in liters per \\(100\\) kilometers for 
         a car that gets \\(x\\) miles per gallon?`,
@@ -1498,7 +1549,8 @@ star
 star
 </span>`,
         used: false,
-        difficulty: 2,     
+        difficulty: 2,
+rating: 1000,     
         text: `<p>Which expression is equal to</p>
         $$
         |a-2-\\sqrt{(a-2)^2}|
@@ -1521,6 +1573,7 @@ star
 </span>`, 
         used: false,
         difficulty: 3,
+rating: 1200,
         text: "Ted mistakenly wrote \\(2^m \\cdot \\sqrt{\\frac{1}{4096}}\\) as \\(2 \\cdot \\sqrt[m]{\\frac{1}{4096}}\\). What is the sum of all real numbers \\(m\\) for which these two expressions have the same value?",
         type: 'fr',
         solution: `<b>7</b><p>Start by rewriting everything with a baes of \\(2\\). We can find the prime factorization of \\(4096\\) and see that it's \\(2^12\\), so \\(\\frac{1}{4096}\\) is \\(2^-12\\). We also know that
@@ -1562,6 +1615,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A four term sequence is formed by adding each term of a four-term arithmetic sequence of positive integers to the corresponding term of a four-term geometric sequence
         of positive integers. The first three terms of the resulting four-term sequence are \\(57, 60\\) and \\(91\\). What
         is the fourth term in this sequence?`,
@@ -1638,6 +1692,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
         solution: `<b>11110</b><p>With something like this, it's simply easier to just brute force your way through. Add the values and find that it is \\(11110\\).</p>
         <h3>Common Mistake ❗❗❗</h3>
@@ -1652,6 +1707,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) where \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
         type: "fr",
         solution: `<b>4041</b><p>This is also a situation where brute forcing may be easier than finding and rationalizing a solution</p>
@@ -1669,6 +1725,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text:`At noon on a certain day, Minneapolis is \\(N\\) degrees warmer than St. Louis. At \\(4:00\\) the temperature in Minneapolis has fallen by 
         \\(5\\) degrees while the temperature in St. Louis has risen by \\(3\\) degrees, at which time the temperatures in the two cities differ by \\(2\\) degrees.
         What is the product of all possible values of \\(N\\).`,
@@ -1688,6 +1745,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The knights in a certain kingdom come in two colors. \\(\\frac{2}{7}\\) of them are red, and the rest are blue. Furthermore, \\(\\frac{1}{6}\\) of the knights are magical, 
         and the fraction of red knights who are magical is \\(2\\) times the fraction of blue knights who are magical. What fraction of red knights are magical?`,
         type: "mc",
@@ -1731,6 +1789,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         used: false,   
         text: `For each integer \\(n \\ge 2\\), let \\(S_{n}\\) be the sum of all products \\(jk\\), where \\(j\\) and \\(k\\) are integers and
         \\(1 \\le j < k \\le n\\). What is the sum of the \\(10\\) least values of \\(n\\) such that \\(S_{n}\\) is divisible by \\(3\\)?`,
@@ -1754,6 +1813,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `What is the value of \\(\\frac{(2112-2021)^2}{69}\\)?`,
         type: "fr",
         solution: `<b>49</b><p>This is a simple enough equation to solve by brute force:</p>
@@ -1777,6 +1837,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Mr. Lopez has a choice of two routes to get to work. Route A is \\(6\\) miles long, and his average speed along this route is \\(30\\) miles per hour. Route
         B is \\(5\\) miles long, and his average speed along this route is \\(40\\) miles per hour, except for a \\(\\frac{1}{2}\\) mile stretch in a school zone
         where his average speed is \\(20\\) miles per hour. By how many minutes is Routbe B quicker than Route A?`,
@@ -1837,6 +1898,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Elmer the emu takes\\(44\\) equal strides to walk between consecutive telephone poles on a rural road. Oscar the ostritch can cover the same distance in \\(12\\) equal leaps.
         The telephone poles are evenly spaced, and the \\(41\\)st pole along this road is exactly one mile ((\\5280\\) feet) from the first pole. How much longer, in feet, is Oscar's leap than Elmer's stride?`,
         type: "fr",
@@ -1873,6 +1935,7 @@ star
 </span>`, 
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Emily sees a ship traveling at a constant speed along a straight section of a river. She walks parallel to the riverbank at a uniform rate faster than 
         the ship. She counts \\(210\\) equal steps walking frm the back of the ship to the front. Walking in the opposite direction, she counts \\(42\\) steps of the same
         size from the front of the ship to the back. in terms of Emily's equal steps, what is the length of the ship?`,
@@ -1906,7 +1969,8 @@ star
 star
 </span>`,
         used: false,
-        difficulty: 3, 
+        difficulty: 3,
+rating: 1200, 
         answer: "5",
         text: `<p>How many ordered pairs \\((x,y)\\) of real numbers satisfy the following system of equations?</p>
         $$
@@ -1953,6 +2017,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<p>The graph of</p>
         $$
         f(x) = |\\lfloor x \\rfloor | - | \\lfloor 1 - x \\rfloor |
@@ -1980,6 +2045,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `For how many ordered pairs \\((b,c)\\) of positive integers does neither \\(x^2+bx+c=0\\) nor \\(x^2+cx+b=0\\) have two distinct real solutions?`,
         used: false,
         type: "fr",
@@ -2003,6 +2069,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many integer values of \\(x\\) satisfy \\(|x| < 3\\pi\\)?`,
         solution: '<b>19</b><p>We know that \\(3 \\pi \\approx 9\\). Thus, \\(x\\) can be all values between \\(-9\\) and \\(9\\), inclusive. We count or just use logic and find that there are \\(19\\) such values</p>',
         answer: "19",
@@ -2015,6 +2082,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         type: "mc",
         choices: ["\\(A) 0\\)", "\\(B) 4\\sqrt{3} -6 \\)", "\\(C) 6\\)", "\\(D) 4 \\sqrt{3}\\)", "\\(E) 4\\sqrt{3} +6 \\)" ],
         text: `What is the value of \\(\\sqrt{(3-2\\sqrt{3})^2}+\\sqrt{(3+2\\sqrt{3})^2}\\)?`,
@@ -2033,6 +2101,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `In an after-school program for juniors and seniors, there is a debate team with equal numbers of students from each class on team. Among \\(28\\) students in the program,
         \\(25%\\) of juniors and \\(10%\\) of the seniors are on the debate team. How many juniors are in the program?`,
         type: "fr",
@@ -2059,6 +2128,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `At a math contest, 57 students are wearing blue shirts, and another 75 students are wearing yellow shirts. The 132 students are assigned into 66 pairs. 
         In exactly 23 of these pairs, both students are wearing blue shirts. In how many pairs are both students wearing yellow shirts?`,
         type: `fr`,
@@ -2075,6 +2145,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Mr. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is \\(84\\), and the afternoon class's mean score is \\(70\\). The ratio of the number of students in the 
         morning class to the number of students in the afternoon class is \\(\\frac{3}{4}). What is the mean of the scores of all the students.`,
         type: `fr`,
@@ -2094,6 +2165,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The real number \\(x\\) satisfies the equation \\(x+ \\frac{1}{x} = \\sqrt{5}\\). What is the value of \\(x^11-7x^7+x^3)?`,
         type: `mc`,
         choices: ["\\(A) -1\\)", "\\(B) 0\\)", "\\(C) 1\\)", "\\(D) 2\\)", "\\(E) \\sqrt{5} \\)"],
@@ -2152,6 +2224,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Suppose that \\(S\\) is a fininte set of positive integers. If the greatest integer in \\(S\\) is removed from \\(S\\), then the average value (arithmetic mean) of the integers
         remaining is \\(32\\). If the least integer in \\(S\\) is also removed, then the average value of the integers remaining is \\(35\\). If the greatest integer is then returned to the set, the average
         value of the integers rises to \\(40\\). The greatest integer in the original set of \\(S\\) is \\(72\\) greater than the least integer \\(S\\). What is the average value
@@ -2222,6 +2295,7 @@ star
 star
 </span>`,
         difficulty: 2,
+rating: 1000,
         used: false,
         text: `Portia's high school has \\(3\\) times as many students as Lara's high school. The two high schools have a total of 
         \\(2600\\) students. How many students does Portia's highschool have?`,
@@ -2251,6 +2325,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `A cart rolls down a hill, traveling \\(5\\) inches the first second and accelerating so that during each successive \\(1\\) second time interval, it travels \\(7\\) inches more than during the previous \\(1\\) second interval.
         The card takes \\(30\\) seconds to reach the bottom of the hill. How far, in inches, does it travel?`,
         type: 'fr',
@@ -2275,6 +2350,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The quiz scores of a class with \\(k>12\\) students have  a mean of \\(8\\). The mean of a collection of \\(12\\) of these quiz scores is \\(14\\). What is the mean of the reamining 
         quiz scores in terms of \\(k\\)?`,
         solution: `<b></b><p>We know that the sum of the \\(12\\) scores who averaged \\(14\\) is \\(12 \\cdot 14 = 168\\). Likewise, we know that the sum of all of the tests is \\(8k\\). The average of the reamining tests is the sum of the remaining test scores divided by \\(k-12\\).</p>
@@ -2295,6 +2371,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Chantal and Jean start hiking from a trailhead toward a fire tower. Jean is wearing a heavy backpack and walks slower. Chantal starts walking at \\(4\\) miles per hour. Halfway to the tower, the trail
         becomes really steep, and Chantal slows down to \\(2\\) miles per hour. After reaching the tower, she immediately turns around and descends the steep part of the trail at \\(3\\) miles per hour. She meets Jean at the halfway point.
         What was Jean's average speed, i nmiles per hour, until they met.`,
@@ -2316,6 +2393,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the least possible value of \\((xy-1)^2+(x+y)^2\\) for real numbers \\(x\\) and \\(y\\)?`,
         type: `mc`,
         choices: ["\\(A) 0\\)", "\\(B) \\frac{1}{4}\\)", "\\(C) \\frac{1}{2}\\)", "\\(D) 1\\)", "\\(E) 2\\)"],
@@ -2348,6 +2426,7 @@ star
 </span>`, 
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `All the roots of the polynomial \\(z^6-10z^5+Az^4+Bz^3+Cz^2+Dz+16\\) are positive integers, possibly repeated. What is the value of \\(B\\)?`,
         solution: `<b></b><p>By Vieta's rules, we know that the product of all \\(6\\) factors is \\(10\\). If this intuition doesn't make sense, try messing around with basic quadratics and factoring for a bit.</p>
         <p>We find the prime factorization of \\(16\\), which ends up being \\(2^4\\), so there are \\(5\\) factors to work with these being \\(1, 2, 4, 8,\\) and \\(16\\).</p>
@@ -2380,6 +2459,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<p>In the following list of numbers, the integer \\(n\\) appears \\(n\\) times in the list for \\(1 \\le n \\le 200\\).</p>
         $$
         1, 2, 2, 3, 3, 3, 4, 4, 4, 4,  ..., 200, 200, ..., 200
@@ -2419,6 +2499,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         type: 'mc',
         choices: ["\\(A) \\frac{17}{32}\\)", "\\(B) \\frac{11}{16}\\)", "\\(C) \\frac{7}{9}\\)", "\\(D) \\frac{7}{6}\\)", "\\(E) \\frac{25}{11}\\)"],
         text: `Let \\(f\\) be a function defined on the set of positive rational numbers with the property that \\(f(a \\cdot b) = f(a)+f(b)\\) for all the 
@@ -2471,6 +2552,7 @@ star
 star
 </span>`,
         difficulty: 4,
+rating: 1400,
         used: false,
         type: 'mc',
         choices: ['\\(A) 18\\)', '\\(B) 27\\)', '\\(C) 36\\)', '\\(D) 45\\)', '\\(E) 54\\)'],
@@ -2557,7 +2639,8 @@ star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-        difficulty: 5, 
+        difficulty: 5,
+rating: 1600, 
         used: false,
         type: `mc`,
         choices: ["\\(A) 10\\)", "\\(B) 13\\)", "\\(C) 15\\)", "\\(D) 17\\)", "\\(E) 20\\)"],
@@ -2577,6 +2660,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         type: 'fr',
         text: `<p>What is the value of \\(1-(-2)-3-(-4)-5(-(-6)\\)?</p>`,
@@ -2605,6 +2689,7 @@ star
         topic: "ratios",
         used: false,
         difficulty: 1,
+rating: 800,
     },
     {
         title: `AMC 10B 2020 Problem 9 <span class="material-symbols-outlined">
@@ -2614,6 +2699,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `How many ordered pairs of integers \\((x,y)\\) satisfy the equation \\(x^2020 + y^2 =2y\\)?`,
         type: 'fr',
         solution: `<b>4</b>Rearrange all the terms onto one side</p>
@@ -2639,6 +2725,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>What is the value of</p>
         $$
         x=\\frac{3}{4}+\\frac{5}{12}-\\frac{1}{3}?
@@ -2666,7 +2753,8 @@ star
 star
 </span>`,
         used: false,
-        difficulty: 1, 
+        difficulty: 1,
+rating: 800, 
         text: `The numbers \\(3, 5, 7, a\\) and \\(b\\) have an average (arithmetic mean) of \\(15\\). What is the average of \\(a\\) and \\(b\\)?`,
         type: 'fr',
         solution: '<b></b><p>The sum of the \\(5\\) values must be equal to \\(15 \\cdot 5=75\\). If we subtract \\(3,5, \\) and \\(7\\), we can find \\(a+b=75-3-5-7=60\\). The average of \\(a\\) and \\(b\\) is equal to \\(\\frac{a+b}{2}=\\frac{60}{2}=30\\).</p>',
@@ -2678,7 +2766,8 @@ star
 star
 </span>`,
         used: false,
-        difficulty: 1, 
+        difficulty: 1,
+rating: 800, 
         text: `<p>Assuming \\(a \\neq 3, b \\neq 4, c \\neq 5\\), what is the value in simplest form of the following expression?</p>
         $$
         \\frac{a-3}{5-c} \\cdot \\frac{b-4}{3-a} \\cdot \\frac{c-5}{4-b}
@@ -2696,6 +2785,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `A driver travels for \\(2\\) hours at \\(60\\) miles per hour, during which her car gets \\(30\\) miles per gallon of 
         gasoline. She is paid \\($0.5\\) per mile, and her only expense is gasoline, at \\($2.00\\) per gallon. What is her net rate of pay, in dollars per hour, after this expense?`,
         type: 'fr',
@@ -2710,6 +2800,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>What is the sum of all real numbers \\(x\\) for which</p>
         $$
         |x^2-12x+34|=2
@@ -2748,6 +2839,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         type: 'fr',
         text: `<p>What is the value of </p>
         $$
@@ -2787,6 +2879,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         type: 'mc',
         text: `What is the median of the following list of \\(4040\\) numbers?
         $$
@@ -2811,6 +2904,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         type: 'mc',
         choices: ['\\(A) 360\\)', '\\(B) 400\\)', '\\(C) 420\\)', '\\(D) 440\\)', '\\(E) 480\\)'],
         text: `<p>Real numbers \\(x\\) and \\(y\\) satisfy \\(x+y=4\\) and \\(x \\cdot y = -2\\). What is the value of</p>
@@ -2873,6 +2967,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `<p>There exists a unique strictly increasing sequence of nonnegative integers \\(a_{1} < a_{2}} < ... < a_{k}}\\) such that 
         </p>
         $$
@@ -2902,12 +2997,21 @@ star
 ];
 
 
-function getNextQuestion(questions, targetDifficulty) {
-    // Try to find an unused question at this difficulty
-    let available = questions.filter(
-        q => q.difficulty === targetDifficulty && !q.used
-    );
+function getNextQuestion(questions, userRating){
+  let best = questions[0];
+  let bestDiff = Math.abs(userRating - best.rating);
 
+  for (const q of questions) {
+    const diff = Math.abs(userRating - q.rating);
+
+    if (diff < bestDiff) {
+      best = q;
+      bestDiff = diff;
+    }
+  }
+    let available = questions.filter(
+        q => (Math.abs(q.rating - userRating) < 100) && !q.used
+    )
     // If none left, reset all questions
     if (available.length === 0) {
         questions.forEach(q => q.used = false);
@@ -2915,22 +3019,19 @@ function getNextQuestion(questions, targetDifficulty) {
 
         // Try again after reset
         available = questions.filter(
-            q => q.difficulty === targetDifficulty
+             q => (Math.abs(q.rating - userRating) < 100)
         );
     }
 
     // Absolute safety check
-    if (available.length === 0) return null;
-
+    if (available.length === 0) return best;
     const question = available[0];
     question.used = true;
     return question;
 }
 
-
-
 shuffleArray(questions);
-            algebraQuestion = getNextQuestion(questions, difficulty);
+            algebraQuestion = getNextQuestion(questions, userRating);
 // ---------- Question Data Geometry----------
 
 const geometryQ = [
@@ -2942,6 +3043,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Points \\(P\\) and \\(Q\\) lie in a plane with \\(PQ=8\\). How many locations for point \\(R\\) in this plane are there such that the triangle with vertices \\(P, Q,\\) and \\(R\\) is a right triangle with 
         area \\(12\\) square units?`,
         type: 'mc',
@@ -2965,6 +3067,7 @@ star
         image: "AMC10A2025.png",
         answer: "32pi",
         difficulty: 2,
+rating: 1000,
         solution: `<b>\\(32\\pi\\)</b><p>The key tip of this problem is to make everything as simple as possible. We have virtually no constraints for the size of the smaller semicircle. Thus, we can manipulate it however we want. For us, the simplest solution is to ignore it by making it infitesimally small to the point where it is no longer consequential. The smaller the circle gets, the closer \\(\\overline{CD}\\) or \\(16\\) gets to the diameter. Thus, if we ignore the existence of the semicircle, the diameter becomes 16. It is easy to solve from there, because we're just finding the area of a semicircle with diameter \\(16\\).
         $$
         \\frac{16}{2}=8
@@ -2996,6 +3099,7 @@ In the figure below, the outside square contains infinitely many squares, each o
         `,
         image: "AMC10A202513.png",
         difficulty: 3,
+rating: 1200,
         answer: "0.75",
         solution: `<b>0.75</b><p>Since we're only dealing with ratios, we can make the dimension of the larger square whatever we want. If this weren't abour ratios, I would recommend using a variable. However, since the values don't really matter here, we can just use 1, which will make our math the easiest. The areas of the squares are then 1, \\(k^2\\) (since the side lengths are multiplied by k, and then multiplied by each other). Effectively from here on out, the area is \\(k\\) raised to the power of the-xth-largest-square-times-two. Since we know that the shading alternates, and we are solving for the shaded area, we can alternate between adding and subtracting these.</p>
         $$
@@ -3040,6 +3144,7 @@ star
         image: "AMC10A202515.png",
         answer: "0.375",
         difficulty: 3,
+rating: 1200,
         solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src='AMC10A13S1.png' style='max-width:100%; height:auto;' />
         <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src='AMC10A13S2.png' style='max-width:100%; height:auto;' />
         <p>From here, we can use the fact that two triangles are similar to set up two ratios. We know that \\(AC\\) and \\(CE\\) are both hypotenuses to their respective triangles, and that the same is true for \\(CD\\) and \\(BC\\). Using this we can set up a ratio. Also notice that \\(CD\\) is equal to \\(5-sqrt{x^2-1}\\)</p>
@@ -3093,6 +3198,7 @@ star
         text:"The first three terms of a geometric sequence are the integers \\(a, 720\\) and \\(b\\) where \\(a<720<b\\). What is the sum of the digits of the least possible value of \\(b\\)?",
         used: false,
         difficulty: 4,
+rating: 1400,
         answer: "21",
         solution: `<b>21</b><p>Just because \\(a\\) and \\(b\\) have to be integers doesn't nescessarily mean that \\(r\\), the common ratio, has to be. A common mistake would be to just find the smallest prime factor of \\(720\\) and multiply that, but if we use a smaller ratio, we can minimize \\(b\\) even further.</p>
         <p>\\(r\\) must be greater than \\(1\\) in order to fuffil the rule that \\(a<720<b\\). We can write it as a fraction \\(\\frac{y}{x}) where \\(y>x\\), but \\(y\\) and \\(x\\) are as close as possible without breaking this rule, in order to minimize \\(r\\).</p> 
@@ -3110,6 +3216,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Seven cubes whose volumes are \\(1, 8, 27, 64, 216,\\) and \\(343\\) cubic units are stacked vertically to form a tower in which the volumes of the cubes decrease from bottom to top. Except for the bottom cube, the bottom face
         of each cube lines completely on top of the cube below it. What is the total surface area of the tower, including the bottom, in square units?`,
         type: 'fr',
@@ -3144,6 +3251,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: 'Triangle \\(AMC\\) is isoceles with \\(AM = CM\\). Medians \\(\\overline{MV}\\) and \\(\\overline{CU}\\) are perpendicular to each other, and \\(MV\=CU=12\\). What is the area of \\(\\triangle AMC\\)?',
         image: "amc10202012.png",
         solution: `<b>96</b><p>By median theorem, we know that \\(\\overline{PC} = 2\\overline{UP}\\) and \\(\\overline{MP}=2\\overline{VP}\\) and also that \\(\\overline{PC}+\\overline{UP}=\\overline{MP}+\\overline{VP}=12\\).</p>
@@ -3173,6 +3281,7 @@ star
 </span>`,
      used: false,
      difficulty: 4,
+rating: 1400,
      text: `As shown in the figure below, a rectangular dodecahedron (the polyhedron consisting of \\(12\\) congruent rectangular pentagonal faces) floats in space with two horizontal faces. Note
      that there is a ring of five slanted faces adjacent to the top face, and a ring of five slanted faces adjacent to the bottom face.How many ways are there
      to move from the top face to the bottom face via a sequence of adjacent faces so that each face is visited at  most once and moves are not permitted from the bottom ring to the top ring.</p>`,
@@ -3200,6 +3309,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Quadrilateral \\(ABCD\\) satisfies \\(\\angle ABC = 90^\\circ\\), \\(AC = 20\\), and \\(CD = 30\\).
         Diagonals \\(\\overline{AC}\\) and \\(\\overline{BD}\\) intersect at point \\(E\\) and \\(AE = 5\\). What is the area of quadrilateral \\(ABCD\\)?`,
         solution: `<b></b><p>I just wanted to point out that the first thing I personally noticed was that \\(ABCD\\) is NOT a rectangle so we can't force simplify. This is because, had it been a rectangle, we could split it into two right triangles, but \\(AE\\) is not long enough to be the hypotenuse.</p>
@@ -3229,6 +3339,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Let \\(T\\) be the triangle with verticies at \\((0,0), (4,0)\\) and \\((0,3)\\). Consider the following five isometries (rigid transformations) of the plane:
         rotations of \\(90^\\circ, 180^\\circ\\), and \\(270^\\circ\\) about the origin and reflections across the \\(x\\) and \\(y\\) axis. How many of the \\(125\\) sequences of three of these transformations
         (not nescessarily distinct) will return \\(T\\) to its original position? (For example a \\(180^\\circ\\) rotation, followed by a reflection across the \\(x-axis\\), and followed by a
@@ -3254,6 +3365,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Carl has \\(5\\) cubes of sidelenght \\(1\\), and Kate has \\(5\\) cubes of side length \\(2\\). What is the total volume of the \\(10\\) cubes?`,
         type: 'fr',
         answer: '45',
@@ -3266,6 +3378,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>The acute angles of a right triangle are \\(a^\\circ\\) and \\(b^\\circ\\), where \\(a > b\\) and both \\(a\\) and \\(b\\) are prime numbers. What is the least possible value of \\(b\\)?`,
         type: "mc",
         choices: ["\\(A) 2\\)", "\\(B) 3\\)", "\\(C) 5\\)", "\\(D) 7\\)", "\\(E) 11\\)"],
@@ -3283,6 +3396,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A three quarter section of a circle of radius \\(4\\) inches together with its interior can be rolled up to form the lateral surface area of a right circular cone by taping together along the two radii shown. 
         What is the volume of the cone in cubic inches?`,
         type: 'mc',
@@ -3311,6 +3425,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Andy the Ant lives on a coordinate plane and is currently at \\(-20,20\\) facing east (that is, in the positive \\(x\\) - direction). Andy moves 
         \\(1\\) unit and then turns \\(90^\\circ \\) left. He then moves \\(2\\) units (north) and then turns \\(90^\\circ\\) 
         left. He then moves \\(3\\) units (west) and again turns \\(90^\\circ \\) left. Andy continues his progress, increasing his distance each time 
@@ -3336,6 +3451,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `As shown in the figure below, six semicircles lie in the interior of a rectangular hexagon with side length \\(2\\) so that the diameters of the semicircles coincide with the sides of the hexagon.
         What is the area of the shaded region - inside the hexagon but outside all of the semicircles?`,
         type: 'mc',
@@ -3365,6 +3481,7 @@ star
 star
 </span>`,
         difficulty: 4,
+rating: 1400,
         used: false,
         text: `Let \\(B\\) be a right rectangular prism (box) with edges lengths \\(1, 3\\) and \\(4,\\) together with its interior. For
         real \\(r \\ge 0\\), let \\(S(r)\\) be the set of points in \\(3\\) -dimensional spcae that lie within a distance \\(r\\) of some point in \\(B\\).
@@ -3401,6 +3518,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         used: false,
         text: `In square \\(ABCD\\), points \\(E\\) and \\(H\\) lie on \\(\\overline{AB}\\) and \\(\\overline{DA}\\), respectively, so that \\(AE=AH\\). Points
         \\(F\\) and \\(G\\) lie on \\(\\overline{BC}\\) and \\(\\overline{CD}\\), respectively, and points \\(I\\) and \\(J\\) lie on \\(\\overline{EH}\\) so that 
@@ -3427,6 +3545,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Two right circular cones with verticies facing down as shown in the figure below contain the same amount of liquid. The radii of the tops of the liquid surfaces are \\(3\\) cm and \\(6\\) cm. Into
         each cone is droppeed a spherical marble of radius \\(1\\) cm, which sinks to the bottom and is completely submerged without spilling any liquid. What is the ratio of the rise of the liquid level in the narrow
         cone to the rise of the liquid level in the wide cone?`,
@@ -3448,6 +3567,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: 'What is the volume of a tetrahedron \\(ABCD\\) with edge lengths \\(AB=2, AC=3, AD=4, BC=\\sqrt{13}, BD=2\\sqrt{5}\\), and \\(CD=5\\)?',
         type: 'fr',
         solution: `<b>4</b><p>The first thing I want to clarify: a tetrahedron is like a pyramid with a triangular base. Now that that's cleared, the first thing I noticed as that \\(AC, AD\\) and \\(CD\\) form a right triangle by being a pythagorean triple.
@@ -3468,6 +3588,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Trapezoid \\(ABCD\\) has \\(\\overline{AB} || \\overline{CD}, BC = CD = 43\\), and \\(\\overline{AD} \\perp \\overline{BD}\\). Let
         \\(O\\( be the intersection of the diagonals \\(\\overline{AC}\\) and \\(\\overline{BD}\\) and let \\(P\\) be the midpoint of \\(\\overline{BD}\\). Given that
         \\(OP=11\\), the length \\(AD\\) can be written in the form \\(m\\sqrt{n}\\), where \\(m\\) and \\(n\\) are positive integers and \\(n\\) is not divisible by the square of any prime. What is \\(m+n\\)?`,
@@ -3491,6 +3612,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Let \\(ABCDEF\\) be an equiangular hexagon. The lines \\(AB\\), \\(CD\\), and \\(EF\\) determine a triangle with area \\(192\\sqrt{3}\\), and the lines \\(BC\\), \\(DE\\), and \\(FA\\) determine a triangle with area 
         \\(192\\sqrt{3}\\), and the lines \\(BC\\), \\(DE\\), and \\(FA\\) determine a triangle with area \\(324\\sqrt{3}\\). The perimeter of hexagon \\(ABCDEF\\) can be expressed as \\(m+n\\sqrt{p}\\), where \\(m, n\\) and \\(p\\) are positive integers and \\(p\\) is not divisible by the square of any prime. What is \\(m+n+p\\)?`,
         answer: '55',
@@ -3508,6 +3630,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `In a plane, four circles with radii \\(1, 3, 5,\\) and \\(7\\) are tangent at line \\(l\\) at the same point \\(A\\) but they may be on either side of \\(l\\). Region \\(S\\) consists of all the 
         points that lie insie exactly one of the four circles. What is the maximum possible area of region \\(S\\)?`,
         answer: '\\(D) 65\\pi\\)',
@@ -3540,6 +3663,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The point \\(P(a,b)\\) in the \\(xy\\) plane is first rotated counterclockwise by \\(90^\\circ\\) around the point \\((1,5)\\) and then reflected about the line \\(y=-x\\). The image of 
         \\(P\\) after these two transformations is at \\((-6,3)\\). What is \\(b-a\\)?`,
         type: 'fr',
@@ -3559,6 +3683,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `An inverted cone with base radius \\(12\\)cm and height \\(18\\)cm is full of water. The water is poured into a tall cylinder whose horizontal base has a radius of \\(24\\) cm. What is the height in centimeters of the water in the cylinder?`,
         type: 'fr',
         solution: '<b>1.5</b><p>The volume of the water in the cone is \\(12^2 \\cdot \\pi \\cdot 18 \\ cdot \\frac{1}{3} = 864\\pi\\). We divide this by \\(24^2\\pi=576\\pi\\) for a final answer of \\(1.5\\)</p>',
@@ -3575,6 +3700,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Grandma has just finished baking a large rectangular pan of brownies. She is planning to make rectangular pieces of equal size and shape, with straight cuts parallel to the sidesof the pan. 
         Each cut must be made entirely acros the pan. Grandma wants to make the same number of interior pieces as pieces along the perimeter of the pan. What is the greatest possilbe number of brownies she can produce?`,
         solution: `<b60></b><p>We know that half of the pieces of the brownies are on the interior, and the other half are on the exterior. We can make a whole complex expresion for both, but instead, we can just figure that, with dimensions \\(x\\) and \\(y\\), the interior \\((x-2)(y-2)=\\frac{xy}{2}\\). 
@@ -3619,6 +3745,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Three equally spaced parallel llines intersect a circle, creating three chords of lengths \\(38\\), \\(38\\), and \\(34\\). What is the distance between two adjacnet parallel lines?`,
         answer: '6',
         type: 'fr',
@@ -3652,6 +3779,7 @@ star
 star
 </span>`,
         difficulty: 4,
+rating: 1400,
         used: false,
         text: 'The figure is constructed from 11 line segments, each of which has length \\(2\\). The area of pentagon \\(ABCDE\\) can be written as \\(\\sqrt{m}+\\sqrt{n}\\) where \\(m\\) and \\(n\\) are positive integers. What is \\(m+n\\)?',
         image: 'amc10202120.png',
@@ -3679,6 +3807,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Menakara has a \\(4 \\times 6\\) index card. If she shortens the length of one side of this card by \\(1\\) inch, the 
         card would have an area of \\(18\\) square inches. What would the area of the card be in square inches if she shortens the length of the other side by \\(1\\) inch?`,
         solution: '<b>20</b><p>We notice immediately that the shortened side is the \\(4\\) because \\(6\\cdot 3=18\\), so we just switch it around and multiply \\(4\\cdot5=20\\)',
@@ -3693,6 +3822,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `As shown in the figure below, point \\(E\\) lies on the opposite half plane determined by line \\(CD\\) from point \\(A\\) so that \\(\\angle CDE = 110^\\circ\\). Point
         \\(F\\) lies on \\(\\overline{AD}\\) so that \\(DE=DF\\), and \\(ABCD\\) is a square. What is the degree measure of \\(\\angle AFE\\)?`,
         solution: `<b>170</b><p>We see that \\(\\angle ADE = 270-110=160\\). Since \\(\\triangle DFE\\) is isoceles, we know that the base angles \\(\\angle EFD\\) and \\(\\angle DEF \\) measure \\(10^\\circ\\). \\(AFE=180-10=170^\\circ\\)`,
@@ -3709,6 +3839,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `Isoceles triangle \\(ABC\\) has \\(AB = AC = 3\\sqrt{6}\\), and a circle with radius \\(5\\sqrt{2}\\) is tangent to line \\(AB\\) at \\(B\\) and to line \\(AC\\) at \\(C\\). What is the
         area of the circle that passes through verticies \\(A, B\\) and \\(C\\)?`,
@@ -3733,6 +3864,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `An architect is building a structure that will place vertical pillars at the verticies of regular hexagon \\(ABCDEF\\), which is lying horizontally on the ground. The six pillars will hold up a flat solar panel that
         will not be parallel to the ground. The heights of pillars \\(A, B\\) and \\(C\\) are \\(12, 9,\\) and \\(10\\) meters, respectively. What is the height, in meters, of the pillar at \\(E\\)?`,
         type: 'mc',
@@ -3754,6 +3886,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A disk of radius \\(1\\) rolls all the way around the inside of a square of side length \\(s > 4\\) and sweeps out a region of area \\(A\\). A second 
         disk of radius \\(1\\)  rolls all the way around the outside of the same square and sweeps out a region of area \\(2A\\). The value of \\(s\\) can be written as 
         \\(a+\\frac{b\\pi}{c}, where \\(a, b,\\) and \\(c\\) are positive integers and \\(b\\) and \\(c\\) are relatively prime. What is \\(a+b+c\\)?`,
@@ -3798,6 +3931,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Inside a right circular cone with bae radius \\(5\\) and height \\(12\\) are three congruent spheres with radius \\(r\\). Each sphere is tangent to the other two spheres and also tangent to the
         bae and side of the cone. What is \\(r\\)?`,
         solution: `<b>\\(\\frac{90=40\\sqrt{3}}{11}\\)</b><p>First start by drawing two diagrams. The first is half a vertical cross-section of the cone. We would draw a right triangle with legs \\(5\\) and \\(12\\) and hypotenuse(by pythagorean theorem\\) \\(13\\). We then draw a circle of radius \\(r\\) tangent to the bottom 
@@ -3843,6 +3977,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         text: `What is the area of the shaded figure shown below?`,
         image: `amc1020211.png`,
@@ -3862,6 +3997,7 @@ star
 star
 </span>`, 
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `A regular hexagon of side length \\(1\\) is inscribed in a circle. Each minor arc of the circle determined by a side of the heexagon is reflected over that side. What is the area of the region bounded by these \\(6\\) reflected arcs?`,
         solution: `<b>\\(3\\sqrt{3}-\\pi\\)</b><p>Start by finding the area of the hexagon to be \\(\\frac{3\\sqrt{3}}{2}\\). Now, let''s focus on the curves. We have no formula for their exact area, but we do realize that, if we draw the hexagon as \\(6\\) equilateral triangles, and get rid of the edge it will eventually be reflected over, we end up with a nifty little section of a circle.</p>
@@ -3889,6 +4025,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `A square with side length \\(3\\) is inscribed in an isoceles triangle with one side of the square along the bae ofthe triangle. A square with side length \\(2\\) has two vertices on the other square and the other two sides of the triangle, as shown. What is the area of the triangle?`,
         image: 'amc10202013.png',
@@ -3910,6 +4047,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `In square \\(ABCD\\), points \\(P\\) and \\(Q\\) lie on \\(\\overline{AD}\\) and \\(\\overline{BC}\\), respectively.
         Segments \\(\\overline{BP}\\) and \\(\\overline{CQ}\\) intersect at right angles at \\(R\\) with \\(BR=6\\) and \\(PR=7\\). What is the area of the square?`,
         image: 'amc10202115.png',
@@ -3961,6 +4099,7 @@ star
 </span>`,
      used: false, 
      difficulty: 4,
+rating: 1400,
      text: `Three identical square sheets of paper each with side length \\(6\\) are stacked on top of each other. The middle sheet is rotated clockwise \\(30^\\circ\\) about its center and the top sheet is rotated clockwise \\(60^\\circ\\) about its center, resulting in the $24$-sided polygon shown in the figure below. 
      The area of this polygon can be expressed in the form \\(a-b\\sqrt{c}\\), where \\(a, b\\) and \\(c\\) are positive integers, and $c$ is not divisible by the square of any prime. What is \\(a+b+c?\\)`,
      image: 'amc10202118.png',
@@ -3987,6 +4126,7 @@ star
 </span>`,
        used: false,
        difficulty: 5,
+rating: 1600,
        text: `Regular polygons with \\(5, 6, 7\\) and \\(8\\) sides are inscribed in the same circle. No two of the regular polygons share a vertex, and no three of their
        sides intersect at a common point. At how many points inside the circle do two of their sides intersect?`,
        solution: `<b>68</b><p>Start by doing a few basic experimens and seeing if there's a pattern. We don't even nescessarily need the whole \\(5, 6, 7\\) etc., because that will get pretty 
@@ -4016,6 +4156,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `A rectangle with side lengths \\(1\\) and \\(3\\), a square with side length \\(1\\), and a rectangle \\(R\\) are inscribed inside a 
         larger square as shown. The sum of all possible values of the area of \\(R\\) can be written in the form \\(frac{m}{n}\\), where \\(m\\) 
         and \\(n\\) are relatively prime positive integers. What is \\(m+n\\?)`,
@@ -4042,6 +4183,7 @@ star
 </span>`, 
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Square \\(ABCD\\) has side length \\(1\\). Points \\(P, Q, R, S\\) each lie on a side of \\(ABCD\\) such that \\(APQCRS\\) is an equilateral convex
         hexagon with side length \\(s\\). What is \\(s\\)?`,
         type: 'mc',
@@ -4083,6 +4225,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `DDR Daniel finds a rectangular index card and measures its diagonal to be \\(8\\) centimeters. DDR Daniel then cuts out equal squares of
         side \\(1\\) cm at two opposite corners of the index card and measures the distance between the two closest verticies of these squares to be \\(4\\sqrt{2}\\) centimeters,
         as shown below. What is the area of the original index card?`,
@@ -4131,6 +4274,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `Let \\(\\triangle ABC\\) be a scalene triangle. Point \\(P\\) lies on \\(\\overline{BC}\\) so that \\(\\overline{AP}\\) bisects \\(\\angle BAC).
         The line through \\(B\\) perpendicular to \\(\\overline{AP}\\) intersects the line through \\(A\\) parallel to \\(\\overline{BC}\\) at point 
@@ -4153,6 +4297,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Quadrilateral \\(ABCD\\) with side lengths \\(AB=7, BC=24, CD=20, DA=15\\) is inscribed in a circle. The area interior to the circle but exterior to the quadrilateral can be
         written in the form \\(\\frac{a\\pi-b}{c}\\), where \\(a, b\\) and \\(c\\) are positive integers such that \\(a\\) and \\(c\\) have 
         no common prime factor. What is \\(a+b+c?\\)`,
@@ -4182,6 +4327,7 @@ star
 star
 </span>`,
         difficulty: 4,
+rating: 1400,
         used: false,
         text: `A bowl is formed by attatching four rectangular hexagons of side \\(1\\) to aquire a square of side \\(1\\). The edges of the adjacent hexagons coincide, as shown in the figure. 
         What is the are of the octagon obtained by joining the top eight vertices of the four hexagons, situated on the rim of the bowl?`,
@@ -4208,6 +4354,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Isoceles trapezoid \\(ABCD\\) has parallel sides \\(\\overline{AD}\\) and \\(\\overline{BC}\\), with \\(BC<AD\\) and 
         \\(AB=CD\\). There is a point \\(P\\) in the plane such that \\(PA=1\\), \\(PB=2),\\(PC=3\\), and \\(PD=4). What is \\(\\frac{BC}{AD}\\)?`,
         solution: `<b>\\(\\frac{1}{3}\\)</b><p>There's an old trick in competition math where you do something called "forced simplification". This is a process
@@ -4234,6 +4381,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `<p>Let \\(R, S\\) and \\(T\\) be squares that have vertices at lattice points (i.e., points whose coordinates are both integers) in the coordinate plane, together with their interiors. The
         bottom edge of each square is on the \\(x-\\)axis. The left edge of \\(R\\) and the right edge of \\(S\\) are on the \\(y-\\)axis, and \\(R\\) contains \\(\\frac{9}{4}\\) as amny lattice points as does \\(S\\). The 
         top two vertices of \\(T\\) are in \\(R\\cup S\\), and \\(T\\) contains \\(\\frac{1}{4}\\) of the lattice points contained in \\(R\\cup S\\). See the figure (not drawn to scale)</p>
@@ -4257,6 +4405,7 @@ star
 </span>`, 
         used: false,
         difficulty: 1,
+rating: 800,
         text: `In rhombus \\(ABCD\\), point \\(P\\) lies on segment \\(\\overline{AD}\\) so that \\(\\overline{BP} \\perp \\overline{AD}, AP=3\\), and
         \\(PD=2\\). What is the area of \\(ABCD\\)? (Note: The figure is not drawn to scale.)`,
         image: 'amc1020222.png',
@@ -4279,6 +4428,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `The diagram below shows a rectangle with side lengths \\(4\\) and \\(8\\) and a square with side length \\(5\\). Three vertices of the square lie on three different sides of the
         rectangle, as shown. What is the area of the region inside both the square and the rectangle?`,
         image: "amc10202216.png",
@@ -4305,6 +4455,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<b>113</b><p>We can extend lines \\(\\overline{AD}\\) and \\(\\overline{BE}\\) until they intersect at a point we call point \\(G\\).
         We then draw a circle centered at \\(G\\ that has \\(A\\), \\(F\\), and \\(C\\) on it. We know that \\(\\angle EDG\\) is equal to \\(180-46=134\\). By power of a point and inscribed angles, 
         we know that \\(\\angle EFC=\\frac{1}{2}\\angle EDG = 67\\) (iykyk). We also know that \\(\\angle EFC\\) makes a linear pair with \\(\\angle BFC\\) so \\(m\\angle BFC=180-67=133^\\circ\\).`,
@@ -4322,6 +4473,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A square of area \\(2\\) is inscribed in a circle of area \\(3\\), creating four congruent triangles, as shown below. What
         is the ratio of the shorter leg to the longer leg in the shaded right triangle?`,
         image: `amc10202311.png`,
@@ -4345,6 +4497,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Abdul and Chiang are standing \\(48\\) feet apart in a field. Bharat is standing in the same field as far from Abdul as possible so that the angle formed
         by his lines of sight to Abdul and Chiang measures \\(60^\\circ\\). What is the square of the distance (in feet) between Abdul and Bharat?`,
         solution: `<b>3072</b><p>We know that Bharat is furthest from Abdul when he is perpendicular to the line between Abdul and Chiang. We know that this causes a \\(30-60-90\\) right triangle. We know that \\(\\frac{48}{x}=\\sin(60)\\) so \\(\\frac{48}{x}=\\sqrt{3}{2}\\)
@@ -4362,6 +4515,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `An even number of circles are nested, starting with a radius of \\(1\\) and increasing by \\(1\\) each time, all sharing a common point. The region between every other circle is shaded, starting with the 
         region inside the circle of radius \\(2\\) but outide the circle of radius \\(1\\). An example showing \\(8\\) circles is displayed below. What is the least number of circles needed to make the total shaded area at least \\(2023\\pi\\)?`,
         solution: `<b></b><p>We evaluate a few basic cases to know that the area enclosed by the \\(2\\)nd and \\(1\\)st circles is \\(3\\pi\\), the area enclosed by hte \\(3\\)rd and \\(4\\)th is \\(7\\pi\\), etc. etc. for \\(11\\pi\\), \\(15\\pi\\). This is an arithmetic series of \\(a_{1}=3\\) and \\(d=4\\). The
@@ -4402,6 +4556,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Let \\(ABCD\\) be a rectangle with \\(AB=30\\) and \\(BC=28\\). Point \\(P\\) and \\(Q\\) lie on \\(\\overline{BC}\\) and \\(\\overline{CD}\\) respectively so that all sides of \\(\\triangle ABP, \\triangle PCQ,\\) and \\(\\triangle QDA\\) have integer lengths.
         What is the perimeter of \\(\\triangle APQ\\)`,
         solution: `<b>84</b><p>Based on the answer choices, we can pretty reasonably conclude that all of the values are integers. We also know that drawing a triangle with vertices on the sides will create right triangles bounded by the lights and by the edges of the square. Using
@@ -4431,6 +4586,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A rhombic dodecahedron is a solid with \\(12\\) congruent rhombus faces. At every vertex, \\(3\\) or \\(4\\) edges meet, depending on the vertex. How many vertices have exactly \\(3\\) edges meet?`,
         solution: `<b>8</b><p>This question uses something called Euler's formula, which dicatates that \\(\\textup{Vertices}+\\textup{Faces}-\\textup{Edges}=2\\). We know that there are 
         \\(12\\) rhombuses each with \\(4\\) edges meaning there are \\(48\\) "collision places". However, we must note that edges are shared between two rhombuses for \\(\\frac{48}{2}=24\\) total edges. If \\(x=\\)vertexes that intersect at \\(3\\) points and \\(y=\\)number of vertexes that intersect \\(4\\) points, we have that
@@ -4467,6 +4623,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Circle \\(C_{1}\\) and \\(C_{2}\\) each have radius \\(1\\), and the distance betwen their centers is \\(\\frac{1}{2}\\). Circle \\(C_{3}\\) is the largest circle internally tangent to both \\(C_{1}\\) and \\(C_{2}\\).
         Cirlce \\(C_{4}\\) is internally tangent to both \\(C_{1}\\) and \\(C_{2}\\) and externaly tangent to \\(C_{3}\\). What is the radius of \\(C_{4}\\)?`,
         image: 'amc10202318.png',
@@ -4505,6 +4662,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Six regular hexagonal blocks of side length \\(1\\) unit are arranged inside a regular hexagonal frame. Each block lies along an inside edge of the frame and is aligned with two other blocks, as shown in the figure below. The distance from any corner of the frame to the nearest vertex of a block is \\(\\frac{3}{7} unit). What is 
         the area of the region isde the frame not occupied by the blocks?`,
         image: 'amc10202324.png',
@@ -4522,6 +4680,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `A \\(3-4-5\\) right triangle is inscribed in circle \\(A\\), and a \\(5-12-13\\) right triangle is inscribed in circle \\(B\\). What is the ratio of the area of circle 
         \\(A\\) to the area of circle \\(B\\)?`,
         type: 'mc',
@@ -4552,6 +4711,7 @@ star
 </span>`, 
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Square \\(ABCD\\) is rotated \\(20^\\circ\\) clockwise about its center to obtain square \\(EFGH\\), as shown below. What is the degree measure of \\(\\angle EAB\\)?`,
         solution: `<b>\\(35^\\circ\\)</b><p>The first thing that occurred to me to find was where the \\(20^\\circ\\) was actually expressed, since it's not super obvious from the image. HOWEVER, if we were to draw a point at the center of both squares, let's call it
         \\(I\\) and draw line segments \\(\\overline{AI}\\) and \\(\\overline{EI}\\) than we do indeed get a \\(20^\\circ\\) angle</p>
@@ -4575,6 +4735,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A rectangular box \\(P\\) has distinct edge lengths \\(a, b,\\) and \\(c\\). The sum of the lengths of all \\(12\\) edges of 
         \\(P\\) is \\(13\\), the sum of the areas of all \\(6\\) faces of \\(P\\) is \\(\\frac{11}{2}\\), and the volume of \\(P\\) is \\(\\frac{1}{2}\\).
         What is the length of the longest interior diagonal connecting two vertices of \\(P\\)?`,
@@ -4610,6 +4771,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Four coungruent semicircles are drawn on the surface of a sphere with radius \\(2\\), as shown, creating a close curve that divides the surface into two congruent regions. The
         length of the curve is \\(\\pi\\sqrt{n}\\). What is \\(n\\)?`,
         image: 'amc10202320.png',
@@ -4636,6 +4798,7 @@ star
 </span>`,
      used: false,
      difficulty: 5,
+rating: 1600,
      text: 'A regular pentagon with area \\(1+\\sqrt{5}\\) is printed on paper and cut out. All five vertices are folded to the center of the pentagon, creating a smaller pentagon. What is the area of the new pentagon?',
       solution: `<b>\\(\\sqrt{5}-1\\)</b><p>When we fold a pentagon, or any regular polygon, so that it forms another regular polygon of the same sort, we notice two things:</p>
       <p>1) The inner polygon is rotated (idk this helped me visualize it)</p>
@@ -4660,6 +4823,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `One side of an equilateral triangle of height \\(24\\) lies on line \\(l\\). A circle of radius \\(12\\) is tangent to line \\(l\\) and is externally tangent to the triangle. The area of the region exterior to the trinagle and the circle and bounded by the triangle, the circle, and line \\(l\\) can be
         written as \\(a\\sqrt{b}-c\\pi\\) where \\(a, b,\\) and \\(c\\) are positive integers and \\(b\\) is not divisible by the square of any prime. What is \\(a+b+c\\)?`,
         solution: `<b>74</b><p>We start by drawing the radii connecting the center of the circle to the point of intersections with the circle and triangle and the circle and \\(l\\). The angle between the triangle and \\(l\\) on the EXTERIOR is \\(180-60=120\\) and 
@@ -4683,6 +4847,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: 'All of the rectangles in the figure below, which is drawn to scale, are similar to the enclosing rectangle. Each number represents the area of the rectangle. What is length \\(AB\\)?',
         image: 'amc10202416.png',
         solution: `<b>\\(10\\sqrt[4]{2}\\)</b><p>We know by the answer choices that the sie lengths rae probably not integers. That sucks for us. We ARE however told that the rectangle is drawn to scale. This helps a whole lot.</p>
@@ -4712,6 +4877,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A rectangle has integer length sides and an area of 2024. What is the least possible perimeter of the rectangle?`,
         solution: `<b>180</b><p>We know that the perimeter will be smallest when the the side lengths are as close to each other as possible (if you don't know this try using a few smaller tests and make a conjecture)</p>
         <p>We know that \\(\\sqrt{2025}=45\\) so we're looking for something near \\(45\\). Obviously, \\(45\\) is not a factor, but \\(44\\) is. The dimensions are \\(44\\) and \\(46\\) for a combined perimeter of \\(44+46+44+46=180\\)`,
@@ -4727,6 +4893,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Quadrilateral \\(ABCD\\) is a parallelogram, and \\(E\\) is the midpoint of the side \\(\\overline{AD}\\). Let \\(F\\) be the intersection of lines \\(EB\\) and \\(AC\\). What
         is the ratio of the area of qudrilateral \\(CDEF\\) to the area of \\(\\triangle CFB\\)?`,
         solution: `<b>\\(5:4\\)</b><p>For this, we use a system called "forced simplification". Parallelogram? Make it a square! Side lengths? Make them \\(1\\)!. Since we know we're working with ratios, it doesn't really matter.</p>
@@ -4749,6 +4916,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `In the figure below \\(WXYZ\\) is a rectangle with \\(WX=4\\) and \\(WZ=8\\). Point \\(M\\) lies \\(\\overline{XY}\\),
         point \\(A\\) lies on \\(\\overline{YZ}\\) and \\(\\angle WMA\\) is a right angle. The areas of \\(triangle WXM\\) and \\(\\triangle WAZ\\) are equal. What is the area of \\(\\triangle WMA?\\)`,
         image: 'amc10202411.png',
@@ -4787,6 +4955,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Two straight pipes (circular cylinders) with radii \\(1\\) and \\(\\frac{1}{4}\\), lie parallel in contact on a flat floor. The 
         figure below shows a head-on view. What is the sum of the possible radii of a third parallel pipe lying on the same floor and in contact with both? `,
         image: `amc10202421.png`,
@@ -4878,6 +5047,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many isosceles triangles are there with positive area whose side lengths are all positive integers and whose longest side has length \\(2025\\)?`,
         solution: `<b>3037</b><p>We know that the sum of two sides must be greater than the remaining side. We evaluate two cases:</p>
         <p>1) The longest side is the base side, the one opposite the vertex angle, measures \\(2025\\). The side angles must be greater than \\(\\frac{2025}{2}=2=1012.5\\) and must be less than \\(2024\\), thus there are \\(1012\\) possible values</p>
@@ -4893,6 +5063,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `In an equilateral triangle, each interior angle is trisected by a pair of rays. The intersection of the interiors of the middle \\(20^\\circ\\)-angle at each evertex is the
         interior of a convex hexagon. What is the degree measure of the smallest angle of this hexxagon?`,
         choices: ['\\(A) 80\\)', '\\(B) 90\\)', '\\(C) 100\\)', '\\(D) 110\\)', '\\(E) 120\\)'],
@@ -4917,6 +5088,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `The sequence \\(1,x,y,z\\) is arithmetic. The sequence \\(1,p,q,z\\) is geometric. Both sequences are strictly increasing and contain only integers, and 
 \\(z\\) is as small as possible. What is the value of \\(x+y+z+p+q\\)?`,
 type: 'mc',
@@ -4934,6 +5106,7 @@ star
 </span>`,
 used: false,
 difficulty: 2,
+rating: 1000,
 text: `The numbers \\(16\\) and \\(25\\) are a pair of consecutive positive squares whose difference is \\(9\\). How many pairs of consectuve positive perfect squares have a distance of less than or 
 equal to \\(2023\\)?`,
 type: 'mc',
@@ -4951,6 +5124,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A single bench section at a school event can hold either \\(7\\) addults or \\(11\\) children. When \\(N\\) bench sections are connected end to end, an equal number of adults and children seated together will occupy the bench space. What is the least positive
         integer value of \\(N\\)?`,
         type: 'mc',
@@ -4967,6 +5141,7 @@ star
 </span>`,
 used: false,
 difficulty: 2,
+rating: 1000,
 text: 'How many positive even multipes of \\(3\\) less than \\(2020\\) are perfect squares?',
 choices: ['\\(A) 7\\)', '\\(B) 8\\)', '\\(C) 9\\)', '\\(D) 10\\)', '\\(E) 12\\)'],
 type: 'mc',
@@ -4983,6 +5158,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Let \\(L_{1}=3, L_{2}=3\\) and \\(L_{n+2}=L_{n+1}+L_{n}\\) for \\(n \\geq 1\\). How many terms in the sequence \\(L_{1},L_{2},L_{3}...L_{2023}\\) are even>`,
         solution: `<b>674</b><p>Let's do some induction. We have \\(1,3,4,7,11,18,29,47,76...\\). It goes odd, odd, even, odd, odd, even, odd, odd even. That means every \\(3\\), there is an even . We have \\(\\frac{2023}{3}=674\\) with  remainder of \\(1\\). That gives, \\(674\\) evens`,
         type: 'mc',
@@ -4998,6 +5174,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `An integer is assigned to each vertex of a cube. The value of an edge is defined to be the
         sum of the values of the two vertices it touches, and the value of a face is defined to be the
         sum of the values of the four edges surrounding it. The value of the cube is defined as the
@@ -5018,6 +5195,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `How many \\(4\\)-digit positive integers (that is integers between \\(1000\\) and \\(9999\\), inclusive) having only even digits are 
         divisible by \\(5\\)?`,
         solution: `<b>100</b><p>Since it has to be divisible by \\(5\\), we need it to end with \\(5\\) or \\(0\\). Since it must have all even digits, it must end with \\(0\\).
@@ -5035,6 +5213,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The \\(25\\) integers from \\(-10\\) to \\(14\\), inclusive, can be arranged to form a \\(5\\)-by-\\(5\\) square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the
         numbers along each of the main diagonals are all the same. What is the value of the common sum?`,
         solution: `<b>10</b><p>Notice that there are multiple ways to do this, if anything because of rotational symmetry. This alone tells us that finding "the exact solution" isn't best</p>
@@ -5077,6 +5256,7 @@ star
         type: 'mc',
         used: false,
         difficulty: 4,
+rating: 1400,
     },
     {
         title: `AMC 10B 2020 Problem 6 <span class="material-symbols-outlined">
@@ -5086,6 +5266,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Driving along a highway, Megan noticed that her odometer showed \\(1591\\) (miles). This number is a palindrome-it reads the same forward and backward. Then \\(2\\) hours later,
         the odometer displayed the next higher palindrome. What was her average speed, in miles per hour, during this \\(2\\)-hour period?`,
         solution: `<b>55</b><p>We don't actually want to focus on the ones digit, because, when it comes down to that, it won't matter as much. We start bigger. We know that we want the next number to be as small as possible, so then we ideally stay in the \\(10,000\\)s territory. We then have \\(1 x x x 1\\). We, ideally,
@@ -5103,6 +5284,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `<p>The decimal representation of</p>
         $$
         \\frac{1}{20^20}
@@ -5126,6 +5308,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Steve wrote the digits \\(1, 2, 3, 4,\\) and \\(5\\) in order repeatedly from left to right, forming a list of \\(10,000\\) digits beginning \\(123451234512...\\) He then erased every third digit from his list (that is the \\(3\\)rd, \\(6\\)th, \\(9\\)th...digits from the left),
         the erased every fourth digit from the resulting list (that is the \\(4\\)th, \\(8\\)th, \\(12\\)th,...digits from the left in what remained), and then erased every fifth digit from what remained at that point. What is the sum of the three digits that were in the positions of \\(2019, 2020, 2021\\)?`,
         solution: `<b>11</b><p>This problem really isn't as complicated as it may look. Yes, at a glance, it is long winded. However, the key to this problem is realizing that every few runs, there will be a pattern.</p>
@@ -5159,6 +5342,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Bela and Jenn play the following game on the closed interval \\([0,n]\\) of the real number line, where \\(n\\) is a fixed integer greater than \\(4\\). They take turns playing, with Bela going first. At his first turn,
         Bela chooses any real number in the interval \\([0,n]\\). Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?`,
         type: 'mc',
@@ -5181,6 +5365,7 @@ star
 </span>`, 
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `What is the remainder when \\(2^202 + 202\\) is idivided by \\(2^101+2^51+1\\)?`,
         solution: `<b>201</b><p>If \\(x=2^50\\), we can substitute \\(\\frac{4x^4+202}{2x^2+2x+1}\\) we factor out \\((2x^2+2x+1)(2x^2-2x+1)+201\\) and divide out the denominator for \\(2x^2-2x+2\\) which we solve to be \\(201\\)</p>`,
         answer: '201',
@@ -5195,6 +5380,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>Tom has a collection of \\(13\\) snakes, \\(4\\) of which are purple and \\(5\\) of which are happy. He observes that</p>
         <p>All of his happy snakes can add</p>
         <p>None of his purple snakes can subtract</p>
@@ -5214,6 +5400,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>When a student multiplied the number \\(66\\) by the repeating decimal,</p>
         $$
         1.abab...\\underline{1}.\\overline{ab},
@@ -5245,6 +5432,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>Which of the following is equivalent to</p>
         $$
         (2+3)(2^2+3^2)(2^4+3^4)(2^8+3^8)(2^16+3^16)(2^32+3^32)(2^64+3^64)
@@ -5266,6 +5454,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `For which of the following integers \\(b\\) is the base-\\(b\\) number \\(2021_{b}-221_{b}\\) not divisible by \\(3\\)?`,
         type: 'mc',
         choices: ['\\(A) 3\\)', '\\(B) 4\\)', '\\(C) 6\\)', '\\(D) 7\\)', '\\(E) 8\\)'],
@@ -5285,6 +5474,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Mr. Zhou places all the integers from \\(1\\) to \\(225\\) into a \\(15\\) by \\(15\\) grid. he places \\(1\\) in the middle square (eighth row and eighth column) and places other numbers one by one clockwise, as shown in part in the diagram below.
         What is the sum of the greatest number and the last number that appear in the second row from the top?`,
         image: "amc1020218.png",
@@ -5303,6 +5493,7 @@ star
 </span>`, 
         used: false,
         difficulty: 3,
+rating: 1200,
         text: 'Let \\(N=34\\cdot 34 \\cdot 63 \\cdot 270\\). What is the ratio of the sum of the odd divisors of \\(N\\) to the sum of the even divisors of \\(N\\)',
         type: 'mc',
         choices: ['\\(A) 1:16', '\\(B) 1:15\\)', '\\(C) 1:14\\)', '\\(D) 1:8\\)', '\\(E) 1:3\\)'],
@@ -5322,6 +5513,7 @@ star
         text: "Let \\(n\\) be a positive integer and \\(d\\) be a digit such that the value of the numeral \\(32d\\) in base \\(n\\) equals \\(263\\), and the value of the numeral \\(324\\) in base \\(n\\) equals the value of the numeral  \\(11d1\\) in base six. What is \\(n+d\\)",
         used: false,
         difficulty: 3,
+rating: 1200,
         solution: `<b></b><p>Recall that when we want to change a number in base \\(x\\) into base \\(10\\), we multiply the number in each digits place to \\(x\\) to the whatever-th place power (eg 2 for 100, 3 for a thousand). Thus, \\(32d\\), a base \\(n\\) number, is equal to \\(3n^2+2n+d=263\\). The second fact tell us that \\(3n^2+2n+4=216+36+6d+1\\). We solve for \\(d\\) and \\(n\\), or if we can, \\(n+d\\) directly</p>
         $$
         3n^2+2n+d=263
@@ -5368,6 +5560,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Call a positive integer an uphill integer if every digit is strictly greater than the previous digit. For example, \\(1357\\), \\(89\\) and \\(5\\) are all uphill integers, but \\(32\\), \\(1240\\) and \\(466\\), are not. How many uphill integers are divisble by \\(15\\)`,
         solution: `<b>6</b><p>First off, we know it must end with a \\(5\\) because it needs ot end in \\(5\\) or \\(0\\) to be divisible by \\(15\\) and uphill integers can't end in \\(0\\)</p>
         <p>Next, we know that the digits need to sum to a number divisible by \\(3\\). We compute with using casework by the number of digits</p>
@@ -5390,6 +5583,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Ravon, Oscar, Aditi, Tyrone, and Kim play a card game. Each persion is given \\(2\\) cards out of a set of cards numbered \\(1, 2, 3, ..., 10\\). The score of a player is the sum of the numbers of their cards. The 
         scores of the players are as follows: Ravon-\\(11\\), Oscar-\\(4\\), Aditi-\\(7\\), Tyrone-\\(16\\), Kim-\\(17\\). Which of the following statements is true?`,
         type: 'mc',
@@ -5406,6 +5600,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: "The six-digit number \\(20210A\\) is prime for only one digit \\(A\\). What is \\(A\\)?",
         type: 'fr',
         solution: `<b>9</b><p>Obviously, we know the answer can't end in an even number because then it would be divisible by \\(2\\)</p>
@@ -5424,6 +5619,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A two-digit positive integer is said to be \\(cuddly\\) if it is equal to the sum of its nonzero tens digit and the square of its units digit. How many two-digit positive integers are cuddly?`,
         solution: `<b>1</b><p>We take the definition we are given and rewrite it into an equation. Call \\(x\\) the tens digit and \\(y\\) the units digit. We have that our number, that has to be \\(cuddly\\) is equal to \\(10x+y\\) and that it must be equal to \\(x+y^2\\) so we write \\(10x+y=x+y^2\\) or
         \\(9x=y^2-y\\). We then proceed to try out values of \\(y\\) between \\(0\\) and \\(9\\)</p>
@@ -5451,6 +5647,7 @@ star
 </span>`,
        used: false,
        difficulty: 3,
+rating: 1200,
        text: `The base-nine representaiton of the number \\(N\\) is  \\(27,006,000,052_{nine}\\). What is the remainder when \\(N\\) is divided by \\(5\\)?`,
        solution: `<b>3</b><p>Brute forcing this is not an option, because we'd be calculating \\(9\\) to the \\(10\\)th power. Notice that the remainder when divided by \\(5\\) only depends on the last digit so we don't have to calculate that much. We know that to convert\\(N\\) back into base \\(10\\) we follow essentially \\(2\\cdot9^10 + 7 \\cdot 9^9\\) etc. However,
        even if we only focus on the units digit that is annoying to calculate \\(9\\) to that many powers. However, when we multiply, we only need to find the units digits of the two numbers we multiply to find the units digit of the product. And luckily, a lot of exponents follow patterns when it comes to units digits. Let's try it with \\(9\\) and make a conjecture:</p>
@@ -5482,6 +5679,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `For each positive integer \\(n\\), let \\(f_{1}(n)\\) be twice the number of positive integer divisors of \\(n\\), and for \\(j \\ge 2\\), let \\(f_{j}(n)=f_{1}(f_{j-1}(n))\\). For how many values of \\(n \\ge 50\\) is \\(f_{50}(n)=12\\)?`,
         solution: `<b>10</b><p>Let's first explain what this is saying. Essentially, for \\(f_{j}\\) you continuously use the function until you get down to \\(1\\). With \\(f_{50}\\) that looks like \\(f_{1}(f_{1}(f_{1}))\\) \\(50\\) times. Considering 
         how complex this is, there's probably a better way to solve it. </p>
@@ -5510,6 +5708,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) in which \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
         solution: `<b>4041</b><p>We know that adjacent, or consecutive, numbers are always relatively prime. Thus, we don't really have to worry about simplifying. We just have to find the numerator. You could probalby brute force this if you really wanted to, but let's be sensible about it. We know that we're looking for the relationship between \\(x^2+1\\) and \\(x^2\\), particulary
         the difference which ends up being \\((x+1)^2-x^2=x^2+2x+1-x^2=2x+1\\). We have \\(x=2020\\) for an ansewr of \\(4041\\).`,
@@ -5522,6 +5721,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Let \\(n=8^2022\\). Which of the following is equal to \\(\\frac{n}{4}\\)?`,
         type: 'mc',
         choices: ['\\(A) 4^1010\\)', '\\(B) 2^2022\\)', '\\(C) 8^2018\\)', '\\(D) 4^3031\\)', '\\(E) 4^3032\\)'],
@@ -5538,6 +5738,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The least positive integer with exactly \\(2021\\) distinct positive divisors can be written in the form of \\(m \\cdot 6^k\\), where \\(m\\) and \\(k\\) are integers and \\(6\\) is not a divisor of \\(m\\). What is \\(m+k\\)?`,
         solution: `<b>58</b><p>We know that \\(6^k\\) can be written as \\(2^k \\cdot 3^k\\). We also know that the number of divisors a number has is equal to the product of \\(1\\) plus the powers in its prime facotrization. Thus, \\(2021 = 2 \\cdot (k+1)^2\\), but that's not possible because the
         powers have to be integers and \\(2021\\) is odd. That is, unless \\(m\\) is not prime. We now know for sure that \\(m\\) cannot be prime OR must be a facotr of \\(6\\). Returning to our way of finding the number of factors, we note that \\(2021=43 \\cdot 47\\) which we can find by using \\(45^2\\) and going for closer values. We know that the prime factorization must be \\(2^46 \\cdot 3^42\\) or \\(2^4 \\cdot 6^42\\) for \\(m=16\\) and \\(k=42\\) and an answer of \\(58\\) `,
@@ -5552,6 +5753,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Call a fraction \\(\\frac{a}{b}\\), not nescessarily in simpplest form, special if \\(a\\) and \\(b\\) are positive integers whose sum is \\(15\\). How many distinct integers can be written as the sum of two, not nescessarily different, special fractions?`,
         solution: `<b>11</b><p>First find all the special fractions</p>
         $$
@@ -5590,6 +5792,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Forty slips of paper numbered \\(1\\) to \\(40\\) are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other.
         Alice says "I can't tell who has the larger number." Then Bob says, "I know who has the larger number." Alice says, "You do?" Is your number prime?" Bob replies, "Yes." Alice says, "In that case, if I multiply your number by \\(100\\) and add my number, the result is a perfect square," What is the sum of the two numbers drawn from the hat?`,
         solution: `<b>27</b><p>Let's break this down individually:</p>
@@ -5610,6 +5813,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Which of the following conditions is sufficient to guarantee that integers \\(x, y,\\) and \\(z\\) satisfy the equation \\(x(x-y)+y(y-z)+z(z-x)=1\\)?`,
         type: 'mc',
         choices: ['\\(A) x>y\\) and \\(y=z\\)', '\\(B) x=y-1\\) and \\(y=z-1\\)', '\\(C) x=z+1\\) and \\(y=x+1\\)', '\\(D) x=z\\) and \\(y-1=x\\)', '\\(E) x+y+z=1\\)'],
@@ -5637,6 +5841,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Let \\(N\\) be a positive integer \\(7777...777\\) a \\(313\\)-digit number where each digit is a \\(7\\). Let \\(f(r)\\) be the leading digit of the \\(r\\)th root of \\(N\\). What is \\(f(2)+f(3)+f(4)+f(5)+f(6)\\)?`,
         solution: `<b>8</b><p>We can make a few basic rules. The first is that dividing by any power of \\(10\\) does not change the leading digit, because it just adds \\(0\\)s, which are insignificant. From this, we don't concern ourselves with the whole \\(313\\) digit thing and instead only focus on the leading digits of \\(7.777...\\) after a bunch of roots. We approximate that the sum ends up being
         \\(2+1+1+3+1=8\\)</p>
@@ -5651,6 +5856,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The least common multiple of a positive integer \\(n\\) and \\(18\\)  is \\(180\\) and te greatest common divisor of \\(n\\) and \\(45\\) is \\(15\\). What is the sum of digits of \\(n\\)?`,
         solution: `<b>3</b><p>We know by the second rule that \\(n\\) must be \\(15\\) or \\(30\\). However, the \\(LCM\\) of \\(18\\) and \\(15\\) isn't \\(180\\), it's \\(90\\), so we know \\(n=30\\) for a sum of digits \\(3\\)`,
         answer: '3',
@@ -5664,6 +5870,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A dataset consists of \\(6\\) (not distinct) positive integers \\(1,7,5,2,5\\) and \\(X\\). The average (arithmetic mean) of the \\(6\\) numbers equals a value in the data set. What is the sum of all possible values of \\(X\\)?`,
         solution: `<b>32</b><p>By the definition of a mean, we know that the sum of the numbers must be equal to \\(6 \\cdot 1 = 6, 6 \\cdot 7 = 42, 6 \\cdot 5 = 30\\) or \\(6 \\cdot 2 = 12\\). The current sum is \\(20\\) so \\(X\\) must be equal to \\(10\\) or \\(22\\) for a sum of \\(32\\)`,
         answer: '32',
@@ -5679,6 +5886,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `<p>On Halloween, \\(31\\) children walked into the principal's office asking for candy. They can be classified into three types: Some always lie; some always tell the truth; and some alternately lie and tell the truth. The alternaters arbitrarily choose their first response, either a lie or the truth, but each subsequent statement has the opposite truth value from its predecessor. The principal asked everyone the same three questions in this order.</p>
         <p>"Are you a truth-teller?" The principal gave a piece of candy to each of the $22$ children who answered yes.</p>
         <p>"Are you an alternater?" The principal gave a piece of candy to each of the $15$ children who answered yes.</p>
@@ -5703,6 +5911,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `How many three-digit positive integers \\(abc\\) are there whose nonzero digits \\(a, b,\\) and \\(c\\) satisfy \\(0.\\overline{abc}=\\frac{1}{3}(0.\\overline{a}+0.\\overline{b}+0.\\overline{c})\\)?`,
         solution: `<b>13</b><p>We know that \\(0.\\overline{a}=\\frac{a}{9}\\). If you don't know why, try that out with any integer less than \\(10\\). Anyways, we rewrite RHS (right hand side) to \\(\\frac{abc}{27}\\). For the LHS
         we divide by \\(999\\) but make the numerator a 3 digit number \\(100a+10b+c\\) for \\(\\frac{100a+10b+c}{999}\\). We rewrite the entire equation as \\(100a+10b+c=37a+37b+37c\\) which we can solve for by solving for \\(a\\) and factoring out the GCD until we get \\(7a+3b+4c\\). Since \\((1,1,1)\\) is a solution, we 'scale that up' for every digit, whikch gives us 
@@ -5722,6 +5931,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<p>Define L_{n} as the least common multiple of all the integers from \\(1\\) to \\(n\\) inclusive. There is a unique integer \\(h\\) such that</p>
         $$
         \\frac{1}{1}+\\frac{1}{2}+\\frac{1}{3}+...+\\frac{1}{17}=\\frac{h}{L_{17}}
@@ -5754,6 +5964,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `How many strings of length \\(5\\) formed from the digits \\(0,1,2,3,4\\) are there such that for each \\(j \\in {1,2,3,4},\\) at least \\(j\\) of the digits are less than \\(j\\)?
         (For example \\(02214\\) satisfies this condition because it contains at least \\(1\\) digit less than \\(1\\), at least \\(2\\) digits less than \\(2\\) at least \\(3\\) digits less than \\(3\\), and at least \\(4\\) digits less than \\(4\\). The string \\(23404\\) does not satisfy the condition
         because it does not contain at least \\(2\\) digits less than \\(2\\).)`,
@@ -5776,6 +5987,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many three-digit positive integers have an odd number of even digits?`,
         type: 'mc',
         choices: ['\\(A) 150\\)', '\\(B) 250\\)', '\\(C) 350\\)', '\\(D) 450\\)', '\\(E) 550\\)'],
@@ -5793,6 +6005,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `How many of the first ten numbers of the sequence \\(121, 11211, 1112111,...\\) are prime numbers?`,
         type: 'mc',
         choices: ['\\(A) 0\\)', '\\(B) 1\\)', '\\(C) 2\\)', '\\(D) 3\\)', '\\(E) 4\\)'],
@@ -5808,6 +6021,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>Consider the following \\(100\\) sets of \\(10\\) elements each:</p>
         $$
         {1,2,3,...,10},
@@ -5839,6 +6053,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Camila writes down five positive integers. The unique mode of these integers is \\(2\\) greater than their median, and the median is \\(2\\) greater than their arithmetic mean. What is the least possible value for the mode?`,
         solution: `<b></b><p>Let's call our values \\(a, b, c, d, e\\). We know one value must happen at least more than once, because there is a unique mode. Call \\(e\\) and \\(d\\) the mode values and \\(c\\) the median. We have that \\(\\frac{a+b+c+2d}{5}+2=c=d-4\\). We then use the answer choices from here</p>
         <p>If the mode is \\(5\\) then \\(c\\) must be equal to \\(3\\) and the mean is \\(1\\) which isn't possible</p>
@@ -5860,6 +6075,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `All the high schools in a large school district are involved in a fundraiser selling T-shirts. Which of the choices below is logically equivalent to the statement "No school bigger than Euclid HS sold more T-shirts than Euclid HS"?`,
         type: 'mc',
         choices: ['\\(A)\\) All schools smaller than Euclid HS sold fewer T-shirt than Euclid HS', '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS', '\\(C)\\) All schools bigger than Euclid HS sold fewer shirts T-shirts than Euclid HS', '\\(D)\\) All schools that sold fewer T-shirts than Euclid HS are smaller than Euclid HS.', '\\(E)\\) All schools smaller than Euclid HS sold more T-shirts than Euclid HS'],
@@ -5879,6 +6095,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `The positive difference between a pair of primes is equal to \\(2\\), and the positive difference between the cubes of the two primes is \\(31106\\). What is the sum of the digits of the least prime that is greater than those two primes?`,
         solution: `<b>16</b><p>We write the given info as the equations \\(x-y=2\\) and \\(x^3-y^3=31106\\). We solve by substitution</p>
         $$
@@ -5904,6 +6121,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Suppose that \\(S\\) is a subset of \\({1,2,3,...,25}\\) such that the sum of any two (not nescessarily distinct) elements of \\(S\\) is never an element of \\(S\\) What is the maximum number of elements \\(S\\) may contain?`,
         solution: `<b>13</b><p>Essentially, we just need doubling the smallest value to be greater than the largest value, \\(25\\). This occurs when the smallest value is greater than \\(\\frac{25}{2}\\), so we have a smallest value \\(13\\) for \\(13\\) elements`,
         answer: '13',
@@ -5921,6 +6139,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `One of the following numbers is not divisible by any prime number less than \\(10\\). Which is it?`,
         choices: ['\\(A) 2^606 -1\\)', '\\(B) 2^606 +1\\)', '\\(C) 2^607 -1', '\\(D) 2^607 + 1\\)', `\\(E) 2^607 + 3&607\\)`],
         solution: `<b>2^607-1</b><p>This is a really difficult one, if I'm being honest. I doubt you would actually want/have time to do this in its entirety on a test</p>
@@ -5935,6 +6154,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: "How many positive perfect squares less than \\(2023\\) are divisible by \\(5\\)?",
         solution: `<b>8</b><p>We know that for a perfect square to be divisible by \\(5\\), its root should be a multiple of \\(5\\). We just need to find what square of a number divisible of \\(5\\) is closest to and less than \\(2023\\). We know that 
         \\(2023\\) is closed to \\(2025=45^2\\), so we're looking at \\(44\\), which has \\(\\frac{44}{8}=8\\frac{4}{5}\\) \\(5's\\) so there are \\(8\\) total`,
@@ -5947,6 +6167,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many digits are in the base \\(10\\) representation of \\(8^5 \\cdot 5^1- \\cdot 15^5\\)?`,
         type: 'mc',
         choices: ['\\(A) 14\\)', '\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'],
@@ -5963,6 +6184,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A digital display shows the current date as an \\(8\\)-digit integer consisting of a \\(4\\)-digit year, followed by a \\(2\\)idigit month, followed by a \\(2\\)-digit date within the month. For example, Arbor Day this year
         is displayed as \\(20230428\\). For how many dates in \\(2023\\) does each digit appear an even number of times in the \\(8\\)-digit display for that date?`,
         solution: `<b>9</b><p>The first digit must be \\(0\\) or \\(1\\). The first \\(4\\) digits are set. We know we need at least one more \\(3\\) and one more \\(0\\). If the month as a \\(0\\), we can have Jan \\(13\\)th, Jan \\(31\\)st, Feb \\(23\\)th, March \\(11\\)th, March \\(22\\)nd, Oct \\(13\\)th, Oct \\(31\\)st. For the \\(0\\) NOT in the month, we have November \\(3\\)rd and \\(30\\)th`,
@@ -5979,6 +6201,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `<p>How many three-digit positive integers \\(N\\) satisfy the following properties?</p>
         <p>The number \\(N\\) is divisible by \\(7\\)</p>
         <p>The number formed by reversing the digits of \\(N\\) is divisible by \\(5\\)</p>`,
@@ -6007,6 +6230,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `In a table tennis tournament every participant played every other participant exactly once. Although there were twice as many right-handed players as left-handed players, the number of games won by left-handed players was \\(40%\\) more than the number of games won by right-handed players. (There were no ties and no ambidextrous players.) What is the total number of games played?`,
         solution: `<b>48</b>The total number of games \\(x\\) is equal to those won by the right-handed players plus those won by the left hand players \\(y+z\\), respectively. We know that \\(y=1.4z\\) so we have \\(x=2.4z\\). Since all values must be integers, we know that \\(x\\) must be divisible by \\(12\\). That gives us \\(36\\) and \\(48\\). Since each game is decided by choosing \\(2\\) people, we need \\(x\\) choose \\(2\\) to be 
         possible, which is only possible for \\(48\\)`,
@@ -6029,6 +6253,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `<b></b><p>If the positive integer \\(c\\) has positive integer divisors \\(a\\) and \\(b\\) with \\(c=ab\\), then \\(a\\) and \\(b\\) are said to be \\(complementary\\) divisors of \\(c\\). Suppose that \\(N\\) is a positive integer that has one complementary pair of divisors that differ by \\(20\\) and another pair of complementary divisors that differ by \\(23\\). What is the sum of the digits of \\(N\\)?`,
         solution: `<b></b><p>We have that \\(N=x^2+20x\\) and \\(N=y^2+23y\\). We know by logic that \\(x>y\\) and \\(x+20 < y+23\\). We can descripte the relationship as either \\(x=y+1\\) or \\(x=y+2\\), because if we went any higher, it would defy the second rule we set. We create the following equations:</p>
         $$
@@ -6056,6 +6281,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the units digit of \\(2022^2023 + 2023^2022\\)?`,
         solution: `<b>7</b><p>We need to understand that unit digits are cyclic to best comprehend this. For \\(2\\), it goes \\(2,4,8,6,\\), so the units digit of \\(2022^2023=8\\). For \\(3\\) it's \\(3,9,7,1\\) so the unit digit is \\(9\\). Addint this gives \\(17\\). Thus, the units digit is \\(7\\)`,
         answer: '7',
@@ -6069,6 +6295,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text:`You are playing a game. A \\(2 \\times 1\\) rectangle covers two adjacent squares (oriented either horizontally or vertically) of a\\(3\\times 3\\) grid of squares, but you are
          not told which two squares are covered. Your goal is to find at least one square that is covered by the rectangle. A "turn" consists of you guessing a square, after which you are told whether that square is covered by the hidden rectangle. What is the minimum number of turns you need to ensure 
         that at least one of your guessed squares is covered by the rectangle?`,
@@ -6087,6 +6314,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Suzzane went to the bank and withdrew \\($800\\). The teller gave her this amount of using \\($20\\) bills, \\($50\\) bills, and \\($100\\) bills, with at least one of each denominator. How many different collections of bills could Suzanne have recieved?`,
         solution: `<b>21</b><p>We write the equation as \\(2x+5y+10z=80\\) (we divide by \\(10\\)) and solve by casework using the smallest denominaton</p>
         <p>There is one \\(2\\). There's \\(78\\) left, which sin't nescessary unless we have more \\(2\\)s. We must have some multiple of \\(5\\) \\(2\\)s</p>
@@ -6106,6 +6334,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the least positive integer \\(m\\) such that \\(m \\cdot 2! \\cdot 3! \\cdot 4! \\cdot 5! ... 16!\\) is a perfect square?`,
         solution: `<b></b><p>The sequence, which we'll call \\(S\\) is a perfect square when each number appears an even number of times in the prime factorization. We expand and find that \\(2!, 4!, 6!...16!\\) will all have odd exponents</p>
         <p>Thus, we just need \\(m \\cdot 2\\cdot 4 \\cdot 6 ... 16\\) to be a perfect square which we factorize and find \\(m=70\\) at lowest`,
@@ -6122,6 +6351,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Define an \\(upno\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly increasing moving left to right. Similarly, define a \\(downo\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly decreasing moving eft to right. For instance, the number
         \\(258\\) is an upno and \\(8620\\) is a downo. Let \\(U\\)  equal to the total number of \\(upnos\\) and let \\(D\\) equal the total number of \\(downos\\). What is \\(|U-D|\\)`,
         solution: `<b>512</b><p>This ends up being a really long-winded solution. However, I will outline thegeneral process. Do some basic casework with leading digits until you find a conjecture about the differences between numbers</p>
@@ -6140,6 +6370,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `<p>Suppose \\(a, b,\\) and \\(c\\) are positive integers such that</p>
         $$
         \\frac{a}{14}+\\frac{b}{15}=\\frac{c}{210}
@@ -6162,6 +6393,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `What is the sum of the digits of the smallest prime that can be written as a sum of \\(5\\) distinct primes?`,
         solution: `<b>7</b><p>We know that the smallest prime would be the sum of the \\(5\\) smallest primes. However, the smallest prime is \\(2\\) which, when summed with \\(4\\) other odd numbers, would become even. Thus, we can't use \\(2\\). We try the next \\(5\\) smallest prime numbers \\(3, 5, 7, 11, 13\\). This sums to \\(39\\). Still not prime. We substitute \\(13\\) for \\(17\\) which gives us \\(43\\). We have that \\(4+3=7\\)`,
         answer: '7',
@@ -6173,6 +6405,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The number \\(2024\\) is written as the sum of not nescessarily distinct two-digit numbers. What is the least number of two-digit numbers need to write this sum?`,
         solution: `<b></b><p>We want to use as many large numbers as possible so that we use as little two digit numbers of possible. Obviously, the largest 2-digit number is \\(99\\) so divide \\(2024\\) by that: \\(\\frac{2024}{99} = 20\\) with remainder \\(44\\). There are thus \\(21\\) two digit numbers.`,
         answer: '21',
@@ -6184,6 +6417,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `What is the least value of \\(n\\) such that \\(n!\\) is a multiple of \\(2024\\)?`,
         solution: `<b>23</b><p>We find the prime factorization of \\(2024\\) to be \\(2^3 \\cdot 11 \\cdot 23\\). The highest prime number is \\(23\\) in this, so it must be at least \\(23\\)`,
         answer: '23',
@@ -6197,6 +6431,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The product of three integers is \\(60\\). What is the least possible positive sum of the three integers?`,
         solution: `<b>3</b><p>We know that the sum is minimized when factors are nearest to each other. However, we are not told that the factors have to be positive, just the sum. We still want to numbers to be close, however.</p>
         <p>We list the prime factorization as \\(2^2\\cdot 3 \\cdot 5\\). What we CAN do is have one be \\(1\\). Thus, we take the cloesest thing to the square root, \\(6\\) and \\(10\\) and make the \\(6\\) and \\(1\\) negative for a sum of \\(3\\) `,
@@ -6213,6 +6448,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Consider the following operation. Given a positive integer \\(n\\), if \\(n\\) is a multiple of \\(3\\), then you replace \\(n\\) by \\(\\frac{n}{3}\\). If \\(n\\) is not a multiple of \\(3\\), then you replace \\(n\\) by \\(n+10\\).
         For example, beginning with \\(n=4\\), this procedure gives\\(4\\rightarrow 14 \\rightarrow 24\\rightarrow 8 \\rightarrow 18 \\rightarrow 6\\rightarrow 2 \\rightarrow 12\\rightarrow ...\\). Suppose you start with \\(n=100\\). What value results if you perform this operation exactly \\(100\\) times `,
         solution: `<b></b><p>Let's try this a few times and see if we can make a conjecture. We have \\(100 \\rightarrow 110 \\rightarrow 120 \\rightarrow 40 \\rightarrow 50 \\rightarrow 60\\rightarrow 20 \\rightarrow 30\\). From here, the sequence repeats \\(20, 30,10\\). We use some modular arithmetic</p>
@@ -6228,6 +6464,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Let \\(M\\) be the greatest integer such that both \\(M+1213\\) and \\(M+3773\\) are perfect squares. What is the units digit of \\(M\\)?`,
         solution:  `<b>8</b><p>Write equations \\(M+1213=x^2\\) and (M+3773=(x+y)^2\\). It's sort of trivial that \\(y\\) should be as small as possible</p>
         <p>If you don't get why, think of it this way: Imagine the square root parent function. That's similar to what's happening, if you call the enitre \\(LHS\\) \\(x\\) and the \\(RHS\\) \\(y\\).</p>
@@ -6266,6 +6503,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `There are exactly \\(K\\) positive integers \\(5 \\le b \\le 2024\\) such that the base-\\(b\\) integer \\(2024_{b}\\) is divisible by \\(16\\)(where \\(16\\) is in base ten). What is the sum of the digits of \\(K\\)?`,
         solution: `<b>20</b><p>We convert \\(2024_{b}\\) to base \\(10\\) by creating the equation \\(2b^3+2b+4\\). We need \\(\\frac{2b^3+2b+4}{16}\\) to be a whole numberWe can simplify this down by writing
         \\(\\frac{b^3+b}{8}+\\frac{1}{4}\\) is a whole number. We thus have that \\(\\frac{b^3+b}{8}=\\frac{3}{4}+x\\) where \\(x\\) is effectively any whole number. This is similar to how you would solve a sine graph, if that makes sense</p>
@@ -6298,6 +6536,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<p>Let \\(S\\) be a subset of \\({1,2,3,...,2024}\\) such that the following two conditions hold:</p>
         <p>If \\(x\\) and \\(y\\) are distinct elemtns of \\(S\\), then \\(|x-y|>2\\)</p>
         <p>If \\(x\\) and \\(y\\) are distinct odd elements of \\(S\\), then \\(|x-y|>6\\)</p>
@@ -6327,6 +6566,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `The numbers, in order, of each row and the numbers, in order, of each column of a \\(5 \\times 5\\) array of integers form an arithmetic progression of length \\(5\\). The numbers in positions \\((5,5), (2,4), (4,3),\\) and \\((3,1)\\) are \\(0,47,16,\\) and \\(12\\) respectively. What number 
         is in position \\((1,2)\\)?`,
         solution: `<b>29</b><p>Just off the bat, this is a really annoying problem to solve. There is quite a bit of algebra in it, and honestly, if I saw this on the AMC 10 I would skip it. That being said, here's how to solve it</p>
@@ -6357,6 +6597,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `In a long line of people arranged left to right, the \\(1013\\)th person from the left is also the \\(1010\\)th person from the right. How many people are in the line?`,
         solution: `<b>2022</b><p>This is easy, right? I mean you just add them? Nope, because the issue with that is you would count the person twice. What you do instead is add and subtract \\(1\\) for \\(1013+1010-1=2022\\)</p>
         <h3>Common Mistake ❗❗❗</h3>
@@ -6372,6 +6613,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>In the following expression, Melanie changed some of the plus signs to minus signs:</p>
         $$
         1+3+5+7+...+97+99
@@ -6401,6 +6643,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the remainder when \\(7^2024 + 7^2025 + 7^2026\\) is divided by \\(19\\)?`,
         solution: `<b>0</b><p>We factor out \\(7^2024\\) for \\(7^2024(1+7+49)\\) or \\(7^2024(57)\\). Since \\(57\\) is divisible by \\(19\\) (being \\(19 \\cdot 3\\)\\), we have a remainder of \\(0\\)`,
         topic: 'factoring',
@@ -6414,6 +6657,7 @@ star
 </span>`,
        used: false,
        difficulty: 2,
+rating: 1000,
        text: `Let \\(N\\) be the product of all the positive integer divisors of \\(42\\). What is the units digit of \\(N\\)?`,
        solution: `<b>6</b><p>Through pure logic, we know that the product of all divisors of \\(42\\) will be some power of \\(42\\).</p>
        <p>The prime factorization of \\(42\\) is \\(2 \\cdot 3 \\cdot 7\\) for a total of \\(8\\) factors and \\(4\\) factor pairs. Thus, \\(42\\) is raised to the \\(4\\)th power. </p>
@@ -6431,6 +6675,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A group of \\(100\\) students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students \\(A\\) and \\(B\\), student \\(A\\)
         and \\(B\\), student \\(A\\) speaks some language that student \\(B\\) does not speak, and student \\(B\\) speaks some language that student \\(A\\) does not speak. What is the least possible total 
         number of languages spoken by all students?`,
@@ -6451,6 +6696,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A list of \\(9\\) real numbers consists of \\(1, 2.2, 3.2, 5.2, 6.2\\) and \\(7\\) as well as \\(x, y,\\) and \\(z\\) with \\(x \\le y \\le z\\). The range of the list is \\(7\\) and the mean and the median are both positive integers. how many ordered triples \\(x,y,z\\) are possible?`,
         solution: `<b>3</b><p>We either have \\(x=0\\) or \\(z=8\\) and that \\(y\\) must be the medain. The sum of all the numbers must be divisible by \\(9\\) in order for the mean to be a whole number. The current sum is \\(24.8\\) so the remaining numbers must sum to \\(2.2, 11.2, 20.2\\). \\(2.2\\) isn't possible unless we hvae a negative \\(x\\), which we can't without 
         disrupting the range. For \\(11.2\\), we know that the median \\(y\\) must be between \\(3.2\\) and \\(5.2\\) so it's either \\(4\\) or \\(5\\). The prior makes \\(x\\) and \\(z\\) which contradicts our previous statement but is still correct (lesson in oversimplifaction, not always the best) and the latter gives \\(0\\) and \\(6.2\\)</p>
@@ -6472,6 +6718,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Jerry likes to play with numbers. One day, he wrote all the integers from \\(1\\) to \\(2024\\) on the whiteboard. Then he repeatedly chose four numbers on the whiteboard, erased them, and replaced them by either their sum or their product. (For example, Jerry's first step might have been to erase
         \\(1,2,3\\) and \\(5\\), and then write either \\(1\\) their sum, or \\(30\\) their product, on the whiteboard). After repeatedly performing this operation, Jerry noticed that all the remaining numbers on the whiteboard were odd. What is the maximum possible number of integers on the whiteboard at that time?
         `,
@@ -6494,6 +6741,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: "How many different remainders can result when the \\(100\\textup{th}\\) power of any integer is divided by \\(125\\)?",
         solution: `<b>2</b><p>Any integer can be written as \\(5x, 5x+1, 5x+2, 5x+3, 5x+4\\). When we raise these to the \\(100\\)th power, they will leave specific remainders. For \\(5x\\) it leaves \\(0\\) because the \\(5\\) effectively "handles" the \\(125\\). Not quite sure how else to explain it. We also notice that \\(5x+4 = 5(x+1)-1\\) and the same logic for \\(5x+3\\). \\(5x \\pm 1\\) or \\(2\\) give remainder of \\(1\\) (see link for more complex proof)</p>`,
         answer: '2',
@@ -6514,6 +6762,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `<p>The Fibonacci numbers are defined by \\(F_{1}=1, F_{2}=1,\\) and \\(F_{n}=F_{n-1}+F_{n-2}\\) for \\(n \\ge 3\\) What is</p>
         $$
         \\frac{F_{2}}{F_{1}}+\\frac{F_{4}}{F_{2}}+\\frac{F_{6}}{F_{3}}+...+\\frac{F_{20}}{F_10}}?
@@ -6530,6 +6779,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>Consider the sequence of positive integers</p>
         $$
         1,2,1,2,3,2,1,2,3,4,3,2,1,2,3,4,5,4,3,2,1,2,3,4,5,6,5,4,3,2,1,2,...
@@ -6555,6 +6805,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>Agnes writes the following four statements on a blank piece of paper</p>
         <p> - At least one of these statements is true</p>
         <p> - At least two of these statements are true</p>
@@ -6584,6 +6835,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Let \\(N\\) be the unique positive integer such that dividng \\(273436\\) by \\(N\\) leaves a remainder of \\(16\\) and dividing \\(272760\\) by \\(N\\) leaves a remainder of \\(15\\). What is the tens digit of \\(N\\)?`,
         solution: `<b>4</b><p>We have that \\(x \\cdot N + 16 = 273436\\) and that \\(y \\cdot N + 15 = 272760\\). We can also rewrite this into
         \\(x \\cdot N = 273420\\) and \\(y \\cdot N = 272745\\). We effectively need the \\(GCF\\) of the two constants. </p>
@@ -6605,6 +6857,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Call a positive integer fair if no digit is used more than once, it has no \\(0\\)s and no digit is adjacent to two
         greater digits. For example, \\(196, 23\\) and \\(12463\\) are fair, but \\(1546, 320,\\) and \\(34321\\) are not. How many fair positive integers are there?`,
         type: 'mc',
@@ -6620,6 +6873,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The ages of Jonie's four cousins are distinct single-digit positive integers. Two of the cousin's
         ages multiplied together gives \\(24\\) while the other two multiply to \\(30\\). What is the sum of the ages of Jonie's four cousins?`,
         type: 'mc',
@@ -6641,6 +6895,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `Five balls are arranged around a circle. Chris chooses two adjacent balls at random and
 interchanges them. Then Silva does the same, with her choice of adjacent balls to
  interchange being independent of Chris's. What is the expected number of balls that occupy
@@ -6664,6 +6919,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `Six chairs are arranged around a round table. Two students and two teachers randomly select four of the chairs to
 sit in. What is the probability that the two students will sit in two adjacent chairs and the two teachers will also sit in two adjacent chairs?`,
 type: 'mc',
@@ -6684,6 +6940,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `A frog sitting at the point \\((1,2)\\) begins a sequence of jumps, where each jump is parallel to one of the cordinate axes and has length \\(1\\), and the
 direction of eacn jump (up, down, right, or left) is chosen independently at random. The sequence ends when the frog reaches a side of the square with vertices \\((0,0), (0,4), (4,4),\\) and \\((4,0)\\). 
 What is the probabilit that the sequence of jumps ends on a vertical side of the square?`,
@@ -6708,6 +6965,7 @@ star
 </span>`,
         uesd: false,
         difficulty: 3,
+rating: 1200,
         text: `A positive integer divisor of \\(12!\\) is chosen at random. The probability that the divisor chosen is a perfecct square can be expressed as \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are relatively prime
         positive integers. What is \\(m+n\\)?`,
         type: 'mc',
@@ -6745,6 +7003,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A point is chosen at random witin the square in the coordinate plane whose vertices are \\((0,0), (2020,0), (2020,2020),\\) and \\((0,2020)\\). The 
         probability that the point is within \\(d\\) units of a lattice point is \\(\\frac{1}{2}\\). (A point \\((x,y)\\) is a lattice point if \\(x\\) and \\(y\\) are both integers.) What is \\(d\\) to the nearest tenth?`,
         type: 'mc',
@@ -6769,6 +7028,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if
         the sum of the numbers face up on the three dice is exactly \\(7\\). Jason always plays to optimize
         his chances of winning. What is the probability that he chooses to reroll exactly two of the dice? ,       `,
@@ -6805,6 +7065,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many distinguishable arrangements are there of \\(1\\) brown tile, \\(1\\) purple tile, \\(2\\) green tiles, and \\(3\\) yellow tiles in a row from left to right?`,
         solution: `<b></b><p>All we have to do for this is find the total number of combination and then divide the ways to arrange the tiles of the same color</p>
         <p>We have \\(\\frac{7!}{3! \\cdot 2!}=420\\)`,
@@ -6822,6 +7083,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Ms. Carr asks her students to read any \\(5\\) of the \\(10\\) books on a reading list. Harold randomly selects \\(5\\) books from the list, and Betty does the same. What is the probability that there are exactly \\(2\\) books that they select?`,
         type: 'mc',
         choices: ['\\(A) \\frac{1}{8}\\)', '\\(B) \\frac{5}{36}\\)', '\\(C) \\frac{14]{45}\\)}', '\\(D) \\frac{25}{63}\\)', '\\(E) \\frac{1}{2}\\)'],
@@ -6842,6 +7104,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `An urn cotains one red ball and one blue ball. A box of extra red and blue balls lies nearby. Geogre performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?`,
         type: 'mc',
         choices: ['\\(A) \\frac{1}{6}\\)', '\\(B) \\frac{1}{5}\\)', '\\(C) \\frac{1}{4}\\)', '\\(D) \\frac{1}{3}\\)', '\\(E) \\frac{1}{2}\\)'],
@@ -6865,6 +7128,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `There are \\(10\\) people standing equally spaced around a circle. Each person knows exactly \\(3\\) of the other \\(9\\) people: the \\(2\\) people standing next to him or her, as well as the person directly across the circle.
         How many ways are there for the \\(10\\) people to split up into \\(5\\) pairs so that the members of each pair know each other?`,
         solution: `<b>13</b><p>We use the circle to visualize. Notice that we can just pair everybody with the person next to them. That would give us \\(2\\) cases because we can pair clockwise or counterclockwise</p>
@@ -6886,6 +7150,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `In a certain card game, a player is dealt a hand of \\(10\\) cards from a deck of \\(52\\) distinct cards. The number of distinct (unordered) hands that can be deal to the player can be written as \\(158A00A4AA0\\). What is the digit \\(A\\)?`,
         solution: `<b></b><p>What we're really looking for is the tens digit of \\(52\\) choose \\(10\\) or \\(\\frac{52!}{10!(42!)}\\) which simplifies down to \\(\\frac{52 \\cdot 51 \\cdot 50 ... \\cdot 43}{10!}\\). From here, it's decently easy to just simplify down by factoring and get \\(\\frac{26 \\cdot 17 \\cdot 7 \\cdot 47 \\cdot 46 \\cdot 5 \\cdot 11 \\cdot\\ 43}\\) which we divide by \\(10\\) again for modulo \\(2\\). `,
         answer: '2',
@@ -6903,6 +7168,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `In how many ways can the sequence \\(1,2,3,4,5\\) be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?`,
         solution: `<b></b>We know each sequence of increasing or decreasing numbers must be of length \\(2\\). Thus, it must go increase, decrease, increase, decrease, or visa versa. </p>
         <p>With increase decrease increase decrease, the terms that you increase to have to be \\(3,4,5\\). That gives us \\(_3_5_, _5_3_, _4_5_, _5_4_\\). Notice that we cannot have \\(3,4\\) in any combination. The first option can be \\(13254\\) or \\(23154\\). The same is said for the second one, because it's the same
@@ -6924,6 +7190,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Frieda the frog begins a sequence of hops on a \\(3 \\times 3\\) grid of squares, moving one square on each hope and choosing at random the direction of each hop-up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she "wraps around" and jumps to the opposite edge.
         For example if Frieda begins in the center square and makes two hops "up", the first hop would place her in the top row middle square, and the second hop would cause Frieda to jump to the opposite edge, landing in the bottom row
         middle square. Suppose Frieda starts from the center square, makes at most four hops at random, and stops hopping if she lands on a corner square. What is the probability that she reaches a corner square on one of the four hops?`,
@@ -6951,6 +7218,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `How many ways are there to place \\(3\\) indistinguihsable red chips, \\(3\\) indistinguishable blue chips, and \\(3\\) indistinguishable green chips in the squares of a \\(3 \\times 3\\) grid so that no two chips of the same color
         are directly adjacent to each other, either vertically or horizontally?`,
         solution: `<b></b><p>We know, right off the bat, that the answer has to be a multiple of \\(6\\), because any combination needs to work when the colors are switched around  in \\(3!=6\\) ways</p>
@@ -6975,6 +7243,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Ang, Ben, and Jasmin each have \\(5\\) blocks, colored red, blue, yellow, white, and green; and there are \\(5\\) empty boxes. Each of the people randomly and indepenedently of the other two people places one of their blocks into each box. The probability that at least one box 
         recieves \\(3\\) blocks of all of the same color is \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n?\\)`,
         solution: `<b>471</b><p>The number of ways for at least one box to have all of one color can be calculated by dividing it into three cattegories:</p>
@@ -6998,6 +7267,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `When a certain unfair die is rolled, an even number is \\(3\\) times as likely to appear as an odd number. The die is rolled twice. What is the probability that the sum of the numbers rolled is even?</p>`,
         solution: `<b>\\(\\frac{5}{8}\\)</b><p>Let's first start by figuring out what the values of the number need to be. The question doesn't specify the number of face,s so let's just imagine it's a coin that is either even or odd (you can also imagine \\(1\\) or \\(2\\) but it's up to you)</p>
         <p>We have that \\(P(O)=\\frac{1}{4}\\) and \\(P(E)=\\frac{3}{4}\\) because \\(\\frac{3}{4}+\\frac{1}{4}=1\\) (you can solve it algebraicly but it's relatively trivial)</p>
@@ -7015,6 +7285,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A school has \\(100\\) students and \\(5\\) teachers. In the first period, each studentis taking one class and each teacher is teacing one class. The
         enrollments in the classes are \\(50,20,20,5\\) and \\(5\\). Let \\(t\\) be the average value obtained if a teacher is picked at random and the number of students
         in their class is noted. Let \\(s\\) be the average be the average value obtained if a student was picked at random and the number of students in their class, including the student, is noted.
@@ -7036,6 +7307,7 @@ star
 </span>`,
      used: false,
      difficulty: 3,
+rating: 1200,
      text: `Each of \\(6\\) balls is randomly and independently painted either black or white with equal probability. What is the probability that every ball is different in color from more than half of the other \\(5\\) balls?`,
      type: 'mc',
      choices: ['\\(A) \\frac{1}{64}\\)', '\\(B) \\frac{1}{6}\\)', '\\(C) \\frac{1}{4}\\)', '\\(D) \\frac{5}{16}\\)', '\\(E) \\frac{1}{2}\\)'],
@@ -7058,6 +7330,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A farmer's rectangular field is partitioned into a \\(2\\) by \\(2\\) grid of \\(4\\) rectangular sections as shown in the figure. In
         each section the farmer will plant one crop: corn, wheat, soybeans, or potatoes. The farmder does not want to grow corn and wheat in any two sections that share a border, and the farmer does not want to grow soybeans and potatoes in any two sections that share a border. 
         Given these restrictions, in how many ways can the farmer choose crops to plant in each of the four sections of the field?`,
@@ -7090,6 +7363,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Each of the \\(20\\) balls is tossed independently and at random into one of the \\(5\\) bins. Let \\(p\\) be the probability that some bin ends up with \\(3\\) balls, another with \\(5\\) balls, and the other three with \\(4\\) balls each. Let
         \\(q\\) be the probability that every bin ends up with \\(4\\) balls. What is \\(\\frac{p}{q}\\)?`,
         solution: `<b>16</b><p>The actual concept for this isn't super complicated, it really just comes down to arithmetic and quick simplification</p>
@@ -7109,6 +7383,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4\\)?`,
         solution: `<b>'\\(\\frac{59}{64}\\)'</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
         <p>For it to be odd, we need all the factors to be odd. There's a \\(\\frac{1}{2}^6=\\frac{1}{64}\\) chance of this</p>
@@ -7128,6 +7403,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A rectangle is partitioned into \\(5\\) regions as shown.  
         Each region is to be painted a solid color - red, orange, yellow, blue, or green - so that regions that touch are painted different colors,
          and colors can be used more than once.
@@ -7151,6 +7427,7 @@ star
 </span>`,
        used: false,
        difficulty: 3,
+rating: 1200,
         text: `How many ways are there to split the integers \\(1\\) through \\(14\\) into \\(7\\) pairs such that in each pair, the greater number is at least \\(2\\) times the lesser number?`,
         solution: `<b>144</b><p>We know for a fact that \\((7,14)\\) has to be a pair. That gives \\((6,13)\\) or \\((6,12)\\). Consequently, \\((5,10), (5,11), (5,12), (5,13)\\), but the last two depend on the value that \\(6\\) is paired with</p>
         <p>\\(1,2,3,4\\) can be with any number. That being said, remmber that \\(8-14\\) cannot pair because for the smallest  value \\(8\\) we need \\(\\ge 16\\), which we don't have. Thus gives us \\(2\\) for \\(6\\), \\(3\\) for \\(5\\) (since it can't be one of \\(6\\)'s values) and \\(4\\) for 4, and so on so that we have \\(2 \\cdot 3 \\cdot 4!=144\\)`,
@@ -7171,6 +7448,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Suppose that \\(13\\) cards numbered \\(1,2,3,...,13\\) are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards \\(1,2,3\\) are picked up on the first pass, \\(4\\) and \\(5\\)
         on the second pass, \\(6\\) on the third pass, \\(7,8,9,10\\) on the fourth pass, and \\(11,12,13\\) on the fifth pass. For how many of the \\(13!\\) possible orderings of the cards will the \\(13\\) cards be picked up in exactly two passes?`,
         solution: `<b>8178</b><p>Let's find some shorter sequences and then work our way up. For the first \\(3\\) values, we have \\(4\\) sequences. We see \\((1,3,2), (2,1,3), (2,3,1), (3,1,2)\\). Trying with \\(4\\) gives \\(11\\). With \\(5\\) we have \\(26\\) so we set up \\(2^n-n-1\\). This is
@@ -7188,6 +7466,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A pair of fair \\(6\\)-sided dice is rolled \\(n\\) times. What is the least value of \\(n\\) such that the probability that the sum of the numbers face up on a roll equals \\(7\\) at least once is greater than \\(\\frac{1}{2}\\)</p>`,
         solution: `<b></b><p>We know the probability of the sum being \\(7\\) is \\(\\frac{1}{6}\\) because each value has a pair that will make it add to \\(7\\). Since the first value doesn't matter, we have the probability is based on the second value, thus meaning that there's a
         probability of \\(\\frac{1}{6}\\). We can't exactly find the combined probability for \\(\\frac{1}{4}\\), so instead we use complementary counting, or finding the probability that it does NOT sum to \\(7\\), which is \\(1-\\frac{1}{6}\\), which is \\(\\frac{5}{6}\\). The probability of this after \\(n\\) rolls needs to be less than \\(\\frac{1}{2}\\), so we set up \\(\\frac{5}{6}^n < \\frac{1}{2}\\) and some experimentation with the ansewr choices gives us \\(n=4\\)`,
@@ -7204,6 +7483,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Janet rolls a standard \\(6\\)-sided die \\(4\\) times and keeps a running total of the numbers she rolls. What is the probability that at some point, her runing total will equal \\(3\\)?`,
         solution: `<b>\\(\\frac{49}{216}\\)</b><p>She can't have a running total of \\(3\\) after more than \\(3\\) rolls. Let's find the probability that her running total is \\(3\\) after \\(1,2,3\\) rolls as different cases</p>
         <p>With \\(1\\) roll, she needs to run a \\(3\\), which is a \\(\\frac{1}{3}\\) chance</p>
@@ -7225,6 +7505,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A number is chosen at random from among the first \\(100\\) positive integers, and a positive integer divisor of that number is chosen at
         What is the probability that the chosen divisor is divisble by \\(11\\)?`,
         solution: `<b>\\(\\frac{9}{200}\\)</b><p>First, we need to calculate the probability of the chosen integer having \\(11\\) as a factor at all. We have \\(11, 22, 33, 44, 55, 66, 77, 88, 99\\). That's \\(\\frac{9}{100}\\)</p>
@@ -7250,6 +7531,7 @@ star
 </span>`,
        used: false,
        difficulty: 4,
+rating: 1400,
        text: `Each \\(3 \\times 3\\) grid of squares is colored red, white, blue, or green so that every \\(2 \\times 2\\) square contains one square of each color. One such coloring is shown on the right below.
        How many different colorings are possible?`,
        solution: `<b>72                              </b><p>Start at the top riht square. We have \\(4!\\) ways to arrange it. Next, bottom right, we have \\(3\\0 spaces left, and what we put there defines the rest, so we have \\(4! \\cdot 3 = 24 \\cdot 3 = 72\\)`,
@@ -7268,6 +7550,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Sonya the frog chooses a point uniformly at random lying within the square \\([0,6] \\times [0,6]\\) in the coordinate plane and hops to that point. She then randomly chooses a distance uniformly at random from \\([0,1]\\), and a direction
         uniformly at random from {north, south, east, west}. All her choices are independent. She now hops the distance in the chosen direction. What is the probability that she lands outside ths square`,
         solution: `<b>\\(\\frac{1}{12}\\)</b><p>He can only land outside the square if he first hops onto a border square. There are \\(20\\) of these out of \\(36\\), which gives a \\(\\frac{5}{9}\\). For \\(16\\) of the border squares, you need to jump \\(1\\) in the right direction which gives a \\(\\frac{1}{2} \\cdot \\frac{1}{4}=\\frac{1}{8}\\) chance
@@ -7292,6 +7575,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Each of \\(2023\\) balls is randomly placed into one of \\(3\\) bins. Which of the following is closets to the probability that each of the bings will contain an odd number of balls?`,
         solution: `<b>\\(\\frac{1}{4}\\)</b><p>We know that every odd number is \\(2k+1\\) for some integer \\(k\\). We know each bin must have at least \\(1\\), so we find \\(1012\\) choose \\(2\\), effectively figuring out how many different variations we can have. We then divide this by the total number of 
         ways to sort it, which is of course, \\(2023\\) choose \\(3\\). This gives us a probability of \\(\\frac{1}{4}\\) after some simplification`,
@@ -7308,6 +7592,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the minimum number of successive swaps of adjacent letters in the string \\(ABCDEF\\) that are needed to change the string to \\(FEDCBA\\)? (For example, \\(3\\) swapps are required to chance \\(ABC\\) to \\(CBA\\); one such sequence of swaps is \\(ABC --> BAC --> BCA --> CBA\\).)`,
         solution: `<b>15</b><p>The easiest way to do this is to start by moving \\(A\\), and then \\(B\\), and then \\(C\\) and so on, which takes \\(5+4+3+2+1=15\\)`,
         answer: `15`,
@@ -7321,6 +7606,7 @@ star
 </span>`,
        used: false,
        difficulty: 2,
+rating: 1000,
        text: `In how many ways can \\(6\\) juniors and \\(6\\) seniors form \\(3\\) disjoint teams of \\(4\\) people so that each team has \\(2\\) juniors and \\(2\\) seniors?`,
        solution: `<b>1350</b><p>We start with the juniors. There are \\(6\\) choose \\(2=15\\) ways for them to make the first group, and then \\(4\\) choose \\(2=6\\) ways to choose the second. The last is set. That's \\(15 \\cdot 6\\), and just as many for the seniors. We  get
        \\(8100\\) but divide by \\(3!\\), which is the number of ways to arrange the group (because the order doesn't matter). This gives us \\(1350\\) </p>
@@ -7342,6 +7628,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Two teams are in a best-two-out-of-three playoff: the teams will play at most \\(3\\) games, and the winner of the playoff is the first team to win \\(2\\) games. The 
         first game is played on Team A's homefield, and the remaining games are played on Team B's home field. Team A has a \\(\\frac{2}{3}\\) chance of winning at home, and it's probability when playing away from home is 
         \\(p\\). Outcomes of the games are independent. The probability that Team A wins the playoff is \\(\\frac{1}{2}\\). Then \\(p\\) can be written in the form \\(\\frac{1}{2}(m-\\sqrt{n})\\)where \\(m\\) and \\(n\\) are positive integers. What is \\(m+n\\)`,
@@ -7367,6 +7654,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `In a race among \\(5\\) snails, there is at most one tie, but that tie can involve any number of snails. For example,
         the result of the race might be that Dazzler is first, Abby, Cyrus, and Elroy are tied for second; and Bruna is fifth. How many different
         results of the race are possible?`,
@@ -7391,6 +7679,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Three different pairs of shoes are placed in a row so that no left shoe is next to a right shoe from a different pair. In how many ways can these six shoes be lined up?`,
         solution: `<b>60</b><p>Let's do some casework. If we start with a left shoe, we have </p>
         <p>LRRLLR, where each shoe is being put with its pair. There are \\(2\\) variations of this, because the last \\(3\\) combinations for the starting pair and \\(2\\) ways to order the remaining ones. Thus,
@@ -7417,6 +7706,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `A group of \\(16\\) people will be partitioned into \\(4\\) indistinguishable \\(4\\)-person committees. Each committee will have one chairperson and one secretary. 
         The number of different ways to make these assignments can be written as \\(3^r M\\), where \\(r\\) and \\(M\\) are positive integers and \\(M\\) is not divisibly by \\(3\\). What is \\(r\\)?`,
         solution: `<b>5</b><p>We have \\(16\\) choose \\(4\\) ways to choose the first committee, and then \\(12\\) choose \\(4\\) for the second, and so on. We have \\(4!\\) ways to order the committees, but we divide by \\(4!\\) because they are indistinguishable. This gives us \\(\\frac{16!}{(4!)^5})</p>
@@ -7434,6 +7724,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Carlos uses a \\(4\\)-digit passcode to unlock his computer. In his pascode, exatly one digit is even, exactly one (possibly different) digit is prime, and
         no digit is \\(0\\). How many \\(4\\)-digit passcodes satisfy these conditions?`,
         solution: `<b>464</b><p>Let's say that the even and prime are the same. Thus, we have \\(2\\) which can be in \\(4\\) different places. The remaining three must be odd composite numbers, which must be \\(9\\) or \\(1\\). That gives us \\(2^3 \\cdot 4 = 32\\) possibilities</p>
@@ -7454,6 +7745,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `There are three jars. Each of three coins is placed in one of the three jars, chosen at random and independently of the placements of the other coins. What is the expected number of coins in a jar with the most coins?`,
         solution: `<b>\\(\\frac{17}{9}\\)</b><p>We calculate the probabiity of the higher jar having \\(x\\) number of coins</p>
         <p>Case 1: All 3. There are \\(3\\) choose \\(1\\) = \\(3\\) ways to pick which jar, and a \\(\\frac{1}{3}^3=\\frac{1}{27}\\) chance of them all ending up there. We have \\(\\frac{3}{27}  \\cdot 3 =\\frac{1}{3}\\), which we multiply by \\(3\\) because it's expected outcome</p>
@@ -7479,6 +7771,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `A point \\(P\\) is chosen at random inside square \\(ABCD\\). The probability that \\(\\overline{AP}\\) is neither the shortest nor the longest side of \\(\\triangle APB\\) can be written as 
         \\(\\frac{a+b\\pi -c\\sqrt{d}}{e}\\, where \\(a,b,c,d\\) and \\(e\\\) are positive integers, \\(\\textup{gcd}(a,b,c,e)=1\\), and \\(d\\) is not divisible by the square of a prime. What is \\(a+b+c+d+e\\)? `,
         solution: `<b>25</b>Let's just assume that the height of the square is \\(1\\) and that \\(AB\\) is the top. The solution will work whatever you do, but this is forced simplification. Since we're dealing with probability instead of
@@ -7513,6 +7806,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `<p>Define</p>
 $$
 P(x)=(x-1^2)(x-2^2)...(x-100^2)
@@ -7536,6 +7830,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `Five balls are arranged around a circle. Chris chooses two adjacent balls at random and
 interchanges them. Then Silva does the same, with her choice of adjacent balls to
  interchange being independent of Chris's. What is the expected number of balls that occupy
@@ -7559,6 +7854,7 @@ star
 </span>`, 
     used: false, 
     difficulty: 3,
+rating: 1200,
     text: `Values for \\(A,B,C,\\) and \\(D\\) are to be selected from \\({1,2,3,4,5,6}\\) without replacement (i.e. no two letters have the same value). How many ways are there to make such choices so that the two curves \\(y=Ax^2+b\\) and \\(y=Cx^2+D\\) intersect? (The order in which the curves are listed does not matter; for example, the choices \\(A=3, B=2, C=4, D=1)\\) is considered the same as the choices \\(A=4, B=1, C=3, D=2)\\)`, 
     type: 'mc', 
     choices: ['\\(A) 30\\)', '\\(B) 60\\)', '\\(C) 90\\)', '\\(D) 180\\)', '\\(E) 360\\)'], 
@@ -7576,6 +7872,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `Six chairs are arranged around a round table. Two students and two teachers randomly select four of the chairs to
 sit in. What is the probability that the two students will sit in two adjacent chairs and the two teachers will also sit in two adjacent chairs?`,
 type: 'mc',
@@ -7596,6 +7893,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `A frog sitting at the point \\((1,2)\\) begins a sequence of jumps, where each jump is parallel to one of the cordinate axes and has length \\(1\\), and the
 direction of eacn jump (up, down, right, or left) is chosen independently at random. The sequence ends when the frog reaches a side of the square with vertices \\((0,0), (0,4), (4,4),\\) and \\((4,0)\\). 
 What is the probabilit that the sequence of jumps ends on a vertical side of the square?`,
@@ -7619,6 +7917,7 @@ star
 </span>`,
 used: false,
 difficulty: 3,
+rating: 1200,
 text: `The sequence \\(1,x,y,z\\) is arithmetic. The sequence \\(1,p,q,z\\) is geometric. Both sequences are strictly increasing and contain only integers, and 
 \\(z\\) is as small as possible. What is the value of \\(x+y+z+p+q\\)?`,
 type: 'mc',
@@ -7636,6 +7935,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Real numbers \\(a,b,\\) and \\(c\\) have arithmetic mean of \\(0\\). The arithmetic mean of \\(a^2,b^2\\) and \\(c^2\\) is \\(10\\). What is the arithmetic 
         mean of \\(ab, ac, bc\\)?`,
         type: 'mc',
@@ -7653,6 +7953,7 @@ star
 </span>`,
 used: false,
 difficulty: 2,
+rating: 1000,
 text: `The numbers \\(16\\) and \\(25\\) are a pair of consecutive positive squares whose difference is \\(9\\). How many pairs of consectuve positive perfect squares have a distance of less than or 
 equal to \\(2023\\)?`,
 type: 'mc',
@@ -7670,6 +7971,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A single bench section at a school event can hold either \\(7\\) addults or \\(11\\) children. When \\(N\\) bench sections are connected end to end, an equal number of adults and children seated together will occupy the bench space. What is the least positive
         integer value of \\(N\\)?`,
         type: 'mc',
@@ -7686,6 +7988,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Points \\(P\\) and \\(Q\\) lie in a plane with \\(PQ=8\\). How many locations for point \\(R\\) in this plane are there such that the triangle with vertices \\(P, Q,\\) and \\(R\\) is a right triangle with 
         area \\(12\\) square units?`,
         type: 'mc',
@@ -7702,7 +8005,8 @@ star
 star
 </span>`, 
     used: false, 
-    difficulty: 2, 
+    difficulty: 2,
+rating: 1000, 
     text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`, 
     solution: `<b>18</b><p>We do synthetic division division, effectively treating \\(a\\) and \\(b\\) like numbers. We end up with \\(a+b+2=4\\) and \\(2a+b+12=6\\). We solve for \\(a=-8\\), \\(b=10\\), so \\(10-(-8)=18\\)`, 
     choices: ['\\(A) 14\\)','\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'], 
@@ -7717,6 +8021,7 @@ star
 </span>`,
 used: false,
 difficulty: 2,
+rating: 1000,
 text: 'How many positive even multipes of \\(3\\) less than \\(2020\\) are perfect squares?',
 choices: ['\\(A) 7\\)', '\\(B) 8\\)', '\\(C) 9\\)', '\\(D) 10\\)', '\\(E) 12\\)'],
 type: 'mc',
@@ -7730,7 +8035,8 @@ title: `AMC 10A 2025 Problem 6 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, used: false, difficulty: 2, text: `In an equilateral triangle, each interior angle is trisected by a pair of rays. The intersection of the interiors of the middle \\(20^\\circ\\)-angle at each evertex is the interior of a convex hexagon. What is the degree measure of the smallest angle of this hexxagon?`, choices: ['\\(A) 80\\)', '\\(B) 90\\)', '\\(C) 100\\)', '\\(D) 110\\)', '\\(E) 120\\)'], answer: '\\(C) 100\\)', type: 'mc', solution:  `<b>100</b><p>We notice that there is an isoceles triangle formed withthe base of the equilateral triangle and the two rays that make a \\(20^\\circ\\) angle off out it (I recommend drawing this). The vertex angle is \\(180-20-20=140\\). By vertical angles, one of the angles of the hexagon is equal to that. Doing this for each side gives \\(3\\) angles of \\(140^\\circ\\). Since we know that the sum of the angles must be \\((6-2)(180)=720\\) we find \\(\\frac{720-140-140-140}{3}=100\\)`, topic: 'triangles',
+</span>`, used: false, difficulty: 2,
+rating: 1000, text: `In an equilateral triangle, each interior angle is trisected by a pair of rays. The intersection of the interiors of the middle \\(20^\\circ\\)-angle at each evertex is the interior of a convex hexagon. What is the degree measure of the smallest angle of this hexxagon?`, choices: ['\\(A) 80\\)', '\\(B) 90\\)', '\\(C) 100\\)', '\\(D) 110\\)', '\\(E) 120\\)'], answer: '\\(C) 100\\)', type: 'mc', solution:  `<b>100</b><p>We notice that there is an isoceles triangle formed withthe base of the equilateral triangle and the two rays that make a \\(20^\\circ\\) angle off out it (I recommend drawing this). The vertex angle is \\(180-20-20=140\\). By vertical angles, one of the angles of the hexagon is equal to that. Doing this for each side gives \\(3\\) angles of \\(140^\\circ\\). Since we know that the sum of the angles must be \\((6-2)(180)=720\\) we find \\(\\frac{720-140-140-140}{3}=100\\)`, topic: 'triangles',
     },
     {
         title: `AMC 10B 2023 Problem 6 <span class="material-symbols-outlined">
@@ -7740,6 +8046,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Let \\(L_{1}=3, L_{2}=3\\) and \\(L_{n+2}=L_{n+1}+L_{n}\\) for \\(n \\geq 1\\). How many terms in the sequence \\(L_{1},L_{2},L_{3}...L_{2023}\\) are even>`,
         solution: `<b>674</b><p>Let's do some induction. We have \\(1,3,4,7,11,18,29,47,76...\\). It goes odd, odd, even, odd, odd, even, odd, odd even. That means every \\(3\\), there is an even . We have \\(\\frac{2023}{3}=674\\) with  remainder of \\(1\\). That gives, \\(674\\) evens`,
         type: 'mc',
@@ -7755,6 +8062,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `An integer is assigned to each vertex of a cube. The value of an edge is defined to be the
         sum of the values of the two vertices it touches, and the value of a face is defined to be the
         sum of the values of the four edges surrounding it. The value of the cube is defined as the
@@ -7774,6 +8082,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `How many \\(4\\)-digit positive integers (that is integers between \\(1000\\) and \\(9999\\), inclusive) having only even digits are 
         divisible by \\(5\\)?`,
         solution: `<b>100</b><p>Since it has to be divisible by \\(5\\), we need it to end with \\(5\\) or \\(0\\). Since it must have all even digits, it must end with \\(0\\).
@@ -7789,6 +8098,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The ages of Jonie's four cousins are distinct single-digit positive integers. Two of the cousin's
         ages multiplied together gives \\(24\\) while the other two multiply to \\(30\\). What is the sum of the ages of Jonie's four cousins?`,
         type: 'mc',
@@ -7800,6 +8110,7 @@ star
     {
                 used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2025 Problem 4 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -7824,6 +8135,7 @@ star
 </span>`,
         uesd: false,
         difficulty: 3,
+rating: 1200,
         text: `A positive integer divisor of \\(12!\\) is chosen at random. The probability that the divisor chosen is a perfecct square can be expressed as \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are relatively prime
         positive integers. What is \\(m+n\\)?`,
         type: 'mc',
@@ -7861,6 +8173,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A point is chosen at random witin the square in the coordinate plane whose vertices are \\((0,0), (2020,0), (2020,2020),\\) and \\((0,2020)\\). The 
         probability that the point is within \\(d\\) units of a lattice point is \\(\\frac{1}{2}\\). (A point \\((x,y)\\) is a lattice point if \\(x\\) and \\(y\\) are both integers.) What is \\(d\\) to the nearest tenth?`,
         type: 'mc',
@@ -7885,6 +8198,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if
         the sum of the numbers face up on the three dice is exactly \\(7\\). Jason always plays to optimize
         his chances of winning. What is the probability that he chooses to reroll exactly two of the dice? ,       `,
@@ -7921,6 +8235,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many distinguishable arrangements are there of \\(1\\) brown tile, \\(1\\) purple tile, \\(2\\) green tiles, and \\(3\\) yellow tiles in a row from left to right?`,
         solution: `<b></b><p>All we have to do for this is find the total number of combination and then divide the ways to arrange the tiles of the same color</p>
         <p>We have \\(\\frac{7!}{3! \\cdot 2!}=420\\)`,
@@ -7938,6 +8253,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Ms. Carr asks her students to read any \\(5\\) of the \\(10\\) books on a reading list. Harold randomly selects \\(5\\) books from the list, and Betty does the same. What is the probability that there are exactly \\(2\\) books that they select?`,
         type: 'mc',
         choices: ['\\(A) \\frac{1}{8}\\)', '\\(B) \\frac{5}{36}\\)', '\\(C) \\frac{14]{45}\\)}', '\\(D) \\frac{25}{63}\\)', '\\(E) \\frac{1}{2}\\)'],
@@ -7958,6 +8274,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `An urn cotains one red ball and one blue ball. A box of extra red and blue balls lies nearby. Geogre performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?`,
         type: 'mc',
         choices: ['\\(A) \\frac{1}{6}\\)', '\\(B) \\frac{1}{5}\\)', '\\(C) \\frac{1}{4}\\)', '\\(D) \\frac{1}{3}\\)', '\\(E) \\frac{1}{2}\\)'],
@@ -7981,6 +8298,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `There are \\(10\\) people standing equally spaced around a circle. Each person knows exactly \\(3\\) of the other \\(9\\) people: the \\(2\\) people standing next to him or her, as well as the person directly across the circle.
         How many ways are there for the \\(10\\) people to split up into \\(5\\) pairs so that the members of each pair know each other?`,
         solution: `<b>13</b><p>We use the circle to visualize. Notice that we can just pair everybody with the person next to them. That would give us \\(2\\) cases because we can pair clockwise or counterclockwise</p>
@@ -8002,6 +8320,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `In a certain card game, a player is dealt a hand of \\(10\\) cards from a deck of \\(52\\) distinct cards. The number of distinct (unordered) hands that can be deal to the player can be written as \\(158A00A4AA0\\). What is the digit \\(A\\)?`,
         solution: `<b></b><p>What we're really looking for is the tens digit of \\(52\\) choose \\(10\\) or \\(\\frac{52!}{10!(42!)}\\) which simplifies down to \\(\\frac{52 \\cdot 51 \\cdot 50 ... \\cdot 43}{10!}\\). From here, it's decently easy to just simplify down by factoring and get \\(\\frac{26 \\cdot 17 \\cdot 7 \\cdot 47 \\cdot 46 \\cdot 5 \\cdot 11 \\cdot\\ 43}\\) which we divide by \\(10\\) again for modulo \\(2\\). `,
         answer: '2',
@@ -8019,6 +8338,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `In how many ways can the sequence \\(1,2,3,4,5\\) be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?`,
         solution: `<b></b>We know each sequence of increasing or decreasing numbers must be of length \\(2\\). Thus, it must go increase, decrease, increase, decrease, or visa versa. </p>
         <p>With increase decrease increase decrease, the terms that you increase to have to be \\(3,4,5\\). That gives us \\(_3_5_, _5_3_, _4_5_, _5_4_\\). Notice that we cannot have \\(3,4\\) in any combination. The first option can be \\(13254\\) or \\(23154\\). The same is said for the second one, because it's the same
@@ -8040,6 +8360,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Frieda the frog begins a sequence of hops on a \\(3 \\times 3\\) grid of squares, moving one square on each hope and choosing at random the direction of each hop-up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she "wraps around" and jumps to the opposite edge.
         For example if Frieda begins in the center square and makes two hops "up", the first hop would place her in the top row middle square, and the second hop would cause Frieda to jump to the opposite edge, landing in the bottom row
         middle square. Suppose Frieda starts from the center square, makes at most four hops at random, and stops hopping if she lands on a corner square. What is the probability that she reaches a corner square on one of the four hops?`,
@@ -8067,6 +8388,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `How many ways are there to place \\(3\\) indistinguihsable red chips, \\(3\\) indistinguishable blue chips, and \\(3\\) indistinguishable green chips in the squares of a \\(3 \\times 3\\) grid so that no two chips of the same color
         are directly adjacent to each other, either vertically or horizontally?`,
         solution: `<b></b><p>We know, right off the bat, that the answer has to be a multiple of \\(6\\), because any combination needs to work when the colors are switched around  in \\(3!=6\\) ways</p>
@@ -8091,6 +8413,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Ang, Ben, and Jasmin each have \\(5\\) blocks, colored red, blue, yellow, white, and green; and there are \\(5\\) empty boxes. Each of the people randomly and indepenedently of the other two people places one of their blocks into each box. The probability that at least one box 
         recieves \\(3\\) blocks of all of the same color is \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n?\\)`,
         solution: `<b>471</b><p>The number of ways for at least one box to have all of one color can be calculated by dividing it into three cattegories:</p>
@@ -8114,6 +8437,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `When a certain unfair die is rolled, an even number is \\(3\\) times as likely to appear as an odd number. The die is rolled twice. What is the probability that the sum of the numbers rolled is even?</p>`,
         solution: `<b>\\(\\frac{5}{8}\\)</b><p>Let's first start by figuring out what the values of the number need to be. The question doesn't specify the number of face,s so let's just imagine it's a coin that is either even or odd (you can also imagine \\(1\\) or \\(2\\) but it's up to you)</p>
         <p>We have that \\(P(O)=\\frac{1}{4}\\) and \\(P(E)=\\frac{3}{4}\\) because \\(\\frac{3}{4}+\\frac{1}{4}=1\\) (you can solve it algebraicly but it's relatively trivial)</p>
@@ -8131,6 +8455,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A school has \\(100\\) students and \\(5\\) teachers. In the first period, each studentis taking one class and each teacher is teacing one class. The
         enrollments in the classes are \\(50,20,20,5\\) and \\(5\\). Let \\(t\\) be the average value obtained if a teacher is picked at random and the number of students
         in their class is noted. Let \\(s\\) be the average be the average value obtained if a student was picked at random and the number of students in their class, including the student, is noted.
@@ -8152,6 +8477,7 @@ star
 </span>`,
      used: false,
      difficulty: 3,
+rating: 1200,
      text: `Each of \\(6\\) balls is randomly and independently painted either black or white with equal probability. What is the probability that every ball is different in color from more than half of the other \\(5\\) balls?`,
      type: 'mc',
      choices: ['\\(A) \\frac{1}{64}\\)', '\\(B) \\frac{1}{6}\\)', '\\(C) \\frac{1}{4}\\)', '\\(D) \\frac{5}{16}\\)', '\\(E) \\frac{1}{2}\\)'],
@@ -8174,6 +8500,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A farmer's rectangular field is partitioned into a \\(2\\) by \\(2\\) grid of \\(4\\) rectangular sections as shown in the figure. In
         each section the farmer will plant one crop: corn, wheat, soybeans, or potatoes. The farmder does not want to grow corn and wheat in any two sections that share a border, and the farmer does not want to grow soybeans and potatoes in any two sections that share a border. 
         Given these restrictions, in how many ways can the farmer choose crops to plant in each of the four sections of the field?`,
@@ -8206,6 +8533,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Each of the \\(20\\) balls is tossed independently and at random into one of the \\(5\\) bins. Let \\(p\\) be the probability that some bin ends up with \\(3\\) balls, another with \\(5\\) balls, and the other three with \\(4\\) balls each. Let
         \\(q\\) be the probability that every bin ends up with \\(4\\) balls. What is \\(\\frac{p}{q}\\)?`,
         solution: `<b>16</b><p>The actual concept for this isn't super complicated, it really just comes down to arithmetic and quick simplification</p>
@@ -8225,6 +8553,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4\\)?`,
         solution: `<b>'\\(\\frac{59}{64}\\)'</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
         <p>For it to be odd, we need all the factors to be odd. There's a \\(\\frac{1}{2}^6=\\frac{1}{64}\\) chance of this</p>
@@ -8244,6 +8573,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A rectangle is partitioned into \\(5\\) regions as shown.  
         Each region is to be painted a solid color - red, orange, yellow, blue, or green - so that regions that touch are painted different colors,
          and colors can be used more than once.
@@ -8267,6 +8597,7 @@ star
 </span>`,
        used: false,
        difficulty: 3,
+rating: 1200,
         text: `How many ways are there to split the integers \\(1\\) through \\(14\\) into \\(7\\) pairs such that in each pair, the greater number is at least \\(2\\) times the lesser number?`,
         solution: `<b>144</b><p>We know for a fact that \\((7,14)\\) has to be a pair. That gives \\((6,13)\\) or \\((6,12)\\). Consequently, \\((5,10), (5,11), (5,12), (5,13)\\), but the last two depend on the value that \\(6\\) is paired with</p>
         <p>\\(1,2,3,4\\) can be with any number. That being said, remmber that \\(8-14\\) cannot pair because for the smallest  value \\(8\\) we need \\(\\ge 16\\), which we don't have. Thus gives us \\(2\\) for \\(6\\), \\(3\\) for \\(5\\) (since it can't be one of \\(6\\)'s values) and \\(4\\) for 4, and so on so that we have \\(2 \\cdot 3 \\cdot 4!=144\\)`,
@@ -8287,6 +8618,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Suppose that \\(13\\) cards numbered \\(1,2,3,...,13\\) are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards \\(1,2,3\\) are picked up on the first pass, \\(4\\) and \\(5\\)
         on the second pass, \\(6\\) on the third pass, \\(7,8,9,10\\) on the fourth pass, and \\(11,12,13\\) on the fifth pass. For how many of the \\(13!\\) possible orderings of the cards will the \\(13\\) cards be picked up in exactly two passes?`,
         solution: `<b>8178</b><p>Let's find some shorter sequences and then work our way up. For the first \\(3\\) values, we have \\(4\\) sequences. We see \\((1,3,2), (2,1,3), (2,3,1), (3,1,2)\\). Trying with \\(4\\) gives \\(11\\). With \\(5\\) we have \\(26\\) so we set up \\(2^n-n-1\\). This is
@@ -8304,6 +8636,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A pair of fair \\(6\\)-sided dice is rolled \\(n\\) times. What is the least value of \\(n\\) such that the probability that the sum of the numbers face up on a roll equals \\(7\\) at least once is greater than \\(\\frac{1}{2}\\)</p>`,
         solution: `<b></b><p>We know the probability of the sum being \\(7\\) is \\(\\frac{1}{6}\\) because each value has a pair that will make it add to \\(7\\). Since the first value doesn't matter, we have the probability is based on the second value, thus meaning that there's a
         probability of \\(\\frac{1}{6}\\). We can't exactly find the combined probability for \\(\\frac{1}{4}\\), so instead we use complementary counting, or finding the probability that it does NOT sum to \\(7\\), which is \\(1-\\frac{1}{6}\\), which is \\(\\frac{5}{6}\\). The probability of this after \\(n\\) rolls needs to be less than \\(\\frac{1}{2}\\), so we set up \\(\\frac{5}{6}^n < \\frac{1}{2}\\) and some experimentation with the ansewr choices gives us \\(n=4\\)`,
@@ -8320,6 +8653,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Janet rolls a standard \\(6\\)-sided die \\(4\\) times and keeps a running total of the numbers she rolls. What is the probability that at some point, her runing total will equal \\(3\\)?`,
         solution: `<b>\\(\\frac{49}{216}\\)</b><p>She can't have a running total of \\(3\\) after more than \\(3\\) rolls. Let's find the probability that her running total is \\(3\\) after \\(1,2,3\\) rolls as different cases</p>
         <p>With \\(1\\) roll, she needs to run a \\(3\\), which is a \\(\\frac{1}{3}\\) chance</p>
@@ -8341,6 +8675,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A number ic chosen at random from among the first \\(100\\) positive integers, and a positive integer divisor of that number is chosen at
         What is the probability that the chosen divisor is divisble by \\(11\\)?`,
         solution: `<b>\\(\\frac{9}{200}\\)</b><p>First, we need to calculate the probability of the chosen integer having \\(11\\) as a factor at all. We have \\(11, 22, 33, 44, 55, 66, 77, 88, 99\\). That's \\(\\frac{9}{100}\\)</p>
@@ -8366,6 +8701,7 @@ star
 </span>`,
        used: false,
        difficulty: 4,
+rating: 1400,
        text: `Each \\(3 \\times 3\\) grid of squares is colored red, white, blue, or green so that every \\(2 \\times 2\\) square contains one square of each color. One such coloring is shown on the right below.
        How many different colorings are possible?`,
        solution: `<b>72                              </b><p>Start at the top riht square. We have \\(4!\\) ways to arrange it. Next, bottom right, we have \\(3\\0 spaces left, and what we put there defines the rest, so we have \\(4! \\cdot 3 = 24 \\cdot 3 = 72\\)`,
@@ -8384,6 +8720,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Sonya the frog chooses a point uniformly at random lying within the square \\([0,6] \\times [0,6]\\) in the coordinate plane and hops to that point. She then randomly chooses a distance uniformly at random from \\([0,1]\\), and a direction
         uniformly at random from {north, south, east, west}. All her choices are independent. She now hops the distance in the chosen direction. What is the probability that she lands outside ths square`,
         solution: `<b>\\(\\frac{1}{12}\\)</b><p>He can only land outside the square if he first hops onto a border square. There are \\(20\\) of these out of \\(36\\), which gives a \\(\\frac{5}{9}\\). For \\(16\\) of the border squares, you need to jump \\(1\\) in the right direction which gives a \\(\\frac{1}{2} \\cdot \\frac{1}{4}=\\frac{1}{8}\\) chance
@@ -8408,6 +8745,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Each of \\(2023\\) balls is randomly placed into one of \\(3\\) bins. Which of the following is closets to the probability that each of the bings will contain an odd number of balls?`,
         solution: `<b>\\(\\frac{1}{4}\\)</b><p>We know that every odd number is \\(2k+1\\) for some integer \\(k\\). We know each bin must have at least \\(1\\), so we find \\(1012\\) choose \\(2\\), effectively figuring out how many different variations we can have. We then divide this by the total number of 
         ways to sort it, which is of course, \\(2023\\) choose \\(3\\). This gives us a probability of \\(\\frac{1}{4}\\) after some simplification`,
@@ -8424,6 +8762,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         title: `What is the minimum number of successive swaps of adjacent letters in the string \\(ABCDEF\\) that are needed to change the string to \\(FEDCBA\\)? (For example, \\(3\\) swapps are required to chance \\(ABC\\) to \\(CBA\\); one such sequence of swaps is \\(ABC --> BAC --> BCA --> CBA\\).)`,
         solution: `<b>15</b><p>The easiest way to do this is to start by moving \\(A\\), and then \\(B\\), and then \\(C\\) and so on, which takes \\(5+4+3+2+1=15\\)`,
         answer: `15`,
@@ -8437,6 +8776,7 @@ star
 </span>`,
        used: false,
        difficulty: 2,
+rating: 1000,
        text: `In how many ways can \\(6\\) juniors and \\(6\\) seniors form \\(3\\) disjoint teams of \\(4\\) people so that each team has \\(2\\) juniors and \\(2\\) seniors?`,
        solution: `<b>1350</b><p>We start with the juniors. There are \\(6\\) choose \\(2=15\\) ways for them to make the first group, and then \\(4\\) choose \\(2=6\\) ways to choose the second. The last is set. That's \\(15 \\cdot 6\\), and just as many for the seniors. We  get
        \\(8100\\) but divide by \\(3!\\), which is the number of ways to arrange the group (because the order doesn't matter). This gives us \\(1350\\) </p>
@@ -8458,6 +8798,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Two teams are in a best-two-out-of-three playoff: the teams will play at most \\(3\\) games, and the winner of the playoff is the first team to win \\(2\\) games. The 
         first game is played on Team A's homefield, and the remaining games are played on Team B's home field. Team A has a \\(\\frac{2}{3}\\) chance of winning at home, and it's probability when playing away from home is 
         \\(p\\). Outcomes of the games are independent. The probability that Team A wins the playoff is \\(\\frac{1}{2}\\). Then \\(p\\) can be written in the form \\(\\frac{1}{2}(m-\\sqrt{n})\\)where \\(m\\) and \\(n\\) are positive integers. What is \\(m+n\\)`,
@@ -8483,6 +8824,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `In a race among \\(5\\) snails, there is at most one tie, but that tie can involve any number of snails. For example,
         the result of the race might be that Dazzler is first, Abby, Cyrus, and Elroy are tied for second; and Bruna is fifth. How many different
         results of the race are possible?`,
@@ -8507,6 +8849,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Three different pairs of shoes are placed in a row so that no left shoe is next to a right shoe from a different pair. In how many ways can these six shoes be lined up?`,
         solution: `<b>60</b><p>Let's do some casework. If we start with a left shoe, we have </p>
         <p>LRRLLR, where each shoe is being put with its pair. There are \\(2\\) variations of this, because the last \\(3\\) combinations for the starting pair and \\(2\\) ways to order the remaining ones. Thus,
@@ -8533,6 +8876,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `A group of \\(16\\) people will be partitioned into \\(4\\) indistinguishable \\(4\\)-person committees. Each committee will have one chairperson and one secretary. 
         The number of different ways to make these assignments can be written as \\(3^r M\\), where \\(r\\) and \\(M\\) are positive integers and \\(M\\) is not divisibly by \\(3\\). What is \\(r\\)?`,
         solution: `<b>5</b><p>We have \\(16\\) choose \\(4\\) ways to choose the first committee, and then \\(12\\) choose \\(4\\) for the second, and so on. We have \\(4!\\) ways to order the committees, but we divide by \\(4!\\) because they are indistinguishable. This gives us \\(\\frac{16!}{(4!)^5})</p>
@@ -8550,6 +8894,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Carlos uses a \\(4\\)-digit passcode to unlock his computer. In his pascode, exatly one digit is even, exactly one (possibly different) digit is prime, and
         no digit is \\(0\\). How many \\(4\\)-digit passcodes satisfy these conditions?`,
         solution: `<b>464</b><p>Let's say that the even and prime are the same. Thus, we have \\(2\\) which can be in \\(4\\) different places. The remaining three must be odd composite numbers, which must be \\(9\\) or \\(1\\). That gives us \\(2^3 \\cdot 4 = 32\\) possibilities</p>
@@ -8570,6 +8915,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `There are three jars. Each of three coins is placed in one of the three jars, chosen at random and independently of the placements of the other coins. What is the expected number of coins in a jar with the most coins?`,
         solution: `<b>\\(\\frac{17}{9}\\)</b><p>We calculate the probabiity of the higher jar having \\(x\\) number of coins</p>
         <p>Case 1: All 3. There are \\(3\\) choose \\(1\\) = \\(3\\) ways to pick which jar, and a \\(\\frac{1}{3}^3=\\frac{1}{27}\\) chance of them all ending up there. We have \\(\\frac{3}{27}  \\cdot 3 =\\frac{1}{3}\\), which we multiply by \\(3\\) because it's expected outcome</p>
@@ -8595,6 +8941,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `A point \\(P\\) is chosen at random inside square \\(ABCD\\). The probability that \\(\\overline{AP}\\) is neither the shortest nor the longest side of \\(\\triangle APB\\) can be written as 
         \\(\\frac{a+b\\pi -c\\sqrt{d}}{e}\\, where \\(a,b,c,d\\) and \\(e\\\) are positive integers, \\(\\textup{gcd}(a,b,c,e)=1\\), and \\(d\\) is not divisible by the square of a prime. What is \\(a+b+c+d+e\\)? `,
         solution: `<b>25</b>Let's just assume that the height of the square is \\(1\\) and that \\(AB\\) is the top. The solution will work whatever you do, but this is forced simplification. Since we're dealing with probability instead of
@@ -8620,6 +8967,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The \\(25\\) integers from \\(-10\\) to \\(14\\), inclusive, can be arranged to form a \\(5\\)-by-\\(5\\) square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the
         numbers along each of the main diagonals are all the same. What is the value of the common sum?`,
         solution: `<b>10</b><p>Notice that there are multiple ways to do this, if anything because of rotational symmetry. This alone tells us that finding "the exact solution" isn't best</p>
@@ -8662,6 +9010,7 @@ star
         type: 'mc',
         used: false,
         difficulty: 4,
+rating: 1400,
     },
     {
         title: `AMC 10B 2020 Problem 6 <span class="material-symbols-outlined">
@@ -8671,6 +9020,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Driving along a highway, Megan noticed that her odometer showed \\(1591\\) (miles). This number is a palindrome-it reads the same forward and backward. Then \\(2\\) hours later,
         the odometer displayed the next higher palindrome. What was her average speed, in miles per hour, during this \\(2\\)-hour period?`,
         solution: `<b>55</b><p>We don't actually want to focus on the ones digit, because, when it comes down to that, it won't matter as much. We start bigger. We know that we want the next number to be as small as possible, so then we ideally stay in the \\(10,000\\)s territory. We then have \\(1 x x x 1\\). We, ideally,
@@ -8688,6 +9038,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `<p>The decimal representation of</p>
         $$
         \\frac{1}{20^20}
@@ -8711,6 +9062,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Steve wrote the digits \\(1, 2, 3, 4,\\) and \\(5\\) in order repeatedly from left to right, forming a list of \\(10,000\\) digits beginning \\(123451234512...\\) He then erased every third digit from his list (that is the \\(3\\)rd, \\(6\\)th, \\(9\\)th...digits from the left),
         the erased every fourth digit from the resulting list (that is the \\(4\\)th, \\(8\\)th, \\(12\\)th,...digits from the left in what remained), and then erased every fifth digit from what remained at that point. What is the sum of the three digits that were in the positions of \\(2019, 2020, 2021\\)?`,
         solution: `<b>11</b><p>This problem really isn't as complicated as it may look. Yes, at a glance, it is long winded. However, the key to this problem is realizing that every few runs, there will be a pattern.</p>
@@ -8744,6 +9096,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Bela and Jenn play the following game on the closed interval \\([0,n]\\) of the real number line, where \\(n\\) is a fixed integer greater than \\(4\\). They take turns playing, with Bela going first. At his first turn,
         Bela chooses any real number in the interval \\([0,n]\\). Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?`,
         type: 'mc',
@@ -8766,6 +9119,7 @@ star
 </span>`, 
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `What is the remainder when \\(2^202 + 202\\) is idivided by \\(2^101+2^51+1\\)?`,
         solution: `<b>201</b><p>If \\(x=2^50\\), we can substitute \\(\\frac{4x^4+202}{2x^2+2x+1}\\) we factor out \\((2x^2+2x+1)(2x^2-2x+1)+201\\) and divide out the denominator for \\(2x^2-2x+2\\) which we solve to be \\(201\\)</p>`,
         answer: '201',
@@ -8780,6 +9134,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>Tom has a collection of \\(13\\) snakes, \\(4\\) of which are purple and \\(5\\) of which are happy. He observes that</p>
         <p>All of his happy snakes can add</p>
         <p>None of his purple snakes can subtract</p>
@@ -8799,6 +9154,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>When a student multiplied the number \\(66\\) by the repeating decimal,</p>
         $$
         1.abab...\\underline{1}.\\overline{ab},
@@ -8830,6 +9186,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>Which of the following is equivalent to</p>
         $$
         (2+3)(2^2+3^2)(2^4+3^4)(2^8+3^8)(2^16+3^16)(2^32+3^32)(2^64+3^64)
@@ -8851,6 +9208,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `For which of the following integers \\(b\\) is the base-\\(b\\) number \\(2021_{b}-221_{b}\\) not divisible by \\(3\\)?`,
         type: 'mc',
         choices: ['\\(A) 3\\)', '\\(B) 4\\)', '\\(C) 6\\)', '\\(D) 7\\)', '\\(E) 8\\)'],
@@ -8870,6 +9228,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Mr. Zhou places all the integers from \\(1\\) to \\(225\\) into a \\(15\\) by \\(15\\) grid. he places \\(1\\) in the middle square (eighth row and eighth column) and places other numbers one by one clockwise, as shown in part in the diagram below.
         What is the sum of the greatest number and the last number that appear in the second row from the top?`,
         image: "amc1020218.png",
@@ -8888,6 +9247,7 @@ star
 </span>`, 
         used: false,
         difficulty: 3,
+rating: 1200,
         text: 'Let \\(N=34\\cdot 34 \\cdot 63 \\cdot 270\\). What is the ratio of the sum of the odd divisors of \\(N\\) to the sum of the even divisors of \\(N\\)',
         type: 'mc',
         choices: ['\\(A) 1:16', '\\(B) 1:15\\)', '\\(C) 1:14\\)', '\\(D) 1:8\\)', '\\(E) 1:3\\)'],
@@ -8907,6 +9267,7 @@ star
         text: "Let \\(n\\) be a positive integer and \\(d\\) be a digit such that the value of the numeral \\(32d\\) in base \\(n\\) equals \\(263\\), and the value of the numeral \\(324\\) in base \\(n\\) equals the value of the numeral  \\(11d1\\) in base six. What is \\(n+d\\)",
         used: false,
         difficulty: 3,
+rating: 1200,
         solution: `<b></b><p>Recall that when we want to change a number in base \\(x\\) into base \\(10\\), we multiply the number in each digits place to \\(x\\) to the whatever-th place power (eg 2 for 100, 3 for a thousand). Thus, \\(32d\\), a base \\(n\\) number, is equal to \\(3n^2+2n+d=263\\). The second fact tell us that \\(3n^2+2n+4=216+36+6d+1\\). We solve for \\(d\\) and \\(n\\), or if we can, \\(n+d\\) directly</p>
         $$
         3n^2+2n+d=263
@@ -8953,6 +9314,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Call a positive integer an uphill integer if every digit is strictly greater than the previous digit. For example, \\(1357\\), \\(89\\) and \\(5\\) are all uphill integers, but \\(32\\), \\(1240\\) and \\(466\\), are not. How many uphill integers are divisble by \\(15\\)`,
         solution: `<b>6</b><p>First off, we know it must end with a \\(5\\) because it needs ot end in \\(5\\) or \\(0\\) to be divisible by \\(15\\) and uphill integers can't end in \\(0\\)</p>
         <p>Next, we know that the digits need to sum to a number divisible by \\(3\\). We compute with using casework by the number of digits</p>
@@ -8975,6 +9337,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Ravon, Oscar, Aditi, Tyrone, and Kim play a card game. Each persion is given \\(2\\) cards out of a set of cards numbered \\(1, 2, 3, ..., 10\\). The score of a player is the sum of the numbers of their cards. The 
         scores of the players are as follows: Ravon-\\(11\\), Oscar-\\(4\\), Aditi-\\(7\\), Tyrone-\\(16\\), Kim-\\(17\\). Which of the following statements is true?`,
         type: 'mc',
@@ -8991,6 +9354,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: "The six-digit number \\(20210A\\) is prime for only one digit \\(A\\). What is \\(A\\)?",
         type: 'fr',
         solution: `<b>9</b><p>Obviously, we know the answer can't end in an even number because then it would be divisible by \\(2\\)</p>
@@ -9009,6 +9373,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A two-digit positive integer is said to be \\(cuddly\\) if it is equal to the sum of its nonzero tens digit and the square of its units digit. How many two-digit positive integers are cuddly?`,
         solution: `<b>1</b><p>We take the definition we are given and rewrite it into an equation. Call \\(x\\) the tens digit and \\(y\\) the units digit. We have that our number, that has to be \\(cuddly\\) is equal to \\(10x+y\\) and that it must be equal to \\(x+y^2\\) so we write \\(10x+y=x+y^2\\) or
         \\(9x=y^2-y\\). We then proceed to try out values of \\(y\\) between \\(0\\) and \\(9\\)</p>
@@ -9036,6 +9401,7 @@ star
 </span>`,
        used: false,
        difficulty: 3,
+rating: 1200,
        text: `The base-nine representaiton of the number \\(N\\) is  \\(27,006,000,052_{nine}\\). What is the remainder when \\(N\\) is divided by \\(5\\)?`,
        solution: `<b>3</b><p>Brute forcing this is not an option, because we'd be calculating \\(9\\) to the \\(10\\)th power. Notice that the remainder when divided by \\(5\\) only depends on the last digit so we don't have to calculate that much. We know that to convert\\(N\\) back into base \\(10\\) we follow essentially \\(2\\cdot9^10 + 7 \\cdot 9^9\\) etc. However,
        even if we only focus on the units digit that is annoying to calculate \\(9\\) to that many powers. However, when we multiply, we only need to find the units digits of the two numbers we multiply to find the units digit of the product. And luckily, a lot of exponents follow patterns when it comes to units digits. Let's try it with \\(9\\) and make a conjecture:</p>
@@ -9067,6 +9433,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `For each positive integer \\(n\\), let \\(f_{1}(n)\\) be twice the number of positive integer divisors of \\(n\\), and for \\(j \\ge 2\\), let \\(f_{j}(n)=f_{1}(f_{j-1}(n))\\). For how many values of \\(n \\ge 50\\) is \\(f_{50}(n)=12\\)?`,
         solution: `<b>10</b><p>Let's first explain what this is saying. Essentially, for \\(f_{j}\\) you continuously use the function until you get down to \\(1\\). With \\(f_{50}\\) that looks like \\(f_{1}(f_{1}(f_{1}))\\) \\(50\\) times. Considering 
         how complex this is, there's probably a better way to solve it. </p>
@@ -9095,6 +9462,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) in which \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
         solution: `<b>4041</b><p>We know that adjacent, or consecutive, numbers are always relatively prime. Thus, we don't really have to worry about simplifying. We just have to find the numerator. You could probalby brute force this if you really wanted to, but let's be sensible about it. We know that we're looking for the relationship between \\(x^2+1\\) and \\(x^2\\), particulary
         the difference which ends up being \\((x+1)^2-x^2=x^2+2x+1-x^2=2x+1\\). We have \\(x=2020\\) for an ansewr of \\(4041\\).`,
@@ -9107,6 +9475,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Let \\(n=8^2022\\). Which of the following is equal to \\(\\frac{n}{4}\\)?`,
         type: 'mc',
         choices: ['\\(A) 4^1010\\)', '\\(B) 2^2022\\)', '\\(C) 8^2018\\)', '\\(D) 4^3031\\)', '\\(E) 4^3032\\)'],
@@ -9123,6 +9492,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The least positive integer with exactly \\(2021\\) distinct positive divisors can be written in the form of \\(m \\cdot 6^k\\), where \\(m\\) and \\(k\\) are integers and \\(6\\) is not a divisor of \\(m\\). What is \\(m+k\\)?`,
         solution: `<b>58</b><p>We know that \\(6^k\\) can be written as \\(2^k \\cdot 3^k\\). We also know that the number of divisors a number has is equal to the product of \\(1\\) plus the powers in its prime facotrization. Thus, \\(2021 = 2 \\cdot (k+1)^2\\), but that's not possible because the
         powers have to be integers and \\(2021\\) is odd. That is, unless \\(m\\) is not prime. We now know for sure that \\(m\\) cannot be prime OR must be a facotr of \\(6\\). Returning to our way of finding the number of factors, we note that \\(2021=43 \\cdot 47\\) which we can find by using \\(45^2\\) and going for closer values. We know that the prime factorization must be \\(2^46 \\cdot 3^42\\) or \\(2^4 \\cdot 6^42\\) for \\(m=16\\) and \\(k=42\\) and an answer of \\(58\\) `,
@@ -9137,6 +9507,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Call a fraction \\(\\frac{a}{b}\\), not nescessarily in simpplest form, special if \\(a\\) and \\(b\\) are positive integers whose sum is \\(15\\). How many distinct integers can be written as the sum of two, not nescessarily different, special fractions?`,
         solution: `<b>11</b><p>First find all the special fractions</p>
         $$
@@ -9175,6 +9546,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Forty slips of paper numbered \\(1\\) to \\(40\\) are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other.
         Alice says "I can't tell who has the larger number." Then Bob says, "I know who has the larger number." Alice says, "You do?" Is your number prime?" Bob replies, "Yes." Alice says, "In that case, if I multiply your number by \\(100\\) and add my number, the result is a perfect square," What is the sum of the two numbers drawn from the hat?`,
         solution: `<b>27</b><p>Let's break this down individually:</p>
@@ -9195,6 +9567,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Which of the following conditions is sufficient to guarantee that integers \\(x, y,\\) and \\(z\\) satisfy the equation \\(x(x-y)+y(y-z)+z(z-x)=1\\)?`,
         type: 'mc',
         choices: ['\\(A) x>y\\) and \\(y=z\\)', '\\(B) x=y-1\\) and \\(y=z-1\\)', '\\(C) x=z+1\\) and \\(y=x+1\\)', '\\(D) x=z\\) and \\(y-1=x\\)', '\\(E) x+y+z=1\\)'],
@@ -9222,6 +9595,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Let \\(N\\) be a positive integer \\(7777...777\\) a \\(313\\)-digit number where each digit is a \\(7\\). Let \\(f(r)\\) be the leading digit of the \\(r\\)th root of \\(N\\). What is \\(f(2)+f(3)+f(4)+f(5)+f(6)\\)?`,
         solution: `<b>8</b><p>We can make a few basic rules. The first is that dividing by any power of \\(10\\) does not change the leading digit, because it just adds \\(0\\)s, which are insignificant. From this, we don't concern ourselves with the whole \\(313\\) digit thing and instead only focus on the leading digits of \\(7.777...\\) after a bunch of roots. We approximate that the sum ends up being
         \\(2+1+1+3+1=8\\)</p>
@@ -9236,6 +9610,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The least common multiple of a positive integer \\(n\\) and \\(18\\)  is \\(180\\) and te greatest common divisor of \\(n\\) and \\(45\\) is \\(15\\). What is the sum of digits of \\(n\\)?`,
         solution: `<b>3</b><p>We know by the second rule that \\(n\\) must be \\(15\\) or \\(30\\). However, the \\(LCM\\) of \\(18\\) and \\(15\\) isn't \\(180\\), it's \\(90\\), so we know \\(n=30\\) for a sum of digits \\(3\\)`,
         answer: '3',
@@ -9249,6 +9624,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A dataset consists of \\(6\\) (not distinct) positive integers \\(1,7,5,2,5\\) and \\(X\\). The average (arithmetic mean) of the \\(6\\) numbers equals a value in the data set. What is the sum of all possible values of \\(X\\)?`,
         solution: `<b>32</b><p>By the definition of a mean, we know that the sum of the numbers must be equal to \\(6 \\cdot 1 = 6, 6 \\cdot 7 = 42, 6 \\cdot 5 = 30\\) or \\(6 \\cdot 2 = 12\\). The current sum is \\(20\\) so \\(X\\) must be equal to \\(10\\) or \\(22\\) for a sum of \\(32\\)`,
         answer: '32',
@@ -9264,6 +9640,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `<p>On Halloween, \\(31\\) children walked into the principal's office asking for candy. They can be classified into three types: Some always lie; some always tell the truth; and some alternately lie and tell the truth. The alternaters arbitrarily choose their first response, either a lie or the truth, but each subsequent statement has the opposite truth value from its predecessor. The principal asked everyone the same three questions in this order.</p>
         <p>"Are you a truth-teller?" The principal gave a piece of candy to each of the $22$ children who answered yes.</p>
         <p>"Are you an alternater?" The principal gave a piece of candy to each of the $15$ children who answered yes.</p>
@@ -9288,6 +9665,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `How many three-digit positive integers \\(abc\\) are there whose nonzero digits \\(a, b,\\) and \\(c\\) satisfy \\(0.\\overline{abc}=\\frac{1}{3}(0.\\overline{a}+0.\\overline{b}+0.\\overline{c})\\)?`,
         solution: `<b>13</b><p>We know that \\(0.\\overline{a}=\\frac{a}{9}\\). If you don't know why, try that out with any integer less than \\(10\\). Anyways, we rewrite RHS (right hand side) to \\(\\frac{abc}{27}\\). For the LHS
         we divide by \\(999\\) but make the numerator a 3 digit number \\(100a+10b+c\\) for \\(\\frac{100a+10b+c}{999}\\). We rewrite the entire equation as \\(100a+10b+c=37a+37b+37c\\) which we can solve for by solving for \\(a\\) and factoring out the GCD until we get \\(7a+3b+4c\\). Since \\((1,1,1)\\) is a solution, we 'scale that up' for every digit, whikch gives us 
@@ -9307,6 +9685,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<p>Define L_{n} as the least common multiple of all the integers from \\(1\\) to \\(n\\) inclusive. There is a unique integer \\(h\\) such that</p>
         $$
         \\frac{1}{1}+\\frac{1}{2}+\\frac{1}{3}+...+\\frac{1}{17}=\\frac{h}{L_{17}}
@@ -9339,6 +9718,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `How many strings of length \\(5\\) formed from the digits \\(0,1,2,3,4\\) are there such that for each \\(j \\in {1,2,3,4},\\) at least \\(j\\) of the digits are less than \\(j\\)?
         (For example \\(02214\\) satisfies this condition because it contains at least \\(1\\) digit less than \\(1\\), at least \\(2\\) digits less than \\(2\\) at least \\(3\\) digits less than \\(3\\), and at least \\(4\\) digits less than \\(4\\). The string \\(23404\\) does not satisfy the condition
         because it does not contain at least \\(2\\) digits less than \\(2\\).)`,
@@ -9361,6 +9741,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many three-digit positive integers have an odd number of even digits?`,
         type: 'mc',
         choices: ['\\(A) 150\\)', '\\(B) 250\\)', '\\(C) 350\\)', '\\(D) 450\\)', '\\(E) 550\\)'],
@@ -9378,6 +9759,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `How many of the first ten numbers of the sequence \\(121, 11211, 1112111,...\\) are prime numbers?`,
         type: 'mc',
         choices: ['\\(A) 0\\)', '\\(B) 1\\)', '\\(C) 2\\)', '\\(D) 3\\)', '\\(E) 4\\)'],
@@ -9393,6 +9775,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>Consider the following \\(100\\) sets of \\(10\\) elements each:</p>
         $$
         {1,2,3,...,10},
@@ -9424,6 +9807,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Camila writes down five positive integers. The unique mode of these integers is \\(2\\) greater than their median, and the median is \\(2\\) greater than their arithmetic mean. What is the least possible value for the mode?`,
         solution: `<b></b><p>Let's call our values \\(a, b, c, d, e\\). We know one value must happen at least more than once, because there is a unique mode. Call \\(e\\) and \\(d\\) the mode values and \\(c\\) the median. We have that \\(\\frac{a+b+c+2d}{5}+2=c=d-4\\). We then use the answer choices from here</p>
         <p>If the mode is \\(5\\) then \\(c\\) must be equal to \\(3\\) and the mean is \\(1\\) which isn't possible</p>
@@ -9445,6 +9829,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `All the high schools in a large school district are involved in a fundraiser selling T-shirts. Which of the choices below is logically equivalent to the statement "No school bigger than Euclid HS sold more T-shirts than Euclid HS"?`,
         type: 'mc',
         choices: ['\\(A)\\) All schools smaller than Euclid HS sold fewer T-shirt than Euclid HS', '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS', '\\(C)\\) All schools bigger than Euclid HS sold fewer shirts T-shirts than Euclid HS', '\\(D)\\) All schools that sold fewer T-shirts than Euclid HS are smaller than Euclid HS.', '\\(E)\\) All schools smaller than Euclid HS sold more T-shirts than Euclid HS'],
@@ -9464,6 +9849,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `The positive difference between a pair of primes is equal to \\(2\\), and the positive difference between the cubes of the two primes is \\(31106\\). What is the sum of the digits of the least prime that is greater than those two primes?`,
         solution: `<b>16</b><p>We write the given info as the equations \\(x-y=2\\) and \\(x^3-y^3=31106\\). We solve by substitution</p>
         $$
@@ -9489,6 +9875,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Suppose that \\(S\\) is a subset of \\({1,2,3,...,25}\\) such that the sum of any two (not nescessarily distinct) elements of \\(S\\) is never an element of \\(S\\) What is the maximum number of elements \\(S\\) may contain?`,
         solution: `<b>13</b><p>Essentially, we just need doubling the smallest value to be greater than the largest value, \\(25\\). This occurs when the smallest value is greater than \\(\\frac{25}{2}\\), so we have a smallest value \\(13\\) for \\(13\\) elements`,
         answer: '13',
@@ -9506,6 +9893,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `One of the following numbers is not divisible by any prime number less than \\(10\\). Which is it?`,
         choices: ['\\(A) 2^606 -1\\)', '\\(B) 2^606 +1\\)', '\\(C) 2^607 -1', '\\(D) 2^607 + 1\\)', `\\(E) 2^607 + 3&607\\)`],
         solution: `<b>2^607-1</b><p>This is a really difficult one, if I'm being honest. I doubt you would actually want/have time to do this in its entirety on a test</p>
@@ -9520,6 +9908,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: "How many positiveperfect squares less than \\(2023\\) are divisible by \\(5\\)?",
         solution: `<b>8</b><p>We know that for a perfect square to be divisible by \\(5\\), its root should be a multiple of \\(5\\). We just need to find what square of a number divisible of \\(5\\) is closest to and less than \\(2023\\). We know that 
         \\(2023\\) is closed to \\(2025=45^2\\), so we're looking at \\(44\\), which has \\(\\frac{44}{8}=8\\frac{4}{5}\\) \\(5's\\) so there are \\(8\\) total`,
@@ -9532,6 +9921,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many digits are in the base \\(10\\) representation of \\(8^5 \\cdot 5^1- \\cdot 15^5\\)?`,
         type: 'mc',
         choices: ['\\(A) 14\\)', '\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'],
@@ -9548,6 +9938,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A digital display shows the current date as an \\(8\\)-digit integer consisting of a \\(4\\)-digit year, followed by a \\(2\\)idigit month, followed by a \\(2\\)-digit date within the month. For example, Arbor Day this year
         is displayed as \\(20230428\\). For how many dates in \\(2023\\) does each digit appear an even number of times in the \\(8\\)-digit display for that date?`,
         solution: `<b>9</b><p>The first digit must be \\(0\\) or \\(1\\). The first \\(4\\) digits are set. We know we need at least one more \\(3\\) and one more \\(0\\). If the month as a \\(0\\), we can have Jan \\(13\\)th, Jan \\(31\\)st, Feb \\(23\\)th, March \\(11\\)th, March \\(22\\)nd, Oct \\(13\\)th, Oct \\(31\\)st. For the \\(0\\) NOT in the month, we have November \\(3\\)rd and \\(30\\)th`,
@@ -9564,6 +9955,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `<p>How many three-digit positive integers \\(N\\) satisfy the following properties?</p>
         <p>The number \\(N\\) is divisible by \\(7\\)</p>
         <p>The number formed by reversing the digits of \\(N\\) is divisible by \\(5\\)</p>`,
@@ -9592,6 +9984,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `In a table tennis tournament every participant played every other participant exactly once. Although there were twice as many right-handed players as left-handed players, the number of games won by left-handed players was \\(40%\\) more than the number of games won by right-handed players. (There were no ties and no ambidextrous players.) What is the total number of games played?`,
         solution: `<b>48</b>The total number of games \\(x\\) is equal to those won by the right-handed players plus those won by the left hand players \\(y+z\\), respectively. We know that \\(y=1.4z\\) so we have \\(x=2.4z\\). Since all values must be integers, we know that \\(x\\) must be divisible by \\(12\\). That gives us \\(36\\) and \\(48\\). Since each game is decided by choosing \\(2\\) people, we need \\(x\\) choose \\(2\\) to be 
         possible, which is only possible for \\(48\\)`,
@@ -9614,6 +10007,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `<b></b><p>If the positive integer \\(c\\) has positive integer divisors \\(a\\) and \\(b\\) with \\(c=ab\\), then \\(a\\) and \\(b\\) are said to be \\(complementary\\) divisors of \\(c\\). Suppose that \\(N\\) is a positive integer that has one complementary pair of divisors that differ by \\(20\\) and another pair of complementary divisors that differ by \\(23\\). What is the sum of the digits of \\(N\\)?`,
         solution: `<b></b><p>We have that \\(N=x^2+20x\\) and \\(N=y^2+23y\\). We know by logic that \\(x>y\\) and \\(x+20 < y+23\\). We can descripte the relationship as either \\(x=y+1\\) or \\(x=y+2\\), because if we went any higher, it would defy the second rule we set. We create the following equations:</p>
         $$
@@ -9641,6 +10035,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the units digit of \\(2022^2023 + 2023^2022\\)?`,
         solution: `<b>7</b><p>We need to understand that unit digits are cyclic to best comprehend this. For \\(2\\), it goes \\(2,4,8,6,\\), so the units digit of \\(2022^2023=8\\). For \\(3\\) it's \\(3,9,7,1\\) so the unit digit is \\(9\\). Addint this gives \\(17\\). Thus, the units digit is \\(7\\)`,
         answer: '7',
@@ -9654,6 +10049,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text:`You are playing a game. A \\(2 \\times 1\\) rectangle covers two adjacent squares (oriented either horizontally or vertically) of a\\(3\\times 3\\) grid of squares, but you are
          not told which two squares are covered. Your goal is to find at least one square that is covered by the rectangle. A "turn" consists of you guessing a square, after which you are told whether that square is covered by the hidden rectangle. What is the minimum number of turns you need to ensure 
         that at least one of your guessed squares is covered by the rectangle?`,
@@ -9672,6 +10068,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Suzzane went to the bank and withdrew \\($800\\). The teller gave her this amount of using \\($20\\) bills, \\($50\\) bills, and \\($100\\) bills, with at least one of each denominator. How many different collections of bills could Suzanne have recieved?`,
         solution: `<b>21</b><p>We write the equation as \\(2x+5y+10z=80\\) (we divide by \\(10\\)) and solve by casework using the smallest denominaton</p>
         <p>There is one \\(2\\). There's \\(78\\) left, which sin't nescessary unless we have more \\(2\\)s. We must have some multiple of \\(5\\) \\(2\\)s</p>
@@ -9691,6 +10088,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the least positive integer \\(m\\) such that \\(m \\cdot 2! \\cdot 3! \\cdot 4! \\cdot 5! ... 16!\\) is a perfect square?`,
         solution: `<b></b><p>The sequence, which we'll call \\(S\\) is a perfect square when each number appears an even number of times in the prime factorization. We expand and find that \\(2!, 4!, 6!...16!\\) will all have odd exponents</p>
         <p>Thus, we just need \\(m \\cdot 2\\cdot 4 \\cdot 6 ... 16\\) to be a perfect square which we factorize and find \\(m=70\\) at lowest`,
@@ -9707,6 +10105,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Define an \\(upno\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly increasing moving left to right. Similarly, define a \\(downo\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly decreasing moving eft to right. For instance, the number
         \\(258\\) is an upno and \\(8620\\) is a downo. Let \\(U\\)  equal to the total number of \\(upnos\\) and let \\(D\\) equal the total number of \\(downos\\). What is \\(|U-D|\\)`,
         solution: `<b>512</b><p>This ends up being a really long-winded solution. However, I will outline thegeneral process. Do some basic casework with leading digits until you find a conjecture about the differences between numbers</p>
@@ -9725,6 +10124,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `<p>Suppose \\(a, b,\\) and \\(c\\) are positive integers such that</p>
         $$
         \\frac{a}{14}+\\frac{b}{15}=\\frac{c}{210}
@@ -9747,6 +10147,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `What is the sum of the digits of the smallest prime that can be written as a sum of \\(5\\) distinct primes?`,
         solution: `<b>7</b><p>We know that the smallest prime would be the sum of the \\(5\\) smallest primes. However, the smallest prime is \\(2\\) which, when summed with \\(4\\) other odd numbers, would become even. Thus, we can't use \\(2\\). We try the next \\(5\\) smallest prime numbers \\(3, 5, 7, 11, 13\\). This sums to \\(39\\). Still not prime. We substitute \\(13\\) for \\(17\\) which gives us \\(43\\). We have that \\(4+3=7\\)`,
         answer: '7',
@@ -9758,6 +10159,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The number \\(2024\\) is written as the sum of not nescessarily distinct two-digit numbers. What is the least number of two-digit numbers need to write this sum?`,
         solution: `<b></b><p>We want to use as many large numbers as possible so that we use as little two digit numbers of possible. Obviously, the largest 2-digit number is \\(99\\) so divide \\(2024\\) by that: \\(\\frac{2024}{99} = 20\\) with remainder \\(44\\). There are thus \\(21\\) two digit numbers.`,
         answer: '21',
@@ -9769,6 +10171,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `What is the least value of \\(n\\) such that \\(n!\\) is a multiple of \\(2024\\)?`,
         solution: `<b>23</b><p>We find the prime factorization of \\(2024\\) to be \\(2^3 \\cdot 11 \\cdot 23\\). The highest prime number is \\(23\\) in this, so it must be at least \\(23\\)`,
         answer: '23',
@@ -9782,6 +10185,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The product of three integers is \\(60\\). What is the least possible positive sum of the three integers?`,
         solution: `<b>3</b><p>We know that the sum is minimized when factors are nearest to each other. However, we are not told that the factors have to be positive, just the sum. We still want to numbers to be close, however.</p>
         <p>We list the prime factorization as \\(2^2\\cdot 3 \\cdot 5\\). What we CAN do is have one be \\(1\\). Thus, we take the cloesest thing to the square root, \\(6\\) and \\(10\\) and make the \\(6\\) and \\(1\\) negative for a sum of \\(3\\) `,
@@ -9798,6 +10202,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Consider the following operation. Given a positive integer \\(n\\), if \\(n\\) is a multiple of \\(3\\), then you replace \\(n\\) by \\(\\frac{n}{3}\\). If \\(n\\) is not a multiple of \\(3\\), then you replace \\(n\\) by \\(n+10\\).
         For example, beginning with \\(n=4\\), this procedure gives\\(4\\rightarrow 14 \\rightarrow 24\\rightarrow 8 \\rightarrow 18 \\rightarrow 6\\rightarrow 2 \\rightarrow 12\\rightarrow ...\\). Suppose you start with \\(n=100\\). What value results if you perform this operation exactly \\(100\\) times `,
         solution: `<b></b><p>Let's try this a few times and see if we can make a conjecture. We have \\(100 \\rightarrow 110 \\rightarrow 120 \\rightarrow 40 \\rightarrow 50 \\rightarrow 60\\rightarrow 20 \\rightarrow 30\\). From here, the sequence repeats \\(20, 30,10\\). We use some modular arithmetic</p>
@@ -9813,6 +10218,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Let \\(M\\) be the greatest integer such that both \\(M+1213\\) and \\(M+3773\\) are perfect squares. What is the units digit of \\(M\\)?`,
         solution:  `<b>8</b><p>Write equations \\(M+1213=x^2\\) and (M+3773=(x+y)^2\\). It's sort of trivial that \\(y\\) should be as small as possible</p>
         <p>If you don't get why, think of it this way: Imagine the square root parent function. That's similar to what's happening, if you call the enitre \\(LHS\\) \\(x\\) and the \\(RHS\\) \\(y\\).</p>
@@ -9851,6 +10257,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `There are exactly \\(K\\) positive integers \\(5 \\le b \\le 2024\\) such that the base-\\(b\\) integer \\(2024_{b}\\) is divisible by \\(16\\)(where \\(16\\) is in base ten). What is the sum of the digits of \\(K\\)?`,
         solution: `<b>20</b><p>We convert \\(2024_{b}\\) to base \\(10\\) by creating the equation \\(2b^3+2b+4\\). We need \\(\\frac{2b^3+2b+4}{16}\\) to be a whole numberWe can simplify this down by writing
         \\(\\frac{b^3+b}{8}+\\frac{1}{4}\\) is a whole number. We thus have that \\(\\frac{b^3+b}{8}=\\frac{3}{4}+x\\) where \\(x\\) is effectively any whole number. This is similar to how you would solve a sine graph, if that makes sense</p>
@@ -9883,6 +10290,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<p>Let \\(S\\) be a subset of \\({1,2,3,...,2024}\\) such that the following two conditions hold:</p>
         <p>If \\(x\\) and \\(y\\) are distinct elemtns of \\(S\\), then \\(|x-y|>2\\)</p>
         <p>If \\(x\\) and \\(y\\) are distinct odd elements of \\(S\\), then \\(|x-y|>6\\)</p>
@@ -9912,6 +10320,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `The numbers, in order, of each row and the numbers, in order, of each column of a \\(5 \\times 5\\) array of integers form an arithmetic progression of length \\(5\\). The numbers in positions \\((5,5), (2,4), (4,3),\\) and \\((3,1)\\) are \\(0,47,16,\\) and \\(12\\) respectively. What number 
         is in position \\((1,2)\\)?`,
         solution: `<b>29</b><p>Just off the bat, this is a really annoying problem to solve. There is quite a bit of algebra in it, and honestly, if I saw this on the AMC 10 I would skip it. That being said, here's how to solve it</p>
@@ -9942,6 +10351,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `In a long line of people arranged left to right, the \\(1013\\)th person from the left is also the \\(1010\\)th person from the right. How many people are in the line?`,
         solution: `<b>2022</b><p>This is easy, right? I mean you just add them? Nope, because the issue with that is you would count the person twice. What you do instead is add and subtract \\(1\\) for \\(1013+1010-1=2022\\)</p>
         <h3>Common Mistake ❗❗❗</h3>
@@ -9957,6 +10367,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>In the following expression, Melanie changed some of the plus signs to minus signs:</p>
         $$
         1+3+5+7+...+97+99
@@ -9986,6 +10397,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the remainder when \\(7^2024 + 7^2025 + 7^2026\\) is divided by \\(19\\)?`,
         solution: `<b>0</b><p>We factor out \\(7^2024\\) for \\(7^2024(1+7+49)\\) or \\(7^2024(57)\\). Since \\(57\\) is divisible by \\(19\\) (being \\(19 \\cdot 3\\)\\), we have a remainder of \\(0\\)`,
         topic: 'factoring',
@@ -9999,6 +10411,7 @@ star
 </span>`,
        used: false,
        difficulty: 2,
+rating: 1000,
        text: `Let \\(N\\) be the product of all the positive integer divisors of \\(42\\). What is the units digit of \\(N\\)?`,
        solution: `<b>6</b><p>Through pure logic, we know that the product of all divisors of \\(42\\) will be some power of \\(42\\).</p>
        <p>The prime factorization of \\(42\\) is \\(2 \\cdot 3 \\cdot 7\\) for a total of \\(8\\) factors and \\(4\\) factor pairs. Thus, \\(42\\) is raised to the \\(4\\)th power. </p>
@@ -10016,6 +10429,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A group of \\(100\\) students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students \\(A\\) and \\(B\\), student \\(A\\)
         and \\(B\\), student \\(A\\) speaks some language that student \\(B\\) does not speak, and student \\(B\\) speaks some language that student \\(A\\) does not speak. What is the least possible total 
         number of languages spoken by all students?`,
@@ -10036,6 +10450,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A list of \\(9\\) real numbers consists of \\(1, 2.2, 3.2, 5.2, 6.2\\) and \\(7\\) as well as \\(x, y,\\) and \\(z\\) with \\(x \\le y \\le z\\). The range of the list is \\(7\\) and the mean and the median are both positive integers. how many ordered triples \\(x,y,z\\) are possible?`,
         solution: `<b>3</b><p>We either have \\(x=0\\) or \\(z=8\\) and that \\(y\\) must be the medain. The sum of all the numbers must be divisible by \\(9\\) in order for the mean to be a whole number. The current sum is \\(24.8\\) so the remaining numbers must sum to \\(2.2, 11.2, 20.2\\). \\(2.2\\) isn't possible unless we hvae a negative \\(x\\), which we can't without 
         disrupting the range. For \\(11.2\\), we know that the median \\(y\\) must be between \\(3.2\\) and \\(5.2\\) so it's either \\(4\\) or \\(5\\). The prior makes \\(x\\) and \\(z\\) which contradicts our previous statement but is still correct (lesson in oversimplifaction, not always the best) and the latter gives \\(0\\) and \\(6.2\\)</p>
@@ -10057,6 +10472,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Jerry likes to play with numbers. One day, he wrote all the integers from \\(1\\) to \\(2024\\) on the whiteboard. Then he repeatedly chose four numbers on the whiteboard, erased them, and replaced them by either their sum or their product. (For example, Jerry's first step might have been to erase
         \\(1,2,3\\) and \\(5\\), and then write either \\(1\\) their sum, or \\(30\\) their product, on the whiteboard). After repeatedly performing this operation, Jerry noticed that all the remaining numbers on the whiteboard were odd. What is the maximum possible number of integers on the whiteboard at that time?
         `,
@@ -10079,6 +10495,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: "How many different remainders can result when the \\(100\\textup{th}\\) power of any integer is divided by \\(125\\)?",
         solution: `<b>2</b><p>Any integer can be written as \\(5x, 5x+1, 5x+2, 5x+3, 5x+4\\). When we raise these to the \\(100\\)th power, they will leave specific remainders. For \\(5x\\) it leaves \\(0\\) because the \\(5\\) effectively "handles" the \\(125\\). Not quite sure how else to explain it. We also notice that \\(5x+4 = 5(x+1)-1\\) and the same logic for \\(5x+3\\). \\(5x \\pm 1\\) or \\(2\\) give remainder of \\(1\\) (see link for more complex proof)</p>`,
         answer: '2',
@@ -10099,6 +10516,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `<p>The Fibonacci numbers are defined by \\(F_{1}=1, F_{2}=1,\\) and \\(F_{n}=F_{n-1}+F_{n-2}\\) for \\(n \\ge 3\\) What is</p>
         $$
         \\frac{F_{2}}{F_{1}}+\\frac{F_{4}}{F_{2}}+\\frac{F_{6}}{F_{3}}+...+\\frac{F_{20}}{F_10}}?
@@ -10115,6 +10533,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>Consider the sequence of positive integers</p>
         $$
         1,2,1,2,3,2,1,2,3,4,3,2,1,2,3,4,5,4,3,2,1,2,3,4,5,6,5,4,3,2,1,2,...
@@ -10140,6 +10559,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `<p>Agnes writes the following four statements on a blank piece of paper</p>
         <p> - At least one of these statements is true</p>
         <p> - At least two of these statements are true</p>
@@ -10169,6 +10589,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Let \\(N\\) be the unique positive integer such that dividng \\(273436\\) by \\(N\\) leaves a remainder of \\(16\\) and dividing \\(272760\\) by \\(N\\) leaves a remainder of \\(15\\). What is the tens digit of \\(N\\)?`,
         solution: `<b>4</b><p>We have that \\(x \\cdot N + 16 = 273436\\) and that \\(y \\cdot N + 15 = 272760\\). We can also rewrite this into
         \\(x \\cdot N = 273420\\) and \\(y \\cdot N = 272745\\). We effectively need the \\(GCF\\) of the two constants. </p>
@@ -10190,6 +10611,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Call a positive integer fair if no digit is used more than once, it has no \\(0\\)s and no digit is adjacent to two
         greater digits. For example, \\(196, 23\\) and \\(12463\\) are fair, but \\(1546, 320,\\) and \\(34321\\) are not. How many fair positive integers are there?`,
         type: 'mc',
@@ -10211,6 +10633,7 @@ star
         image: "AMC10A2025.png",
         answer: "32pi",
         difficulty: 2,
+rating: 1000,
         solution: `<b>\\(32\\pi\\)</b><p>The key tip of this problem is to make everything as simple as possible. We have virtually no constraints for the size of the smaller semicircle. Thus, we can manipulate it however we want. For us, the simplest solution is to ignore it by making it infitesimally small to the point where it is no longer consequential. The smaller the circle gets, the closer \\(\\overline{CD}\\) or \\(16\\) gets to the diameter. Thus, if we ignore the existence of the semicircle, the diameter becomes 16. It is easy to solve from there, because we're just finding the area of a semicircle with diameter \\(16\\).
         $$
         \\frac{16}{2}=8
@@ -10242,6 +10665,7 @@ In the figure below, the outside square contains infinitely many squares, each o
         `,
         image: "AMC10A202513.png",
         difficulty: 3,
+rating: 1200,
         answer: "0.75",
         solution: `<b>0.75</b><p>Since we're only dealing with ratios, we can make the dimension of the larger square whatever we want. If this weren't abour ratios, I would recommend using a variable. However, since the values don't really matter here, we can just use 1, which will make our math the easiest. The areas of the squares are then 1, \\(k^2\\) (since the side lengths are multiplied by k, and then multiplied by each other). Effectively from here on out, the area is \\(k\\) raised to the power of the-xth-largest-square-times-two. Since we know that the shading alternates, and we are solving for the shaded area, we can alternate between adding and subtracting these.</p>
         $$
@@ -10286,6 +10710,7 @@ star
         image: "AMC10A202515.png",
         answer: "0.375",
         difficulty: 3,
+rating: 1200,
         solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src='AMC10A13S1.png' style='max-width:100%; height:auto;' />
         <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src='AMC10A13S2.png' style='max-width:100%; height:auto;' />
         <p>From here, we can use the fact that two triangles are similar to set up two ratios. We know that \\(AC\\) and \\(CE\\) are both hypotenuses to their respective triangles, and that the same is true for \\(CD\\) and \\(BC\\). Using this we can set up a ratio. Also notice that \\(CD\\) is equal to \\(5-sqrt{x^2-1}\\)</p>
@@ -10339,6 +10764,7 @@ star
         text:"The first three terms of a geometric sequence are the integers \\(a, 720\\) and \\(b\\) where \\(a<720<b\\). What is the sum of the digits of the least possible value of \\(b\\)?",
         used: false,
         difficulty: 4,
+rating: 1400,
         answer: "21",
         solution: `<b>21</b><p>Just because \\(a\\) and \\(b\\) have to be integers doesn't nescessarily mean that \\(r\\), the common ratio, has to be. A common mistake would be to just find the smallest prime factor of \\(720\\) and multiply that, but if we use a smaller ratio, we can minimize \\(b\\) even further.</p>
         <p>\\(r\\) must be greater than \\(1\\) in order to fuffil the rule that \\(a<720<b\\). We can write it as a fraction \\(\\frac{y}{x}) where \\(y>x\\), but \\(y\\) and \\(x\\) are as close as possible without breaking this rule, in order to minimize \\(r\\).</p> 
@@ -10356,6 +10782,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Seven cubes whose volumes are \\(1, 8, 27, 64, 216,\\) and \\(343\\) cubic units are stacked vertically to form a tower in which the volumes of the cubes decrease from bottom to top. Except for the bottom cube, the bottom face
         of each cube lines completely on top of the cube below it. What is the total surface area of the tower, including the bottom, in square units?`,
         type: 'fr',
@@ -10390,6 +10817,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: 'Triangle \\(AMC\\) is isoceles with \\(AM = CM\\). Medians \\(\\overline{MV}\\) and \\(\\overline{CU}\\) are perpendicular to each other, and \\(MV\=CU=12\\). What is the area of \\(\\triangle AMC\\)?',
         image: "amc10202012.png",
         solution: `<b>96</b><p>By median theorem, we know that \\(\\overline{PC} = 2\\overline{UP}\\) and \\(\\overline{MP}=2\\overline{VP}\\) and also that \\(\\overline{PC}+\\overline{UP}=\\overline{MP}+\\overline{VP}=12\\).</p>
@@ -10419,6 +10847,7 @@ star
 </span>`,
      used: false,
      difficulty: 4,
+rating: 1400,
      text: `As shown in the figure below, a rectangular dodecahedron (the polyhedron consisting of \\(12\\) congruent rectangular pentagonal faces) floats in space with two horizontal faces. Note
      that there is a ring of five slanted faces adjacent to the top face, and a ring of five slanted faces adjacent to the bottom face.How many ways are there
      to move from the top face to the bottom face via a sequence of adjacent faces so that each face is visited at  most once and moves are not permitted from the bottom ring to the top ring.</p>`,
@@ -10446,6 +10875,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Quadrilateral \\(ABCD\\) satisfies \\(\\angle ABC = 90^\\circ\\), \\(AC = 20\\), and \\(CD = 30\\).
         Diagonals \\(\\overline{AC}\\) and \\(\\overline{BD}\\) intersect at point \\(E\\) and \\(AE = 5\\). What is the area of quadrilateral \\(ABCD\\)?`,
         solution: `<b></b><p>I just wanted to point out that the first thing I personally noticed was that \\(ABCD\\) is NOT a rectangle so we can't force simplify. This is because, had it been a rectangle, we could split it into two right triangles, but \\(AE\\) is not long enough to be the hypotenuse.</p>
@@ -10475,6 +10905,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Let \\(T\\) be the triangle with verticies at \\((0,0), (4,0)\\) and \\((0,3)\\). Consider the following five isometries (rigid transformations) of the plane:
         rotations of \\(90^\\circ, 180^\\circ\\), and \\(270^\\circ\\) about the origin and reflections across the \\(x\\) and \\(y\\) axis. How many of the \\(125\\) sequences of three of these transformations
         (not nescessarily distinct) will return \\(T\\) to its original position? (For example a \\(180^\\circ\\) rotation, followed by a reflection across the \\(x-axis\\), and followed by a
@@ -10500,6 +10931,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Carl has \\(5\\) cubes of sidelenght \\(1\\), and Kate has \\(5\\) cubes of side length \\(2\\). What is the total volume of the \\(10\\) cubes?`,
         type: 'fr',
         answer: '45',
@@ -10512,6 +10944,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>The acute angles of a right triangle are \\(a^\\circ\\) and \\(b^\\circ\\), where \\(a > b\\) and both \\(a\\) and \\(b\\) are prime numbers. What is the least possible value of \\(b\\)?`,
         type: "mc",
         choices: ["\\(A) 2\\)", "\\(B) 3\\)", "\\(C) 5\\)", "\\(D) 7\\)", "\\(E) 11\\)"],
@@ -10529,6 +10962,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A three quarter section of a circle of radius \\(4\\) inches together with its interior can be rolled up to form the lateral surface area of a right circular cone by taping together along the two radii shown. 
         What is the volume of the cone in cubic inches?`,
         type: 'mc',
@@ -10557,6 +10991,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Andy the Ant lives on a coordinate plane and is currently at \\(-20,20\\) facing east (that is, in the positive \\(x\\) - direction). Andy moves 
         \\(1\\) unit and then turns \\(90^\\circ \\) left. He then moves \\(2\\) units (north) and then turns \\(90^\\circ\\) 
         left. He then moves \\(3\\) units (west) and again turns \\(90^\\circ \\) left. Andy continues his progress, increasing his distance each time 
@@ -10582,6 +11017,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `As shown in the figure below, six semicircles lie in the interior of a rectangular hexagon with side length \\(2\\) so that the diameters of the semicircles coincide with the sides of the hexagon.
         What is the area of the shaded region - inside the hexagon but outside all of the semicircles?`,
         type: 'mc',
@@ -10611,6 +11047,7 @@ star
 star
 </span>`,
         difficulty: 4,
+rating: 1400,
         used: false,
         text: `Let \\(B\\) be a right rectangular prism (box) with edges lengths \\(1, 3\\) and \\(4,\\) together with its interior. For
         real \\(r \\ge 0\\), let \\(S(r)\\) be the set of points in \\(3\\) -dimensional spcae that lie within a distance \\(r\\) of some point in \\(B\\).
@@ -10647,6 +11084,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         used: false,
         text: `In square \\(ABCD\\), points \\(E\\) and \\(H\\) lie on \\(\\overline{AB}\\) and \\(\\overline{DA}\\), respectively, so that \\(AE=AH\\). Points
         \\(F\\) and \\(G\\) lie on \\(\\overline{BC}\\) and \\(\\overline{CD}\\), respectively, and points \\(I\\) and \\(J\\) lie on \\(\\overline{EH}\\) so that 
@@ -10673,6 +11111,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Two right circular cones with verticies facing down as shown in the figure below contain the same amount of liquid. The radii of the tops of the liquid surfaces are \\(3\\) cm and \\(6\\) cm. Into
         each cone is droppeed a spherical marble of radius \\(1\\) cm, which sinks to the bottom and is completely submerged without spilling any liquid. What is the ratio of the rise of the liquid level in the narrow
         cone to the rise of the liquid level in the wide cone?`,
@@ -10694,6 +11133,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: 'What is the volume of a tetrahedron \\(ABCD\\) with edge lengths \\(AB=2, AC=3, AD=4, BC=\\sqrt{13}, BD=2\\sqrt{5}\\), and \\(CD=5\\)?',
         type: 'fr',
         solution: `<b>4</b><p>The first thing I want to clarify: a tetrahedron is like a pyramid with a triangular base. Now that that's cleared, the first thing I noticed as that \\(AC, AD\\) and \\(CD\\) form a right triangle by being a pythagorean triple.
@@ -10714,6 +11154,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Trapezoid \\(ABCD\\) has \\(\\overline{AB} || \\overline{CD}, BC = CD = 43\\), and \\(\\overline{AD} \\perp \\overline{BD}\\). Let
         \\(O\\( be the intersection of the diagonals \\(\\overline{AC}\\) and \\(\\overline{BD}\\) and let \\(P\\) be the midpoint of \\(\\overline{BD}\\). Given that
         \\(OP=11\\), the length \\(AD\\) can be written in the form \\(m\\sqrt{n}\\), where \\(m\\) and \\(n\\) are positive integers and \\(n\\) is not divisible by the square of any prime. What is \\(m+n\\)?`,
@@ -10737,6 +11178,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Let \\(ABCDEF\\) be an equiangular hexagon. The lines \\(AB\\), \\(CD\\), and \\(EF\\) determine a triangle with area \\(192\\sqrt{3}\\), and the lines \\(BC\\), \\(DE\\), and \\(FA\\) determine a triangle with area 
         \\(192\\sqrt{3}\\), and the lines \\(BC\\), \\(DE\\), and \\(FA\\) determine a triangle with area \\(324\\sqrt{3}\\). The perimeter of hexagon \\(ABCDEF\\) can be expressed as \\(m+n\\sqrt{p}\\), where \\(m, n\\) and \\(p\\) are positive integers and \\(p\\) is not divisible by the square of any prime. What is \\(m+n+p\\)?`,
         answer: '55',
@@ -10754,6 +11196,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `In a plane, four circles with radii \\(1, 3, 5,\\) and \\(7\\) are tangent at line \\(l\\) at the same point \\(A\\) but they may be on either side of \\(l\\). Region \\(S\\) consists of all the 
         points that lie insie exactly one of the four circles. What is the maximum possible area of region \\(S\\)?`,
         answer: '\\(D) 65\\pi\\)',
@@ -10786,6 +11229,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The point \\(P(a,b)\\) in the \\(xy\\) plane is first rotated counterclockwise by \\(90^\\circ\\) around the point \\((1,5)\\) and then reflected about the line \\(y=-x\\). The image of 
         \\(P\\) after these two transformations is at \\((-6,3)\\). What is \\(b-a\\)?`,
         type: 'fr',
@@ -10805,6 +11249,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `An inverted cone with base radius \\(12\\)cm and height \\(18\\)cm is full of water. The water is poured into a tall cylinder whose horizontal base has a radius of \\(24\\) cm. What is the height in centimeters of the water in the cylinder?`,
         type: 'fr',
         solution: '<b>1.5</b><p>The volume of the water in the cone is \\(12^2 \\cdot \\pi \\cdot 18 \\ cdot \\frac{1}{3} = 864\\pi\\). We divide this by \\(24^2\\pi=576\\pi\\) for a final answer of \\(1.5\\)</p>',
@@ -10821,6 +11266,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Grandma has just finished baking a large rectangular pan of brownies. She is planning to make rectangular pieces of equal size and shape, with straight cuts parallel to the sidesof the pan. 
         Each cut must be made entirely acros the pan. Grandma wants to make the same number of interior pieces as pieces along the perimeter of the pan. What is the greatest possilbe number of brownies she can produce?`,
         solution: `<b60></b><p>We know that half of the pieces of the brownies are on the interior, and the other half are on the exterior. We can make a whole complex expresion for both, but instead, we can just figure that, with dimensions \\(x\\) and \\(y\\), the interior \\((x-2)(y-2)=\\frac{xy}{2}\\). 
@@ -10865,6 +11311,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Three equally spaced parallel llines intersect a circle, creating three chords of lengths \\(38\\), \\(38\\), and \\(34\\). What is the distance between two adjacnet parallel lines?`,
         answer: '6',
         type: 'fr',
@@ -10898,6 +11345,7 @@ star
 star
 </span>`,
         difficulty: 4,
+rating: 1400,
         used: false,
         text: 'The figure is constructed from 11 line segments, each of which has length \\(2\\). The area of pentagon \\(ABCDE\\) can be written as \\(\\sqrt{m}+\\sqrt{n}\\) where \\(m\\) and \\(n\\) are positive integers. What is \\(m+n\\)?',
         image: 'amc10202120.png',
@@ -10925,6 +11373,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Menakara has a \\(4 \\times 6\\) index card. If she shortens the length of one side of this card by \\(1\\) inch, the 
         card would have an area of \\(18\\) square inches. What would the area of the card be in square inches if she shortens the length of the other side by \\(1\\) inch?`,
         solution: '<b>20</b><p>We notice immediately that the shortened side is the \\(4\\) because \\(6\\cdot 3=18\\), so we just switch it around and multiply \\(4\\cdot5=20\\)',
@@ -10939,6 +11388,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `As shown in the figure below, point \\(E\\) lies on the opposite half plane determined by line \\(CD\\) from point \\(A\\) so that \\(\\angle CDE = 110^\\circ\\). Point
         \\(F\\) lies on \\(\\overline{AD}\\) so that \\(DE=DF\\), and \\(ABCD\\) is a square. What is the degree measure of \\(\\angle AFE\\)?`,
         solution: `<b>170</b><p>We see that \\(\\angle ADE = 270-110=160\\). Since \\(\\triangle DFE\\) is isoceles, we know that the base angles \\(\\angle EFD\\) and \\(\\angle DEF \\) measure \\(10^\\circ\\). \\(AFE=180-10=170^\\circ\\)`,
@@ -10955,6 +11405,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `Isoceles triangle \\(ABC\\) has \\(AB = AC = 3\\sqrt{6}\\), and a circle with radius \\(5\\sqrt{2}\\) is tangent to line \\(AB\\) at \\(B\\) and to line \\(AC\\) at \\(C\\). What is the
         area of the circle that passes through verticies \\(A, B\\) and \\(C\\)?`,
@@ -10979,6 +11430,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `An architect is building a structure that will place vertical pillars at the verticies of regular hexagon \\(ABCDEF\\), which is lying horizontally on the ground. The six pillars will hold up a flat solar panel that
         will not be parallel to the ground. The heights of pillars \\(A, B\\) and \\(C\\) are \\(12, 9,\\) and \\(10\\) meters, respectively. What is the height, in meters, of the pillar at \\(E\\)?`,
         type: 'mc',
@@ -11000,6 +11452,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A disk of radius \\(1\\) rolls all the way around the inside of a square of side length \\(s > 4\\) and sweeps out a region of area \\(A\\). A second 
         disk of radius \\(1\\)  rolls all the way around the outside of the same square and sweeps out a region of area \\(2A\\). The value of \\(s\\) can be written as 
         \\(a+\\frac{b\\pi}{c}, where \\(a, b,\\) and \\(c\\) are positive integers and \\(b\\) and \\(c\\) are relatively prime. What is \\(a+b+c\\)?`,
@@ -11044,6 +11497,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Inside a right circular cone with bae radius \\(5\\) and height \\(12\\) are three congruent spheres with radius \\(r\\). Each sphere is tangent to the other two spheres and also tangent to the
         bae and side of the cone. What is \\(r\\)?`,
         solution: `<b>\\(\\frac{90=40\\sqrt{3}}{11}\\)</b><p>First start by drawing two diagrams. The first is half a vertical cross-section of the cone. We would draw a right triangle with legs \\(5\\) and \\(12\\) and hypotenuse(by pythagorean theorem\\) \\(13\\). We then draw a circle of radius \\(r\\) tangent to the bottom 
@@ -11089,6 +11543,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         text: `What is the area of the shaded figure shown below?`,
         image: `amc1020211.png`,
@@ -11108,6 +11563,7 @@ star
 star
 </span>`, 
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `A regular hexagon of side length \\(1\\) is inscribed in a circle. Each minor arc of the circle determined by a side of the heexagon is reflected over that side. What is the area of the region bounded by these \\(6\\) reflected arcs?`,
         solution: `<b>\\(3\\sqrt{3}-\\pi\\)</b><p>Start by finding the area of the hexagon to be \\(\\frac{3\\sqrt{3}}{2}\\). Now, let''s focus on the curves. We have no formula for their exact area, but we do realize that, if we draw the hexagon as \\(6\\) equilateral triangles, and get rid of the edge it will eventually be reflected over, we end up with a nifty little section of a circle.</p>
@@ -11135,6 +11591,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `A square with side length \\(3\\) is inscribed in an isoceles triangle with one side of the square along the bae ofthe triangle. A square with side length \\(2\\) has two vertices on the other square and the other two sides of the triangle, as shown. What is the area of the triangle?`,
         image: 'amc10202013.png',
@@ -11156,6 +11613,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `In square \\(ABCD\\), points \\(P\\) and \\(Q\\) lie on \\(\\overline{AD}\\) and \\(\\overline{BC}\\), respectively.
         Segments \\(\\overline{BP}\\) and \\(\\overline{CQ}\\) intersect at right angles at \\(R\\) with \\(BR=6\\) and \\(PR=7\\). What is the area of the square?`,
         image: 'amc10202115.png',
@@ -11207,6 +11665,7 @@ star
 </span>`,
      used: false, 
      difficulty: 4,
+rating: 1400,
      text: `Three identical square sheets of paper each with side length \\(6\\) are stacked on top of each other. The middle sheet is rotated clockwise \\(30^\\circ\\) about its center and the top sheet is rotated clockwise \\(60^\\circ\\) about its center, resulting in the $24$-sided polygon shown in the figure below. 
      The area of this polygon can be expressed in the form \\(a-b\\sqrt{c}\\), where \\(a, b\\) and \\(c\\) are positive integers, and $c$ is not divisible by the square of any prime. What is \\(a+b+c?\\)`,
      image: 'amc10202118.png',
@@ -11233,6 +11692,7 @@ star
 </span>`,
        used: false,
        difficulty: 5,
+rating: 1600,
        text: `Regular polygons with \\(5, 6, 7\\) and \\(8\\) sides are inscribed in the same circle. No two of the regular polygons share a vertex, and no three of their
        sides intersect at a common point. At how many points inside the circle do two of their sides intersect?`,
        solution: `<b>68</b><p>Start by doing a few basic experimens and seeing if there's a pattern. We don't even nescessarily need the whole \\(5, 6, 7\\) etc., because that will get pretty 
@@ -11262,6 +11722,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `A rectangle with side lengths \\(1\\) and \\(3\\), a square with side length \\(1\\), and a rectangle \\(R\\) are inscribed inside a 
         larger square as shown. The sum of all possible values of the area of \\(R\\) can be written in the form \\(frac{m}{n}\\), where \\(m\\) 
         and \\(n\\) are relatively prime positive integers. What is \\(m+n\\?)`,
@@ -11288,6 +11749,7 @@ star
 </span>`, 
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Square \\(ABCD\\) has side length \\(1\\). Points \\(P, Q, R, S\\) each lie on a side of \\(ABCD\\) such that \\(APQCRS\\) is an equilateral convex
         hexagon with side length \\(s\\). What is \\(s\\)?`,
         type: 'mc',
@@ -11329,6 +11791,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `DDR Daniel finds a rectangular index card and measures its diagonal to be \\(8\\) centimeters. DDR Daniel then cuts out equal squares of
         side \\(1\\) cm at two opposite corners of the index card and measures the distance between the two closest verticies of these squares to be \\(4\\sqrt{2}\\) centimeters,
         as shown below. What is the area of the original index card?`,
@@ -11377,6 +11840,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `Let \\(\\triangle ABC\\) be a scalene triangle. Point \\(P\\) lies on \\(\\overline{BC}\\) so that \\(\\overline{AP}\\) bisects \\(\\angle BAC).
         The line through \\(B\\) perpendicular to \\(\\overline{AP}\\) intersects the line through \\(A\\) parallel to \\(\\overline{BC}\\) at point 
@@ -11399,6 +11863,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Quadrilateral \\(ABCD\\) with side lengths \\(AB=7, BC=24, CD=20, DA=15\\) is inscribed in a circle. The area interior to the circle but exterior to the quadrilateral can be
         written in the form \\(\\frac{a\\pi-b}{c}\\), where \\(a, b\\) and \\(c\\) are positive integers such that \\(a\\) and \\(c\\) have 
         no common prime factor. What is \\(a+b+c?\\)`,
@@ -11428,6 +11893,7 @@ star
 star
 </span>`,
         difficulty: 4,
+rating: 1400,
         used: false,
         text: `A bowl is formed by attatching four rectangular hexagons of side \\(1\\) to aquire a square of side \\(1\\). The edges of the adjacent hexagons coincide, as shown in the figure. 
         What is the are of the octagon obtained by joining the top eight vertices of the four hexagons, situated on the rim of the bowl?`,
@@ -11454,6 +11920,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Isoceles trapezoid \\(ABCD\\) has parallel sides \\(\\overline{AD}\\) and \\(\\overline{BC}\\), with \\(BC<AD\\) and 
         \\(AB=CD\\). There is a point \\(P\\) in the plane such that \\(PA=1\\), \\(PB=2),\\(PC=3\\), and \\(PD=4). What is \\(\\frac{BC}{AD}\\)?`,
         solution: `<b>\\(\\frac{1}{3}\\)</b><p>There's an old trick in competition math where you do something called "forced simplification". This is a process
@@ -11480,6 +11947,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `<p>Let \\(R, S\\) and \\(T\\) be squares that have vertices at lattice points (i.e., points whose coordinates are both integers) in the coordinate plane, together with their interiors. The
         bottom edge of each square is on the \\(x-\\)axis. The left edge of \\(R\\) and the right edge of \\(S\\) are on the \\(y-\\)axis, and \\(R\\) contains \\(\\frac{9}{4}\\) as amny lattice points as does \\(S\\). The 
         top two vertices of \\(T\\) are in \\(R\\cup S\\), and \\(T\\) contains \\(\\frac{1}{4}\\) of the lattice points contained in \\(R\\cup S\\). See the figure (not drawn to scale)</p>
@@ -11503,6 +11971,7 @@ star
 </span>`, 
         used: false,
         difficulty: 1,
+rating: 800,
         text: `In rhombus \\(ABCD\\), point \\(P\\) lies on segment \\(\\overline{AD}\\) so that \\(\\overline{BP} \\perp \\overline{AD}, AP=3\\), and
         \\(PD=2\\). What is the area of \\(ABCD\\)? (Note: The figure is not drawn to scale.)`,
         image: 'amc1020222.png',
@@ -11525,6 +11994,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `The diagram below shows a rectangle with side lengths \\(4\\) and \\(8\\) and a square with side length \\(5\\). Three vertices of the square lie on three different sides of the
         rectangle, as shown. What is the area of the region inside both the square and the rectangle?`,
         image: "amc10202216.png",
@@ -11551,6 +12021,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<b>113</b><p>We can extend lines \\(\\overline{AD}\\) and \\(\\overline{BE}\\) until they intersect at a point we call point \\(G\\).
         We then draw a circle centered at \\(G\\ that has \\(A\\), \\(F\\), and \\(C\\) on it. We know that \\(\\angle EDG\\) is equal to \\(180-46=134\\). By power of a point and inscribed angles, 
         we know that \\(\\angle EFC=\\frac{1}{2}\\angle EDG = 67\\) (iykyk). We also know that \\(\\angle EFC\\) makes a linear pair with \\(\\angle BFC\\) so \\(m\\angle BFC=180-67=133^\\circ\\).`,
@@ -11568,6 +12039,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `A square of area \\(2\\) is inscribed in a circle of area \\(3\\), creating four congruent triangles, as shown below. What
         is the ratio of the shorter leg to the longer leg in the shaded right triangle?`,
         image: `amc10202311.png`,
@@ -11591,6 +12063,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Abdul and Chiang are standing \\(48\\) feet apart in a field. Bharat is standing in the same field as far from Abdul as possible so that the angle formed
         by his lines of sight to Abdul and Chiang measures \\(60^\\circ\\). What is the square of the distance (in feet) between Abdul and Bharat?`,
         solution: `<b>3072</b><p>We know that Bharat is furthest from Abdul when he is perpendicular to the line between Abdul and Chiang. We know that this causes a \\(30-60-90\\) right triangle. We know that \\(\\frac{48}{x}=\\sin(60)\\) so \\(\\frac{48}{x}=\\sqrt{3}{2}\\)
@@ -11608,6 +12081,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `An even number of circles are nested, starting with a radius of \\(1\\) and increasing by \\(1\\) each time, all sharing a common point. The region between every other circle is shaded, starting with the 
         region inside the circle of radius \\(2\\) but outide the circle of radius \\(1\\). An example showing \\(8\\) circles is displayed below. What is the least number of circles needed to make the total shaded area at least \\(2023\\pi\\)?`,
         solution: `<b></b><p>We evaluate a few basic cases to know that the area enclosed by the \\(2\\)nd and \\(1\\)st circles is \\(3\\pi\\), the area enclosed by hte \\(3\\)rd and \\(4\\)th is \\(7\\pi\\), etc. etc. for \\(11\\pi\\), \\(15\\pi\\). This is an arithmetic series of \\(a_{1}=3\\) and \\(d=4\\). The
@@ -11648,6 +12122,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Let \\(ABCD\\) be a rectangle with \\(AB=30\\) and \\(BC=28\\). Point \\(P\\) and \\(Q\\) lie on \\(\\overline{BC}\\) and \\(\\overline{CD}\\) respectively so that all sides of \\(\\triangle ABP, \\triangle PCQ,\\) and \\(\\triangle QDA\\) have integer lengths.
         What is the perimeter of \\(\\triangle APQ\\)`,
         solution: `<b>84</b><p>Based on the answer choices, we can pretty reasonably conclude that all of the values are integers. We also know that drawing a triangle with vertices on the sides will create right triangles bounded by the lights and by the edges of the square. Using
@@ -11677,6 +12152,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A rhombic dodecahedron is a solid with \\(12\\) congruent rhombus faces. At every vertex, \\(3\\) or \\(4\\) edges meet, depending on the vertex. How many vertices have exactly \\(3\\) edges meet?`,
         solution: `<b>8</b><p>This question uses something called Euler's formula, which dicatates that \\(\\textup{Vertices}+\\textup{Faces}-\\textup{Edges}=2\\). We know that there are 
         \\(12\\) rhombuses each with \\(4\\) edges meaning there are \\(48\\) "collision places". However, we must note that edges are shared between two rhombuses for \\(\\frac{48}{2}=24\\) total edges. If \\(x=\\)vertexes that intersect at \\(3\\) points and \\(y=\\)number of vertexes that intersect \\(4\\) points, we have that
@@ -11715,6 +12191,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Circle \\(C_{1}\\) and \\(C_{2}\\) each have radius \\(1\\), and the distance betwen their centers is \\(\\frac{1}{2}\\). Circle \\(C_{3}\\) is the largest circle internally tangent to both \\(C_{1}\\) and \\(C_{2}\\).
         Cirlce \\(C_{4}\\) is internally tangent to both \\(C_{1}\\) and \\(C_{2}\\) and externaly tangent to \\(C_{3}\\). What is the radius of \\(C_{4}\\)?`,
         image: 'amc10202318.png',
@@ -11753,6 +12230,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Six regular hexagonal blocks of side length \\(1\\) unit are arranged inside a regular hexagonal frame. Each block lies along an inside edge of the frame and is aligned with two other blocks, as shown in the figure below. The distance from any corner of the frame to the nearest vertex of a block is \\(\\frac{3}{7} unit). What is 
         the area of the region isde the frame not occupied by the blocks?`,
         image: 'amc10202324.png',
@@ -11770,6 +12248,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `A \\(3-4-5\\) right triangle is inscribed in circle \\(A\\), and a \\(5-12-13\\) right triangle is inscribed in circle \\(B\\). What is the ratio of the area of circle 
         \\(A\\) to the area of circle \\(B\\)?`,
         type: 'mc',
@@ -11800,6 +12279,7 @@ star
 </span>`, 
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Square \\(ABCD\\) is rotated \\(20^\\circ\\) clockwise about its center to obtain square \\(EFGH\\), as shown below. What is the degree measure of \\(\\angle EAB\\)?`,
         solution: `<b>\\(35^\\circ\\)</b><p>The first thing that occurred to me to find was where the \\(20^\\circ\\) was actually expressed, since it's not super obvious from the image. HOWEVER, if we were to draw a point at the center of both squares, let's call it
         \\(I\\) and draw line segments \\(\\overline{AI}\\) and \\(\\overline{EI}\\) than we do indeed get a \\(20^\\circ\\) angle</p>
@@ -11823,6 +12303,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A rectangular box \\(P\\) has distinct edge lengths \\(a, b,\\) and \\(c\\). The sum of the lengths of all \\(12\\) edges of 
         \\(P\\) is \\(13\\), the sum of the areas of all \\(6\\) faces of \\(P\\) is \\(\\frac{11}{2}\\), and the volume of \\(P\\) is \\(\\frac{1}{2}\\).
         What is the length of the longest interior diagonal connecting two vertices of \\(P\\)?`,
@@ -11858,6 +12339,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Four coungruent semicircles are drawn on the surface of a sphere with radius \\(2\\), as shown, creating a close curve that divides the surface into two congruent regions. The
         length of the curve is \\(\\pi\\sqrt{n}\\). What is \\(n\\)?`,
         image: 'amc10202320.png',
@@ -11884,6 +12366,7 @@ star
 </span>`,
      used: false,
      difficulty: 5,
+rating: 1600,
      text: 'A regular pentagon with area \\(1+\\sqrt{5}\\) is printed on paper and cut out. All five vertices are folded to the center of the pentagon, creating a smaller pentagon. What is the area of the new pentagon?',
       solution: `<b>\\(\\sqrt{5}-1\\)</b><p>When we fold a pentagon, or any regular polygon, so that it forms another regular polygon of the same sort, we notice two things:</p>
       <p>1) The inner polygon is rotated (idk this helped me visualize it)</p>
@@ -11908,6 +12391,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `One side of an equilateral triangle of height \\(24\\) lies on line \\(l\\). A circle of radius \\(12\\) is tangent to line \\(l\\) and is externally tangent to the triangle. The area of the region exterior to the trinagle and the circle and bounded by the triangle, the circle, and line \\(l\\) can be
         written as \\(a\\sqrt{b}-c\\pi\\) where \\(a, b,\\) and \\(c\\) are positive integers and \\(b\\) is not divisible by the square of any prime. What is \\(a+b+c\\)?`,
         solution: `<b>74</b><p>We start by drawing the radii connecting the center of the circle to the point of intersections with the circle and triangle and the circle and \\(l\\). The angle between the triangle and \\(l\\) on the EXTERIOR is \\(180-60=120\\) and 
@@ -11931,6 +12415,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: 'All of the rectangles in the figure below, which is drawn to scale, are similar to the enclosing rectangle. Each number represents the area of the rectangle. What is length \\(AB\\)?',
         image: 'amc10202416.png',
         solution: `<b>\\(10\\sqrt[4]{2}\\)</b><p>We know by the answer choices that the sie lengths rae probably not integers. That sucks for us. We ARE however told that the rectangle is drawn to scale. This helps a whole lot.</p>
@@ -11960,6 +12445,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `A rectangle has integer length sides and an area of 2024. What is the least possible perimeter of the rectangle?`,
         solution: `<b>180</b><p>We know that the perimeter will be smallest when the the side lengths are as close to each other as possible (if you don't know this try using a few smaller tests and make a conjecture)</p>
         <p>We know that \\(\\sqrt{2025}=45\\) so we're looking for something near \\(45\\). Obviously, \\(45\\) is not a factor, but \\(44\\) is. The dimensions are \\(44\\) and \\(46\\) for a combined perimeter of \\(44+46+44+46=180\\)`,
@@ -11975,6 +12461,7 @@ star
 </span>`, 
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Quadrilateral \\(ABCD\\) is a parallelogram, and \\(E\\) is the midpoint of the side \\(\\overline{AD}\\). Let \\(F\\) be the intersection of lines \\(EB\\) and \\(AC\\). What
         is the ratio of the area of qudrilateral \\(CDEF\\) to the area of \\(\\triangle CFB\\)?`,
         solution: `<b>\\(5:4\\)</b><p>For this, we use a system called "forced simplification". Parallelogram? Make it a square! Side lengths? Make them \\(1\\)!. Since we know we're working with ratios, it doesn't really matter.</p>
@@ -11997,6 +12484,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `In the figure below \\(WXYZ\\) is a rectangle with \\(WX=4\\) and \\(WZ=8\\). Point \\(M\\) lies \\(\\overline{XY}\\),
         point \\(A\\) lies on \\(\\overline{YZ}\\) and \\(\\angle WMA\\) is a right angle. The areas of \\(triangle WXM\\) and \\(\\triangle WAZ\\) are equal. What is the area of \\(\\triangle WMA?\\)`,
         image: 'amc10202411.png',
@@ -12035,6 +12523,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `Two straight pipes (circular cylinders) with radii \\(1\\) and \\(\\frac{1}{4}\\), lie parallel in contact on a flat floor. The 
         figure below shows a head-on view. What is the sum of the possible radii of a third parallel pipe lying on the same floor and in contact with both? `,
         image: `amc10202421.png`,
@@ -12126,6 +12615,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many isosceles triangles are there with positive area whose side lengths are all positive integers and whose longest side has length \\(2025\\)?`,
         solution: `<b>3037</b><p>We know that the sum of two sides must be greater than the remaining side. We evaluate two cases:</p>
         <p>1) The longest side is the base side, the one opposite the vertex angle, measures \\(2025\\). The side angles must be greater than \\(\\frac{2025}{2}=2=1012.5\\) and must be less than \\(2024\\), thus there are \\(1012\\) possible values</p>
@@ -12136,6 +12626,7 @@ star
        {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10B 2022 Problem 4 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -12160,6 +12651,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2021 Problem 3 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -12185,6 +12677,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2021 Spring Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -12218,6 +12711,7 @@ $$
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2025 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -12258,6 +12752,7 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 2,
+rating: 1000,
         title: `AMC 10A 2025 Problem 9 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -12294,6 +12789,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title:`AMC 10B 2024 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -12324,6 +12820,7 @@ star
     {
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10B 2024 Problem 3 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -12353,6 +12850,7 @@ star
     {
         used: false,
         difficulty: 3,
+rating: 1200,
         title: `AMC 10B 2024 Problem 13 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -12407,6 +12905,7 @@ star
     {
         used: false,
         difficulty: 3,
+rating: 1200,
         title: `AMC 10B 2024 Problem 14 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -12460,6 +12959,7 @@ star
     {
         used: false,
         difficulty: 5,
+rating: 1600,
         title: `AMC 10B Problem 24 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -12493,6 +12993,7 @@ star
     {   
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2024 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -12507,6 +13008,7 @@ star
     {   
         used: false,
         difficulty: 1,
+rating: 800,
         title: `AMC 10A 2024 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -12578,6 +13080,7 @@ star
         type: "mc",
         used: false,
         difficulty: 2,
+rating: 1000,
         choices: ["\\(A) 2\\)", "\\(B) 3\\)", "\\(C)5\\)", "\\(D) 6\\)", "\\(E) 13\\)"],
         answer: "\\(B) 3\\)",
         solution: `<b>3</b><p>First start by finding the prime factorization of \\(60\\). Doing this should yield</p>
@@ -12606,6 +13109,7 @@ star
         type: "mc",
         used: false,
         difficulty: 2,
+rating: 1000,
         choices: ["\\(A) 1:25 PM\\)", "\\(B) 1:35 PM\\)", "\\(C) 1:45 PM\\)", "\\(D) 1:55 PM\\)", "\\(E) 2:05 PM\\)"],
         answer: "\\(A) 1:25 PM\\)",
         solution: `<b> 1:25 PM </b><p>To solve this, let's first find out how many packages Amy, Bomani, and Charlie made in total. We know that they worked for \\(1\\) hour and \\(45\\) minutes, or \\(105\\) minutes. We don't really have to find the 
@@ -12625,6 +13129,7 @@ star
         type: "mc",
         used: false,
         difficulty: 3,
+rating: 1200,
         choices: ["\\(A) 1\\)", "\\(B) 2\\)", "\\(C) 3\\)", "\\(D) 4\\)", "\\(E) Infinitely Many\\)"],
         answer:"\\(D) 4\\)",
         solution: `<b>4</b><p>Does this expression look a little bit familiar..? What is we rewrite it?</p>
@@ -12662,6 +13167,7 @@ star
         used: false,
         image: "202412.png",
         difficulty: 3,
+rating: 1200,
         answer: "1715",
         solution: `<b>1715</b><p>Notice that we do not have to actually calculate the totals on each day. If we calculate the averages of the scores relative to the original \\(1700\\) and add that to \\(1700\\) it will have the same effect. Recall that the numbers are relative to the day before, not the starting score. WIth this, set up the following equation:
         $$
@@ -12687,6 +13193,7 @@ star
         choices: ["\\(A) 212\\)", "\\(B) 247\\)", "\\(C) 258\\)", "\\(D) 276\\)", "\\(E) 284\\)"],
         used: false,
         difficulty: 5,
+rating: 1600,
         answer: "\\(C) 258\\)",
         solution: `<b>276</b><p>Start by adding the first two equations. This gets us
         $$
@@ -12757,6 +13264,7 @@ star
         type: "mc",
         used: false,
         difficulty: 1,
+rating: 800,
         choices: ["A) \\(\\frac{1}{12}\\)", "B) \\(\\frac{1}{4}\\)", "C) \\(\\frac{1}{6}\\)", "D) \\(\\frac{1}{8}\\)", "E) \\(\\frac{2}{9}\\)"],
         answer:"B) \\(\\frac{1}{4}\\)",
         solution: `<b\\(\\frac{1}{4})></b><p>Let's call the fraction of how much juice Mrs. Jones pours out \\(x\\). We can say that after she evens out the amount of juice in each cup, each of the \\(3\\) filled cups, the cup that was \\(\\frac{1}{3}\\) full will then be \\(\\frac{1}{3}+3x\\) full and the rest will be \\(1-x\\) full. Since we want them all to be equal, we can set these equations to be equal to each other and solve</p>
@@ -12779,6 +13287,7 @@ star
         \\(7.5%\\) sales tax on the discounted price. He had \\(43\\) dollars. What is the origina (before discount) price of the most expensive shoes he could afford to buy?`,
         used: false,
         difficulty: 1,
+rating: 800,
         type: "fr",
         answer: "50",
         solution: `<b>50</b><p>We can set the original value of the shoes to \\(x\\). The discount takes off \\(20%\\), meaning that we multiply \\(x  \\cdot 0.8\\) to find the discounted price. Now we add the sales tax. we multiply the discounted price, \\(0.8x\\) by \\(1.075\\) and know that this must be equal to \\($43\\) in order for Carlos to be paying the most expensive shoes he can get. Now, solve: </p>
@@ -12800,6 +13309,7 @@ star
         text: `Maddy and Lara see a list of numbers written on a blackboard. Maddy adds \\(3\\) to each number in the list and finds that the sum of her new numbers is \\(45\\). Lara multiplies each number in the list by \\(3\\) and finds that the sum of her new numbers is also \\(45\\). How many numbers are written on the blcakboard?`,
         used: false,
         difficulty: 1,
+rating: 800,
         type: "fr",
         answer: "10",
         solution: `<b>10</b><p>Let's call the total amount of numbers on the board \\(x\\) and the sum of the numbers on the board, without any altering \\(y\\). </p>
@@ -12838,6 +13348,7 @@ star
         <p>are removed from the number line, what remains is the union of 11 disjoint open interavls. On how many of these intervals is \\(P(x)\\) positive?`,
         used: false,
         difficulty: 3,
+rating: 1200,
         type: "fr",
         answer: "6",
         solution: `<b>6</b><p>Recognize that \\(P(x)\\) is positive when there is an even number of negative factors. None of the factors within parentheseis raised to an even power will ever be negative, so we only have to worry about the odd powers. Let's take all the even powers out of our equation:
@@ -12858,6 +13369,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         text: `What is the area of the region on the coordinate plane defined by
         $$
         ||x|-1|+||y|-1| \\le 1?
@@ -12878,6 +13390,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         text: "How many ordered pairs of integers \\((m,n)\\) satisfy the equation \\(m^2+mn+n^2=m^2n^2\\)",
         used: false,
         type: "fr",
@@ -12906,6 +13419,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         text: "How many distinct values \\(x\\) satisfy \\(\\lfloor{x}^2\\rfloor-3x+2=0\\) where \\(\\lfloor{x}\\rfloor\\) denotes the largest integer less than or equal to \\(x\\)",
         used: false,
         type: "mc",
@@ -12922,6 +13436,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         text: "Cities \\(A\\) and \\(B\\) are \\(45\\) miles apart. Alicia lives in \\(A\\) and Beth lives in \\(B\\). Alicia bikes towards \\(B\\) at \\(18\\) miles per hour. Leaving at the same time, Beth bikes toward \\(A\\) at \\(12\\) miles per hour. How many miles from City \\(A\\) will they be when they meet?",
         type: "fr",
@@ -12993,6 +13508,7 @@ star
         text: `Barb the baker has developed a new temperature scale for her bakery called the Breadus scale, which is a linear function of the Fahrenheit scale. Bread rises at \\(110\\) degrees Fahrenheit which is \\(0\\) degrees on the Breadus scale. Bread is baked at \\(350\\) degrees Fahrenheit, which is \\(100\\) degrees on the Breadus scale. Breada is done when its internal temperature is \\(200\\) degrees Farenheit. What is this, in degrees, on the Breadus scale? Answer as a decimal.`,
         used: false,
         difficulty: 2,
+rating: 1000,
         type: "fr",
         answer: "37.5",
         solution: `<b>37.5</b><p>We know that the equation is linear, and thus that it can be expressed as \\(y=mx+b\\). We'll call \\(y\\) the degrees in Farenheit and \\(x\\) the degrees on the Breadus scale. We know that \\(110=0m+b\\), so \\(b\\) is equal to \\(110\\). We plug this in to
@@ -13023,6 +13539,7 @@ star
         text: `Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an \\(11\\) on the next quiz, her mean will increase by \\(1\\). If she scores an \\(11\\) on each of the next three quizzes, her mean will increase by \\(2\\). What is the mean of her scores currently?`,
         used: false,
         difficulty: 2,
+rating: 1000,
         type: "fr",
         solution: `<b>7</b><p>We know that the mean, which we'll call \\(m\\) is the sum of her total scores, \\(x\\), divided by the number of tests she's taken, \\(n\\). We set up the following equation:</p>
         $$
@@ -13074,6 +13591,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         text: `Define \\(x \\diamond y\\) to be \\(|x-y|\\) for all real numbers \\(x\\) and \\(y\\). What is the value of
         $$
@@ -13099,6 +13617,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         text: `What is the value of 
         $$
@@ -13144,6 +13663,7 @@ star
 star
 </span>`,
         difficulty: 2,
+rating: 1000,
         used: false,
         text: `For how many values of the constant \\(k\\) will the polynomial \\(x^2+kx+36\\) have two distinct integer roots?`,
         answer: "8",
@@ -13160,6 +13680,7 @@ star
 star
 </span>`, 
         difficulty: 2,
+rating: 1000,
         used: false,
         type: `mc`,
         choices: ["\\(A) 2020\\)", "\\(B) 2021\\)", "\\(C) 2022\\)", "\\(D) 2023\\)", "\\(E) 2024\\)"],
@@ -13183,6 +13704,7 @@ star
 star
 </span>`,
         difficulty: 3,
+rating: 1200,
         used: false,
         type: "fr",
         text: "Let \\(S_{n}\\) be the sum of the first \\(n\\) terms of an arithmetic sequence that has a common difference of \\(2\\). The quotient \\(\\frac{S_{3n}}{S_{n}}\\) does not depend on \\(n\\). What is \\(S_{20}\\)?",
@@ -13232,6 +13754,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         used: false,
         type: "fr",
         text: `Let \\(P(x)\\) be a polynomial with rational coefficients such that when \\(P(x)\\) is divided by the polynomial \\(x^2+x+1\\), the remainder is \\(x+2\\), and when \\(P(x)\\) is divided by
@@ -13306,6 +13829,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         used: false,
         text: `<p>Consider functions \\(f\\) that satisfy</p>
         $$
@@ -13347,7 +13871,8 @@ star
         title: `AMC 10A 2022 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
-        difficulty: 1, 
+        difficulty: 1,
+rating: 800, 
         used: false,
         text: `<p>What is the value of</p>
         $$
@@ -13384,6 +13909,7 @@ star
 star
 </span>`,
     difficulty: 1,
+rating: 800,
     used: false,
     text: `Mike cycled \\(15\\) laps in \\(57\\) minutes. Assume he cycled at a constant speed throughout. Approximately how many laps did he complete in the first \\(27\\) minutes?`,
     type: `mc`,
@@ -13407,6 +13933,7 @@ star
 star
 </span>`, 
         difficulty: 3,
+rating: 1200,
         used: false,
         text: `The sum of three numbers is \\(96\\). The first number is \\(6\\) times the third number,
         and the third number is \\(40\\) less than the second number. What is the absolute value ofthe difference beween the 
@@ -13452,6 +13979,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `In some countries, automobile fuel efficiency is measured in liters per \\(100\\) kilometers while other countries use miles per gallon.
         Suppose that \\(1\\) kilometer equals \\(m\\) miles, and \\(1\\) gallon equals \\(l\\) liters. Which of the following gives the fuel efficiency in liters per \\(100\\) kilometers for 
         a car that gets \\(x\\) miles per gallon?`,
@@ -13470,7 +13998,8 @@ star
 star
 </span>`,
         used: false,
-        difficulty: 2,     
+        difficulty: 2,
+rating: 1000,     
         text: `<p>Which expression is equal to</p>
         $$
         |a-2-\\sqrt{(a-2)^2}|
@@ -13493,6 +14022,7 @@ star
 </span>`, 
         used: false,
         difficulty: 3,
+rating: 1200,
         text: "Ted mistakenly wrote \\(2^m \\cdot \\sqrt{\\frac{1}{4096}}\\) as \\(2 \\cdot \\sqrt[m]{\\frac{1}{4096}}\\). What is the sum of all real numbers \\(m\\) for which these two expressions have the same value?",
         type: 'fr',
         solution: `<b>7</b><p>Start by rewriting everything with a baes of \\(2\\). We can find the prime factorization of \\(4096\\) and see that it's \\(2^12\\), so \\(\\frac{1}{4096}\\) is \\(2^-12\\). We also know that
@@ -13534,6 +14064,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `A four term sequence is formed by adding each term of a four-term arithmetic sequence of positive integers to the corresponding term of a four-term geometric sequence
         of positive integers. The first three terms of the resulting four-term sequence are \\(57, 60\\) and \\(91\\). What
         is the fourth term in this sequence?`,
@@ -13610,6 +14141,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
         solution: `<b>11110</b><p>With something like this, it's simply easier to just brute force your way through. Add the values and find that it is \\(11110\\).</p>
         <h3>Common Mistake ❗❗❗</h3>
@@ -13624,6 +14156,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) where \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
         type: "fr",
         solution: `<b>4041</b><p>This is also a situation where brute forcing may be easier than finding and rationalizing a solution</p>
@@ -13641,6 +14174,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text:`At noon on a certain day, Minneapolis is \\(N\\) degrees warmer than St. Louis. At \\(4:00\\) the temperature in Minneapolis has fallen by 
         \\(5\\) degrees while the temperature in St. Louis has risen by \\(3\\) degrees, at which time the temperatures in the two cities differ by \\(2\\) degrees.
         What is the product of all possible values of \\(N\\).`,
@@ -13660,6 +14194,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The knights in a certain kingdom come in two colors. \\(\\frac{2}{7}\\) of them are red, and the rest are blue. Furthermore, \\(\\frac{1}{6}\\) of the knights are magical, 
         and the fraction of red knights who are magical is \\(2\\) times the fraction of blue knights who are magical. What fraction of red knights are magical?`,
         type: "mc",
@@ -13703,6 +14238,7 @@ star
 star
 </span>`,
         difficulty: 5,
+rating: 1600,
         used: false,   
         text: `For each integer \\(n \\ge 2\\), let \\(S_{n}\\) be the sum of all products \\(jk\\), where \\(j\\) and \\(k\\) are integers and
         \\(1 \\le j < k \\le n\\). What is the sum of the \\(10\\) least values of \\(n\\) such that \\(S_{n}\\) is divisible by \\(3\\)?`,
@@ -13726,6 +14262,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `What is the value of \\(\\frac{(2112-2021)^2}{69}\\)?`,
         type: "fr",
         solution: `<b>49</b><p>This is a simple enough equation to solve by brute force:</p>
@@ -13749,6 +14286,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `Mr. Lopez has a choice of two routes to get to work. Route A is \\(6\\) miles long, and his average speed along this route is \\(30\\) miles per hour. Route
         B is \\(5\\) miles long, and his average speed along this route is \\(40\\) miles per hour, except for a \\(\\frac{1}{2}\\) mile stretch in a school zone
         where his average speed is \\(20\\) miles per hour. By how many minutes is Routbe B quicker than Route A?`,
@@ -13809,6 +14347,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Elmer the emu takes\\(44\\) equal strides to walk between consecutive telephone poles on a rural road. Oscar the ostritch can cover the same distance in \\(12\\) equal leaps.
         The telephone poles are evenly spaced, and the \\(41\\)st pole along this road is exactly one mile ((\\5280\\) feet) from the first pole. How much longer, in feet, is Oscar's leap than Elmer's stride?`,
         type: "fr",
@@ -13845,6 +14384,7 @@ star
 </span>`, 
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `Emily sees a ship traveling at a constant speed along a straight section of a river. She walks parallel to the riverbank at a uniform rate faster than 
         the ship. She counts \\(210\\) equal steps walking frm the back of the ship to the front. Walking in the opposite direction, she counts \\(42\\) steps of the same
         size from the front of the ship to the back. in terms of Emily's equal steps, what is the length of the ship?`,
@@ -13878,7 +14418,8 @@ star
 star
 </span>`,
         used: false,
-        difficulty: 3, 
+        difficulty: 3,
+rating: 1200, 
         answer: "5",
         text: `<p>How many ordered pairs \\((x,y)\\) of real numbers satisfy the following system of equations?</p>
         $$
@@ -13925,6 +14466,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<p>The graph of</p>
         $$
         f(x) = |\\lfloor x \\rfloor | - | \\lfloor 1 - x \\rfloor |
@@ -13952,6 +14494,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `For how many ordered pairs \\((b,c)\\) of positive integers does neither \\(x^2+bx+c=0\\) nor \\(x^2+cx+b=0\\) have two distinct real solutions?`,
         used: false,
         type: "fr",
@@ -13975,6 +14518,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `How many integer values of \\(x\\) satisfy \\(|x| < 3\\pi\\)?`,
         solution: '<b>19</b><p>We know that \\(3 \\pi \\approx 9\\). Thus, \\(x\\) can be all values between \\(-9\\) and \\(9\\), inclusive. We count or just use logic and find that there are \\(19\\) such values</p>',
         answer: "19",
@@ -13987,6 +14531,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         type: "mc",
         choices: ["\\(A) 0\\)", "\\(B) 4\\sqrt{3} -6 \\)", "\\(C) 6\\)", "\\(D) 4 \\sqrt{3}\\)", "\\(E) 4\\sqrt{3} +6 \\)" ],
         text: `What is the value of \\(\\sqrt{(3-2\\sqrt{3})^2}+\\sqrt{(3+2\\sqrt{3})^2}\\)?`,
@@ -14005,6 +14550,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `In an after-school program for juniors and seniors, there is a debate team with equal numbers of students from each class on team. Among \\(28\\) students in the program,
         \\(25%\\) of juniors and \\(10%\\) of the seniors are on the debate team. How many juniors are in the program?`,
         type: "fr",
@@ -14031,6 +14577,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `At a math contest, 57 students are wearing blue shirts, and another 75 students are wearing yellow shirts. The 132 students are assigned into 66 pairs. 
         In exactly 23 of these pairs, both students are wearing blue shirts. In how many pairs are both students wearing yellow shirts?`,
         type: `fr`,
@@ -14047,6 +14594,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Mr. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is \\(84\\), and the afternoon class's mean score is \\(70\\). The ratio of the number of students in the 
         morning class to the number of students in the afternoon class is \\(\\frac{3}{4}). What is the mean of the scores of all the students.`,
         type: `fr`,
@@ -14066,6 +14614,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `The real number \\(x\\) satisfies the equation \\(x+ \\frac{1}{x} = \\sqrt{5}\\). What is the value of \\(x^11-7x^7+x^3)?`,
         type: `mc`,
         choices: ["\\(A) -1\\)", "\\(B) 0\\)", "\\(C) 1\\)", "\\(D) 2\\)", "\\(E) \\sqrt{5} \\)"],
@@ -14124,6 +14673,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `Suppose that \\(S\\) is a fininte set of positive integers. If the greatest integer in \\(S\\) is removed from \\(S\\), then the average value (arithmetic mean) of the integers
         remaining is \\(32\\). If the least integer in \\(S\\) is also removed, then the average value of the integers remaining is \\(35\\). If the greatest integer is then returned to the set, the average
         value of the integers rises to \\(40\\). The greatest integer in the original set of \\(S\\) is \\(72\\) greater than the least integer \\(S\\). What is the average value
@@ -14194,6 +14744,7 @@ star
 star
 </span>`,
         difficulty: 2,
+rating: 1000,
         used: false,
         text: `Portia's high school has \\(3\\) times as many students as Lara's high school. The two high schools have a total of 
         \\(2600\\) students. How many students does Portia's highschool have?`,
@@ -14223,6 +14774,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `A cart rolls down a hill, traveling \\(5\\) inches the first second and accelerating so that during each successive \\(1\\) second time interval, it travels \\(7\\) inches more than during the previous \\(1\\) second interval.
         The card takes \\(30\\) seconds to reach the bottom of the hill. How far, in inches, does it travel?`,
         type: 'fr',
@@ -14247,6 +14799,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `The quiz scores of a class with \\(k>12\\) students have  a mean of \\(8\\). The mean of a collection of \\(12\\) of these quiz scores is \\(14\\). What is the mean of the reamining 
         quiz scores in terms of \\(k\\)?`,
         solution: `<b></b><p>We know that the sum of the \\(12\\) scores who averaged \\(14\\) is \\(12 \\cdot 14 = 168\\). Likewise, we know that the sum of all of the tests is \\(8k\\). The average of the reamining tests is the sum of the remaining test scores divided by \\(k-12\\).</p>
@@ -14267,6 +14820,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `Chantal and Jean start hiking from a trailhead toward a fire tower. Jean is wearing a heavy backpack and walks slower. Chantal starts walking at \\(4\\) miles per hour. Halfway to the tower, the trail
         becomes really steep, and Chantal slows down to \\(2\\) miles per hour. After reaching the tower, she immediately turns around and descends the steep part of the trail at \\(3\\) miles per hour. She meets Jean at the halfway point.
         What was Jean's average speed, i nmiles per hour, until they met.`,
@@ -14288,6 +14842,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `What is the least possible value of \\((xy-1)^2+(x+y)^2\\) for real numbers \\(x\\) and \\(y\\)?`,
         type: `mc`,
         choices: ["\\(A) 0\\)", "\\(B) \\frac{1}{4}\\)", "\\(C) \\frac{1}{2}\\)", "\\(D) 1\\)", "\\(E) 2\\)"],
@@ -14320,6 +14875,7 @@ star
 </span>`, 
         used: false,
         difficulty: 3,
+rating: 1200,
         text: `All the roots of the polynomial \\(z^6-10z^5+Az^4+Bz^3+Cz^2+Dz+16\\) are positive integers, possibly repeated. What is the value of \\(B\\)?`,
         solution: `<b></b><p>By Vieta's rules, we know that the product of all \\(6\\) factors is \\(10\\). If this intuition doesn't make sense, try messing around with basic quadratics and factoring for a bit.</p>
         <p>We find the prime factorization of \\(16\\), which ends up being \\(2^4\\), so there are \\(5\\) factors to work with these being \\(1, 2, 4, 8,\\) and \\(16\\).</p>
@@ -14351,6 +14907,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
+rating: 1400,
         text: `<p>In the following list of numbers, the integer \\(n\\) appears \\(n\\) times in the list for \\(1 \\le n \\le 200\\).</p>
         $$
         1, 2, 2, 3, 3, 3, 4, 4, 4, 4,  ..., 200, 200, ..., 200
@@ -14390,6 +14947,7 @@ star
 </span>`, 
         used: false,
         difficulty: 4,
+rating: 1400,
         type: 'mc',
         choices: ["\\(A) \\frac{17}{32}\\)", "\\(B) \\frac{11}{16}\\)", "\\(C) \\frac{7}{9}\\)", "\\(D) \\frac{7}{6}\\)", "\\(E) \\frac{25}{11}\\)"],
         text: `Let \\(f\\) be a function defined on the set of positive rational numbers with the property that \\(f(a \\cdot b) = f(a)+f(b)\\) for all the 
@@ -14442,6 +15000,7 @@ star
 star
 </span>`,
         difficulty: 4,
+rating: 1400,
         used: false,
         type: 'mc',
         choices: ['\\(A) 18\\)', '\\(B) 27\\)', '\\(C) 36\\)', '\\(D) 45\\)', '\\(E) 54\\)'],
@@ -14528,7 +15087,8 @@ star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-        difficulty: 5, 
+        difficulty: 5,
+rating: 1600, 
         used: false,
         type: `mc`,
         choices: ["\\(A) 10\\)", "\\(B) 13\\)", "\\(C) 15\\)", "\\(D) 17\\)", "\\(E) 20\\)"],
@@ -14548,6 +15108,7 @@ star
 star
 </span>`,
         difficulty: 1,
+rating: 800,
         used: false,
         type: 'fr',
         text: `<p>What is the value of \\(1-(-2)-3-(-4)-5(-(-6)\\)?</p>`,
@@ -14576,6 +15137,7 @@ star
         topic: "ratios",
         used: false,
         difficulty: 1,
+rating: 800,
     },
     {
         title: `AMC 10B 2020 Problem 9 <span class="material-symbols-outlined">
@@ -14585,6 +15147,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         text: `How many ordered pairs of integers \\((x,y)\\) satisfy the equation \\(x^2020 + y^2 =2y\\)?`,
         type: 'fr',
         solution: `<b>4</b>Rearrange all the terms onto one side</p>
@@ -14610,6 +15173,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>What is the value of</p>
         $$
         x=\\frac{3}{4}+\\frac{5}{12}-\\frac{1}{3}?
@@ -14637,7 +15201,8 @@ star
 star
 </span>`,
         used: false,
-        difficulty: 1, 
+        difficulty: 1,
+rating: 800, 
         text: `The numbers \\(3, 5, 7, a\\) and \\(b\\) have an average (arithmetic mean) of \\(15\\). What is the average of \\(a\\) and \\(b\\)?`,
         type: 'fr',
         solution: '<b></b><p>The sum of the \\(5\\) values must be equal to \\(15 \\cdot 5=75\\). If we subtract \\(3,5, \\) and \\(7\\), we can find \\(a+b=75-3-5-7=60\\). The average of \\(a\\) and \\(b\\) is equal to \\(\\frac{a+b}{2}=\\frac{60}{2}=30\\).</p>',
@@ -14649,7 +15214,8 @@ star
 star
 </span>`,
         used: false,
-        difficulty: 1, 
+        difficulty: 1,
+rating: 800, 
         text: `<p>Assuming \\(a \\neq 3, b \\neq 4, c \\neq 5\\), what is the value in simplest form of the following expression?</p>
         $$
         \\frac{a-3}{5-c} \\cdot \\frac{b-4}{3-a} \\cdot \\frac{c-5}{4-b}
@@ -14667,6 +15233,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `A driver travels for \\(2\\) hours at \\(60\\) miles per hour, during which her car gets \\(30\\) miles per gallon of 
         gasoline. She is paid \\($0.5\\) per mile, and her only expense is gasoline, at \\($2.00\\) per gallon. What is her net rate of pay, in dollars per hour, after this expense?`,
         type: 'fr',
@@ -14681,6 +15248,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
+rating: 800,
         text: `<p>What is the sum of all real numbers \\(x\\) for which</p>
         $$
         |x^2-12x+34|=2
@@ -14719,6 +15287,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
+rating: 1000,
         type: 'fr',
         text: `<p>What is the value of </p>
         $$
@@ -14758,6 +15327,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         type: 'mc',
         text: `What is the median of the following list of \\(4040\\) numbers?
         $$
@@ -14782,6 +15352,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+rating: 1200,
         type: 'mc',
         choices: ['\\(A) 360\\)', '\\(B) 400\\)', '\\(C) 420\\)', '\\(D) 440\\)', '\\(E) 480\\)'],
         text: `<p>Real numbers \\(x\\) and \\(y\\) satisfy \\(x+y=4\\) and \\(x \\cdot y = -2\\). What is the value of</p>
@@ -14844,6 +15415,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
+rating: 1600,
         text: `<p>There exists a unique strictly increasing sequence of nonnegative integers \\(a_{1} < a_{2}} < ... < a_{k}}\\) such that 
         </p>
         $$
@@ -15384,6 +15956,20 @@ const TOPIC_GLOSSARY = [
     }
 
 ];
+TOPIC_GLOSSARY.forEach(q =>{
+        q.attempts = 0;
+})
+function getProblemNumber(array) {
+    array.forEach(q => {
+  const match = q.title.match(/Problem (\d+)/);
+        q.pNumber = match ? parseInt(match[1]) : null;
+    })
+}
+function getInitialRating(array) {
+    array.forEach(q => {
+        q.rating = (800 + Math.pow(q.pNumber, 1.3) * 25);
+    })
+}
 function recordWrongTopic(topic) {
     let topicToUpdate;
 
@@ -15408,6 +15994,9 @@ function recordWrongTopic(topic) {
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
     if (topicObj) {
         topicObj.errors += 1;
+        console.log(topicObj.errors)
+        console.log(topicObj.attempts)
+        topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
     }
 
     updateTopicsDropdown();
@@ -15535,7 +16124,7 @@ function loadAlgebra() {
         MathJax.typesetPromise([questionChoices]).catch(()=>{});
     }
 }
-allQuestion = getNextQuestion(questions, difficulty);
+allQuestion = getNextQuestion(questions, userRatingAll);
 function loadAll() {
     mcChoices.forEach(btn => btn.disabled = false);
 
@@ -15580,7 +16169,7 @@ function loadAll() {
         MathJax.typesetPromise([questionChoices]).catch(()=>{});
     }
 }
-geometryQuestion = getNextQuestion(geometryQ, difficultyG);
+geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry);
 
 function loadGeometry() {
     questionType = "geometry",
@@ -15627,7 +16216,7 @@ function loadGeometry() {
         MathJax.typesetPromise([questionChoices]).catch(()=>{});
     }
 }
-numQuestion = getNextQuestion(numTheoryQ, difficultyN);
+numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory);
 function loadNumTheory() {
     mcChoices.forEach(btn => btn.disabled = false);
 
@@ -15682,7 +16271,7 @@ mcChoices.forEach(btn => btn.disabled = true);
 
 }
 
-    probQuestion = getNextQuestion(probabilityQ, difficultyP);
+    probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
 function loadProb() {
     console.log("loading prob")
     mcChoices.forEach(btn => btn.disabled = false);
@@ -15762,13 +16351,111 @@ const originalString = "hello world";
 const capitalizedString = capitalizeFirstLetter(originalString);
 
 // ---------- Check Answer ----------
+let correct = 1
+function checkAnswerGeometry() {
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === geometryQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
+    const userAnswer = answerInput.value.trim();
+    const correctAnswer = geometryQuestion.answer.trim();
+    difficultyDash.innerHTML = difficulty
+    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+        correct = 1;
+        getExpectedScore(userRating, geometryQuestion.rating)
+        score = score + geometryQuestion.difficulty;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount++;
+            correctCount++;
+            difficultyProgressG++;
+            if (difficultyG == 1 && difficultyProgressG == 4){
+                difficultyG++;
+                difficultyProgressG = 0;
+                showLevelUp();
+            } else if (difficultyG == 2 && difficultyProgressG  == 3){
+                difficultyG++;
+                difficultyProgressG = 0;
+                showLevelUp();
+            } else if (difficultyG == 3 && difficultyProgressG  == 2){
+                difficultyG++;
+                difficultyProgressG = 0;
+                showLevelUp();
+            } else if (difficultyG == 4 && difficultyProgressG == 1){
+                difficultyG ++;
+                difficultyProgressG = 0;
+                showLevelUp();
+            }
+        document.getElementById("streak-count").innerHTML = streakCount;
+        solutionText.innerHTML = "✅ Correct! " + geometryQuestion.solution;
+
+      // Existing confetti
+       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
+
+    // Your existing streak bar animation
+        showHighlight();
+        if (streakCount >= longestStreak){
+            longestStreak=streakCount;
+        }
+
+
+
+    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+            correct = 0;
+        getExpectedScore(userRating, geometryQuestion.rating)
+        recordWrongTopic(allQuestion.topic);
+        difficultyG = Math.max(1, difficultyG - 1);
+        difficultyProgressG = 0;
+        score = score - difficulty;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+        streakCount = 0;
+        topicWrong = capitalizeFirstLetter(geometryQuestion.topic);
+        wrongCount++;
+        const wrongEntryTrueG = wrongQuestionsGeometry.some(item => item.title === wrongQuestionsGeometry.title);
+        if (wrongEntryTrueG === false){
+        wrongQuestionsGeometry.push(geometryQuestion)
+        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].errorCount = 1;
+        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].countdown = 3
+        }
+        document.getElementById("streak-count").innerHTML = streakCount;
+        solutionText.innerHTML = "❌ Incorrect. " + geometryQuestion.solution;
+        problemsWrapper.classList.add("shake");
+        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "geometry"
+    }
+
+    solutionDiv.style.display = "block";
+    nextBtn.style.display = "inline-block";
+const mistakesAllTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+        if (mistakesAllTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsGeometry.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                    }
+                }
+            })
+        }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+}
 function checkAnswerAlgebra(){
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === algebraQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
+
     const userAnswer = answerInput.value.trim();
     const correctAnswer = algebraQuestion.answer.trim();
     difficultyDash.innerHTML = difficulty
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+        correct = 1;
+        getExpectedScore(userRating, algebraQuestion.rating)
         score = score + algebraQuestion.difficulty;
-        scoreCount.innerHTML = score;
+        scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
             correctCount++;
             difficultyProgress++;
@@ -15805,11 +16492,13 @@ function checkAnswerAlgebra(){
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+        correct = 0;
+        getExpectedScore(userRating, algebraQuestion.rating)
         recordWrongTopic(algebraQuestion.topic);
         difficulty = Math.max(1, difficulty - 1);
         difficultyProgress = 0;
         score = score - difficulty;
-        scoreCount.innerHTML = score;
+        scoreCount.innerHTML = Math.round(userRatingAll);
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(algebraQuestion.topic);
         wrongCount++;
@@ -15845,12 +16534,16 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
     }
 }
 function checkAnswerAll() {
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === allQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = allQuestion.answer.trim();
     difficultyDash.innerHTML = difficulty
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
         score = score + allQuestion.difficulty;
-        scoreCount.innerHTML = score;
+        scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
             correctCount++;
             difficultyProgressAll++;
@@ -15891,7 +16584,7 @@ function checkAnswerAll() {
         difficultyAll = Math.max(1, difficultyAll - 1);
         difficultyProgressAll = 0;
         score = score - difficulty;
-        scoreCount.innerHTML = score;
+        scoreCount.innerHTML = Math.round(userRatingAll);
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(allQuestion.topic);
         wrongCount++;
@@ -15926,13 +16619,20 @@ const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
         MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
     }
 }
+
 function checkAnswerProb() {
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === probQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = probQuestion.answer.trim();
     difficultyDash.innerHTML = difficultyP
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+            correct = 1;
+        getExpectedScore(userRating, probQuestion.rating)
         score = score + probQuestion.difficulty;
-        scoreCount.innerHTML = score;
+        scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
             correctCount++;
             difficultyProgressP++;
@@ -15969,11 +16669,13 @@ function checkAnswerProb() {
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+            correct = 0;
+        getExpectedScore(userRating, probQuestion.rating)
         recordWrongTopic(probQuestion.topic);
         difficultyP = Math.max(1, difficultyP - 1);
         difficultyProgressP = 0;
         score = score - difficultyP;
-        scoreCount.innerHTML = score;
+        scoreCount.innerHTML = Math.round(userRatingAll);
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(probQuestion.topic);
         wrongCount++;
@@ -16012,12 +16714,18 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
     questionType = "probability"
 }
 function checkAnswerNum() {
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === numQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = numQuestion.answer.trim();
     difficultyDash.innerHTML = difficulty
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+            correct = 1;
+        getExpectedScore(userRating, numQuestion.rating)
         score = score + numQuestion.difficulty;
-        scoreCount.innerHTML = score;
+        scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
             correctCount++;
             difficultyProgressG++;
@@ -16054,11 +16762,13 @@ function checkAnswerNum() {
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+            correct = 0;
+        getExpectedScore(userRating, numQuestion.rating)
         recordWrongTopic(numQuestion.topic);
         difficultyN = Math.max(1, difficultyN - 1);
         difficultyProgressN = 0;
         score = score - difficultyN;
-        scoreCount.innerHTML = score;
+        scoreCount.innerHTML = Math.round(userRatingAll);
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(numQuestion.topic);
         wrongCount++;
@@ -16182,7 +16892,7 @@ function algebraNext() {
             })
         } else if (currentQuestion < questions.length) {
             prevError.style.display = 'none'
-    algebraQuestion = getNextQuestion(questions, difficulty);
+    algebraQuestion = getNextQuestion(questions, userRating);
             loadQuestion();
 
             // Slide in effect
@@ -16220,7 +16930,7 @@ function allNext() {
             })
         } else if (currentQuestion < allQ.length) {
             prevError.style.display = 'none'
-    allQuestion = getNextQuestion(allQ, difficultyAll);
+    allQuestion = getNextQuestion(allQ, userRatingAll);
             loadAll();
 
             // Slide in effect
@@ -16237,6 +16947,7 @@ function updateTopicsDropdown() {
 
 TOPIC_GLOSSARY.sort((a,b) => b.errors-a.errors)
 const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
+console.log(topicsFixed)
     const container = document.getElementById("topics-dropdown");
 
     container.innerHTML = ""; // clear old content
@@ -16246,6 +16957,7 @@ const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
         const wrapper = document.createElement("div");
         wrapper.className = "topic-item";
     let show = info.errors;
+    let mastery = info.mastery;
 wrapper.innerHTML = `
   <button class="topic-button">
     ${info.title}
@@ -16256,6 +16968,7 @@ wrapper.innerHTML = `
   <div class="topic-content">
     <p>${info.description}</p>
     <h4>Errors: ${show}</h4>
+    <h4>Accuracy: ${mastery}</h4>
     <h4>How to Improve:</h4>
     <ul>${info.workOn.map(skill => `<li>${skill}</li>`).join("")}</ul>
     <h4>Practice a question from this topic:</h4>
@@ -16305,7 +17018,7 @@ function geometryNext(){
             })
         } else if (geometryCurrent < geometryQ.length) {
             prevError.style.display = 'none  '
-    geometryQuestion = getNextQuestion(geometryQ, difficultyG);
+    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry);
             loadQuestion(geometryCurrent);
 
             // Slide in effect
@@ -16341,7 +17054,7 @@ function probNext() {
             })
         } else if (probCurrent < probabilityQ.length) {
             prevError.style.display = 'none'
-    probQuestion = getNextQuestion(probabilityQ, difficultyP);
+    probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
             loadProb();
 
             // Slide in effect
@@ -16375,7 +17088,7 @@ function numNext(){
             })
         } else if (numCurrent < numTheoryQ.length) {
             prevError.style.display = 'none'
-    numQuestion = getNextQuestion(numTheoryQ, difficultyN);
+    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory);
             loadQuestion();
 
             // Slide in effect
@@ -16574,6 +17287,17 @@ submitSolutionButton.addEventListener("click", function() {
         submitSolutionButton.style.display = 'none';
 })
 
+function getExpectedScore(userRating, questionRating){
+    let expectedRating = (1 / (1 + Math.pow(10, (questionRating - userRating) / 400)));
+    updateRating(userRating, expectedRating, correct);
+}
+function updateRating(oldRating, expectedRating, correct){
+    let newRating = oldRating + (32 * (correct - expectedRating))
+    if (questionType !== "all"){
+    userRating = newRating
+    }
+    updateAllRating();
+}
 // ---------- Start ----------
 shuffleArray(questions);
 shuffleArray(allQ)
@@ -16581,3 +17305,13 @@ loadQuestion();
 buttonsWork();
 updateColors();
 updateTopicsDropdown();
+getProblemNumber(questions)
+getInitialRating(questions)
+getProblemNumber(geometryQ)
+getInitialRating(geometryQ)
+getProblemNumber(numTheoryQ)
+getInitialRating(numTheoryQ)
+getProblemNumber(probabilityQ)
+getInitialRating(probabilityQ)
+getProblemNumber(allQ)
+getInitialRating(allQ)

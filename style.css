@@ -1840,7 +1840,7 @@ li{
   left: 0;
   width: 100%;           /* full width */
   height: 100%;          /* full height */
-  background: linear-gradient(to top, rgba(255, 255, 255,0.9) 0%, transparent 50%);
+  background: linear-gradient(to top, rgba(255, 255, 255,0.9) 0%, transparent 75%);
   z-index: 9;
 }
 #sidebar:not(.close) .iconsvg{
@@ -1902,7 +1902,7 @@ li{
   bottom: 0;
   left: 50%;
   margin-left: -3px;
-  height: 100vh
+  height: 100000vh
 }
 
 .event {
@@ -2399,5 +2399,8 @@ label{
 .btnsWrapper{
   width: 100%;
   white-space: nowrap;
-  overflow: scroll;
+  overflow: auto;
+}
+::-webkit-scrollbar {
+    display: none !important;
 }
