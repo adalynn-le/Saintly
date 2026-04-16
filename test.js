@@ -2997,37 +2997,45 @@ rating: 1600,
 ];
 
 
-function getNextQuestion(questions, userRating){
-  let best = questions[0];
+function getNextQuestion(questions, userRating) {
+  // 1. STRICT: only unused questions
+  let available = questions.filter(
+    q => !q.used && Math.abs(q.rating - userRating) < 100
+  );
+
+  // 2. If none match rating, widen criteria (still unused only)
+  if (available.length === 0) {
+    available = questions.filter(q => !q.used);
+  }
+
+  // 3. If STILL none, NOW reset (last resort)
+  if (available.length === 0) {
+    questions.forEach(q => q.used = false);
+
+    available = questions.filter(
+      q => Math.abs(q.rating - userRating) < 100
+    );
+
+    // if still empty, just use all questions
+    if (available.length === 0) {
+      available = questions;
+    }
+  }
+
+  // 4. Pick best match (not first!)
+  let best = available[0];
   let bestDiff = Math.abs(userRating - best.rating);
 
-  for (const q of questions) {
-    const diff = Math.abs(userRating - q.rating);
-
+  for (const q of available) {
+    const diff = Math.abs(q.rating - userRating);
     if (diff < bestDiff) {
       best = q;
       bestDiff = diff;
     }
   }
-    let available = questions.filter(
-        q => (Math.abs(q.rating - userRating) < 100) && !q.used
-    )
-    // If none left, reset all questions
-    if (available.length === 0) {
-        questions.forEach(q => q.used = false);
-        shuffleArray(questions);
 
-        // Try again after reset
-        available = questions.filter(
-             q => (Math.abs(q.rating - userRating) < 100)
-        );
-    }
-
-    // Absolute safety check
-    if (available.length === 0) return best;
-    const question = available[0];
-    question.used = true;
-    return question;
+  best.used = true;
+  return best;
 }
 
 shuffleArray(questions);
