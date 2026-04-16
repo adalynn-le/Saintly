@@ -2251,6 +2251,7 @@ main{
   margin-right: 10px !important;
   padding: 5px !important;
 }
+
 .problem .material-symbols-outlined{
     font-size: 25px !important;
     vertical-align: middle !important;
@@ -2259,7 +2260,11 @@ main{
     height: auto !important;
     border-radius: 0 !important;
     margin: 0 1px !important;
-    margin-top: 60px !important;
+    margin-top: 100px !important;
+}
+.warning{
+  display: none !important;
+  margin-bottom: -20px !important;
 }
 .amc10container{
   width: 95% !important;
@@ -2289,6 +2294,9 @@ input{
 .miniTag{
   display: none;
 }
+.miniTag .material-symbols-outlined{
+  display: none !important;
+}
 .formsubmission input[type="radio"],
 .formsubmission input[type='checkbox']{
   appearance: none;
@@ -2315,6 +2323,7 @@ input{
 #num404, #num0{
   font-size: 100px !important;
 }
+
 .error404text{
   white-space: wrap;
   text-align: center;
@@ -2506,6 +2515,7 @@ html {
  #applicationForm{
   margin-top: 20px !important;
  }
-.subtitle{
-text-align: left;
+
+ .subtitle{
+  text-align: left;
 }
