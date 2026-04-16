@@ -11,6 +11,9 @@ const navBar = `<nav id = "top-bar">
 
 send
 </span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton">
+volunteer_activism
+</span>
     </div>
 </nav>`
 navBarPlaceholder.innerHTML = navBar;
