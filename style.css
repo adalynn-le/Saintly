@@ -2506,3 +2506,6 @@ html {
  #applicationForm{
   margin-top: 20px !important;
  }
+.subtitle{
+text-align: left;
+}
