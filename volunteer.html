@@ -104,11 +104,9 @@ strive to cultivate. Saintly also gives you an opportunity to <mark class="blue"
     </label>
   </label>
   <!-- your other form fields go here -->
-   <span>
   <button class="problemBtn" type="submit" >Send</button>
 </form>
-<button id="save" class="problemBtn">Save</button>
-</span>
+
 <div id = "helpPannel" class = "helpPannel">
   <h2>Need Some Help?</h2>
   <p class="par">Contact us through our form</p>
@@ -194,37 +192,4 @@ overlay.addEventListener("click", function () {
     overlay.style.display = "none"; 
     helpOn = false;
 });
-const stuff = document.getElementById("save")
-const namevar = document.getElementById("name")
-const emailvar = document.getElementById("email")
-const skills = document.getElementById("skills")
-const traits = document.getElementById("traits")
-const math = document.getElementById("math")
-stuff.addEventListener("click", function() {
-  localStorage.setItem("name", namevar.value);
-  localStorage.setItem("email", emailvar.value)
-  localStorage.setItem("skills", skills.value)
-  localStorage.setItem("traits", traits.value);
-  localStorage.setItem("math", math.value);
-})
-const namesaved = localStorage.getItem("name")
-  if (namesaved) {
-    namevar.value = namesaved; // Display the saved text back in the input
-  }
-const emailsaved = localStorage.getItem("email")
-if (emailsaved){
-  emailvar.value = emailsaved
-}
-const skillssaved = localStorage.getItem("skills")
-if (skillsaved){
-  skills.value = skillssaved
-}
-const traitssaved = localStorage.getItem("traits")
-if (traitssaved){
-  traits.value = traitssaved
-}
-const mathsaved = localStorage.getItem("math")
-if (mathsaved){
-  math.value = mathsaved
-}
 </script>
