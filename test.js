@@ -40,7 +40,10 @@ function toggleSubMenu(button){
     button.classList.toggle('rotate');
 }
 function updateAllRating(){
+        if ((userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4 > userRatingAll){
+
     userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
+        }
 }
 // ---------- Shuffle Function ----------
 const highlight = document.getElementById("highlight");
@@ -16370,7 +16373,7 @@ function checkAnswerGeometry() {
     difficultyDash.innerHTML = difficulty
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
         correct = 1;
-        getExpectedScore(userRating, geometryQuestion.rating)
+        getExpectedScore(userRatingGeometry, geometryQuestion.rating)
         score = score + geometryQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
@@ -16379,19 +16382,19 @@ function checkAnswerGeometry() {
             if (difficultyG == 1 && difficultyProgressG == 4){
                 difficultyG++;
                 difficultyProgressG = 0;
-                showLevelUp();
+                
             } else if (difficultyG == 2 && difficultyProgressG  == 3){
                 difficultyG++;
                 difficultyProgressG = 0;
-                showLevelUp();
+                
             } else if (difficultyG == 3 && difficultyProgressG  == 2){
                 difficultyG++;
                 difficultyProgressG = 0;
-                showLevelUp();
+                
             } else if (difficultyG == 4 && difficultyProgressG == 1){
                 difficultyG ++;
                 difficultyProgressG = 0;
-                showLevelUp();
+                
             }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "✅ Correct! " + geometryQuestion.solution;
@@ -16410,7 +16413,7 @@ function checkAnswerGeometry() {
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
             correct = 0;
-        getExpectedScore(userRating, geometryQuestion.rating)
+        getExpectedScore(userRatingGeometry, geometryQuestion.rating)
         recordWrongTopic(allQuestion.topic);
         difficultyG = Math.max(1, difficultyG - 1);
         difficultyProgressG = 0;
@@ -16470,19 +16473,19 @@ function checkAnswerAlgebra(){
             if (difficulty == 1 && difficultyProgress == 4){
                 difficulty++;
                 difficultyProgress = 0;
-                showLevelUp();
+                
             } else if (difficulty == 2 && difficultyProgress  == 3){
                 difficulty++;
                 difficultyProgress = 0;
-                showLevelUp();
+                
             } else if (difficulty == 3 && difficultyProgress  == 2){
                 difficulty++;
                 difficultyProgress = 0;
-                showLevelUp();
+                
             } else if (difficulty == 4 && difficultyProgress == 1){
                 difficulty ++;
                 difficultyProgress = 0;
-                showLevelUp();
+                
             }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "✅ Correct! " + algebraQuestion.solution;
@@ -16558,19 +16561,19 @@ function checkAnswerAll() {
             if (difficultyAll == 1 && difficultyProgressAll == 4){
                 difficultyAll++;
                 difficultyProgressAll = 0;
-                showLevelUp();
+                
             } else if (difficultyAll == 2 && difficultyProgressAll  == 3){
                 difficultyAll++;
                 difficultyProgressAll = 0;
-                showLevelUp();
+                
             } else if (difficultyAll == 3 && difficultyProgressAll  == 2){
                 difficultyAll++;
                 difficultyProgressAll = 0;
-                showLevelUp();
+                
             } else if (difficultyAll == 4 && difficultyProgressAll == 1){
                 difficultyAll ++;
                 difficultyProgressAll = 0;
-                showLevelUp();
+                
             }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "✅ Correct! " + allQuestion.solution;
@@ -16638,7 +16641,7 @@ function checkAnswerProb() {
     difficultyDash.innerHTML = difficultyP
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
             correct = 1;
-        getExpectedScore(userRating, probQuestion.rating)
+        getExpectedScore(userRatingAll, probQuestion.rating)
         score = score + probQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
@@ -16647,19 +16650,19 @@ function checkAnswerProb() {
             if (difficultyP == 1 && difficultyProgressP == 1){
                 difficultyP++;
                 difficultyProgressP = 0;
-                showLevelUp();
+                
             } else if (difficultyP == 2 && difficultyProgressP  == 3){
                 difficultyN++;
                 difficultyProgressP = 0;
-                showLevelUp();
+                
             } else if (difficultyP == 3 && difficultyProgressP  == 2){
                 difficultyP++;
                 difficultyProgressP = 0;
-                showLevelUp();
+                
             } else if (difficultyP == 4 && difficultyProgressP == 1){
                 difficultyP ++;
                 difficultyProgressP = 0;
-                showLevelUp();
+                
             }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "✅ Correct! " + probQuestion.solution;
@@ -16678,7 +16681,7 @@ function checkAnswerProb() {
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
             correct = 0;
-        getExpectedScore(userRating, probQuestion.rating)
+        getExpectedScore(userRatingProbability, probQuestion.rating)
         recordWrongTopic(probQuestion.topic);
         difficultyP = Math.max(1, difficultyP - 1);
         difficultyProgressP = 0;
@@ -16731,7 +16734,7 @@ function checkAnswerNum() {
     difficultyDash.innerHTML = difficulty
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
             correct = 1;
-        getExpectedScore(userRating, numQuestion.rating)
+        getExpectedScore(userRatingNumTheory, numQuestion.rating)
         score = score + numQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
@@ -16740,19 +16743,19 @@ function checkAnswerNum() {
             if (difficultyN == 1 && difficultyProgressN == 4){
                 difficultyN++;
                 difficultyProgressN = 0;
-                showLevelUp();
+                
             } else if (difficultyN == 2 && difficultyProgressN  == 3){
                 difficultyN++;
                 difficultyProgressN = 0;
-                showLevelUp();
+                
             } else if (difficultyN == 3 && difficultyProgressN  == 2){
                 difficultyN++;
                 difficultyProgressN = 0;
-                showLevelUp();
+                
             } else if (difficultyN == 4 && difficultyProgressN == 1){
                 difficultyN ++;
                 difficultyProgressN = 0;
-                showLevelUp();
+                
             }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = "✅ Correct! " + numQuestion.solution;
@@ -16771,7 +16774,7 @@ function checkAnswerNum() {
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
             correct = 0;
-        getExpectedScore(userRating, numQuestion.rating)
+        getExpectedScore(userRatingNumTheory, numQuestion.rating)
         recordWrongTopic(numQuestion.topic);
         difficultyN = Math.max(1, difficultyN - 1);
         difficultyProgressN = 0;
@@ -17300,11 +17303,24 @@ function getExpectedScore(userRating, questionRating){
     updateRating(userRating, expectedRating, correct);
 }
 function updateRating(oldRating, expectedRating, correct){
-    let newRating = oldRating + (32 * (correct - expectedRating))
+    let newRating = oldRating + (50 * (correct - expectedRating))
     if (questionType !== "all"){
-    userRating = newRating
+        if (questionType === "algebra"){
+                userRating = newRating
+        } else if (questionType === "geometry"){
+                userRatingGeometry = newRating
+        } else if (questionType === "probability"){
+                userRatingProbability = newRating
+        } else if(questionType === "numTheory"){
+                userRatingNumTheory = newRating
+        } else if (questionType === "all"){
+                userRatingAll = newRating
+        }
     }
     updateAllRating();
+}
+function store() {
+localStorage.setItem("elo", userRatingAll)
 }
 // ---------- Start ----------
 shuffleArray(questions);
