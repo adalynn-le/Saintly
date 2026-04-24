@@ -2202,15 +2202,17 @@ function showPopup(message, isCorrect) {
 
 // ---------- Check Answer ----------
 checkBtn.addEventListener("click", function () {
-    progressBarFunction();
     const userAnswer = answerInput.value.trim();
     const correctAnswer = geometryQ[currentQuestion].answer.trim();
 
     if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
+            progressBarFunction();
             streakCount++;
             correctCount++;
         document.getElementById("streak-count").innerHTML = streakCount;
-        solutionText.innerHTML = "✅ Correct! " + geometryQ[currentQuestion].solution;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + geometryQ[currentQuestion].solution;
 
       // Existing confetti
        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
@@ -2225,10 +2227,13 @@ checkBtn.addEventListener("click", function () {
 
 
     } else {
+            progressBarFunction();
         streakCount = 0;
         wrongCount++;
         document.getElementById("streak-count").innerHTML = streakCount;
-        solutionText.innerHTML = "❌ Incorrect. " + geometryQ[currentQuestion].solution;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect. ` + geometryQ[currentQuestion].solution;
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }

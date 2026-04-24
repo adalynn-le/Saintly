@@ -6,7 +6,7 @@
   --highlight-color: #ebf3ff;
   --accent-color: #ffb192;
   --text-color: rgb(55, 54, 58);
-  --shadow-color: rgb(131, 123, 123);
+  --shadow-color: rgb(218, 217, 235);
 }
 @keyframes typewriter {
   from { max-width: 0; }
@@ -429,7 +429,6 @@ footer{
   transition: transform 0.2s, opacity 0.2s ease;
 }
 
-
 .problem input[type="text"] {
   padding: 8px;
   font-size: 16px;
@@ -460,12 +459,23 @@ footer{
 }
 /* Solution Box */
 .solution {
-  display: none;
   background-color: #ebf3ff;
   border-left: 5px solid var(--primary-color);
   padding: 15px;
   margin-top: 10px;
   border-radius: 5px;
+  color: var(--text-color)
+}
+#stepOne {
+  background-color: #fff0eb;
+  border-left: 5px solid var(--accent-color);
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  color: var(--text-color) !important
+}
+#stepOne h2{
+  color: var(--text-color) !important  
 }
 .amc10container{
   margin-top: 20px !important;
@@ -1123,6 +1133,7 @@ input, textarea{
   padding-right: 5px;
   color: #a5c9ff
 }
+
 .dataCards{
   display: flex;
   justify-content: center;
@@ -1860,7 +1871,7 @@ li{
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: calc(50% - 60px); /* centers based on logo width */
+  right: calc(50% - 75px); /* centers based on logo width */
 }
 .center-align .logo{
   margin: 0 !important;
@@ -1920,6 +1931,9 @@ li{
   padding-top: 20px;
 }
 .eventLeft{
+  text-align: right;
+}
+.eventLeft .eventName{
   text-align: right;
 }
 .eventRight{
@@ -1995,7 +2009,46 @@ li{
 .containerPractice{
   margin-top: 50px !important;
 }
+.strike{
+  color: var(--shadow-color) !important;
+  font-weight: 500 !important;
+  font-size: 50px !important;
+  display: block !important;
+}
+.strikes{
+  border: 2.5px solid var(--primary-color);
+  border-right: none;
+  border-radius: 10px;
+  width: 75px;
+  align-content: center !important;
+  justify-content:center !important;
+  height: fit-content !important;
+  position: absolute;
+  left: calc(25% - 50px);
+}
+.problemsContainer{
+  display: flex;
+  gap: 0 !important;
+}
+
+
 @media (max-width: 768px) {
+  #startpracticetop{
+    display: none !important;
+  }
+  .problem {
+  background-color: var(--background-variant);
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s, opacity 0.2s ease;
+  width: fit-content !important;
+}
+
+.strikes {
+  display: none;
+}
 .volunteerButton{
   font-variation-settings:
   'FILL' 0,
@@ -2146,9 +2199,6 @@ line-height: 1.75 !important;
 #howwork{
   display: block !important;
 }
-.problem-wrapper{
-  width: 95%
-}
 @media (max-width: 768px) {
   /* Kill all grids and flex rows — force single column */
   [style*="display: grid"],
@@ -2217,7 +2267,7 @@ width: 100% !important;
 text-align: left !important;
 }
 .small{
-  font-size: 17px !important;
+  font-size: 20px !important;
 }
 .container{
   max-width: 120%;
@@ -2251,10 +2301,13 @@ main{
 }
   #question-title {
     display: flex !important;
-    flex-wrap: wrap !important;
     align-items: center !important;
     gap: 2px !important;
-    font-size: 18px !important;
+    font-size: 25px !important;
+    margin-top: -50px !important;
+    margin-bottom: -70px !important;
+    white-space: nowrap !important;
+    overflow: scroll !important;
   }
 .helpPannel{
   width: 90% !important;
@@ -2312,8 +2365,25 @@ input{
   padding-top: 5px !important;
   padding-bottom: 5px !important;
 }
+.problem .material-symbols-outlined{
+  margin-bottom: 37.5px !important;
 }
 
+}
+@media (max-width: 1400px){
+.tag{
+  white-space: nowrap !important;
+  font-size: 15px;
+  height: 40px !important;
+}
+.tags{
+  white-space: nowrap !important;
+  overflow: auto;
+}
+.rounded-text, .cursive-text{
+  font-size: 110px !important;
+}
+}
 .streak-wrapper{
   margin-top: 50px !important;
 }
@@ -2495,4 +2565,14 @@ html {
 
  .subtitle{
   text-align: left;
+}
+.solution .material-symbols-outlined{
+  color: var(--primary-color) !important;
+  font-size: 40px !important;
+  margin-bottom: -50px !important;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
 }

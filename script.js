@@ -3109,12 +3109,14 @@ function showPopup(message, isCorrect) {
 checkBtn.addEventListener("click", function () {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = questions[currentQuestion].answer.trim();
-    progressBarFunction();
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+            progressBarFunction();
             streakCount++;
             correctCount++;
         document.getElementById("streak-count").textContent = streakCount;
-        solutionText.innerHTML = "✅ Correct! " + questions[currentQuestion].solution;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + questions[currentQuestion].solution;
 
       // Existing confetti
        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
@@ -3129,10 +3131,13 @@ checkBtn.addEventListener("click", function () {
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+            progressBarFunction();
         streakCount = 0;
         wrongCount++;
         document.getElementById("streak-count").textContent = streakCount;
-        solutionText.innerHTML = "❌ Incorrect. " + questions[currentQuestion].solution;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect. ` + questions[currentQuestion].solution;
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
     }
