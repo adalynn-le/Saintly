@@ -30,7 +30,12 @@ let userRating = 800
 let userRatingGeometry = 800;
 let userRatingProbability = 800;
 let userRatingNumTheory = 800;
-let userRatingAll = 800
+console.log(get())
+if (get() === null){
+        userRatingAll = 800;
+} else {
+        userRatingAll = get()
+}
 let strikes = 2;
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
@@ -41,10 +46,7 @@ function toggleSubMenu(button){
     button.classList.toggle('rotate');
 }
 function updateAllRating(){
-        if ((userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4 > userRatingAll){
-
     userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
-        }
 }
 // ---------- Shuffle Function ----------
 const highlight = document.getElementById("highlight");
@@ -9573,6 +9575,8 @@ const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown 
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
         questionType = "geometry"
         strikes -= 1
+        getExpectedScore(userRating, geometryQuestion.rating)
+                        scoreCount.innerHTML = Math.round(userRatingAll);
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
         strikeTwo.style.color = "var(--primary-color) !important"
@@ -9661,6 +9665,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         if (strikes ==  2){
+                scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
@@ -9699,6 +9704,10 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
         questionType = "algebra"
         strikes -= 1
+        correct = 0
+        getExpectedScore(userRating, algebraQuestion.rating)
+        console.log(userRatingAll)
+        scoreCount.innerHTML = Math.round(userRatingAll)
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
         strikeTwo.style.color = "var(--primary-color) !important"
@@ -9828,7 +9837,7 @@ function checkAnswerProb() {
     difficultyDash.innerHTML = difficultyP
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
             correct = 1;
-        getExpectedScore(userRatingAll, probQuestion.rating)
+        getExpectedScore(userRatingProbability, probQuestion.rating)
         score = score + probQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
@@ -9870,6 +9879,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
      if (strikes ==  2){
+                scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
@@ -9907,6 +9917,9 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
         questionType = "probability"
+        getExpectedScore(userRating, algebraQuestion.rating)
+        console.log(userRatingAll)
+        scoreCount.innerHTML = Math.round(userRatingAll)
         strikes -= 1
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
@@ -9992,6 +10005,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
     if (strikes ==  2){
+                scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
@@ -10028,8 +10042,11 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
 
         problemsWrapper.classList.add("shake");
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "algebra"
+        questionType = "numTheory"
         strikes -= 1
+        getExpectedScore(userRating, algebraQuestion.rating)
+        console.log(userRatingAll)
+        scoreCount.innerHTML = Math.round(userRatingAll)
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
         strikeTwo.style.color = "var(--primary-color) !important"
@@ -10585,10 +10602,13 @@ function getExpectedScore(userRating, questionRating){
     updateRating(userRating, expectedRating, correct);
 }
 function updateRating(oldRating, expectedRating, correct){
-    let newRating = oldRating + (100 * (correct - expectedRating))
+        console.log(correct)
+    let newRating = oldRating + (250 * (correct - expectedRating))
+    console.log(newRating)
     if (questionType !== "all"){
         if (questionType === "algebra"){
                 userRating = newRating
+                console.log(userRating)
         } else if (questionType === "geometry"){
                 userRatingGeometry = newRating
         } else if (questionType === "probability"){
@@ -10600,6 +10620,7 @@ function updateRating(oldRating, expectedRating, correct){
         }
     }
     updateAllRating();
+    save();
 }
 function store() {
 localStorage.setItem("elo", userRatingAll)
@@ -10647,6 +10668,13 @@ seeStep.addEventListener("click", function() {
                 seeStep.innerHTML = "See The First Step"
         }        
 })
+function save(){
+        localStorage.setItem("ELO", userRatingAll);
+        console.log(get())
+}
+function get(){
+        return localStorage.getItem("ELO")
+}
 // ---------- Start ----------
 shuffleArray(questions);
 shuffleArray(allQ)
@@ -10664,4 +10692,4 @@ getProblemNumber(probabilityQ)
 getInitialRating(probabilityQ)
 getProblemNumber(allQ)
 getInitialRating(allQ)
-console.log(TOPIC_GLOSSARY.length)
+scoreCount.innerHTML = Math.round(userRatingAll);
