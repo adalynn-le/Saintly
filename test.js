@@ -330,9 +330,9 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         h=2
         $$
         <p> Two hours after Betsy's starting time is <b> 4:30 <b> </p>
-
+        <p><b>Solution by Fluffy1234</b><p>
+        <p>First, use \\(d=rt\\) to find the time it took to reach another. With the distance as \\(45\\) miles and the rate as \\(30\\), (The math: \\(18+12=30\\)) we get time as \\(1 \\frac{1}{2}\\) hours. At this point Beth has traveled \\(18\\) miles (\\(12 \\cdot 1.5 = 18\\)) and Alicia has biked \\(27\\) (\\(18 \\cdot 1.5)\\). Checking we get \\(27+18=45\\). Ergo, our answer is twenty-seven.
         `,
-        video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         topic: "systems of equations",
         hint: "Set up an algebraic equation relating the two",
         step: "Use the expressions \\(8(h+1)\\) and \\(12h\\) to model the distance that each person travels"
@@ -1867,6 +1867,8 @@ star
 rating: 800,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
         solution: `<b>11110</b><p>With something like this, it's simply easier to just brute force your way through. Add the values and find that it is \\(11110\\).</p>
+        <p><b>Solution by Fluffy1234</b><p>
+        <p>If you add all the ones digits you will get \\(10\\). (The math: \\(1+2+3+4=10\\)) Notice that the tens digit, the hundreds digit and thousands digit all have the same value, ten. So the ones digit is \\(0\\) and since they are tens there is a one for each digit after that and with a total of \\(4\\) numbers get \\(11110\\) as our answer.
         <h3>Common Mistake <span class="material-symbols-outlined">
 exclamation
 </span><span class="material-symbols-outlined">
