@@ -382,32 +382,21 @@ star
     {
         used: false,
         difficulty: 1,
-        title:`AMC 10B 2024 Problem 2 <span class="material-symbols-outlined staricon">
+rating: 800,
+        title:`AMC 10B 2024 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
         text: "What is \\(10! - 7! \\cdot 6!\\)",
         type: "mc",
         choices: ["\\(A) -120\\)", "\\(B) 0\\)", "\\(C) 120\\)", "\\(D) 600\\)", "\\(E) 720\\)"],
-        answer: "\\(A) -120\\)",
-        solution: `<b> -120 </b> <p>Pure intuition tells is that \\(10!\\) is going to be less than \\(7! \\cdot 6!\\), but let's expand that further.</p>
-        <p> First let's consider the definition of a factorial, and expand it all out: </p>
-        $$
-        10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        $$
-        7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        $$
-        6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        <p>Note that the majority of \\(10!\\) overlaps with \\(7!\\). If we can account for the other numbers, \\(10\\), \\(9\\), and \\(8\\), we can prove that the second term is larger.</p> 
-        <p>\\(10\\) is \\(5 \\cdot 2 \\), which we can find in \\(6!\\) </p>
-        <p> With the numbers we have left, we can't get \\(9\\) or \\(8\\), but we can we can confidently say that the remaining product is greater than \\(6!\\). This means that \\(10!\\) is less than \\(7! \\cdot 6!\\), meaning that the answer would be negative. Since there is only one negative answer, the answer must be -120. </p>
-        <p> On the AMC 10, it is not always the best option to compute everything. Due to the time constraint, if you see an answer that is different, or if you have a strong intuition, it could be strategic to go with that. </p> 
-        
-        <h3>Common Mistake❗❗❗</h3>
-        <p>Don't overcomplicate! Be sure to read the whole question, with all answers first. If one sticks out, ask yourself why. No need to solve a whole factorial when you can ues logic.</p>`,
-        topic: "logic"
+        answer: "\\(B) 0\\)",
+        solution: `<b>0</b>
+        <p><b>Solution by Mason</b></p>
+        <p>We can factor out \\(7!\\) and get \\(7!(8 \\cdot 9 - 6!)\\). Expand this to find \\(7!(720-720)=0\\)
+        `,
+        topic: "factoring",
+        hint:"What can you factor out?",
+        step: "Factor out \\(7!\\)",
     },
     {
         used: false,
