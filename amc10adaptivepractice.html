@@ -143,7 +143,7 @@ Previous Mistake</div>
     <input name="email" type="text" placeholder="youremail@gmail.com" required></input>
   </label>
   <label class="formsubmission">
-    Problem Title:
+    Problem Title:f
     <input name="title" type="text" placeholder="AMC 10[A or B] [year] Problem #" required></input>
   </label>
   <label class="formsubmission">
@@ -173,7 +173,7 @@ Previous Mistake</div>
 leaderboard
   </span>Your Stats</h2>
   <div id = "topics-to-work"><b>Topics To Work On: </b> <span id="topics-to-work-var">None, you're doing great</span></div>
-  <div id = "difficultyDash"><b>Difficulty:</b> <span id = "difficultyDashVar">1</span></div>
+  <div id = "difficultyDash"><b>ELO:</b> <span id = "difficultyDashVar">1</span></div>
 </div>
 <h1 class="amc10subtitle">Topics Glossary</h1>
 <p>See in-depth metrics and tips for how to study on the topics you get wrong. This will update as you progress through the questions</p>
@@ -246,5 +246,7 @@ leaderboard
 <!-- Confetti Canvas -->
 <canvas id="confetti-canvas"></canvas>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script src="test.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script type = "module" src="test.js"></script>
 </html>

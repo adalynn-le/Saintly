@@ -413,7 +413,15 @@ footer{
     margin-right: 10px;
     font-size: 24px;
 }
-
+#dailyStreak {
+    margin-right: 10px;
+    font-size: 24px;
+    color: #a5c9ff !important;
+    margin-bottom: -35px !important;
+    font-size: 50px !important;
+    margin-left: 0px !important;
+    margin-right: 20px !important;
+}
 #streak-text {
     font-size: 16px;
 }
@@ -863,7 +871,7 @@ button.btn2 {
   padding: 5x;
   border: 2px solid var(--accent-color);
   border-radius: 12px;
-  background-color: #f9f9f9;
+  background-color: var(--background-variant);
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;

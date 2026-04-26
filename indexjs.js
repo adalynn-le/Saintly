@@ -11,6 +11,22 @@ const questionChoices = document.getElementById("mc-container")
 const problemsCard = document.getElementById("problems-card");
 const problemsWrapper = document.getElementById("problems-card");
 const confettiCanvas = document.getElementById("confetti-canvas");
+const streakTag = document.getElementById("streakText")
+let streakVar = 0
+let streakTrue =  localStorage.getItem("streak")
+        streakTag.innerHTML = streakVar + " Days"
+if (streakTrue == null){
+        streakVar = 0
+} else {
+        let today = new Date()
+        let last = localStorage.getItem("lastPractice")
+        if (Math.abs(today - last) > 1){
+                streakVar = 0
+        } else {
+                streakVar = localStorage.getItem("streak")
+                streakTag.innerHTML =streakVar + "Days"
+        }
+}
 const myConfetti = confetti.create(confettiCanvas, {
     resize: true,
     useWorker: true
@@ -8476,8 +8492,6 @@ function getDailyProblems(problems, count = 1) {
 }
 let q = 0;
 function loadQuestion() {
-    
-    console.log("question loading")
     q = getDailyProblems(allQ)[0];
     console.log(q)
     mcChoices.forEach(btn => btn.disabled = false);
@@ -8512,18 +8526,41 @@ function loadQuestion() {
             btn.onclick = () => handleMCAnswer(q.choices[i]);
         });
     }
+        let d1 = new Date()
+        let d2 = localStorage.getItem("lastPractice")
+// Create copies to avoid mutating original dates
+const date1Copy = new Date(d1).setHours(0, 0, 0, 0);
+const date2Copy = new Date(d2).setHours(0, 0, 0, 0);
+
+const isSameDay = date1Copy === date2Copy;
+
+console.log(isSameDay)
+
+        if (isSameDay === true){
+        questionTitle.innerHTML=("You Already Did Today's Daily Problem!")
+        questionText.innerHTML = ("Come back tomorrow for a new challenge!")
+        questionText.style.color = "var(--accent-color)"
+        checkBtn.style.display = "none";
+        mcContainer.classList.add("remove")
+        answerInput.style.display = "none"
+}
 
     if (window.MathJax) {
         MathJax.typesetPromise([questionText]).catch(()=>{});
         MathJax.typesetPromise([questionChoices]).catch(()=>{});
     }
+
 }
 loadQuestion()
 checkBtn.addEventListener("click", function () {
-    const userAnswer = answerInput.value.trim();
+        localStorage.setItem("doneToday", true)
+        let now = new Date();
+        streakVar = parseInt(streakVar) + 1
+        localStorage.setItem("streak", streakVar)
+        localStorage.setItem("lastPractice", now)
+        streakTag.innerHTML = streakVar + "Days"
+    const userAnswer = answerInput.value.trim()
     const correctAnswer = q.answer.trim();
-    console.log(userAnswer)
-    console.log(correctAnswer)
     if (userAnswer === correctAnswer && solutionDiv.style.display==="none") {
         console.log("correct")
         solutionText.innerHTML = `<span class="material-symbols-outlined">
@@ -8553,5 +8590,26 @@ function handleMCAnswer(choice) {
     answerInput.value = choice; // reuse existing checker
     checkBtn.click();
 mcChoices.forEach(btn => btn.disabled = true);
-
 }
+
+ console.log("script running")
+      let helpOn = false;
+  let helpBtn = document.getElementById('helpButton')
+  helpBtn.addEventListener("click", function () {
+    console.log("clicked")
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
+});
+let overlay = document.getElementById('overlay');
+overlay.addEventListener("click", function () {
+    helpPannel.style.display = "none";
+    overlay.style.display = "none"; 
+    helpOn = false;
+});

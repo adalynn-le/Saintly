@@ -1,3 +1,9 @@
+// Fix: use only one client
+import { createClient } from 'https://esm.sh/@supabase/supabase-js';
+const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
+const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
+const supabase = createClient(supabaseURL, supabaseKey);
+
 let correctCount = 0;
 let wrongCount = 0;
 let longestStreak = 0;
@@ -30,6 +36,13 @@ let userRating = 800
 let userRatingGeometry = 800;
 let userRatingProbability = 800;
 let userRatingNumTheory = 800;
+let userRatingAll = 800;
+let geometryQuestion = 0
+let numQuestion = 0
+let probQuestion = 0
+let currentQuestion = 0
+let geometryCurrent = 0
+let numCurrent = 0
 console.log(get())
 if (get() === null){
         userRatingAll = 800;
@@ -9116,7 +9129,7 @@ function recordWrongTopic(topic) {
   function showLevelUp() {
     const toast = document.getElementById("level-toast");
     toast.classList.remove("show");
-    difficultyDash.innerHTML = difficulty
+    difficultyDash.innerHTML = userRatingAll
 
     // force reflow so animation,
     //  restarts
@@ -9374,14 +9387,6 @@ function loadNumTheory() {
 }
 
 
-//-----------MCQ----
-function handleMCAnswer(choice) {
-    answerInput.value = choice; // reuse existing checker
-    checkBtn.click();
-mcChoices.forEach(btn => btn.disabled = true);
-
-}
-
     probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
 function loadProb() {
     console.log("loading prob")
@@ -9450,14 +9455,6 @@ function showPopup(message, isCorrect) {
     popup.style.opacity = "1";
     setTimeout(() => popup.style.opacity = "0", 2000);
 }
-
-function capitalizeFirstLetter(str) {
-  if (str.length === 0) {
-    return str; // Return empty string as is
-  }
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 // Example Usage:
 const originalString = "hello world";
 const capitalizedString = capitalizeFirstLetter(originalString);
@@ -9466,12 +9463,13 @@ const capitalizedString = capitalizeFirstLetter(originalString);
 let correct = 1
 function checkAnswerGeometry() {
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === geometryQuestion.topic);
+                logAttempt(geometryQuestion.title, true)
     if (topicObj) {
         topicObj.attempts += 1;
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = geometryQuestion.answer.trim();
-    difficultyDash.innerHTML = difficulty
+    difficultyDash.innerHTML = userRatingAll
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
         correct = 1;
         getExpectedScore(userRatingGeometry, geometryQuestion.rating)
@@ -9519,6 +9517,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
            if (strikes ==  2){
+                    logAttempt(geometryQuestion.title, false)
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
@@ -9595,8 +9594,9 @@ function checkAnswerAlgebra(){
 
     const userAnswer = answerInput.value.trim();
     const correctAnswer = algebraQuestion.answer.trim();
-    difficultyDash.innerHTML = difficulty
+    difficultyDash.innerHTML = userRatingAll
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+        logAttempt(algebraQuestion.title, true)
             nextBtn.style.display = "inline-block";
     stepOne.style.display = "none"
     hintBtn.style.display = "none"
@@ -9647,6 +9647,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         if (strikes ==  2){
+            logAttempt(algebraQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
@@ -9725,7 +9726,7 @@ function checkAnswerAll() {
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = allQuestion.answer.trim();
-    difficultyDash.innerHTML = difficulty
+    difficultyDash.innerHTML = userRatingAll
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
         score = score + allQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
@@ -9816,8 +9817,9 @@ function checkAnswerProb() {
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = probQuestion.answer.trim();
-    difficultyDash.innerHTML = difficultyP
+    difficultyDash.innerHTML = userRatingAll
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+                logAttempt(probQuestion.title, true)
             correct = 1;
         getExpectedScore(userRatingProbability, probQuestion.rating)
         score = score + probQuestion.difficulty;
@@ -9861,6 +9863,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
      if (strikes ==  2){
+                logAttempt(probQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
@@ -9939,8 +9942,9 @@ function checkAnswerNum() {
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = numQuestion.answer.trim();
-    difficultyDash.innerHTML = difficulty
+    difficultyDash.innerHTML = userRatingAll
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+                logAttempt(numQuestion.title, true)
             correct = 1;
         getExpectedScore(userRatingNumTheory, numQuestion.rating)
         score = score + numQuestion.difficulty;
@@ -9987,6 +9991,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
     if (strikes ==  2){
+                logAttempt(numQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
@@ -10095,7 +10100,7 @@ function restart(){
 nextBtn.addEventListener("click", function () {
         strikesContainer.style.display = "none"
     console.log(questionType)
-difficultyDash.innerHTML = difficulty;
+difficultyDash.innerHTML = userRatingAll;
     if (questionType === "algebra"){
         algebraNext();
         wrongQuestionsAlgebra.forEach(item => {
@@ -10657,6 +10662,16 @@ function save(){
 function get(){
         return localStorage.getItem("ELO")
 }
+async function getHardestProblems(limit = 10) {
+  const { data, error } = await supabase
+    .from('question_stats')
+    .select('question_title, attempts, failures, success_rate')
+    .gte('attempts', 5) // filter out problems with too few attempts
+    .order('success_rate', { ascending: true })
+    .limit(limit);
+
+  return data;
+}
 // ---------- Start ----------
 shuffleArray(questions);
 shuffleArray(allQ)
@@ -10675,3 +10690,12 @@ getInitialRating(probabilityQ)
 getProblemNumber(allQ)
 getInitialRating(allQ)
 scoreCount.innerHTML = Math.round(userRatingAll);
+async function logAttempt(questionTitle, isCorrect) {
+  await supabase.rpc('log_attempt', {
+    q_title: questionTitle,
+    is_correct: isCorrect
+  });
+}
+console.log(getHardestProblems())
+// Example — call inside your answer check logic:
+// logAttempt(algebraQuestion.title, correct);
