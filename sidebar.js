@@ -89,8 +89,8 @@ function updateMainMargin() {
         main.style.marginLeft = '175px';
         main.style.width = 'calc(100% - 175px)';
       } else {
-        main.style.marginLeft='70px';
-        main.style.width = 'calc(100% - 70px)';
+        main.style.marginLeft='90px';
+        main.style.width = 'calc(100% - 90px)';
       }
     }
 }
@@ -111,8 +111,8 @@ function updateTopBar(){
         topBar.style.marginLeft = '175px';
         topBar.style.width = 'calc(100% - 175px)';
       } else {
-        topBar.style.marginLeft='70px';
-        topBar.style.width = 'calc(100% - 70px)';
+        topBar.style.marginLeft='80px';
+        topBar.style.width = 'calc(100% - 80px)';
       }
     }
 }

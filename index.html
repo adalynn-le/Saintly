@@ -3,7 +3,7 @@
   <head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3X50VWZM2"></script>
-<script src="https://t.contentsquare.net/uxa/cb77e0fd80dbf.js"></script>
+<script src="https://t.contentsquare.net/uxa/cb77e0fd80dbf.js" defer></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -31,17 +31,10 @@
 
     <!-- Math rendering -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=stars" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=ads_click,check,close_small,lab_profile,local_fire_department,playlist_add_check,send,star,update,volunteer_activism" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=ads_click,check,close_small,lab_profile,local_fire_department,playlist_add_check,send,star,update,volunteer_activism" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 <script type="application/ld+json">
@@ -55,11 +48,14 @@
 }
 </script>
 <script>
-  window.addEventListener("load", function () {
-    const loader = document.getElementById("loader");
-    loader.style.opacity = "0";
-    setTimeout(() => loader.style.display = "none", 400);
-  });
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
 </script>
 <script>
   window.formspree =
@@ -76,7 +72,7 @@
     <body>
       <div id="loader" style="
   position: fixed; inset: 0;
-  background: rgb(171, 171, 218);
+  background: rgb(255, 255, 255);
   display: flex; align-items: center;
   justify-content: center;
   z-index: 99999;
@@ -133,8 +129,9 @@ stars
 stars
 </span>Adaptive Study</span>
    </div>
-<hr class="annoyingsht">
+  <hr class="annoyingsht">
 <div id = "dataCards" class = "dataCards">
+
 <span class = "dataCard">
   <p class = "dataNum">4</p>
   <p class = "dataText">Subjects</p>
@@ -167,7 +164,7 @@ stars
 </div>
 <hr class="section-divider">
 <span id="sampleproblem">
-  <h2 class = "tinytitle" id="dailyquestion">WANNA CHALLENGE YOURSELF?</h2>
+  <h2 class = "tinytitle" id="dailyquestion">WANT TO  CHALLENGE YOURSELF?</h2>
   <h3 class="subtitle" id="dailyquestiontitle">Try Our Daily Problem</h3>
 <div class="problem problem-wrapper " id="problems-card">
 
@@ -266,7 +263,7 @@ local_fire_department
   <span class="person-card">
     <div class="person">
       
-      <img src="adalynn_le.jpeg" alt="Adalynn Le founder of Saintly AMC math platform" class="person-img">
+<img src="adalynn_le.jpeg" width="500" height="500" alt="Adalynn Le founder of Saintly" class="person-img">
       <h3 class="person-name tinytitle">Adalynn Le</h3>
       <p class="person-bio par">Hi! I'm Adalynn, the founder of Saintly. I'm a freshman at Santa Teresa Highschool. When I was studying for my first AMC 10, I felt behind
         my friends who took expensive paid classes, classes I didn't have access to. I created Saintly as a free and helpful resource so that nobody would have to feel that way again. I hope you enjoy using Saintly!
@@ -278,9 +275,9 @@ local_fire_department
   <span id="whywebuilt">
   <h2 class="tinytitle">WHY DID WE BUILD SAINTLY?</h2>
   <h3 class="subtitle">A Project Turned Product</h3>
-  <p class="par">Shortly after I finished my first AMC 10 Math Competition, I realized that self-studying hadn't been enough. I didn't know how, where, and what to study. That being said, I wasn't about to ask my parents
-    to spend thousands on expensive tutors. From there, Saintly was born. As a project to help my high school math club, I named Saintly after my school (Santa Teresa) and built it around providing Santa Teresa students with free, quality
-    education. About halfway through developing the project, I realized Saintly had much bigger applications. I've since been working on scaling Saintly into a global tool that others from around the world can use. 
+  <p class="par">Shortly after I finished my first AMC 10 Math Competition, I realized that <mark class="blue">self-studying wasn't been enough</mark>. I didn't know how, where, and what to study. That being said, I wasn't about to ask my parents
+    to spend thousands on expensive tutors. From there, Saintly was born. As a <mark class="blue">project to help my high school math club</mark>, I named Saintly after my school (Santa Teresa) and built it around providing Santa Teresa students with <mark class="blue">free, quality
+    education. </mark>About halfway through developing the project, I realized Saintly had much bigger applications. I've since been working on scaling Saintly into a global tool that others from around the world can use. <mark class="blue">Saintly currently has 230+ users across over 10 countries</mark>
   </p>
   </span>
 </div>

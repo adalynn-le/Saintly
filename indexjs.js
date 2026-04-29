@@ -8537,12 +8537,14 @@ const isSameDay = date1Copy === date2Copy;
 console.log(isSameDay)
 
         if (isSameDay === true){
+                console.log("same day")
         questionTitle.innerHTML=("You Already Did Today's Daily Problem!")
         questionText.innerHTML = ("Come back tomorrow for a new challenge!")
         questionText.style.color = "var(--accent-color)"
         checkBtn.style.display = "none";
         mcContainer.classList.add("remove")
         answerInput.style.display = "none"
+        mcContainer.style.display = "none"
 }
 
     if (window.MathJax) {

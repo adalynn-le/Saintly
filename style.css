@@ -5,7 +5,8 @@
   --background-color: rgb(253, 253, 255);
   --highlight-color: #ebf3ff;
   --accent-color: #ffb192;
-  --text-color: rgb(55, 54, 58);
+  --text-color: rgb(98, 92, 110);
+  --text-variant: rgb(158, 153, 170);
   --shadow-color: rgb(218, 217, 235);
 }
 @keyframes typewriter {
@@ -270,7 +271,9 @@ main {
   height: 24px;
 }
 
-
+.rotated{
+  rotate: 180deg
+}
 .dropdown-btn{
   width:100%;
   text-align: left;
@@ -288,6 +291,10 @@ main {
   margin-right: auto;
   padding: 20px;
   font-weight: 300
+}
+#leaderboardWrapper{
+  width:  75%;
+  margin-left: -150px !important
 }
 .mc-choice.selected {
   background-color: var(--accent-color);
@@ -340,7 +347,6 @@ footer{
 }
 /* ---------- Streak Bar ---------- */
 .wrapper{
-  position: fixed;
   padding: 5px;
   height: 100px;
 }
@@ -952,6 +958,8 @@ margin-bottom: 0px;
   padding: 5px;
   margin-top: 10px;
   border-radius: 5px;
+  position: absolute;
+  width:45% !important;
 
 }
 
@@ -1199,6 +1207,7 @@ hr {
   color: var(--text-color);
   margin-top: 0px;
   font-size: 18px;
+  font-weight: 300;
 }
 .blue {
   background-color: #ebf3ff;
@@ -1608,6 +1617,7 @@ button:not(.dropdown-btn):hover{
   color: var(--text-color);
   margin-top: 0px;
   margin-bottom: -20px;
+  text-align: left;
 }
 .amc10subtitle{
   font-family: "National Park", sans-serif;
@@ -2039,7 +2049,51 @@ li{
   gap: 0 !important;
 }
 
-
+.hiddenToggle{
+  display: none;
+}
+.ittyBitty{
+  font-size: 25px !important;
+}
+.leaderboardCard{
+  border-color: rgb(222, 222, 236);
+}
+.leaderboardTitle{
+  display: inline;
+  margin-left: 50px !important;
+  color:var(--text-variant);
+font-family: "National Park", sans-serif;
+font-weight: 500;
+font-size: 20px !important
+}
+.percent{
+  margin-left: auto;
+  position: absolute; 
+  right: 30px;
+  color: var(--accent-color) !important;
+  text-align: right !important;
+  display: inline !important;
+}
+#leaderboardOne{
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  margin-bottom: 0 !important;
+  width: 95% !important;
+}
+#leaderboardTwo, #leaderboardThree, #leaderboardFour{
+  border-radius: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: none !important;
+  width: 95% !important;
+}
+#leaderboardFive{
+  border-top: none !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  margin-top: 0 !important;
+  width: 95% !important;
+}
 @media (max-width: 768px) {
   #startpracticetop{
     display: none !important;
@@ -2101,13 +2155,13 @@ li{
   margin-top: 150px !important;
 }
 .cursive-text{
-  font-size: clamp(1rem, 50cqw, 3.5rem);
+  font-size: 70px !important;
   white-space: wrap !important;
   margin-top: 20px !important;
   line-height: 1.4 !important;
 }
 .rounded-text{
-  font-size: clamp(1rem, 50cqw, 3.5rem);
+  font-size: 70px !important;
 }
 .typewriter-animation {
   all: unset;
@@ -2196,6 +2250,7 @@ line-height: 1.75 !important;
 }
 .par{
   font-size: 15px !important;
+  font-weight: 300 !important;
 }
 .saintly{
   font-size: 15px !important;
@@ -2389,7 +2444,25 @@ input{
   overflow: auto;
 }
 .rounded-text, .cursive-text{
-  font-size: 110px !important;
+  font-size: 80px !important;
+}
+.tags{
+  display: none;
+}
+.dataCards{
+  display: none  !important;
+}
+.annoyingsht{
+  display: none !important;
+}
+#sampleproblem{
+  display: none !important;
+}
+#leaderboardWrapper{
+  display: none !important;
+}
+.topic-content{
+  width: 80% !important;
 }
 }
 .streak-wrapper{

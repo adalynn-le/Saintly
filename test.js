@@ -177,6 +177,7 @@ star
     used: false, 
     difficulty: 2,
 rating: 1000, 
+type: 'mc',
     text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`, 
     solution: `<b>18</b><p>We do synthetic division, effectively treating \\(a\\) and \\(b\\) like numbers. We end up with \\(a+b+2=4\\) and \\(2a+b+12=6\\). We solve for \\(a=-8\\), \\(b=10\\), so \\(10-(-8)=18\\)`, 
     choices: ['\\(A) 14\\)','\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'], 
@@ -1286,7 +1287,7 @@ rating: 800,
         step: "Substitute everything in and solve the equation \\(|1-|2-3||-||1-2|-3|\\)"
     },
     {
-        title: `<span class="material-symbols-outlined">
+        title: `AMC 10B 2022 Problem 5 <span class="material-symbols-outlined">
 star
 </span>`,
         difficulty: 1,
@@ -8581,8 +8582,6 @@ const probButton = document.getElementById("probabilityButton");
 const allButton = document.getElementById("allButton");
 const image = document.getElementById("question-image")
 const restartButton = document.getElementById("restart-btn");
-const topicsToWorkOnVar = document.getElementById("topics-to-work-var")
-const difficultyDash = document.getElementById("difficultyDashVar");
 const problemsWrapper = document.getElementById("problems-card");
 const helpBtn = document.getElementById("helpButton");
 const helpPannel = document.getElementById("helpPannel");
@@ -8599,7 +8598,11 @@ const strikeOne = document.getElementById("strikeOne")
 const strikeTwo = document.getElementById("strikeTwo")
 const strikeThree = document.getElementById("strikeThree")
 const strikesContainer = document.getElementById("strikesContainer")
-
+const mcChoicesLOne = Array.from(document.querySelectorAll(".mc-choice-leaderboard-one"))
+const mcChoicesLTwo = Array.from(document.querySelectorAll(".mc-choice-leaderboard-two"))
+const mcChoicesLThree = Array.from(document.querySelectorAll(".mc-choice-leaderboard-three"))
+const mcChoicesLFour = Array.from(document.querySelectorAll(".mc-choice-leaderboard-four"))
+const mcChoicesLFive = Array.from(document.querySelectorAll(".mc-choice-leaderboard-five"))
 helpBtn.addEventListener("click", function () {
     if (helpOn === true){
         helpPannel.style.display = "none";
@@ -9125,20 +9128,6 @@ function recordWrongTopic(topic) {
 
     updateTopicsDropdown();
 }
-//--------Level Up-------------
-  function showLevelUp() {
-    const toast = document.getElementById("level-toast");
-    toast.classList.remove("show");
-    difficultyDash.innerHTML = userRatingAll
-
-    // force reflow so animation,
-    //  restarts
-    void toast.offsetWidth;
-
-    toast.classList.add("show");
-  }
-
-//---------Buttons Work------
 function buttonsWork(){
     algButton.addEventListener("click", function() {
         questionType = "algebra";
@@ -9469,7 +9458,7 @@ function checkAnswerGeometry() {
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = geometryQuestion.answer.trim();
-    difficultyDash.innerHTML = userRatingAll
+
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
         correct = 1;
         getExpectedScore(userRatingGeometry, geometryQuestion.rating)
@@ -9594,7 +9583,7 @@ function checkAnswerAlgebra(){
 
     const userAnswer = answerInput.value.trim();
     const correctAnswer = algebraQuestion.answer.trim();
-    difficultyDash.innerHTML = userRatingAll
+
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
         logAttempt(algebraQuestion.title, true)
             nextBtn.style.display = "inline-block";
@@ -9726,7 +9715,7 @@ function checkAnswerAll() {
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = allQuestion.answer.trim();
-    difficultyDash.innerHTML = userRatingAll
+
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
         score = score + allQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
@@ -9817,7 +9806,7 @@ function checkAnswerProb() {
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = probQuestion.answer.trim();
-    difficultyDash.innerHTML = userRatingAll
+
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
                 logAttempt(probQuestion.title, true)
             correct = 1;
@@ -9942,7 +9931,7 @@ function checkAnswerNum() {
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = numQuestion.answer.trim();
-    difficultyDash.innerHTML = userRatingAll
+
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
                 logAttempt(numQuestion.title, true)
             correct = 1;
@@ -10100,7 +10089,6 @@ function restart(){
 nextBtn.addEventListener("click", function () {
         strikesContainer.style.display = "none"
     console.log(questionType)
-difficultyDash.innerHTML = userRatingAll;
     if (questionType === "algebra"){
         algebraNext();
         wrongQuestionsAlgebra.forEach(item => {
@@ -10241,6 +10229,7 @@ wrapper.innerHTML = `
 
 
         container.appendChild(wrapper);
+    MathJax.typesetPromise([wrapper]).catch(()=>{})
         
         }
     )};
@@ -10433,83 +10422,7 @@ overlay.addEventListener("click", function(){
     
 });
 shuffleArray(probabilityQ)
-function loadTopicQuestion(topic) {
-    // 1. Combine all arrays and filter by topic
-    const topicQuestions = allQ.filter(q => q.topic === topic)
-    // 2. Select a random question
-    const q = topicQuestions[Math.floor(Math.random() * topicQuestions.length)];
 
-    // 3. Find the container
-    const containerId = `mini-practice-${topic.replace(/\s+/g, '-')}`;
-    const checkBtnId = `mini-check-${topic.replace(/\s+/g, '-')}`;
-    const container = document.getElementById(containerId);
-    container.classList.remove('deactivated')
-    if (!container) return;
-
-    // 4. Build answer UI
-    let answerHTML = '';
-    if (q.type === 'mc' && q.choices) {
-        answerHTML = `
-            <div class="mini-mc">
-                ${q.choices.map(choice => `
-                    <button class="mc-choice problemBtn mini-mc-btn" id="${choice}">
-                        ${choice}
-                    </button>
-                `).join('')}
-                            </div>`;
-    } else {
-        answerHTML = `
-            <div class="mini-fr">
-                <input type="text" class="mini-answer" placeholder="Your answer">
-                <button class="problemBtn checkBtnMini" id="mini-check-${topic.replace(/\s+/g, '-')}">
-                    Check
-                </button>
-            </div>`;
-}
-
-    container.innerHTML = `
-<div class="miniTitleContainer">
-        <p class="amc10title mini">${q.title}</p>
-                <div class="miniTag">${topic}</div>
-                </div>
-        <p class="mini-question-text par">${q.text}</p>
-        ${answerHTML}
-        <div class="mini-solution solution" style="display:none; margin-top:10px;"></div>
-        <button class="problemBtn next-topic-btn" style="display:none; margin-top:10px;" 
-            onclick="loadTopicQuestion('${topic}')">
-            Next Question
-        </button>
-    `;
-    if (window.MathJax) MathJax.typesetPromise([container]).catch(()=>{});
-    if (q.type != 'mc'){
-    const checkBtnMini = document.getElementById(checkBtnId)
-    checkBtnMini.addEventListener("click", function () {
-        checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
-    })
-}
-if (q.type === 'mc'){
-    const option1 = document.getElementById(q.choices[0])
-    const option2 = document.getElementById(q.choices[1])
-    const option3 = document.getElementById(q.choices[2])
-    const option4 = document.getElementById(q.choices[3])
-    const option5 = document.getElementById(q.choices[4])
-    option1.addEventListener("click", function() {
-        checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
-    })
-    option2.addEventListener("click", function() {
-        checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
-    })
-    option3.addEventListener("click", function() {
-        checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
-    })
-    option4.addEventListener("click", function() {
-        checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
-    })
-    option5.addEventListener("click", function() {
-        checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
-    })
-}
-}
     // 5. Update Container HTML
 
 
@@ -10672,6 +10585,370 @@ async function getHardestProblems(limit = 10) {
 
   return data;
 }
+
+// Assume supabase client is already initialized
+async function getTableData() {
+  const { data, error } = await supabase
+    .from('question_stats')
+    .select('*'); // '*' selects all columns
+
+  if (error) {
+    console.error('Error fetching data:', error);
+    return;
+  }
+
+  // 'data' is already an array of objects: [{id: 1, ...}, {id: 2, ...}]           
+  return data;
+}
+//leaderboard one
+let answerLOne = ""
+const questionStatsUnsorted = await getTableData()
+const questionStats = questionStatsUnsorted.sort((a, b) => a.success_rate - b.success_rate).slice(0, 5);
+const oneCard = document.getElementById("leaderboardOneCard")
+const oneTitle = document.getElementById("leaderboardTitleOne")
+const percentOne = document.getElementById("percentOne")
+const oneProblem = document.getElementById('oneProblem')
+const leaderboardOnePar = document.getElementById("leaderboardPar1")
+const leaderboardCheckOne = document.getElementById("leaderboard-btn-one")
+const solutionOne = document.getElementById("solution-one")
+const solutionOneText = document.getElementById("solution-text-one")
+const answerInputOne = document.getElementById("leaderboard-input-one")
+const leaderboardDropdownOne = document.getElementById("leaderboard-one-dropdown")
+let cleanedOne = questionStats[0].question_title.replaceAll( `<span class="material-symbols-outlined">
+star
+</span>`, "")
+oneTitle.innerHTML = cleanedOne
+let arraySearchOne = questionStats[0].question_title
+let percentOneSuccess = (questionStats[0].success_rate * 100).toFixed(0) + '% Success Rate'
+percentOne.innerHTML = percentOneSuccess
+oneCard.addEventListener("click", function(){
+    oneProblem.classList.toggle("hiddenToggle")
+    leaderboardDropdownOne.classList.toggle('rotated')
+    leaderboardOnePar.innerHTML = allQ.find(q => q.title === arraySearchOne).text
+    MathJax.typesetPromise([leaderboardOnePar]);
+})
+if (allQ.find(q => q.title === arraySearchOne).type === "mc"){
+         mcChoicesLOne.forEach((btn, i) => {
+            btn.innerHTML = allQ.find(q => q.title === arraySearchOne).choices[i];
+            MathJax.typesetPromise([btn]);
+            btn.addEventListener("click", function(){
+mcChoicesLOne.forEach(btn => btn.disabled = true);
+answerLOne = btn.innerHTML
+leaderboardCheckOne.click()
+            })
+        });   
+}
+leaderboardCheckOne.addEventListener("click", function(){
+    solutionOne.style.display = "block"
+    if (allQ.find(q => q.title === arraySearchOne).type !== "mc")
+    {
+        answerLOne = answerInputOne.value.trim();
+    }
+    let correctAnswer = allQ.find(q => q.title === arraySearchOne).answer.trim();
+    if (answerLOne === correctAnswer){
+        solutionOneText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + allQ.find(q => q.title === arraySearchOne).solution;
+    } else {
+        solutionOneText.innerHTML = `<span class="material-symbols-outlined">
+close_small 
+</span> Incorrect. ` + allQ.find(q => q.title === arraySearchOne).solution;
+    } 
+    MathJax.typesetPromise([solutionOneText]);
+})
+//leaderboard two
+let answerLTwo = ""
+const twoCard = document.getElementById("leaderboardTwoCard")
+const twoTitle = document.getElementById("leaderboardTitleTwo")
+const percentTwo = document.getElementById("percentTwo")
+const twoProblem = document.getElementById('twoProblem')
+const leaderboardTwoPar = document.getElementById("leaderboardPar2")
+const leaderboardCheckTwo = document.getElementById("leaderboard-btn-two")
+const solutionTwo = document.getElementById("solution-two")
+const solutionTwoText = document.getElementById("solution-text-two")
+const answerInputTwo = document.getElementById("leaderboard-input-two")
+const leaderboardDropdownTwo = document.getElementById("leaderboard-two-dropdown")
+let cleanedTwo = questionStats[1].question_title.replaceAll( `<span class="material-symbols-outlined">
+star
+</span>`, "")
+twoTitle.innerHTML = cleanedTwo
+let arraySearchTwo = questionStats[1].question_title
+let percentTwoSuccess = (questionStats[1].success_rate * 100).toFixed(0) + '% Success Rate'
+percentTwo.innerHTML = percentTwoSuccess
+twoCard.addEventListener("click", function(){
+    twoProblem.classList.toggle("hiddenToggle")
+    leaderboardDropdownTwo.classList.toggle('rotated')
+    leaderboardTwoPar.innerHTML = allQ.find(q => q.title === arraySearchTwo).text
+    MathJax.typesetPromise([leaderboardTwoPar]);
+})
+if (allQ.find(q => q.title === arraySearchTwo).type === "mc"){
+         mcChoicesLTwo.forEach((btn, i) => {
+            btn.innerHTML = allQ.find(q => q.title === arraySearchTwo).choices[i];
+            MathJax.typesetPromise([btn]);
+            btn.addEventListener("click", function(){
+mcChoicesLTwo.forEach(btn => btn.disabled = true);
+answerLTwo = btn.innerHTML
+leaderboardCheckTwo.click()
+            })
+        });   
+}
+leaderboardCheckTwo.addEventListener("click", function(){
+    solutionTwo.style.display = "block"
+    if (allQ.find(q => q.title === arraySearchTwo).type !== "mc")
+    {
+        answerLTwo = answerInputTwo.value.trim();
+    }
+    let correctAnswer = allQ.find(q => q.title === arraySearchTwo).answer.trim();
+    if (answerLTwo === correctAnswer){
+        solutionTwoText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + allQ.find(q => q.title === arraySearchTwo).solution;
+    } else {
+        solutionTwoText.innerHTML = `<span class="material-symbols-outlined">
+close_small 
+</span> Incorrect. ` + allQ.find(q => q.title === arraySearchTwo).solution;
+    } 
+    MathJax.typesetPromise([solutionTwoText]);
+})
+//leaderboard three
+let answerLThree = ""
+const threeCard = document.getElementById("leaderboardThreeCard")
+const threeTitle = document.getElementById("leaderboardTitleThree")
+const percentThree = document.getElementById("percentThree")
+const threeProblem = document.getElementById('threeProblem')
+const leaderboardThreePar = document.getElementById("leaderboardPar3")
+const leaderboardCheckThree = document.getElementById("leaderboard-btn-three")
+const solutionThree = document.getElementById("solution-three")
+const solutionThreeText = document.getElementById("solution-text-three")
+const answerInputThree = document.getElementById("leaderboard-input-three")
+const leaderboardDropdownThree = document.getElementById("leaderboard-three-dropdown")
+let cleanedThree = questionStats[2].question_title.replaceAll( `<span class="material-symbols-outlined">
+star
+</span>`, "")
+threeTitle.innerHTML = cleanedThree
+let arraySearchThree = questionStats[2].question_title
+let percentThreeSuccess = (questionStats[2].success_rate * 100).toFixed(0) + '% Success Rate'
+percentThree.innerHTML = percentThreeSuccess
+threeCard.addEventListener("click", function(){
+    threeProblem.classList.toggle("hiddenToggle")
+    leaderboardDropdownThree.classList.toggle('rotated')
+    leaderboardThreePar.innerHTML = allQ.find(q => q.title === arraySearchThree).text
+    MathJax.typesetPromise([leaderboardThreePar]);
+})
+if (allQ.find(q => q.title === arraySearchThree).type === "mc"){
+         mcChoicesLThree.forEach((btn, i) => {
+            btn.innerHTML = allQ.find(q => q.title === arraySearchThree).choices[i];
+            MathJax.typesetPromise([btn]);
+            btn.addEventListener("click", function(){
+mcChoicesLThree.forEach(btn => btn.disabled = true);
+answerLThree = btn.innerHTML
+leaderboardCheckThree.click()
+            })
+        });   
+}
+leaderboardCheckThree.addEventListener("click", function(){
+    solutionThree.style.display = "block"
+    if (allQ.find(q => q.title === arraySearchThree).type !== "mc")
+    {
+        answerLThree = answerInputThree.value.trim();
+    }
+    let correctAnswer = allQ.find(q => q.title === arraySearchThree).answer.trim();
+    if (answerLThree === correctAnswer){
+        solutionThreeText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + allQ.find(q => q.title === arraySearchThree).solution;
+    } else {
+        solutionThreeText.innerHTML = `<span class="material-symbols-outlined">
+close_small 
+</span> Incorrect. ` + allQ.find(q => q.title === arraySearchThree).solution;
+    } 
+    MathJax.typesetPromise([solutionThreeText]);
+})
+//leaderboard four
+let answerLFour = ""
+const fourCard = document.getElementById("leaderboardFourCard")
+const fourTitle = document.getElementById("leaderboardTitleFour")
+const percentFour = document.getElementById("percentFour")
+const fourProblem = document.getElementById('fourProblem')
+const leaderboardFourPar = document.getElementById("leaderboardPar4")
+const leaderboardCheckFour = document.getElementById("leaderboard-btn-four")
+const solutionFour = document.getElementById("solution-four")
+const solutionFourText = document.getElementById("solution-text-four")
+const answerInputFour = document.getElementById("leaderboard-input-four")
+const leaderboardDropdownFour = document.getElementById("leaderboard-four-dropdown")
+let cleanedFour = questionStats[3].question_title.replaceAll( `<span class="material-symbols-outlined">
+star
+</span>`, "")
+fourTitle.innerHTML = cleanedFour
+let arraySearchFour = questionStats[3].question_title
+let percentFourSuccess = (questionStats[3].success_rate * 100).toFixed(0) + '% Success Rate'
+percentFour.innerHTML = percentFourSuccess
+fourCard.addEventListener("click", function(){
+    fourProblem.classList.toggle("hiddenToggle")
+    leaderboardDropdownFour.classList.toggle('rotated')
+    leaderboardFourPar.innerHTML = allQ.find(q => q.title === arraySearchFour).text
+    MathJax.typesetPromise([leaderboardFourPar]);
+})
+if (allQ.find(q => q.title === arraySearchFour).type === "mc"){
+         mcChoicesLFour.forEach((btn, i) => {
+            btn.innerHTML = allQ.find(q => q.title === arraySearchFour).choices[i];
+            MathJax.typesetPromise([btn]);
+            btn.addEventListener("click", function(){
+mcChoicesLFour.forEach(btn => btn.disabled = true);
+answerLFour = btn.innerHTML
+leaderboardCheckFour.click()
+            })
+        });   
+}
+leaderboardCheckFour.addEventListener("click", function(){
+    solutionFour.style.display = "block"
+    if (allQ.find(q => q.title === arraySearchFour).type !== "mc")
+    {
+        answerLFour = answerInputFour.value.trim();
+    }
+    let correctAnswer = allQ.find(q => q.title === arraySearchFour).answer.trim();
+    if (answerLFour === correctAnswer){
+        solutionFourText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + allQ.find(q => q.title === arraySearchFour).solution;
+    } else {
+        solutionFourText.innerHTML = `<span class="material-symbols-outlined">
+close_small 
+</span> Incorrect. ` + allQ.find(q => q.title === arraySearchFour).solution;
+    } 
+    MathJax.typesetPromise([solutionFourText]);
+})
+//leaderboard five
+let answerLFive = ""
+const fiveCard = document.getElementById("leaderboardFiveCard")
+const fiveTitle = document.getElementById("leaderboardTitleFive")
+const percentFive = document.getElementById("percentFive")
+const fiveProblem = document.getElementById('fiveProblem')
+const leaderboardFivePar = document.getElementById("leaderboardPar5")
+const leaderboardCheckFive = document.getElementById("leaderboard-btn-five")
+const solutionFive = document.getElementById("solution-five")
+const solutionFiveText = document.getElementById("solution-text-five")
+const answerInputFive = document.getElementById("leaderboard-input-five")
+const leaderboardDropdownFive = document.getElementById("leaderboard-five-dropdown")
+let cleanedFive = questionStats[4].question_title.replaceAll( `<span class="material-symbols-outlined">
+star
+</span>`, "")
+fiveTitle.innerHTML = cleanedFive
+let arraySearchFive = questionStats[4].question_title
+let percentFiveSuccess = (questionStats[4].success_rate * 100).toFixed(0) + '% Success Rate'
+percentFive.innerHTML = percentFiveSuccess
+fiveCard.addEventListener("click", function(){
+    fiveProblem.classList.toggle("hiddenToggle")
+    leaderboardDropdownFive.classList.toggle('rotated')
+    leaderboardFivePar.innerHTML = allQ.find(q => q.title === arraySearchFive).text
+    MathJax.typesetPromise([leaderboardFivePar]);
+})
+if (allQ.find(q => q.title === arraySearchFive).type === "mc"){
+         mcChoicesLFive.forEach((btn, i) => {
+            btn.innerHTML = allQ.find(q => q.title === arraySearchFive).choices[i];
+            MathJax.typesetPromise([btn]);
+            btn.addEventListener("click", function(){
+mcChoicesLFive.forEach(btn => btn.disabled = true);
+answerLFive = btn.innerHTML
+leaderboardCheckFive.click()
+            })
+        });   
+}
+leaderboardCheckFive.addEventListener("click", function(){
+    solutionFive.style.display = "block"
+    if (allQ.find(q => q.title === arraySearchFive).type !== "mc")
+    {
+        answerLFive = answerInputFive.value.trim();
+    }
+    let correctAnswer = allQ.find(q => q.title === arraySearchFive).answer.trim();
+    if (answerLFive === correctAnswer){
+        solutionFiveText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + allQ.find(q => q.title === arraySearchFive).solution;
+    } else {
+        solutionFiveText.innerHTML = `<span class="material-symbols-outlined">
+close_small 
+</span> Incorrect. ` + allQ.find(q => q.title === arraySearchFive).solution;
+    } 
+    MathJax.typesetPromise([solutionFiveText]);
+})
+function loadTopicQuestion(topic) {
+    // 1. Combine all arrays and filter by topic
+    const topicQuestions = allQ.filter(q => q.topic === topic)
+    // 2. Select a random question
+    const q = topicQuestions[Math.floor(Math.random() * topicQuestions.length)];
+
+    // 3. Find the container
+    const containerId = `mini-practice-${topic.replace(/\s+/g, '-')}`;
+    const checkBtnId = `mini-check-${topic.replace(/\s+/g, '-')}`;
+    const container = document.getElementById(containerId);
+    container.classList.remove('deactivated')
+    if (!container) return;
+
+    // 4. Build answer UI
+    let answerHTML = '';
+    if (q.type === 'mc' && q.choices) {
+        answerHTML = `
+            <div class="mini-mc">
+                ${q.choices.map(choice => `
+                    <button class="mc-choice problemBtn mini-mc-btn" id="${choice}">
+                        ${choice}
+                    </button>
+                `).join('')}
+                            </div>`;
+    } else {
+        answerHTML = `
+            <div class="mini-fr">
+                <input type="text" class="mini-answer" placeholder="Your answer">
+                <button class="problemBtn checkBtnMini" id="mini-check-${topic.replace(/\s+/g, '-')}">
+                    Check
+                </button>
+            </div>`;
+}
+
+    container.innerHTML = `
+<div class="miniTitleContainer">
+        <p class="amc10title mini">${q.title}</p>
+                <div class="miniTag">${topic}</div>
+                </div>
+        <p class="mini-question-text par">${q.text}</p>
+        ${answerHTML}
+        <div class="mini-solution solution" style="display:none; margin-top:10px;"></div>
+        <button class="problemBtn next-topic-btn" style="display:none; margin-top:10px;" 
+            onclick="loadTopicQuestion('${topic}')">
+            Next Question
+        </button>
+    `;
+    if (window.MathJax) MathJax.typesetPromise([container]).catch(()=>{});
+    if (q.type != 'mc'){
+    const checkBtnMini = document.getElementById(checkBtnId)
+    checkBtnMini.addEventListener("click", function () {
+        checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
+    })
+}
+if (q.type === 'mc'){
+    const option1 = document.getElementById(q.choices[0])
+    const option2 = document.getElementById(q.choices[1])
+    const option3 = document.getElementById(q.choices[2])
+    const option4 = document.getElementById(q.choices[3])
+    const option5 = document.getElementById(q.choices[4])
+    option1.addEventListener("click", function() {
+        checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
+    })
+    option2.addEventListener("click", function() {
+        checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
+    })
+    option3.addEventListener("click", function() {
+        checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
+    })
+    option4.addEventListener("click", function() {
+        checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
+    })
+    option5.addEventListener("click", function() {
+        checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
+    })
+}
+}
 // ---------- Start ----------
 shuffleArray(questions);
 shuffleArray(allQ)
@@ -10699,3 +10976,6 @@ async function logAttempt(questionTitle, isCorrect) {
 console.log(getHardestProblems())
 // Example — call inside your answer check logic:
 // logAttempt(algebraQuestion.title, correct);
+window.loadTopicQuestion = loadTopicQuestion;
+window.loadQuestion = loadQuestion;
+// etc. for any function called from HTML onclick attributes
