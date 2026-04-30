@@ -10979,3 +10979,5 @@ console.log(getHardestProblems())
 window.loadTopicQuestion = loadTopicQuestion;
 window.loadQuestion = loadQuestion;
 // etc. for any function called from HTML onclick attributes
+const array = allQ.filter(q => q.topic === "word problems")
+console.log(array)

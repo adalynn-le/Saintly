@@ -2816,7 +2816,7 @@ star
         used: false,
         difficulty: 2,
         type: 'fr',
-        text: `<p>What is the value of </p
+        text: `<p>What is the value of </p>
         $$
         1+2+3-4+5+6+7-8+...+197+198+199-200?
         $$`,

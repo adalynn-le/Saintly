@@ -8546,7 +8546,16 @@ console.log(isSameDay)
         answerInput.style.display = "none"
         mcContainer.style.display = "none"
 }
+app.get('/api/problem', (req, res) => {
+    const mathData = {
+        title: q.title,
+        problem_statement: q.text,
+        answer: q.answer
+    };
 
+    // This sends the data as a JSON object that the bot can read
+    res.json(mathData);
+});
     if (window.MathJax) {
         MathJax.typesetPromise([questionText]).catch(()=>{});
         MathJax.typesetPromise([questionChoices]).catch(()=>{});
@@ -8615,3 +8624,6 @@ overlay.addEventListener("click", function () {
     overlay.style.display = "none"; 
     helpOn = false;
 });
+// Example: Sending a random math problem
+const cors = require('cors');
+app.use(cors()); // This allows any origin to access your API
