@@ -13,6 +13,12 @@ const problemsWrapper = document.getElementById("problems-card");
 const confettiCanvas = document.getElementById("confetti-canvas");
 const streakTag = document.getElementById("streakText")
 let streakVar = 0
+const cors = require('cors');
+app.use(cors()); // This allows any origin to access your API
+const express = require('express');
+const cors = require('cors')
+app.use(cors()); // Allows your friend's bot to talk to your server
+
 let streakTrue =  localStorage.getItem("streak")
         streakTag.innerHTML = streakVar + " Days"
 if (streakTrue == null){
@@ -8546,15 +8552,8 @@ console.log(isSameDay)
         answerInput.style.display = "none"
         mcContainer.style.display = "none"
 }
-app.get('/api/problem', (req, res) => {
-    const mathData = {
-        title: q.title,
-        problem_statement: q.text,
-        answer: q.answer
-    };
-
-    // This sends the data as a JSON object that the bot can read
-    res.json(mathData);
+app.get('/api/random-problem', (req, res) => {
+    res.json(randomProblem);
 });
     if (window.MathJax) {
         MathJax.typesetPromise([questionText]).catch(()=>{});
@@ -8625,5 +8624,4 @@ overlay.addEventListener("click", function () {
     helpOn = false;
 });
 // Example: Sending a random math problem
-const cors = require('cors');
-app.use(cors()); // This allows any origin to access your API
+app.listen(3000, () => console.log('Server running on port 3000'));
