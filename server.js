@@ -8431,17 +8431,18 @@ allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
 
-// Endpoint to get a random daily question
-app.get('/daily-question', (req, res) => {
+app.get('/', (req, res) => {
+    res.send("<h1>Math API is Online</h1><p>Use <a href='/daily'>/daily</a> to get a question.</p>");
+});
+
+// 3. Define the "Daily" page (https://saintly-s0qd.onrender.com/daily)
+app.get('/daily', (req, res) => {
+    if (allQ.length === 0) return res.status(500).json({ error: "No questions found." });
     const randomIndex = Math.floor(Math.random() * allQ.length);
     res.json(allQ[randomIndex]);
 });
 
-// Endpoint to get all questions (optional)
-app.get('/questions', (req, res) => {
-    res.json(allQ);
-});
-
+// 4. Actually start the server
 app.listen(PORT, () => {
-    console.log(`API running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
