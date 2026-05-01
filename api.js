@@ -1,36 +1,8 @@
-const questionTitle = document.getElementById("question-title");
-const questionText = document.getElementById("question-text");
-const answerInput = document.getElementById("answer-input");
-const checkBtn = document.getElementById("check-btn");
-const solutionDiv = document.getElementById("solution");
-const solutionText = document.getElementById("solution-text");
-const nextBtn = document.getElementById("next-btn");
-const mcContainer = document.getElementById("mc-container");
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
-const questionChoices = document.getElementById("mc-container")
-const problemsCard = document.getElementById("problems-card");
-const problemsWrapper = document.getElementById("problems-card");
-const confettiCanvas = document.getElementById("confetti-canvas");
-const streakTag = document.getElementById("streakText")
-let streakVar = 0
-let streakTrue =  localStorage.getItem("streak")
-        streakTag.innerHTML = streakVar + " Days"
-if (streakTrue == null){
-        streakVar = 0
-} else {
-        let today = new Date()
-        let last = localStorage.getItem("lastPractice")
-        if (Math.abs(today - last) > 1){
-                streakVar = 0
-        } else {
-                streakVar = localStorage.getItem("streak")
-                streakTag.innerHTML =streakVar + "Days"
-        }
-}
-const myConfetti = confetti.create(confettiCanvas, {
-    resize: true,
-    useWorker: true
-});
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// This is your existing array from indexjs.js
 const questions = [
     {
 title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
@@ -8458,155 +8430,18 @@ allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
-function getDailySeed() {
-    const today = new Date();
-  return parseInt(
-    today.getFullYear().toString() +
-    (today.getMonth() + 1).toString().padStart(2, "0") +
-    today.getDate().toString().padStart(2, "0")
-  );
-}
-function mulberry32(seed) {
-  return function() {
-    let t = seed += 0x6D2B79F5;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-function shuffleWithSeed(array, seed) {
-  const rand = mulberry32(seed);
-  const arr = [...array];
 
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-
-  return arr;
-}
-function getDailyProblems(problems, count = 1) {
-  const seed = getDailySeed();
-  const shuffled = shuffleWithSeed(problems, seed);
-  return shuffled.slice(0, count);
-}
-let q = 0;
-function loadQuestion() {
-    q = getDailyProblems(allQ)[0];
-    console.log(q)
-    mcChoices.forEach(btn => btn.disabled = false);
-
-
-    questionTitle.innerHTML = q.title;
-    questionText.innerHTML = q.text;
-
-    solutionText.innerHTML = "";
-    solutionDiv.style.display = "none";
-    nextBtn.style.display = "none";
-
-    // Reset
-    answerInput.value = "";
-    answerInput.style.display = "none";
-    checkBtn.style.display = "none";
-    mcContainer.classList.add("hidden");
-
-    // ----- FREE RESPONSE -----
-    // ----- MULTIPLE CHOICE -----
-    if (q.type === "mc") {
-        console.log("mc")
-        mcContainer.classList.remove("hidden");
-
-        mcChoices.forEach((btn, i) => {
-            btn.textContent = q.choices[i];
-            btn.onclick = () => handleMCAnswer(q.choices[i]);
-        });
-    }
-        let d1 = new Date()
-        let d2 = localStorage.getItem("lastPractice")
-// Create copies to avoid mutating original dates
-const date1Copy = new Date(d1).setHours(0, 0, 0, 0);
-const date2Copy = new Date(d2).setHours(0, 0, 0, 0);
-
-const isSameDay = date1Copy === date2Copy;
-
-console.log(isSameDay)
-
-        if (isSameDay === true){
-                console.log("same day")
-        questionTitle.innerHTML=("You Already Did Today's Daily Problem!")
-        questionText.innerHTML = ("Come back tomorrow for a new challenge!")
-        questionText.style.color = "var(--accent-color)"
-        checkBtn.style.display = "none";
-        mcContainer.classList.add("remove")
-        answerInput.style.display = "none !important"
-        mcContainer.style.display = "none"
-}
-    if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
-    }
-
-}
-loadQuestion()
-checkBtn.addEventListener("click", function () {
-        localStorage.setItem("doneToday", true)
-        let now = new Date();
-        streakVar = parseInt(streakVar) + 1
-        localStorage.setItem("streak", streakVar)
-        localStorage.setItem("lastPractice", now)
-        streakTag.innerHTML = streakVar + "Days"
-    const userAnswer = answerInput.value.trim()
-    const correctAnswer = q.answer.trim();
-    if (userAnswer === correctAnswer && solutionDiv.style.display==="none") {
-        console.log("correct")
-        solutionText.innerHTML = `<span class="material-symbols-outlined">
-check
-</span> Correct! ` + q.solution;
-
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
-        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
-
-
-
-    } else if (userAnswer !== correctAnswer && solutionDiv.style.display === "none") {
-        solutionText.innerHTML = `<span class="material-symbols-outlined">
-close_small
-</span> Incorrect. ` + q.solution;
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-    }
-    solutionDiv.style.display = "block";
-
-    if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
-    }
+// Endpoint to get a random daily question
+app.get('/daily-question', (req, res) => {
+    const randomIndex = Math.floor(Math.random() * allQ.length);
+    res.json(allQ[randomIndex]);
 });
-function handleMCAnswer(choice) {
-    answerInput.value = choice; // reuse existing checker
-    checkBtn.click();
-mcChoices.forEach(btn => btn.disabled = true);
-}
 
- console.log("script running")
-      let helpOn = false;
-  let helpBtn = document.getElementById('helpButton')
-  helpBtn.addEventListener("click", function () {
-    console.log("clicked")
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
+// Endpoint to get all questions (optional)
+app.get('/questions', (req, res) => {
+    res.json(allQ);
 });
-let overlay = document.getElementById('overlay');
-overlay.addEventListener("click", function () {
-    helpPannel.style.display = "none";
-    overlay.style.display = "none"; 
-    helpOn = false;
+
+app.listen(PORT, () => {
+    console.log(`API running on http://localhost:${PORT}`);
 });
-// Example: Sending a random math problem
