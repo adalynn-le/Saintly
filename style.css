@@ -1491,11 +1491,6 @@ body{
   font-family: "National Park", sans-serif;
   font-weight: 200;
 }
-#sidebar a:hover{
-  color: var(--accent-color);
-  text-decoration: underline;
-  text-decoration-color: var(--primary-color)
-}
 .sidebar-icon{
   margin-right: -100px;
 }
@@ -1893,6 +1888,7 @@ li{
 }
 #sidebar:not(.close) .iconsvg{
   margin-right: -5px !important;
+  display: inline-block !important
 }
 .center-align{
   height: 30px;
@@ -2772,4 +2768,11 @@ html {
   margin-left: 20px;
   width: calc(100% - 50px) !important;
   margin-top: 50px !important;
+}
+#sidebar.close .material-symbols-outlined{
+  display: block !important;
+  margin-left: 30px !important;
+}
+.material-symbols-outlined:hover{
+  text-decoration: none !important;
 }
