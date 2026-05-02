@@ -251,6 +251,7 @@ star
         <p>There is a total probability of \\(\\frac{27+12+3}{216}=\\frac{7}{36}\\)</p>
         `,
         topic: 'casework',
+        answer: "\\(A) \\frac{7}{36}\\)",
     },
     {
         title: `AMC 10B 2020 Problem 5 <span class="material-symbols-outlined staricon">

@@ -444,7 +444,7 @@ star
         text: `For which of the following integers \\(b\\) is the base-\\(b\\) number \\(2021_{b}-221_{b}\\) not divisible by \\(3\\)?`,
         type: 'mc',
         choices: ['\\(A) 3\\)', '\\(B) 4\\)', '\\(C) 6\\)', '\\(D) 7\\)', '\\(E) 8\\)'],
-        solution: `<b></b><p>Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
+        solution: `<b>8</b><p>Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
         <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>
         <p>This is honestly easy enough to brute force. With base \\(3\\), we get \\(2202212-812\\). We can honestly just keep doing this until we get \\(8\\) as our answer OR we notice that the bases are probably going to have some relation to the remainder mod \\(3\\) and since \\(8\\) is the only one with 
         an exclusive remainder when divided by \\(3\\) (\\(2\\)), it's porbably the answer`,
@@ -481,7 +481,7 @@ star
         text: 'Let \\(N=34\\cdot 34 \\cdot 63 \\cdot 270\\). What is the ratio of the sum of the odd divisors of \\(N\\) to the sum of the even divisors of \\(N\\)',
         type: 'mc',
         choices: ['\\(A) 1:16', '\\(B) 1:15\\)', '\\(C) 1:14\\)', '\\(D) 1:8\\)', '\\(E) 1:3\\)'],
-        soltuion: `<b>1:14</b><p>We start by finding the prime factorization. We break up \\(34\\) into \\(2 \\cdot 17\\), \\(63\\) into \\(3^2 \\cdot 7\\) and \\(270\\) into \\(3^3 \\cdot 2 \\cdot 5\\) for a prime factorization of \\(2^3 \\cdot 3^5 \\cdot 5 \\cdot 7 \\cdot 17^2\\). Every even factor must have a factor of \\(2, 4\\) or \\(8\\), and
+        solution: `<b>1:14</b><p>We start by finding the prime factorization. We break up \\(34\\) into \\(2 \\cdot 17\\), \\(63\\) into \\(3^2 \\cdot 7\\) and \\(270\\) into \\(3^3 \\cdot 2 \\cdot 5\\) for a prime factorization of \\(2^3 \\cdot 3^5 \\cdot 5 \\cdot 7 \\cdot 17^2\\). Every even factor must have a factor of \\(2, 4\\) or \\(8\\), and
         each odd factor must be able to be multipled by \\(2, 4, \\) or \\(8\\), so the sum ratio is \\(1:2+4+8=1:14\\)`,
         answer: "\\(C) 1:14\\)",
         topic: "prime factorization",    
@@ -743,7 +743,7 @@ star
         topic: 'casework',
     },
     {
-        title: `AMC 10A 2022 Fall 2021 8 <span class="material-symbols-outlined">
+        title: `AMC 10A Fall 2021 Problem 8 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -758,7 +758,7 @@ star
         answer: 10,
     },
     {
-        title: `AMC 10A 2022 Fall 2021 10 <span class="material-symbols-outlined">
+        title: `AMC 10A Fall 2021 Problem 10 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -1237,22 +1237,6 @@ star
         topic: 'powers'
     },
     {
-        title: `AMC 10B 2023 Problem 10 <span class="material-symbols-outlined">
-star
-</span><span class="material-symbols-outlined">
-star
-</span>`,
-        used: false,
-        difficulty: 4,
-        text:`You are playing a game. A \\(2 \\times 1\\) rectangle covers two adjacent squares (oriented either horizontally or vertically) of a\\(3\\times 3\\) grid of squares, but you are
-         not told which two squares are covered. Your goal is to find at least one square that is covered by the rectangle. A "turn" consists of you guessing a square, after which you are told whether that square is covered by the hidden rectangle. What is the minimum number of turns you need to ensure 
-        that at least one of your guessed squares is covered by the rectangle?`,
-        solution: `<b>4</b><p>There are \\(\\frac{(3 \\times 3)!}{2!((3 \\times 3)-2)!}=36\\) ways to choose \\(2\\) squares, but, because we need them to be adjacnet, thee are really only \\(12\\). </p>
-        <p>The best first choice is the middle square, since that contains \\(4\\) rectangles. There are \\(8\\) left. We then pick a corner (or side) which contains \\(2\\). In the worst case scenario, where we don't get anything, we then proceed to the opposite corner. If, once gain that is empty, we nknow there's one in the final corner, so that gives us \\(4\\) tries`,
-        answer: '4',
-        topic: 'logic',
-    },
-    {
         title: `AMC 10B 2023 Problem 11 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -1304,6 +1288,7 @@ star
         type:'mc',
         choices: ['\\(A) 512\\)', '\\(B) 10\\)', '\\(C) 0\\)', '\\(D) 9\\)', '\\(E) 511\\)'],
         topic: 'casework',
+        answer: '\\(A) 512\\)',
     },
     {
         title: `AMC 10B 2023 Problem 18 <span class="material-symbols-outlined">
@@ -1539,7 +1524,7 @@ star
         topic: 'logic',
         type: 'mc',
         choices: ['\\(A) 2021\\)', '\\(B) 2022\\)', '\\(C) 2023\\)', '\\(D) 2024\\)', '\\(E) 2025\\)'],
-        answer: '\\(D) 2024\\)',
+        answer: '\\(B) 2022\\)',
     },
     {
         title: `AMC 10B 2024 Problem 5 <span class="material-symbols-outlined">

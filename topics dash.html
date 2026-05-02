@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- Google tag (gtag.js) -->
+  <head>
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3X50VWZM2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -10,33 +10,52 @@
 
   gtag('config', 'G-N3X50VWZM2');
 </script>
-  <title>Page Not Found — Saintly Math</title>
-  <link rel="stylesheet" href="style.css">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=balance,book,dashboard_2_gear,draw_abstract,function,functions,ifl,leaderboard,send,volunteer_activism" />
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>AMC 10</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://t.contentsquare.net/uxa/cb77e0fd80dbf.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=balance,dashboard_2_gear,draw_abstract,function,functions,ifl,leaderboard,send,volunteer_activism" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">
-
-</head>
-<body>
-<div id="sidebarPlaceholder"></div>
-<script src="sidebar.js"></script>
- 
-<div id="topBarPlaceholder"></div>
-<script src="nav.js"></script>
-
-
-    <main class="error404container">
-       <div id = "dot-backround" class = "dot-background"></div>
-        <div class="amc10subtitle error404text">Uh Oh! Looks like the page you're looking for is</div>
-        <div class="amc10title" id="num404">404</div>
-        <hr>
-        <div class="amc10title" id="num0">0</div>
-        <button class="start-practice" onclick = "window.location.href='index.html'">Take me Home</button>
+  </head>
+  <body>
+    <div id="sidebarPlaceholder"></div>
+    <script src="sidebar.js"></script>
+   
+<nav id = "top-bar">
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "amc10.html">AMC 10</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
+    <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+send
+</span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton">
+volunteer_activism
+</span>
+</nav>
+<main>
+  <div class="amc10container">      
+  <h1 class="amc10title">Topics Dashboard</h1>
+<p class="par">We've divided every one of the past 300 questions on the AMC 10 into 58 topics and are working to create in-depth guides for each one. These are the same topics you'll see on the Adaptive Practice, so you can learn more about what you are consistently getting wrong.</p>
+<span class="howworkcardsrow">
+<div class="howworkcard" style="width: 20%" href="word problems.html">
+    <p class="amc10subtitle">Word Problems</p>
+    <hr>
+    <p class="par">Learn to understand the AMC 10's wording and structure</p>
+    <p class="par">Adalynn Le • 5/2/2026</p>
+</div>
+</span>
 <div id = "helpPannel" class = "helpPannel">
   <h2>Need Some Help?</h2>
   <p class="par">Contact us through our form</p>
@@ -94,12 +113,11 @@
   <p>Or email us at <a href="mailto:saintly.math@gmail.com">saintly.math@gmail.com</a></p>
 </div>
 
-    </main class="error404container">
-</body>
+</div>
+</main>
+
 <div id="overlay"></div>
     </body>
-  </body>
-</html>
 <script>
   console.log("script running")
       let helpOn = false;

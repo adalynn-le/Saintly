@@ -1097,7 +1097,9 @@ input, textarea{
   height: 45px;
   transition: transform 0.3s ease;
 }
-
+.miniContainer{
+  margin-left: 0px
+}
 #top-bar * {
   margin-left: 5px;
   margin-right: 5px;
@@ -1968,6 +1970,32 @@ li{
   text-align: left;
   left: 50%
 }
+table {
+  font-family: "National Park", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid var(--shadow-color);
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: var(--background-color);}
+
+.split{
+  width: 47%;
+  display: flex;
+  flex-direction: row;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--primary-color);
+  color: white;
+}
 .circle{
   font-variation-settings: 
     'FILL' 1;
@@ -1992,6 +2020,7 @@ li{
     position: absolute;
     bottom: 2.5% !important;
   }
+  
   .topic-button:hover{
   background-color: transparent !important;
   color: var(--primary-color) !important;
@@ -2063,12 +2092,55 @@ li{
 .hiddenToggle{
   display: none;
 }
+/* Removes default browser styling */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  margin: 15px 0; /* Adds breathing room around the slider */
+}
+
+/* The Track (The horizontal line) */
+input[type=range]::-webkit-slider-runnable-track {
+  background: var(--highlight-color); /* Your light blue/grey background */
+  height: 6px;
+  border-radius: 10px;
+}
+
+input[type=range]::-moz-range-track {
+  background: var(--highlight-color);
+  height: 6px;
+  border-radius: 10px;
+}
+
+/* The Thumb (The circle you grab) */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -7px; /* Centers thumb on the track */
+  background-color: var(--primary-color);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: none; /* Removes the border you wanted gone */
+}
+
+input[type=range]::-moz-range-thumb {
+  background-color: var(--primary-color);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: none;
+}
 .subsubtopic{
   margin-left: 50px
 }
 .ittyBitty{
   font-size: 25px !important;
 }
+
 .leaderboardCard{
   border-color: rgb(222, 222, 236);
 }
@@ -2298,6 +2370,10 @@ line-height: 1.75 !important;
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
+  }
+  .howworkcards{
+    display: flex !important;
+    flex-direction: row !important;
   }
   #whyvolunteer, #whylook{
     display: block;
@@ -2600,6 +2676,11 @@ label{
   color: var(--primary-color) !important;
   border: 1.5px solid var(--primary-color) !important
 }
+.topicBtn:hover{
+  background-color: var(--primary-color) !important;
+  color: var(--background-color) !important; 
+  border: 1.5px solid var(--primary-color) !important;
+}
 .topicEnabled{
   background-color: var(--primary-color) !important;
   color: var(--background-color) !important; 
@@ -2670,4 +2751,25 @@ html {
   'wght' 400,
   'GRAD' 0,
   'opsz' 24;
+}
+
+/* This is the container that holds your side-by-side cards */
+
+/* Update your split card to grow equally */
+.howworkcard.split {
+    flex: 1; /* Makes both cards take up equal width */
+}
+.split-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows them to stack on mobile */
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.minicontainer{
+  margin-left: 20px;
+  width: calc(100% - 50px) !important;
+  margin-top: 50px !important;
 }
