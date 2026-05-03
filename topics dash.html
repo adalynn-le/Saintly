@@ -49,10 +49,16 @@ volunteer_activism
   <h1 class="amc10title">Topics Dashboard</h1>
 <p class="par">We've divided every one of the past 300 questions on the AMC 10 into 58 topics and are working to create in-depth guides for each one. These are the same topics you'll see on the Adaptive Practice, so you can learn more about what you are consistently getting wrong.</p>
 <span class="howworkcardsrow">
-<a class="howworkcard" style="width: 20%" href="word problems.html">
+<a class="howworkcard" style="width: 20%; display: inline-block" href="word problems.html">
     <p class="amc10subtitle">Word Problems</p>
     <hr>
-    <p class="par">Learn to understand the AMC 10's wording and structure</p>
+    <p class="par">Learn to understand the AMC 10's wording and structure by recognizing keywords, modeling systems of equations, and setting limits.</p>
+    <p class="par">Adalynn Le • 5/2/2026</p>
+</a>
+<a class="howworkcard" style="width: 20%; display: inline-block" href="word problems.html">
+    <p class="amc10subtitle">Algebraic Manipulation</p>
+    <hr>
+    <p class="par">Understand how to use algebra and factoring to understand and solve and simplify advanced systems of equations and expressions.</p>
     <p class="par">Adalynn Le • 5/2/2026</p>
 </a>
 </span>
@@ -114,31 +120,63 @@ volunteer_activism
 </div>
 
 </div>
+<div class="helpPannel" id="privacyPolicy" display="none">
+  <h4>Privacy Policy</h4>
+  <h5>Data Collection</h5>
+  <li>We use local storage to track and save your ELO on your device</li>
+  <li>We use Supabase backend to track overall acuracy on questions</li>
+  <li>We trackk individual user usage on our website, pages, etc. by tracking time spent and interaction</li>
+  <h5>How we use your data</h5>
+  <li>To personalize your learning experience</li>
+  <li>We never sell your data to third parties</li>
+  <h5>Children's Privacy</h5>
+  <li>Saintly is intended for students. We encourage parents to monitor their children's internet usage. We do not knowingly collect personal information from children under 13 without parental consent (per COPPA guidelines).</li>
+</div>
+<div class="helpPannel" id="termsAndConditions" display="none">
+  <h4>Terms and Conditions</h4>
+  <li>By using Saintly you agree to the terms and conditions</li>
+  <li>You may not scrape the site or re-distribute our unique interactive code without permission.</li>
+  <li>Be "Saintly." No harassment, no attempts to hack the site, and no using the platform to cheat on active competitions.</li>
+  <li>Math is hard! While we strive for 100% accuracy, Saintly is provided "as is." We aren't responsible if a specific formula explanation doesn't lead to a perfect AMC score (though we hope it does!).</li>
+  <li>Saintly and its volunteers are not liable for any damages arising from your use of the site.</li>
+</div>
 </main>
 
 <div id="overlay"></div>
-    </body>
-<script>
-  console.log("script running")
-      let helpOn = false;
-  let helpBtn = document.getElementById('helpButton')
-  helpBtn.addEventListener("click", function () {
-    console.log("clicked")
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
-let overlay = document.getElementById('overlay');
-overlay.addEventListener("click", function () {
-    helpPannel.style.display = "none";
-    overlay.style.display = "none"; 
-    helpOn = false;
-});
+<footer class="saintly-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img class="footer-logo" src="fullLogo.png" height="35px"></img>
+            <p>Making competition math accessible for everyone.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="am10.html">AMC 10</a></li>
+                <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+                <li><a href="amc10algebra.html">Algebra</a></li>
+                <li><a href="algebra.html">Topics Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>saintly.math@gmail.com</p>
+            <div class="social-icons">
+                </div>
+        </div>
+        <div class="footer-section">
+          <h4>Privacy</h4>
+          <ul><li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+            </ul>
 
-</script>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Saintly Math. Built with drive.
+    </div>
+</footer>
+    </body>
+<script src="footer.js"></script>

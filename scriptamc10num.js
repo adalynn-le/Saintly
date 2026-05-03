@@ -1,7 +1,6 @@
 let correctCount = 0;
 let wrongCount = 0;
 let longestStreak = 0;
-let helpOn = false;
 function toggleSubMenu(button){
     button.nextElementSibling.classList.toggle('show');
     button.classList.toggle('rotate');
@@ -1793,9 +1792,6 @@ const progressBar = document.getElementById("progress-bar")
 const mcContainer = document.getElementById("mc-container");
 const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
 const questionChoices = document.getElementById("mc-container")
-const helpBtn = document.getElementById("helpButton");
-const helpPannel = document.getElementById("helpPannel");
-const overlay = document.getElementById("overlay");
 const submitSolutionButton = document.getElementById("submit-a-solution");
 const submitSolutionForm = document.getElementById("submit-a-solution-form");
 submitSolutionButton.addEventListener("click", function() {
@@ -1804,18 +1800,6 @@ submitSolutionButton.addEventListener("click", function() {
 })
 
 
-
-helpBtn.addEventListener("click", function () {
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
 
 
 
@@ -2129,17 +2113,6 @@ document.getElementById("restart-btn").addEventListener("click", function() {
 
 
 
-overlay.addEventListener("click", function(){
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
 
 // ---------- Start ----------
 console.log(questions.length)

@@ -1,36 +1,11 @@
-const questionTitle = document.getElementById("question-title");
-const questionText = document.getElementById("question-text");
-const answerInput = document.getElementById("answer-input");
-const checkBtn = document.getElementById("check-btn");
-const solutionDiv = document.getElementById("solution");
-const solutionText = document.getElementById("solution-text");
-const nextBtn = document.getElementById("next-btn");
-const mcContainer = document.getElementById("mc-container");
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
-const questionChoices = document.getElementById("mc-container")
-const problemsCard = document.getElementById("problems-card");
-const problemsWrapper = document.getElementById("problems-card");
-const confettiCanvas = document.getElementById("confetti-canvas");
-const streakTag = document.getElementById("streakText")
-let streakVar = 0
-let streakTrue =  localStorage.getItem("streak")
-        streakTag.innerHTML = streakVar + " Days"
-if (streakTrue == null){
-        streakVar = 0
-} else {
-        let today = new Date()
-        let last = localStorage.getItem("lastPractice")
-        if (Math.abs(today - last) > 1){
-                streakVar = 0
-        } else {
-                streakVar = localStorage.getItem("streak")
-                streakTag.innerHTML =streakVar + "Days"
-        }
+
+// Main Functions
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
-const myConfetti = confetti.create(confettiCanvas, {
-    resize: true,
-    useWorker: true
-});
 const questions = [
     {
 title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
@@ -8458,168 +8433,191 @@ allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
-function getDailySeed() {
-    const today = new Date();
-  return parseInt(
-    today.getFullYear().toString() +
-    (today.getMonth() + 1).toString().padStart(2, "0") +
-    today.getDate().toString().padStart(2, "0")
-  );
-}
-function mulberry32(seed) {
-  return function() {
-    let t = seed += 0x6D2B79F5;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-function shuffleWithSeed(array, seed) {
-  const rand = mulberry32(seed);
-  const arr = [...array];
 
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
+const draggables = document.querySelectorAll('.draggable');
+const dropzones = document.querySelectorAll('.dropzone');
 
-  return arr;
-}
-function getDailyProblems(problems, count = 1) {
-  const seed = getDailySeed();
-  const shuffled = shuffleWithSeed(problems, seed);
-  return shuffled.slice(0, count);
-}
-let q = 0;
-function loadQuestion() {
-    q = getDailyProblems(allQ)[0];
-    console.log(q)
-    mcChoices.forEach(btn => btn.disabled = false);
-
-
-    questionTitle.innerHTML = q.title;
-    questionText.innerHTML = q.text;
-
-    solutionText.innerHTML = "";
-    solutionDiv.style.display = "none";
-    nextBtn.style.display = "none";
-
-    // Reset
-    answerInput.value = "";
-    answerInput.style.display = "none";
-    checkBtn.style.display = "none";
-    mcContainer.classList.add("hidden");
-
-    // ----- FREE RESPONSE -----
-    // ----- MULTIPLE CHOICE -----
-    if (q.type === "mc") {
-        console.log("mc")
-        mcContainer.classList.remove("hidden");
-
-        mcChoices.forEach((btn, i) => {
-            btn.textContent = q.choices[i];
-            btn.onclick = () => handleMCAnswer(q.choices[i]);
-        });
-    }
-        let d1 = new Date()
-        let d2 = localStorage.getItem("lastPractice")
-// Create copies to avoid mutating original dates
-const date1Copy = new Date(d1).setHours(0, 0, 0, 0);
-const date2Copy = new Date(d2).setHours(0, 0, 0, 0);
-
-const isSameDay = date1Copy === date2Copy;
-
-console.log(isSameDay)
-
-        if (isSameDay === true){
-                console.log("same day")
-        questionTitle.innerHTML=("You Already Did Today's Daily Problem!")
-        questionText.innerHTML = ("Come back tomorrow for a new challenge!")
-        questionText.style.color = "var(--accent-color)"
-        checkBtn.style.display = "none";
-        mcContainer.classList.add("remove")
-        answerInput.style.display = "none !important"
-        mcContainer.style.display = "none"
-}
-    if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
-    }
-
-}
-loadQuestion()
-checkBtn.addEventListener("click", function () {
-        localStorage.setItem("doneToday", true)
-        let now = new Date();
-        streakVar = parseInt(streakVar) + 1
-        localStorage.setItem("streak", streakVar)
-        localStorage.setItem("lastPractice", now)
-        streakTag.innerHTML = streakVar + "Days"
-    const userAnswer = answerInput.value.trim()
-    const correctAnswer = q.answer.trim();
-    if (userAnswer === correctAnswer && solutionDiv.style.display==="none") {
-        console.log("correct")
-        solutionText.innerHTML = `<span class="material-symbols-outlined">
-check
-</span> Correct! ` + q.solution;
-
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
-        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
-
-
-
-    } else if (userAnswer !== correctAnswer && solutionDiv.style.display === "none") {
-        solutionText.innerHTML = `<span class="material-symbols-outlined">
-close_small
-</span> Incorrect. ` + q.solution;
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-    }
-    solutionDiv.style.display = "block";
-
-    if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
-    }
+draggables.forEach(drag => {
+    drag.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', e.target.id);
+    });
 });
-function handleMCAnswer(choice) {
-    answerInput.value = choice; // reuse existing checker
-    checkBtn.click();
-mcChoices.forEach(btn => btn.disabled = true);
+
+dropzones.forEach(zone => {
+    zone.addEventListener('dragover', (e) => {
+        e.preventDefault(); // Required to allow a drop
+        zone.classList.add('hovered');
+    });
+
+    zone.addEventListener('dragleave', () => {
+        zone.classList.remove('hovered');
+    });
+
+    zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.classList.remove('hovered');
+        
+        const dragId = e.dataTransfer.getData('text');
+        const dragElement = document.getElementById(dragId);
+        
+        // Check if correct
+        if (dragElement.getAttribute('data-match') === zone.id) {
+            zone.classList.add('correct');
+            dragElement.classList.add("correct")
+            zone.appendChild(dragElement); // Snap item into the box
+            dragElement.style.cursor = 'default';
+            dragElement.setAttribute('draggable', 'false');
+        }
+    });
+});
+
+
+// ======================== Reverse PEMDAS =====================================
+const reversePemdasArray = [
+    { equation: `\\(2x = 4\\)`, answer: `\\div`, explanation: "Divide by 2 to undo multiplication." },
+    { equation: `\\(x + 5 = 12\\)`, answer: `-`, explanation: "Subtract 5 to undo addition." },
+    { equation: `\\(\\frac{x}{3} = 7\\)`, answer: `\\times`, explanation: "Multiply by 3 to undo division." },
+    { equation: `\\(x - 8 = 2\\)`, answer: `+`, explanation: "Add 8 to undo subtraction." },
+    { equation: `\\(10 = x + 3\\)`, answer: `-`, explanation: "Subtract 3 to isolate x." },
+    { equation: `\\(-4x = 16\\)`, answer: `\\div`, explanation: "Divide by -4 to undo multiplication." },
+    { equation: `\\(x + 1.5 = 5\\)`, answer: `-`, explanation: "Subtract 1.5." },
+    { equation: `\\(\\frac{x}{-2} = 10\\)`, answer: `\\times`, explanation: "Multiply by -2." },
+    { equation: `\\(12 = 4x\\)`, answer: `\\div`, explanation: "Divide by 4." },
+    { equation: `\\(x - \\frac{1}{2} = \frac{3}{2}\\)`, answer: `+`, explanation: "Add 1/2 to both sides." },
+    // Introducing 2-step (Focusing on what to do FIRST)
+    { equation: `\\(2x + 3 = 11\\)`, answer: `-`, explanation: "Undo addition/subtraction FIRST (SADMEP)." },
+    { equation: `\\(\\frac{x}{4} - 1 = 5\\)`, answer: `+`, explanation: "Add 1 first before dealing with the fraction." },
+    { equation: `\\(5x - 7 = 13\\)`, answer: `+`, explanation: "Add 7 first." },
+    { equation: `\\(\\frac{x}{2} + 10 = 15\\)`, answer: `-`, explanation: "Subtract 10 first." },
+    { equation: `\\(3 = 9x + 12\\)`, answer: `-`, explanation: "Subtract 12 first." },
+    { equation: `\\(100 = 10x - 50\\)`, answer: `+`, explanation: "Add 50 first." },
+    { equation: `\\(\\frac{x}{10} + 0.5 = 2.5\\)`, answer: `-`, explanation: "Subtract 0.5 first." },
+    { equation: `\\(14 = 2x - 6\\)`, answer: `+`, explanation: "Add 6 first." },
+    { equation: `\\(1 - x = 5\\)`, answer: `-`, explanation: "Subtract 1 first (the leading positive constant)." },
+    { equation: `\\(22 = \\frac{x}{3} + 4\\)`, answer: `-`, explanation: "Subtract 4 first." }
+];
+shuffleArray(reversePemdasArray)
+const addition = document.getElementById("addition")
+const subtraction = document.getElementById("subtraction")
+const multiplication = document.getElementById("multiplication")
+const division = document.getElementById("division")
+const reversePEMDASEquation = document.getElementById("reversePEMDASEquation")
+const reversePemdasSolution = document.getElementById("reversePemdasSolution")
+const reversePemdasSolutionText = document.getElementById("reversePemdasSolutionText")
+const reversePemdasNext = document.getElementById("reversePemdasNext")
+addition.innerHTML = '\\(+\\)'
+subtraction.innerHTML = '\\(-\\)'
+multiplication.innerHTML = '\\(\\times\\)'
+division.innerHTML = '\\(\\div\\)'
+MathJax.typesetPromise([addition]).catch(()=>{})
+MathJax.typesetPromise([subtraction]).catch(()=>{})
+MathJax.typesetPromise([multiplication]).catch(()=>{})
+MathJax.typesetPromise([division]).catch(()=>{})
+let reversePemdasIndex = 0
+let currentQuestion = reversePemdasArray[reversePemdasIndex]
+function loadReversePemdas(){
+    reversePemdasSolution.style.display = "none"
+    reversePemdasSolutionText.style.display = "none"
+    reversePemdasNext.style.display = "none"
+    currentQuestion = reversePemdasArray[reversePemdasIndex]
+    reversePEMDASEquation.innerHTML = currentQuestion.equation
+    MathJax.typesetPromise([reversePEMDASEquation]).catch(()=>{});
 }
-const privacyPolicyBtn = document.getElementById("privacyPolicyBtn")
-const privacyPolicy = document.getElementById("privacyPolicy")
-const termsAndConditions = document.getElementById("termsAndConditions")
- console.log("script running")
-      let helpOn = false;
-  let helpBtn = document.getElementById('helpButton')
-  helpBtn.addEventListener("click", function () {
-    console.log("clicked")
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
+addition.addEventListener("click", function(){
+    if (currentQuestion.answer = '+'){
+        reversePemdasSolution.style.display = "block"
+        reversePemdasSolutionText.innerHTML = "Correct!" + currentQuestion.explanation
     } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
+        reversePemdasSolution.style.display = "block"
+        reversePemdasSolutionText.innerHTML = "Incorrect!" + currentQuestion.explanation    
     }
-});
-let overlay = document.getElementById('overlay');
-overlay.addEventListener("click", function () {
-    helpPannel.style.display = "none";
-    privacyPolicy.style.display = "none"
-    overlay.style.display = "none"; 
-    termsAndConditions.style.display = "none"
-    helpOn = false;
-});
-// Example: Sending a random math problem
-function myFunctionTwo(){
-        termsAndConditions.style.display = "block"
-        overlay.style.display = "block"
+    reversePemdasNext.style.display = "block"
+    reversePemdasSolutionText.style.display = "block"
+})
+subtraction.addEventListener("click", function(){
+    if (currentQuestion.answer = '+'){
+        reversePemdasSolution.style.display = "block"
+        reversePemdasSolutionText.innerHTML = "Correct!" + " " + currentQuestion.explanation
+    } else {
+        reversePemdasSolution.style.display = "block"
+        reversePemdasSolutionText.innerHTML = "Incorrect!" + " " + currentQuestion.explanation    
+    }
+    reversePemdasNext.style.display = "block"
+    reversePemdasSolutionText.style.display = "block"
+})
+multiplication.addEventListener("click", function(){
+    if (currentQuestion.answer === '+'){
+        reversePemdasSolution.style.display = "block"
+        reversePemdasSolutionText.innerHTML = "Correct! " + " " + currentQuestion.explanation
+    } else {
+        reversePemdasSolution.style.display = "block"
+        reversePemdasSolutionText.innerHTML = "Incorrect! " + " " + currentQuestion.explanation    
+    }
+    reversePemdasNext.style.display = "block"
+    reversePemdasSolutionText.style.display = "block"
+})
+division.addEventListener("click", function(){
+    if (currentQuestion.answer === '+'){
+        reversePemdasSolution.style.display = "block"
+        reversePemdasSolutionText.innerHTML = "Correct!" + " " + currentQuestion.explanation
+    } else {
+        reversePemdasSolution.style.display = "block"
+        reversePemdasSolutionText.innerHTML = "Incorrect!" + " " + currentQuestion.explanation    
+    }
+    reversePemdasNext.style.display = "block"
+    reversePemdasSolutionText.style.display = "block"
+})
+reversePemdasNext.addEventListener("click", function(){
+    reversePemdasIndex += 1
+    if (reversePemdasIndex < reversePemdasArray.length) {
+        loadReversePemdas()
+    } else {
+        reversePemdasIndex = 0
+        shuffleArray(reversePemdasArray)
+        loadReversePemdas()
+    }
+})
+let sum
+loadReversePemdas()
+const slider = document.getElementById('bSlider');
+slider.oninput = function() {
+    const bHalf = this.value / 2;
+    document.getElementById('b-side').style.width = bHalf + "px";
+    document.getElementById('b-bottom').style.height = bHalf + "px";
+    
+    // Update the "Missing Corner" dimensions
+    const corner = document.getElementById('missing-corner');
+    corner.style.width = bHalf + "px";
+    corner.style.height = bHalf + "px";
+    console.log(bHalf)
+ sum = (bHalf / 10) * (bHalf / 10)
+console.log(sum)
+    const shutup = document.getElementById('bVal')
+    shutup.innerHTML = `Equation: \\(x^2 + ${(this.value / 10).toFixed(1)}x + ${sum.toFixed(5)}\\)`;
+    
+    if (sum > 4){
+        document.getElementById('missing-corner').innerHTML = sum.toFixed(1)
+            document.getElementById('missing-corner').style.textAlign = "center"
+    document.getElementById('missing-corner').style.textJustify = "center !important"
+    document.getElementById('missing-corner').style.color = "var(--primary-color)"
+    } else {
+        document.getElementById('missing-corner').innerHTML = ""
+    }
+    MathJax.typesetPromise([shutup]).catch(()=>{})
 }
-function myFunction(){
-        console.log(privacyPolicy.style.display)
-                privacyPolicy.style.display = "block"
-                overlay.style.display = "block"
+slider.oninput()
+
+function fillCorner() {
+    document.getElementById('missing-corner').style.display = "block";
+    const val = (slider.value / 20); // Scaled for display
+}
+fillCorner()
+const subs = document.querySelectorAll(".substitute")
+function substitute(){
+        console.log("subbing")
+        subs.forEach(sub => {
+                sub.innerHTML = '\\(u\\)'
+                MathJax.typesetPromise([sub]).catch(()=>{})
+                sub.classList.add("u")
+        })
 }

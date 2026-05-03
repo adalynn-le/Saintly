@@ -51,9 +51,19 @@ volunteer_activism
 <div class="par">If you have any suggestions for updates, please contact us at <a href="mailto:saintly.math@gmail.com">saintly.math@gmail.com</a></div>
 <div id="opacityCover"></div>
 <div id="timeline">
+          <div class="eventRight event">
+                    <span class="material-symbols-outlined circle right">
+circle_circle
+</span>
+        <div class="eventDate tinytitle">May 2nd 2026</div>
+        <div class="eventName subtitle">Topics Dash</div>
+        <div class="eventDescription par">Developed two fully fledged articles on Word Problems and Algebraic Manipulation so that you can further your learning and growth. Accescible through Topics Dashboard.
+        </div>
+
+    </div>
         <div class="eventLeft event">
                     <span class="material-symbols-outlined circle left">
-circle_circle
+circle
 </span>
         <div class="eventDate tinytitle">April 28th 2026</div>
         <div class="eventName subtitle">Leaderboard</div>
@@ -211,30 +221,64 @@ circle
 
 </div>
 </div>
+<div class="helpPannel" id="privacyPolicy" display="none">
+  <h4>Privacy Policy</h4>
+  <h5>Data Collection</h5>
+  <li>We use local storage to track and save your ELO on your device</li>
+  <li>We use Supabase backend to track overall acuracy on questions</li>
+  <li>We trackk individual user usage on our website, pages, etc. by tracking time spent and interaction</li>
+  <h5>How we use your data</h5>
+  <li>To personalize your learning experience</li>
+  <li>We never sell your data to third parties</li>
+  <h5>Children's Privacy</h5>
+  <li>Saintly is intended for students. We encourage parents to monitor their children's internet usage. We do not knowingly collect personal information from children under 13 without parental consent (per COPPA guidelines).</li>
+</div>
+<div class="helpPannel" id="termsAndConditions" display="none">
+  <h4>Terms and Conditions</h4>
+  <li>By using Saintly you agree to the terms and conditions</li>
+  <li>You may not scrape the site or re-distribute our unique interactive code without permission.</li>
+  <li>Be "Saintly." No harassment, no attempts to hack the site, and no using the platform to cheat on active competitions.</li>
+  <li>Math is hard! While we strive for 100% accuracy, Saintly is provided "as is." We aren't responsible if a specific formula explanation doesn't lead to a perfect AMC score (though we hope it does!).</li>
+  <li>Saintly and its volunteers are not liable for any damages arising from your use of the site.</li>
+</div>
 </main>
 
 <div id="overlay"></div>
+<footer class="saintly-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img class="footer-logo" src="fullLogo.png" height="35px"></img>
+            <p>Making competition math accessible for everyone.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="am10.html">AMC 10</a></li>
+                <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+                <li><a href="amc10algebra.html">Algebra</a></li>
+                <li><a href="algebra.html">Topics Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>saintly.math@gmail.com</p>
+            <div class="social-icons">
+                </div>
+        </div>
+        <div class="footer-section">
+          <h4>Privacy</h4>
+          <ul><li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Saintly Math. Built with drive.
+    </div>
+</footer>
     </body>
-<script>
-  console.log("script running")
-      let helpOn = false;
-  let helpBtn = document.getElementById('helpButton')
-  helpBtn.addEventListener("click", function () {
-    console.log("clicked")
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
-let overlay = document.getElementById('overlay');
-overlay.addEventListener("click", function () {
-    helpPannel.style.display = "none";
-    overlay.style.display = "none"; 
-    helpOn = false;
-});
+<script src="footer.js">
 </script>

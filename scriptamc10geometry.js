@@ -1,7 +1,6 @@
 let correctCount = 0;
 let wrongCount = 0;
 let longestStreak = 0; // also needed for streak logic
-let helpOn = false;
 
 
 function toggleSubMenu(button){
@@ -2126,9 +2125,6 @@ const streakBar = document.getElementById("streak-bar");
 const backBtn = document.querySelector(".back-btn");
 const image = document.getElementById("question-image")
 const progressBar = document.getElementById("progress-bar");
-const helpBtn = document.getElementById("helpButton");
-const helpPannel = document.getElementById("helpPannel");
-const overlay = document.getElementById("overlay");
 const submitSolutionButton = document.getElementById("submit-a-solution");
 const submitSolutionForm = document.getElementById("submit-a-solution-form");
 
@@ -2137,18 +2133,6 @@ submitSolutionButton.addEventListener("click", function() {
         submitSolutionForm.style.display = 'block';
         submitSolutionButton.style.display = 'none';
 })
-
-helpBtn.addEventListener("click", function () {
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
 
 let questionsAnswered = 0;
 let percentage = 0;
@@ -2412,17 +2396,6 @@ document.getElementById("restart-btn").addEventListener("click", function() {
     // Show questions again
     loadQuestion(currentQuestion);
     problemsWrapper.classList.remove("hidden");
-});
-overlay.addEventListener("click", function(){
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
 });
 
 // ---------- Start ----------

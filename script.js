@@ -1,7 +1,6 @@
 let correctCount = 0;
 let wrongCount = 0;
 let longestStreak = 0;
-let helpOn = false;
 function toggleSubMenu(button){
     button.nextElementSibling.classList.toggle('show');
     button.classList.toggle('rotate');
@@ -2987,25 +2986,8 @@ const progressBar = document.getElementById("progress-bar")
 const mcContainer = document.getElementById("mc-container");
 const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
 const questionChoices = document.getElementById("mc-container")
-const helpBtn = document.getElementById("helpButton");
-const helpPannel = document.getElementById("helpPannel");
-const overlay = document.getElementById("overlay");
 const submitSolutionButton = document.getElementById("submit-a-solution");
 const submitSolutionForm = document.getElementById("submit-a-solution-form");
-
-console.log(helpOn)
-helpBtn.addEventListener("click", function () {
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
-
 
 let questionsAnswered = 0;
 let percentage = 0;
@@ -3313,17 +3295,6 @@ document.getElementById("restart-btn").addEventListener("click", function() {
 });
 
 
-overlay.addEventListener("click", function(){
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
 submitSolutionButton.addEventListener("click", function() {
         submitSolutionForm.style.display = 'block';
         submitSolutionButton.style.display = 'none';

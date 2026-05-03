@@ -339,9 +339,6 @@ p {
 @keyframes flashGreen {
   50% {background-color: greenyellow}
 }
-footer{
-  background-color: red;
-}
 .flashGreen {
   animation: flashGreen 0.4s ease;
 }
@@ -349,10 +346,6 @@ footer{
 .wrapper{
   padding: 5px;
   height: 100px;
-}
-footer{
-  position: fixed;
-  padding: 5px;
 }
 .streak-bar {
     position: relative;
@@ -984,7 +977,96 @@ margin-bottom: 0px;
   line-height: 1.1;
   font-size: medium;
 }
+/* The Canvas/Grid Area */
+#squareCanvas, #sfftGrid {
+    background: #fcfcfc;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    overflow: hidden; /* Keeps the blocks inside the rounded corners */
+}
 
+/* Algebraic Blocks */
+#x2-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+#b-side, #b-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #444;
+    transition: width 0.1s ease, height 0.1s ease;
+}
+
+/* The "Hero" piece: The Missing Corner */
+#missing-corner {
+    background: var(--highlight-color) !important; /* Gold */
+    border-color: var(--primary-color) !important;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+body:has(.substitute:hover) .substitute{
+  color: var(--primary-color);
+  background-color: var(--highlight-color)
+}
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Sliders */
+input[type="range"] {
+    -webkit-appearance: none;
+    height: 6px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin: 20px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Buttons */
+.saintly-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.saintly-button:hover {
+    background: #77a0ef;
+    transform: translateY(-1px);
+}
+
+.saintly-button:active {
+    transform: translateY(0);
+}
+
+/* Math Labels */
+#bVal {
+    color: var(--primary-color);
+}
 
 .helpPannel{
   background-color: var(--background-color);
@@ -2775,4 +2857,115 @@ html {
 }
 .material-symbols-outlined:hover{
   text-decoration: none !important;
+}
+.draggable {
+    border: 1.5px dashed var(--primary-color);
+    border-radius: 8px;
+    height: 30px;
+    cursor: grab;
+    user-select: none;
+  text-align: center !important;
+  padding-top: 2.5px;
+  padding-left: 2.5px;
+  padding-right: 2.5px;
+  margin-top: 20px
+}
+
+.dropzone {
+    width: 30px;
+    height: 30px;
+    border: 1.5px dashed var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.dropzone.hovered {
+    background: var(--highlight-color);
+    border-color: var(--primary-color);
+}
+
+.dropzone.correct{
+border: none;
+width: fit-content;
+text-align: top;
+}
+.draggable.correct{
+  border: none;
+  margin-top: 0;
+}
+.saintly-footer {
+    background-color: var(--background-variant);
+    border-top: 1px solid var(--shadow-color);
+    padding: 40px 20px 20px 20px;
+    margin-top: 50px; /* Space from the main content */
+    color: var(--text-color);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-family: "National Park", sans-serif;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: var(--text-variant);
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-logo span {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--highlight-color);
+    font-size: 0.8rem;
+    color: var(--text-variant);
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; /* This pushes the footer down */
 }
