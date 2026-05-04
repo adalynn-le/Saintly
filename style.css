@@ -2615,6 +2615,9 @@ input{
 
 }
 @media (max-width: 1400px){
+  footer{
+    display: none
+  }
 .tag{
   white-space: nowrap !important;
   font-size: 15px;
