@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Saintly | Arithmetic</title>
+  <link rel="stylesheet" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">   
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=ads_click,book,check,close_small,exclamation,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+ 
+<meta name="keywords" content="arithmetic, what is arithmetic, AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+    <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+<meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+
+</head>
+
+<body>
+   <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script src="sidebar.js"></script>
+<nav id = "top-bar">
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "topics dash.html">Topics Dashboard</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "algebraic manipulation.html">Algebraic Manipulation</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
+    <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+send
+</span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton">
+volunteer_activism
+</span>
+</nav>
+<main>  
+
+<div class="minicontainer">
+
+  <h1 class="amc10title">Arithmetic</h1>
+  <p class="amc10subtitle"></p>
+  <h2 class="amc10subtitle">10 Problems • 3 sub-topics</h2>
+  <h2 class="par" style="display: inline; vertical-align: middle !important;">Adalynn Le • 5/2/2026</h2>
+<!-- Table of Contents  -->
+  <div id="tableOfContents">
+  <h3 class="amc10subtitle ittybitty" style="color: var(--primary-color)">Table of Contents</h3>
+  <ol><a href="#intro">Introduction</a></ol>
+  <ol><a href="#basicoperations">Basic Operations</a></ol>
+<ol><a href="#factoring">Factoring and Division</a></ol>
+<ol><a href="#fastmath">Fast Math</a></ol>
+<ol><a href="#conclusion">Conclusion</a></ol>
+  </div>
+  <h2 class="amc10subtitle" id="introduction">Introduction</h2>
+  <p class="par">If you're taking the AMC 10, chances are you know how to do arithmetic, even if you don't kow what it is. <mark class="blue">Arithmetic is the most basic type of math, 
+    and it involves using the four basic operations (addition, subtraction, multiplication, and division) to compute expressions.</mark></p>
+    <span id = "howworkcards">
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">What is it?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Arithmetic is the use of <mark class="orange">addition, subtraction, multiplication, and division</mark> to compute expressions. It typically does not involve variables and is thus a very simple branch of mathematics</div>
+  </span>
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">Why Study?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext"><mark class="orange">Math cannot exist without arithmetic.</mark>Even if you have all the tools and your workplace setup, the project is not done until you build it. Arithmetic allows you to complete and solve a problem. Being 
+    good at arithmetic can save you time on the AMC 10.</div>
+  </span>
+</span>
+<h2 class="amc10subtitle" id="basicoperations">Basic Operations</h2>
+<p class="par">This is a pretty simple subject, so let's just go over the basic tools of it</p>
+<p><b>Addition - </b>Finding the total when combining two quantities</p>
+<p><b>Subtraction - </b>Finding the difference or quantity between the values of two quantities</p>
+<p><b>Multiplication - </b>Repeated addition in an array</p>
+<p><b>Division - </b>Repeated subtraction</p>
+<p class="par">Now don't fall into the trap of thinking there's nothing to learn in Arithmetic, or that Arithmetic is confined to only those subjects. There are more operations more things to do, based on the four basic ones. In fact, technically addition could be called the only main operation, because subtraction is negative addition, multiplication is repeated addition, and division is repeated subtraction. 
+    The point of this essentially, is that <mark class="blue">arithmeitc is a complex system made from a basic building blocks. Let's go over some bigger operations in arithmetic.</mark>
+    <div class="subsubtopic">
+        <h3 class="amc10subtitle ittyBitty">Powers</h3>
+        <p class="par">Powers are to multiplication what multiplication is to addition. <mark class="blue">It's repeated multiplication.</mark> The inverse is is radicals and roots.</p>
+        <h3 class="amc10subtitle ittyBitty">Series and Sequences</h3>
+        <p class="par">A sequence is effectively what happens when you <mark class="blue">list each value in the process of performing a power or multiplication.</mark> An arithmetic series is when you continously add, (multiplication) and you take each sum. The same is true for geometric series and multiplication. The series is the sum of the values in  a sequence.</p>
+    </div>
+</p>
+<h2 class="amc10subtitle" id="factoring">Factoring and Division</h2>
+<p class="par">I want to dedicate this section to division particularly, specifically because I think there's so much you can do with it. <mark class="blue">division is, in my eyes, the most versatile operation because it unveils a lot about number theory, especially when you get into factorization.</mark></p>
+<div class="subsubtopic">
+    <h3 class="amc10subtitle ittyBitty">Different Representations of Division</h3>
+    <p class="par">Obviously, as an operation, there exists just \(\div\), but division in meaning can be split into different ways: arithmetic expressions, fractions, and ratios.</p>
+
+    <span class="howworkcards" style="display: flex; flex-direction: row;">
+    <div class="howworkcard" style="width: 30%">
+    <p style="display: block"><b id="numeratorLabel">Numerator: \(1\)</b></p>
+    <input type="range" id="numerator" min="1" max="5" value="1" step="1" style="width: 50%; display: inline-block">
+    <p style="display: block"><b id="denominatorLabel">Denominator: \(1\)</b></p>
+    <input type="range" id="denominator" min="1" max="5" value="1" step="1"  style="width: 50%; display: inline-block">
+    </div>
+    <span class="howworkcards" style="display: flex; flex-direction: column; flex: 1">
+    <div class="howworkcard" style="flex: 1">
+        <h4 class="amc10subtitle ittyBitty">Arithmetic Representation</h4>
+        <p id='fracRepLabel'>\(1 \div 1 = 1\)</p>
+    </div>
+        <div class="howworkcard" style="flex: 1">
+        <h4 class="amc10subtitle ittyBitty">Fraction Representation</h4>
+                <p id='fracRepTwo' style="display: inline-block">\(\frac{1}{1}\)</p>
+            <div class="pie-container" style="text-align: center; display: inline-block">
+        <svg width="100" height="100" viewBox="0 0 200 200" id="pieChart">
+            <circle cx="100" cy="100" r="80" fill="#eee" />
+            <path id="pieWedge" fill="var(--primary-color)" d="" />
+        </svg>
+    </div>
+
+    </div>
+        <div class="howworkcard" style="flex: 1">
+        <h4 class="amc10subtitle ittyBitty">Ratio Representation</h4>
+        <p id='ratioLabel'>\(1:1\)</p>
+        <span class="ratioContainer" style="display: flex; flex-direction: row">
+        <span id="ratio1" style="width: 10px; height: 10px; background-color: var(--primary-color); margin: 2px; display: inline-block;"></span>
+        <span id="ratio2" style="width: 10px; height: 10px; background-color: var(--primary-color); margin: 2px; display: inline-block;"></span>
+        <span id="ratio3" style="width: 10px; height: 10px; background-color: var(--primary-color); margin: 2px; display: inline-block;"></span>
+        <span id="ratio4" style="width: 10px; height: 10px; background-color: var(--primary-color); margin: 2px; display: inline-block;"></span>
+        <span id="ratio5" style="width: 10px; height: 10px; background-color: var(--primary-color); margin: 2px; display: inline-block;"></span>
+        
+        <span id="ratio6" style="width: 10px; height: 10px; background-color: var(--accent-color); margin: 2px; display: inline-block;"></span>
+        <span id="ratio7" style="width: 10px; height: 10px; background-color: var(--accent-color); margin: 2px; display: inline-block;"></span>
+        <span id="ratio8" style="width: 10px; height: 10px; background-color: var(--accent-color); margin: 2px; display: inline-block;"></span>
+        <span id="ratio9" style="width: 10px; height: 10px; background-color: var(--accent-color); margin: 2px; display: inline-block;"></span>
+        <span id="ratio10" style="width: 10px; height: 10px; background-color: var(--accent-color); margin: 2px; display: inline-block;"></span>
+        </span>
+    </div>
+    </span>
+    </span>
+    <h3 class="amc10subtitle">GCF and LCM</h3>
+    <p class="par">This is a bit of a side tangent, because neither of these metrics relate directly to arithmetic, but I want to illustrate the applicability and importance of division in other systems. <mark class="blue">GCF is the largest
+      value such that two or more integers are evenly divisible by it.</mark> LCM, on the other hand, details <mark class="blue">the smallest value that has two or more integers are factors.</mark> Knowing these can help you save a lot of time when doing arithmetic. For example,
+    when calculating with fractions, it allows you to change the denominator or simplify quickly. You can find both of these metrics through prime factorization.</p>
+    <h3 class="amc10subtitle">Prime Factorization</h3>
+    <p class="par">Prime factorization is what it sounds like, divindg continously until you reduce a number into it's prime factors. An easy way to do this is with the use of a factor tree, but other methods exist. A prime factorization is helpful because the GCF of two numbers is always <mark class="blue">the product of the overlapping factors</mark> and the LCM
+    is <mark class="blue">the product of one number with the other number divided by the GCF</mark>. The prime factorization can also let you find the total number of factors by raising each power by one and multiplying them all together.
+  </p>
+</div>
+<h2 class="amc10subtitle">Quick Math</h2>
+<p class="par">Let's be honest. We all know how to do arithmetic, but knowing it doesn't make you good. Especially on timed tests like the AMC 10, every second counts, you want to get things done fast and accurately. This can also just help you function in real-world settings and 
+  allow you to be more focused and successful
+</p>
+<div class="subsubtopic">
+  <h3 class="amc10subtitle ittyBitty">Divisiliby Rules</h3>
+  <p class="par">Divisibility rules are quick ways to tell if a number is divisible by a number. The most common ones are for \(2, 3\) and \(5\), which pretty much everybody knows (being even, having a sum of digits of divisible by \(3\), and ending in \(0\) or \(5\), respectively), but there are a lot more. <mark class="blue">For powers of \(2\) represented as \(2^n\), the last \(n\) digits alltogether must be divisible by \(2^n\)</mark>. For powers of \(3\), 
+  the <mark class="blue">sum of digits of the dividend must be divisible by the divisor.</mark> Now, there's probably a divisibility rule for every prime number, but in some cases, it's better to just divide then spend time memorizing dozens of formulas. A good rule of thumb is to know up to \(10\). The only one we're missing right now is \(7\). This onea bit odd, but what you do is
+  take the units digit, , double it, subtract it from the original number WITHOUT a units digit (so reducing each base), and keep doing that until you get a number you know is or isn't divisilbe by \(7\). Most importantly, for any non-prime integer, the divisibility rule is that it must satisfy the divisibility rules of all the prime factors. </p>
+  <div class="howworkcard" id="divisibility-7">
+    <h3 class="amc10subtitle">Check an Integer is Divisible by \(7\)</h3>
+    
+    <div class="input-group">
+        <input type="number" id="sevenInput" placeholder="">
+        <button onclick="startChop()" class="problemBtn">Start Chop</button>
+    </div>
+
+    <div id="chopAnimation" style="margin-top: 20px; font-family: 'National Park', sans-serif; font-size: 1.5rem; min-height: 100px;">
+        </div>
+</div>
+<h3 class="amc10subtitle ittyBitty">Tratchenberg System For Multiplying By 12</h3>
+<p class="par">There are a lot of quick multiplication, division, etc. tricks when it comes to math, if you want to go down that rabbit hole, but I want to focus on the Tratchenberg System. Tratchenberg was a mathematician known for creating a whole book and database
+  essentially for quick mathematics, so you should check that out if it's something you're interested. One of his most memorable tricks was for multiplying by \(12\). This was one of the bigger ones that I learned, and thus one of the ones I wish to impart onto you.</p>
+  <p>Step One: Start with the units digit and multiply it by \(2\)</p>
+  <p>Step Two: If there was a tens digit, remember it and save it away for later. Now we look at the whole number's ten's digit. Multiply by \(2\) and add the \(1\) you carried before, if you did. Here's where it gets interesting: you "add the neighbor", or the value to the right</p>
+  <p>Step Three: Keep carying and adding the neighbor until you reach the end</p>
+  <p class="par">What this does is essentially streamline the process of doing typical, vertical multiplication. Tratchenberg noticed that when you multiply by the tens digit, you add that value to the value to the left, so that's where "adding the neighbor comes from</p>
+</p>
+</div>
+<h2 class="amc10subtitle">Conclusion</h2>
+<p class="par">Arithmetic is the fundamental for solving anything. Even if you know every trick in factoring and algebraic manipulation, to solve, you need to solve with arithmetic. Although the basic operations are fundamental and covered in elementrary school, quick computation is nescessary to be successful and save time on the AMC 10.</p>
+</main>
+</body>
+<script src="arithmeticjs.js"></script>
+</html>
