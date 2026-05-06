@@ -8742,7 +8742,7 @@ const nextBtnSDT = document.getElementById("next-btn-SDT")
 shuffleArray(SDTArray)
 console.log(SDTArray)
 let SDTindex = 0
-let currentQuestion = SDTArray[0]
+let currentQuestionSDT = SDTArray[0]
 function loadSDT(index){
     solutionSDT.style.display = "none"
     nextBtnSDT.style.display = "none"
@@ -8750,18 +8750,18 @@ function loadSDT(index){
     mcContainerSDT.classList.add("hidden")
     answerInputSDT.style.display = "inline-block"
     answerInputSDT.value = ""
-    currentQuestion = SDTArray[index]
-    SDTTitle.innerHTML = currentQuestion.title
-    SDTtext.innerHTML = currentQuestion.text
-    if (currentQuestion.type === "mc") {
+    currentQuestionSDT = SDTArray[index]
+    SDTTitle.innerHTML = currentQuestionSDT.title
+    SDTtext.innerHTML = currentQuestionSDT.text
+    if (currentQuestionSDT.type === "mc") {
         mcContainerSDT.classList.remove("hidden");
         answerInputSDT.style.display = "none"
         checkAnswerSDT.style.display = "none"
         mcChoicesSDT.forEach((btn, i) => {
             console.log("mc")
             btn.disabled = false
-            btn.textContent = currentQuestion.choices[i];
-            btn.onclick = () => handleMCAnswer(currentQuestion.choices[i])
+            btn.textContent = currentQuestionSDT.choices[i];
+            btn.onclick = () => handleMCAnswerSDT(currentQuestionSDT.choices[i])
             MathJax.typesetPromise([btn]).catch(()=>{})
         });
     }
@@ -8769,11 +8769,11 @@ function loadSDT(index){
 }
 checkAnswerSDT.addEventListener("click", function(){
     const userAnswer = answerInputSDT.value.trim()
-    const correctAnswer = currentQuestion.answer
+    const correctAnswer = currentQuestionSDT.answer
     if (userAnswer === correctAnswer){
-        solutionTextSDT.innerHTML = `Correct!` + currentQuestion.solution
+        solutionTextSDT.innerHTML = `Correct!` + currentQuestionSDT.solution
     } else {
-        solutionTextSDT.innerHTML = 'Incorect' + currentQuestion.solution
+        solutionTextSDT.innerHTML = 'Incorect' + currentQuestionSDT.solution
     }
     solutionSDT.style.display = "block"
             MathJax.typesetPromise([solutionTextSDT]).catch(()=>{});
@@ -8788,7 +8788,7 @@ nextBtnSDT.addEventListener("click", function(){
     loadSDT(SDTindex)
 })
 loadSDT(SDTindex)
-function handleMCAnswer(choice) {
+function handleMCAnswerSDT(choice) {
     console.log("clicked")
     answerInputSDT.value = choice; // reuse existing checker
     checkAnswerSDT.click();
@@ -8932,3 +8932,83 @@ function updateVectors() {
     document.getElementById(id).addEventListener("input", updateVectors);
 });
 updateVectors();
+
+
+//--------------Final Question---------------
+const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
+const mcContainer = document.getElementById("mc-container");
+const questionChoices = document.getElementById("mc-container")
+const topicQ = []
+let currentQuestion = 0
+allQ.forEach(i => {
+        if (i.topic == 'word problems'){
+                topicQ.push(i)
+        }
+})
+shuffleArray(topicQ)
+function loadQuestion(){
+        let topicQuestion = topicQ[currentQuestion]
+        document.getElementById("question-title").innerHTML = topicQuestion.title
+        document.getElementById("question-text").innerHTML = topicQuestion.text
+        mcChoices.forEach(btn => btn.disabled = false)
+            document.getElementById("solution-text").innerHTML = ""
+    document.getElementById("solution").style.display = "none"
+    document.getElementById("next-btn").style.display = "none"
+    
+    document.getElementById("answer-input").value = ""
+            document.getElementById("answer-input").style.display = "none"
+    document.getElementById("check-btn").style.display = "none"
+    mcContainer.classList.add("hidden")
+
+    if (!topicQuestion.type || topicQuestion.type === "fr") {
+        document.getElementById("answer-input").style.display = "inline-block"
+        document.getElementById("check-btn").style.display = "inline-block"
+    }
+    if (topicQuestion.type === "mc") {
+        mcContainer.classList.remove("hidden")
+
+        mcChoices.forEach((btn, i) => {
+            btn.textContent = topicQuestion.choices[i];
+            btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
+        });
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([document.getElementById("question-text")]).catch(()=>{})
+        MathJax.typesetPromise([questionChoices]).catch(()=>{})
+    }
+}
+function handleMCAnswer(choice) {
+    document.getElementById("answer-input").value = choice; // reuse existing checker
+    document.getElementById("check-btn").click();
+mcChoices.forEach(btn => btn.disabled = true);
+}
+document.getElementById("check-btn").addEventListener("click", function(){
+        const userAnswer = document.getElementById("answer-input").value
+        const correctAnswer = topicQ[currentQuestion].answer
+        const solutionText = document.getElementById("solution-text")
+        const nextBtn = document.getElementById("next-btn")
+        const solution = document.getElementById("solution")
+        if (userAnswer === correctAnswer){
+                solutionText.innerHTML = "Correct!" + topicQ[currentQuestion].solution
+        } else {
+            solutionText.innerHTML = "Incorrect" + topicQ[currentQuestion].solution    
+        }
+        solution.style.display = "block"
+        nextBtn.style.display = "block"
+        solutionText.style.display = "block"
+        MathJax.typesetPromise([solution]).catch(()=>{})
+})
+document.getElementById("next-btn").addEventListener("click", function() {
+        let subtract = (topicQ.length - 1)
+        const correct = (currentQuestion === subtract)
+        if (correct === true){
+                currentQuestion = 0
+                shuffleArray(topicQ)
+                loadQuestion()
+        } else if (currentQuestion < topicQ.length){
+                currentQuestion += 1
+                loadQuestion()
+        } 
+        
+})
+loadQuestion()

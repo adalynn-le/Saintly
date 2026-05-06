@@ -751,7 +751,13 @@ star
         difficutly: 2,
         text: `The greatest prime number that is a divisor of \\(16384\\) is \\(2\\) because \\(16384=2^14\\). What is the sum of the digits of the greatest prime number that is a divisor of \\(16.383\\)?`,
         solution: `<b></b><p>\\(16383=16384-1=2^14-1\\) which we recognize via difference of squares to be \\((2^7+1)(2^7-1)\\). We compute these seperately. \\(2^7=128\\) so we have \\(129\\) and \\(127\\). The latter is composite, being able to be factored down into \\(3 \\cdot 43\\), but the other is prime. So we have \\(1+2+7=10\\)</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>If it looks like a trick question, it is. It is rare for the AMC 10 to given extraneous information or reqiure you to know the prime factorization of \\(16,383\\). Just by the nature of the question, be suspicious and asume there is a clever way to take the prime factorizaiton that isn't just factor trees</p>`,
         topic: 'prime factorization',
         answer: 10,
@@ -814,7 +820,13 @@ star
         text: `Let \\(N\\) be a positive integer \\(7777...777\\) a \\(313\\)-digit number where each digit is a \\(7\\). Let \\(f(r)\\) be the leading digit of the \\(r\\)th root of \\(N\\). What is \\(f(2)+f(3)+f(4)+f(5)+f(6)\\)?`,
         solution: `<b>8</b><p>We can make a few basic rules. The first is that dividing by any power of \\(10\\) does not change the leading digit, because it just adds \\(0\\)s, which are insignificant. From this, we don't concern ourselves with the whole \\(313\\) digit thing and instead only focus on the leading digits of \\(7.777...\\) after a bunch of roots. We approximate that the sum ends up being
         \\(2+1+1+3+1=8\\)</p>
-        <h3> Common Mistake ❗❗❗</h3>
+        <h3> Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>While there is a hack that makes this easier, if I'm being completely honest, you don't need to solve this one. If you made it to \\(19\\), it's better to check your answers or scan for easier ones that you can solve rather than struggling with such a cumbersome problem like this. Strategy is just as important as mathematical skill when it comes to competitions like these!</p>`,
         answer: '8',
         topic: 'logic',
@@ -1465,7 +1477,13 @@ star
         We find that if we start at \\(1\\) we find \\(252\\) elements, with the highest being \\(2017\\). We now work on the 1st rule</p>
         <p>Let's start at \\(1\\). We can't have \\(2\\) or \\(3\\) so the next one must be \\(4\\). This gives us a total of \\(506\\) elements. However, it also leaves us with a lot of...empty space. What would happen if we made the difference between odd numbers bigger?</p>
         <p>Let's make the differnece \\(10\\). We have a highest value of \\(2021\\) for \\(203\\) total odd numbers. Adding the evens, we can do \\(4\\) and \\(8\\). This gives us \\(609\\), but remember to subtract one at the top that would go out of range</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>The most obvious solution isn't always the right one. Notice how it was surprisingly simple for such a hard question, the first solution, I mean..? That's a sign that you can probably spend a few more minutes at the very least checking your answer and looking for contradictions`,
         type: 'mc',
         choices: ['\\(A) 436\\)', '\\(B) 506\\)', '\\(C) 608\\)', '\\(D) 654\\)', '\\(E) 675\\)'],
@@ -1518,7 +1536,13 @@ star
         difficulty: 1,
         text: `In a long line of people arranged left to right, the \\(1013\\)th person from the left is also the \\(1010\\)th person from the right. How many people are in the line?`,
         solution: `<b>2022</b><p>This is easy, right? I mean you just add them? Nope, because the issue with that is you would count the person twice. What you do instead is add and subtract \\(1\\) for \\(1013+1010-1=2022\\)</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>This is a prime example of how the AMC 10 can be tricky. Especially for earlier problems like these, be very careful not to lose easy points, especially given that you are penalized for wrong answers</p>`,
         topic: 'logic',
         type: 'mc',

@@ -199,7 +199,13 @@ star
         $$
         32 \\cdot \\pi = {32\\pi}
         $$
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Make sure to take advantage of the inherent simplicity of the problem. If there's something you can ignore, or if there is extraneous information, just don't ues it.`,
         video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         topic: "induction",
@@ -319,7 +325,13 @@ star
         <p>\\(r\\) must be greater than \\(1\\) in order to fuffil the rule that \\(a<720<b\\). We can write it as a fraction \\(\\frac{y}{x}) where \\(y>x\\), but \\(y\\) and \\(x\\) are as close as possible without breaking this rule, in order to minimize \\(r\\).</p> 
         <p>Knowing that we want \\(x\\) and \\(y\\) to be close, we can start by finding the integer factors closest to \\(\\sqrt{720}\\). They need \\(x\\) and \\(y\\) to be factors of \\(720\\) because both multiplying and dividing by \\(frac{y}{x}\\) needs to yield an integer, meaning that \\(\\frac{720}{x}\\) and \\(\\frac{720}{y}\\) both need to be integers. We don't know what this is, because it's irrational, but we do know that \\(\\sqrt{625}\\) is \\(25\\). If we square \\(16\\) we get \\(676\\) (iykyk) and squaring \\(17\\) gets us \\(729\\), thus we know that \\(\\sqrt{720}\\) is between \\(16\\) and \\(17\\). We take the prime factorization of \\(720\\) and try to find nearby values. Doing this, we can find \\(16\\) and \\(15\\). This means \\(r\\) can be \\(\\frac{16}{15}\\).</p>
         <p>Multiply \\(720 \\cdot \\frac{16}{15}\\ = 678\\). Now add \\(6+7+8\\) and get a final answer of \\(21\\).</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Read the wording of the quesiton carefully. A common mistake is to just multiply by \\(2\\), because that seems like the smallest thing we can multiply by to get another integer, but don't forget the possibility of multiplying by fractions.</p>`,
         topic: "geometric sequences",
     },
@@ -401,7 +413,13 @@ star
      solution: `<b>810</b>Your first move gives you \\(5\\) choices to go to. If you continue going around the top, you can go in \\(2\\) directions, with each direction having \\(3\\) possibilites of where you stop. We can also go straigt down, which adds another possibilityThere are
      \\(5 \\cdot 3\\ cdot 3= 45\\) ways to go through the top row. After that, there are \\(2\\) different plcaes to start the bottom ring at. After this, it's just the same \\(3 \\cdot 3\\), which means \\(2 \\cdot 3 \\cdot 3\\) or \\(18\\) ways to complete bottom row. 
      \\(18 \\cdot 45 = 810\\)</p>
-     <h3>Common Mistake ❗❗❗</h3>
+     <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
      <p>Don't waste time counting how many ways you can go. Not only is it a waste of time and difficult to keep track of, you should be able to tell by the answer choices that it just isn't convenient. Instead, blend probability and counting into geometry to optimize your answer.</p>
      `,
      type: 'mc',
@@ -570,7 +588,13 @@ star
         <p>We can, however, divide the semicircle into parts. If we were to draw a line through the two points on each overlap, we're left with a few trapezoids with rounded tops. If we draw another two lines, from the top points of the trapezoid, we end up with \\(2\\) equilateral triangles
         and a section of a circle. These triangles have side lengths \\(1\\) for areas of \\(\\frac{\\sqrt{3}}{4}\\). There are \\(12\\) of these for a combined area of \\(3\\sqrt{3}). The segments of circles have angles of \\(60\\) degrees, meaning they are all \\(\\frac{1}{6}\\) of a circle. We don't have to worry
         too much about this, though, because there are \\(6\\) anyways. They all have radius of \\(1\\) for a combined area of \\(pi\\). Thus, the total area is \\(6 \\sqrt{3}-3\\sqrt{3}-\\pi). 
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Don't give up because you don't know a certain formula, like the area of a hexagon. You can always use preexisting knowledge and logic to derive it, like we did in the example.</p>`,
         answer: `\\(A) 6\\sqrt{3}-3\\pi\\)`,
         topic: `hexagons`,
@@ -604,7 +628,13 @@ star
         $$
         \\frac{38 \\cdot 8\\pi}{\\frac{4}{3}\\pi \\cdot 12} =19
         $$
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Don't be afraid to draw things. It can help save time and make it easier to conceptualize nuanced problems like these</p>`,
         answer: '\\(B) 19\\)',
         topic: 'composite shapes',

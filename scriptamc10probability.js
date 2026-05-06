@@ -566,7 +566,13 @@ star
         solution: `<b>'\\(\\frac{59}{64}\\)'</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
         <p>For it to be odd, we need all the factors to be odd. There's a \\(\\frac{1}{2}^6=\\frac{1}{64}\\) chance of this</p>
         <p>If it's divisble by \\(2\\) but not \\(4\\), we need \\(5\\) odds and then either a \\(2\\) or a \\(6\\). That's \\(\\frac{1}{2}^5 \\cdot \\frac{1}{3}=\\frac{1}{192}\\). However, since there are \\(6\\) positions that the \\(2\\) or \\(6\\) can be in, we multiply by \\(6\\) for \\(\\frac{1}{16}\\). We add these and subtract from \\(1\\) for \\(\\frac{59}{64}\\)</p>
-        <h3> Common Mistake ❗❗❗</h3>
+        <h3> Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>When you have an incredibly hard or complex probability to calculate, it often helps you to focus on the other probability, assuming there are two cases. This is called complementary counting`,
         type: 'mc',
         choices: ['\\(A) \\frac{3}{4}\\)', '\\(B) \\frac{57}{64}\\)', '\\(C) \\frac{59}{64}\\)', '\\(D) \\frac{187}{192}\\)', '\\(E) \\frac{63}{64}\\)'],
@@ -777,7 +783,13 @@ star
        text: `In how many ways can \\(6\\) juniors and \\(6\\) seniors form \\(3\\) disjoint teams of \\(4\\) people so that each team has \\(2\\) juniors and \\(2\\) seniors?`,
        solution: `<b>1350</b><p>We start with the juniors. There are \\(6\\) choose \\(2=15\\) ways for them to make the first group, and then \\(4\\) choose \\(2=6\\) ways to choose the second. The last is set. That's \\(15 \\cdot 6\\), and just as many for the seniors. We  get
        \\(8100\\) but divide by \\(3!\\), which is the number of ways to arrange the group (because the order doesn't matter). This gives us \\(1350\\) </p>
-       <h3>Common Mistake ❗❗❗</h3>
+       <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
        <p>Don't forget to divide by \\(3!\\). A big part of math, especially competition math, is knowing exactly what you are doing, not just plugging numbers into equations. Understanding why and what happens is vital for solvingAMC 10 Problems`,
        type: 'mc',
        choices: ['\\(A) 720\\)', '\\(B) 1350\\)', '\\(C) 2700\\)', '\\(D) 3280\\)', '\\(E) 8100\\)'],

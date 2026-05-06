@@ -1037,7 +1037,7 @@ rating: 1200,
         solution: `<b>8</b><p>If you have graph paper or just scratch paper you can easily draw this out and see that it is 4 diamonds around the origin. However, let's explain why that is.</p>
         <p>I always like to think of absolute value graphs as "cases" because it combines a bunch of different linear graphs. In this case, we see that the different "cases" in which the slope and \\(y\\) intercept and \\(x\\) intercept are positive, negative etc. A general rule when you see equations that look like \\(|x|+|y| < z\\) is that it will include squares of some sort.</p>
         <p>Returning to the question, we know that the intercepts are at \\(\\pm 1\\). We use the pythagorean theorem to find that the side lengths of the squares are \\(\\sqrt{2}\\), and square that to find that they all have areas of \\(2\\). Since there are four squares, we multiply that by four and find a final solution of \\(8\\)`,
-        topic: "graphing",
+        topic: "functions and graphing",
         hint: "Try to graph this. It doesn't have to be accurate, but it helps to visualize the shape.",
         step: "Graph by using casework for \\(x\\) is positive or negative and \\(y\\) is positive or negative"
     },
@@ -1566,7 +1566,7 @@ rating: 1600,
         exactly \\(100\\) away from the input for \\(a\\). Since we want the greatest difference, we want one to be greater than \\(a\\) and one to be smaller. We also want the change from \\(a\\) to \\(f(800/400)\\) to be as large as possible, so we use the largest possible slope, which we know is \\(\\pm \\frac{1}{2}\\). Since the difference is \\(100\\) between \\(300\\) and \\(400\\), we can say the output goes down by
         \\(50\\) and the same for the other two, making the maximum distance \\(100\\). Now, we input that into our equation \\(|f(f(800))-f(f(400))| \\le \\frac{1}{2}|f(800)-f(400)|\\) so we know that the final answer is \\(50\\).</p>
         `,
-        topic: "functions", 
+        topic: "functions and graphing", 
         hint: "How can you relate this to the slope formula to predict the value of \\(f(x)\\)?",
         step: "Input \\(f(800)\\) and \\(f(400\\) as the inputs for \\(x\\) and \\(y\\), then find the maximum value of \\(f(800)-f(400)\\)"
     }, 
@@ -2207,7 +2207,7 @@ exclamation
 exclamation
 </span></h3>
         <p>If you do chose to graph, be as careful as you can with graphing things, because, especially when looking for solutions, you need as much to be accurate as possible</p>`,
-        topic: "graphing",
+        topic: "functions and graphing",
         hint: "What is the shape of the second graph? What happens when you square an absolute value graph (use casework, if you don't know)?",
         step: "Graph a parabola and two diamonds. Where do they intersect?"
     },
@@ -2919,7 +2919,7 @@ star
 rating: 800,
         used: false,
         type: 'fr',
-        text: `<p>What is the value of \\(1-(-2)-3-(-4)-5(-(-6)\\)?</p>`,
+        text: `<p>What is the value of \\(1-(-2)-3-(-4)-5-(-6)\\)?</p>`,
         solution: `<b>5</b><p>Solve</p>
         $$
         1+2-3+4-5+6
@@ -8665,8 +8665,8 @@ const TOPIC_GLOSSARY = [
         errors: 0,
     },
 {
-    id: 'functions',   
-    title: `Functions`,
+    id: 'functions and graphing',   
+    title: `Functions and Graphing`,
         description: "Recognizing and manipulating popular parent functions and being able to identify them",
         workOn: [
             "Parent Functions",
@@ -10979,5 +10979,5 @@ console.log(getHardestProblems())
 window.loadTopicQuestion = loadTopicQuestion;
 window.loadQuestion = loadQuestion;
 // etc. for any function called from HTML onclick attributes
-const array = allQ.filter(q => q.topic === "arithmetic")
+const array = allQ.filter(q => q.topic === "graphing")
 console.log(array)

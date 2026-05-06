@@ -1,36 +1,11 @@
-const questionTitle = document.getElementById("question-title");
-const questionText = document.getElementById("question-text");
-const answerInput = document.getElementById("answer-input");
-const checkBtn = document.getElementById("check-btn");
-const solutionDiv = document.getElementById("solution");
-const solutionText = document.getElementById("solution-text");
-const nextBtn = document.getElementById("next-btn");
-const mcContainer = document.getElementById("mc-container");
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
-const questionChoices = document.getElementById("mc-container")
-const problemsCard = document.getElementById("problems-card");
-const problemsWrapper = document.getElementById("problems-card");
-const confettiCanvas = document.getElementById("confetti-canvas");
-const streakTag = document.getElementById("streakText")
-let streakVar = 0
-let streakTrue =  localStorage.getItem("streak")
-        streakTag.innerHTML = streakVar + " Days"
-if (streakTrue == null){
-        streakVar = 0
-} else {
-        let today = new Date()
-        let last = localStorage.getItem("lastPractice")
-        if (Math.abs(today - last) > 1){
-                streakVar = 0
-        } else {
-                streakVar = localStorage.getItem("streak")
-                streakTag.innerHTML =streakVar + "Days"
-        }
+
+// Main Functions
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
-const myConfetti = confetti.create(confettiCanvas, {
-    resize: true,
-    useWorker: true
-});
 const questions = [
     {
 title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
@@ -987,7 +962,7 @@ rating: 1200,
         solution: `<b>8</b><p>If you have graph paper or just scratch paper you can easily draw this out and see that it is 4 diamonds around the origin. However, let's explain why that is.</p>
         <p>I always like to think of absolute value graphs as "cases" because it combines a bunch of different linear graphs. In this case, we see that the different "cases" in which the slope and \\(y\\) intercept and \\(x\\) intercept are positive, negative etc. A general rule when you see equations that look like \\(|x|+|y| < z\\) is that it will include squares of some sort.</p>
         <p>Returning to the question, we know that the intercepts are at \\(\\pm 1\\). We use the pythagorean theorem to find that the side lengths of the squares are \\(\\sqrt{2}\\), and square that to find that they all have areas of \\(2\\). Since there are four squares, we multiply that by four and find a final solution of \\(8\\)`,
-        topic: "graphing",
+        topic: "functions and graphing",
         hint: "Try to graph this. It doesn't have to be accurate, but it helps to visualize the shape.",
         step: "Graph by using casework for \\(x\\) is positive or negative and \\(y\\) is positive or negative"
     },
@@ -1516,7 +1491,7 @@ rating: 1600,
         exactly \\(100\\) away from the input for \\(a\\). Since we want the greatest difference, we want one to be greater than \\(a\\) and one to be smaller. We also want the change from \\(a\\) to \\(f(800/400)\\) to be as large as possible, so we use the largest possible slope, which we know is \\(\\pm \\frac{1}{2}\\). Since the difference is \\(100\\) between \\(300\\) and \\(400\\), we can say the output goes down by
         \\(50\\) and the same for the other two, making the maximum distance \\(100\\). Now, we input that into our equation \\(|f(f(800))-f(f(400))| \\le \\frac{1}{2}|f(800)-f(400)|\\) so we know that the final answer is \\(50\\).</p>
         `,
-        topic: "functions", 
+        topic: "functions and graphing", 
         hint: "How can you relate this to the slope formula to predict the value of \\(f(x)\\)?",
         step: "Input \\(f(800)\\) and \\(f(400\\) as the inputs for \\(x\\) and \\(y\\), then find the maximum value of \\(f(800)-f(400)\\)"
     }, 
@@ -2155,7 +2130,7 @@ exclamation
 exclamation
 </span></h3>
         <p>If you do chose to graph, be as careful as you can with graphing things, because, especially when looking for solutions, you need as much to be accurate as possible</p>`,
-        topic: "graphing",
+        topic: "functions and graphing",
         hint: "What is the shape of the second graph? What happens when you square an absolute value graph (use casework, if you don't know)?",
         step: "Graph a parabola and two diamonds. Where do they intersect?"
     },
@@ -8458,171 +8433,445 @@ allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
-function getDailySeed() {
-    const today = new Date();
-  return parseInt(
-    today.getFullYear().toString() +
-    (today.getMonth() + 1).toString().padStart(2, "0") +
-    today.getDate().toString().padStart(2, "0")
-  );
-}
-function mulberry32(seed) {
-  return function() {
-    let t = seed += 0x6D2B79F5;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-function shuffleWithSeed(array, seed) {
-  const rand = mulberry32(seed);
-  const arr = [...array];
 
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+
+//------------------------Linear Equations-------------------
+let xInput = "1"
+let yInput = "0"
+function updateTrace() {
+    // 1. Get values from 
+    // input fields
+     xInput = document.getElementById('slope').value;
+     yInput = document.getElementById('yIntercept').value;
+     if (xInput == ""){
+        xInput = "1"
+     }
+     if (yInput == ""){
+        yInput = "0"
+     }
+
+    // 2. Convert string input into arrays (e.g., "5, 6" -> [5, 6])
+    const newYArray = [parseInt(yInput), (parseInt(yInput)+parseInt(xInput))]
+    const newXArray = [0,1]
+    for (let i=2; i<100; i++){
+        newYArray.push((parseInt(yInput))+(parseInt(xInput) * i))
+        newXArray.push(i)
+    }
+    
+    // 3. Update the plot efficiently
+    // Note: Restyle expects nested arrays for x/y data updates
+    var data = {
+        x: [newXArray],
+        y: [newYArray],
+        type: 'scatter',
+        line: {color: '#88B0FF'}
+    };
+    Plotly.restyle('myDiv', data)
+    
+}
+document.getElementById("slope").addEventListener("input", updateTrace)
+document.getElementById("yIntercept").addEventListener("input", updateTrace)
+var trace1 = {
+  x: [0, 100],
+  y: [0,100],
+  type: 'scatter',
+  line: {color: '#88B0FF'}
+};
+
+
+var set = [trace1];
+
+Plotly.newPlot('myDiv', set);
+
+
+
+const draggables = document.querySelectorAll('.draggable');
+const dropzones = document.querySelectorAll('.dropzone');
+
+draggables.forEach(drag => {
+    drag.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', e.target.id);
+    });
+});
+
+dropzones.forEach(zone => {
+    zone.addEventListener('dragover', (e) => {
+        e.preventDefault(); // Required to allow a drop
+        zone.classList.add('hovered');
+    });
+
+    zone.addEventListener('dragleave', () => {
+        zone.classList.remove('hovered');
+    });
+
+    zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.classList.remove('hovered');
+        
+        const dragId = e.dataTransfer.getData('text');
+        const dragElement = document.getElementById(dragId);
+        
+        // Check if correct
+        if (dragElement.getAttribute('data-match') === zone.id) {
+            zone.classList.add('correct');
+            dragElement.classList.add("correct")
+            zone.appendChild(dragElement); // Snap item into the box
+            dragElement.style.cursor = 'default';
+            dragElement.setAttribute('draggable', 'false');
+        }
+    });
+});
+//------------------------Quadratic------------------------
+const c = document.getElementById("myCanvas");
+const ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.moveTo(20, 20);
+ctx.quadraticCurveTo(110, 250, 200, 20);
+ctx.stroke();
+
+//------------------------Exponential----------------------
+let b = 2
+let xArray = []
+let yArray = []
+var exponentsPlot = {
+        x: [],
+        y: [],
+        type: 'scatter'
+        
+}
+for (let i = 0; i < 11; i+= 0.001){
+        let y = (b ** i)
+        xArray.push(i)
+        yArray.push(y)
+        exponentsPlot = {
+                x: xArray,
+                y: yArray,
+                type: 'scatter',
+                line: {color: '#88B0FF'}
+        }
+}
+var setTwo = exponentsPlot
+Plotly.newPlot('exponentialGraph', [setTwo])
+let trace = {
+        x: [],
+        y: [],
+        type: 'scatter',
+                    mode: 'lines',
+            line: { color: '#88B0FF', width: 3 }
+}
+
+
+
+//-----------------------------Inverse-------------------------------
+function drawGraph() {
+    const exprString = document.getElementById('eqInput').value;
+    
+    const xValues = [];
+    const yValues = [];
+
+    try {
+        const expr = math.compile(exprString);
+
+        for (let x = -10; x <= 10; x += 0.1) {
+            let scope = { x: x };
+            let y = expr.evaluate(scope);
+            
+            xValues.push(x);
+            yValues.push(y);
+        }
+
+        trace = {
+            x: xValues,
+            y: yValues,
+            type: 'scatter',
+            mode: 'lines',
+            line: { color: '#88B0FF', width: 3 }
+        };
+
+        const layout = {
+            xaxis: { range: [-10, 10], title: 'x' },
+            yaxis: { range: [-10, 10], title: 'y' },
+            hovermode: 'closest'
+        };
+        
+        const graphTitle = document.getElementById("graphTitle")
+        graphTitle.innerHTML = `Graph of \\(${exprString}\\)`
+        MathJax.typesetPromise([graphTitle]).catch(()=>{})
+        Plotly.newPlot('graphPlot', [trace], layout);
+        
+    } catch (err) {
+    }
+}
+const inverse = document.getElementById('inverseBtn')
+inverse.addEventListener("click", function(){
+        const yNew = []
+        const traceX = trace.x.map(value => value)
+        traceX.forEach(i => {
+        yNew.push(i)
+        })
+        const xNew = []
+        const traceY = trace.y.map(value => value)
+        traceY.forEach(i => {
+                xNew.push(i)
+        })
+        let inverse = {
+                x: xNew,
+                y: yNew,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'inverse'
+        }
+        const dottedX = []
+        const dottedY = []
+        for (let i = 0; i < 100; i++){
+             dottedX.push(i)
+             dottedY.push(i)   
+        }
+        let dottedLine = {
+                x: dottedX,
+                y: dottedY,
+                type: 'scatter',
+                line: {dash: 'dot', color: '#5D5D66' },
+                mode: 'lines',
+                name: 'line of reflection',
+        }
+        var layout = {
+  yaxis: {
+    scaleanchor: "x",
+    scaleratio: 1
   }
+};
 
-  return arr;
+
+        var inverted = [trace, inverse, dottedLine]
+        Plotly.newPlot('graphPlot', inverted, layout)
+})
+drawGraph();
+
+
+//----------------------------Absolute Value-------------------------
+let absoluteValueTrace = {
+        x: [],
+        y: [],
+        type: 'scatter'
 }
-function getDailyProblems(problems, count = 1) {
-  const seed = getDailySeed();
-  const shuffled = shuffleWithSeed(problems, seed);
-  return shuffled.slice(0, count);
+function drawAbsoluteValue() {
+    const exprString = document.getElementById('absoluteValueInput').value;
+    
+    const xValues = [];
+    const yValues = [];
+
+    try {
+        const expr = math.compile(exprString);
+
+        for (let x = -10; x <= 10; x += 0.1) {
+            let scope = { x: x };
+            let y = expr.evaluate(scope);
+            
+            xValues.push(x);
+            yValues.push(y);
+        }
+
+        absoluteValueTrace = {
+            x: xValues,
+            y: yValues,
+            type: 'scatter',
+            mode: 'lines',
+            line: { color: '#88B0FF', width: 3 }
+        };
+
+        const layout = {
+            xaxis: { range: [-10, 10], title: 'x' },
+            yaxis: { range: [-10, 10], title: 'y' },
+            hovermode: 'closest'
+        };
+        
+        const graphTitle = document.getElementById("absoluteValueTitle")
+        graphTitle.innerHTML = `Graph of \\(${exprString}\\)`
+        MathJax.typesetPromise([graphTitle]).catch(()=>{})
+        Plotly.newPlot('absoluteValuePlot', [absoluteValueTrace], layout);
+        
+    } catch (err) {
+    }
 }
-let q = 0;
-function loadQuestion() {
-    q = getDailyProblems(allQ)[0];
-    console.log(q)
-    mcChoices.forEach(btn => btn.disabled = false);
+document.getElementById("absoluteValueBtn").addEventListener("click", function(){
+const traceY = absoluteValueTrace.y.map(value => value)
+const traceX = absoluteValueTrace.x.map(value => value)
+const newY = []
+traceY.forEach(i => {
+        if (i < 0){
+                let replace = (i * -1)
+                newY.push(replace)
+        } else {
+                newY.push(i)
+        }
+        var absoluteTraced = {
+                x: traceX,
+                y: newY,
+                mode: 'lines',
+                type: 'scatter',
+                line: {color: '#ffb192'}
+        }
+                var layout = {
+  yaxis: {
+    scaleanchor: "x",
+    scaleratio: 1
+  }
+}
+        let data = [absoluteValueTrace, absoluteTraced]
+        Plotly.newPlot('absoluteValuePlot', data, layout)
+})
+})
+drawAbsoluteValue()
 
 
-    questionTitle.innerHTML = q.title;
-    questionText.innerHTML = q.text;
+//------------------Floor Function--------------------
+let floorTrace = {
+        x: [],
+        y: [],
+        type: 'scatter'
+}
+function drawFloor() {
+    const exprString = document.getElementById('floorInput').value;
+    
+    const xValues = [];
+    const yValues = [];
 
-    solutionText.innerHTML = "";
-    solutionDiv.style.display = "none";
-    nextBtn.style.display = "none";
+    try {
+        const expr = math.compile(exprString);
 
-    // Reset
-    answerInput.value = "";
-    answerInput.style.display = "none";
-    checkBtn.style.display = "none";
-    mcContainer.classList.add("hidden");
+        for (let x = -10; x <= 10; x += 0.1) {
+            let scope = { x: x };
+            let y = expr.evaluate(scope);
+            
+            xValues.push(x);
+            yValues.push(y);
+        }
 
-    // ----- FREE RESPONSE -----
-    // ----- MULTIPLE CHOICE -----
-    if (q.type === "mc") {
-        console.log("mc")
-        mcContainer.classList.remove("hidden");
+        floorTrace = {
+            x: xValues,
+            y: yValues,
+            type: 'scatter',
+            mode: 'lines',
+            line: { color: '#88B0FF', width: 3 }
+        };
+
+        const layout = {
+            xaxis: { range: [-10, 10], title: 'x' },
+            yaxis: { range: [-10, 10], title: 'y' },
+            hovermode: 'closest'
+        };
+        
+        const graphTitle = document.getElementById("floorTitle")
+        graphTitle.innerHTML = `Graph of \\(${exprString}\\)`
+        MathJax.typesetPromise([graphTitle]).catch(()=>{})
+        Plotly.newPlot('floorPlot', [floorTrace], layout);
+        
+    } catch (err) {
+    }
+}
+document.getElementById("floorBtn").addEventListener("click", function(){
+const traceY = floorTrace.y.map(value => value)
+const traceX = floorTrace.x.map(value => value)
+const newY = []
+traceY.forEach(i => {
+        let replace = Math.floor(i)
+        newY.push(replace)
+
+})
+        var floorTraced = {
+                x: traceX,
+                y: newY,
+                mode: 'lines',
+                type: 'scatter',
+                line: {color: '#ffb192'}
+        }
+                var layout = {
+  yaxis: {
+    scaleanchor: "x",
+    scaleratio: 1
+  }
+}
+        let data = [floorTrace, floorTraced]
+        Plotly.newPlot('floorPlot', data, layout)
+})
+drawFloor()
+
+//--------------Final Question---------------
+const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
+const mcContainer = document.getElementById("mc-container");
+const questionChoices = document.getElementById("mc-container")
+const topicQ = []
+let currentQuestion = 0
+allQ.forEach(i => {
+        if (i.topic == 'functions and graphing'){
+                topicQ.push(i)
+        }
+})
+shuffleArray(topicQ)
+function loadQuestion(){
+        let topicQuestion = topicQ[currentQuestion]
+        document.getElementById("question-title").innerHTML = topicQuestion.title
+        document.getElementById("question-text").innerHTML = topicQuestion.text
+        mcChoices.forEach(btn => btn.disabled = false)
+            document.getElementById("solution-text").innerHTML = ""
+    document.getElementById("solution").style.display = "none"
+    document.getElementById("next-btn").style.display = "none"
+    
+    document.getElementById("answer-input").value = ""
+            document.getElementById("answer-input").style.display = "none"
+    document.getElementById("check-btn").style.display = "none"
+    mcContainer.classList.add("hidden")
+
+    if (!topicQuestion.type || topicQuestion.type === "fr") {
+        document.getElementById("answer-input").style.display = "inline-block"
+        document.getElementById("check-btn").style.display = "inline-block"
+    }
+    if (topicQuestion.type === "mc") {
+        mcContainer.classList.remove("hidden")
 
         mcChoices.forEach((btn, i) => {
-            btn.textContent = q.choices[i];
-            btn.onclick = () => handleMCAnswer(q.choices[i]);
+            btn.textContent = topicQuestion.choices[i];
+            btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
         });
     }
-        let d1 = new Date()
-        let d2 = localStorage.getItem("lastPractice")
-// Create copies to avoid mutating original dates
-const date1Copy = new Date(d1).setHours(0, 0, 0, 0);
-const date2Copy = new Date(d2).setHours(0, 0, 0, 0);
-
-const isSameDay = date1Copy === date2Copy;
-
-console.log(isSameDay)
-
-        if (isSameDay === true){
-                console.log("same day")
-        questionTitle.innerHTML=("You Already Did Today's Daily Problem!")
-        questionText.innerHTML = ("Come back tomorrow for a new challenge!")
-        questionText.style.color = "var(--accent-color)"
-        checkBtn.style.display = "none";
-        mcContainer.classList.add("remove")
-        answerInput.style.display = "none !important"
-        mcContainer.style.display = "none"
-} else {
-answerInput.style.display = "inline-block"   
-checkBtn.style.display = "inline-block"
-}
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([document.getElementById("question-text")]).catch(()=>{})
+        MathJax.typesetPromise([questionChoices]).catch(()=>{})
     }
-
 }
-loadQuestion()
-checkBtn.addEventListener("click", function () {
-        localStorage.setItem("doneToday", true)
-        let now = new Date();
-        streakVar = parseInt(streakVar) + 1
-        localStorage.setItem("streak", streakVar)
-        localStorage.setItem("lastPractice", now)
-        streakTag.innerHTML = streakVar + "Days"
-    const userAnswer = answerInput.value.trim()
-    const correctAnswer = q.answer.trim();
-    if (userAnswer === correctAnswer && solutionDiv.style.display==="none") {
-        console.log("correct")
-        solutionText.innerHTML = `<span class="material-symbols-outlined">
-check
-</span> Correct! ` + q.solution;
-
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
-        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
-
-
-
-    } else if (userAnswer !== correctAnswer && solutionDiv.style.display === "none") {
-        solutionText.innerHTML = `<span class="material-symbols-outlined">
-close_small
-</span> Incorrect. ` + q.solution;
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-    }
-    solutionDiv.style.display = "block";
-
-    if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
-    }
-});
 function handleMCAnswer(choice) {
-    answerInput.value = choice; // reuse existing checker
-    checkBtn.click();
+    document.getElementById("answer-input").value = choice; // reuse existing checker
+    document.getElementById("check-btn").click();
 mcChoices.forEach(btn => btn.disabled = true);
 }
-const privacyPolicyBtn = document.getElementById("privacyPolicyBtn")
-const privacyPolicy = document.getElementById("privacyPolicy")
-const termsAndConditions = document.getElementById("termsAndConditions")
- console.log("script running")
-      let helpOn = false;
-  let helpBtn = document.getElementById('helpButton')
-  helpBtn.addEventListener("click", function () {
-    console.log("clicked")
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
-let overlay = document.getElementById('overlay');
-overlay.addEventListener("click", function () {
-    helpPannel.style.display = "none";
-    privacyPolicy.style.display = "none"
-    overlay.style.display = "none"; 
-    termsAndConditions.style.display = "none"
-    helpOn = false;
-});
-// Example: Sending a random math problem
-function myFunctionTwo(){
-        termsAndConditions.style.display = "block"
-        overlay.style.display = "block"
-}
-function myFunction(){
-        console.log(privacyPolicy.style.display)
-                privacyPolicy.style.display = "block"
-                overlay.style.display = "block"
-}
+document.getElementById("check-btn").addEventListener("click", function(){
+        const userAnswer = document.getElementById("answer-input").value
+        const correctAnswer = topicQ[currentQuestion].answer
+        const solutionText = document.getElementById("solution-text")
+        const nextBtn = document.getElementById("next-btn")
+        const solution = document.getElementById("solution")
+        if (userAnswer === correctAnswer){
+                solutionText.innerHTML = "Correct!" + topicQ[currentQuestion].solution
+        } else {
+            solutionText.innerHTML = "Incorrect" + topicQ[currentQuestion].solution    
+        }
+        solution.style.display = "block"
+        nextBtn.style.display = "block"
+        solutionText.style.display = "block"
+        MathJax.typesetPromise([solution]).catch(()=>{})
+})
+document.getElementById("next-btn").addEventListener("click", function() {
+        let subtract = (topicQ.length - 1)
+        const correct = (currentQuestion === subtract)
+        if (correct === true){
+                currentQuestion = 0
+                shuffleArray(topicQ)
+                loadQuestion()
+        } else if (currentQuestion < topicQ.length){
+                currentQuestion += 1
+                loadQuestion()
+        } 
+        
+})
+loadQuestion()

@@ -1192,9 +1192,7 @@ input, textarea{
   height: 45px;
   transition: transform 0.3s ease;
 }
-.miniContainer{
-  margin-left: 0px
-}
+
 #top-bar * {
   margin-left: 5px;
   margin-right: 5px;
@@ -2226,7 +2224,8 @@ input[type=range]::-moz-range-thumb {
   border: none;
 }
 .subsubtopic{
-  margin-left: 50px
+  margin-left: 50px;
+  margin-right: 50px;
 }
 .ittyBitty{
   font-size: 25px !important;

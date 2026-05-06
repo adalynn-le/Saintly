@@ -239,7 +239,13 @@ star
 <p>Total time elapsed: \\(699\\times5 = 3495\\) seconds.</p>
 <p>By dividing by 60, we know that 3495 seconds equals \\(\\frac{3495}{60} = 58 \\) minutes with a remainder of \\(15\\) seconds.</p>
 <p>Therefore, the time is <b>4:58:15</b>.</p>
-<h3>Common Mistake❗❗❗</h3>
+<h3>Common Mistake<SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
 <p>The easiest way to mess up this problem is by misinterpreting what the question is asking. Notice that it asks for the 700th hiccup, but the first hiccup is already accounted for. Make sure to read thoroughly and not to fall for the trick of calculating the duration of 700 hiccups instead of 699.`,
         video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         topic: "word problems"
@@ -264,7 +270,13 @@ star
 <p>The numbers are 15820 and 1582.</p>
 <p>Difference: \\(15820 - 1582 = 14238\\).</p>
 
-<h3>Common Mistake❗❗❗</h3>
+<h3>Common Mistake<SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
 <p>Make sure you understand wwhy the first number is \\(\\times 10\\) the other. This intuition isn't just important for this question, but questions in general`,
         video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         topic: "algebraic manipulation"
@@ -374,7 +386,13 @@ star
         $$
         <p>Just looking at this, we know that 3 is the safest option, because it is clearly a cubic function, which tends to have 3 real roots. From here you can also just logic-your-way through figuring out how many answers there are, which, in this case, is <b> 3<b>
         
-        <h3>Common Mistake❗❗❗</h3>
+        <h3>Common Mistake<SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Remember what you are solving for. An easy mistake is to forget the \\(y=f(x-a)\\) entirely, which will make the question infinitely more confusing.`,
         topic: "functions"
     },
@@ -421,7 +439,13 @@ star
         2x \\ge -21
         $$
         <p>From here, we know that the bounds are \\(x = 10\\) and \\(x = -10\\). Counting all integers between these two numbers yields 19, because 0 can only be counted once. </p>
-        <h3>Common Mistake❗❗❗</h3>
+        <h3>Common Mistake<SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Don't double-count 0. An easy mistake to make is thinking the answer is 10+10, but remember that 0 can only be counted once. You can also just check that the answer is 19 by counting on your fingers(yes you'd have to reset, but it is a decent way to assure youreslf of your answer.)</p>
         `,
         topic: "inequalities"
@@ -529,7 +553,13 @@ star
         <p>Now find the smaller circle (gonna skip the math because it's self-explanatory) which should be \\(18\\pi\\).</p>
         <p>Subtracting gives a target of area \\(14\\pi\\)</p>
         <p>This means the probability of hitting the target is \\(\\frac{14\\pi}{128}\\), which simplifies into \\(\\frac{7\\pi}{64}\\) making \\(m\\) and \\(n\\) \\(7\\) and \\(64\\), respectively. Add these to get a sum of \\(71\\).</p>
-        <h3>Common Mistake❗❗❗</h3>
+        <h3>Common Mistake<SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>While you don't have to, and really shouldn't, try to graph out every point on coordinate grid, it definitely helps to have a sketch and get an idea of what you are solving for. Also, both of the equations were some sort of way of building on common functions/equations. Make sure you know your basics so that you can expand further!</p>`,
         topic: "functions"
     },
@@ -562,7 +592,13 @@ star
         <p>For both \\(2023\\) and \\(2025\\), we know that the remainder when divided by \\(2\\) will be \\(0.5\\). Recalling the divisibility rules for powers of \\(2\\), we know that when a number is divided by \\(2\\) to the  \\(n\\)th power, if the last \\(n\\) digits are divisible by \\(2\\) to the \\(n\\)th power, so is the original number.</p>
         <p>Since we want to save time, instead of calculating \\(2023^2\\), we calculate \\(23^2\\) and find the last two digits, since we know they will be the same in both cases. This ends up being \\(529\\), with the last two digits being \\(29\\) which gives a remainder of \\(1\\) when divided by \\(4\\), which gives a decimal part of \\(0.25\\). Repeat this process for the rest of the terms in both \\(2023\\) and \\(2025\\).</p>
         <p>The decimal parts you should end up with, for both equations, should be \\(0.5\\), \\(0.25\\), \\(0.625\\), and \\(0.625\\). Adding there all together gives us \\(1\\) meaning that all the values are integers.
-        <h3>Common Mistake❗❗❗</h3>
+        <h3>Common Mistake<SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Don't forget that you can sum decimals to get an integer. Be careful not to assume that `,
         topic: "modular arithmetic",
     },
@@ -668,7 +704,13 @@ star
         <p>With this in mind, it helps to start from the middle. When we're dealing with factors, this doesn't mean dividing by 2, but finding the square, or the nearest thing. \\(\\sqrt{60}\\) is irrational, but we know that it must be near \\(8\\) because we know that \\(\\sqrt{64}\\) is equal to \\(8\\). Using this, we can find that the
         nearest integer factors to the square root are \\(6\\) and \\(10\\). Now, obviously \\(10\\) has to be the positive number, so we have to break down \\(6\\), right? Nope, recall that we can maximize the sum of two factors by making them further apart, and that we want the absolute value of the negative sum to be as large as possible without being greater than 10. Using this knowledge,
         we can make the \\(3\\) factors \\(-1\\), \\(-6\\), and \\(10\\) with a sum of \\(3\\).</p>
-        <b>Common Mistake ❗❗❗</b>
+        <b>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></b>
         <p>Don't forget that you can always use \\(1\\) and the number itself as factors. In situations liek these, the more options you give yourself, the better.`,
         topic: "prime factorization",
     },
@@ -720,7 +762,13 @@ star
         <p>Here's where it gets a little bit complicated, because you do have to have an extent of knowledge of pythagorean triples. That being I said, I <b>highly</b> recommend studying common pythagorean tripelets beforehand. Knowing this, we can use the 
         knowledge that \\(7, 24, 25\\) is a pythagorean tripelet. So with that in mind...does that make the answer \\(1\\)? No. Recall that squaring a number gives the same as squaring the negative of that number, so \\(-24\\) is also a value for \\(n\\). So is that it? \\(2\\)?. Not exactly, there's still a few solutions left.
         We know thta the square root of \\(0\\) is \\(0\\). With this knowledge, we can set \\(m\\) to \\(0\\) and solve for \\(n\\) which gives two different values, \\(7\\) and \\(-7\\). With that, we have <b>4</b> values for \\((m,n)\\). 
-        <h3>Common Mistake❗❗❗</h3>
+        <h3>Common Mistake<SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Don't forget to keep going and really think everything through. Some answers are a lot more simple than you think, so take a moment to reflect and look at the question. Since you don't need to answer every question to qualify for AIME, don't worry too much about time if it comes at the cost of getting something right.</p>
         `,
         topic: "algebraic manipulation",
@@ -1215,7 +1263,13 @@ star
         $$
         2
         $$
-        <h3>Disclaimer ❗❗❗</h3>
+        <h3>Disclaimer <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Realistically, if this solution is too hard to follow, you can solve by brute force. While eloquent solutions like these may be faster, what's most important is that it makes sense to you. Don't worry about taking too long on a question. Quality \\(>\\) Quantity is what matters in AMC 10. `,
         topic: "algebraic manipulation"
     },
@@ -1253,7 +1307,13 @@ star
         <p>can be expressed as \\(a-\\frac{1}{b!}\\), where \\(a\\) and \\(b\\) are positive intgeers. What is \\(a+b\\)?`,
         answer: "\\(D) 2023\\)",
         solution: `<b>2023</b><p>We look for a pattern within the sums. One thing you may notice is that \\(\\frac{1}{2!}=1-\\frac{1}{2!}\\). We continue that logic to find that the sum of the terms in this series for \\(n\\) values is equal to \\(1-\\frac{1}{(n+1)!}\\). This means that the final sum is \\(1-\\frac{1}{2022!}). We add \\(a+b\\) for a final sum of \\(2023\\)
-        <h3>Disclaimer ❗❗❗</h3>
+        <h3>Disclaimer <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>This solution uses a trick called Engineer's Induction, which is essentially the assumption of validity in patterns. While it is not always right, I find that in situations like this, it can save time for the AMC 10. If you disagree and/or have time, always feel free to solve on your own.`,
         topic: "induction",
     }, 
@@ -1371,7 +1431,13 @@ star
         $$
         23
         $$
-        <h3>Solving hint ❗❗❗</h3>
+        <h3>Solving hint <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         Don't be afraid to just mess around. If you made it to question 21, that's great already, so go with your gut and try to reason things out. The using \\(K\\) and \\(Q\\) isn't nescessarily mathematically founded, it's just a literal interpretation of the question
         `
         ,
@@ -1699,7 +1765,13 @@ star
         difficulty: 1,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
         solution: `<b>11110</b><p>With something like this, it's simply easier to just brute force your way through. Add the values and find that it is \\(11110\\).</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>If you can brute force it, don't be afraid to. Sometimes, especially towards the start, it's better to get all the easy questions done than to wate time trying to find an eloquent solution.</p>`,
         answer: "11110",
         type: "fr",
@@ -1914,7 +1986,13 @@ star
         $$
         11-3 = 8
         $$
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Make sure you remember to divide by \\(40\\), not \\(41\\). If you want to check why it is \\(40\\), try drawing \\(3\\) lines. Notice that there are 
         \\(2\\) spcaes contained within them, not \\(3\\). This occurs because in order for a "space" to be formed, it needs to be confined on both sides, meaning the last line doesn't have something
         to confine the space attatched to it.</p>
@@ -1996,7 +2074,13 @@ star
         $$
         <p>Using our knowledge of absolute value graphs, we know this forms two diamonds. The top of the inner diamond intersects with the vertex of the parabola, and the sides intersect with the parabola in four other places,
         meaning that there are \\(5\\) values for \\((x,y)\\).</p>
-        <h3>Common  Mistake ❗❗❗</h3>
+        <h3>Common  Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>If you do chose to graph, be as careful as you can with graphing things, because, especially when looking for solutions, you need as much to be accurate as possible</p>`,
         topic: "graphing",
     },
@@ -2084,7 +2168,13 @@ star
         <p>Recall that squaring makes everything positive. We first need to check if anything is negative, because that will affect the result.</p>
         <p> \\(\\sqrt{3}\\) is slightly more than \\(1.5\\), meaning that \\(2\\sqrt{3}\\) is greater than \\(3\\). The squared value in the first term is negative. Squaring this and taking the square root gives the absolute value instead, which is 
         \\(2\\sqrt{3}-3\\). \\(3+2\\sqrt{3}\\) remains the same when squared and taken the root of, so we just add and get a final answer of \\(4\\sqrt{3}\\).</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>If it sounds like a trick question, chances are that it is. Think through things carefuly and recall what squaring and other such things really does, aside from what is obvious</p>`,
         topic: "exponents",
     },
@@ -2368,7 +2458,13 @@ star
         solution: `<b>\\(\\frac{12}{13}\\)</b>Recall that speed is the ratio between distance and time. Since there are no constraints on either, we can set distance or time to whatever we want and solve for the other value. That being said, we want our answer to be as simple as possible. To me, that means
         using whole numbers. We know that we're dealing with a fraction, so let's make the distance the LCM of \\(2\\), \\(4\\), and \\(6\\), which is \\(12\\). Since the path is split in half, each half can be \\(12\\) miles, with the total length being \\(48\\) miles. We know the first leg takes \\(\\frac{12}{4}=3\\) hours, going uphill the second half takes \\(\\frac{12}{2}=6\\) hours, and going downhill it takes \\(\\frac{12}{3}=4\\) hours for a total length of \\(3+6+4=13\\) hours. </p>
         <p>Jean has thus traveled \\(12\\) miles for \\(13\\) hours with a total speed of \\(\\frac{12}{13}\\).</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Don't be afraid to take advantage of the ambiguity of the problem. Because we know we ar dealing with ratios of which we are not given. We use this wisely and intentionaly to make the values easier for us to use and understand.</p>`,
         answer: "\\(C) \\frac{13}{12}\\)",
         topic: `speed-distance-time`,
@@ -2691,7 +2787,13 @@ star
         x^2020+(y-1)^2=1
         $$
         <p>Both terms MUST be positive or \\(0\\) since they are raised to even powers. We know both \\(x=1\\) and \\(x=-1\\) make \\(y=0\\) and \\(y=2\\) and \\(y=0\\) make \\(x=0\\). This, there are 4 possible combinations</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Especialy in cases like these that are solving for "how many", you don't need to solve \\(x\\) or \\(y\\) for a clear and concrete answer. Instead, sometimes use logic, knowledge,
         and induction to save time.`,
         answer: '4',
@@ -2836,7 +2938,13 @@ star
         50 \\frac{2+394}{2} =  9900
         $$
         <p>We get the 394 by summing \\(197+198+199-200\\)</p>
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>Even though this never explicity states to use an arithmetic series, we can always try to find a sequence/series  whenever we see a pattern in numbers.
         A lot of what we know about sequences and series has already been proven, so we can use that to our advantage and save time.</p>
         `,
@@ -2919,7 +3027,13 @@ star
         $$
         440
         $$
-        <h3>Common Mistake ❗❗❗</h3>
+        <h3>Common Mistake <SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
+EXCLAMATION
+</SPAN></h3>
         <p>You don't nescessarily have to solve for \\(x\\) and \\(y\\). Instead, just try to use algebraic manipulation and try to thin WHY they give you the information they did</p>
         `,
         answer: '\\(D) 440\\)',
@@ -2984,7 +3098,7 @@ const streakBar = document.getElementById("streak-bar");
 const backBtn = document.querySelector(".back-btn");
 const progressBar = document.getElementById("progress-bar")
 const mcContainer = document.getElementById("mc-container");
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
+const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
 const questionChoices = document.getElementById("mc-container")
 const submitSolutionButton = document.getElementById("submit-a-solution");
 const submitSolutionForm = document.getElementById("submit-a-solution-form");
