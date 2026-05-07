@@ -423,8 +423,8 @@ star
 </span>`,
         text: "For how many integer values \\(x\\) is \\(|2x| \\le 7\\pi \\)",
         type: "fr",
-        answer: "19",
-        solution: `<b> 19 </b> <p> First, let's get an approximation for \\(7\\pi\\). Assuming \\(\\pi = 3.14\\) we can just multiply them and find the nearest integer that is less than or equal to the product. Since 0.14 is a relatively small decimal, it's pretty intuitive that this integer is \\(21\\). Knowing this, we can rewrite our question to </p>
+        answer: "21",
+        solution: `<b> 21 </b> <p> First, let's get an approximation for \\(7\\pi\\). Assuming \\(\\pi = 3.14\\) we can just multiply them and find the nearest integer that is less than or equal to the product. Since 0.14 is a relatively small decimal, it's pretty intuitive that this integer is \\(21\\). Knowing this, we can rewrite our question to </p>
         $$
         |2x| \\le 21
         $$
@@ -438,7 +438,7 @@ star
         $$
         2x \\ge -21
         $$
-        <p>From here, we know that the bounds are \\(x = 10\\) and \\(x = -10\\). Counting all integers between these two numbers yields 19, because 0 can only be counted once. </p>
+        <p>From here, we know that the bounds are \\(x = 10\\) and \\(x = -10\\). Counting all integers between these two numbers yields 21, because 0 can only be counted once. </p>
         <h3>Common Mistake<SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
 EXCLAMATION
 </SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
@@ -446,7 +446,7 @@ EXCLAMATION
 </SPAN><SPAN CLASS="MATERIAL-SYMBOLS-OUTLINED">
 EXCLAMATION
 </SPAN></h3>
-        <p>Don't double-count 0. An easy mistake to make is thinking the answer is 10+10, but remember that 0 can only be counted once. You can also just check that the answer is 19 by counting on your fingers(yes you'd have to reset, but it is a decent way to assure youreslf of your answer.)</p>
+        <p>Don't double-count 0. An easy mistake to make is thinking the answer is 10+10, but remember that 0 can only be counted once. You can also just check that the answer is 21 by counting on your fingers(yes you'd have to reset, but it is a decent way to assure youreslf of your answer.)</p>
         `,
         topic: "inequalities"
     },
