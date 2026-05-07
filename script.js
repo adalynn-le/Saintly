@@ -284,7 +284,7 @@ EXCLAMATION
     {
         used: false,
         difficulty: 1,
-        title: `AMC 10A 2021 Spring Problem 1 <span class="material-symbols-outlined staricon">
+        title: `1 <span class="material-symbols-outlined staricon">
 star
 </span>`,
         text: `
@@ -2562,7 +2562,11 @@ star
         <p>By Vieta's rules, we know that the the factors of the equation, when factoring, must multiply to \\(-20100\\) and sum to \\(1\\). We're looking for something 
         close to the square root. We don't have the luxury of a calculator, but what we can do is use the answer choices to approximate.</p>
         <p>Right off the bat, we know that \\(100.5\\) would be too low because \\(100^2=10000\\). \\(134^2=17956\\), still too low, \\(142^2=20164\\), which is as close as we can get.</p>
-        <p>It's not exact because we know that there are multiple items valued at \\(142\\), but we can still count that as our answer.</p>`,
+        <p>It's not exact because we know that there are multiple items valued at \\(142\\), but we can still count that as our answer.</p>
+        <p><b>Solution by Khang Pham</b></p>
+        <p>We can see \\(n\\) repeat \\(n\\) times from \\(1\\) to \\(200\\), which means the number of numbers is the sum of the integers from \\(1\\) to \\(200\\). We use \\(S_{200}=200 \\frac{1+200}{2}=100 \\cdot 201 = 20100\\).</p>
+        <p>With this knowledge, we can find that the median is going to be the average of the \\(10500\\)th and \\(10501\\)th numbers. Now, we look for a number such that \\(S_{n}\\) is close to \\(10500\\). We solve for \\(10500 = n \\frac{n+1}{2}\\). Solving gives \\(n=141.27\\). We round up though, because the sum needs to be at least \\(10500\\). Thus we have 
+        \\(142\\) in position \\(10500\\). We realize that the next value also cannot be \\(143\\) because it's not close enough, so both values are \\(142\\) for a median of \\(142\\)`,
         answer: "\\(C) 142\\)",
         solution: "word problems",
         topic: `series`,
