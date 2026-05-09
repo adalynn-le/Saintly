@@ -1,3 +1,21 @@
+import { createClient } from 'https://esm.sh/@supabase/supabase-js';
+const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
+const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
+const supabase = createClient(supabaseURL, supabaseKey);
+// Assume supabase client is already initialized
+async function getTableData() {
+  const { data, error } = await supabase
+    .from('question_stats')
+    .select('*'); // '*' selects all columns
+
+  if (error) {
+    console.error('Error fetching data:', error);
+    return;
+  }
+
+  // 'data' is already an array of objects: [{id: 1, ...}, {id: 2, ...}]           
+  return data;
+}
 //----------Variables-----------//
 let answerInput1 = 0;
 let userAnswer = 0;
@@ -9,6 +27,7 @@ let testFinished = false;
 //----------Questions Database----------//
 const problem1 = [
     {
+        title: 'AMC 10B 2022 Problem 1 ⭐',
         text: ` <p>Compute the value of:</p>
 $$
 (2^2 - 2) - (3^2 - 3) + (4^2 - 4)
@@ -278,6 +297,7 @@ discipline: 'algebra',
 ]
 const problem2 = [
     {
+        title: 'AMC 10A 2024 Problem 2 ⭐',
                 used: false,
         difficulty: 1,
         title:"AMC 10B 2024 Problem 2 ⭐",
@@ -307,6 +327,7 @@ const problem2 = [
         discipline: `number theory`
     },
     {
+        title: `AMC 10A 2024 Problem 2 ⭐`,
                 used: false,
         difficulty: 1,
         title: "AMC 10A 2024 Problem 2 ⭐",
@@ -5309,7 +5330,7 @@ const problem20 = [
         real \\(r \\ge 0\\), let \\(S(r)\\) be the set of points in \\(3\\) -dimensional spcae that lie within a distance \\(r\\) of some point in \\(B\\).
         The volume of \\(S(r)\\) can be expressed as \\(ar^3+b^2+cr+d\\) where \\(a, b, c\\) and \\(d\\) are positive real numbers. What is \\(\\frac{bc}{ad}\\)</p>`,
         type: 'mc',
-        choice: ['\\(A) 6\\)', '\\(B) 19\\)', '\\(C) 24\\)', '\\(D) 26\\)', '\\(E) 38\\)'],
+        choices: ['\\(A) 6\\)', '\\(B) 19\\)', '\\(C) 24\\)', '\\(D) 26\\)', '\\(E) 38\\)'],
         solution: `<b>19</b><p>Let's first try to digest exactly what this means</p>
         <p>This took me a while to fully understand, but essentially, we're finding the volume of a shape where the boundaries are all \\(r\\) units away from the edges and faces of \\(B\\). If you want to draw this out, it looks like a rounded rectangular prism</p>
         <p>We can work backwards, because that's what is most simple. \\(d\\) is a constantthat doesn't depend on \\(r\\). Thus, it must be the unchanging area of \\(B\\) which is \\(1 \\cdot 3 \\cdot 4 = 12\\).</p>
@@ -6649,6 +6670,7 @@ let timerText = document.getElementById("timer");
 let timerBtn = document.getElementById("startTimer");
 const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
 let problemsContainer = document.getElementById("problems-card");
+const heatmap = Array.from(document.querySelectorAll("#heatmap"));
 //---------Question Mechanics----------//
 function loadQuestions(){
 function loadQuestion1() {
@@ -7258,6 +7280,11 @@ function loadMultipleChoice() {
         } 
     } 
     });
+    const mcChoicesAll = document.querySelectorAll('.mc-choice')
+    if (window.MathJax) {
+        MathJax.typesetPromise([mcChoicesAll]).catch((err) => console.log('MathJax error:', err));
+    }
+    if (window.MathJax) MathJax.typesetPromise([document.getElementById('choices-container')]);
 }
 function handleImages(){
     if (problem1[0].image){
@@ -7438,6 +7465,181 @@ function overwrite() {
     });
 }
 checkBtn.onclick = function(){
+    console.log("clicked")
+const heatmap1 = document.getElementById("heatmap1")
+if (correctAnswers[0] === 6){
+    heatmap1.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap1.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap2 = document.getElementById("heatmap2")
+if (correctAnswers[1] === 6){
+    heatmap2.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap2.style.backgroundColor = "var(--accent-color)"
+}
+document.getElementById("heatmapContainer").style.display = "inline-block"
+const heatmap3 = document.getElementById("heatmap3")
+if (correctAnswers[2] === 6){
+    heatmap3.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap3.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap4 = document.getElementById("heatmap4")
+if (correctAnswers[3] === 6){
+    heatmap4.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap4.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap5 = document.getElementById("heatmap5")
+if (correctAnswers[4] === 6){
+    heatmap5.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap5.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap6 = document.getElementById("heatmap6")
+if (correctAnswers[5] === 6){
+    heatmap6.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap6.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap7 = document.getElementById("heatmap7")
+if (correctAnswers[6] === 6){
+    heatmap7.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap7.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap8 = document.getElementById("heatmap8")
+if (correctAnswers[7] === 6){
+    heatmap8.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap8.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap9 = document.getElementById("heatmap9")
+if (correctAnswers[8] === 6){
+    heatmap9.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap9.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap10 = document.getElementById("heatmap10")
+if (correctAnswers[9] === 6){
+    heatmap10.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap10.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap11 = document.getElementById("heatmap11")
+if (correctAnswers[10] === 6){
+    heatmap11.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap11.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap12 = document.getElementById("heatmap12")
+if (correctAnswers[11] === 6){
+    heatmap12.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap12.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap13 = document.getElementById("heatmap13")
+if (correctAnswers[12] === 6){
+    heatmap13.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap13.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap14 = document.getElementById("heatmap14")
+if (correctAnswers[13] === 6){
+    heatmap14.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap14.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap15 = document.getElementById("heatmap15")
+if (correctAnswers[14] === 6){
+    heatmap15.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap15.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap16 = document.getElementById("heatmap16")
+if (correctAnswers[15] === 6){
+    heatmap16.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap16.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap17 = document.getElementById("heatmap17")
+if (correctAnswers[16] === 6){
+    heatmap17.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap17.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap18 = document.getElementById("heatmap18")
+if (correctAnswers[17] === 6){
+    heatmap18.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap18.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap19 = document.getElementById("heatmap19")
+if (correctAnswers[18] === 6){
+    heatmap19.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap19.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap20 = document.getElementById("heatmap20")
+if (correctAnswers[19] === 6){
+    heatmap20.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap20.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap21 = document.getElementById("heatmap21")
+if (correctAnswers[20] === 6){
+    heatmap21.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap21.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap22 = document.getElementById("heatmap22")
+if (correctAnswers[21] === 6){
+    heatmap22.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap22.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap23 = document.getElementById("heatmap23")
+if (correctAnswers[22] === 6){
+    heatmap23.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap23.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap24 = document.getElementById("heatmap24")
+if (correctAnswers[23] === 6){
+    heatmap24.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap24.style.backgroundColor = "var(--accent-color)"
+}
+
+const heatmap25 = document.getElementById("heatmap25")
+if (correctAnswers[24] === 6){
+    heatmap25.style.backgroundColor = "var(--primary-color)"
+} else {
+    heatmap25.style.backgroundColor = "var(--accent-color)"
+}
     if (testFinished === false){
     clearInterval(timerInterval);
     let totalScore = correctAnswers.reduce((a, b) => a + b, 0);
@@ -7456,18 +7658,23 @@ const allProblems = [
 problemsCard.forEach((solutionBox, i) => {
     solutionBox.style.display = "block";
     if (correctAnswers[i] === 6){
-        solutionBox.innerHTML = "✅ " + allProblems[i][0].solution;
+        solutionBox.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + allProblems[i][0].solution;
             if (window.MathJax) {
         MathJax.typesetPromise([solutionBox]).catch(()=>{});
     }
     } else {
-        solutionBox.innerHTML = "❌ " + allProblems[i][0].solution;
+        solutionBox.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Correct! ` + allProblems[i][0].solution;
             if (window.MathJax) {
         MathJax.typesetPromise([solutionBox]).catch(()=>{});
     }
     }
 
 });
+
 }
     testFinished = true;
     overwrite();
@@ -7496,6 +7703,38 @@ function showScore(){
     console.log(totalScore)
 
 }
+function assignTitle(array){
+    array.forEach(i => {
+        if (i.title === undefined){
+            i.title= 'AMC 10A 2024 Problem 2 ⭐'
+        }
+    })
+}
+assignTitle(problem1)
+assignTitle(problem2)
+assignTitle(problem3)
+assignTitle(problem4)
+assignTitle(problem5)
+assignTitle(problem6)
+assignTitle(problem7)
+assignTitle(problem8)
+assignTitle(problem9)
+assignTitle(problem10)
+assignTitle(problem11)
+assignTitle(problem12)
+assignTitle(problem13)
+assignTitle(problem14)
+assignTitle(problem15)
+assignTitle(problem16)
+assignTitle(problem17)
+assignTitle(problem18)
+assignTitle(problem19)
+assignTitle(problem20)
+assignTitle(problem21)
+assignTitle(problem22)
+assignTitle(problem23)
+assignTitle(problem24)
+assignTitle(problem25)
 function selectAnswer(btn, number){
     btn.classList.add("selected");
 
@@ -7532,7 +7771,7 @@ function startTimer(duration, display) {
 
 timerBtn.addEventListener("click", function () {
     var fiveMinutes = 60 * 75
-        display = document.querySelector('#timer');
+        let display = document.querySelector('#timer');
     startTimer(fiveMinutes, display);
     timerBtn.style.display = "none";
     problemsContainer.style.display = "block";
@@ -7554,12 +7793,16 @@ const allProblems = [
 problemsCard.forEach((solutionBox, i) => {
     solutionBox.style.display = "block";
     if (correctAnswers[i] === 6){
-        solutionBox.innerHTML = "✅ " + allProblems[i][0].solution;
+        solutionBox.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + allProblems[i][0].solution;
             if (window.MathJax) {
         MathJax.typesetPromise([solutionBox]).catch(()=>{});
     }
     } else {
-        solutionBox.innerHTML = "❌ " + allProblems[i][0].solution;
+        solutionBox.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Correct! ` + allProblems[i][0].solution;
             if (window.MathJax) {
         MathJax.typesetPromise([solutionBox]).catch(()=>{});
     }
@@ -7578,9 +7821,213 @@ overlay.addEventListener("click", function(){
         scorePannel.style.display="none";
     }
 });
-if (--timer < 0) {
-    clearInterval(timerInterval);
-    checkBtn.onclick();
-}
+
+const questionStats = await getTableData()
+let problemOneClean = problem1[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionOneAccuracy =
+    questionStats.find(q => q.question_title === problemOneClean)?.success_rate || 0.25
+const heatmap1 = document.getElementById("heatmap1")
+heatmap1.style.opacity = questionOneAccuracy
+
+let problemTwoClean = problem2[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTwoAccuracy =
+    questionStats.find(q => q.question_title === problemTwoClean)?.success_rate || 0.25
+const heatmap2 = document.getElementById("heatmap2")
+heatmap2.style.opacity = questionTwoAccuracy
+
+let problemThreeClean = problem3[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionThreeAccuracy =
+    questionStats.find(q => q.question_title === problemThreeClean)?.success_rate || 0.25
+const heatmap3 = document.getElementById("heatmap3")
+heatmap3.style.opacity = questionThreeAccuracy
+
+let problemFourClean = problem4[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionFourAccuracy =
+    questionStats.find(q => q.question_title === problemFourClean)?.success_rate || 0.25
+const heatmap4 = document.getElementById("heatmap4")
+heatmap4.style.opacity = questionFourAccuracy
+
+let problemFiveClean = problem5[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionFiveAccuracy =
+    questionStats.find(q => q.question_title === problemFiveClean)?.success_rate || 0.25
+const heatmap5 = document.getElementById("heatmap5")
+heatmap5.style.opacity = questionFiveAccuracy
+
+let problemSixClean = problem6[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionSixAccuracy =
+    questionStats.find(q => q.question_title === problemSixClean)?.success_rate || 0.25
+const heatmap6 = document.getElementById("heatmap6")
+heatmap6.style.opacity = questionSixAccuracy
+
+let problemSevenClean = problem7[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionSevenAccuracy =
+    questionStats.find(q => q.question_title === problemSevenClean)?.success_rate || 0.25
+const heatmap7 = document.getElementById("heatmap7")
+heatmap7.style.opacity = questionSevenAccuracy
+
+let problemEightClean = problem8[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionEightAccuracy =
+    questionStats.find(q => q.question_title === problemEightClean)?.success_rate || 0.25
+const heatmap8 = document.getElementById("heatmap8")
+heatmap8.style.opacity = questionEightAccuracy
+
+let problemNineClean = problem9[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionNineAccuracy =
+    questionStats.find(q => q.question_title === problemNineClean)?.success_rate || 0.25
+const heatmap9 = document.getElementById("heatmap9")
+heatmap9.style.opacity = questionNineAccuracy
+
+let problemTenClean = problem10[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTenAccuracy =
+    questionStats.find(q => q.question_title === problemTenClean)?.success_rate || 0.25
+const heatmap10 = document.getElementById("heatmap10")
+heatmap10.style.opacity = questionTenAccuracy
+
+let problemElevenClean = problem11[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionElevenAccuracy =
+    questionStats.find(q => q.question_title === problemElevenClean)?.success_rate || 0.25
+const heatmap11 = document.getElementById("heatmap11")
+heatmap11.style.opacity = questionElevenAccuracy
+
+let problemTwelveClean = problem12[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTwelveAccuracy =
+    questionStats.find(q => q.question_title === problemTwelveClean)?.success_rate || 0.25
+const heatmap12 = document.getElementById("heatmap12")
+heatmap12.style.opacity = questionTwelveAccuracy
+
+let problemThirteenClean = problem13[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionThirteenAccuracy =
+    questionStats.find(q => q.question_title === problemThirteenClean)?.success_rate || 0.25
+const heatmap13 = document.getElementById("heatmap13")
+heatmap13.style.opacity = questionThirteenAccuracy
+
+let problemFourteenClean = problem14[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionFourteenAccuracy =
+    questionStats.find(q => q.question_title === problemFourteenClean)?.success_rate || 0.25
+const heatmap14 = document.getElementById("heatmap14")
+heatmap14.style.opacity = questionFourteenAccuracy
+
+let problemFifteenClean = problem15[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionFifteenAccuracy =
+    questionStats.find(q => q.question_title === problemFifteenClean)?.success_rate || 0.25
+const heatmap15 = document.getElementById("heatmap15")
+heatmap15.style.opacity = questionFifteenAccuracy
+
+let problemSixteenClean = problem16[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionSixteenAccuracy =
+    questionStats.find(q => q.question_title === problemSixteenClean)?.success_rate || 0.25
+const heatmap16 = document.getElementById("heatmap16")
+heatmap16.style.opacity = questionSixteenAccuracy
+
+let problemSeventeenClean = problem17[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionSeventeenAccuracy =
+    questionStats.find(q => q.question_title === problemSeventeenClean)?.success_rate || 0.25
+const heatmap17 = document.getElementById("heatmap17")
+heatmap17.style.opacity = questionSeventeenAccuracy
+
+let problemEighteenClean = problem18[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionEighteenAccuracy =
+    questionStats.find(q => q.question_title === problemEighteenClean)?.success_rate || 0.25
+const heatmap18 = document.getElementById("heatmap18")
+heatmap18.style.opacity = questionEighteenAccuracy
+
+let problemNineteenClean = problem19[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionNineteenAccuracy =
+    questionStats.find(q => q.question_title === problemNineteenClean)?.success_rate || 0.25
+const heatmap19 = document.getElementById("heatmap19")
+heatmap19.style.opacity = questionNineteenAccuracy
+
+let problemTwentyClean = problem20[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTwentyAccuracy =
+    questionStats.find(q => q.question_title === problemTwentyClean)?.success_rate || 0.25
+const heatmap20 = document.getElementById("heatmap20")
+heatmap20.style.opacity = questionTwentyAccuracy
+
+let problemTwentyOneClean = problem21[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTwentyOneAccuracy =
+    questionStats.find(q => q.question_title === problemTwentyOneClean)?.success_rate || 0.25
+const heatmap21 = document.getElementById("heatmap21")
+heatmap21.style.opacity = questionTwentyOneAccuracy
+
+let problemTwentyTwoClean = problem22[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTwentyTwoAccuracy =
+    questionStats.find(q => q.question_title === problemTwentyTwoClean)?.success_rate || 0.25
+const heatmap22 = document.getElementById("heatmap22")
+heatmap22.style.opacity = questionTwentyTwoAccuracy
+
+let problemTwentyThreeClean = problem23[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTwentyThreeAccuracy =
+    questionStats.find(q => q.question_title === problemTwentyThreeClean)?.success_rate || 0.25
+const heatmap23 = document.getElementById("heatmap23")
+heatmap23.style.opacity = questionTwentyThreeAccuracy
+
+let problemTwentyFourClean = problem24[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTwentyFourAccuracy =
+    questionStats.find(q => q.question_title === problemTwentyFourClean)?.success_rate || 0.25
+const heatmap24 = document.getElementById("heatmap24")
+heatmap24.style.opacity = questionTwentyFourAccuracy
+
+let problemTwentyFiveClean = problem25[0].title.replaceAll("⭐", `<span class="material-symbols-outlined">
+star
+</span>`)
+let questionTwentyFiveAccuracy =
+    questionStats.find(q => q.question_title === problemTwentyFiveClean)?.success_rate || 0.25
+const heatmap25 = document.getElementById("heatmap25")
+heatmap25.style.opacity = questionTwentyFiveAccuracy
 loadMultipleChoice();
-handleImages();d
+handleImages();
+document.getElementById("")
+const mcChoicesAllblah = Array.from(document.querySelectorAll(".mc-choice"));
+mcChoicesAllblah.forEach(i => {
+    if (window.MathJax) {
+        MathJax.typesetPromise([i]).catch(()=>{});
+    } 
+})

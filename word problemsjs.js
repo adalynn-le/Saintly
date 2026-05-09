@@ -8963,12 +8963,15 @@ function loadQuestion(){
     if (!topicQuestion.type || topicQuestion.type === "fr") {
         document.getElementById("answer-input").style.display = "inline-block"
         document.getElementById("check-btn").style.display = "inline-block"
-    }
-    if (topicQuestion.type === "mc") {
+    } else {
+        console.log("isMC")
         mcContainer.classList.remove("hidden")
 
         mcChoices.forEach((btn, i) => {
-            btn.textContent = topicQuestion.choices[i];
+                console.log("labeling btns")
+                let text = (topicQuestion.choices[i])
+                console.log(text)
+            btn.innerHTML = text;
             btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
         });
     }

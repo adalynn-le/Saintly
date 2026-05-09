@@ -45,7 +45,15 @@ let numQuestion = 0
 let probQuestion = 0
 let currentQuestion = 0
 let geometryCurrent = 0
-let numCurrent = 0
+let numCurrent = 0 
+let algebraWrong = 0
+let geometryWrong = 0
+let numWrong = 0
+let probWrong = 0
+let algebraTotal = 0
+let geometryTotal = 0
+let numTotal = 0
+let probTotal = 0
 if (get() === null){
         userRatingAll = 800;
 } else {
@@ -9458,6 +9466,13 @@ const capitalizedString = capitalizeFirstLetter(originalString);
 // ---------- Check Answer ----------
 let correct = 1
 function checkAnswerGeometry() {
+    updateRadarChart()
+    if (strikes == 2){
+                
+                geometryTotal += 1
+                    updateRadarChart()
+    }
+
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === geometryQuestion.topic);
                 logAttempt(geometryQuestion.title, true)
     if (topicObj) {
@@ -9513,6 +9528,8 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
            if (strikes ==  2){
+            geometryWrong += 1
+
             
             errors += 1
                     logAttempt(geometryQuestion.title, false)
@@ -9556,6 +9573,7 @@ const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown 
         strikes -= 1
         getExpectedScore(userRating, geometryQuestion.rating)
                         scoreCount.innerHTML = Math.round(userRatingAll);
+                        updateRadarChart()
                         updatePieChart()
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
@@ -9587,6 +9605,12 @@ const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown 
     }
 }
 function checkAnswerAlgebra(){
+    updateRadarChart()
+    if (strikes == 2){
+                algebraTotal += 1
+                updateRadarChart()
+    }
+
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === algebraQuestion.topic);
     if (topicObj) {
         topicObj.attempts += 1;
@@ -9647,7 +9671,8 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         if (strikes ==  2){
-            
+            algebraWrong += 1
+
             errors += 1
             logAttempt(algebraQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
@@ -9693,6 +9718,7 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         getExpectedScore(userRating, algebraQuestion.rating)
         console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
+        updateRadarChart()
         updatePieChart()
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
@@ -9815,6 +9841,12 @@ const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
 }
 
 function checkAnswerProb() {
+    updateRadarChart()
+    if (strikes == 2){
+            probTotal += 1
+            updateRadarChart()
+    }
+
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === probQuestion.topic);
     if (topicObj) {
         topicObj.attempts += 1;
@@ -9867,7 +9899,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
      if (strikes ==  2){
-        
+        probWrong += 1
         errors += 1
                 logAttempt(probQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
@@ -9912,6 +9944,7 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
         strikes -= 1
+        updateRadarChart()
         updatePieChart()
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
@@ -9944,6 +9977,12 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
     questionType = "probability"
 }
 function checkAnswerNum() {
+    updateRadarChart()
+    if (strikes == 2){
+            numTotal += 1
+            updateRadarChart()
+    }
+
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === numQuestion.topic);
     if (topicObj) {
         topicObj.attempts += 1;
@@ -9999,7 +10038,7 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
     if (strikes ==  2){
-        
+        numWrong += 1
         errors += 1
                 logAttempt(numQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
@@ -10044,12 +10083,14 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
         getExpectedScore(userRating, algebraQuestion.rating)
         console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
+        updateRadarChart()
         updatePieChart()
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
         strikeTwo.style.color = "var(--primary-color) !important"
         strikes -= 1
     } else {
+        updatePieChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
         console.log("no strikes")
@@ -11055,7 +11096,54 @@ pieChart = new Chart("pieChart", {
   }
 });
 }
+let myRadarChart = null
+function updateRadarChart(){
+    const data = {
+        labels: 
+        ["Algebra", "Geometry", "Number Theory", "Probability"],
+        datasets: [{label: "Incorrect", 
+            data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
+        },
+        {label: "Attempted", 
+            data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#ebf3ff'
+        },
+]
+    }
+if (myRadarChart) {
+        myRadarChart.destroy();
+    }
+
+    // 3. Create the chart
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: {
+            elements: {
+                line: { borderWidth: 3 }
+            },
+            scales: {
+                r: {
+                    angleLines: { display: true },
+                    suggestedMin: 0,
+                    ticks: { stepSize: 1 } // Good for low question counts
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Accuracy Per Subject',
+                    color: '#333',
+                    font: { size: 16 }
+                }
+            }
+        }
+
+    })
+    
+}
 updatePieChart()
+updateRadarChart()
 updateBarGraph()
 // ---------- Start ----------
 shuffleArray(questions);
@@ -11086,4 +11174,3 @@ async function logAttempt(questionTitle, isCorrect) {
 window.loadTopicQuestion = loadTopicQuestion;
 window.loadQuestion = loadQuestion;
 // etc. for any function called from HTML onclick attributes
-const array = allQ.filter(q => q.topic === "systems of equations")

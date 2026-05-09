@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script
+    <script
 src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0">
 </script>
       <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
@@ -20,7 +20,7 @@ src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0">
   gtag('config', 'G-N3X50VWZM2');
 </script>
   <meta charset="UTF-8">
-  <title>AMC 10 - Adaptive Practice</title>
+  <title>Saintly | Solvefire x Saintly</title>
   <link rel="stylesheet" href="style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -63,13 +63,15 @@ window.addEventListener("load", function () {
 <nav id = "top-bar">
   <a class="aContainer" href="index.html">Home</a>
   <p class="aContainer">•</p>
-  <a class="aContainer" href = "amc10.html">AMC 10</a>
-  <p class="aContainer">•</p>
-  <a class="aContainer" href = "amc10adaptivepractice.html">Adaptive Practice</a>
+  <a class="aContainer" href = "amc10adaptivepractice.html">Solvefire</a>
   <div class="center-align">
   <button class='topBtn' onclick="window.location.href='index.html'">
-  <img class="fullLogo" src="fullLogo.png">
-  </button>
+  <img class="fullLogo" src="fullLogo.png">  </button>
+  <a href="https://solvefire.net">
+    <img class="fullLogo"  src="solvefire.png">
+    </a>
+    
+
   </div>
     <span class="material-symbols-outlined airplane helpButton" id="helpButton">
 send
@@ -94,19 +96,20 @@ volunteer_activism
         </span>
     </div>
 </div>
-<div id = "score-wrapper" class = "score-wrapper">
+<div id = "score-wrapper" class = "score-wrapper" style="display: none">
   <p><b>ELO Ranking:   </b><p id = "score-count" class = "score-count"></p></p>
+  
 </div>
 <div class="container">
 
-  <h1 id = "adaptiveTitle">AMC 10 - Adaptive Practice</h1>
-  <p>Adaptive Practice works by using a model based on a chess ELO system that assigns you questions with similar difficulty to your level within a range. Problems that are of a much higher difficulty reward you with more points and take away less when incorrect, with the opposite true for easier problems. Your "ELO" is displayed in the top right corner. You can also advance your
-    practice through spaced repetition, where incorrect problems will appear to reinforce your learning. The Topics Glossary is there for your convenience so that you can best understand what and how to study as well as practice topics you are often weak on.</p>
+  <h1 class="amc10title">Saintly\(\times\)Solvefire</h1>
+  <p>Saintly is excited to announce our partnership with <a href="https://solvefire.net">Solvefire</a>, the <mark class="blue"> premier math competitions platform that hosts weekly math competitions allowing users to achieve a global ranking</mark>. Merge Saintly's adaptive practice and topic-tracking technology with Solvefire's complex and premium problems all in one spot</p>
   <h2 class="amc10subtitle">Practice Problems</h2>
 
   <!-- Toggle -->
 
   <!-- Problem Card -->
+
    <span class="problemsContainer">
        <div class="strikes" style="display:none;" id="strikesContainer">
 <span class="material-symbols-rounded strike" id="strikeOne">
@@ -157,7 +160,7 @@ Previous Mistake</div>
     <div class="solution" id="solution" style="display:none;">
       <h2>Solution</h2>
       <p id="solution-text"></p>
-      <div id="tagQuestion">
+            <div id="tagQuestion">
       <h3>"Tag" This Question</h3>
       <p class="par">Mark what made you get this wrong. This will influence how the spaced repetition and topic tracking delivers your questions.</p>
       <span style="display: flex; flex-direction: row">
@@ -204,6 +207,7 @@ function
     </div>
   </label>
   <!-- your other form fields go here -->
+
   <button class="problemBtn" type="submit">Submit Solution</button>
 </form>
       </div>
@@ -232,140 +236,7 @@ function
 </div>
 </span>
   <span style="display: inline-flex">
-<div id="leaderboardWrapper" style="display: inline-block">
-  <h2 class="amc10subtitle">Leaderboard<h2>
-    <p class="par">See the most challenging and failed questions on Saintly, ranked by real user performance and accuracy</p>
-  <div id="leaderboardOne" class="leaderboardCard problem problem-wrapper">
-    <div id="leaderboardOneCard">
-    <h3 style="display: inline; color: var(--text-variant); font-weight: 500;">1</h3>
-    <h3 class="leaderboardTitle amc10title ittyBitty" id="leaderboardTitleOne">Question 1</h3>
-        <svg class="dropdown-icon" id="leaderboard-one-dropdown" viewBox="0 0 24 24">
-      <path fill="var(--text-variant)" d="M7 10l5 5 5-5z"/>
-    </svg>
-    <h3 class="leaderboardTitle amc10title ittyBitty percent" id="percentOne">100%</h3>
-  </div>
-    <div class="hiddenToggle" id="oneProblem">
-    <p class="leaderboardPar par" id="leaderboardPar1">Bob billy bob bob bob</p>
-    <input type="text" id="leaderboard-input-one" placeholder="Your answer">
-  <div id="mc-container" class="hidden">
-  <button class="mc-choice-leaderboard-one problemBtn" id = "mc-choice1-1"></button>
-  <button class="mc-choice-leaderboard-one problemBtn" id = "mc-choice2-1"></button>
-  <button class="mc-choice-leaderboard-one problemBtn" id = "mc-choice3-1"></button>
-  <button class="mc-choice-leaderboard-one problemBtn" id = "mc-choice4-1"></button>
-  <button class="mc-choice-leaderboard-one problemBtn" id = "mc-choice5-1"></button>
-</div>
-    <button class="problemBtn leaderboardBtn" id="leaderboard-btn-one">Check Answer</button>
-   <div class="solution" id="solution-one" style="display:none;">
-      <h2>Solution</h2>
-      <p id="solution-text-one" class="par"></p>
-    </div>
-  </div>
-</div>
-  <div id="leaderboardTwo" class="leaderboardCard problem problem-wrapper">
-    <div id="leaderboardTwoCard">
-        <h3 style="display: inline; color: var(--text-variant); font-weight: 500;">2</h3>
-    <h3 class="leaderboardTitle amc10title ittyBitty" id="leaderboardTitleTwo">Question 2</h3>
-        <svg class="dropdown-icon" id="leaderboard-two-dropdown" viewBox="0 0 24 24">
-      <path fill="var(--text-variant)" d="M7 10l5 5 5-5z"/>
-    </svg>
-        <h3 class="leaderboardTitle amc10title ittyBitty percent" id="percentTwo">100%</h3>
-        </div>
-    <div class="hiddenToggle" id="twoProblem">
-    <p class="leaderboardPar par" id="leaderboardPar2">Alice alice alice alice alice</p>
-    <input type="text" id="leaderboard-input-two" placeholder="Your answer">
-  <div id="mc-container" class="hidden">
-  <button class="mc-choice problemBtn" id = "mc-choice1-2"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice2-2"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice3-2"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice4-2"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice5-2"></button>
-</div>
-    <button class="problemBtn leaderboardBtn" id="leaderboard-btn-two">Check Answer</button>
-   <div class="solution" id="solution-two" style="display:none;">
-      <h2>Solution</h2>
-      <p id="solution-text-two" class="par"></p>
-    </div>
-  </div>
-</div>
-  <div id="leaderboardThree" class="leaderboardCard problem problem-wrapper">
-        <div id="leaderboardThreeCard">
-        <h3 style="display: inline; color: var(--text-variant); font-weight: 500;">3</h3>
-    <h3 class="leaderboardTitle amc10title ittyBitty" id="leaderboardTitleThree">Question 3</h3>
-            <svg class="dropdown-icon" id="leaderboard-three-dropdown" viewBox="0 0 24 24">
-      <path fill="var(--text-variant)" d="M7 10l5 5 5-5z"/>
-    </svg>
-        <h3 class="leaderboardTitle amc10title ittyBitty percent" id="percentThree">100%</h3>
-        </div>
-    <div class="hiddenToggle" id="threeProblem">
-    <p class="leaderboardPar par" id="leaderboardPar3">Charlie charlie charlie charlie charlie</p>
-    <input type="text" id="leaderboard-input-three" placeholder="Your answer">
-  <div id="mc-container" class="hidden">
-  <button class="mc-choice problemBtn" id = "mc-choice1-3"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice2-3"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice3-3"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice4-3"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice5-3"></button>
-</div>
-    <button class="problemBtn leaderboardBtn" id="leaderboard-btn-three">Check Answer</button>
-   <div class="solution" id="solution-three" style="display:none;">
-      <h2>Solution</h2>
-      <p id="solution-text-three" class="par"></p>
-    </div>
-  </div>
-</div>
-  <div id="leaderboardFour" class="leaderboardCard problem problem-wrapper">
-    <div id="leaderboardFourCard">
-        <h3 style="display: inline; color: var(--text-variant); font-weight: 500;">4</h3>
-    <h3 class="leaderboardTitle amc10title ittyBitty" id="leaderboardTitleFour">Question 4</h3>
-     <svg class="dropdown-icon" id="leaderboard-four-dropdown" viewBox="0 0 24 24">
-      <path fill="var(--text-variant)" d="M7 10l5 5 5-5z"/>
-    </svg>
-        <h3 class="leaderboardTitle amc10title ittyBitty percent" id="percentFour">100%</h3>
-        </div>
-    <div class="hiddenToggle" id="fourProblem">
-    <p class="leaderboardPar par" id="leaderboardPar4">David david david david david</p>
-    <input type="text" id="leaderboard-input-four" placeholder="Your answer">
-  <div id="mc-container" class="hidden">
-  <button class="mc-choice problemBtn" id = "mc-choice1-4"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice2-4"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice3-4"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice4-4"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice5-4"></button>
-</div>
-    <button class="problemBtn leaderboardBtn" id="leaderboard-btn-four">Check Answer</button>
-   <div class="solution" id="solution-four" style="display:none;">
-      <h2>Solution</h2>
-      <p id="solution-text-four" class="par"></p>
-    </div>
-  </div>
-</div>
-  <div id="leaderboardFive" class="leaderboardCard problem problem-wrapper">
-    <div id="leaderboardFiveCard">
-        <h3 style="display: inline; color: var(--text-variant); font-weight: 500;">5</h3>
-    <h3 class="leaderboardTitle amc10title ittyBitty" id="leaderboardTitleFive">Question 5</h3>
-       <svg class="dropdown-icon" id="leaderboard-five-dropdown" viewBox="0 0 24 24">
-      <path fill="var(--text-variant)" d="M7 10l5 5 5-5z"/>
-    </svg>
-        <h3 class="leaderboardTitle amc10title ittyBitty percent" id="percentFive">100%</h3>
-        </div>
-    <div class="hiddenToggle" id="fiveProblem">
-    <p class="leaderboardPar par" id="leaderboardPar5">Eve eve eve eve eve</p>
-    <input type="text" id="leaderboard-input-five" placeholder="Your answer">
-  <div id="mc-container" class="hidden">
-  <button class="mc-choice problemBtn" id = "mc-choice1-5"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice2-5"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice3-5"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice4-5"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice5-5"></button>
-</div>
-    <button class="problemBtn leaderboardBtn" id="leaderboard-btn-five">Check Answer</button>
-   <div class="solution" id="solution-five" style="display:none;">
-      <h2>Solution</h2>
-      <p id="solution-text-five" class="par"></p>
-    </div>
-  </div>
-</div>
-</div>
+    
 <div id="topicsWrapper" style="display: inline">
 <h1 class="amc10subtitle">Topics Glossary</h1>
 <p>See in-depth metrics and tips for how to study on the topics you get wrong. This will update as you progress through the questions</p>
@@ -496,6 +367,6 @@ function
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-<script type = "module" src="test.js"></script>
+<script type = "module" src="solvefirejs.js"></script>
 <script src="footer.js"></script>
 </html>
