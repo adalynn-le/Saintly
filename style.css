@@ -485,7 +485,9 @@ p {
   color: var(--text-color) !important  
 }
 .amc10container{
-  margin-top: 20px !important;
+  margin-top: 25px !important;
+  margin-left: 25px;
+  margin-right: 25px
 }
 #confetti-canvas {
     position: fixed;
@@ -528,6 +530,15 @@ p {
   font-weight: bold;
   position: absolute;
   right: 20px;
+}
+#toggleAdaptive{
+      display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+  right: 20px;
+  top: 150px
+
 }
 .ui-btn {
     display: inline-flex;
@@ -1582,7 +1593,7 @@ body{
 #sidebar a{
   color: var(--primary-color);
   font-family: "National Park", sans-serif;
-  font-weight: 200;
+  font-weight: 100;
 }
 .sidebar-icon{
   margin-right: -100px;
@@ -2373,7 +2384,7 @@ font-style: italic;
 }
 .dropdownText{
   font-size: 12px!important;
-  font-weight: 300 !important;
+  font-weight: 200 !important;
 }
 #sidebar .logo{
   width: 20px !important;
@@ -2610,6 +2621,9 @@ input{
 }
 .problem .material-symbols-outlined{
   margin-bottom: 37.5px !important;
+}
+#graphs{
+  display: none !important
 }
 
 }
@@ -2983,4 +2997,38 @@ body {
 
 main {
     flex: 1; /* This pushes the footer down */
+}
+.pset-link {
+    color: inherit; /* Keeps the color the same as your heading */
+    text-decoration: none; /* Removes the underline */
+    border-bottom: 2px dashed #88B0FF; /* Adds a subtle Saintly-blue dash under it */
+    transition: 0.3s;
+}
+
+.pset-link:hover {
+    color: #88B0FF; /* Changes color when they hover */
+    border-bottom: 2px solid #88B0FF;
+}
+.error-tag{
+  background-color: transparent !important;
+  text-align: center !important;
+  color: var(--primary-color) !important;
+  border: 2px solid var(--primary-color) !important;
+  border-radius: 10px !important;
+  font-family: "National Park", sans-serif
+}
+.error-tag .material-symbols-outlined{
+  font-size: 30px !important;
+  margin-top: 15px !important
+}
+.error-tag:hover{
+  background-color: #fff0eb !important;
+  text-align: center !important;
+  color: var(--accent-color) !important;
+  border: 2px solid var(--accent-color) !important;
+  border-radius: 10px !important;
+}
+
+.error-tag:hover .material-symbols-outlined{
+  color: var(--accent-color) !important;
 }
