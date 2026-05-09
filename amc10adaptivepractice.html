@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script
+src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0">
+</script>
       <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://saintlymath.com" />
@@ -25,7 +28,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">   
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=ads_click,book,check,close_small,exclamation,lab_profile,leaderboard,local_fire_department,playlist_add_check,send,star,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=ads_click,book,check,close_small,exclamation,function,lab_profile,leaderboard,lightbulb_2,local_fire_department,playlist_add_check,question_mark,send,star,volunteer_activism,warning" />
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <script>
@@ -154,6 +157,21 @@ Previous Mistake</div>
     <div class="solution" id="solution" style="display:none;">
       <h2>Solution</h2>
       <p id="solution-text"></p>
+      <div id="tagQuestion">
+      <h3>"Tag" This Question</h3>
+      <p class="par">Mark what made you get this wrong. This will influence how the spaced repetition and topic tracking delivers your questions.</p>
+      <span style="display: flex; flex-direction: row">
+      <button style="flex: 1" class="error-tag" id="unfamiliar"><span class="material-symbols-outlined">
+question_mark
+</span>Unfamiliar with topic</button>
+      <button style="flex: 1" class="error-tag" id="stuck"><span class="material-symbols-outlined">
+lightbulb_2
+</span> Had an idea but hit a dead end</button>
+<button style="flex: 1"class="error-tag" id="mistake"><span class="material-symbols-outlined">
+function
+</span> Small arithmetic mistake</button>
+</span>
+</div>
       <button id="submit-a-solution">Submit a Solution</button>
       <div id="submit-a-solution-form" class="submit-a-solution-form">
       
@@ -194,6 +212,19 @@ Previous Mistake</div>
     <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
   </div>
   </span>
+  
+<span style="display: flex; flex-direction: row" id="graphs">
+  <span style="display: inline-block; flex: 1" class="howworkcard">
+      <h3 class="amc10subtitle">Your Most Common Mistakes</h3>
+    <canvas id="barChart" style="width:100%;max-width:700px">
+</canvas>
+  </span>
+    <span style="display: inline-block; flex: 1" class="howworkcard">
+      <h3 class="amc10subtitle">Your Most Missed Topics</h3>
+    <canvas id="pieChart" style="width:100%;max-width:700px">
+</canvas>
+  </span>
+</span>
   <span style="display: inline-flex">
 <div id="leaderboardWrapper" style="display: inline-block">
   <h2 class="amc10subtitle">Leaderboard<h2>

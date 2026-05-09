@@ -3,7 +3,10 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js';
 const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
 const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
 const supabase = createClient(supabaseURL, supabaseKey);
-
+let unfamiliar = 0
+let stuck = 0
+let mistake = 0
+let errors = 0
 let correctCount = 0;
 let wrongCount = 0;
 let longestStreak = 0;
@@ -43,7 +46,6 @@ let probQuestion = 0
 let currentQuestion = 0
 let geometryCurrent = 0
 let numCurrent = 0
-console.log(get())
 if (get() === null){
         userRatingAll = 800;
 } else {
@@ -8563,7 +8565,6 @@ allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
-console.log(allQ)
 // ---------- DOM Elements ----------
 const questionTitle = document.getElementById("question-title");
 const questionText = document.getElementById("question-text");
@@ -8607,6 +8608,10 @@ const mcChoicesLTwo = Array.from(document.querySelectorAll(".mc-choice-leaderboa
 const mcChoicesLThree = Array.from(document.querySelectorAll(".mc-choice-leaderboard-three"))
 const mcChoicesLFour = Array.from(document.querySelectorAll(".mc-choice-leaderboard-four"))
 const mcChoicesLFive = Array.from(document.querySelectorAll(".mc-choice-leaderboard-five"))
+const mistakeBtn = document.getElementById("mistake")
+const unfamiliarBtn = document.getElementById("unfamiliar")
+const stuckBtn = document.getElementById("stuck")
+const errorTags = document.getElementById("tagQuestion")
 helpBtn.addEventListener("click", function () {
     if (helpOn === true){
         helpPannel.style.display = "none";
@@ -9125,14 +9130,13 @@ function recordWrongTopic(topic) {
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
     if (topicObj) {
         topicObj.errors += 1;
-        console.log(topicObj.errors)
-        console.log(topicObj.attempts)
         topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
     }
 
     updateTopicsDropdown();
 }
 function buttonsWork(){
+    errorTags.style.display = "none"
     algButton.addEventListener("click", function() {
         questionType = "algebra";
         updateColors();
@@ -9382,7 +9386,6 @@ function loadNumTheory() {
 
     probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
 function loadProb() {
-    console.log("loading prob")
     mcChoices.forEach(btn => btn.disabled = false);
 
     questionTitle.innerHTML = probQuestion.title;
@@ -9510,6 +9513,8 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
            if (strikes ==  2){
+            
+            errors += 1
                     logAttempt(geometryQuestion.title, false)
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
@@ -9551,11 +9556,13 @@ const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown 
         strikes -= 1
         getExpectedScore(userRating, geometryQuestion.rating)
                         scoreCount.innerHTML = Math.round(userRatingAll);
+                        updatePieChart()
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
         strikeTwo.style.color = "var(--primary-color) !important"
         strikes -= 1
     } else {
+        errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
         console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
@@ -9640,6 +9647,8 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         if (strikes ==  2){
+            
+            errors += 1
             logAttempt(algebraQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
@@ -9684,11 +9693,13 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         getExpectedScore(userRating, algebraQuestion.rating)
         console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
+        updatePieChart()
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
         strikeTwo.style.color = "var(--primary-color) !important"
         strikes -= 1
     } else {
+        errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
         console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
@@ -9856,6 +9867,8 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
      if (strikes ==  2){
+        
+        errors += 1
                 logAttempt(probQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
@@ -9899,11 +9912,13 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
         strikes -= 1
+        updatePieChart()
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
         strikeTwo.style.color = "var(--primary-color) !important"
         strikes -= 1
     } else {
+        errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
         console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
@@ -9984,6 +9999,8 @@ check
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
     if (strikes ==  2){
+        
+        errors += 1
                 logAttempt(numQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
                 hintBtn.innerHTML  = "Show Hint"
@@ -10027,11 +10044,13 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
         getExpectedScore(userRating, algebraQuestion.rating)
         console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
+        updatePieChart()
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
         strikeTwo.style.color = "var(--primary-color) !important"
         strikes -= 1
     } else {
+        errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
         console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
@@ -10384,6 +10403,7 @@ probCurrent = 0;
 
 //------------Switch Subjects--------------
 function loadQuestion() {
+    errorTags.style.display = "none"
         strikesContainer.display = "none"
         seeStep.style.display = "none"
         stepOne.style.display = "none"
@@ -10953,6 +10973,90 @@ if (q.type === 'mc'){
     })
 }
 }
+mistakeBtn.addEventListener("click", function(){
+    mistake += 1
+    updateBarGraph()
+})
+unfamiliarBtn.addEventListener("click", function(){
+    unfamiliar += 1
+    updateBarGraph()
+})
+stuckBtn.addEventListener("click", function(){
+    stuck += 1
+    updateBarGraph()
+})
+let myChart = null; // 1. Define this OUTSIDE the function
+
+function updateBarGraph() {
+    const xValues = ["Unfamiliar With Topic", "Stuck / Reached Dead End", "Arithmetic Issue"];
+    const yValues = [unfamiliar, stuck, mistake];
+    const barColors = ["#88B0FF", "#88B0FF", "#88B0FF"];
+
+    // 2. The Fix: If a chart exists, kill it before creating a new one
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    const ctx = document.getElementById("barChart");
+    
+    // 3. Create the new chart and store it in our variable
+    myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues,
+                borderRadius: 6 // Optional: makes it look more "Saintly"
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+}
+let pieChart = null
+function updatePieChart(){
+    let barColor = ["#88B0FF"]
+    console.log("updating pie chart")
+    if (pieChart) {
+        pieChart.destroy();
+    }
+
+    const ctx = document.getElementById("pieChart");
+    let xValues = []
+    let yValues = []
+    topicsToWorkOn.forEach(i => {
+        const topicObj = TOPIC_GLOSSARY.find(x => x.id === i);
+if (topicObj && topicObj.errors && topicObj.errors > 0) {
+            console.log("Adding to chart:", topicObj.id, topicObj.errors);
+            xValues.push(topicObj.name || topicObj.id); // Use name if available
+            yValues.push(topicObj.errors);
+        }
+
+    })
+pieChart = new Chart("pieChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      data: yValues,
+      backgroundColor: barColor,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+        legend: {display: true}
+    }
+  }
+});
+}
+updatePieChart()
+updateBarGraph()
 // ---------- Start ----------
 shuffleArray(questions);
 shuffleArray(allQ)
@@ -10977,11 +11081,9 @@ async function logAttempt(questionTitle, isCorrect) {
     is_correct: isCorrect
   });
 }
-console.log(getHardestProblems())
 // Example — call inside your answer check logic:
 // logAttempt(algebraQuestion.title, correct);
 window.loadTopicQuestion = loadTopicQuestion;
 window.loadQuestion = loadQuestion;
 // etc. for any function called from HTML onclick attributes
 const array = allQ.filter(q => q.topic === "systems of equations")
-console.log(array)
