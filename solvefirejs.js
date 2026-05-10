@@ -256,7 +256,50 @@ $$
 answer: '10',
 hint: "Write it out algebraicly",
 step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \\(s=\\) sum of all other numbers in the set"
-    }
+    },
+    {
+    title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link"> Solvefire Iron Round 6 Problem 2</a>`,
+    text: `<p>A function \\(f\\) is defined on the positive integers by</p>
+    $$
+    f(1), f(2)=2
+    $$
+    <p>and for all \\(n \\geq 3\\)</p>
+    $$
+    f(n)=f(n-1)+f(n-2)+1
+    $$
+    <p>Find \\(f(6)\\)`,
+    answer:'20',
+    solution: `<b>20</b><p>Right off the bat, we see this is similar to the fibbonaci sequence but with a few key differences: We start with \\(2\\) and we add \\(1\\)</p>
+    <p>This one is easy enough where you can plausibly brute force, so let's just look through the process:</p>
+    $$
+    f(3)=f(2)+f(1)+1=2+1+1=4
+    $$
+    $$
+    f(4)=f(3)+f(2)+1=4+2+1=7
+    $$
+    $$
+    f(5)=f(4)+f(3)+1=7+4+1=12
+    $$
+    $$
+    f(6)=f(5)+f(4)+1=12+7+1=20
+    $$`,
+    hint: "Solve for \\(f(n)\\) one by one",
+    step: "Solve for each value independently",
+    topic: "arithmetic"
+    },
+        {
+                title: `<a https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 4
+                </a>` ,
+                text: `Alice can finish a job in \(6\) hours, and Bob can finish the same job in \\(10\\) hours. They work together for \\(2\\) hours, and then Bob leaves. If Alice needs \\(\\frac{m}{n}\\) more hours to finish the job, 
+                where \\(m\\) and \\(n\\) are relatively prime positive integers, find \\(m+n\\)`,
+                solution: `<b>19</b><p>Let's calculate how much each of them did in the \\(2\\) hours. We know that Alice did \\(\\frac{2}{6}=\\frac{1}{3}\\) of the job and Bob did \\(\\frac{2}{10}=\\frac{1}{5}\\) for a total of \\(\\frac{1}{3}+\\frac{1}{5}=\\frac{8}{15}\\)</p>
+                <p>Alice needs to complete \\(\\frac{7}{15}\\) of her job, which will take her \\(\\frac{7}{15} \\times 6 = \\frac{14}{5}\\) for \\(m=14, n=5\\) and \\(m+n=19\\)`,
+                answer: '19',
+                hint: "How much did each of them do in the \\(2\\) hours?",
+                step: "Find how much each of them did in \\(2\\) hours by \\(\\frac{2}{\\textup{total time they need to finish a j*b}}\\)",
+                topic: "speed-distance-time"
+    },
 ]
 const geometryQ = [
       {
@@ -411,6 +454,19 @@ area of \\(\\triangle EBF\\)?`,
         hint: "Use coordinates",
         step: "Use coordinate values to find the area of \\(\\triangle ABF\\) first",
         topic: "composite shapes"
+    },
+        {
+        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 1
+                </a>`,
+        text: `A circle has radius \\(10\\). Chord \\(AB\\) has length \\(12\\). If the distance from the center of the circle
+to chord AB is \\(\\sqrt{k}\\), find \\(k\\).`,
+        answer: '64',
+        solution: `<b>64</b><p>If we draw a perpendicular bisector to chord \\(AB\\) that divides it into two sides of length \\(6\\), that extends to the center of the circle, then draw a radius through the endpoint of the chord and cente,r we get a right triangle. The side lengths are \\(\\sqrt{k}, 6, 10\\) which we use with the pythagorean theorem to find
+        \\(k+6^2=10^2\\) so \\(k=64\\)`,
+        hint: "Use the pythagorean theorem",
+        step: "Draw a perpendicular line from the midpoint of \\(AB\\) to the center, and then draw the radius from the center to an endpoint of \\(AB\\)",
+        topic: "triangles"
     }
 ]
 const numTheoryQ = [
@@ -512,6 +568,98 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
                 step: "Use the equation \\(7x+3=5y+9\\) and solve like a diophantine equation",
                 topic: "logic"
     },
+    {
+                title: `https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 3
+                </a>`,
+                text: `<p>Three boxes are labeled:</p>
+                <ul>
+                <li>Box 1: "The prize is not in Box 2"</li>
+                <li>Box 2: "The prize is in Box 3"</li>
+                <li>Box 3: "The prize is not in this box</li>
+                </ul>
+                <p>Exactly one statement is true. Determine which box contains the prize (answer with the number)</p>`,
+                answer: '2',
+                solution: `<b>2</b><p>We're goin to go through each box considering it is telling the truth and see what it tells us about the rest</p>
+                <p>If box 1 is telling the truth, then the box is not in box 2. Then, box 2 must be lying so it is not in box 3 either. Finally, box 3 must be lying so the prize has to be in that box. This causes a contradiction, so box 1 cannot be telling the truth</p>
+                <p>If box 2 is telling the truth, the prize is in box 3. If box 3 is lying, that confirms it. However, box 1 must be lying and that tells us it has to be in box 2. That contradicts. Box 2 must be lying</p>
+                <p>If box 3 is telling the truth, the prize is in box 1 or box 2. If box 1 is lying, the prize is in box 2. And if box 2 is lying, the prize just cant be in box 3, which checks out</p>`,
+                hint: "See how changing the truth value for each one changes the outcome",
+                step: "Test out each value when it is true",
+                topic: "logic"
+    },
+
+    {
+        title: `https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 5
+                </a>`,
+        text: `A positive integer \\(n\\) leaves remainder \\(2\\) when divided by \\(5\\), remainder \\(3\\) when divided by \\(6\\), and remainder \\(4\\) when divided by \\(7\\). Find the smallest posible value of \\(n\\)`,
+        solution: `<b>207</b><p>We have some value \\(n\\) such that \\(5x+2=6y+3=7z+4\\). By the first term, we know it must end in \\(7\\) or \\(2\\) because a multiple of \\(5\\) must end in \\(0\\) or \\(5\\).</p>
+        <p>It can't be \\(2\\) because when divided by an even value it leaves an odd remainder, making it odd. By subtracting \\(7-3\\) we know we need a multiple of \\(6\\) that ends in \\(4\\). We try \\(24\\) which yields \\(27\\). When divided by \\(7\\) it leaves a remainder of \\(6\\) though, so that doesn't work</p>
+        <p>Another value would be \\(54\\) for \\(n=57\\). When this is divided by \\(7\\) the remainder is \\(1\\)</p>
+        <p>Brute force doesn't seem to work that well. Notice that for each value, we have that \\(n\\) leaves a remainder of \\(x-3\\) when divided by \\(x\\). This means that \\(n+3\\) is divisible by \\(5, 6, 7\\) so \\(n+3=\\textup{lcm}(5,6,7)=210\\) for \\(n=210-3=207\\). `,
+        hint: "Don't brute force, use the LCM",
+        answer: '207',
+        step: "Find the \\(\\textup{lcm}(5,6,7)\\) and subtract something",
+        topic: "prime factorization"
+    },
+    {
+            title: `https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 6
+                </a>`,
+                text: `<p>Find the number of ordered pairs of positive integers \\((x,y)\\) such that</p>
+                $$
+                \\frac{1}{x}+\\frac{1}{y}=\\frac{1}{4}
+                $$`,
+                solution: `<b>5</b><p>Follow the following algebraic manipulation</p>
+                $$
+                \\frac{1}{x}+\\frac{1}{y}=\\frac{1}{4}
+                $$
+                $$
+                \\frac{x+y}{xy}=\\frac{1}{4}
+                $$
+                $$
+                4x+4y=xy
+                $$
+                $$
+                xy-4x-4y=0
+                $$
+                $$
+                x(y-4)-4y+16=16
+                $$
+                $$
+                x(y-4)-4(y-4)=16
+                $$
+                $$
+                (x-4)(y-4)=16
+                $$
+                <p>Now we are looking for factors of \\(16\\). We have \\(4, 4\\) for \\(x=8, y=8\\). We have \\(8, 2\\) for \\((12, 6), (6, 12)\\) and \\(16, 1\\) for \\((20, 5),(5,20)\\). There are \\(5\\) total`,
+                answer: `5`,
+                hint: "Rewrite in factored form",
+                step: "rewrite as one fraction, then eliminate the fraction and factor by grouping",
+                topic: 'algebraic manipulation'
+    },
+    {
+            title: `https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 8
+                </a>`,
+            text: `<p>How many integers \\(n\\) satisfy</p>
+            $$
+            1 \\leq n \\leq 100
+            $$
+            <p>such that </p>
+            $$
+            \\frac{n^2-n}{2}
+            $$
+            <p>is odd?</p>`,
+            step: `<b>50</b><p>Note that \\(n^2-n\\) will always be even. First of all, the square of any number \\(n\\) has the some polarity (odd or even) as \\(n\\) and the difference between two numbers of the same polarity will always be even.</p>
+            <p>The issue then becomes finding how many numbers are divisible by \\(4\\), because they can all be divisible by \\(2\\), but to be even they need to be divisible by \\(2^2=4\\).</p>
+            <p>We can factor out the top equation into \\(n(n-1)\\). We need either \\(n\\) or \\(n-1\\) to be divisible by \\(4\\). There are \\(25\\) numbers \\(n\\) such that \\(1 \\leq n \\leq 100\\) that are divisible by \\(4\\), and another \\(25\\) such that \\(n-1\\) is divisible by \\(4\\) for a total of \\(50\\)`,
+            answer: '50',
+            hint: "What does \\(n^2-n\\) need to be divisible by?",
+            step: "Rewrite the numerator as \\(n(n-1)\\)",
+            topic: "logic"  
+    }
 
 ]
 const probabilityQ = [
@@ -635,7 +783,7 @@ topic: "counting"
         answer: '126',
         hint: "You can use the choose function",
         step: "Calculate \\(\\binom{9}{5}\\)",
-        topic: "countingg"
+        topic: "counting"
     },
 {
         title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
@@ -647,8 +795,50 @@ colorings have exactly two red squares in each row?`,
         answer: '1296',
         hint: "You can use the choose function",
         step: "Calculate \\(\\binom{4}{2}\\)",
-        topic: "countingg"
+        topic: "counting"
     },
+{
+        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 7
+                </a>`,
+        text: `How many permutations of the letters in the word \\(\\textup{MATH}\\) have the property that no letters are in its original position?`,
+        solution: `<b>0</b><p>The first letter we choose a place for has \\(\\binom{3}{1}=3\\) ways to choose where it goes. The next one is complicated because there is a chance one of its places was taken up, and a chance it wasn't. Assuming it wasn't, there are \\(3\\) plcaes it can go, and the other two are set. Thus we have \\(3 \\times 3\\). We don't need to account for the case that the "next" letter
+        had its place left open, because then we can picka  different next number`,
+        answer: '9',
+        hint: "How many places can each letter be in",
+        step: "Find how many places the first letter to be put in place has, and then how many the next letter with the most option has",
+        topic: "logic"
+    },
+    {
+        title:  `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 9
+                </a>`,
+        text: `How many three-digit positive integers have digits that increase from left to right and whose digits sum to \\(15\\)?`,
+        solution:  `<b>8</b><p>We can just do casework by the first digit</p>
+        <p>For \\(1\\) we need the remaining digits to sum to \\(14\\) so we have \\(159, 168\\). We can't do \\(177\\) because it's not ascending</p>
+        <p>For \\(2\\) we have \\\(249, 258, 267\\)</p>
+        <p>For \\(3\\) we ave \\(357, 348\\)</p>
+        <p>For \\(4\\) we only have \\(456\\)</p>
+        <p>There are \\(8\\) total</p>`,
+        answer: '8',
+        topic: 'casework',
+        hint: "Divide into cases",
+        step: "Divide by cases by the hundredth digit",
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 9
+                </a>`,
+        text: `A code consists of four distinct digits. The first digit is odd, the last digit is even, and the code is divisible by \\(5\\). How many such codes are possible?`,
+        solution: `<b>280</b><p>We know that the last digit must be \\(0\\) in order for it to be even and give us a number divisible by \\(5\\).</p>
+        <p>The first digit can be \\(1,3,5,7,9\\)</p>
+        <p>There are \\(8 \\times 7\\) ways to choose from the remaining digits. We have \\(5 \\times 8 \\times 7 \\times 1 = 280\\)`,
+        answer: '280',
+        hint: "What do the first and final digits have to be?",
+        step: "Realize the last digit is \\(0\\) and find the number of possible values for each digit",
+        topic: "counting"
+    }
+
 ]
 console.log(questions)
 let algebraIndex = 0

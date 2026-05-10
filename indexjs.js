@@ -19,8 +19,12 @@ if (streakTrue == null){
         streakVar = 0
 } else {
         let today = new Date()
-        let last = localStorage.getItem("lastPractice")
-        if (Math.abs(today - last) > 1){
+        console.log(today)
+        let lastStr = localStorage.getItem("lastPractice")
+        let last = new Date(lastStr)
+        const hoursSinceLast = (today - last) / (1000 * 60 * 60)
+        if (hoursSinceLast > 48){
+                console.log("been more than a day")
                 streakVar = 0
         } else {
                 streakVar = localStorage.getItem("streak")
