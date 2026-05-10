@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Saintly | Logic</title>
+  <link rel="stylesheet" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">   
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=ads_click,book,check,close_small,exclamation,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+ 
+<meta name="keywords" content="arithmetic, what is arithmetic, AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+    <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+<meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+
+</head>
+<body>
+   <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script src="sidebar.js"></script>
+<nav id = "top-bar">
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "topics dash.html">Topics Dashboard</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "algebraic manipulation.html">Logic</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
+    <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+send
+</span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton">
+volunteer_activism
+</span>
+</nav>
+<main> 
+    <div class="minicontainer">
+
+  <h1 class="amc10title">Logic</h1>
+  <p class="amc10subtitle"></p>
+  <h2 class="amc10subtitle">25 Problems • 5 sub-topics</h2>
+  <h2 class="par" style="display: inline; vertical-align: middle !important;">Adalynn Le • 5/9/2026</h2>
+<!-- Table of Contents  -->
+  <div id="tableOfContents">
+  <h3 class="amc10subtitle ittybitty" style="color: var(--primary-color)">Table of Contents</h3>
+  <ol><a href="#intro">Introduction</a></ol>
+  <ol><a href="#statements">Statements</a></ol>
+<ol><a href="#tables">Logic Tables and Conditions</a></ol>
+<ol><a href="#sets">Sets and Ven Diagrams</a></ol>
+<ol><a href="#disciplines">Disciplines</a></ol>
+<ol><a href="#tips">Tips</a></ol>
+<ol><a href="#conclusion">Conclusion</a></ol>
+  </div>
+  <h2 class="amc10subtitle" id="introduction">Introduction</h2>
+  <p class="par">The whole point of the AMC 10 is <mark class="blue">elevated and applied math</mark> that requires you to know more than just formulas and also understand how to use them with <mark class="blue">logic, the foundation of all mathematics</mark>
+  </p>
+    <span id = "howworkcards">
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">What is it?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Questions tagged with a topic of "logic" are quesitons that require you to use <mark class="orange">reasoning, induction, and intelligence</mark> in addition to standard math to solve. They may include <mark class="orange">complex thought processes</mark></div>
+  </span>
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">Why Study?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext"><mark class="orange">The entire point of the AMC 10 is to use logic.</mark> That being said, even if a question isn't implicity logic based and has more of a foundation in numbers and arithmetic, <mark class="orange">logic can still help you work faster and smarter to solve the question</mark></div>
+  </span>
+</span> 
+</div>
+<h2 class="amc10subtitle" id="statements">Statements</h2>
+<p class="par">In mathematics, every statement has to be inherently clear because math is a game of <mark class="blue">quantitiative data and strict values</mark> so even qualitiative data must be kept strict. Thus, all claims, ideas, or formally statements, are sorted into four buckets.</p>
+<p class="par">Each statement, written as \(\textup{if } p \textup{ then } q\) consists of two parts. The hypothesis includes the word "if" and the conditional \(p\). The conclusion contains "then" and what happens as a result \(q\). A full statement with a hypothesis and a conclusion is known as a conditional statement.</p>
+<div class="subsubtopic">
+    <h3 class="amc10subtitle ittyBitty">Inverse</h3>
+    <p class="par">You can "negate" a statement by <mark class="blue">changing the truth value of it.</mark> For example, to negate the conclusion means to say that \(q\) will not happen. When you <mark class="blue">negate both the hypothesis and the inverse</mark>, the new statement is called an inverse and can be written as \(\textup{if ~} p \textup{ then ~} q\). <mark class="blue">just because a conditional statement is true does not ensure the inverse is true</mark></p>
+    <h3 class="amc10subtitle ittyBitty">Converse</h3>
+    <p class="par"><mark class="blue">If you switch \(p\) and \(q\), you end up with something known as the converse</mark>. This would be written as \(\textup{if }q\textup{ then }p\)</p>
+    <h3 class="amc10subtitle ittyBitty">Contrapositive</h3>
+    <p class="par">When you find the <mark class="blue">the inverse of the converse</mark> or visa versa, you get the <mark class="blue">contrapositive</mark>. A contrapositive is written as \(\textup{if ~}q\textup{ then ~}p\)</p>
+    <h3 class="amc10subtitle ittyBitty">Biconditional</h3>
+    <p class="par">A biconditional statement is written as <mark class="blue">\(q \textup{ if and only if } p\).</mark> The biconditional is only true when <mark class="blue">both the statement and its converse are true</mark></p>
+    <span style="display: flex; flex-direction: row">
+        <div class="howworkcard" style="flex: 1">
+            <h4 class="amc10subtitle ittyBitty">Inverse</h4>
+            <span style="display: inline-block" class="dropzone" id="target1">
+        </div>
+                <div class="howworkcard" style="flex: 1">
+            <h4 class="amc10subtitle ittyBitty">Converse</h4>
+            <span style="display: inline-block" class="dropzone" id="target2">
+        </div>
+                <div class="howworkcard" style="flex: 1">
+            <h4 class="amc10subtitle ittyBitty">Contrapositive</h4>
+            <span style="display: inline-block" class="dropzone" id="target3">
+        </div>
+                <div class="howworkcard" style="flex: 1">
+            <h4 class="amc10subtitle ittyBitty">Biconditional</h4>
+            <span style="display: inline-block" class="dropzone" id="target4">
+        </div>
+    </span>
+    <div id="howworkcard">
+        <p>If you are studying for the AMC 10, then you should use Saintly!</p>
+        <div class="draggable" id="drag4" draggable="true" data-match="target4">You should use Saintly if and only if you are studying for the AMC 10</div>
+
+        <div class="draggable" id="drag1" draggable="true" data-match="target1">If you are not studying for the AMC 10, then you should not use Saintly</div>
+                                <div class="draggable" id="drag3" draggable="true" data-match="target3">If you should not be using Saintly, then you are not studying for the AMC 10</div>
+        <div class="draggable" id="drag2" draggable="true" data-match="target2">If you should be using Saintly, then you are studying for the AMC 10</div>
+    </div>
+    <p class="par">Statements, combined with the following tables and conditions you're goin to learn about are the basis for all logic. This vocabulary may also come up on the test, so be sure to study it.</p>
+</div>
+<h2 class="amc10subtitle" id="logic">Logic Tables and Conditions</h2>
+
+<span style="display: flex; flex-direction: row">
+  <div style="flex: 1">
+  <p class="par">Logic is based on <mark class="blue">the influence events have on each other and understanding the relationships between them.</mark> The influence is described by statements, and the relationship is defined by conditions. The main conditions are <mark class="blue">and, or, not</mark>. These are all pretty self explanatory.
+<mark class="blue">And dictates when both must be true, or dictates at least one, and not is negation like we see in inverses.</mark> Although seemingly basic, it is important to keep these in mind especially because you may need to follow complex thought pathways and processes involving these ideas. Fun fact, you can actually relate and and or with not and nor, according to the work of mathematician 
+De Morgan. He realized that the negation of \\(p \textup{ and } q\) is \(\textup{~}p \textup{ or } \textup{~}q\) and visa versa.</p>
+<p class="par" >Truth tables are what they sound like: <mark class="blue">organized tables detailing the boolean outcome for a speicfic input</mark>. These are particularly helpful when there rae multiple inputs that affect a single True or False output. You would use conditional relationships to model how one affects the other in this situation. This is one method of casework that <mark class="blue">can help you keep your work clean and organized</mark></p>
+</div>
+<img src="truthtables.png" style="flex:1; width: 50%">
+</span>
+<h2 id="sets" class="amc10subtitle">Set Theory</h2>
+<div style="display: flex; flex-direction: row">
+  <div style="display: inline-block; flex: 0.5">
+    <a href="https://en.wikipedia.org/wiki/Set_theory">
+      <img src="settheory.png">
+    </a>
+    <p>Image Source: Wikepedia</p>
+  </div>
+  <div style="display: inline-block; flex: 1">
+<p class="par">Sets are what they sound like: Collections, or sets, of numbers. Sets can be divided into subsets that <mark class="blue">include one or more elements of the set.</mark> Power sets are sets that include every possible subset in the set. An element \(x\) in a set \(y\) is mathematically written as \(x \in y\)</p>
+<p class="par">Between two sets you can perform operations. Consider we have two sets \(A\) and \(B\) <mark class="blue">A union involves every value in both sets, altogether, written as \(A \cap B\)</mark>. An intersection involves <mark class="blue">all the values in BOTH sets, written as \(A \cap B\)</mark>. Finally the difference of sets, similar to subtraction, <mark class="blue">includes all values in \(A\) but not \(B\)</mark></p>
+<p class="par">Generally speaking, Set Theory is divided into two parts, <mark class="blue">naive set theory, and aximoatic set theory.</mark> The prior is more reliant on intuiotion, but that does not mean it is not complex. Think about long-winded AMC 10 problems where you 
+get one fact and see what everything else means based on that. Naive set theory is exactly like that, it relies on intuition and well as something called Cardinality. <mark class="blue">Cardinality, as defined by mathematician Georg Cantor, is a way of comparing the size of two sets can be compared by finidng a 1:1 ratio and seeing what is left</mark>. Cantor also proposed that
+the set of all real numbers is an infinitely large set, and created the idea of powersets that must always be larger than the original set. The issue with naive set theory was that the lack of laws in comparrison to general mathematics led to paradoxes. <mark class="blue">Paradoxes in set theory are occurences where the set contradicts itself, and they are the aim of eliminating them is the foundation of advanced set theory</mark>. The 
+laws that were created to restrict paradoxes are called <mark class="blue">axioms, and they forge the base of Axiomatic Set Theory</mark></p>
+<p class="par">Set theory is inherently theoretical, and it is typically used <mark class="blue">alongside graphs and threedimensional shapes as a set that includes things like range and domain bounded by axioms</mark>. A collection of any group of numbers is called a set, and thus axioms and sets are everywhere. On the AMC 10 specifically, sets commonly arise when you need to find overlaps, the length and size, etc. These are more simple and typically involve more algebra and pure logical intuition than axioms, but it is still important to know and familiarize
+yourself with the vocabulary and symbols</p>
+</div>
+</div>
+<h2 class="amc10subtitle">Disciplines</h2>
+<p>Logic takes a different form in different subjects and topics of the AMC 10. It is important to recognize when and how to use it best</p>
+<span style="display: flex; flex-direction: row">
+  <span class="howworkcard" style="flex: 1">
+    <h4 class="amc10subtitle ittyBitty">Algebra</h4>
+    <p class="par">The biggest place this comes up is hand in hand with algebraic manipulation and modeling word problems. Logic goes hand in hand with interpreting and solving equations, especially applying well known tricks to a novel equation</p>
+  </span>
+  <span class="howworkcard" style="flex: 1">
+    <h4 class="amc10subtitle ittyBitty">Geometry</h4>
+    <p class="par">Geometric reasoning and logic is honestly one of the most interesting facets of math. I find it is most important for visualizing items, especially because the AMC 10 doesn't always give you diagrams to interpret.</p>
+  </span>
+  <span class="howworkcard" style="flex: 1">
+    <h4 class="amc10subtitle ittyBitty">Number Theory</h4>
+    <p class="par">Number theory is where logic shines, as the two are closely entertwined. I find logic tends to present itself whenever you are doing things with polarity, factorization, etc. essentially anything relating to the underlying traits and characteristics of numbers and how they interact</p>
+  </span>
+  <span class="howworkcard" style="flex: 1">
+    <h4 class="amc10subtitle ittyBitty">Probability</h4>
+    <p class="par">Like number theory, probability and logic are inherently intertinwed. One of the biggest ways you'll find logic in probability is in combinatorics and counting-particularly complementary counting and when to use it. A lot of probability logic is knowing how to optimize your solution and find the best way to doit, whether that be with complementary counting or with casework.</p>
+  </span>
+</span>
+<h2 id="conclusion" class="amc10subtitle">Conclusion</h2>
+<p class="par">Logic is equal parts the most essential and the most intuitive element of the AMC 10. Every question will have logic embedded in it, so it is important to understand if anyhing just the structure and idea of it. Though advanced theory may help you to know, understandin the concept
+  and thoguht processes behind logic in general is far more important. A basic grasp of logic can help you grow your other skills and thus make you a better mathematician in general.
+</a>.
+</p>
+<div class="problem problemWrapper">
+<h3 id="question-title" class="amc10title small">Question 1:</h3>
+    <p id="question-text">Loading question...</p>
+    <input type="text" id="answer-input" placeholder="Your answer">
+<div id="mc-container" class="hidden">
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+</div>
+
+    <button id="check-btn" class="problemBtn">Check Answer</button>
+
+    <div class="solution" id="solution" style="display:none;">
+      <h2>Solution</h2>
+      <p id="solution-text"></p>
+      <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
+      </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+
+    </main>
+<footer class="saintly-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img class="footer-logo" src="fullLogo.png" height="35px"></img>
+            <p>Making competition math accessible for everyone.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="am10.html">AMC 10</a></li>
+                <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+                <li><a href="amc10algebra.html">Algebra</a></li>
+                <li><a href="algebra.html">Topics Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>saintly.math@gmail.com</p>
+            <div class="social-icons">
+                </div>
+        </div>
+        <div class="footer-section">
+          <h4>Privacy</h4>
+          <ul><li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Saintly Math. Built with drive.
+    </div>
+</footer>
+</body>
+<script src="logicjs.js"></script>
+</html>
