@@ -55,13 +55,13 @@ const contentCardOne = `
 <h2 class="amc10subtitle">Bases</h2>
 <h3>Changing from Base 10 into some number \\(n\\)</h3>
 <p>Divide by \\(n\\) and take the remainder. That is your units digit</p>
-<p>Take the quotient and divide by \\(n\\) again, and take the remainder again. That's the next digit. keep going until you get a number \\(<n\\)</p>
+<p>Take the quotient and divide by \\(n\\) again, and take the remainder again. That's the next digit. keep going until you get a number \\(n\\)</p>
 <h3>Converting base \\(n\\) to base \\(10\\)</h3>
 <p>For \\(xyz_{n}\\) where \\(x,y\\) and \\(z\\) are digits, we have \\(xn^2+yn+z\\). Try this out with \\(n=10\\) if you would like to understand why.
 <h3>Things to remember</h3>
 <b>bi</b>nary = base \\(2\\)</p>
-<b>hex</b>idecimal = base \\(6\\)</p>
-<p>If no base is givne, always assume it is in base \\(10\\)</p>
+<b>hex</b>idecimal = base \\(16\\)</p>
+<p>If no base is given, always assume it is in base \\(10\\)</p>
 <h3><span class="material-symbols-outlined">
 star_shine
 </span> Why this is important <span class="material-symbols-outlined">
@@ -72,7 +72,7 @@ star_shine
 cardOneText.innerHTML = contentCardOne;
 const cardTwoText = document.getElementById("carousel-card-two");
 const contentCardTwo = `
-<h2 class="amc10subtitle">Prime Numbers/h2>
+<h2 class="amc10subtitle">Prime Numbers</h2>
 
 <h3>First 10 Primes</h3>
 $$
@@ -85,7 +85,7 @@ $$
 2643 = 3 \\cdot 881 💫
 $$
 $$
-253 = 11 \\cdot 33 🧋
+253 = 11 \\cdot 23 🧋
 $$
 $$
 5940 = 2^2 \\cdot 3^3 \\cdot 5 \\cdot 11 🍞
@@ -99,7 +99,7 @@ star_shine
 </span> Why this is important <span class="material-symbols-outlined">
 star_shine
 </span></h3>
-<p>Prime numbers make up every number. Not only are they important in number theory questions that ask speifically for primes, they also can play a big role in factoring and induction</p>
+<p>Prime numbers make up every number. Not only are they important in number theory questions that ask specifically for primes, they can also play a big role in factoring and induction</p>
 `;
 cardTwoText.innerHTML = contentCardTwo;
 const cardThreeText = document.getElementById("carousel-card-three");
@@ -2045,22 +2045,9 @@ track.style.transform = `translateX(-${cardWidth * index}px)`;
 function moveCarousel() {
   track.style.transition = 'transform 0.5s ease';
   track.style.transform = `translateX(-${cardWidth * index}px)`;
-  updateCenterCard();
 }
 
 // Update center card
-function updateCenterCard() {
-  allCards.forEach(card => card.classList.remove('center'));
-const centerOffset = Math.floor(visibleCards / 2);
-const centerCardIndex = index + centerOffset;
-
-  if (allCards[centerCardIndex]) {
-    allCards[centerCardIndex].classList.add('center');
-  }
-}
-
-// Initial center
-updateCenterCard();
 
 // Button clicks
 rightBtn.addEventListener('click', () => {
@@ -2104,12 +2091,8 @@ track.addEventListener('transitionend', () => {
 
 
 // Run initially
-updateCenterCard();
 
-// Update center card whenever carousel moves
-rightBtn.addEventListener('click', updateCenterCard);
-leftBtn.addEventListener('click', updateCenterCard);
-track.addEventListener('transitionend', updateCenterCard);
+
 
 // ---------- Shuffle Questions ----------
 shuffleArray(questions);

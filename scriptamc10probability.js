@@ -1211,22 +1211,8 @@ track.style.transform = `translateX(-${cardWidth * index}px)`;
 function moveCarousel() {
   track.style.transition = 'transform 0.5s ease';
   track.style.transform = `translateX(-${cardWidth * index}px)`;
-  updateCenterCard();
 }
 
-// Update center card
-function updateCenterCard() {
-  allCards.forEach(card => card.classList.remove('center'));
-const centerOffset = Math.floor(visibleCards / 2);
-const centerCardIndex = index + centerOffset;
-
-  if (allCards[centerCardIndex]) {
-    allCards[centerCardIndex].classList.add('center');
-  }
-}
-
-// Initial center
-updateCenterCard();
 
 // Button clicks
 rightBtn.addEventListener('click', () => {
@@ -1267,13 +1253,9 @@ track.addEventListener('transitionend', () => {
   }
 });
 
-// Run initially
-updateCenterCard();
+
 
 // Update center card whenever carousel moves
-rightBtn.addEventListener('click', updateCenterCard);
-leftBtn.addEventListener('click', updateCenterCard);
-track.addEventListener('transitionend', updateCenterCard);
 
 // ---------- Shuffle Questions ----------
 shuffleArray(questions);
