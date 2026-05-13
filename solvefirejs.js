@@ -49,877 +49,83 @@ let numTotal = 0
 let numWrong = 0
 let probTotal = 0
 let probWrong = 0
-function save(){
-        localStorage.setItem("ELO", userRatingAll);
-        console.log(get())
-}
-function get(){
-        return localStorage.getItem("ELO")
-}
-console.log(get())
-if (get() === null){
-        userRatingAll = 800;
+let mistakeSolveTrue = localStorage.getItem("mistakeSolve")
+if (mistakeSolveTrue ===  null){
+    mistake = 0
 } else {
-        userRatingAll = get()
+    mistake = parseInt(mistakeSolveTrue)
 }
-let strikes = 2;
-function capitalizeFirstLetter(val) {
-    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+let unfamiliarSolveTrue = localStorage.getItem("unfamiliarSolve")
+if (unfamiliarSolveTrue === null){
+    unfamiliar = 0
+} else {
+    unfamiliar  = parseInt(unfamiliarSolveTrue)
 }
-let score = 0;
-function toggleSubMenu(button){
-    button.nextElementSibling.classList.toggle('show');
-    button.classList.toggle('rotate');
+let stuckSolveTrue = localStorage.getItem("stuckSolve")
+if (stuckSolveTrue === null){
+    stuck = 0
+} else {
+    stuck = parseInt(stuckSolveTrue)
 }
-function updateAllRating(){
-    userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
+let algebraTotalTrue = localStorage.getItem("algebraTotalSolve")
+if (algebraTotalTrue === null){
+    algebraTotal = 0
+} else {
+    algebraTotal = parseInt(algebraTotalTrue)
 }
-// ---------- Shuffle Function ----------
-const highlight = document.getElementById("highlight");
-let streakCount = 0;
-let streakEnabled = true;
-function showHighlight() {
-
-
-    // reset
-    highlight.style.transition = 'none';
-    highlight.style.transform = 'scaleX(0)';
-    highlight.style.left = '0';
-    highlight.offsetHeight; // force reflow
-            // Step 1: expand from left to right
-    highlight.style.transition = 'transform 0.3s ease-out';
-    highlight.style.transform = 'scaleX(1)';
-
-    // Step 2: slide left edge in to close
-    setTimeout(() => {
-        highlight.style.transition = 'transform 0.3s ease-in, left 0.3s ease-in';
-        highlight.style.transform = 'scaleX(0)';
-        highlight.style.left = '100%';
-    }, 300);
-
-    // Reset after animation
-    setTimeout(() => {
-        highlight.style.transition = 'none';
-        highlight.style.left = '0';
-        highlight.style.transform = 'scaleX(0)';
-    }, 700);
+let algebraWrongTrue = localStorage.getItem("algebraWrongSolve")
+if (algebraWrongTrue === null){
+    algebraWrong = 0
+} else {
+    algebraWrong = parseInt(algebraWrongTrue)
 }
-
-
-
-// ---------- Question Data ----------
-const confettiCanvas = document.getElementById("confetti-canvas");
-const myConfetti = confetti.create(confettiCanvas, {
-    resize: true,
-    useWorker: true
-});
-
-const questions = [
-    {
-        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 9
-                </a>`,
-        text: `<p>Define a sequence \\(a_{1}, a_{2}, a_{3}...\\) such that \\(a_{1}=1\\) and for \\(n \\geq 1\\)</p>
-        $$
-        a_{n+1}=\\frac{a_n}{1+a_{n}}
-        $$
-        Find \\(a_{2024}\\). If the answer is a fraction, find the sum of the numerator and the denominator.`,
-        answer: '2025',
-        solution: `<b>2025</b><p>Let's see if we can make a conjecture by trying out the first few values. We have that \\(a_{2}=\\frac{a_{1}}{1+a_{1}}=\\frac{1}{1+1}=\\frac{1}{2}\\). Trying this out for \\(a_{3}\\) gives \\(a_{3}=\\frac{a_{2}}{1+a_{2}}=\\frac{\\frac{1}{2}}{1+\\frac{1}{2}}=\\frac{1}{3}\\).</p>
-        <p>We're starting to see a bit of a pattern, and if we keep going, we'll realize that the value of \\(a_{n}\\) is always going to be \\(\\frac{1}{n}\\). All you have to do is find that \\(a_{2024}=\\frac{1}{2024}\\) thus meaning our answer is \\(1+2024=2025\\). This works great, but let's try to understand why.</p>
-        <p>The numerator for \\(n > 1\\) is always going to be \\(\\frac{1}{n}\\). The denominator is always going to be \\(\\frac{n+1}{n}\\) because when we add by \\(1\\) and change the one so that we can add it to the fraction, it adds \\(n\\) to the numerator. This, we are dividing \\(\\frac{\\frac{1}{n}}{\\frac{1+n}{n}}\\). When we expand this and write it as multiplication, we get
-        \\(\\frac{1}{n} \\times \\frac{n}{n+1}\\) which of course we cross out the \\(n\\)s and end up with \\(\\frac{1}{n+1})`,
-        hint: "What pattern do you notice?",
-        step: "Solve the first few values and see what pattern you notice with the numerator and denominator",
-        topic: "induction",
-        pNumber: 9,
-
-        
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 7
-                </a>`,
-        text: `Let \\(x, y,\\) and \\(z\\) be positive real numbers such that \\(x+y +z = 15\\) and \\(x^2 +y^2 +z^2 = 83\\). Find
-
-the value of \\(xy + yz + zx\\).`,
-        answer: '71',
-        solution: `<b>71</b><p>We don't need to solve for any of the variables independently, nor the terms in the final expression, we just need to know what it's worth. We start by squaring \\(x+y+z\\). We base this off of our knowledge that \\((a+b)^2=a^2+2ab+b^2\\). The same is true when you add another term to the addition. Expanding and later simplifying gives \\((x+y+z)^2=x^2+y^2+z^2+2xy+2yz+2zx\\). We also need to square both sides, so we have \\(x^2+y^2+z^2+2xy+2xy+2zx=15^2=225\\)</p>
-        <p>From here, we recognize \\(x^2+y^2+z^2=83\\), so we subtract that out of our equation and are left with \\(2xy+2yz+2zx=225-83=142\\). Now, we realize that this equation is exactly double the equation we want, so we divide \\(\\frac{142}{2}=71\\)`,
-        hint: "What identity does this remind you of?",
-        step: "Square the first equation",
-        topic: "algebraic manipulation",
-        pNumber: 7
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 10
-                </a>`,
-        text: `How many ordered triples of integers \\((a, b, c)\\) with \\(0 \\leq a, b, c \\leq 5\\) satisfy the equation
-
-\\(a^3+b^3+c^3-3abc=0\\)`,
-        answer: '6',
-        solution: `<b>6</b><p>Right off the bat, we should wee that \\((0,0,0)\\) is an option. However, there is a certain pattern to be realized in this. This is sort of just logic, but if all the values are the same so the solution is \\((x,x,x)\\), we have \\(3x^3-3x^3\\) when you simplify which will always be \\(0\\). Thus, we have our solutions to be all the posibilities where all the numbers are the same which is \\(6\\)`,
-        hint: "What must the relationship between \\(a, b, c\\) be",
-        step: "\\(a, b, c\\) must all be the same",
-        topic: "logic",
-        pNumber: 7
-    },
-  
-    {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 4
-                </a>`,
-        text: `\\(\\sqrt{6+\\sqrt{6+\\sqrt{6+...}}}\\)`,
-        answer: '3',
-        solution: `<b>3</b><p>We can set \\(x=\\sqrt{6+x}\\).</p>
-        $$
-        x=\\sqrt{6+x}
-        $$
-        $$
-        x^2=6+x
-        $$
-        $$
-        x^2-x-6=0
-        $$
-        $$
-        (x-3)(x+2)
-        $$
-        <p>We assume we take the positive value, so we have \\(x=3\\)`,
-        topic: "algebraic manipulation",
-        hint: "What can you substitute in?",
-        step: "Set \\(x=\\sqrt{6+x}\\)"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 8
-                </a>`,
-        text: `The numbers \\(a,b,c\\) satisfy
-\\(a+b+c=12\\)
-
-and
-
-\\(ab+bc+ca=44\\)
-
-What is the value of \\(a^2+b^2+c^2\\)
-?`,
-        solution: `<b>56</b><p>This is one of the most common problems on the AMC10 and it relies on the knowledge that \\((a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca\\).</p>
-        $$
-        (a+b+c)^2=12^2=144
-        $$
-        $$
-        a^2+b^2+c^2+2ab+2bc+2ca=144
-        $$
-        $$
-        a^2+b^2+c^2+2(44)=144
-        $$
-        $$
-        a^2+b^2+c^2=56
-        $$`,
-        answer: '56',
-        hint: "How do the two equations relate? What identity does this remind you of?",
-        step: "Square the first equation",
-        topic: "algebraic manipulation"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 9
-                </a>`,
-        text: `<p>If</p>
-        $$
-        x+\\frac{1}{x}=3
-        $$
-        <p>what is the value of </p>
-        $$
-        x^2+\\frac{1}{x^2}?
-        $$`,
-        answer: '7',
-        solution: `<b>7</b><p>Square the first equation to get \\(x^2+2+\\frac{1}{x^2}=9\\) and subtract \\(2\\) on either side for \\(x^2+\\frac{1}{x^2}=7\\)`,
-        hint: "How can you get the second equation from the first",
-        step: "Square the first equation",
-        topic: "algebraic manipulation"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 10
-                </a>`,
-        text: `The average of five numbers is \\(18\\). If one number \\(x\\) is removed, the average of the
-remaining four numbers is \\(20\\). What is \\(x\\)?`,
-solution: `<b>10</b><p>Write this out algebraicly:</p>
-$$
-\\frac{s+x}{5}=18
-$$
-$$
-\\frac{s}{4}=20
-$$
-<p>Where \\(s\\) is the sum of all other numbers. From the other equation, we have that \\(s=80\\). Inputting that into the first equation we have \\(80+x=18(5)=90\\) and \\(x=10\\)`,
-answer: '10',
-hint: "Write it out algebraicly",
-step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \\(s=\\) sum of all other numbers in the set"
-    },
-    {
-    title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link"> Solvefire Iron Round 6 Problem 2</a>`,
-    text: `<p>A function \\(f\\) is defined on the positive integers by</p>
-    $$
-    f(1), f(2)=2
-    $$
-    <p>and for all \\(n \\geq 3\\)</p>
-    $$
-    f(n)=f(n-1)+f(n-2)+1
-    $$
-    <p>Find \\(f(6)\\)`,
-    answer:'20',
-    solution: `<b>20</b><p>Right off the bat, we see this is similar to the fibbonaci sequence but with a few key differences: We start with \\(2\\) and we add \\(1\\)</p>
-    <p>This one is easy enough where you can plausibly brute force, so let's just look through the process:</p>
-    $$
-    f(3)=f(2)+f(1)+1=2+1+1=4
-    $$
-    $$
-    f(4)=f(3)+f(2)+1=4+2+1=7
-    $$
-    $$
-    f(5)=f(4)+f(3)+1=7+4+1=12
-    $$
-    $$
-    f(6)=f(5)+f(4)+1=12+7+1=20
-    $$`,
-    hint: "Solve for \\(f(n)\\) one by one",
-    step: "Solve for each value independently",
-    topic: "arithmetic"
-    },
-        {
-                title: `<a https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 4
-                </a>` ,
-                text: `Alice can finish a job in \(6\) hours, and Bob can finish the same job in \\(10\\) hours. They work together for \\(2\\) hours, and then Bob leaves. If Alice needs \\(\\frac{m}{n}\\) more hours to finish the job, 
-                where \\(m\\) and \\(n\\) are relatively prime positive integers, find \\(m+n\\)`,
-                solution: `<b>19</b><p>Let's calculate how much each of them did in the \\(2\\) hours. We know that Alice did \\(\\frac{2}{6}=\\frac{1}{3}\\) of the job and Bob did \\(\\frac{2}{10}=\\frac{1}{5}\\) for a total of \\(\\frac{1}{3}+\\frac{1}{5}=\\frac{8}{15}\\)</p>
-                <p>Alice needs to complete \\(\\frac{7}{15}\\) of her job, which will take her \\(\\frac{7}{15} \\times 6 = \\frac{14}{5}\\) for \\(m=14, n=5\\) and \\(m+n=19\\)`,
-                answer: '19',
-                hint: "How much did each of them do in the \\(2\\) hours?",
-                step: "Find how much each of them did in \\(2\\) hours by \\(\\frac{2}{\\textup{total time they need to finish a j*b}}\\)",
-                topic: "speed-distance-time"
-    },
-]
-const geometryQ = [
-      {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 3
-                </a>`,
-        text: `A square \\(ABCD\\) has a side length \\(4\\). \\(E\\) is a point on \\(AD\\) such that \\(AE=3\\). \\(F\\) is a point on \\(CD\\) such that \\(DF=2\\). \\(H\\) is a point on \\(AB\\) such that \\(AH=2\\). \\(G\\) is formed
-        by the intersection of \\(FH\\) and \\(EB\\). Triangle \\(EFG\\) has a perimeter in the form of \\(a + \\sqrt{a}\\) where \\(a\\) is a positive integer. Compute \\(a\\).`,
-        image: "iron41.png",
-        answer: '5',
-        solution: `<b>5</b><p>Start by writing in what you know and filling in the rest. Since \\(AD = 4\\) and \\(AE=3\\) we have that \\(DE=1\\) (I recommend drawing this out). We also know that \\(DF, CF, AH, BH\\) must all be \\(2\\).</p>
-        <p>With this knowledge, we can immediately go ahead and solve for \\(EF\\) by using the pythagorean theorem. We knkow that \\(EDF\\) must be a right triangle because it is the corner of a rectangle, and we know the side lenths so we find \\(\\sqrt{1^2+2^2}=\\sqrt{5}\\)</p>
-        <p>Now, let's try to find the location of \\(G\\). If we write all the points we know as coordinates, we have \\(A(0,0), E(0,3), D(0,4), F(2,4), C(4,4), B(4,0), H(2,0)\\). We can model the line \\(EB\\) as a linear equation \\(y=\\frac{-3}{4}+3\\). We also know that \\(G\\) is at \\(x=2\\), so we solve that for \\(x=2\\) and get \\(\\frac{-6}{4}+3=\\frac{3}{2}\\).</p>
-        <p>We know then that the vertical distance between \\(E\\) and \\(G\\) is \\(3-\\frac{3}{2}=\\frac{3}{2}\\). We already knew that the horizontal distance is \\(2\\) because it is the same as \\(AH\\), so we use the pythagorean theorem. \\(\\sqrt{\\frac{3}{2}^2+2^2}=\\frac{5}{2}\\). We also know that \\(FG=4-\\frac{3}{2}=\\frac{5}{2}\\). Thus, we have the total perimeter to be \\(\\sqrt{5}+\\frac{5}{2}+\\frac{5}{2}=\\sqrt{5}+5\\). We have \\(a=5\\)`,
-        hint: "What values can you find from the information you have",
-        step: "Label the remaining values on the side lengths, then model the square on the coordinate grid with linear functions as lines.",
-        topic: "algebraic manipulation"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 2
-                </a>`,
-        text: `A point \\(P\\) inside a square \\(ABCD\\) is such that the distance from \\(P\\) to vertex \\(A\\) is \\(1\\), to vertex
-\\(B\\) is \\(2\\), and to vertex \\(C\\) is \\(3\\). The side length of \\(ABCD\\) is in the form \\(\\sqrt{a+b\\sqrt{b}}\\), where \\(a\\)
-
-and \\(b\\) are coprime integers. Compute \\(a+b\\).`,
-answer: `7`,
-solution: `<b>7</b><p>Assume the points \\(ABCD\\) are on a coordinate plane such that \\(A(0,s), B(s,s), C(s,0), D(0,0)\\) (with the side length of the square being \\(s\\)).</p>
-<p>From here, we use the distance formula \\(\\sqrt{x^2+y^2}\\) (derivated from the pythagorean theorem) to represent the location of Point \\(P(x,y)\\). We have that \\(x^2+(s-y)^2=1, (s-x)^2+(s-y)^2=4, (s-x)^2+y^2=9\\). We want to solve for \\(x\\), but that's not possible because it exists at different powers in this equation. Thus, we solve for \\(x\\) and \\(y\\).</p>
-Subtracting the second equation from the first gives us \\(x^2-(s-x)^2=-3\\). We expand this into \\(x^2-s^2+2xs-x^2=-3\\) which of course becomes \\(2xs-s^2=-3\\) and then \\(x=\\frac{-3+s^2}{2s}\\). We do the same thing by subtracting the second equation from the third and finding \\(y=\\frac{5-y}{2s}\\).</p>
-<p>With these, we substitute them back into our original equations. For the first we have that \\(\\frac{(-3+s^2)^2}{4s^2}+(s-\\frac{(5+s^2)^2}{4s^2})^2=1\\)</p>
-$$
-\\frac{(-3+s^2)^2}{4s^2}+(s-\\frac{(5+s^2)^2}{2s})^2=1
-$$
-$$
-\\frac{s^4-6s^2+9}{4s^2}+\\frac{s^4-10s^2+25}{4s^2}=1
-$$
-$$
-s^4-6s^2+9+s^4-10s^2+25=4s^2
-$$
-$$
-2s^4-16s^2+34=4s^2
-$$
-$$
-s^4-10s^2+17=0
-$$
-$$
-u=s^2
-$$
-$$
-u^2-10u+17=0
-$$
-$$
-u=\\frac{10 \\pm \\sqrt{100-68}}{2}
-$$
-$$
-u=5 \\pm 2\\sqrt{2}
-$$
-$$
-s^2=5 \\pm 2\\sqrt{2}
-$$
-$$
-s=\\sqrt{5 + 2\\sqrt{2}}
-$$
-$$
-a=5 b=2
-$$
-$$
-a+b=7
-$$
-`,
-hint: "How can you represent the square on the coordinate grid?",
-step: "Write square \\(ABCD\\) on the coordinate grid with points \\(A(0,s), B(s,s), C(s,0), D(0,0)\\) and use the distance formula to find the coordinates of \\(P\\) in relation to sidelength \\(s\\)",
-topic: "algebraic manipulation"
-    },
-    {
-title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 6
-                </a>`,
-        text: `A right circular cylinder with radius \\(2\\) and height \\(6\\) is filled with water to a depth of \\(4\\) inches.
-A solid metal sphere with a radius of  \\(1.5\\) inches is gently lowered into the cylinder, sinking to
-the bottom. By how many inches does the water level rise? If the answer is a fraction, find
-the sum of the numerator and the denominator.`,
-answer: `17`,
-solution: `<b>17</b><p>We need to find the total volume of water that the sphere diplaces, so we use \\(\\frac{4}{3}(1.5)^3=4.5\\). We're going to negate pi because we're going to divide it again anyways. That's how much water rises, but we need to translate that into height. We find the height of a cylinder with volume \\(4.5\\) and radius \\(2\\). We thus use \\(4.5=2^4h\\)
- so \\(h=1.125\\) which is a fraction of \\(\\frac{9}{8}\\) for \\(9+8=17\\). Notice that the original height was extraneous`,
-hint: "What information is extraneous?",
-step: "Find the area displaced by the sphere",
-topic: "logic"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 5
-                </a>`,
-        text: `Circle \\(X\\) has center \\(A\\) and radius \\(1\\). Circle \\(Y\\) has radius \\(\\frac{1}{2}\\)
-, is internally
-
-tangent to circle \\(X\\), and passes through \\(A\\). Let triangle \\(ABC\\) be right-
-angled at \\(A\\), where \\(AB\\) is a diameter of circle \\(Y\\) and \\(C\\) lies on circle \\(X\\).
-
-The area of intersection between \\(ABC\\) and \\(Y\\) is in the form \\(\\frac{\\pi+2}{x}\\)
-, where
-
-\\(x\\) is a positive integer. Compute \\(x\\).`,
-image: "iron45.png",
-        solution: `<b>16</b><p></p>We cut the area inside both circle \\(Y\\) and \\(ABC\\) by drawing a vertical line perpendicular to the diameter of \\(Y\\) and with endpoints on the circle and on the cneter. What this does is divide the overlap into a quarter circle and a triangle</p>
-        <p>Starting with the quarter circle, we simply have to find \\(\\frac{1}{2}^2 \\cdot \\pi \\cdot \\frac{1}{4}= \\frac{pi}{16}\\). We now find the triangle which is isoceles right with legs of \\(\\frac{1}{2}\\) (the radius). Thus, the area is \\(\\frac{1}{2}^2 \\cdot \\frac{1}{2}= \\frac{1}{8}\\). Surely enough, when we add these, it becomes \\(\\frac{pi+2}{16}\\) for \\(x=16\\)`,
-        answer: '16',
-        hint: "How can you divide the overlapping area into shapes we know how to find the area of?",
-        step: "Draw a vertical line with endpoints on the cirlce and at the endpoint that divides the overlapping area into a quarter circle and a triangle",
-        topic: "composite shapes"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 5
-                </a>`,
-        text: `Rectangle \\(ABCD\\) has area \\(72\\). Let \\(M\\) be the midpoint of \\(BC\\) and \\(N\\) the midpoint of
-\\(CD\\). What is the area of triangle \\(AMN\\)?`,
-        answer: '27',
-        solution: `<b>27</b><p>We first need the side lengths of \\(ABCD\\). Notice that the question gives no indication as to what they may be, thus they can be anything that multipliesto \\(72\\). I believe that the simplest route is to just use a square instead of a rectangle (because a square is a rectangle), and have sidelengths of \\(\\sqrt{72}\\), but if you wanted to, you could also do it with side lengths \\(8\\) and \\(9\\) or \\(1\\) and \\(72\\), or whatever else you find easy</p>
-        <p>If you were to draw this out, you would see that \\(AMN\\) is inscribed inside the rectangle and there is no real easy way to find the altitudes or bases. However, it is surrounded by \\(3\\) other triangles (\\(CMN, NDA, MBA)\\) what we do know the sidelengths for.</p>
-        <p>For \\(CMN\\), since we know it's vertices are located at the midpoints of sides of length \\(\\sqrt{72}\\), they must have lengths of \\(\\frac{\\sqrt{72}}{2}\\) for a total area of \\(\\frac{\\sqrt{72}}{2} \\times \\frac{sqrt{72}}{2} \\times \\frac{1}{2}=0\\)</p>
-        <p>The other two triangles have one sidelength of length \\(\\frac{\\sqrt{72}}{2}\\) and one of length \\(\\sqrt{72}\\) for a total area of \\(36\\) when you add both of them together</p>
-        <p>We find \\(72-36-9=27\\)`,
-        hint: "How can you simplify this",
-        step: "Make it a square with sidelengths \\(\\sqrt{72}\\) and ind the areas of the surrounding shapes",
-        topic: "composite shapes"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 2
-                </a>`,
-        text: `In triangle \\(ABC\\), point \\(D\\) lies on \\(AC\\) so that \\(AD:DC = 1:2\\). Point \\(E\\) is the midpoint
-of \\(BD\\). Lines \\(AE\\) and \\(BC\\) intersect at \\(F\\). If the area of \\(\\triangle ABC\\) is \\(360\\), what is the
-area of \\(\\triangle EBF\\)?`,
-        answer: '30',
-        solution: `<b>30</b><p>We're going to first start by writing this out on a coordinate grid and labeling the values we can. We have that \\(A(0,0), B(0,\\sqrt{360}), C(\\sqrt{360},0)\\) (the side lengths can be whatever, but this is easier because it forces a right isoceles triangle)</p>
-        <p>We have \\(D\\) that divides \\(AC\\) into \\(1:2\\) so we divide \\(\\sqrt{360} \\div 3 = 6\\sqrt{10} \\div 3 = 2\\sqrt{10}\\) so we have \\(D(2\\sqrt{10},0)\\). Since \\(E\\) is the midpoint of \\(BD\\) we have it at \\(E(\\sqrt{10}, 3\\sqrt{10})\\). Finally, we locate \\(F\\) by using systems of equations</p>
-        <p>We have line \\(AE\\) with a slope of \\(\\frac{3\\sqrt{10}}{\\sqrt{10}}=3\\) and a \\(y-\\) intercept of \\(0\\). For \\(BC\\) it's just a slope of \\(-1\\) and a \\(y-\\) intercept of \\(\\sqrt{360}=6\\sqrt{10}\\)</p>
-        $$
-        3x=-x+6\\sqrt{10}
-        $$
-        $$
-        4x=6\\sqrt{10}
-        $$
-        $$
-        x=\\frac{3}{2}\\sqrt{10}
-        $$
-        <p>We can also solve for \\(y=\\frac{9}{2}\\sqrt{10}\\).</p>
-        <p>From here, we observe triangle \\(ABF\\) which shares an altitude \\(AB\\) with \\(\\triangle ABC\\). The area of that triangle is \\(\\frac{1}{4} \\times 360\\) because \\(\\frac{3}{2}\\sqrt{10} = \\frac{1}{4} \\times 6\\sqrt{10}\\). Thus, we have the area of that to be \\(90\\)</p>
-        <p>We realize that \\(E\\) divides \\(AF\\) into \\(2:1\\) which will also be the ratio of the areas of the triangles \\(ABE\\) and \\(BEF\\) for \\(BEF=\\frac{90}{3}=30\\)`,
-        hint: "Use coordinates",
-        step: "Use coordinate values to find the area of \\(\\triangle ABF\\) first",
-        topic: "composite shapes"
-    },
-        {
-        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 1
-                </a>`,
-        text: `A circle has radius \\(10\\). Chord \\(AB\\) has length \\(12\\). If the distance from the center of the circle
-to chord AB is \\(\\sqrt{k}\\), find \\(k\\).`,
-        answer: '64',
-        solution: `<b>64</b><p>If we draw a perpendicular bisector to chord \\(AB\\) that divides it into two sides of length \\(6\\), that extends to the center of the circle, then draw a radius through the endpoint of the chord and cente,r we get a right triangle. The side lengths are \\(\\sqrt{k}, 6, 10\\) which we use with the pythagorean theorem to find
-        \\(k+6^2=10^2\\) so \\(k=64\\)`,
-        hint: "Use the pythagorean theorem",
-        step: "Draw a perpendicular line from the midpoint of \\(AB\\) to the center, and then draw the radius from the center to an endpoint of \\(AB\\)",
-        topic: "triangles"
-    }
-]
-const numTheoryQ = [
-    {
-        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 1
-                </a>`,
-        text: `The integer \\(N\\) has \\(12\\) positive factors. If \\(3^2\\)
-is a factor of N and \\(5\\) is not a factor of \\(N\\), what
-is the total number of positive factors in \\(5N\\)?`,
-        pNumber: 1,
-        answer: '24',
-        solution: `<b>24</b><p>For each factor of \\(N\\), there is another factor that is \\(5\\) times the factor. Since \\(5\\) is not a factor, we do not have to worry about overcounting. Notice that the bit about \\(3^2\\) is extraneous because that just gives us two factors of \\(N\\)`,
-        hint: "Which bit of information can you ignore?",
-        step: "What should you multiply the number of factors by?",
-        topic:  "prime factorization"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 3
-                </a>`,
-        text: `What is the smallest number that has exactly 3 odd factors and 6 even
-factors?`,
-        solution: `<b>36</b><p>First we notice that one of the odd factors is \\(1\\) and one of the even factors is \\(N\\). We know that in the prime factorization we need to have \\(2\\) at least once and to minimize the number the next smallest prime number: \\(3\\). We have some combination of \\(2\\) and \\(3\\). For a total of \\(9\\) factors, we need both of these to be raised to the second power, because the total number of factors is found by adding one to all ofthe powers and multiplying</p>
-        <p>We have a prime factorization of \\(2^2 \\times 3^2 = 36\\)`,
-        answer: '36',
-        hint: "What numbrers can be included as odd and even factors?",
-        step: "Find what the powers of the prime factorization need to be and what numbers need to be in the prime factorization",
-        topic: "prime factorization"
-    },
-        {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 6
-                </a>`,
-        text: `Compute the number of ordered pairs \\((a,b)\\) such that \\(\\textup{gcd}(a,b)=8\\) and \\(\\textup{lcm}(a,b)=480).`,
-        solution: `<b>8</b><p>We are looking for \\(a\\) and \\(b\\) such that \\(a \\cdot \\frac{b}{8}=480\\) and \\(b \\cdot \\frac{a}{8}=480\\). \\(480\\) has a prime factorization of \\(2^5 \\times 3 \\times 5\\). We know that both \\(a\\) and \\(b\\) must have \\(2^3\\) in their prime factorization. We also know that the two numbers can't have any overlaping factors other than \\(2^3\\).</p>
-        <p>Instead of solving directly for \\(a\\) and \\(b\\), we solve for \\(\\frac{a}{b}=x\\) and \\(\\frac{b}{8}=y\\) to see how many independent values combinations are possible</p>
-        <p>The most important thing to remember here is that if either \\(x\\) or \\(y\\) has a two, the other cannot, because that would raise the \\(\\textup{gcd}\\). Also remember that we need to use all the factors</p>
-        <p>Let's try to find all the possible values for \\(a\\). We can have \\(1, 3, 4, 5, 12, 15, 20, 60\\). We essentially find all the numbers that are either odd or divisible by \\(4\\)</p>
-        <p>There are \\(8\\) of these. and thus \\(8\\) values for \\(a, b\\)</p>`,
-        answer: '8',
-        hint: "What do \\(\\frac{a}{8}\\) and \\(\\frac{b}{8}\\) have to be??",
-        step: "Find the number of ways you can arrange the prime factors of \\(\\frac{480}{8}\\) into two numbers such that they share no numbers",
-        topic: "prime factorization"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 7
-                </a>`,
-                text: `<p>Compute</p>
-                $$
-                \\binom{1224}{0} - \\binom {1224}{1} ... \\binom{1224}{2}
-                $$`,
-                answer: '0',
-                solution: `<b>0</b><p>We recognizing the consecutive sums of binomials "choose" functions to be indicative of binomial theorem:</p>
-              $$
-              \\[ \\sum_{i=0}^n \\binom{n}{k}x^n-k y^k\\]
-              $$
-                <p>This gives a way of finding the expansion of \\((x+y)^n\\), but we notice that it does have \\(\\binom{n}{k}\\) with iterations of \\(k\\) increasing by \\(1\\).</p>
-                <p>In order for this to work, we need \\(x\\) and \\(k\\) to be of alternating signs because the choose functions are of alternating signs. Thus we have \\(x=1\\) and \\(y==1\\) for \\((1+(-1))^{1224}\\) which is, of course, \\(0\\)`,
-                hint: "Use binomial theorem",
-                step: "Write as a binomial theorem sum with \\(n=1224\\). What should \\(x\\) and \\(y\\) be?",
-                topic: "algebraic manipulation",
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 8
-                </a>`,
-                text: `What is the last digit of \\(4^7 +7^4\\)?`,
-                answer: '5',
-                solution: `<b>5</b><p>Since we know that the units digits of numbers raised to powers are cyclic, we can just find the patterns for each.</p>
-                <p>For \\(4\\) we have \\(4,6\\) and then it repeats, so with modular arithmetic we find that \\(\\frac{7}{4}\\) has a remainder of \\(1\\) and a units digit of \\(4\\)</p>
-                <p>For \\(7\\) we have \\(7,9,3,1\\) which is just \\(4\\) so a units digit of \\(1\\). We have that \\(4+1=5\\)`,
-                hint: "Units digits of exponents are cyclic",
-                step: "Find the pattern for the units digits",
-                topic: "induction"
-
-    },
-    {
-                title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 3
-                </a>`,
-                text: `How many integers from \\(1\\) to \\(1000\\) are divisible by \\(3\\) or \\(5\\) but not both?`,
-                answer: '401',
-                solution: `<b>401</b><p>We find that there are \\(\\frac{1000}{3} \\approx 333\\) divisible by \\(3\\) and \\(\\frac{1000}{5}=200\\) divisible by \\(5\\). There are \\(\\frac{1000}{3\\times5}\\aprox 66\\) divisible by both. We find \\(200+333-(66 \\times 2)=401\\) (we multiply by \\(2\\) because we "subtract from both stacks")`,
-                hint: "Make sure not ot overcount",
-                step: "Find how many are divisible by \\(3\\), and then by \\(5\\), and then by both",
-                topic: "logic"
-    },
-    {
-                title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 4
-                </a>`,
-                text: `A positive integer \\(n\\) leaves remainder \\(3\\) when divided by \\(7\\) and remainder \\(5\\) when
-divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
-                answer: '59',
-                solution: `<b>59</b><p>We have that \\(7x+3=9y+5\\). We just have to find the smallest possible values for \\(y\\) and \\(x\\).For \\(y=1\\) we get 14, for \\(y=2\\) we have \\(23\\). The next values are \\(32,41,50, 59\\) which when divided by \\(7\\) give remainderis of \\(4, 6, 1, 3\\) for a final answer \\(59\\)`,
-                hint: "Try out values",
-                step: "Use the equation \\(7x+3=5y+9\\) and solve like a diophantine equation",
-                topic: "logic"
-    },
-    {
-                title: `https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 3
-                </a>`,
-                text: `<p>Three boxes are labeled:</p>
-                <ul>
-                <li>Box 1: "The prize is not in Box 2"</li>
-                <li>Box 2: "The prize is in Box 3"</li>
-                <li>Box 3: "The prize is not in this box</li>
-                </ul>
-                <p>Exactly one statement is true. Determine which box contains the prize (answer with the number)</p>`,
-                answer: '2',
-                solution: `<b>2</b><p>We're goin to go through each box considering it is telling the truth and see what it tells us about the rest</p>
-                <p>If box 1 is telling the truth, then the box is not in box 2. Then, box 2 must be lying so it is not in box 3 either. Finally, box 3 must be lying so the prize has to be in that box. This causes a contradiction, so box 1 cannot be telling the truth</p>
-                <p>If box 2 is telling the truth, the prize is in box 3. If box 3 is lying, that confirms it. However, box 1 must be lying and that tells us it has to be in box 2. That contradicts. Box 2 must be lying</p>
-                <p>If box 3 is telling the truth, the prize is in box 1 or box 2. If box 1 is lying, the prize is in box 2. And if box 2 is lying, the prize just cant be in box 3, which checks out</p>`,
-                hint: "See how changing the truth value for each one changes the outcome",
-                step: "Test out each value when it is true",
-                topic: "logic"
-    },
-
-    {
-        title: `https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 5
-                </a>`,
-        text: `A positive integer \\(n\\) leaves remainder \\(2\\) when divided by \\(5\\), remainder \\(3\\) when divided by \\(6\\), and remainder \\(4\\) when divided by \\(7\\). Find the smallest posible value of \\(n\\)`,
-        solution: `<b>207</b><p>We have some value \\(n\\) such that \\(5x+2=6y+3=7z+4\\). By the first term, we know it must end in \\(7\\) or \\(2\\) because a multiple of \\(5\\) must end in \\(0\\) or \\(5\\).</p>
-        <p>It can't be \\(2\\) because when divided by an even value it leaves an odd remainder, making it odd. By subtracting \\(7-3\\) we know we need a multiple of \\(6\\) that ends in \\(4\\). We try \\(24\\) which yields \\(27\\). When divided by \\(7\\) it leaves a remainder of \\(6\\) though, so that doesn't work</p>
-        <p>Another value would be \\(54\\) for \\(n=57\\). When this is divided by \\(7\\) the remainder is \\(1\\)</p>
-        <p>Brute force doesn't seem to work that well. Notice that for each value, we have that \\(n\\) leaves a remainder of \\(x-3\\) when divided by \\(x\\). This means that \\(n+3\\) is divisible by \\(5, 6, 7\\) so \\(n+3=\\textup{lcm}(5,6,7)=210\\) for \\(n=210-3=207\\). `,
-        hint: "Don't brute force, use the LCM",
-        answer: '207',
-        step: "Find the \\(\\textup{lcm}(5,6,7)\\) and subtract something",
-        topic: "prime factorization"
-    },
-    {
-            title: `https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 6
-                </a>`,
-                text: `<p>Find the number of ordered pairs of positive integers \\((x,y)\\) such that</p>
-                $$
-                \\frac{1}{x}+\\frac{1}{y}=\\frac{1}{4}
-                $$`,
-                solution: `<b>5</b><p>Follow the following algebraic manipulation</p>
-                $$
-                \\frac{1}{x}+\\frac{1}{y}=\\frac{1}{4}
-                $$
-                $$
-                \\frac{x+y}{xy}=\\frac{1}{4}
-                $$
-                $$
-                4x+4y=xy
-                $$
-                $$
-                xy-4x-4y=0
-                $$
-                $$
-                x(y-4)-4y+16=16
-                $$
-                $$
-                x(y-4)-4(y-4)=16
-                $$
-                $$
-                (x-4)(y-4)=16
-                $$
-                <p>Now we are looking for factors of \\(16\\). We have \\(4, 4\\) for \\(x=8, y=8\\). We have \\(8, 2\\) for \\((12, 6), (6, 12)\\) and \\(16, 1\\) for \\((20, 5),(5,20)\\). There are \\(5\\) total`,
-                answer: `5`,
-                hint: "Rewrite in factored form",
-                step: "rewrite as one fraction, then eliminate the fraction and factor by grouping",
-                topic: 'algebraic manipulation'
-    },
-    {
-            title: `https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 8
-                </a>`,
-            text: `<p>How many integers \\(n\\) satisfy</p>
-            $$
-            1 \\leq n \\leq 100
-            $$
-            <p>such that </p>
-            $$
-            \\frac{n^2-n}{2}
-            $$
-            <p>is odd?</p>`,
-            step: `<b>50</b><p>Note that \\(n^2-n\\) will always be even. First of all, the square of any number \\(n\\) has the some polarity (odd or even) as \\(n\\) and the difference between two numbers of the same polarity will always be even.</p>
-            <p>The issue then becomes finding how many numbers are divisible by \\(4\\), because they can all be divisible by \\(2\\), but to be even they need to be divisible by \\(2^2=4\\).</p>
-            <p>We can factor out the top equation into \\(n(n-1)\\). We need either \\(n\\) or \\(n-1\\) to be divisible by \\(4\\). There are \\(25\\) numbers \\(n\\) such that \\(1 \\leq n \\leq 100\\) that are divisible by \\(4\\), and another \\(25\\) such that \\(n-1\\) is divisible by \\(4\\) for a total of \\(50\\)`,
-            answer: '50',
-            hint: "What does \\(n^2-n\\) need to be divisible by?",
-            step: "Rewrite the numerator as \\(n(n-1)\\)",
-            topic: "logic"  
-    }
-
-]
-const probabilityQ = [
-    {
-        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 3
-                </a>`,
-        text: `A bag contains \\(4\\) red marbles, \\(5\\) blue marbles, and \\(6\\) green marbles. Three marbles are drawn
-at random without replacement. The probability that all three marbles are different colours
-is in the form \\(\\frac{a}{b}\\)
-, where \\(a\\) and \\(b\\) are coprime integers. Compute \\(a+b\\)`,
-answer: '115',
-solution: `<b>115</b><p>There are \\(6\\) total "paths" or orders that you can draw the marbles in, but notice that it doesn't really matter. Let's say you pull red, blue, and then green. The probability of red first is \\(\\frac{4}{15}\\) and then blue is \\(\\frac{5}{14}\\) and green is \\(\\frac{6}{13}\\). If you switch the order around, the order of the numerators changes, but the numbers in the numerator do not, and neither do the denominators.
-Since they are all being multiplied together and multiplication is reagrdless of order, the chance is the same no matter what. Thus, we find the probability of \\(\\frac{4}{15} \\times \\frac{5}{14}\\frac{6}{13}=\\frac{4}{91}\\) which we multiply by \\(4\\) for \\(\\frac{24}{91}\\) and \\(a=24\\) and \\(b=91\\) for \\(a+b=115\\)`,
-hint: "What stays the same regardless of order?",
-step: "Find the probability for one 'order' of picking marbles and see how it relates to the rest",
-topic: "counting"
-    },
-    {
-        title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 4
-                </a>`,
-        text: `For a positive integer \\(n\\), let \\(f(n)\\) be the sum of the digits of \\(n\\). For how many integers \\(n\\)
-between \\(1\\) and \\(999\\) inclusive does \\(f(f(n))=8\\)?`,
-solution: `<b>111</b><p>First start by finding what \\(f(n)\\) must be. We know that the highest sum \\(f(n)\\) is \\(9+9+9=27\\), so we're looking for numbers whose sum of digits is \\(8\\) that are \\(leq 27\\). This gives us \\(26, 17, 8\\).</p>
-<p>Let's calculate all of these individually. For \\(26\\), we need two \\(9\\)s and one \\(8\\). There is no other way to do it because it is a large number. We can put the \\(3\\) in \\(3\\) places, so there are \\(3\\) options.</p>
-<p>Next is \\(17\\). For the following two, I want to use a method called stars and bars, which is a systematic equation that discounts overcounting. The full proof can be found online, but all you need to know is that when dividing "stars" into bins separated by "bars". The formula is \\(\\binom{n+k-1}{k-1}\\) where \\(n\\) is the number of stars and \\(k\\) is the number of 
-bins (\\(k-1\\) would be the number of bars). When dividing \\(17\\), we can imagine we have literally \\(17\\) stars divided into \\(3\\) sections, the digits. For this we do \\(\\binom{17+2}{2}=\\frac{19!}{2!(17!)=\\frac{19 \\cdot 18}{2}=19 \\cdot 9 = 171\\). We do need to be careful though, because there are chances that we put more than \\(9\\) in one "bin" which we cannot do because no digits place can have more than \\(9\\). To account for this overcounting, 
-we find the number of ways where we overcount. This happens when one value is at least \\(10\\) so the remaining \\(7\\) are distributed among \\(3\\) bins (because it can also go in the bin where the \\(10\\) is) so we have \\(\\binom{7+2}{2}=\\frac{9!}{7!(2!)}=36\\). Since the one that is over can be in \\(3\\) places, we multiply that by \\(13\\). Thus, for \\(17\\) there are \\(171-36(3)=63\\)</p>
-<p>The last one is \\(8\\). We do stars and bars for \\(8\\) across \\(3\\) which is \\(\\binom{8+2}{2}=\\frac{10!}{8!(2!)}=45\\).</p>
-<p>Thus, we have \\(3+63+45=111\\)`,
-topic: "casework",
-hint: 'What are the values of \\(f(n)\\)?',
-step: "Find the values of \\(f(n)\\) to be \\(27, 17,\\) and \\(8\\) and use stars and bars to calculate the total posibilities for each",
-answer: '111'
-    },
-    {
-                title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 5
-                </a>`,
-        text: `A frog starts at the point \\((0,0)\\). It can make jumps of two types: a red jump of vector \\((1,2)\\)
-and a blue jump of vector \\((2,1)\\). How many distinct points in the coordinate plane can the
-frog reach after exactly \\(10\\) jumps?`,
-solution: `<b>11</b>Notice that the order he makes the jumps does not matter because his final position is just \\((2r+b,r+2b)\\). Furthermore, notice that each combination is independent and produces its own location. We can test this by induction, because as \\(x\\) goes up, \\(y\\)  must go down. There are \\(11\\) values for \\(r\\) because he can go up to ten times and not \\(0\\) times. Thus he can reach \\(11\\) points`,
-topic: "logic",
-hint: 'Does the order matter?',
-step: "Find the total number of possible red vector jumps he can make",
-answer: '11',
-    },
-        {
-                title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 3 Problem 8
-                </a>`,
-        text: `In how many ways can the numbers \\(1,2,3,4,5,6,7,8\\) be placed in the vertices of a cube such
-that the sum of the four numbers on every face is 18? (Rotations of the cube are considered
-the same.)`,
-solution: `<b>6</b>We count the total combinations we can have \\([1,8,2,7], [1,8,3,6], [1,8,4,5], [1,7,6,4]\\) and the remaining sets. There are \\(4\\) of these. Plant "1" on one vertice and draw out the rest(this one you just have to brute force with logic). That should give you \\(6\\) options`,
-hint: 'How many arrangements are possible?',
-step: "Put '1' or another number in the same corner every time and do casework",
-answer: '6',
-topic: "logic"
-    },
-    {
-        title:  `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 2
-                </a>`,
-        text: `Bartholomew is listening to his favourite Spotify playlist. He wishes to
-listen to all \\(7\\) songs, but does not wish to listen to Song \\(A\\) and Song \\(B\\)
-consecutively. How many different ways can Bartholomew listen to his
-playlist, with each song being played exactly once?`,
-solution: `<b>3600</b>We start by seeing how many total arrangements are possible. We use \\(7! = 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1=5040\\). However, we need to take into account the fact that he doesn't want \\(AB\\) consecutively. Imagine that \\(AB\\) is one song. There are now \\(6!\\) ways to order it, and we multiply that by \\(2\\) because the order of \\(AB\\) is interchangeable. We have \\(1440\\).</p>
-<p>We find \\(5040-1440=3600\\)`,
-hint: "Don't overcount",
-step: "Find the total solutions and then account for overcounting by treating \\(AB\\) as one song.",
-answer: '3600',
-topic: "counting",
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 9
-                </a>`,
-        text: `A rook is placed at the origin and can only move one unit up or right each
-move. How many ways are there to reach \\((4,4)\\) without passing through
-\\((3,2)\\)?`,
-solution: `<b>40</b><p>Notice that whatever the case, we need to take \\(8\\) moves with \\(4\\) up and \\(4\\) right. We're going to start by finding the total number of ways he can get there. Let's focus on just the upwards movements. Of the \\(8\\) total movements, there are \\(4\\) up that can be in \\(\\binom{8}{4}=\\frac{8!}{4!(4!)}=70\\) places for a total of \\(70\\) paths</p>
-<p>To account for overcounting, we need to see how the rook gets to \\((3,2)\\) and then see what happens after there. Getting to \\((3,2)\\) takes \\(5\\) movements so we find \\(\\binom{5}{3}=\\frac{5!}{2!(3!)}=10\\). After, there are \\(3\\) moves so we find \\(\\binom{3}{1}=3\\). Thus, we have \\(3 \\times 10 = 30\\) that we subtract from \\(70\\) which gives \\(70-30=40\\)`,
-hint: "You can use \\(\\frac{n!}{k!(n-k!}\\) to find the total number of ways to get to a certain point from a certain point",
-step: "Find the total number of ways to get to \\((4,4)\\) by using \\(\\frac{8!}{4!(4!}\\) and then find the number of ways to get to and continue from \\((3,2)\\)",
-topic: "counting"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 4 Problem 10
-                </a>`,
-        text: `How many diagonals can be drawn in a \\(5000\\)-sided polygon?`,
-solution: `<b></b><p>We use the equation \\(\\frac{n(n-3)}{2}\\) because for each point, there can be a diagonal drawn to all but \\(3\\) points, and if you do this for each point, each diagonal will be repeated twice. Inputting \\(5000\\) gives an answer of \\(12492500\\)`,
-topic: "counting",
-answer: '12492500',
-hint: "What is the equation for the number of diagonals in an \\(n\\)-sided polygon?",
-step: "Use the formula \\(\\frac{n(n-3)}{2}\\)"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 5
-                </a>`,
-        text: `Tyler chooses a meal consisting of one meat (beef, chicken, or pork), two different
-vegetables (beans, corn, potatoes, tomatoes), and one dessert (brownies, cake, pudding,
-or ice cream). How many different meals are possible?`,
-solution: `<b>72</b><p>The meat has \\(\\binom{3}{1}=3\\) possibilities, the vegetables have \\(\\binom{4}{2}=6\\), and the dessert has \\(\\binom{4}{1}=4\\). Multiplying this gives a total of \\(3 \\times 6 \\times 4=72\\)`,
-answer: '72',
-hint: "The total number of combinations is the product of all the individual combinatioins",
-step: "Find the number of ways to pick each item",
-topic: "counting"
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 6
-                </a>`,
-        text: `How many five-digit positive integers have digits in strictly increasing order?`,
-        solution: `<b>126</b><p>Notice that any set of \\(5\\) individual numbers can be put into ascending order. We can't use \\(0\\) so we just use \\(\\binom{9}{5}=\\frac{9!}{5!(4!)}=126\\)`,
-        answer: '126',
-        hint: "You can use the choose function",
-        step: "Calculate \\(\\binom{9}{5}\\)",
-        topic: "counting"
-    },
-{
-        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 5 Problem 7
-                </a>`,
-        text: `A \\(4\\times4\\) grid of squares is colored so that each square is either red or blue. How many
-colorings have exactly two red squares in each row?`,
-        solution: `<b>1296</b><p>In each row, there are \\(\\binom{4}{2}=6\\) ways to pick which ones are red. There are \\(4\\) rows so we find \\(6^4=1296\\)`,
-        answer: '1296',
-        hint: "You can use the choose function",
-        step: "Calculate \\(\\binom{4}{2}\\)",
-        topic: "counting"
-    },
-{
-        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 7
-                </a>`,
-        text: `How many permutations of the letters in the word \\(\\textup{MATH}\\) have the property that no letters are in its original position?`,
-        solution: `<b>0</b><p>The first letter we choose a place for has \\(\\binom{3}{1}=3\\) ways to choose where it goes. The next one is complicated because there is a chance one of its places was taken up, and a chance it wasn't. Assuming it wasn't, there are \\(3\\) plcaes it can go, and the other two are set. Thus we have \\(3 \\times 3\\). We don't need to account for the case that the "next" letter
-        had its place left open, because then we can picka  different next number`,
-        answer: '9',
-        hint: "How many places can each letter be in",
-        step: "Find how many places the first letter to be put in place has, and then how many the next letter with the most option has",
-        topic: "logic"
-    },
-    {
-        title:  `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 9
-                </a>`,
-        text: `How many three-digit positive integers have digits that increase from left to right and whose digits sum to \\(15\\)?`,
-        solution:  `<b>8</b><p>We can just do casework by the first digit</p>
-        <p>For \\(1\\) we need the remaining digits to sum to \\(14\\) so we have \\(159, 168\\). We can't do \\(177\\) because it's not ascending</p>
-        <p>For \\(2\\) we have \\\(249, 258, 267\\)</p>
-        <p>For \\(3\\) we ave \\(357, 348\\)</p>
-        <p>For \\(4\\) we only have \\(456\\)</p>
-        <p>There are \\(8\\) total</p>`,
-        answer: '8',
-        topic: 'casework',
-        hint: "Divide into cases",
-        step: "Divide by cases by the hundredth digit",
-    },
-    {
-        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
-                Solvefire Iron Round 6 Problem 9
-                </a>`,
-        text: `A code consists of four distinct digits. The first digit is odd, the last digit is even, and the code is divisible by \\(5\\). How many such codes are possible?`,
-        solution: `<b>280</b><p>We know that the last digit must be \\(0\\) in order for it to be even and give us a number divisible by \\(5\\).</p>
-        <p>The first digit can be \\(1,3,5,7,9\\)</p>
-        <p>There are \\(8 \\times 7\\) ways to choose from the remaining digits. We have \\(5 \\times 8 \\times 7 \\times 1 = 280\\)`,
-        answer: '280',
-        hint: "What do the first and final digits have to be?",
-        step: "Realize the last digit is \\(0\\) and find the number of possible values for each digit",
-        topic: "counting"
-    }
-
-]
-console.log(questions)
-let algebraIndex = 0
-let geometryIndex = 0
-let numIndex = 0
-let probIndex = 0
-let allIndex = 0
-
-shuffleArray(questions);
-algebraQuestion = questions[algebraIndex]
-// ---------- Question Data Geometry----------
-
-
-shuffleArray(geometryQ);
-
-shuffleArray(numTheoryQ);
-const allQ = []
-allQ.push(...questions)
-allQ.push(...geometryQ)
-allQ.push(...numTheoryQ)
-allQ.push(...probabilityQ)
-console.log(allQ)
-// ---------- DOM Elements ----------
-const questionTitle = document.getElementById("question-title");
-const questionText = document.getElementById("question-text");
-const questionChoices = document.getElementById("mc-container")
-const answerInput = document.getElementById("answer-input");
-const checkBtn = document.getElementById("check-btn");
-const solutionDiv = document.getElementById("solution");
-const solutionText = document.getElementById("solution-text");
-const nextBtn = document.getElementById("next-btn");
-const toggleStreakBtn = document.getElementById("toggle-streak");
-const streakWrapper = document.getElementById("streak-wrapper");
-const streakBar = document.getElementById("streak-bar");
-const backBtn = document.querySelector(".back-btn");
-const mcContainer = document.getElementById("mc-container");
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
-const algButton = document.getElementById("algebraButton");
-const geometryButton = document.getElementById("geometryButton");
-const numButton = document.getElementById("numtheoryButton");
-const probButton = document.getElementById("probabilityButton");
-const allButton = document.getElementById("allButton");
-const image = document.getElementById("question-image")
-const restartButton = document.getElementById("restart-btn");
-const problemsWrapper = document.getElementById("problems-card");
-const helpBtn = document.getElementById("helpButton");
-const helpPannel = document.getElementById("helpPannel");
-const overlay = document.getElementById("overlay");
-const submitSolutionButton = document.getElementById("submit-a-solution");
-const submitSolutionForm = document.getElementById("submit-a-solution-form");
-const prevError = document.getElementById("prevError")
-const hintBtn = document.getElementById("hintBtn")
-const seeStep = document.getElementById("seeStep")
-const hintText = document.getElementById("hint")
-const stepOne = document.getElementById("stepOne")
-const stepOneText = document.getElementById("stepOneText")
-const strikeOne = document.getElementById("strikeOne")
-const strikeTwo = document.getElementById("strikeTwo")
-const strikeThree = document.getElementById("strikeThree")
-const strikesContainer = document.getElementById("strikesContainer")
-const mistakeBtn = document.getElementById("mistake")
-const unfamiliarBtn = document.getElementById("unfamiliar")
-const stuckBtn = document.getElementById("stuck")
-const errorTags = document.getElementById("tagQuestion")
-helpBtn.addEventListener("click", function () {
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
-let questionsAnswered = 0;
-let percentage = 0;
-let percetnageStr = "0";
-let test = document.getElementById("test");
-let scoreCount = document.getElementById("score-count");
-const TOPIC_GLOSSARY = [
+let geometryTotalTrue = localStorage.getItem("geometryTotalSolve")
+if (geometryTotalTrue === null){
+    geometryTotal = 0
+} else {
+    geometryTotal = parseInt(geometryTotalTrue)
+}
+let geometryWrongTrue = localStorage.getItem("geometryWrongSolve")
+if (geometryWrongTrue === null){
+    geometryWrong = 0
+} else {
+    geometryWrong = parseInt(geometryWrongTrue)
+}
+let numTotalTrue = localStorage.getItem("numTotalSolve")
+if (numTotalTrue === null){
+    numTotal = 0
+} else {
+    numTotal = parseInt(numTotalTrue)
+}
+let numWrongTrue = localStorage.getItem("numWrongSolve")
+if (numWrongTrue === null){
+    numWrong = 0
+} else {
+    numWrong = parseInt(numWrongTrue)
+}
+let probTotalTrue = localStorage.getItem("probTotalSolve")
+if (probTotalTrue === null){
+    probTotal = 0
+} else {
+    probTotal = parseInt(probTotalTrue)
+}
+let probWrongTrue = localStorage.getItem("probWrongSolve")
+if (probWrongTrue === null){
+    probWrong = 0
+} else {
+    probWrong = parseInt(probWrongTrue)
+}
+let topicsToWorkOnTrue = localStorage.getItem("topicsToWorkOnSolve")
+if (topicsToWorkOnTrue === null){
+    topicsToWorkOn = []
+} else {
+    topicsToWorkOn = JSON.parse(topicsToWorkOnTrue)
+}
+let topicsGlossarySetTrue = localStorage.getItem("topicGlossarySetSolve")
+let TOPIC_GLOSSARY = []
+if (topicsGlossarySetTrue === null){
+    console.log("topic glossary set")
+ TOPIC_GLOSSARY = [
     {
         id: "word problems",
         title: `Word Problems`,
@@ -1386,6 +592,1259 @@ const TOPIC_GLOSSARY = [
 TOPIC_GLOSSARY.forEach(q =>{
         q.attempts = 0;
 })
+} else {
+    console.log("topic glossary set (past)")
+     TOPIC_GLOSSARY = JSON.parse(localStorage.getItem("topicGlossarySolve"))
+}
+function save(){
+        localStorage.setItem("ELO", userRatingAll);
+        console.log(get())
+}
+function get(){
+        return localStorage.getItem("ELO")
+}
+console.log(get())
+if (get() === null){
+        userRatingAll = 800;
+} else {
+        userRatingAll = get()
+}
+let strikes = 2;
+function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
+let score = 0;
+function toggleSubMenu(button){
+    button.nextElementSibling.classList.toggle('show');
+    button.classList.toggle('rotate');
+}
+function updateAllRating(){
+    userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
+}
+// ---------- Shuffle Function ----------
+const highlight = document.getElementById("highlight");
+let streakCount = 0;
+let streakEnabled = true;
+function showHighlight() {
+
+
+    // reset
+    highlight.style.transition = 'none';
+    highlight.style.transform = 'scaleX(0)';
+    highlight.style.left = '0';
+    highlight.offsetHeight; // force reflow
+            // Step 1: expand from left to right
+    highlight.style.transition = 'transform 0.3s ease-out';
+    highlight.style.transform = 'scaleX(1)';
+
+    // Step 2: slide left edge in to close
+    setTimeout(() => {
+        highlight.style.transition = 'transform 0.3s ease-in, left 0.3s ease-in';
+        highlight.style.transform = 'scaleX(0)';
+        highlight.style.left = '100%';
+    }, 300);
+
+    // Reset after animation
+    setTimeout(() => {
+        highlight.style.transition = 'none';
+        highlight.style.left = '0';
+        highlight.style.transform = 'scaleX(0)';
+    }, 700);
+}
+
+
+
+// ---------- Question Data ----------
+const confettiCanvas = document.getElementById("confetti-canvas");
+const myConfetti = confetti.create(confettiCanvas, {
+    resize: true,
+    useWorker: true
+});
+
+const questions = [
+    {
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 9
+                </a>`,
+        text: `<p>Define a sequence \\(a_{1}, a_{2}, a_{3}...\\) such that \\(a_{1}=1\\) and for \\(n \\geq 1\\)</p>
+        $$
+        a_{n+1}=\\frac{a_n}{1+a_{n}}
+        $$
+        Find \\(a_{2024}\\). If the answer is a fraction, find the sum of the numerator and the denominator.`,
+        answer: '2025',
+        solution: `<b>2025</b><p>Let's see if we can make a conjecture by trying out the first few values. We have that \\(a_{2}=\\frac{a_{1}}{1+a_{1}}=\\frac{1}{1+1}=\\frac{1}{2}\\). Trying this out for \\(a_{3}\\) gives \\(a_{3}=\\frac{a_{2}}{1+a_{2}}=\\frac{\\frac{1}{2}}{1+\\frac{1}{2}}=\\frac{1}{3}\\).</p>
+        <p>We're starting to see a bit of a pattern, and if we keep going, we'll realize that the value of \\(a_{n}\\) is always going to be \\(\\frac{1}{n}\\). All you have to do is find that \\(a_{2024}=\\frac{1}{2024}\\) thus meaning our answer is \\(1+2024=2025\\). This works great, but let's try to understand why.</p>
+        <p>The numerator for \\(n > 1\\) is always going to be \\(\\frac{1}{n}\\). The denominator is always going to be \\(\\frac{n+1}{n}\\) because when we add by \\(1\\) and change the one so that we can add it to the fraction, it adds \\(n\\) to the numerator. This, we are dividing \\(\\frac{\\frac{1}{n}}{\\frac{1+n}{n}}\\). When we expand this and write it as multiplication, we get
+        \\(\\frac{1}{n} \\times \\frac{n}{n+1}\\) which of course we cross out the \\(n\\)s and end up with \\(\\frac{1}{n+1})`,
+        hint: "What pattern do you notice?",
+        step: "Solve the first few values and see what pattern you notice with the numerator and denominator",
+        topic: "induction",
+        pNumber: 9,
+
+        
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 7
+                </a>`,
+        text: `Let \\(x, y,\\) and \\(z\\) be positive real numbers such that \\(x+y +z = 15\\) and \\(x^2 +y^2 +z^2 = 83\\). Find
+
+the value of \\(xy + yz + zx\\).`,
+        answer: '71',
+        solution: `<b>71</b><p>We don't need to solve for any of the variables independently, nor the terms in the final expression, we just need to know what it's worth. We start by squaring \\(x+y+z\\). We base this off of our knowledge that \\((a+b)^2=a^2+2ab+b^2\\). The same is true when you add another term to the addition. Expanding and later simplifying gives \\((x+y+z)^2=x^2+y^2+z^2+2xy+2yz+2zx\\). We also need to square both sides, so we have \\(x^2+y^2+z^2+2xy+2xy+2zx=15^2=225\\)</p>
+        <p>From here, we recognize \\(x^2+y^2+z^2=83\\), so we subtract that out of our equation and are left with \\(2xy+2yz+2zx=225-83=142\\). Now, we realize that this equation is exactly double the equation we want, so we divide \\(\\frac{142}{2}=71\\)`,
+        hint: "What identity does this remind you of?",
+        step: "Square the first equation",
+        topic: "algebraic manipulation",
+        pNumber: 7
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 10
+                </a>`,
+        text: `How many ordered triples of integers \\((a, b, c)\\) with \\(0 \\leq a, b, c \\leq 5\\) satisfy the equation
+
+\\(a^3+b^3+c^3-3abc=0\\)`,
+        answer: '6',
+        solution: `<b>6</b><p>Right off the bat, we should wee that \\((0,0,0)\\) is an option. However, there is a certain pattern to be realized in this. This is sort of just logic, but if all the values are the same so the solution is \\((x,x,x)\\), we have \\(3x^3-3x^3\\) when you simplify which will always be \\(0\\). Thus, we have our solutions to be all the posibilities where all the numbers are the same which is \\(6\\)`,
+        hint: "What must the relationship between \\(a, b, c\\) be",
+        step: "\\(a, b, c\\) must all be the same",
+        topic: "logic",
+        pNumber: 7
+    },
+  
+    {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 4
+                </a>`,
+        text: `\\(\\sqrt{6+\\sqrt{6+\\sqrt{6+...}}}\\)`,
+        answer: '3',
+        solution: `<b>3</b><p>We can set \\(x=\\sqrt{6+x}\\).</p>
+        $$
+        x=\\sqrt{6+x}
+        $$
+        $$
+        x^2=6+x
+        $$
+        $$
+        x^2-x-6=0
+        $$
+        $$
+        (x-3)(x+2)
+        $$
+        <p>We assume we take the positive value, so we have \\(x=3\\)`,
+        topic: "algebraic manipulation",
+        hint: "What can you substitute in?",
+        step: "Set \\(x=\\sqrt{6+x}\\)"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 8
+                </a>`,
+        text: `The numbers \\(a,b,c\\) satisfy
+\\(a+b+c=12\\)
+
+and
+
+\\(ab+bc+ca=44\\)
+
+What is the value of \\(a^2+b^2+c^2\\)
+?`,
+        solution: `<b>56</b><p>This is one of the most common problems on the AMC10 and it relies on the knowledge that \\((a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca\\).</p>
+        $$
+        (a+b+c)^2=12^2=144
+        $$
+        $$
+        a^2+b^2+c^2+2ab+2bc+2ca=144
+        $$
+        $$
+        a^2+b^2+c^2+2(44)=144
+        $$
+        $$
+        a^2+b^2+c^2=56
+        $$`,
+        answer: '56',
+        hint: "How do the two equations relate? What identity does this remind you of?",
+        step: "Square the first equation",
+        topic: "algebraic manipulation"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 9
+                </a>`,
+        text: `<p>If</p>
+        $$
+        x+\\frac{1}{x}=3
+        $$
+        <p>what is the value of </p>
+        $$
+        x^2+\\frac{1}{x^2}?
+        $$`,
+        answer: '7',
+        solution: `<b>7</b><p>Square the first equation to get \\(x^2+2+\\frac{1}{x^2}=9\\) and subtract \\(2\\) on either side for \\(x^2+\\frac{1}{x^2}=7\\)`,
+        hint: "How can you get the second equation from the first",
+        step: "Square the first equation",
+        topic: "algebraic manipulation"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 10
+                </a>`,
+        text: `The average of five numbers is \\(18\\). If one number \\(x\\) is removed, the average of the
+remaining four numbers is \\(20\\). What is \\(x\\)?`,
+solution: `<b>10</b><p>Write this out algebraicly:</p>
+$$
+\\frac{s+x}{5}=18
+$$
+$$
+\\frac{s}{4}=20
+$$
+<p>Where \\(s\\) is the sum of all other numbers. From the other equation, we have that \\(s=80\\). Inputting that into the first equation we have \\(80+x=18(5)=90\\) and \\(x=10\\)`,
+answer: '10',
+hint: "Write it out algebraicly",
+step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \\(s=\\) sum of all other numbers in the set"
+    },
+    {
+    title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link"> Solvefire Iron Round 6 Problem 2</a>`,
+    text: `<p>A function \\(f\\) is defined on the positive integers by</p>
+    $$
+    f(1), f(2)=2
+    $$
+    <p>and for all \\(n \\geq 3\\)</p>
+    $$
+    f(n)=f(n-1)+f(n-2)+1
+    $$
+    <p>Find \\(f(6)\\)`,
+    answer:'20',
+    solution: `<b>20</b><p>Right off the bat, we see this is similar to the fibbonaci sequence but with a few key differences: We start with \\(2\\) and we add \\(1\\)</p>
+    <p>This one is easy enough where you can plausibly brute force, so let's just look through the process:</p>
+    $$
+    f(3)=f(2)+f(1)+1=2+1+1=4
+    $$
+    $$
+    f(4)=f(3)+f(2)+1=4+2+1=7
+    $$
+    $$
+    f(5)=f(4)+f(3)+1=7+4+1=12
+    $$
+    $$
+    f(6)=f(5)+f(4)+1=12+7+1=20
+    $$`,
+    hint: "Solve for \\(f(n)\\) one by one",
+    step: "Solve for each value independently",
+    topic: "arithmetic"
+    },
+        {
+                title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 4
+                </a>` ,
+                text: `Alice can finish a job in \(6\) hours, and Bob can finish the same job in \\(10\\) hours. They work together for \\(2\\) hours, and then Bob leaves. If Alice needs \\(\\frac{m}{n}\\) more hours to finish the job, 
+                where \\(m\\) and \\(n\\) are relatively prime positive integers, find \\(m+n\\)`,
+                solution: `<b>19</b><p>Let's calculate how much each of them did in the \\(2\\) hours. We know that Alice did \\(\\frac{2}{6}=\\frac{1}{3}\\) of the job and Bob did \\(\\frac{2}{10}=\\frac{1}{5}\\) for a total of \\(\\frac{1}{3}+\\frac{1}{5}=\\frac{8}{15}\\)</p>
+                <p>Alice needs to complete \\(\\frac{7}{15}\\) of her job, which will take her \\(\\frac{7}{15} \\times 6 = \\frac{14}{5}\\) for \\(m=14, n=5\\) and \\(m+n=19\\)`,
+                answer: '19',
+                hint: "How much did each of them do in the \\(2\\) hours?",
+                step: "Find how much each of them did in \\(2\\) hours by \\(\\frac{2}{\\textup{total time they need to finish a j*b}}\\)",
+                topic: "speed-distance-time"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 3
+                </a>`,
+        text: `<p>Determine the number of ordered pairs of integers \\((m,n)\\) that satisfy the equation:</p>
+        $$
+        mn-2m-3n=10
+        $$`,
+        solution: `<b>10</b><p>We first start by factoring by grouping (using Simon's Favorite Factoring Trick).</p>
+        $$
+        m(n-2)-3n=10
+        $$
+        $$
+        m(n-2)-3(n-2)=16 \\textup{we add 6 to both sides}
+        $$
+        $$
+        (m-3)(n-2)=16
+        $$
+        <p>Really, the only thing we care about is the RHS. We need to find how many factors \\(16\\) has, because that will tell us 
+        how many values \\((m-3)\\) and \\((n-2)\\) have, and thus \\(m\\) and \\(n\\) have. We know the prime factorization of \\(16=2^4\\) for \\(5\\) positive factors, but those
+        can also be negative so we have \\(2 \\times 5 = 10\\)`,
+        answer: '10',
+        hint: "Use Simon's Favorite Factoring Trick",
+        step: "Factor out as \\((m-3)(n-2)=...\\), find the RHS and the number of factors",
+        topic: "factoring"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 5
+                </a>`,
+        text: `Let \\(f(1)=2\\) and \\(f(n+1)\\) = \\(\\frac{f(n)-1}{f(n)+1}\\) for all \\(n \\geq 1\\). The value of \\(f(2026\\) can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
+        solution: `<b>4</b><p>We're goin to try and solve this by induction. Trying out the first few values of \\(f(n)\\) gives \\(2, \\frac{1}{3}, -\\frac{1}{2}, -3, =2, \\frac{1}{3}\\). After \\(\\frac{1}{3}\\), the pattern restarts. Thus, 
+        the only value that is different is the first, so we subtract \\(2026-1\\) and find \\(2025 \\equiv 1 \\textup{ mod }(4)\\) (we use \\(4\\) because it's the length of the pattern.) The value in position \\(1\\) is \\(\\frac{1}{3}\\) for \\(1+3=4\\)`,
+        answer: '4',
+        hint: "Use induction",
+        step: "Find the first few values and then use modular arithmetic to see what the \\(2026\\)th value would be",
+        topic: "modular arithmetic"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 6
+                </a>`,
+        text: `Let \\(x\\) and \\(y\\) be real numbers such that \\(x+y=4\\) and \\(x^3+y^3=28\\). Find the value of \\(x^2+y^2\\)`,
+        solution: `<b>10</b><p>Follow the following algebraic manipulation</p>
+        $$
+        x+y=4
+        $$
+        $$
+        (x+y)^3=4^3
+        $$
+        $$
+        x^3+3x^2y+3xy^2+y^3=64
+        $$
+        $$
+        x^3+y^3=28 (\\textup{referencing the problem})
+        $$
+        $$
+        28+3x^2y+3xy^2=64 (\\textup{substitution})
+        $$
+        $$
+        3x^2y+3xy^2=36
+        $$
+        $$
+        3xy(x+y)=36
+        $$
+        $$
+        3xy(4)=36 (\\textup{substituting a value from the first equation of the problem})
+        $$
+        $$
+        3xy=9
+        $$
+        $$
+        xy=3
+        $$
+        $$
+        (x+y)^2=4^2
+        $$
+        $$
+        x^2+2xy+y^2=16
+        $$
+        $$
+        x^2+y^2+6=16
+        $$
+        $$
+        x^2+y^2=10
+        $$
+        `,
+            hint: "Use algebraic manipulation by squaring and cubing the first equation",
+            step: "Cube the first equation and substitute known values to solve for \\(xy\\)",
+            topic: "algebraic manipulation"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 1
+                </a>`,
+        text: `Let \\(x\\) be a real number such that \\(x + \\frac{1}{x}=5\\). Find the value of \\(x^2+\\frac{1}{x^2}+x+\\frac{1}{x}\\)`,
+        solution: `<b></b><p>We can square the first equation and find \\((x+\\frac{1}{x})^2=x^2+2+\\frac{1}{x}^2=5^2=25\\). Thus, \\(x^2+\\frac{1}{x^2}=23\\). 
+        Our final equation gives \\(23+5=28\\)</p>`,
+        hint: "How can you find \\(x^2+\\frac{1}{x^2}\\)",
+        step: "Square the first equation",
+        topic: "algebraic manipulation",
+        answer: "28",
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1F0yIO-WMnFQGiOqP57qvAc3lyLcXcLWk/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 4
+                </a>`,   
+        text: `Find the sum of all real values of \\(x\\) that satisfy \\(|x^2-6x+5| = |x-1|\\)`,
+        solution: `<b>11</b><p>First, we factor \\(x^2-6x+5=(x-5)(x-1)\\). Since this is absolute value, we split into cases:</p>
+        <p>Case one, they are both positive. We can divide out \\((x-1)\\) for \\(x-5=1\\) which gives \\(6\\)</p>
+        <p>Case two, they are both \\(0\\). Then, we just have \\(x=1\\)</p>
+        <p>Case three, only one is negative. This is the same regardless of which is negative, but we have \\(x-5=-1\\) which gives \\(x=4\\)</p>
+        <p>\\(4+6+1=11\\)`,
+        answer: '11',
+        hint: "Divide into cases depending on the polarity of each side",
+        step: "Factor \\(x^2-6x+5\\)",
+        topic: "casework"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1F0yIO-WMnFQGiOqP57qvAc3lyLcXcLWk/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 7
+                </a>`,     
+        text: `If \\(a, b,\\) and \\(c\\) are the roots of the polynomial \\(x^3-7x^2+14x-8=0\\), find the value of \\(a^2+b^2+c^2\\)`,
+        solution: `<b>21</b><p>With Vieta's formulas, even without knowing \\(a,b,c\\), we can find their sum to be \\(\\frac{a_{n-1}}{a_{n}}=\\frac{-7}{1}=-7\\). Squaring both of these gives \\(a^2+b^2+c^2+2ab+2bc+2ac=49\\). We can find 
+        \\(ab+bc+ca=\\frac{a_{n-2}}{a_{n}}=\\frac{14}{1}=14\\). Thus, we have \\(a^2+b^2+c^2+2(14)=49\\) so \\(a^2+b^2+c^2=21\\)`,
+        answer: `21`,
+        hint: "Use vieta's formulas that \\(a+b+c=\\frac{a_{n-1}{a_{n}}\\) and \\(ab+bc+ca=\\frac{a_{n-2}}{a_{n}}\\)",
+        topic: "algebraic manipulation"
+    }
+
+]
+const geometryQ = [
+      {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 3
+                </a>`,
+        text: `A square \\(ABCD\\) has a side length \\(4\\). \\(E\\) is a point on \\(AD\\) such that \\(AE=3\\). \\(F\\) is a point on \\(CD\\) such that \\(DF=2\\). \\(H\\) is a point on \\(AB\\) such that \\(AH=2\\). \\(G\\) is formed
+        by the intersection of \\(FH\\) and \\(EB\\). Triangle \\(EFG\\) has a perimeter in the form of \\(a + \\sqrt{a}\\) where \\(a\\) is a positive integer. Compute \\(a\\).`,
+        image: "iron41.png",
+        answer: '5',
+        solution: `<b>5</b><p>Start by writing in what you know and filling in the rest. Since \\(AD = 4\\) and \\(AE=3\\) we have that \\(DE=1\\) (I recommend drawing this out). We also know that \\(DF, CF, AH, BH\\) must all be \\(2\\).</p>
+        <p>With this knowledge, we can immediately go ahead and solve for \\(EF\\) by using the pythagorean theorem. We knkow that \\(EDF\\) must be a right triangle because it is the corner of a rectangle, and we know the side lenths so we find \\(\\sqrt{1^2+2^2}=\\sqrt{5}\\)</p>
+        <p>Now, let's try to find the location of \\(G\\). If we write all the points we know as coordinates, we have \\(A(0,0), E(0,3), D(0,4), F(2,4), C(4,4), B(4,0), H(2,0)\\). We can model the line \\(EB\\) as a linear equation \\(y=\\frac{-3}{4}+3\\). We also know that \\(G\\) is at \\(x=2\\), so we solve that for \\(x=2\\) and get \\(\\frac{-6}{4}+3=\\frac{3}{2}\\).</p>
+        <p>We know then that the vertical distance between \\(E\\) and \\(G\\) is \\(3-\\frac{3}{2}=\\frac{3}{2}\\). We already knew that the horizontal distance is \\(2\\) because it is the same as \\(AH\\), so we use the pythagorean theorem. \\(\\sqrt{\\frac{3}{2}^2+2^2}=\\frac{5}{2}\\). We also know that \\(FG=4-\\frac{3}{2}=\\frac{5}{2}\\). Thus, we have the total perimeter to be \\(\\sqrt{5}+\\frac{5}{2}+\\frac{5}{2}=\\sqrt{5}+5\\). We have \\(a=5\\)`,
+        hint: "What values can you find from the information you have",
+        step: "Label the remaining values on the side lengths, then model the square on the coordinate grid with linear functions as lines.",
+        topic: "algebraic manipulation"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 2
+                </a>`,
+        text: `A point \\(P\\) inside a square \\(ABCD\\) is such that the distance from \\(P\\) to vertex \\(A\\) is \\(1\\), to vertex
+\\(B\\) is \\(2\\), and to vertex \\(C\\) is \\(3\\). The side length of \\(ABCD\\) is in the form \\(\\sqrt{a+b\\sqrt{b}}\\), where \\(a\\)
+
+and \\(b\\) are coprime integers. Compute \\(a+b\\).`,
+answer: `7`,
+solution: `<b>7</b><p>Assume the points \\(ABCD\\) are on a coordinate plane such that \\(A(0,s), B(s,s), C(s,0), D(0,0)\\) (with the side length of the square being \\(s\\)).</p>
+<p>From here, we use the distance formula \\(\\sqrt{x^2+y^2}\\) (derivated from the pythagorean theorem) to represent the location of Point \\(P(x,y)\\). We have that \\(x^2+(s-y)^2=1, (s-x)^2+(s-y)^2=4, (s-x)^2+y^2=9\\). We want to solve for \\(x\\), but that's not possible because it exists at different powers in this equation. Thus, we solve for \\(x\\) and \\(y\\).</p>
+Subtracting the second equation from the first gives us \\(x^2-(s-x)^2=-3\\). We expand this into \\(x^2-s^2+2xs-x^2=-3\\) which of course becomes \\(2xs-s^2=-3\\) and then \\(x=\\frac{-3+s^2}{2s}\\). We do the same thing by subtracting the second equation from the third and finding \\(y=\\frac{5-y}{2s}\\).</p>
+<p>With these, we substitute them back into our original equations. For the first we have that \\(\\frac{(-3+s^2)^2}{4s^2}+(s-\\frac{(5+s^2)^2}{4s^2})^2=1\\)</p>
+$$
+\\frac{(-3+s^2)^2}{4s^2}+(s-\\frac{(5+s^2)^2}{2s})^2=1
+$$
+$$
+\\frac{s^4-6s^2+9}{4s^2}+\\frac{s^4-10s^2+25}{4s^2}=1
+$$
+$$
+s^4-6s^2+9+s^4-10s^2+25=4s^2
+$$
+$$
+2s^4-16s^2+34=4s^2
+$$
+$$
+s^4-10s^2+17=0
+$$
+$$
+u=s^2
+$$
+$$
+u^2-10u+17=0
+$$
+$$
+u=\\frac{10 \\pm \\sqrt{100-68}}{2}
+$$
+$$
+u=5 \\pm 2\\sqrt{2}
+$$
+$$
+s^2=5 \\pm 2\\sqrt{2}
+$$
+$$
+s=\\sqrt{5 + 2\\sqrt{2}}
+$$
+$$
+a=5 b=2
+$$
+$$
+a+b=7
+$$
+`,
+hint: "How can you represent the square on the coordinate grid?",
+step: "Write square \\(ABCD\\) on the coordinate grid with points \\(A(0,s), B(s,s), C(s,0), D(0,0)\\) and use the distance formula to find the coordinates of \\(P\\) in relation to sidelength \\(s\\)",
+topic: "algebraic manipulation"
+    },
+    {
+title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 6
+                </a>`,
+        text: `A right circular cylinder with radius \\(2\\) and height \\(6\\) is filled with water to a depth of \\(4\\) inches.
+A solid metal sphere with a radius of  \\(1.5\\) inches is gently lowered into the cylinder, sinking to
+the bottom. By how many inches does the water level rise? If the answer is a fraction, find
+the sum of the numerator and the denominator.`,
+answer: `17`,
+solution: `<b>17</b><p>We need to find the total volume of water that the sphere diplaces, so we use \\(\\frac{4}{3}(1.5)^3=4.5\\). We're going to negate pi because we're going to divide it again anyways. That's how much water rises, but we need to translate that into height. We find the height of a cylinder with volume \\(4.5\\) and radius \\(2\\). We thus use \\(4.5=2^4h\\)
+ so \\(h=1.125\\) which is a fraction of \\(\\frac{9}{8}\\) for \\(9+8=17\\). Notice that the original height was extraneous`,
+hint: "What information is extraneous?",
+step: "Find the area displaced by the sphere",
+topic: "logic"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 5
+                </a>`,
+        text: `Circle \\(X\\) has center \\(A\\) and radius \\(1\\). Circle \\(Y\\) has radius \\(\\frac{1}{2}\\)
+, is internally
+
+tangent to circle \\(X\\), and passes through \\(A\\). Let triangle \\(ABC\\) be right-
+angled at \\(A\\), where \\(AB\\) is a diameter of circle \\(Y\\) and \\(C\\) lies on circle \\(X\\).
+
+The area of intersection between \\(ABC\\) and \\(Y\\) is in the form \\(\\frac{\\pi+2}{x}\\)
+, where
+
+\\(x\\) is a positive integer. Compute \\(x\\).`,
+image: "iron45.png",
+        solution: `<b>16</b><p></p>We cut the area inside both circle \\(Y\\) and \\(ABC\\) by drawing a vertical line perpendicular to the diameter of \\(Y\\) and with endpoints on the circle and on the cneter. What this does is divide the overlap into a quarter circle and a triangle</p>
+        <p>Starting with the quarter circle, we simply have to find \\(\\frac{1}{2}^2 \\cdot \\pi \\cdot \\frac{1}{4}= \\frac{pi}{16}\\). We now find the triangle which is isoceles right with legs of \\(\\frac{1}{2}\\) (the radius). Thus, the area is \\(\\frac{1}{2}^2 \\cdot \\frac{1}{2}= \\frac{1}{8}\\). Surely enough, when we add these, it becomes \\(\\frac{pi+2}{16}\\) for \\(x=16\\)`,
+        answer: '16',
+        hint: "How can you divide the overlapping area into shapes we know how to find the area of?",
+        step: "Draw a vertical line with endpoints on the cirlce and at the endpoint that divides the overlapping area into a quarter circle and a triangle",
+        topic: "composite shapes"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 5
+                </a>`,
+        text: `Rectangle \\(ABCD\\) has area \\(72\\). Let \\(M\\) be the midpoint of \\(BC\\) and \\(N\\) the midpoint of
+\\(CD\\). What is the area of triangle \\(AMN\\)?`,
+        answer: '27',
+        solution: `<b>27</b><p>We first need the side lengths of \\(ABCD\\). Notice that the question gives no indication as to what they may be, thus they can be anything that multipliesto \\(72\\). I believe that the simplest route is to just use a square instead of a rectangle (because a square is a rectangle), and have sidelengths of \\(\\sqrt{72}\\), but if you wanted to, you could also do it with side lengths \\(8\\) and \\(9\\) or \\(1\\) and \\(72\\), or whatever else you find easy</p>
+        <p>If you were to draw this out, you would see that \\(AMN\\) is inscribed inside the rectangle and there is no real easy way to find the altitudes or bases. However, it is surrounded by \\(3\\) other triangles (\\(CMN, NDA, MBA)\\) what we do know the sidelengths for.</p>
+        <p>For \\(CMN\\), since we know it's vertices are located at the midpoints of sides of length \\(\\sqrt{72}\\), they must have lengths of \\(\\frac{\\sqrt{72}}{2}\\) for a total area of \\(\\frac{\\sqrt{72}}{2} \\times \\frac{sqrt{72}}{2} \\times \\frac{1}{2}=0\\)</p>
+        <p>The other two triangles have one sidelength of length \\(\\frac{\\sqrt{72}}{2}\\) and one of length \\(\\sqrt{72}\\) for a total area of \\(36\\) when you add both of them together</p>
+        <p>We find \\(72-36-9=27\\)`,
+        hint: "How can you simplify this",
+        step: "Make it a square with sidelengths \\(\\sqrt{72}\\) and ind the areas of the surrounding shapes",
+        topic: "composite shapes"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 2
+                </a>`,
+        text: `In triangle \\(ABC\\), point \\(D\\) lies on \\(AC\\) so that \\(AD:DC = 1:2\\). Point \\(E\\) is the midpoint
+of \\(BD\\). Lines \\(AE\\) and \\(BC\\) intersect at \\(F\\). If the area of \\(\\triangle ABC\\) is \\(360\\), what is the
+area of \\(\\triangle EBF\\)?`,
+        answer: '30',
+        solution: `<b>30</b><p>We're going to first start by writing this out on a coordinate grid and labeling the values we can. We have that \\(A(0,0), B(0,\\sqrt{360}), C(\\sqrt{360},0)\\) (the side lengths can be whatever, but this is easier because it forces a right isoceles triangle)</p>
+        <p>We have \\(D\\) that divides \\(AC\\) into \\(1:2\\) so we divide \\(\\sqrt{360} \\div 3 = 6\\sqrt{10} \\div 3 = 2\\sqrt{10}\\) so we have \\(D(2\\sqrt{10},0)\\). Since \\(E\\) is the midpoint of \\(BD\\) we have it at \\(E(\\sqrt{10}, 3\\sqrt{10})\\). Finally, we locate \\(F\\) by using systems of equations</p>
+        <p>We have line \\(AE\\) with a slope of \\(\\frac{3\\sqrt{10}}{\\sqrt{10}}=3\\) and a \\(y-\\) intercept of \\(0\\). For \\(BC\\) it's just a slope of \\(-1\\) and a \\(y-\\) intercept of \\(\\sqrt{360}=6\\sqrt{10}\\)</p>
+        $$
+        3x=-x+6\\sqrt{10}
+        $$
+        $$
+        4x=6\\sqrt{10}
+        $$
+        $$
+        x=\\frac{3}{2}\\sqrt{10}
+        $$
+        <p>We can also solve for \\(y=\\frac{9}{2}\\sqrt{10}\\).</p>
+        <p>From here, we observe triangle \\(ABF\\) which shares an altitude \\(AB\\) with \\(\\triangle ABC\\). The area of that triangle is \\(\\frac{1}{4} \\times 360\\) because \\(\\frac{3}{2}\\sqrt{10} = \\frac{1}{4} \\times 6\\sqrt{10}\\). Thus, we have the area of that to be \\(90\\)</p>
+        <p>We realize that \\(E\\) divides \\(AF\\) into \\(2:1\\) which will also be the ratio of the areas of the triangles \\(ABE\\) and \\(BEF\\) for \\(BEF=\\frac{90}{3}=30\\)`,
+        hint: "Use coordinates",
+        step: "Use coordinate values to find the area of \\(\\triangle ABF\\) first",
+        topic: "composite shapes"
+    },
+        {
+        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 1
+                </a>`,
+        text: `A circle has radius \\(10\\). Chord \\(AB\\) has length \\(12\\). If the distance from the center of the circle
+to chord AB is \\(\\sqrt{k}\\), find \\(k\\).`,
+        answer: '64',
+        solution: `<b>64</b><p>If we draw a perpendicular bisector to chord \\(AB\\) that divides it into two sides of length \\(6\\), that extends to the center of the circle, then draw a radius through the endpoint of the chord and cente,r we get a right triangle. The side lengths are \\(\\sqrt{k}, 6, 10\\) which we use with the pythagorean theorem to find
+        \\(k+6^2=10^2\\) so \\(k=64\\)`,
+        hint: "Use the pythagorean theorem",
+        step: "Draw a perpendicular line from the midpoint of \\(AB\\) to the center, and then draw the radius from the center to an endpoint of \\(AB\\)",
+        topic: "triangles"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 4
+                </a>`,
+        text: `A circle is inscribed in a right isoceles triangle with legs of length \\(2\\). The area of the circle can be written in the form \\((a-\\sqrt{b})\\pi\\) for all positive integers
+        \\(a\\) and \\(b\\). Find \\(a+b\\)`,
+        solution: `<b>38</b><p>We first find the hypotenuse to be \\(\\sqrt{2^2+2^2}=2\\sqrt{2}\\). This is nescessary for the equation for the equation for the inradius of a right triangle: \\(\\frac{a+b-c}{2}\\).</p>
+        <p>We have \\(\\frac{2+2-2\\sqrt{2}}{2}=2-\\sqrt{2}=r\\). Squaring (following the equation \\(\\pi r^2\\)) gives \\(6-4\\sqrt{2}=6-\\sqrt{32}\\) for \\(a=6, b=32, a+b=38\\))`,
+        answer: '38',
+        hint: "Use the equation for the inradius of a right triangle: \\(\\frac{a+b-c}{2}\\)",
+        step: "Find the hypotenuse and use the equation for the inradius of a right triangle \\(\\frac{a+b-c}{2}\\)",
+        topic: "triangle lines"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 10
+                </a>`,
+                text: `In \\(\\triangle ABC,\\) the side lengths are \\(AB=13, BC=14,\\) and \\(AC=15\\). A square \\(PQRS\\) is inscribed in the triangle such that \\(P\\) and \\(Q\\) lie on side \\(BC\\), \\(R\\) lies on \\(AC,\\) and \\(S\\) lies on \\(AB\\). The 
+                side length of the square can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
+                solution: `<b>97</b><p>This solution is very theorem heavy. All of these can be derived, of course, but there is quite a bit of preexisting knowledge nescessary.</p>
+                <p>First, we need to know that the side length \\(s\\) of a square inscribed on base \\(b\\) with altitude \\(h\\) has a length of \\(\\frac{bh}{b+h}\\). We thus need the altitude, which is \\(\\frac{2 \\cdot \\textup{area}}{\\textup{base}}\\). We use heron's law \\(a = \\sqrt{s(s-a)(s-b)(s-c)}\\) where \\(s=\\textup{semiperimeter}=\\frac{a+b+c}{2}\\).</p>
+                $$
+                \\frac{13+14+15}{2}=\\frac{42}{2}=21
+                $$
+                $$
+                \\sqrt{21(21-13)(21-14)(21-15)}=\\sqrt{21(8)(7)(6)}=\\sqrt{7056}=84
+                $$
+                $$
+                \\frac{2 \\times 84}{14}=12
+                $$
+                $$
+                \\frac{12 \\times 14}{12+14}=\\frac{168}{26}=\\frac{84}{13}
+                $$
+                $$
+                p=84, q=13, p+q=97
+                $$`,
+                answer: '97',
+                hint: "Use the theorems for semiperimeter (s=\\frac{a+b+c}{2}\\), heron's law (a=\\sqrt{s(s-a)(s-b)(s-c)}\\), the height of an altitude \\(\\frac{2 \\times a}{s}\\), and side length of an inscribed square \\(s=\\frac{bh}{b+h}\\)",
+                step: "Use the theorems above and start with the semiperimeter",
+                topic: "composite shapes"
+    },
+    {
+                        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 3
+                </a>`,   
+                text: `In a square of side length \\(12\\), a semicircle is drawn inside the square with its diameter lying
+along one side of the square. A circle is then drawn inside the square so that it is externally
+tangent to the semicircle and also tangent to the two sides of the square perpendicular to
+that side. The radius of this circle can be written in the form \\(a-b\\sqrt{c}) where \\(a, b\\), and \\(c\\) are
+positive integers and \\(c\\) is squarefree. Find \\(a+b+c\\).`,
+solution: `<b>39</b><p>We know the distance between the centers of the two circles is \\(6+r\\) because it's the distance between the two radii.</p>
+<p>We can use the pythagorean theorem to find this value if we find the horizontal and vertical distances</p>
+<p>We know that the circle is horizontally displaced \\(r\\) from the left edge of the square, because we can draw a radius \\(r\\) from the edge to the center of the circle that is horizontal. The distance for the 
+largest circle is \\(6\\) by the same logic, so the distance between the centers of the two circles horizontally is \\(6-r\\)</p>
+<p>The vertical distance is just \\(12-r\\0 because the height of the square is \\(12\\) and the circle is \\(r\\) down from there, and the center of the large circle 
+is just at \\(0\\). Thus, we have \\((6-r)^2+(12-r)^2=(6+r)^2\\)</p>
+$$
+36-12r+r^2+144-24r+r^2=36+12r+r^2
+$$
+$$
+r^2-48r+144=0
+$$
+<p>Solve with the quadratic equation</p>
+$$
+\\frac{48 \\pm \\sqrt{48^2-4(144)}}{2}=\\frac{48 \\pm \\sqrt{1728}}{2}=24+12\\sqrt{3}\\)
+$$
+$$
+a=24, b=12, c=3
+$$
+$$
+24+12+3=39
+$$
+`,
+hint: "Use the pythagorean theorem and express all of the distances with respect to \\(r\\)",
+step: "Use the pythagorean theorem with hypotenuse \\(6+r\\) Find the remaining sides and use the quadratic equation",
+topic: "pythagorean theorem",
+answer: '39'
+    },
+    {
+       title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 5
+                </a>`,   
+        text: `In right triangle \\(ABC\\) with \\(\\angle C=90^\\circ\\), let \\(M\\) be the midpoint of hypotenuse \\(\\overline{AB}\\). If \\(CM=5\\) and \\(BC=6\\), find the area of triangle \\(ABC\\)`,
+        solution: `<b>24</b><p>The median forms  is half the length of the hypotenuse so the hypotenuse is \\(10\\) which, by the pythagorean theorem, means \\(AC=8\\) for an area of \\(\\frac{6 \\times 8}{2}=24\\)`,
+        answer: '24',
+        hint: "The length of a hypotenuse is double the length of the median",
+        step: "Find the length of the hypotenuse to be \\(2(CM)\\)",
+        topic: "triangle lines"
+    },
+    {
+        title:  `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 5
+                </a>`,
+        text: `A regular hexagon \\(H_{1}\\) has an area \\(24\\). A second hexagon \\(H_{2}\\) is formed by cnnecting the midpoints of the sides of \\(H_{1}\\). Find the area of \\(H_{2}\\)`,
+        solution: `<b>18</b><p>We can find the side length of \\(H_{1}\\), which we'll cause \\(s\\) by using the equation \\(s^2 \\frac{3\\sqrt{3}}{2}=24\\) (the LHS is the equation for the area of a regular hexagon). This is a common formula to memorize, but in 
+        case you don't know, you can derive it by finding the area of an equilateral triangle \\(s^2 \\frac{\\sqrt{3}}{4}\\) (with the altitude being derived via pythagorean theorem with hypotenuse \\(s\\) and legs of the altitude and \\(\\frac{s}{2}\\)). Anyways, we solve for \\(s_{1}\\)</p>
+        $$
+        (s_{1})^2 \\times \\frac{3\\sqrt{3}}{2}=24
+        $$
+        $$
+        s_{1}^2=\\frac{16\\sqrt{3}}{3}
+        $$
+        $$
+        s_{1}=\\sqrt{\\frac{16\\sqrt{3}}{3}}
+        $$
+        <p>If you were to draw this out, we would find isoceles triangles with an angle \\(120^\\circ\\) (the interior angle of a hexagon). If we draw a line from the vertex of \\(H_{1}\\) to the midpoint of a side of \\(H_{2}\\), it cuts into two \\(30-60-90\\) triangles</p>
+        <p>The ratio of a longest side to the hypotenuse, through trigonometry and also through ratios, we know is \\(\\sqrt{3}{2}\\). We define half of the side of \\(H_{2}\\) as \\(x\\). We thus have \\(\\frac{\\frac{16\\sqrt{3}}{2}}{x}=\\frac{\\sqrt{3}}{2}\\)</p>
+        $$
+        \\frac{2x}{\\sqrt{\\frac{16\\sqrt{3}}{3}}}=\\frac{\\sqrt{3}}{2}
+        $$
+        $$
+        4x=\\sqrt{16\\sqrt{3}}
+        $$
+        $$
+        2x=\\frac{\\sqrt{16\\sqrt{3}}}{2}
+        $$
+        <p>That's the side length of the hexagon</p>
+        $$
+        s^2=\\frac{16\\sqrt{3}}{4}
+        $$
+        $$
+        s^2=4\\sqrt{3}
+        $$
+        $$
+        s^2 \\times \\frac{3\\sqrt{3}}{2}=4\\sqrt{3} \\times \\frac{3\\sqrt{3}}{2}=18
+        $$
+        `,
+        answer: '18',
+        step: "Find the side length of the largest hexagon, then found the side length of the smaller one through trigonometry",
+        hint: "The equation for the area of a regular hexagon is \\(s^2 \\times \\frac{3\\sqrt{3}}{2}\\), and the ratio of the longest side to hypotenuse of a \\(30-60-90\\) triangle is \\(\\frac{\\sqrt{3}}{2}\\)",
+        topic: "pythagorean theorem"
+    }
+]
+const numTheoryQ = [
+    {
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 1
+                </a>`,
+        text: `The integer \\(N\\) has \\(12\\) positive factors. If \\(3^2\\)
+is a factor of N and \\(5\\) is not a factor of \\(N\\), what
+is the total number of positive factors in \\(5N\\)?`,
+        pNumber: 1,
+        answer: '24',
+        solution: `<b>24</b><p>For each factor of \\(N\\), there is another factor that is \\(5\\) times the factor. Since \\(5\\) is not a factor, we do not have to worry about overcounting. Notice that the bit about \\(3^2\\) is extraneous because that just gives us two factors of \\(N\\)`,
+        hint: "Which bit of information can you ignore?",
+        step: "What should you multiply the number of factors by?",
+        topic:  "prime factorization"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 3
+                </a>`,
+        text: `What is the smallest number that has exactly 3 odd factors and 6 even
+factors?`,
+        solution: `<b>36</b><p>First we notice that one of the odd factors is \\(1\\) and one of the even factors is \\(N\\). We know that in the prime factorization we need to have \\(2\\) at least once and to minimize the number the next smallest prime number: \\(3\\). We have some combination of \\(2\\) and \\(3\\). For a total of \\(9\\) factors, we need both of these to be raised to the second power, because the total number of factors is found by adding one to all ofthe powers and multiplying</p>
+        <p>We have a prime factorization of \\(2^2 \\times 3^2 = 36\\)`,
+        answer: '36',
+        hint: "What numbrers can be included as odd and even factors?",
+        step: "Find what the powers of the prime factorization need to be and what numbers need to be in the prime factorization",
+        topic: "prime factorization"
+    },
+        {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 6
+                </a>`,
+        text: `Compute the number of ordered pairs \\((a,b)\\) such that \\(\\textup{gcd}(a,b)=8\\) and \\(\\textup{lcm}(a,b)=480).`,
+        solution: `<b>8</b><p>We are looking for \\(a\\) and \\(b\\) such that \\(a \\cdot \\frac{b}{8}=480\\) and \\(b \\cdot \\frac{a}{8}=480\\). \\(480\\) has a prime factorization of \\(2^5 \\times 3 \\times 5\\). We know that both \\(a\\) and \\(b\\) must have \\(2^3\\) in their prime factorization. We also know that the two numbers can't have any overlaping factors other than \\(2^3\\).</p>
+        <p>Instead of solving directly for \\(a\\) and \\(b\\), we solve for \\(\\frac{a}{b}=x\\) and \\(\\frac{b}{8}=y\\) to see how many independent values combinations are possible</p>
+        <p>The most important thing to remember here is that if either \\(x\\) or \\(y\\) has a two, the other cannot, because that would raise the \\(\\textup{gcd}\\). Also remember that we need to use all the factors</p>
+        <p>Let's try to find all the possible values for \\(a\\). We can have \\(1, 3, 4, 5, 12, 15, 20, 60\\). We essentially find all the numbers that are either odd or divisible by \\(4\\)</p>
+        <p>There are \\(8\\) of these. and thus \\(8\\) values for \\(a, b\\)</p>`,
+        answer: '8',
+        hint: "What do \\(\\frac{a}{8}\\) and \\(\\frac{b}{8}\\) have to be??",
+        step: "Find the number of ways you can arrange the prime factors of \\(\\frac{480}{8}\\) into two numbers such that they share no numbers",
+        topic: "prime factorization"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 7
+                </a>`,
+                text: `<p>Compute</p>
+                $$
+                \\binom{1224}{0} - \\binom {1224}{1} ... \\binom{1224}{2}
+                $$`,
+                answer: '0',
+                solution: `<b>0</b><p>We recognizing the consecutive sums of binomials "choose" functions to be indicative of binomial theorem:</p>
+              $$
+              \\[ \\sum_{i=0}^n \\binom{n}{k}x^n-k y^k\\]
+              $$
+                <p>This gives a way of finding the expansion of \\((x+y)^n\\), but we notice that it does have \\(\\binom{n}{k}\\) with iterations of \\(k\\) increasing by \\(1\\).</p>
+                <p>In order for this to work, we need \\(x\\) and \\(k\\) to be of alternating signs because the choose functions are of alternating signs. Thus we have \\(x=1\\) and \\(y==1\\) for \\((1+(-1))^{1224}\\) which is, of course, \\(0\\)`,
+                hint: "Use binomial theorem",
+                step: "Write as a binomial theorem sum with \\(n=1224\\). What should \\(x\\) and \\(y\\) be?",
+                topic: "algebraic manipulation",
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 8
+                </a>`,
+                text: `What is the last digit of \\(4^7 +7^4\\)?`,
+                answer: '5',
+                solution: `<b>5</b><p>Since we know that the units digits of numbers raised to powers are cyclic, we can just find the patterns for each.</p>
+                <p>For \\(4\\) we have \\(4,6\\) and then it repeats, so with modular arithmetic we find that \\(\\frac{7}{4}\\) has a remainder of \\(1\\) and a units digit of \\(4\\)</p>
+                <p>For \\(7\\) we have \\(7,9,3,1\\) which is just \\(4\\) so a units digit of \\(1\\). We have that \\(4+1=5\\)`,
+                hint: "Units digits of exponents are cyclic",
+                step: "Find the pattern for the units digits",
+                topic: "induction"
+
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 3
+                </a>`,
+                text: `How many integers from \\(1\\) to \\(1000\\) are divisible by \\(3\\) or \\(5\\) but not both?`,
+                answer: '401',
+                solution: `<b>401</b><p>We find that there are \\(\\frac{1000}{3} \\approx 333\\) divisible by \\(3\\) and \\(\\frac{1000}{5}=200\\) divisible by \\(5\\). There are \\(\\frac{1000}{3\\times5}\\aprox 66\\) divisible by both. We find \\(200+333-(66 \\times 2)=401\\) (we multiply by \\(2\\) because we "subtract from both stacks")`,
+                hint: "Make sure not ot overcount",
+                step: "Find how many are divisible by \\(3\\), and then by \\(5\\), and then by both",
+                topic: "logic"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 4
+                </a>`,
+                text: `A positive integer \\(n\\) leaves remainder \\(3\\) when divided by \\(7\\) and remainder \\(5\\) when
+divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
+                answer: '59',
+                solution: `<b>59</b><p>We have that \\(7x+3=9y+5\\). We just have to find the smallest possible values for \\(y\\) and \\(x\\).For \\(y=1\\) we get 14, for \\(y=2\\) we have \\(23\\). The next values are \\(32,41,50, 59\\) which when divided by \\(7\\) give remainderis of \\(4, 6, 1, 3\\) for a final answer \\(59\\)`,
+                hint: "Try out values",
+                step: "Use the equation \\(7x+3=5y+9\\) and solve like a diophantine equation",
+                topic: "logic"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 3
+                </a>`,
+                text: `<p>Three boxes are labeled:</p>
+                <ul>
+                <li>Box 1: "The prize is not in Box 2"</li>
+                <li>Box 2: "The prize is in Box 3"</li>
+                <li>Box 3: "The prize is not in this box</li>
+                </ul>
+                <p>Exactly one statement is true. Determine which box contains the prize (answer with the number)</p>`,
+                answer: '2',
+                solution: `<b>2</b><p>We're goin to go through each box considering it is telling the truth and see what it tells us about the rest</p>
+                <p>If box 1 is telling the truth, then the box is not in box 2. Then, box 2 must be lying so it is not in box 3 either. Finally, box 3 must be lying so the prize has to be in that box. This causes a contradiction, so box 1 cannot be telling the truth</p>
+                <p>If box 2 is telling the truth, the prize is in box 3. If box 3 is lying, that confirms it. However, box 1 must be lying and that tells us it has to be in box 2. That contradicts. Box 2 must be lying</p>
+                <p>If box 3 is telling the truth, the prize is in box 1 or box 2. If box 1 is lying, the prize is in box 2. And if box 2 is lying, the prize just cant be in box 3, which checks out</p>`,
+                hint: "See how changing the truth value for each one changes the outcome",
+                step: "Test out each value when it is true",
+                topic: "logic"
+    },
+
+    {
+        title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 5
+                </a>`,
+        text: `A positive integer \\(n\\) leaves remainder \\(2\\) when divided by \\(5\\), remainder \\(3\\) when divided by \\(6\\), and remainder \\(4\\) when divided by \\(7\\). Find the smallest posible value of \\(n\\)`,
+        solution: `<b>207</b><p>We have some value \\(n\\) such that \\(5x+2=6y+3=7z+4\\). By the first term, we know it must end in \\(7\\) or \\(2\\) because a multiple of \\(5\\) must end in \\(0\\) or \\(5\\).</p>
+        <p>It can't be \\(2\\) because when divided by an even value it leaves an odd remainder, making it odd. By subtracting \\(7-3\\) we know we need a multiple of \\(6\\) that ends in \\(4\\). We try \\(24\\) which yields \\(27\\). When divided by \\(7\\) it leaves a remainder of \\(6\\) though, so that doesn't work</p>
+        <p>Another value would be \\(54\\) for \\(n=57\\). When this is divided by \\(7\\) the remainder is \\(1\\)</p>
+        <p>Brute force doesn't seem to work that well. Notice that for each value, we have that \\(n\\) leaves a remainder of \\(x-3\\) when divided by \\(x\\). This means that \\(n+3\\) is divisible by \\(5, 6, 7\\) so \\(n+3=\\textup{lcm}(5,6,7)=210\\) for \\(n=210-3=207\\). `,
+        hint: "Don't brute force, use the LCM",
+        answer: '207',
+        step: "Find the \\(\\textup{lcm}(5,6,7)\\) and subtract something",
+        topic: "prime factorization"
+    },
+    {
+            title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 6
+                </a>`,
+                text: `<p>Find the number of ordered pairs of positive integers \\((x,y)\\) such that</p>
+                $$
+                \\frac{1}{x}+\\frac{1}{y}=\\frac{1}{4}
+                $$`,
+                solution: `<b>5</b><p>Follow the following algebraic manipulation</p>
+                $$
+                \\frac{1}{x}+\\frac{1}{y}=\\frac{1}{4}
+                $$
+                $$
+                \\frac{x+y}{xy}=\\frac{1}{4}
+                $$
+                $$
+                4x+4y=xy
+                $$
+                $$
+                xy-4x-4y=0
+                $$
+                $$
+                x(y-4)-4y+16=16
+                $$
+                $$
+                x(y-4)-4(y-4)=16
+                $$
+                $$
+                (x-4)(y-4)=16
+                $$
+                <p>Now we are looking for factors of \\(16\\). We have \\(4, 4\\) for \\(x=8, y=8\\). We have \\(8, 2\\) for \\((12, 6), (6, 12)\\) and \\(16, 1\\) for \\((20, 5),(5,20)\\). There are \\(5\\) total`,
+                answer: `5`,
+                hint: "Rewrite in factored form",
+                step: "rewrite as one fraction, then eliminate the fraction and factor by grouping",
+                topic: 'algebraic manipulation'
+    },
+    {
+            title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 8
+                </a>`,
+            text: `<p>How many integers \\(n\\) satisfy</p>
+            $$
+            1 \\leq n \\leq 100
+            $$
+            <p>such that </p>
+            $$
+            \\frac{n^2-n}{2}
+            $$
+            <p>is odd?</p>`,
+            step: `<b>50</b><p>Note that \\(n^2-n\\) will always be even. First of all, the square of any number \\(n\\) has the some polarity (odd or even) as \\(n\\) and the difference between two numbers of the same polarity will always be even.</p>
+            <p>The issue then becomes finding how many numbers are divisible by \\(4\\), because they can all be divisible by \\(2\\), but to be even they need to be divisible by \\(2^2=4\\).</p>
+            <p>We can factor out the top equation into \\(n(n-1)\\). We need either \\(n\\) or \\(n-1\\) to be divisible by \\(4\\). There are \\(25\\) numbers \\(n\\) such that \\(1 \\leq n \\leq 100\\) that are divisible by \\(4\\), and another \\(25\\) such that \\(n-1\\) is divisible by \\(4\\) for a total of \\(50\\)`,
+            answer: '50',
+            hint: "What does \\(n^2-n\\) need to be divisible by?",
+            step: "Rewrite the numerator as \\(n(n-1)\\)",
+            topic: "logic"  
+    },
+    {
+            title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 1
+                </a>`,
+            text: `The five digit number \\(20A26\\) is a multiple of \\(9\\), where \\(A\\) is a digit. Find the remainder when the six digit number \\(A1A1A1\\) is divided by \\(7\\)`,
+            solution: `<b>0</b><p>We start by trying to find \\(20A26\\) divided by \\(9\\) by working backwards</p>
+            <p>There is only one multiple of \\(9\\) that has a ones digit of \\(6\\), being \\(36\\). If you imagine long division, the last value will be \\(36\\). That means \\(B2-9x=3\\) where \\(B\\) is a digit and \\(x\\) is some integer. </p>
+            <p>\\(B\\) must be equal to \\(1\\) (because with \\(99, x=11\\) and that doesnt fit with long division). Now working from the front and doing normal long idvision, we have that \\(20A26\\) will have a \\(2\\), we subtract \\(20-18\\) and get \\(2\\) again then bring down 
+            the \\(A\\) for \\(2A-(18 \\textup{or} 27)=1\\). Thus, we need \\(A\\) to be \\(8\\) and to subtract \\(27\\) from it.</p>
+            <p>From here, we just find \\(81818 \\equiv 0 \\textup{ mod }(7)\\)`,
+            answer: "0",
+            hint: "How can you use the process for long division to find \\(A\\)?",
+            step: "To find \\(A\\), do long division working backwards and use logic",
+            topic: "logic"
+
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 9
+                </a>`,
+                text: `Find the largest three-digit integer \\(n\\) such that the product of its digits is \\(0\\), the sum of its digits is \\(11\\), and \\(n\\) is divisible by \\(8\\)`,
+                answer: '920',
+                solution: "<b>920</b><p>We find the pairs of digits that sum to \\(11\\) (one must be \\(0\\) to make the product \\(0\\)). The first is \\(9, 2\\). Obviously, we want \\(9\\) in the hundredths place. We thus first try \\(920\\) and find that it is divisible by \\(8\\). That's the highest possible value, so that's our answer",
+                hint: "What value in the hundreds place makes the number \\(n\\) highest",
+                step: "Make pairs of digits that sum to \\(11\\)",
+                topic: "logic"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 8
+                </a>`,
+                text: 'Find the number of positive integers \\(n \\leq 100\\) such that the sum of divisors of \\(n\\) is odd',
+                solution: `<b>17</b><p>Notice that the only way \\(n\\) can be odd and have an odd sum of divisors is if \\(n\\) is a perfect square. Each factor pair must have two odd numbers, and odd numbers always add to even, so we need a non-pair</p>
+                <p>There are \\(5\\) examples of this: \\(1, 9, 25, 49, 81\\)</p>
+                <p>For even numbers, it must be twice an odd square, because each factor pair has an even variant where both are even that adds to even and doesn't change the polarity. This gives \\(2,8,18,32,50,72,98\\). That's \\(10+7=17\\)`,
+                answer: '17',
+                topic: 'logic',
+                hint: "There needs to be an odd number of factors",
+                step: "Find all the perfect squares AND another thing related to perfect squares"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 1
+                </a>`,       
+                text: `Find the smallest positive integer \\(n\\) such that \\(n\\) is a multiple of \\(11\\) and \\(n\\) has exactly \\(4\\) positive divisors`,
+                solution: `<b>22</b><p>Obviously \\(11\\) has to be one of the factors. The number \\(1\\) and itself must be factors. Since \\(11\\) is prime and only couns as one factor, we need one more. The smallest prime number is \\(2\\) so we have \\(2 \\times 11=22\\)`,
+                answer: '22',
+                hint: "\\(1\\) and the number count as positive factors",
+                step: "Find the smallest prime number",
+                topic: "prime factorization"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 6
+                </a>`,     
+                text: `Find the largest integer \\(n < 567\\) such that \\(\\textup{gcd}(n, 72)=1\\)`,
+                solution: `<b>565</b><p>We start by finding the prime factorization of \\(72=2^3 \\times 3^2\\), meaning \\(n\\) cannot have \\(2\\) or \\(3\\) as factors</p>
+                <p>The next smallest prime factor is \\(5\\). Since we cannot do \\(567\\) and obviously not \\(566\\) (because it has \\(2\\) as a factor), so we do \\(565\\). We divide this by \\(5\\) to find
+                that it has a quotient of \\(113\\) which is prime, so \\(565\\) is coprime to \\(72\\)`,
+                hint: "\\(n\\) cannot share prime factors with \\(72\\)",
+                step: "Find the prime factorization of \\(72\\)",
+                topic: "prime factorization"
+    }
+
+]
+const probabilityQ = [
+    {
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 3
+                </a>`,
+        text: `A bag contains \\(4\\) red marbles, \\(5\\) blue marbles, and \\(6\\) green marbles. Three marbles are drawn
+at random without replacement. The probability that all three marbles are different colours
+is in the form \\(\\frac{a}{b}\\)
+, where \\(a\\) and \\(b\\) are coprime integers. Compute \\(a+b\\)`,
+answer: '115',
+solution: `<b>115</b><p>There are \\(6\\) total "paths" or orders that you can draw the marbles in, but notice that it doesn't really matter. Let's say you pull red, blue, and then green. The probability of red first is \\(\\frac{4}{15}\\) and then blue is \\(\\frac{5}{14}\\) and green is \\(\\frac{6}{13}\\). If you switch the order around, the order of the numerators changes, but the numbers in the numerator do not, and neither do the denominators.
+Since they are all being multiplied together and multiplication is reagrdless of order, the chance is the same no matter what. Thus, we find the probability of \\(\\frac{4}{15} \\times \\frac{5}{14}\\frac{6}{13}=\\frac{4}{91}\\) which we multiply by \\(4\\) for \\(\\frac{24}{91}\\) and \\(a=24\\) and \\(b=91\\) for \\(a+b=115\\)`,
+hint: "What stays the same regardless of order?",
+step: "Find the probability for one 'order' of picking marbles and see how it relates to the rest",
+topic: "counting"
+    },
+    {
+        title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 4
+                </a>`,
+        text: `For a positive integer \\(n\\), let \\(f(n)\\) be the sum of the digits of \\(n\\). For how many integers \\(n\\)
+between \\(1\\) and \\(999\\) inclusive does \\(f(f(n))=8\\)?`,
+solution: `<b>111</b><p>First start by finding what \\(f(n)\\) must be. We know that the highest sum \\(f(n)\\) is \\(9+9+9=27\\), so we're looking for numbers whose sum of digits is \\(8\\) that are \\(leq 27\\). This gives us \\(26, 17, 8\\).</p>
+<p>Let's calculate all of these individually. For \\(26\\), we need two \\(9\\)s and one \\(8\\). There is no other way to do it because it is a large number. We can put the \\(3\\) in \\(3\\) places, so there are \\(3\\) options.</p>
+<p>Next is \\(17\\). For the following two, I want to use a method called stars and bars, which is a systematic equation that discounts overcounting. The full proof can be found online, but all you need to know is that when dividing "stars" into bins separated by "bars". The formula is \\(\\binom{n+k-1}{k-1}\\) where \\(n\\) is the number of stars and \\(k\\) is the number of 
+bins (\\(k-1\\) would be the number of bars). When dividing \\(17\\), we can imagine we have literally \\(17\\) stars divided into \\(3\\) sections, the digits. For this we do \\(\\binom{17+2}{2}=\\frac{19!}{2!(17!)=\\frac{19 \\cdot 18}{2}=19 \\cdot 9 = 171\\). We do need to be careful though, because there are chances that we put more than \\(9\\) in one "bin" which we cannot do because no digits place can have more than \\(9\\). To account for this overcounting, 
+we find the number of ways where we overcount. This happens when one value is at least \\(10\\) so the remaining \\(7\\) are distributed among \\(3\\) bins (because it can also go in the bin where the \\(10\\) is) so we have \\(\\binom{7+2}{2}=\\frac{9!}{7!(2!)}=36\\). Since the one that is over can be in \\(3\\) places, we multiply that by \\(13\\). Thus, for \\(17\\) there are \\(171-36(3)=63\\)</p>
+<p>The last one is \\(8\\). We do stars and bars for \\(8\\) across \\(3\\) which is \\(\\binom{8+2}{2}=\\frac{10!}{8!(2!)}=45\\).</p>
+<p>Thus, we have \\(3+63+45=111\\)`,
+topic: "casework",
+hint: 'What are the values of \\(f(n)\\)?',
+step: "Find the values of \\(f(n)\\) to be \\(27, 17,\\) and \\(8\\) and use stars and bars to calculate the total posibilities for each",
+answer: '111'
+    },
+    {
+                title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 5
+                </a>`,
+        text: `A frog starts at the point \\((0,0)\\). It can make jumps of two types: a red jump of vector \\((1,2)\\)
+and a blue jump of vector \\((2,1)\\). How many distinct points in the coordinate plane can the
+frog reach after exactly \\(10\\) jumps?`,
+solution: `<b>11</b>Notice that the order he makes the jumps does not matter because his final position is just \\((2r+b,r+2b)\\). Furthermore, notice that each combination is independent and produces its own location. We can test this by induction, because as \\(x\\) goes up, \\(y\\)  must go down. There are \\(11\\) values for \\(r\\) because he can go up to ten times and not \\(0\\) times. Thus he can reach \\(11\\) points`,
+topic: "logic",
+hint: 'Does the order matter?',
+step: "Find the total number of possible red vector jumps he can make",
+answer: '11',
+    },
+        {
+                title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 3 Problem 8
+                </a>`,
+        text: `In how many ways can the numbers \\(1,2,3,4,5,6,7,8\\) be placed in the vertices of a cube such
+that the sum of the four numbers on every face is 18? (Rotations of the cube are considered
+the same.)`,
+solution: `<b>6</b>We count the total combinations we can have \\([1,8,2,7], [1,8,3,6], [1,8,4,5], [1,7,6,4]\\) and the remaining sets. There are \\(4\\) of these. Plant "1" on one vertice and draw out the rest(this one you just have to brute force with logic). That should give you \\(6\\) options`,
+hint: 'How many arrangements are possible?',
+step: "Put '1' or another number in the same corner every time and do casework",
+answer: '6',
+topic: "logic"
+    },
+    {
+        title:  `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 2
+                </a>`,
+        text: `Bartholomew is listening to his favourite Spotify playlist. He wishes to
+listen to all \\(7\\) songs, but does not wish to listen to Song \\(A\\) and Song \\(B\\)
+consecutively. How many different ways can Bartholomew listen to his
+playlist, with each song being played exactly once?`,
+solution: `<b>3600</b>We start by seeing how many total arrangements are possible. We use \\(7! = 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1=5040\\). However, we need to take into account the fact that he doesn't want \\(AB\\) consecutively. Imagine that \\(AB\\) is one song. There are now \\(6!\\) ways to order it, and we multiply that by \\(2\\) because the order of \\(AB\\) is interchangeable. We have \\(1440\\).</p>
+<p>We find \\(5040-1440=3600\\)`,
+hint: "Don't overcount",
+step: "Find the total solutions and then account for overcounting by treating \\(AB\\) as one song.",
+answer: '3600',
+topic: "counting",
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 9
+                </a>`,
+        text: `A rook is placed at the origin and can only move one unit up or right each
+move. How many ways are there to reach \\((4,4)\\) without passing through
+\\((3,2)\\)?`,
+solution: `<b>40</b><p>Notice that whatever the case, we need to take \\(8\\) moves with \\(4\\) up and \\(4\\) right. We're going to start by finding the total number of ways he can get there. Let's focus on just the upwards movements. Of the \\(8\\) total movements, there are \\(4\\) up that can be in \\(\\binom{8}{4}=\\frac{8!}{4!(4!)}=70\\) places for a total of \\(70\\) paths</p>
+<p>To account for overcounting, we need to see how the rook gets to \\((3,2)\\) and then see what happens after there. Getting to \\((3,2)\\) takes \\(5\\) movements so we find \\(\\binom{5}{3}=\\frac{5!}{2!(3!)}=10\\). After, there are \\(3\\) moves so we find \\(\\binom{3}{1}=3\\). Thus, we have \\(3 \\times 10 = 30\\) that we subtract from \\(70\\) which gives \\(70-30=40\\)`,
+hint: "You can use \\(\\frac{n!}{k!(n-k!}\\) to find the total number of ways to get to a certain point from a certain point",
+step: "Find the total number of ways to get to \\((4,4)\\) by using \\(\\frac{8!}{4!(4!}\\) and then find the number of ways to get to and continue from \\((3,2)\\)",
+topic: "counting"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 4 Problem 10
+                </a>`,
+        text: `How many diagonals can be drawn in a \\(5000\\)-sided polygon?`,
+solution: `<b></b><p>We use the equation \\(\\frac{n(n-3)}{2}\\) because for each point, there can be a diagonal drawn to all but \\(3\\) points, and if you do this for each point, each diagonal will be repeated twice. Inputting \\(5000\\) gives an answer of \\(12492500\\)`,
+topic: "counting",
+answer: '12492500',
+hint: "What is the equation for the number of diagonals in an \\(n\\)-sided polygon?",
+step: "Use the formula \\(\\frac{n(n-3)}{2}\\)"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 5
+                </a>`,
+        text: `Tyler chooses a meal consisting of one meat (beef, chicken, or pork), two different
+vegetables (beans, corn, potatoes, tomatoes), and one dessert (brownies, cake, pudding,
+or ice cream). How many different meals are possible?`,
+solution: `<b>72</b><p>The meat has \\(\\binom{3}{1}=3\\) possibilities, the vegetables have \\(\\binom{4}{2}=6\\), and the dessert has \\(\\binom{4}{1}=4\\). Multiplying this gives a total of \\(3 \\times 6 \\times 4=72\\)`,
+answer: '72',
+hint: "The total number of combinations is the product of all the individual combinatioins",
+step: "Find the number of ways to pick each item",
+topic: "counting"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 6
+                </a>`,
+        text: `How many five-digit positive integers have digits in strictly increasing order?`,
+        solution: `<b>126</b><p>Notice that any set of \\(5\\) individual numbers can be put into ascending order. We can't use \\(0\\) so we just use \\(\\binom{9}{5}=\\frac{9!}{5!(4!)}=126\\)`,
+        answer: '126',
+        hint: "You can use the choose function",
+        step: "Calculate \\(\\binom{9}{5}\\)",
+        topic: "counting"
+    },
+{
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 5 Problem 7
+                </a>`,
+        text: `A \\(4\\times4\\) grid of squares is colored so that each square is either red or blue. How many
+colorings have exactly two red squares in each row?`,
+        solution: `<b>1296</b><p>In each row, there are \\(\\binom{4}{2}=6\\) ways to pick which ones are red. There are \\(4\\) rows so we find \\(6^4=1296\\)`,
+        answer: '1296',
+        hint: "You can use the choose function",
+        step: "Calculate \\(\\binom{4}{2}\\)",
+        topic: "counting"
+    },
+{
+        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 7
+                </a>`,
+        text: `How many permutations of the letters in the word \\(\\textup{MATH}\\) have the property that no letters are in its original position?`,
+        solution: `<b>0</b><p>The first letter we choose a place for has \\(\\binom{3}{1}=3\\) ways to choose where it goes. The next one is complicated because there is a chance one of its places was taken up, and a chance it wasn't. Assuming it wasn't, there are \\(3\\) plcaes it can go, and the other two are set. Thus we have \\(3 \\times 3\\). We don't need to account for the case that the "next" letter
+        had its place left open, because then we can picka  different next number`,
+        answer: '9',
+        hint: "How many places can each letter be in",
+        step: "Find how many places the first letter to be put in place has, and then how many the next letter with the most option has",
+        topic: "logic"
+    },
+    {
+        title:  `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 9
+                </a>`,
+        text: `How many three-digit positive integers have digits that increase from left to right and whose digits sum to \\(15\\)?`,
+        solution:  `<b>8</b><p>We can just do casework by the first digit</p>
+        <p>For \\(1\\) we need the remaining digits to sum to \\(14\\) so we have \\(159, 168\\). We can't do \\(177\\) because it's not ascending</p>
+        <p>For \\(2\\) we have \\\(249, 258, 267\\)</p>
+        <p>For \\(3\\) we ave \\(357, 348\\)</p>
+        <p>For \\(4\\) we only have \\(456\\)</p>
+        <p>There are \\(8\\) total</p>`,
+        answer: '8',
+        topic: 'casework',
+        hint: "Divide into cases",
+        step: "Divide by cases by the hundredth digit",
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 6 Problem 9
+                </a>`,
+        text: `A code consists of four distinct digits. The first digit is odd, the last digit is even, and the code is divisible by \\(5\\). How many such codes are possible?`,
+        solution: `<b>280</b><p>We know that the last digit must be \\(0\\) in order for it to be even and give us a number divisible by \\(5\\).</p>
+        <p>The first digit can be \\(1,3,5,7,9\\)</p>
+        <p>There are \\(8 \\times 7\\) ways to choose from the remaining digits. We have \\(5 \\times 8 \\times 7 \\times 1 = 280\\)`,
+        answer: '280',
+        hint: "What do the first and final digits have to be?",
+        step: "Realize the last digit is \\(0\\) and find the number of possible values for each digit",
+        topic: "counting"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 2
+                </a>`,
+        text: `A bag contains \\(3\\) red marbles and \\(3\\) blue marbles. Alice and Bob take turns drawing one marble at a time without replacement, with Alice going first. The 
+        first player to draw a red marble wins. The probability that Alice wins can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
+        solution: `<b>33</b><p>The probability that Alice pulls a red marble first try is \\(\\frac{3}{3+3}=\\frac{1}{2}\\). The probability that she draws it on her second turn relies on both her and Bob not drawing it on their first turns which is \\(\\frac{1}{2} \\times \\frac{2}{5}=\\frac{1}{5}\\). We then multiply this by 
+        \\(\\frac{3}{4}\\), because of the remaining \\(4\\) marbles, \\(3\\) are red. This gives a \\(\\frac{3}{20}\\) probability. Notice that if no one has drawn a blue marble after Alice's second draw, Bob must win because all the blue marbles are gone.</p>
+        <p>Thus, \\(\\frac{p}{q}=\\frac{1}{2}+\\frac{3}{20}=\\frac{13}{20}\\) for \\(p=13, q=20\\) and \\(p+q=33\\)`,
+        answer: '33',
+        hint: "Divide into cases and calculate the probability not just of one event, but all the events that allow that event to occur",
+        step: "Find the probability of Alice drawing it on her own, and then find the probability ath by her second turn no one has drawn red and her chance of drawing red there.",
+        topic: "casework"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 7 Problem 2
+                </a>`,  
+        text: `An ant stands at the bottom of a staricase with \\(8\\) steps. The ant can climb the stairs by taking either \\(1\\) step or \\(2\\) steps at a time. However, the \\(5\\)th step is sticky, and the ant cannot step on it. 
+        In how many distinct ways can the ant reach the top ((8\\textup{th}\\)) step?`,
+        solution: `<b>10</b><p>We know that the ant must land on the fourth step and climb two steps to reach the sixth step. We thus find how many ways there are to get to and from those places</p>
+        <p>For \\(6\\), the ant can either just go directly to \\(8\\) with two steps or take all the steps individually. That's \\(2\\).</p>
+        <p>For \\(4\\) it's a bit more complicated. We do casework by the number of "jumps" of two steps he takes. He can do all two steps, with one combination (two jumps), or one, which can be in \\(3\\) places. He can also take all one steps, which is \\(1\\) for \\(1+3+1=5\\)</p>
+        <p>The total number of probabilities is \\(2 \\times 5 = 10\\)`,
+        answer: '10',
+        hint: "Where does the ant need to jump? How can you use that to divide his process",
+        step: "Find the possibilities before \\(4\\) and after \\(6\\) independently",
+        topic: "casework",
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 8
+                </a>`, 
+        text: `How many distinct rearrangements of the letters in the word \\(LEVEL\\) are there such that no two \\(L\\)'s are adjacent?`,
+        solution: `<b>18</b><p>We have \\(5!=120\\) ways to rearrange in general. However, we divide this by \\(4\\) because the \\(E\\)s and \\(L\\)s can both be arranged in 
+        \\(2\\) ways. Thus, we have \\(30\\) independent combinations</p>
+        <p>There are four positions in which the \\(L\\)s can be adjacent. The remaining \\(3\\) places can be arranged in as many combinations as places that \\(V\\) can be in, which is \\(3\\), so we subtract \\(4 \\times 3 = 12\\)</p>
+        <p>We hae \\(30-12-18\\)`,
+        answer: '18',
+        hint: "Make sure to not overcount iterations where \\(L\\) and \\(E\\) can be switched",
+        step: "Find the total iterations but account for siutations where \\(E\\) and \\(L\\) can be switched",
+        topic: "counting"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+                Solvefire Iron Round 8 Problem 9
+                </a>`, 
+        text: `A fair coin is flipped \\(6\\) times. The proability that the number of heads is strictly greater than the number of tails can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
+        solution: `<b>43</b><p>The probability that the outcome is all heads is \\(\\frac{1}{2^6=\\frac{1}{64}\\). The probability of there being one tails is \\(\\frac{1}{2^6} \\times \\binom{6}{5}\\) (because they still all need to "flip the right valuee", but we need to pick \\(5\\) places for the heads to be in). Finally, 
+        \\(4\\) heads is \\(\\frac{1}{2^6} \\times \\binom{6}{4}\\). We have \\(\\frac{1}{64}+\\frac{5}{64}+\\frac{16}{64}=\\frac{22}{64}=\\frac{11}{32}\\) for \\(p=11, q=32, p+q=43\\))`,
+        answer: '43',
+        hint: "Split into cases by the number of heads",
+        step: "Find the probability for \\(6, 5\\) and \\(4\\) heads",
+        topic: "casework"
+    }
+]
+console.log(questions)
+let algebraIndex = 0
+let geometryIndex = 0
+let numIndex = 0
+let probIndex = 0
+let allIndex = 0
+
+shuffleArray(questions);
+algebraQuestion = questions[algebraIndex]
+// ---------- Question Data Geometry----------
+
+
+shuffleArray(geometryQ);
+
+shuffleArray(numTheoryQ);
+const allQ = []
+allQ.push(...questions)
+allQ.push(...geometryQ)
+allQ.push(...numTheoryQ)
+allQ.push(...probabilityQ)
+console.log(allQ)
+// ---------- DOM Elements ----------
+const questionTitle = document.getElementById("question-title");
+const questionText = document.getElementById("question-text");
+const questionChoices = document.getElementById("mc-container")
+const answerInput = document.getElementById("answer-input");
+const checkBtn = document.getElementById("check-btn");
+const solutionDiv = document.getElementById("solution");
+const solutionText = document.getElementById("solution-text");
+const nextBtn = document.getElementById("next-btn");
+const toggleStreakBtn = document.getElementById("toggle-streak");
+const streakWrapper = document.getElementById("streak-wrapper");
+const streakBar = document.getElementById("streak-bar");
+const backBtn = document.querySelector(".back-btn");
+const mcContainer = document.getElementById("mc-container");
+const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
+const algButton = document.getElementById("algebraButton");
+const geometryButton = document.getElementById("geometryButton");
+const numButton = document.getElementById("numtheoryButton");
+const probButton = document.getElementById("probabilityButton");
+const allButton = document.getElementById("allButton");
+const image = document.getElementById("question-image")
+const restartButton = document.getElementById("restart-btn");
+const problemsWrapper = document.getElementById("problems-card");
+const helpBtn = document.getElementById("helpButton");
+const helpPannel = document.getElementById("helpPannel");
+const overlay = document.getElementById("overlay");
+const submitSolutionButton = document.getElementById("submit-a-solution");
+const submitSolutionForm = document.getElementById("submit-a-solution-form");
+const prevError = document.getElementById("prevError")
+const hintBtn = document.getElementById("hintBtn")
+const seeStep = document.getElementById("seeStep")
+const hintText = document.getElementById("hint")
+const stepOne = document.getElementById("stepOne")
+const stepOneText = document.getElementById("stepOneText")
+const strikeOne = document.getElementById("strikeOne")
+const strikeTwo = document.getElementById("strikeTwo")
+const strikeThree = document.getElementById("strikeThree")
+const strikesContainer = document.getElementById("strikesContainer")
+const mistakeBtn = document.getElementById("mistake")
+const unfamiliarBtn = document.getElementById("unfamiliar")
+const stuckBtn = document.getElementById("stuck")
+const errorTags = document.getElementById("tagQuestion")
+helpBtn.addEventListener("click", function () {
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
+});
+let questionsAnswered = 0;
+let percentage = 0;
+let percetnageStr = "0";
+let test = document.getElementById("test");
+let scoreCount = document.getElementById("score-count");
 
 function recordWrongTopic(topic) {
     let topicToUpdate;
@@ -1406,6 +1865,7 @@ function recordWrongTopic(topic) {
 
     if (!topicsToWorkOn.includes(topicToUpdate)) {
         topicsToWorkOn.push(topicToUpdate);
+        localStorage.setItem("topicsToWorkOnSolve", JSON.stringify(topicsToWorkOn))
     }
 
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
@@ -1414,6 +1874,9 @@ function recordWrongTopic(topic) {
         console.log(topicObj.errors)
         console.log(topicObj.attempts)
         topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
+        localStorage.setItem("topicGlossarySolve", JSON.stringify(TOPIC_GLOSSARY))
+        localStorage.setItem("topicGlossarySetSolve", true)
+
     }
 
     updateTopicsDropdown();
@@ -1744,6 +2207,7 @@ function checkAnswerGeometry() {
 
     if (strikes == 2){
         geometryTotal += 1
+        localStorage.setItem("geometryTotalSolve", geometryTotal)
             updateRadarChart()
     }
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === geometryQuestion.topic);
@@ -1848,6 +2312,7 @@ const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown 
         strikes -= 1
     } else {
         geometryWrong += 1
+        localStorage.setItem("geometryWrongSolve", geometryWrong)
         updateRadarChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
@@ -1877,6 +2342,7 @@ function checkAnswerAlgebra(){
 
     if (strikes == 2){
         algebraTotal += 1
+        localStorage.setItem("algebraTotalSolve", algebraTotal)
             updateRadarChart()
     }
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === algebraQuestion.topic);
@@ -1988,8 +2454,9 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         strikeTwo.style.color = "var(--primary-color) !important"
         strikes -= 1
     } else {
-        updateRadarChart()
         algebraWrong += 1
+        localStorage.setItem("algebraWrongSolve", algebraWrong)
+        updateRadarChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
         console.log("no strikes")
@@ -2110,6 +2577,7 @@ function checkAnswerProb() {
 
     if (strikes == 2){
         probTotal += 1
+        localStorage.setItem("probTotalSolve", probTotal)
             updateRadarChart()
     }
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === probQuestion.topic);
@@ -2213,6 +2681,7 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
     } else {
         updatePieChart()
         probWrong += 1
+        localStorage.setItem("probWrongSolve", probWrong)
         updateRadarChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
@@ -2243,6 +2712,7 @@ function checkAnswerNum() {
 
     if (strikes == 2){
         numTotal += 1
+        localStorage.setItem("numTotalSolve", numTotal)
             updateRadarChart()
     }
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === numQuestion.topic);
@@ -2349,6 +2819,7 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
     } else {
         updatePieChart()
         numWrong += 1
+        localStorage.setItem("numWrongSolve", numWrong)
         updateRadarChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
@@ -2977,15 +3448,18 @@ if (q.type === 'mc'){
 
 mistakeBtn.addEventListener("click", function(){
     mistake += 1
+    localStorage.setItem("mistakeSolve", mistake)
     updateBarGraph()
 })
 unfamiliarBtn.addEventListener("click", function(){
     unfamiliar += 1
+    localStorage.setItem("unfamiliarSolve", unfamiliar)
     updateBarGraph()
 })
 stuckBtn.addEventListener("click", function(){
     stuck += 1
     updateBarGraph()
+    localStorage.setItem("stuckSolve", stuck)
 })
 let myChart = null; // 1. Define this OUTSIDE the function
 
@@ -3022,19 +3496,16 @@ function updateBarGraph() {
 }
 let pieChart = null
 function updatePieChart(){
-    let barColor = ["#88B0FF"]
-    console.log("updating pie chart")
     if (pieChart) {
         pieChart.destroy();
     }
-
+    console.log(topicsToWorkOn)
     const ctx = document.getElementById("pieChart");
     let xValues = []
     let yValues = []
     topicsToWorkOn.forEach(i => {
         const topicObj = TOPIC_GLOSSARY.find(x => x.id === i);
 if (topicObj && topicObj.errors && topicObj.errors > 0) {
-            console.log("Adding to chart:", topicObj.id, topicObj.errors);
             xValues.push(topicObj.name || topicObj.id); // Use name if available
             yValues.push(topicObj.errors);
         }
@@ -3046,7 +3517,6 @@ pieChart = new Chart("pieChart", {
     labels: xValues,
     datasets: [{
       data: yValues,
-      backgroundColor: barColor,
     }]
   },
   options: {
