@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Saintly | Factoring</title>
+  <link rel="stylesheet" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">   
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=ads_click,book,check,close_small,exclamation,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+ 
+<meta name="keywords" content="arithmetic, what is arithmetic, AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+    <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+<meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+
+</head>
+<body>
+   <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script src="sidebar.js"></script>
+<nav id = "top-bar">
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "topics dash.html">Topics Dashboard</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "algebraic manipulation.html">Factoring</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
+    <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+send
+</span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton">
+volunteer_activism
+</span>
+</nav>
+<main> 
+    <div class="minicontainer">
+
+  <h1 class="amc10title">Factoring</h1>
+  <p class="amc10subtitle"></p>
+  <h2 class="amc10subtitle">10 Problems • 5 sub-topics</h2>
+  <h2 class="par" style="display: inline; vertical-align: middle !important;">Adalynn Le • 5/11/2026</h2>
+<!-- Table of Contents  -->
+  <div id="tableOfContents">
+  <h3 class="amc10subtitle ittybitty" style="color: var(--primary-color)">Table of Contents</h3>
+  <ol><a href="#intro">Introduction</a></ol>
+  <ol><a href="#grouping">Factoring By Grouping</a></ol>
+<ol><a href="#quadratic">Quadratic Trinomials</a></ol>
+<ol><a href="#completing">Completing The Square</a></ol>
+<ol><a href="#substitution">Substitution</a></ol>
+<ol><a href="#identities">Identities</a></ol>
+<ol><a href="#conclusion">Conclusion</a></ol>
+  </div>
+  <h2 class="amc10subtitle" id="introduction">Introduction</h2>
+  <p class="par">Factoring is a trick in <a href="algebraic manipulation.html">algebraic manipulation</a> that allows you to <mark class="blue">divide an expression into more simple, often monomial or binomial ones, that act as factors to the original. </mark>The basis 
+    of factoring is simply the idea of <mark class="blue">the distributive property,</mark> a trick almost everybody does. Advanced factoring parodies this <mark class="blue">with expressions instead of constants</mark>
+  </p>
+    <span id = "howworkcards">
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">What is it?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Factoring is the process of dividng a large expression, most likely a polynomial, into smaller ones that are factrs of the larger. When multiplying them together through the distributive property, you should be left with the original expression.</div>
+  </span>
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">Why Study?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Factoring can help you take a complicatex expression and make it much more simple and easy to digest. It allows you to easiy find zeroes and other solutions rather than having to brute force solve</div>
+  </span>
+</span> 
+</div>
+            <p class="amc10subtitle" id="grouping">Factoring By Grouping</p>
+            <span style="display: flex; flex-direction: row; gap: 20px">
+<span style="flex: 1;">
+
+        <p class="par">Factoring by grouping is the process of grouping terms in an expression (typically first two last two, but it could be scrambled) and factoring out the GCF. If the GCF is not immediately visible <mark class="blue">factor out whatever you can, like finding the prime factorization of a constant, and see what matches.</mark>. Factoring by grouping is great for when the system is clear and organized. While it may not
+            be the best when terms are combined, it works great for four-part expressions. Furthermore, it is fairly simple and intuitive to get a grasp on factoring before we move on to difference of squares and FOIL. In mathematical terms, it looks like this: \(ax+ay+bx+by=(ax+ay)+(bx+by)=a(x+y)+b(x+y)=(a+b)(x+y)\)</p>
+            <p class="par">Factoring by grouping is a good introductory way to learn factoring, but it may not always work. Compared to factoring quadratic trinomials <mark class="blue">the conditions are very specific.</mark> Factoring by grouping only works
+            when you have an even number of terms that all share a common factor. Factoring by grouping does have one direct use though: <mark class="blue">it is easily applied in equations with two variables, for example \(x^2\) and \(y^2\) because you can group them separately</mark>. 
+        In these situations, factoring by grouping will allow you to understand how the variables affect and influence each other.</p>
+        </div>
+        </span>
+        <div class="howworkcard" style="display: inline-block; flex: 0.75">
+        <p class="amc10subtitle ittyBitty">Practice</p>
+        <p class="par">\(3x^3+x^2+9x+3\)</p>
+
+
+    <div id="drop-zones" style="display: flex; gap: 20px;">
+        <span style="display: inline-block">\((\)</span><span style="display: inline-block" class="dropzone" id="target1"></span><span style="display: inline-block" >+</span><span class="dropzone" id="target2"></span><span>\()\)</span>
+        <span style="display: inline-block">\((\)</span><span style="display: inline-block" class="dropzone" id="target3"></span><span style="display: inline-block" >+</span><span class="dropzone" id="target4"></span><span>\()\)</span>
+
+    </div>
+        <div id="drag-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <div class="draggable" id="drag4" draggable="true" data-match="target4">\(3\)</div>
+
+        <div class="draggable" id="drag1" draggable="true" data-match="target1">\(3x^2\)</div>
+                                <div class="draggable" id="drag3" draggable="true" data-match="target3">\(9x\)</div>
+        <div class="draggable" id="drag2" draggable="true" data-match="target2">\(x\)</div>
+
+
+    </div>
+    <div id="drop-zones2" style="display: flex; gap: 20px;">
+        <span style="display: inline-block" class="dropzone" id="target6"></span><span>\((\)</span><span style="display: inline-block" class="dropzone" id="target7"></span><span>\()\)</span><span style="display: inline-block" >+</span><span style="display: inline-block" class="dropzone" id="target8"></span><span>\((\)</span><span style="display: inline-block" class="dropzone" id="target9"></span><span>\()\)</span>
+
+    </div>
+<div id="drag-container2" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <div class="draggable" id="drag8" draggable="true" data-match="target8">\(3\)</div>
+
+        <div class="draggable" id="drag6" draggable="true" data-match="target6">\(x^2\)</div>
+                                <div class="draggable" id="drag7" draggable="true" data-match="target7">\(3x+1\)</div>
+        <div class="draggable" id="drag9" draggable="true" data-match="target9">\(3x+1\)</div>
+</div>
+    <div id="drop-zones3" style="display: flex; gap: 20px;">
+        <span style="display: inline-block">\((\)</span><span style="display: inline-block" class="dropzone" id="target10"></span><span>\()\)</span><span>+</span><span style="display: inline-block">\((\)</span><span style="display: inline-block" class="dropzone" id="target11"></span><span>\()\)</span>
+    </div>
+<div id="drag-container2" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <div class="draggable" id="drag10" draggable="true" data-match="target10">\(x^2+3\)</div>
+        <div class="draggable" id="drag11" draggable="true" data-match="target11">\(3x+1\)</div>
+</div>
+        </div>
+        </span>
+                    </span>
+                    <span style="display: flex; flex-direction: row">                    
+                        <span style="display: inline-block; flex: 0.25"><img src="factoring.png"></span>
+        <span style="display: inline-block; flex: 1;">
+            <h3 class="amc10subtitle" id="quadratic">Quadratic Trinomials</h3>
+    <p class="par">Chances are that factoring trinomials is the first thing you will learn when getting into advanced algebra. <mark class="blue">Trinomials are expressions with three terms of different exponential value. Quadratic trinomials have a \(x^2\), \(x\), and constant</mark>. If you've seen a 
+    quadratic equation, it's the standard form \(ax^2+bx+c\). When factoring, we switch to the form \((dx+e)(fx+g)\) with the following rules</p>
+    <ol>
+        <li>\(d \times f = a\)</li>
+        <li>\(e \times g = c\)</li>
+        <li>\(d \times f + e \times g\)</li>
+    </ol>
+    <p class="par">If you've heard of FOIL (a method for organized expansion going front-outside-inside-last where you multiply terms in linear expression distributive property), this is essentially the opposite, or reversing the FOIL, because if you notice you can FOIL the factored form and combine like terms to get the original equation</p>
+    </span>
+    </div>
+    </span>
+<h3 class="amc10subtitle ittyBitty" id="competingthesquare">Completing the Square</h3>
+<p class="par">Completing the square is the method of adding or subtracting whatever you need on both sides of an equation so that you can turn it into a perfect square. For example in quadratic equations, that means adding a value such that \(c=\frac{b}{2}^2\)</p>
+<div class="howworkcard">
+    <h3 class="amc10subtitle">Visualizing \(x^2 + bx + ?\)</h3>
+    
+    <div id="squareCanvas" style="width: 200px; height: 200px; position: relative; margin: 10px auto; border: 1px solid var(--shadow-color);">
+        <div id="x2-block" style="position: absolute; top: 0; left: 0; width: 100px; height: 100px; background: var(--primary-color); border: 1px solid var(--background-color); font-weight: 200;">x²</div>
+        
+        <div id="b-side" style="position: absolute; top: 0; left: 100px; height: 100px; background: var(--accent-color); opacity: 0.7; color: var(--background-color)">\(\frac{b}{2}\)</div>
+        <div id="b-bottom" style="position: absolute; top: 100px; left: 0; width: 100px; background: var(--accent-color); opacity: 0.7; color: var(--background-color)">\(\frac{b}{2}\)</div>
+        
+        <div id="missing-corner" style="position: absolute; top: 100px; left: 100px; background: var(--highlight-color); display: none; border: 1px dashed black;"></div>
+    </div>
+
+    <input type="range" id="bSlider" min="0" max="80" value="40" style="width: 100%;">
+    <p class="par" style="text-align: center;" id="bVal" style="font-family: 'National Park', sans-serif !important"></p>
+</div>
+</div>
+<h2 class="amc10subtitle" id="substitution">Substitution</h2>
+<p class="par">See a question super complex? Find the GCF, or a common trend and pattern, and substitute it for a variable. <mark class="blue">Variables don't have to just represent constants, they also represent expressions.</mark> This can allow you to visualy simplify 
+an expression and make it easier to manipulate through factoring. <mark class="blue">Especially for complex expressions, this could mean that even though there is only one value or expression for \(u\) (which is the placeholder variable we tend to substitute), there can be multiple values for \(x\)</mark></p>
+<div id="howworkcard">
+    <p class="par">Click to substitute</p>
+    <span class="substitute" display="inline-block">\(2x^2+6x\)</span><span display="inline-block">\(+ 4 (\)</span><span class="substitute" display="inline-block">\(2x^2+6x\)</span><span display="inline-block">\()+3\)</span>
+</div>
+<h2 class="amc10subtitle">Factoring Identities</h2>
+<p class="par">Now that you know how to factor, you already have the tools for algebraic manipulation, but you need to be proficient in them and use them well. Rather than spending time trying to remember
+    how to factor, find GCFs, and factor out expressions, you can learn to recognize these identities to save you time on the test</p>
+    <div class="subsubtopic">
+        <h3 class="amc10subtitle ittyBitty">Difference of Squares</h3>
+        <p class="par">The difference of squares is a factoring pattern that occurs whenever you have an equation \(x^2-c\) where \(c\) is a perfect square. The equation simplifies down to \((x+\sqrt{c})(x-\sqrt{c})\), which you can solve via FOIL. Albeit this particular
+            trick is well known, it's applications are limitless. Consider the name: "Difference of Squares", it's not talking about quadratics, this is true for whenever you have two squares that are being subtracted. You can <mark class="blue">use this to simplify and solve large expressions in addition to manipulating expressions with variables.</mark> There also exists differences of larger powers. For example,
+            the difference of cubes is \(x^3-b^3=(x-b)(x^2+xb+b^2)\)
+        </p>
+        <span style="display: inline-block; width: 70%">
+        <h3 class="amc10subtitle ittyBitty">Simon's Favorite Factoring Trick</h3>
+        <p class="par">Simon's Favorite Factoring Trick (SFFT) is one of the most popular factoring tricks because of it's nature and exclusivity. It is primarily used for <a href="word problems.html">diophantine equations</a> <mark class="orange">where \(xy\) is a term (the values are multiplied)</mark>. The trick allows you to express the sys
+        isolate \(x\) and \(y\) as variables instead of having them as products or fractions. As an expression, you would have \(xy+jx+ky-jk=(x+k)(y+j)\). I find it is easier to express as an equation, though: if \(xy+jx+ky=a\) then\((x+k)(y+j)=a-jk\). The proof for it is pretty straightforward as well.</p>
+        <p class="par" style="align-self: center; justify-self: center; left: 50%">\(xy+jx+ky=a\)</p>
+        <p class="par" style="align-self: center; justify-self: center; left: 50%">\(x(y+j)+ky=a\)</p>
+        <p class="par" style="align-self: center; justify-self: center; left: 50%">\(x(y+j)+ky+jk=a+jk\)</p>
+        <p class="par" style="align-self: center; justify-self: center; left: 50%">\(x(y+j)+k(y+j)=a+jk\)</p>
+        <p class="par" style="align-self: center; justify-self: center; left: 50%">\((x+k)(y+j)=a+jk\)</p>
+        </span>
+        <span style="display: inline-block; width: 25%">
+            <img src="sfft.png">
+        </span>
+        <h3 class="amc10subtitle ittyBitty">Sophie Germain Identity</h3>
+        <p class="par">The Sophie German identity is a tool used to compute and factor higher-power expressions. It's formula is \(a^4+4b^2=(a^2+2ab+2b^2)(a^2-2ab+2b^2)\). If you notice, this looks a lot like a difference of squares, because that's what it is. What makes the Sophie Germain
+            identity unique is that it's a blend of </mark class="orange">the difference of squares and completing the square</mark>. If you add \(4a^2b^2 (2ab^2)\), and also subtract it (to keep it equal) you can rewrite as \((a^2+2b^2)^2-(2ab)^2\) which when expanded using the difference of squares gives \((a^2+2ab+2b^2)(a^2-2ab+2b^2)\)
+        </p>
+        <h3 class="amc10subtitle ittyBitty">Sum of Three Cubes Identity</h3>
+        <p class="par">This is a pretty niche and high-level identity, so don't worry too much about it. It will likely only appear in 20+ questions or AIME:</p>
+        <p class="par" style="align-self: center; justify-self: center; left: 50%">\(a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-ac-bc)\)</p>
+    </div>
+<h2 id="conclusion" class="amc10subtitle">Conclusion</h2>
+<p class="par">Factoring is an important trick that help syou simplify hard problems and reduce them into basic parts. It is heavily reliant on a knowledge of multiplication and division and treats whole expressions as factors that contribute to a larger 
+    operation, just as a constant would have smaller constant factors. Factoring is useful for finding zeroes and solutions to equations. Using identities, you can factor easily without having to prove or derive on your own.
+</p>
+<div class="problem problemWrapper">
+<h3 id="question-title" class="amc10title small">Question 1:</h3>
+    <p id="question-text">Loading question...</p>
+    <input type="text" id="answer-input" placeholder="Your answer">
+<div id="mc-container" class="hidden">
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+</div>
+
+    <button id="check-btn" class="problemBtn">Check Answer</button>
+
+    <div class="solution" id="solution" style="display:none;">
+      <h2>Solution</h2>
+      <p id="solution-text"></p>
+      <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
+      </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+
+    </main>
+<footer class="saintly-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img class="footer-logo" src="fullLogo.png" height="35px"></img>
+            <p>Making competition math accessible for everyone.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="am10.html">AMC 10</a></li>
+                <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+                <li><a href="amc10algebra.html">Algebra</a></li>
+                <li><a href="algebra.html">Topics Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>saintly.math@gmail.com</p>
+            <div class="social-icons">
+                </div>
+        </div>
+        <div class="footer-section">
+          <h4>Privacy</h4>
+          <ul><li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Saintly Math. Built with drive.
+    </div>
+</footer>
+</body>
+<script src="factoringjs.js" type="module"></script>
+</html>

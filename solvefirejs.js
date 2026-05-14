@@ -975,6 +975,74 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
         answer: `21`,
         hint: "Use vieta's formulas that \\(a+b+c=\\frac{a_{n-1}{a_{n}}\\) and \\(ab+bc+ca=\\frac{a_{n-2}}{a_{n}}\\)",
         topic: "algebraic manipulation"
+    },
+    {
+        title: `<a href="https://https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 1
+                </a>`, 
+        text: `Let \\(f(x)=x^2-3x+3\\). Determine the number of solutions to \\(f(f(n))=3\\)`,
+        solution: `<b>2</b><p>First, we find how many values of \\(x\\) make \\(f(x)=3\\). We solve</p>
+        $$
+        3=x^2-3x+3
+        $$
+        $$
+        0=x^2-3x
+        $$
+        $$
+        0=x(x-3)
+        $$
+        $$
+        x=0, x=3
+        $$
+        <p>We now solve for those two. We already know \\(x=3\\) will have two solutions, but we use the discriminant \\(b^2-4ac\\) for \\(x=0\\)</p>
+        $$
+        (-3)^2-4(3)(1)
+        $$
+        $$
+        9-12
+        $$
+        $$
+        -3
+        $$
+        <p>Since this is negative, we have no real solutions for that. Thus, there are only two solutions (the ones from \\(f(n)=3\\))`,
+        answer: '3',
+        hint: "Use the discriminant",
+        step: "First find values of \\(x\\) such that \\(f(x)=3\\)",
+        topic: "logic"
+    },
+    {
+        title: `<a href="https://https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 9
+                </a>`,   
+        text: `Let \\(x,y\\) be real numbers greater than zero which satisfy the equation \\(\\textup{log}_{x}y+\\textup{log}_{y}x=\\frac{10}{3}\\)
+        The largest possible value of \\(\\textup{log}_{x}y-\\textup{log}_{y}x\\) can be expressed in the form \\(\\frac{m}{n}\\) , where \\(m\\) and \\(n\\) are
+        coprime. Compute \\(m+n\\)`,
+        solution: `<b>11</b><p>We can substitute \\(u=\\textup{log}_{x}y\\). By change of base, we know that \\(log_{x}y=\\frac{\\textup{log}y}{\\textup{log}x}\\) and \\(log_{y}x=\\frac{\\textup{log}x}{\\textup{log}y}\\), so \\(\\textup{log}_{y}x=\\frac{1}{u}\\.</p>
+        $$
+        u+\\frac{1}{u}=\\frac{10}{3}
+        $$
+        $$
+        u^2-\\frac{10}{3}u+1=0
+        $$
+        $$
+        3u^2-10u+3=0
+        $$
+        $$
+        (3u-1)(u-3)=0
+        $$
+        $$
+        u=\\frac{1}{3}, u=3
+        $$
+        $$
+        3-\\frac{1}{3}=\\frac{8}{3}
+        $$
+        $$
+        8+3=11
+        $$`,
+        answer: '11',
+        hint: "Use substitution",
+        step: "Substitute a variable for \\(log_x{y}\\) and find a relation between \\(log_x{y}\\) and \\(log_{y}x\\) through the change of base",
+        topic: "algebraic manipulation"
     }
 
 ]
@@ -1276,7 +1344,92 @@ answer: '39'
         step: "Find the side length of the largest hexagon, then found the side length of the smaller one through trigonometry",
         hint: "The equation for the area of a regular hexagon is \\(s^2 \\times \\frac{3\\sqrt{3}}{2}\\), and the ratio of the longest side to hypotenuse of a \\(30-60-90\\) triangle is \\(\\frac{\\sqrt{3}}{2}\\)",
         topic: "pythagorean theorem"
-    }
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 3
+                </a>`, 
+        text: `\\(\\triangle ABC\\) has side lengths \\(AB=13, BC=14, AC=15\\). A circle inscribed in \\(\\triangle ABC\\) and a square is inscribed within the circle. Calculate the area
+        of the square`,
+        solution: `<b>32</b><p>We need to find the area of \\(\\triangle ABC\\), which is \\(\\sqrt{s(s-a)(s-b)(s-c)}\\) where \\(s=\\textup{semiperimeter}\\), according to Heron's Law. The semiperimeter is \\(\\frac{a+b+c}{2}=\\frac{13+14+15}{2}=21\\). We thus 
+        have an area of \\(\\sqrt{21(21-13)(21-14)(21-15)}=\\sqrt{21(8)(7)(6)}=\\sqrt{7056}=84\\)</p>
+        <p>The equation for the inradius is \\(\\frac{\\textup{area}}{\\textup{semiperimeter}}=\\frac{84}{21}=4\\)</p>
+        <p>We know that the diagonal of the square will be equal to the diameter, so the diagonal is \\(8\\). Thus, the side lengths are \\(x\\) in \\(2x^2=64\\) so \\(x=4\\sqrt{2}\\). The area, thus, is \\(16 \\times 2 = 32\\)`,
+        answer: '32',
+        hint: "Use the equation for semiperimeter \\(\\frac{a+b+c}{2}\\), the area \\(\\sqrt{s(s-a)(s-b)(s-c)}\\), and inradius \\(\\frac{\\textup{area}}{\\textup{semiperimeter}\\)",
+        step: "Once you find the inradius with the equaions from the hint, use the pythagorean theorem using the diameter",
+        topic: "triangle lines"
+
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 6
+                </a>`, 
+                text: `Square \\(ABCD\\) has side length \\(4\\). Point \\(P\\) is inside the square such that \\(PA=\\sqrt{2}, PB=\\sqrt{10},\\) and \\(PC=3\\sqrt{2}\\).
+                \\(PD=\\sqrt{a}\\) where \\(a\\) is a positive integer. Compute \\(a\\)`,
+                solution: `<b>10</b><p>We can express all the values as coordinates such that \\(A(0,0), B(0,4), C(4,4), D(4,0)\\). We don't actually need to know all \\(3\\) distances, just two to solve the system. I'm going
+                to use \\(PA\\) and \\(PB\\). We use the distance formula and express \\(P\\) as \\(P(x,y)\\)</p>
+                <p>For \\(PA\\)</p>
+                $$
+                x^2+y^2=2
+                $$
+                $$
+                <p>For \\(PB\\)</p>
+                $$
+                x^2+(4-y)^2=10
+                $$
+                $$
+                x^2+16-8y+y^2=10
+                $$
+                <p>Find \\(PB-PA\\)</p>
+                $$
+                x^2+16-8y+8y^2-x^2-y^2=10-2
+                $$
+                $$
+                16-8y=8
+                $$
+                $$
+                8y=8
+                $$
+                $$
+                y=1
+                $$
+                <p>\\(x=1\\) (substitution)</p>
+                <p>The horizontal distance between \\(PD\\) is \\(3\\), and the vertical is \\(1\\). We have \\(\\sqrt{3^2+1^2}=10\\)`,
+                answer: '10',
+                hint: "Express geometrically and use the distance formula",
+                step: "Using the distance formula, express \\(PA\\) and \\(PB\\) as equations and find \\(PB-PA\\)",
+                topic: "algebraic manipulation"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 7
+                </a>`, 
+                text: `\\(\\triangle ABC\\) has sides \\(AB=13, BC=14, AC=15\\). A line parallel to \\(BC\\) divides \\(\\triangle ABC\\) into a smaller triangle \\(\\triangle ADE\\)
+                (with \\(D\\) on \\(AB\\) and \\(E\\) on \\(AC\\)) and trapezoid \\(BCED\\) such that the area of the trapezoid is twice the area of \\(\\triangle ADE\\). \\(DE\\) is in the form \\(\\frac{m}{\\sqrt{n}}\\),
+                where \\(m\\) and \\(n\\) are coprime integers. Compute \\(m+n\\)`,
+                solution: `<b>17</b><p>We have that \\(\\textup{area of the whole triangle} = \\textup{area of the small triangle} + \\textup{area of the trapezoid}\\) and \\(\\textup{area of the trapezoid} = 2 \\times \\textup{area of the small triangle}\\) so \\(\\textup{area of the whole triangle} =  3 \\times \\textup{area of the small triangle}\\)</p>
+                <p>Using heron's law \\(a=\\sqrt{s(s-a)(s-b)(s-c)}\\) for \\(s=\\frac{a+b+c}{2}\\), we can find \\(s=\\frac{13+14+15}{2}=21\\) and \\(a=\\sqrt{21(21-13)(21-14)(21-15)}=\\sqrt{7056}=84\\)</p>
+                <p>Thus, we have \\(\\textup{area of the small triangle}=\\frac{84}{3}=28\\)</p>
+                <p>The small triangle is proportional to the large triangle. Thus, \\(\\textup{area of the small triangle}{area of the whole triangle}=\\frac{side length of the small triangle}{side length of the whole triangle}^2\\) so \\(\\frac{28}{84}=\\frac{DE}{14}^2\\)</p>
+                $$
+                \\frac{1}{3}=\\frac{DE}{14}^2
+                $$
+                $$
+                \\frac{DE}{14}=\\frac{1}{\\sqrt{3}}
+                $$
+                $$
+                DE=\\frac{14}{\\sqrt{3}}
+                $$
+                $$
+                14+3=17
+                $$
+                `,
+                answer: '17',
+                hint: "The ratio of the area of the large triangle to the small triangle is the square of the sie lengths from the large triangle to the small triange",
+                step: "Find the area of the large and small triangles and make a ratio with the side length",
+                topic: "algebraic manipulation",
+    },
 ]
 const numTheoryQ = [
     {
@@ -1310,7 +1463,7 @@ factors?`,
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 6
                 </a>`,
-        text: `Compute the number of ordered pairs \\((a,b)\\) such that \\(\\textup{gcd}(a,b)=8\\) and \\(\\textup{lcm}(a,b)=480).`,
+        text: `Compute the number of ordered pairs \\((a,b)\\) such that \\(\\textup{gcd}(a,b)=8\\) and \\(\\textup{lcm}(a,b)=480\\).`,
         solution: `<b>8</b><p>We are looking for \\(a\\) and \\(b\\) such that \\(a \\cdot \\frac{b}{8}=480\\) and \\(b \\cdot \\frac{a}{8}=480\\). \\(480\\) has a prime factorization of \\(2^5 \\times 3 \\times 5\\). We know that both \\(a\\) and \\(b\\) must have \\(2^3\\) in their prime factorization. We also know that the two numbers can't have any overlaping factors other than \\(2^3\\).</p>
         <p>Instead of solving directly for \\(a\\) and \\(b\\), we solve for \\(\\frac{a}{b}=x\\) and \\(\\frac{b}{8}=y\\) to see how many independent values combinations are possible</p>
         <p>The most important thing to remember here is that if either \\(x\\) or \\(y\\) has a two, the other cannot, because that would raise the \\(\\textup{gcd}\\). Also remember that we need to use all the factors</p>
@@ -1531,7 +1684,123 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
                 hint: "\\(n\\) cannot share prime factors with \\(72\\)",
                 step: "Find the prime factorization of \\(72\\)",
                 topic: "prime factorization"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 4
+                </a>`,
+        text: `The sequence \\(a_{1}, a_{2}, a_{3}...\\) satisfies \\(a_{1}=1\\) and \\(a_{n+1}=\\frac{a_{n}}{1+na+{n}}\\) for all \\(n \\geq 1). \\(a_{100}\\) is in the form 
+        \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are integers. Compute \\(m+n\\) `,
+        solution: `<b>4952</b><p>We're going to try to simplify this by substitution and finidng the reciprocal</p>
+        $$
+        a_{n+1}=\\frac{a_{n}}{1+na_{n}}
+        $$
+        $$
+        \\frac{1}{a_{n+1}}=\\frac{1+na_{n}}{a_{n}}
+        $$
+        $$
+        \\frac{1}{a_{n+1}}=\\frac{1}{a_{n}} + n
+        $$
+        $$
+        x_{n}=\\frac{1}{a_n}
+        $$
+        $$
+        x_{n+1}=x_{n}+n
+        $$
+        <p>With some patterns and induction we compute the first few values of \\(x_{n}\\):</p>
+        $$
+        x_{2}=x_{1}+1
+        $$
+        $$
+        x_{2}=1+1
+        $$
+        $$
+        x_{3}=x_{2}+2
+        $$
+        $$
+        x_{3}=1+1+2
+        $$
+        $$
+        x_{4}=x_{3}+3
+        $$
+        $$
+        x_{4}=1+1+2+3
+        $$
+        <p>We see a pattern of adding all of the numbers \\(n-1\\) to \\(n\\)</p>
+        <p>With this, we write \\(x_{n}=1+\\[\\sum_{i=1}^{n-1} i\\]\\). We know that the sum of a integers less than \\(n\\) is \\(\\frac{n(n-1)}{2}\\). Thus we have \\(x_{100}=1+\\frac{100(100-1)}{2}=4951\\)</p>
+        <p>So we have \\(\\frac{1}{a_{100}}=4951\\), so \\(a_{100}=\\frac{1}{4951}\\) for \\(m=1\\) and \\(n=4951\\) for \\(m+n=4952\\)
+        `,
+        answer: '4952',
+        hint: "Find the reciprocal and substitute a value",
+        step: "Set \\(x_{n}=\\frac{1}{a_{n}\\)",
+        topic: "algebraic manipulation"
+
+    },
+    {
+              title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 5
+                </a>`,  
+                text: `A positive integer is called \\(downhill\\) if all of its digits (which must be distinct and non-zero) are in descending order. Compute the number of \\(downhill\\) integers which are divisible by \\(15\\)`,
+                solution: `<b>4</b><p>We know that the number must be divisible by \\(3\\) and \\(5\\) in order to be divisible by \\(15\\), and it must be odd</p>
+                <p>To be divisible by \\(5\\) and not be odd, it needs to end in \\(5\\). To be divisible by \\(3\\), it has to have a sum of digits divisible by \\(3\\).</p>
+                <p>Since it is \\(downhill\\), the remaining digits must be \\(6,7,8\\) or \\(9\\). We don't have to worry about order because for any combination of digits, there is only one order</p>
+                <p>\\(5 \\equiv 2 (\\textup{ mod } 3)\\), so we need something is \\(\\equiv 1 (\\textup{ mod }3)\\). Looking at the remaining values we have</p>
+                $$
+                5 \\equiv 2 (\\textup{ mod } 3)
+                $$
+                $$
+                6 \\equiv 0 (\\textup{ mod } 3)
+                $$
+                $$
+                7 \\equiv 1 (\\textup{ mod } 3)
+                $$
+                $$
+                8 \\equiv 2 (\\textup{ mod } 3)
+                $$
+                $$
+                9 \\equiv 0 (\\textup{ mod } 3)
+                $$
+                <p>From this, we can deduce that we MUST have \\(7\\) in order to even out the remainder back to \\(0\\). We can't have \\(8\\) because there is no other digit that leaves a remainder of \\(1\\), and we can or can't add \\(9\\) and \\(6\\) without 
+                affecting the divisiblity by \\(15\\). Thus, the only conditions are whether or not \\(6\\) and \\(9\\) are present, so we have \\(2 \\times 2 = 4\\)
+                `,
+                answer: '4',
+                hint: "The number must end in \\(5\\) and have a sum of digits divisible by \\(3\\)",
+                step: "Find the values \\(\\textup{ mod } 3\\) of all of the potential digits",
+                topic: "modular arithmetic"
+    },
+    {
+                      title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 8</a>`,
+                text: `<p>The \\(3 \\times 3\\) grid satisfies the following conditions:</p>
+                <p>The first row from the top is one less than a square</p>
+                <p>The first column from the left is a multiple of \\(67\\)</p>
+                <p>The third row from the top is a multiple of \\(83\\)</p>
+                <p>The third column from the left is one more than a palindrome</p>
+                <p>The second column from the left is a perfect square</p>
+                <p>Compute the sum of all digits within the square</p>`,
+                solution: `<b>39</b><p>The first rule tells us we need a square in the \\(200\\)s, this can be \\(225\\) or \\(256\\) for a value of \\(224\\) or \\(255\\). We'l hold off on this until we have more</p>
+                <p>The second row gives a multiple of \\(67\\) that ends in \\(1\\) and is in the \\(200\\)s. This must be \\(67 \\times 3 = 201\\), so the middle square of the leftmost column is \\(0\\).</p>
+                <p>The third row from the top (the bottom row) must be a multiple of \\(83\\) that is in the \\(100\\)s. This only works for \\(83 \\times 2 = 166\\). We thus have the rest to be \\(6\\) in that row</p>
+                <p>For the fourth rule, we have that it is one more than a palindrome. The palindrome must be \\(575\\), because one more is \\(576\\) and ends in \\(6\\) like what we have</p>
+                <p>Since the top is \\(5\\), we know that the top row is \\(255\\)</p>
+                <p>The second column from the left needs to be a perfect square with in the \\(500\\)s ending in \\(6\\). We try \\(24^2\\),knowing it will end in \\(6\\) and get \\(576\\)</p>
+                <p>Thus, we have \\(2+5+5+0+7+7+1+6+6=39\\)`,
+                answer: '39',
+                hint: "Go rule by rule",
+                step: "Look at each rule and see what it tells you. From the second rule, you sohuld know that the middle box in the leftmost column should have a \\(0\\)",
+                topic: "logic"
+    },
+    {
+  title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 10</a>`,
+        text: `Let \\(x, y\\) and \\(z\\) be positive reals satisfying \\(x+2y+3z=6\\). Compute the minimum value of \\(\\frac{1}{x}+\\frac{2}{y}+\\frac{3}{z}\\).`,
+        solution: `<b>6</b><p>All of the values need to be \\(1\\). There are no other combinations where they are all integers, and having fractional denominators will just increase the sum</p>`,
+        answer: '6',
+        hint: "What does having a fraction in the denominator do",
+        step: "Find a combination of all integers",
+        topic: 'logic'
     }
+    
 
 ]
 const probabilityQ = [
@@ -1764,6 +2033,23 @@ colorings have exactly two red squares in each row?`,
         hint: "Split into cases by the number of heads",
         step: "Find the probability for \\(6, 5\\) and \\(4\\) heads",
         topic: "casework"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 2
+                </a>`,
+                text: `Compute the number of non-negative integer solutions to \\((x_{1}+x_{2}+x_{3})(y_{1}+y_{2}+y_{3})=2026\\)`,
+                solution: `<b>18507528</b><p>First, start by finding the prime factorization of \\(2026=2 \\times 1013\\). Thus, the factors are \\(1,2,1013,2026\\) and thus \\(4\\) combintations because order does matter</p>
+                <p>Starting with \\((1,2026)\\) and \\((2026,1)\\). For the \\(1\\) there are \\(\\binom{3}{1}\\) ways to arrange it (because the one can be in \\(3\\) places). For the 
+                2026, we use "stars and bars", a technique where you sort \\(n\\) "stars", or elements, into \\(k\\) bins using \\(k-1\\) bars. The formula is \\(\\binom{n+k-1}{k-1}\\). With \\(3\\)
+                positions and \\(2\\) bars, we have \\(\\binom{2028}{2}=\\frac{2028 \\times 2027}{2}=2055378\\) We in turn multiply this by \\(3\\) for all the places \\(1\\) can be in, and then again by \\(2\\) because, like I sad, the order of the factors matters. For
+                factors \\(1\\) and \\(2026\\), there are \\(12332268\\) ways to solve</p>
+                <p>We do the same thing with stars and bars for \\((2,1013)\\) and \\((1013,2)\\). For \\(2\\) there is \\(\\frac{4 \\times 3}{2}=6\\). For \\(1013\\) there is \\(\\frac{1015 \\times 1014}{2}=514605\\). We multiply \\(514605 \\times 2 \\times 6 = 6175260\\)</p>
+                <p>Adding these gives \\(18507528\\)`,
+                answer: '18507528',
+                hint: "Use stars and bars",
+                step: `Find the prime factorization of \\(2026\\) and see how to divide each factor among \\(3\\) "bins" with "bars"`,
+                topic: "prime factorization"
     }
 ]
 console.log(questions)
