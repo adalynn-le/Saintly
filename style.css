@@ -3032,3 +3032,66 @@ main {
 .error-tag:hover .material-symbols-outlined{
   color: var(--accent-color) !important;
 }
+.tree-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.node {
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--highlight-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--primary-color)
+}
+.node.prime {
+    background: #fff0eb;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+.branches {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}.indexCarouselContainer {
+  overflow: hidden;
+  width: 100%;
+}
+
+.indexCarousel {
+  display: flex;
+  width: max-content;
+  animation: scroll-loop 20s linear infinite;
+}
+
+.indexCarousel:hover {
+  animation-play-state: paused;
+}
+
+.indexCarouselItem {
+  flex: 0 0 auto; /* IMPORTANT */
+}
+
+.indexCarousel img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  padding: 0 40px;
+}
+
+@keyframes scroll-loop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333333333333333%);
+  }
+}

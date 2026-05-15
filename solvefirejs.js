@@ -1096,9 +1096,38 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     hint: "Use Vieta's Formulas",
     step: "Use Viet'as Formulas to find \\(p+q+r\\) and \\(pq+qr+rp\\)",
     topic: "algebraic manipulation"
-    }
+    },
+    {
+           title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+    Solvefire Bronze 5 Question 3
+    </a>`,  
+    text: `Let \\(P(x)\\) be a polynomial of degree \\(4\\) such that \\(P(1)=1, P(2)=2, P(3)=3, P(4)=4\\) and \\(P(5)=15\\). What is the value of \\(P(6)\\)?`,
+    solution: `<b>56</b><p>Since we know that for integer \\(n\\) where \\(1 \\leq n \\eq 4\\) \\(n=P(n)\\), we set up \\(Q(n)=P(n)-n\\), where the roots are \\(1,2,3,4\\) so we have \\(Q(x)=a(x-1)(x-2)(x-3)(x-4)\\). We already know \\(Q(5)=P(5)-5=10\\) so we solve for \\(A\\)</p>
+    $$
+    10=A(4)(3)(2)(1)
+    $$
+    $$
+    A=\\frac{5}{12}
+    $$
+    <p>We thus find \\(Q(6)\\)</p>
+    $$
+    Q(6)=\\frac{5}{12}(5)(4)(3)(2)
+    $$
+    $$
+    Q(6)=50
+    $$
+    $$
+    50=P(6)-6
+    $$
+    $$
+    P(6)=56
+    $$`,
+    answer: '56'  ,
+    hint: "Create a different function and solve for that instead",
+    step: "Write an equation with respect to \\(P(x)\\) with roots \\(1, 2, 3, 4\\)",
+    topic: "algebraic manipulation"
 
-
+    },
 ]
 const geometryQ = [
       {
@@ -1521,6 +1550,67 @@ answer: '39'
                 hint: "Use power of a point",
                 step: "Solve \\(AP \\times PC = BP \\times PD\\)",
                 topic: "power of a point"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 5 Question 2
+                </a>`, 
+                text: `Let \\(\\triangle ABC\\) have side lengths \\(AB=13, BC=14\\) and \\(CA=15\\). Let \\(I\\) be the incenter of \\(\\triangle ABC\\). What is the value of \\(AI^2\\)?`,
+    solution: `<b>65</b><p>We find the inradius using \\(\\frac{\\textup{area}}{\\textup{semiperimeter}}\\). We use Heron's formula and the formula for a semiperimeter to find \\(s=\\frac{13+14+15}{2}=21\\) and \\(a=\\sqrt{21(21-13)(21-14)(21-15)}\\)</p>
+    <p>We thus have inradius \\(=\\frac{84}{21}=4\\). That forms the height of a right triangle with hypotenuse \\(AI\\). If we can find the horizontal, thta would let us find the answer</p>
+    <p>Since we know that the tangents of a circle intersecting at the same point are always the same, we set \\(x\\) as the length of a tangent touching \\(A\\), \\(y\\) as touching \\(B\\), and \\(Z\\) as touching \\(C\\)</p>
+    <p>We have \\(x+y=13\\), \\(y+z=14\\), \\(z+x=15\\).</p>
+    $$
+    y=13-x
+    $$
+    $$
+    13-x+z=14
+    $$
+    $$
+    z=15-x
+    $$
+    $$
+    13-x+15-x=14
+    $$
+    $$
+    2x=14
+    $$
+    $$
+    x=7
+    $$
+    <p>Thus we have \\(AI^2=4^2+7^2=16+49=65\\)`,
+    answer: '65',
+    hint: "Use power of a point",
+    step: "Find the inradius",
+    topic: "power of a point"
+
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+    Solvefire Bronze 5 Question 5
+    </a>`,  
+    text: `Let \\(A=(0,7)\\) and \\(B=(10,0)\\). Point \\(P\\) lies on the line defined by \\(y=x\\). What is the minimum possible value of \\((AP+PB)^2\\)?`,
+    solution: `<b>149</b><p>We know that the shortest distance is always a straight line, so the shortest version of \\(PA+PB\\) is just a striaght line, which has to passs through \\(y=x\\) anyways because it has a negative slope</p>
+    <p>We use the distance formula, but instead of finding \\(PA+PB\\), we just find the total distance \\(\\sqrt{7^2+10^2}=\\sqrt{149}\\) for \\((PA+PB)^2=149\\)
+    `,
+    answer: '194',
+    hint: "The shortest distance is a straight line",
+    step: "Find the distance from \\(A\\) to \\(B\\)",
+    topic: "functions and graphing"
+    },
+    {
+            title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+    Solvefire Bronze 5 Question 9
+    </a>`,  
+    text: `Two circles \\(C_{1}\\) and \\(C_{2}\\) intersect at points \\(P\\) and \\(Q\\). The radius of \\(C_{1}\\) is \\(5\\) and the radius of \\(C_{2}\\) is \\(12\\).
+    The distance between the centers of two circles is exactly \\(13\\). If the length of the common chord \\(PQ\\) can be expressed as a fraction in simplest form \\(\\frac{a}{b}\\).
+    What is \\(a+b\\)?`,
+    solution: `<b>73</b><p>We know that \\(5, 12, 13\\) is a pythagorean triple, so there is a right triangle formed by the centers of the circles and \\(P\\) (although this could also be \\(Q\\). We have that \\(PQ\\) is the altitude of this triangle</p>
+    <p>We know the area is \\(\\frac{5 \\times 12}{2}=\\frac{13 \\times \\textup{altitude}}{2}\\) so we solve for \\(\\frac{5\\times 12}{13}=\\textup{altitude}\\) so \\(\\frac{60}{13}\\) for \\(a+b=73\\)`,
+    answer: '73',
+    hint: "The side lengths make a pythagorean triple where \\(PQ\\) is the altitude",
+    step: 'Relate the altitude to the area of a triangle',
+    topic: "logic"
     }
 ]
 const numTheoryQ = [
@@ -1904,7 +1994,48 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
     hint: "Find even-even factor pairs of \\(2024\\)",
     step: "Use the difference of squares",
     topic: "prime factorization"
+    },
+    {
+          title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 5 Question 1</a>`,
+        text: `Let \\(S={1,2,3,...15}\\). How many subjects of \\(S\\) contain no two consecutive integers? (Note: The empty set is considered a valid subset)`,
+        solution: `<b></b><p>Denote \\(S_{n}\\) to be the number of subsets up to \\(1,2...n\\). We have \\(S_{1}=2, S_{2}=3, S_{3}=5, S_{4}=8\\). This is similar to a Fibbonacci sequence, which we can 
+        prove</p>
+        <p>\\(S_{n}\\) either contains \\(n\\) or doesn't. Containing \\(n\\) means it cannot contain \\(n-1\\) so the next highest is \\(S_{n-2}\\). For not containing \\(n-1\\), it has \\(S_{n-1}\\) subsets. Thus, we have \\(S_{n}=S_{n-1}+S_{n-2}\\)</p>
+        <p>This is a fibbonacci sequence so we just keep going: \\(S_{5}=13, S_{6}=21...S_{15}=1597\\)`,
+        answer: "1597",
+        hint: "You should get something similar to a famous sequence",
+        step: "Denote the subsets from \\(1, 2, ... n\\) as \\(S_{n}\\)",
+        topic: "logic"
+    },
+    {
+  title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 5 Question 8</a>`,
+    text: `Find the sum of all prime numbers \\(p\\) such that \\(2^p+p^2\\) is also a prime number.`,
+    solution: `<b>3</b><p>All odd numbers \\(p\\) such that \\(p \\geq 3\\) are either \\(p \\equiv 1 \\textup{(mod 3)\\) or \\(p \\equiv 2 \\textup{(mod 3)}\\). Induction (or logic), gives that \\(p^2 \\equiv 1 \\textup{(mod 3)}\\).</p>
+    <p>We know that \\(2 \\equiv 2 \\textup{(mod 3)}\\) and since we know that powers of \\(2\\) will also be \\(equiv 3\\), so the remainder remains \\(2\\). Thus, \\(2^p +p^2 \\equiv 2+1 \\equiv 0 \\textup{(mod 3)}\\) so for all primes greater than \\(3\\) it is invalid.`,
+    answer: '3',
+    hint: "Solve \\(\\textup{mod 3}\\) for all values greater than \\(3\\)",
+    step: "Find \\(2^p \\textup{(mod 3)}\\) and \\(p^2 \\textup{(mod 3)}\\)",
+    topic: "modular arithmetic"
+    },
+    {
+    title:  `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 5 Question 10</a>`,
+    text: `<p>A sequence is defined by \\(a_{1}=2\\0 and the recursive formula \\(a_{n+1}=a_{n}+2n+2\\) for all integers \\(n \\geq 1\\). If the value of the sum</p>
+    $$
+    \\(\\sum_{k=1}^10\\frac{1}{a_{k}}\\)
+    $$
+    <p>is expressed as a fraction in simplest form \\(\\frac{p}{q}\\), what is the value of \\(p+q\\)?`,
+    solution: `<b>21</b><p>By induction, we know that \\(a_{n}=n(n+1)\\), which you can rationalize but also just realize with a pattern</p>
+    <p>Thus, we have \\(\\sum{k=1}^10\\frac{1}{k(k+1)}=\\frac{{1}{k}-\\frac{1}{k+1}\\). This creates a telescoping sum, so we know that \\(\\frac{p}{q}=1-\\frac{1}{11}=\\frac{10}{11}\\) for \\(p+q=10+11=21\\)`,
+    answer: '21',
+    hint: "The sum is a telescoping sum",
+    step: "Rewrite \\(a_{n}=n(n+1\\)",
+    topic: "induction"
+
     }
+
     
 
 ]
@@ -2198,7 +2329,19 @@ colorings have exactly two red squares in each row?`,
                 hint: "Rewrite each digit algebraicly",
                 step: "Rewrite each digit as \\(x_{i}+1\\)",
                 topic: "counting"
-    }
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+    Solvefire Bronze 5 Question 7
+    </a>`,  
+    text: `A token is placed at the origin \\(x=0\\) of a number line. Each second, it moves \\(1\\) unit to the right with a probability of \\(\\frac{1}{2}\\), or \\(1\\) unit to the left with a probability of \\(\\frac{1}{2}\\). The probability that the toekn reaches \\(x-2\\)
+    before it ever reaches \\(x=-3\\) can be expressed as a fraction in simplest form \\(\\frac{m}{n}\\). What is the value of \\(m+n\\)`,
+    solution: `<b>8</b>We use a formula called "The Gambler's Ruin" that dictates for goal \\(a\\) and failiure boundary \\(-b\\) (which we have as \\(2, 3\\), we have \\(P=\\frac{b}{a+b}\\) so for us that's \\(\\frac{3}{5}\\) for \\(3+5=8\\)`,
+    answer: '8',
+    hint: "Use the gambler's ruin formula",
+    step: "Use gambler's ruin \\(\\frac{\\textup{failire location}}{\\textup{goal + failiure location}}\\)",
+    topic: "counting"
+}
 ]
 console.log(questions)
 let algebraIndex = 0
