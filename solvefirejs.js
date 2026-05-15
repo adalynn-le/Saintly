@@ -977,7 +977,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
         topic: "algebraic manipulation"
     },
     {
-        title: `<a href="https://https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 1
                 </a>`, 
         text: `Let \\(f(x)=x^2-3x+3\\). Determine the number of solutions to \\(f(f(n))=3\\)`,
@@ -1011,7 +1011,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
         topic: "logic"
     },
     {
-        title: `<a href="https://https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 9
                 </a>`,   
         text: `Let \\(x,y\\) be real numbers greater than zero which satisfy the equation \\(\\textup{log}_{x}y+\\textup{log}_{y}x=\\frac{10}{3}\\)
@@ -1043,7 +1043,61 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
         hint: "Use substitution",
         step: "Substitute a variable for \\(log_x{y}\\) and find a relation between \\(log_x{y}\\) and \\(log_{y}x\\) through the change of base",
         topic: "algebraic manipulation"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+                Solvefire Silver 1 Question 1
+                </a>`,   
+        text: `<p>Find all real numbers \\(x\\) satisfying</p>
+        $$
+        \\sqrt{x+\\sqrt{x+\\sqrt{x+...}}}=5
+        $$`,
+        solution: `<b>20</b><p>Call \\(y=\\sqrt{x+\\sqrt{x+\\sqrt{x+...}}}\\)=5</p>
+        <p>The entire equation can be expressed as \\(\\sqrt{x+y}\\), because it is an infinite telescoping sum, and that is equal to \\(5\\), so we have</p>
+        $$
+        5=\\sqrt{x+y}
+        $$
+        $$
+        5=\\sqrt{x+5}
+        $$
+        $$
+        25=x+5
+        $$
+        $$
+        x=20`,
+        hint: "Use substitution", 
+        step: "Substitute a value for \\(\\sqrt{x+\\sqrt{x+\\sqrt{x}}}\\)",
+        topic: "algebraic manipulation",
+        answer: '20'
+    },
+    {
+    title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+    Solvefire Silver 1 Question 2
+    </a>`,   
+    text: `The roots of \\(x^2-5x+3=0\\) are \\(\\alpha\\) and \\(\\beta\\). Compute \\(\\alpha^3 + \\beta^3\\)`,
+    solution: `<b>80</b><p>We don't actually need to solve for \\(\\alpha\\) and \\(\\beta\\), because we have Vieta's Formulas</p>
+    <p>We know that \\(a+b=-(\\frac{-5}{1})=5\\) and \\(ab=(-1)^3+\\frac{3}{1}=-3\\). We have \\((a+b)^3=a^3+b^3+3a^2b+3ab^2=125\\)</p>
+    <p>We can rewrite \\(3a^2b+3ab^2=3ab(a+b)\\) whcih we know to be equal to \\(-9(5)=-45\\)</p>
+    <p>\\(125-45=80\\)</p>`,
+    answer: '80',
+    hint: "Use Vieta's Formulas",
+    step: "Find \\(ab\\) and \\(a+b\\) using Vieta's Formulas",
+    topic: "algebraic manipulation"
+    },
+    {
+    title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+    Solvefire Silver 1 Question 3
+    </a>`,   
+    text: `The cubic \\(x^3-6x^2+11x-6=0\\) has roots \\(p,q,r\\). Compute \\(p^2+q^2+r^2\\)`,
+    solution: `<b>14</b><p>We use Vieta's Formulas to find \\(p+q+r\\) as \\(-\\frac{a_{n-1}}{a_{n}}=-\\frac{-6}{1}=6\\)</p>
+    <p>We have that \\((p+q+r)^2=p^2+q^2+r^2+2pq+2pr+2qr=36\\). We also use Vieta's Formulas to find \\(pq+qr+rq=\\frac{a_{n-2}}{a_{n}}=\\frac{11}{1}=11\\)</p>
+    <p>Thus, we find \\(36-2(11)=36-22=14\\)</p>`,
+    answer: '14',
+    hint: "Use Vieta's Formulas",
+    step: "Use Viet'as Formulas to find \\(p+q+r\\) and \\(pq+qr+rp\\)",
+    topic: "algebraic manipulation"
     }
+
 
 ]
 const geometryQ = [
@@ -1430,6 +1484,44 @@ answer: '39'
                 step: "Find the area of the large and small triangles and make a ratio with the side length",
                 topic: "algebraic manipulation",
     },
+    {
+                title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+                Solvefire Silver Contest 1 Question 7
+                </a>`,     
+                text: `A circle has center \\(O\\) and a radius \\(10\\). A chord \\(PQ\\) passes through the midpoint \\(M\\) of a radius \\(OA\\). Given that \\(PM=3\\), compute \\(QM\\)`,
+                solution: `<b>25</b><p>We find the power of a point to be \\(10^2 \\textup{(radius)}-5^2 \\textup{(M's distance from the center)}=75\\)</p>
+                <p>The product of \\(PM \\times QM=75\\) so we have \\(3 \\times x=75\\) for \\(QM=25\\)`,
+                answer: '25',
+                hint: "Use the equations for power of a point \\(\\textup{radius}^2-\\textup{distance}^2=\\textup{power of a point}\\) and that the product of two segments of a chord is equal to the product of the point",
+                step: "Use the equations from the hint to calculate the power of the point",
+                topic: "power of a point"
+    },
+    {
+                        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 8
+                </a>`, 
+                text: `Let \\(ABCD\\) be a cyclic quadrilateral inscribed in a circle of radius \\(5\\). Given
+                \\(AB=6, CD=8\\), with \\(AB\\) and \\(CD\\) lying on opposite sides of the centre, and \\(AB \\parallel CD,\\) compute the area of \\(ABCD\\)`,
+                solution: `<b>49</b><p>We have that \\(ABCD\\) is an isoceles trapezoid. The area is \\(\\frac{b_{1}+b_{2}}{2} \\times h\\). We have the two bases so we find \\(\\frac{6+8}{2} \\times h = 7h\\). To find \\(h\\), we draw radii that intersect the circle and
+                lines \\(AB\\) and \\(CD\\) at the same point, respectively. We draw another line from the center of the circle perpendicular to each line. This should create two right triangles with hypotenuse \\(5\\) and side lenths of \\(3,4\\) respectively, which 
+                create pythagorean triples with missing sides \\(4,3\\) for a height of \\(4+3=7\\). We find \\(7 \\times 7=49\\)`,
+                answer: '49',
+                hint: "The shape is an isoceles triangle",
+                step: "Draw radii  that itersect the circle and lines, and lines perpendicular to \\(AB\\) and \\(CD\\) to create right triangles",
+                topic: "logic"
+    },
+    {
+                        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 9
+                </a>`, 
+                text: `Two cords \\(AC\\) and \\(BD\\) of a circle intersect at a point \\(P\\) inside the circle.
+                Given that \\(AP=3, PC=12,\\) and \\(BP=4\\), compute \\(PD)`,
+                solution: '<b>9</b><p>This is pretty simply just power of a point. We have that \\(AP \\times PC = BP \\times PD\\) so \\(3 \\times 12 = 4 \\times PD\\) and thus \\(PD=9\\)',
+                answer: '9',
+                hint: "Use power of a point",
+                step: "Solve \\(AP \\times PC = BP \\times PD\\)",
+                topic: "power of a point"
+    }
 ]
 const numTheoryQ = [
     {
@@ -1799,6 +1891,19 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
         hint: "What does having a fraction in the denominator do",
         step: "Find a combination of all integers",
         topic: 'logic'
+    },
+    {
+    title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 10
+                </a>`, 
+    text: `Find the number of pairs of positive integers \\((m,n)\\) with \\(m>n\\) such that \\(m^2-n^2=2024\\)`,
+    solution: `<b>4</b><p>We can rewrite \\(m^2-n^2\\) with the difference of squares as \\((m+n)(m-n)=2024\\). In order for both values to be integers, we need the factors of \\(2024\\) to both be even, because then
+    we will have an integer mean that is "in the middle". We find the prime factorization of \\(2024=2^3\\times 11 \\times 23\\) and find the \\(4\\) even-even factor pairs to be \\((2,1012), (4,506), (22,92), (44,46)\\). From here,
+    we don't need to find all the values of \\((m,n)\\), because we know there will be \\(4\\) `,
+    answer: '4',
+    hint: "Find even-even factor pairs of \\(2024\\)",
+    step: "Use the difference of squares",
+    topic: "prime factorization"
     }
     
 
@@ -2050,6 +2155,49 @@ colorings have exactly two red squares in each row?`,
                 hint: "Use stars and bars",
                 step: `Find the prime factorization of \\(2026\\) and see how to divide each factor among \\(3\\) "bins" with "bars"`,
                 topic: "prime factorization"
+    },
+    {
+    title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+    Solvefire Silver 1 Question 4
+    </a>`,   
+    text: `A \\(1 \\times 8\\) strip of squares is tiled using \\(1\\times 1\\) red tiles, \\(1 \\times 1\\) blue tiles, and \\(1 \\times 2\\) green tiles. Find the number of distinct tiliings`,
+    solution: `<b>985</b><p>We can break this into casework by the number of green tiles.</p>
+    <p>When \\(4\\) green tiles, obviously, there's only one way to order it</p>
+    <p>For \\(3\\), if we count a green tile as one tile (which it is anyways), we need to find \\(3\\) places for the green tiles to go, and since ther there are only "\\(5\\)" positions (because we imagine that \\(2\\times 1\\) takes one whole tile, we have \\(\\binom{5}{3}=10\\) which we multiply by 
+    \\(2^2=4\\) arrangemenets for the remaiing colors which gives \\(40\\)</p>
+    <p>If there's \\(2\\), we again treat \\(1 \\times 2\\) as one tile and consider ourselves to only have \\(6\\) tiles. That gives \\(\\binom{6}{2}=15\\) which we multiply by \\(2^4=16\\) for \\(240\\)</p>
+    <p>If there's \\(0\\), we have \\(2^8=256\\)</p>
+    <p>This gives \\(1+40+240++448256=985\\)`,
+    answer: '985',
+    hint: "Treat \\(1 \\times 2\\) as one slot",
+    step: "Break into cases by the different number of green tiles",
+    topic: "counting"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 5
+                </a>`,
+        text: `There are \\(10\\) people seatd around a circular table. In how many ways can we choose \\(3\\) people such that no wo chosen people are adjacent?`,
+        solution: `<b>50</b><p>The first person we pick doesn't matter, because that can be anything. However, aftere choosing one person, we only know that \\(7\\) seats are left. We split the next choice into two cases</p>
+        <p>If the second person picked is adjacent to a chair adjacent to the first person picked. There are \\(2\\) ways for this to happen. That leaves \\(5\\) positions left, so \\(5\\) ways to pick the last. This gives \\(2 \\times 5=10)</p>
+        <p>If the second person is anywhere else, there are \\(5\\) possibiltiies, and \\(6\\) chairs removed for \\(4\\). This gives \\(5 \\times 4 = 20\\)</p>
+        <p>We thus have \\(20+30=50\\)`,
+        answer: '50',
+        hint: "The location of the second person relative to the first changes how many places the last can be in",
+        step: "Split into cases by if the second person is within two seats of the first or not",
+        topic: "casework"
+    },
+    {
+               title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 2 Question 6
+                </a>`,
+                text: `How many \\(5\\) digit numbers have the property that the sum of their digits is equal to \\(9\\), and each digit is non-zero?`,
+                solution: `<b>70</b><p>We could do this with stars and bars, but we need to make sure we address the rule that no digit is \\(0\\). Thus, we rewrite each digit as \\(x_{i}+1\\), and all of those must sum to \\(9\\). Thus, all the values of \\(x\\) must sum to \\(4\\)/p>
+                <p>We do stars and bars with \\(\\binom{4+5-1}{5-1}=\\binom{8}{4}=70\\)` ,
+                answer: '70',
+                hint: "Rewrite each digit algebraicly",
+                step: "Rewrite each digit as \\(x_{i}+1\\)",
+                topic: "counting"
     }
 ]
 console.log(questions)
