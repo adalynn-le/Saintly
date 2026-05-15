@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Saintly | Modular Arithmetic</title>
+  <link rel="stylesheet" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">   
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=ads_click,book,check,close_small,exclamation,handshake,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+ 
+<meta name="keywords" content="arithmetic, what is arithmetic, AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+    <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+<meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+
+</head>
+<body>
+   <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script src="sidebar.js"></script>
+<nav id = "top-bar">
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "topics dash.html">Topics Dashboard</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "algebraic manipulation.html">Modular Arithmetic</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
+    <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+send
+</span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton">
+volunteer_activism
+</span>
+</nav>
+<main> 
+    <div class="minicontainer">
+
+  <h1 class="amc10title">Modular Arithmetic</h1>
+  <p class="amc10subtitle"></p>
+  <h2 class="amc10subtitle">6 Problems • 3 sub-topics</h2>
+  <h2 class="par" style="display: inline; vertical-align: middle !important;">Adalynn Le • 5/11/2026</h2>
+<!-- Table of Contents  -->
+  <div id="tableOfContents">
+  <h3 class="amc10subtitle ittybitty" style="color: var(--primary-color)">Table of Contents</h3>
+  <ol><a href="#intro">Introduction</a></ol>
+  <ol><a href="#prime">Prime Factorization and Factoring</a></ol>
+<ol><a href="#congruency">Modular Congruency</a></ol>
+<ol><a href="#operations">Operations w/ Modular Arithmetic</a></ol>
+<ol><a href="#conclusion">Conclusion</a></ol>
+  </div>
+  <h2 class="amc10subtitle" id="introduction">Introduction</h2>
+  <p class="par">Modular arithmetic is the study and use opf <mark class="blue">operations and how they affect remainders.</mark> Modular arithmetic is a staple of number theory and complex questions on the AMC 10. In word problems, it is used to
+    <mark class="blue">find leftovers or model cyclic operations and systems.</mark> In more numerically based problems, it is used to not just solve problems explicity related to number theory and modular arithmetic <mark class="blue">, but also to compare the 
+        relationships between numbers and shorten the time it takes to solve a problem.
+    </mark>
+  </p>
+    <span id = "howworkcards">
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">What is it?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">The \(\textup{mod}\) of a number is it's remainder when divided by another number. It's typical formatting is <mark class="orange">\(a \equiv b (\textup{mod} m)\) where \(a\) is the divisor, \(b\) is the remainder, and \(m\) is the dividend.</mark>
+    This effectively tells us that \(\frac{a}{m}\) has a remainder of \(b\). Modular arithmetic as a whole is <mark class="orange">the study of how remainders change following operations in arithmetic</mark></div>
+  </span>
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">Why Study?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Modular arithmetic is a subject that <mark class="orange">will be nescessary for questions on the AMC 10.</mark> It is common for tests to ask you to compare features or other aspects using modular arithmetic. In general, <mark class="orange">understanding modular arithmetic will help you grow an understanding of numbers in general</mark></div>
+  </span>
+</span> 
+</div>
+<h2 class="amc10subtitle" id="prime">Prime Factorization and Factors</h2>
+<p class="par">To understand prime factorization, it is first important to understand <mark class="blue">how numbers work, and particularly how they work when divided</mark>. A number is considered evenly divisible by an integer when dividng by that integer yields another integer. <mark class="blue">If \(b\) evenly divides \(a\), it can be said that \(a \equiv 0 \textup{ mod}(b)\)</mark> In modular 
+arithmetic, we will only ever work with integers. If a number is not evenly divisible by an integer <mark class="blue">the quotient (result) will have some fractional or decimal part.</mark> It is also said that the number <mark class="blue">leaves a remainder. The fractional/decimal part is found by \(\frac{\textup{remainder}}{\textup{divisor}}\)</mark>. 
+The integers that evenly divide a number are known as <mark class="blue">factors, and each factor can be found via prime factorization</mark>. Prime factorization is the process of <mark class="blue">systematically breaking down a number into a product of prime numbers that may or may not be raised to powers \(> 1\)</mark>. For example, the prime factoriation of 
+\(100\) is \(2^2 \times 5^2\). That is not to say that the only factors are two and five though, but those are the only prime factors. The total number of factors can be found by raising each power by one and multiplying. For a prime factorization of \(2^2 \times 5^2\), we see both prime factors raised to two so we find \(3 \times 3 = 9\) (which we can check by finding the factors of \(100: 1, 2, 4, 10 20, 25, 50, 100\)). 
+<mark class="blue">Note that all numbers EXCEPT for perfect squares will have an even number of divisors because divisors often come in pairs</mark> The reason that this works is pretty simple: for each prime factor anywhere from \(0\) to the highest power of that can be present as a factor of the new factor. Thus, we raise to \(n+1\). We do this for all and multiply, following the primary idea and operation of counting.</p>
+<div class="subsubtopic">
+    <h3 class="amc10subtitle ittyBitty">How to Do Prime Factorization</h3>
+    <p class="par">There are many ways to do prime factorization, but I always prefer <mark class="blue">using factor trees.</mark> These are systematically structured processes that include "splitting" a number into two factors, then spliting those factors again and again until you get down to prime factors. This particularly helps stay organized. <mark class="blue">if possible, I recommend 
+        splitting into the smallest prime factors when possible, because that will limit the number of branches on your factor tree.</mark></p>
+        <span style="display: flex; flex-direction: row">
+        <div class="howworkcard" style="flex: 1">
+    <h3 class="amc10subtitle">Prime Factor Tree Generator</h3>
+    <input type="number" id="factorInput" value="60" min="2" max="9999">
+    <button id="factorize" class="problemBtn">Find the Prime Factorization</button>
+    </div>
+    <div class="howworkcard" style="flex: 1">    
+    
+    <div id="treeOutput" class="tree-display"></div>
+    </div>
+    </span>
+    <h3 class="amc10subtitle ittyBitty">Why is This Important?</h3>
+    <p class="par">Modular arithmeitc is heavily reliant of division and factors. It is important to know what the factors of a number will be, and thus understand what the values for \(\textup{mod} 0\) are. By knowing the prime factorization of a number, you can also predict how it will "act" when divided by numbers. For example,
+        you may benefit from knowing if it is a perfect square, or if it is even, or has \(5\) as a divisor, etc. Prime factorization and modular arithmetic make the base of number theory.
+    </p>
+
+</div>
+<h2 class="amc10subtitle" id="congruency">Modular Congruency</h2>
+<p class="par">Two numbers are considered modularly congruent if they \(\equiv\) the same value \(\textup{mod }(b)\). That is to say, when divided by some number \(b\), it leaves the same remainder. Albeit a seemingly simple qualification <mark class="blue">modularly congruent values can reveal a lot about a number and it's interactions with other numbers.</mark>
+A common visualization of modular arithmetic is that of an analog clock. Even though we live in a \(24\) hour day cycle, the clock only includes \(12\) points and loops around. Thus, the time \(6 \textup{ am}\) looks the same as \(6 \textup{ pm}\), which can also be written as \(18:00\) in military time. This is because \(18 \equiv 6 \textup{ mod }(12)\). Notice that modular congruency is <mark class="blue">reflexive and reflective</mark>
+meaning \(a \equiv a\) and \(a \equiv b \textup{ mod }(n)\), then \(b \equiv a \textup{ mod }(n)\).</p>
+<p class="par">Modular congruency forms the base of modular arithmetic, because the changes in modular arithmetic can be changed by arithmetic operations.</p>
+
+<h2 class="amc10subtitle" id="operations">Operations w/ Modular Arithmetic</h2>
+<p class="par">The study of modular arithmetic in its definition refers to <mark class="blue">how the remainders of numbers modulo \(n\) change as a result of arithmetic.</mark></p>
+<div class="subsubtopic">
+    <h3 class="amc10subtitle ittyBitty">Addition</h3>
+    <p class="par">For \(a \equiv b \textup{ mod }(n)\) and \(c \equiv d \textup{ mod }(n)\), we have \(a \pm c \equiv b \pm d \textup{ mod }(n)\). The proof for this is rather intuitive, of course, you could deduce it through induction, but also consider that leaving a remainder means \(\textup{dividend} = \textup{divisor} \times \textup{divisor} + \textup{remainder}\).
+    When you add two numbers, it becomes \(\textup{divisor}_{1} \times \textup{factor}_{1} + \textup{remainder}_{1}+\textup{divisor}_{2} \times \textup{factor}_{2} + \textup{remainder}_{2}\) with the point being that you add the remainders regardless, and it doesn't matter whta the divisors and factors are because what it ends up as is \(\textup{dividend}-\textup{remainder}\), so when you're comparing, it's the same thing
+and you can "factor it out" in a way.</p>
+    <h3 class="amc10subtitle ittyBity">Multiplication</h3>
+    <p class="par"><mark class="blue">\((a \times b) \textup{ mod }(N) = a \textup{ mod }(N) \times b \textup{ mod }(N)\)</mark>. The full algebraic proof is pretty extensive, so I'm not going to prove it here, but the conceptual premise is <mark class="blue">if you expand the RHS without the modulo, then divide by \(n\), it will always work out the same, and you can prove it with variables</mark></p>
+    <h3 class="amc10subtitle ittyBitty">Negative Numbers</h3>
+    <p class="par">Negative numbers still have positive modulo remainder's, but it's not the same as the remainder <mark class="blue">For \(a \equiv b \textup{mod }(n)\) where \(|a| \leq n\), \(b=n-|a|\). For \(|a| \geq n\), you would find the remainder when dividing by \(\frac{|a|}{n}\), then take the negative of that number and the modulo of that with respect to \(n\)</mark></p>
+    <p class="par">The most effective use of modular arithmetic is <mark class="blue">if you know two numbers are the same \(\textup{mod }(n)\), and you are doing a problem that doesn't deal with specific values, you can substitute smaller or simpler values.</mark> The properities of modularly congruent numbers remain unchanged and thus allow you to 
+    manipulate them to make problems more simple, in addition to solving explicitly modular arithmetic problems</p>
+</div>
+<h2 id="conclusion" class="amc10subtitle">Conclusion</h2>
+<p class="par">Modular Arithmetic is the basis of number theory as a whole. It provides an understanding of the relationships and interactions between numbers that is nescessary to fully perform well on the AMC 10 and understand the function of numbers. With modular operations and substitution, modular arithmetic really is it's own field of study and theory.</p>
+<div class="problem problemWrapper">
+<h3 id="question-title" class="amc10title small">Question 1:</h3>
+    <p id="question-text">Loading question...</p>
+    <input type="text" id="answer-input" placeholder="Your answer">
+<div id="mc-container" class="hidden">
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+</div>
+
+    <button id="check-btn" class="problemBtn">Check Answer</button>
+
+    <div class="solution" id="solution" style="display:none;">
+      <h2>Solution</h2>
+      <p id="solution-text"></p>
+      <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
+      </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+
+    </main>
+<footer class="saintly-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img class="footer-logo" src="fullLogo.png" height="35px"></img>
+            <p>Making competition math accessible for everyone.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="am10.html">AMC 10</a></li>
+                <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+                <li><a href="amc10algebra.html">Algebra</a></li>
+                <li><a href="algebra.html">Topics Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>saintly.math@gmail.com</p>
+            <div class="social-icons">
+                </div>
+        </div>
+        <div class="footer-section">
+          <h4>Privacy</h4>
+          <ul><li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Saintly Math. Built with drive.
+    </div>
+</footer>
+</body>
+<script src="modular arithmeticjs.js" type="module"></script>
+</html>
