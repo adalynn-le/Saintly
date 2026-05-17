@@ -5,8 +5,8 @@
   --background-color: rgb(253, 253, 255);
   --highlight-color: #ebf3ff;
   --accent-color: #ffb192;
-  --text-color: rgb(98, 92, 110);
-  --text-variant: rgb(158, 153, 170);
+  --text-color: #625c6e;
+  --text-variant: #9e99aa;
   --shadow-color: rgb(218, 217, 235);
 }
 @keyframes typewriter {
@@ -1752,7 +1752,7 @@ button:not(.dropdown-btn):hover{
 .amc10card {
   background-color: var(--background-variant);
   border: 1.5px solid rgb(222, 222, 236);
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 20px;
   transition: border-color 0.2s;
   display: flex;
@@ -1848,7 +1848,7 @@ text-align: vertical;
   background-color: var(--primary-color);
   color: var(--background-color) !important;
   cursor: pointer;
-  border-radius: 7.5px !important;
+  border-radius: 10px !important;
   padding-left: 10px !important;
   padding-right: 10px !important;
   padding-top: 5px !important;
@@ -2283,6 +2283,9 @@ font-size: 20px !important
 }
 @media (max-width: 768px) {
   #startpracticetop{
+    display: none !important;
+  }
+  #joindiscord{
     display: none !important;
   }
   .problem {
@@ -3094,4 +3097,67 @@ main {
   to {
     transform: translateX(-33.333333333333333%);
   }
+}
+.gcf-container {
+    background-color: var(--background-variant);
+    border: 1px solid var(--shadow-color);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 450px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.gcf-container input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--shadow-color);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.gcf-container input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.gcf-container button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.gcf-container button:hover {
+    filter: brightness(0.95);
+}
+
+.gcf-display {
+    margin-top: 15px;
+}
+
+.result-box {
+    background-color: var(--highlight-color);
+    border-left: 4px solid var(--primary-color);
+    padding: 12px;
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+.error-text {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+.hover:hover{
+  background-color: var(--primary-color);
+  color: var(--background-color)
+}
+.sample{
+  color: var(--text-color) !important
 }
