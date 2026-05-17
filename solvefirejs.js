@@ -1128,6 +1128,119 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     topic: "algebraic manipulation"
 
     },
+    {
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank class="pset-link">Solvefire Bronze 3 Problem 3</a>`,
+        text: `<p>How many integer pairs \\((x,y)\\) satisfy</p>
+        $$
+        x \\leq 3y \\leq 30, y \\leq 2x \\leq 30
+        $$`,
+        solution: `<b>100</b><p>We know that the highest possible value of \\(y=10\\), so we just do casework</p>
+        <p>\\(y=10\\) then \\(x=5,6,...15\\), that gives \\(11\\) possible values</p>
+        <p>\\(y=9\\), then \\(x=5,6,...15\\), that gives \\(11\\) possible values</p>
+        <p>\\(y=8\\) then \\(x=4,5...15\\), that gives \\(12\\)
+        <p>\\(y=7\) then \\(x=4,5...15\\), that gives \\(12\\)
+        <p>\\(y=6\\) then \\(x=3,4...15\\), that gives \\(13\\)
+        <p>\\(y=5\\) then \\(x=3,4...15\\), that gives \\(13\\)
+        <p>\\(y=4\\) this is where it get tricky because \\(15\\) is no loner the upper bound for \\(x\\). We have \\(2 \\leq x \\leq 12 = 11\\) values</p>
+        <p>\\(y=3\\) we have \\(2 \\leq x \\leq 9=8\\)</p>
+        <p>\\(y=2\\) where \\(1 \\leq x \\leq 6\\) so \\(6\\)</p>
+        <p>Finaly \\(y=1\\), we have \\(1 \\leq x \\leq 3 \\) for \\(3\\)
+        <p>Adding \\(11+11+12+12+13+13+11+8+6+3=100\\)`,
+        answer: '100',
+        hint: "Split into cases",
+        step: "Calculate for each value of \\(y\\)",
+        topic: "casework"
+        
+
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank class="pset-link">Solvefire Bronze 6 Problem 8</a>`,
+        title: `In the expansion of \\((ax+b)^1500\\), the coefficients of \\(x^3\\) and \\(x^4\\) are equal. Find \\(a+b\\) if \\(a, b\\) are relatively prime positive integers.`,
+        solution: `<b>1501</b>This is a prime example of binomial theorem, which states that the expansion of \\((a+b)^n \\sum_{i=1}^{n} \\binom{n}{k} (a)^k b^n\\). We thus solve</p>
+        $$
+        \\binom{1500}{3}a^3 b^{1500-3} = \\binom{1500}{4}a^4 b^{1500-4}
+        $$
+        $$
+        \\binom{1500}{3}a^3 b^{1497} = \\binom{1500}{4}a^4 b^1496
+        $$
+        $$
+        \\binom{1500}{3}b=\\binom{1500}{4}a
+        $$
+        $$
+        \\frac{1500 \\times 1499 \\times 1498}{6}b=\\binom{1500 \\times 1499 \\times 1498 \\times 1497}{24}a
+        $$
+        $$
+        \\frac{b}{6}=\\frac{1497}{24}a
+        $$
+        $$
+        b=\\frac{1497}{4}a
+        $$
+        $$
+        b=1497, a=4
+        $$
+        $$
+        1497+4=1501
+        $$`,
+        answer: "1501",
+        hint: "Use binomial theorem",
+        step: "Set the outputs of binomial theorem equal to each other for \\(k=3, k=4\\)",
+        topic: "factoring"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank class="pset-link">Solvefire Bronze 6 Problem 10</a>`,
+        text: `A swimmer travels a distance \\(d\\) downstreak in \\(20\\) minutes and upstream in \\(60\\) minutes. A rower travels the sam
+        edistance upstream in \\(20\\) minutes. How long odes the rower take to travel downstream?`,   
+        solution: `<b>12</b><p>Since we know that \\(s=\\frac{d}{t}\\), we call the swimmer's speed \\(s\\) and the current speed \\(c\\). We have \\(s+c=\\frac{d}{20}\\) and \\(s-c=\\frac{d}{60}\\). We don't actually 
+        care about the individual variables, we just need to know their relationships. For the rower, we have \\(r-c=\\frac{d}{20}\\) and we want \\(t\\) in \\(r+c=\\frac{d}{t}\\)</p>
+        $$
+        s+c+s-c=\\frac{d}{20}+\\frac{d}{60}
+        $$
+        $$
+        2s=\\frac{d}{15}
+        $$
+        $$
+        s=\\frac{d}{30}
+        $$
+        $$
+        \\frac{d}{30}+c=\\frac{d}{20}
+        $$
+        $$
+        \\frac{d}{30}-c=\\frac{d}{60}
+        $$
+        $$
+        c=\\frac{d}{20}-\\frac{d}{30}
+        $$
+        $$
+        c=\\frac{d}{60}
+        $$
+        $$
+        60c=d
+        $$
+        $$
+        r-c=\\frac{d}{20}
+        $$
+        $$
+        r-c=\\frac{60c}{20}=3c
+        $$
+        $$
+        r=4c
+        $$
+        $$
+        4c+c=\\frac{d}{t}
+        $$
+        $$
+        5c=\\frac{60c}{t}
+        $$
+        $$
+        t=12
+        $$
+
+`,
+answer: '12',
+hint: "Write equations using \\(s=\\frac{d}{t}\\)",
+step: "You should have \\(s+c=\\frac{d}{20}\\), \\(s-c=\\frac{d}{60}\\), \\(r-c=\\frac{d}{20}\\)",
+topic: "algebraic mainpulation"
+    }
 ]
 const geometryQ = [
       {
@@ -1611,6 +1724,56 @@ answer: '39'
     hint: "The side lengths make a pythagorean triple where \\(PQ\\) is the altitude",
     step: 'Relate the altitude to the area of a triangle',
     topic: "logic"
+    },
+    {
+        title:`<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 2</a>`,
+        text: `Rectangle \\(ABCD\\) has \\(AB=CD=3\\) and \\(AD=BC=1\\). Let \\(P\\) be the midpoint of the diagonal \\(AC\\), and let \\(Q\\) be the intersection of the perpendicular bisector
+        of \\(AC\\) with \\(AB\\). The area of quadrilateral \\(PQBC\\) can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
+        solution: `<b>25</b><p>Drawing this out shows us that \\(ABCD\\) is split into quadrilateral \\(PQBC\\) and two other right triangles, \\(ADC\\) and \\(APQ\\). We may not know the area of \\(PQBC\\) but we can find the area of the triangles and subtract it from \\(ABCD\\)</p>
+        <p>The larger triangle, \\(ADC\\) has an area of \\(\\frac{3 \\times 1}{2}=1.5\\), so we just have \\(3-\\frac{3}{2}-APQ\\)</p>
+        <p>We have \\(AP=\\frac{\\sqrt{3^2+1^2}}{2}=\\frac{\\sqrt{10}}{2}\\). That's the length of one leg, but we don't know the other. However, we can find the length of the hypotenuse by finding the \\(x-\\)coordinate where \\(PQ\\) intersects \\(AB\\). We have that \\(AC=-\\frac{1}{3}x+1\\), so the slope of \\(PQ\\), which is perpendicular, 
+        must be \\(3\\). We have that \\(\\frac{1}{2}=3(\\frac{3}{2})+b\\) for \\(b=-4\\). Thus, we solve \\(1=3x-4\\) for \\(x=\\frac{5}{3}\\). We then find the other leg with the pythagorean theorem</p>
+        $$
+        \\sqrt{\\frac{5}{3}^2-\\frac{\\sqrt{10}}{2}^2}=\\sqrt{\\frac{25}{9}}-\\sqrt{\\frac{10}{4}}=\\sqrt{\\frac{10}{36}}=\\sqrt{\\frac{5}{18}}=\\frac{\\sqrt{5}}{3\\sqrt{2}}=\\frac{\\sqrt{10}}{6}
+        $$
+        $$
+        \\frac{\\frac{\\sqrt{10}}{2} \\times \\frac{\\sqrt{10}}{6}}{2}=\\frac{5}{12}
+        $$
+        $$
+        3-\\frac{3}{2}=\\frac{5}{12}=\\frac{13}{12}
+        $$
+        $$
+        13+12=25
+        `,
+        answer: '25',
+        hint: "Find the area of the right triangles around \\(PQBC\\)",
+        step: "Use linear equations to find the \\(x-\\)coordinate of \\(Q\\)",
+        topic: "algebraic manipulation"
+    },
+    {
+                title:`<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 3</a>`,
+                text: `A regular octagon is divided into \\(8\\) congruent triangles from its center. Each triangle has base
+                \\(\\frac{43}{99}\\) and height \\(\\frac{1}{2}\\). The area of the octagon can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
+                solution: `<b>185</b><p>The area of the octagon is the area of an individual triangle times \\(8\\). The area of an individual triangle is \\(\\frac{43}{99} \\times {1}{2} \\times {1}{2} = \\frac{43}{99 \\times 4}\\) (we're not going to simplify that just yet). 
+                We multiply this by \\(8\\) which cancels out the \\(2 \\times 2\\) in the denominator and gives us \\(\\frac{86}{99}\\) for \\(p+q=86+99=185\\)`,
+                hint: "The area of the octagon is \\(\\times 8\\0 the area of one triangle",
+                step: "Find the area of one triangle",
+                topic: "composite shapes",
+                answer: '8'
+
+    },
+    {
+                title:`<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 9</a>`,
+                text: `Let \\(ABCD\\) be a square with side lengths \\(6\\). Let \\(E\\) be the midpoint of \\(BC\\). Let \\(F\\) be the 
+                intersection of lines \\(AC\\) and \\(DE\\). Find the area of quadrilateral \\(ABEF\\)`,
+                solution: `<b>15</b><p>We draw this on a coordinate grid such that \\(A(0,0), B(0,6), C(6,6), D(6,0)\\). We have \\(E(3,6)\\). \\(F\\) is the solution to the system \\(y=x\\) and \\(y=-2x+12\\) which is \\(x=-2x+12, 3x=12, x=4\\) for \\(F(4,4)\\)</p>
+                <p>We cannot dirrectly find the area of \\(ABEF\\), but we know the area of \\(ABCD\\) to be \\(6 \\times 6 =36\\), and we can find the area of triangles easily</p>
+                <p>Triangle \\(ADF\\) has base \\(6\\) and altitude \\(4\\) for area \\(12\\)</p>
+                <p>Triangle \\(DFC\\) can be merged with \\(ECF\\) to make a right triangle with legs \\(6\\) and \\(3\\), for area \\(9\\). We thus have \\(36-12-9=15\\)</p>`  ,
+                answer: '15',
+                hint: "Find the area of the surrounding triangles",
+                step: "Map all the points on the coordinate grid and use systems of equations to find missing coordinates",
+                topic: "functions and graphing"
     }
 ]
 const numTheoryQ = [
@@ -2034,8 +2197,31 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
     step: "Rewrite \\(a_{n}=n(n+1\\)",
     topic: "induction"
 
-    }
+    },
+    {
+            title:  `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 6 Question 5</a>`,
+                text: `Find the smallest positive integer that is not a perfect square and is the product of five primes`,
+                solution: `<b>32</b><p>Notice that the primes do not have to be distinct. If we use
+                only one number raised to the \\(5\\)th power, the power is odd so it will not be a perfect square. Thus, we find the smallest
+                prime number to be \\(2\\) and compute \\(2^5=32\\)`,
+                answer: '32',
+                hint: "The primes do not have to be distinct",
+                step: "Find the smallest prime number",
+                topic: 'logic'
 
+    },
+    {
+                  title:  `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">
+                Solvefire Bronze Contest 6 Question 7</a>`,
+                text: `How many integers \\(1 \\leq n \\leq 1000\\) satisfy that \\(n^2+1\\) is divisible by \\(5\\)?`,
+                solution: `<b>400</b><p>We know that a number needs to end in \\(0\\) or \\(5\\) to be divisible by \\(5\\) so we are looking for units digits of \\(9, 4\\). We know that units digits of squares remain the same based on the uit digit of the squared number. Thus, we realize that 
+                the possible units digits of squared numbers are \\(2, 3, 7, 8\\), so \\(\\frac{4}{10}\\). We find \\(\\frac{4}{10} \\times 1000 = 400\\)`,
+                answer: '400',
+                hint: "The units digit of the square of a number with units digit \\(n\\) is consistent for all numbers with units digit \\(n\\)",
+                step: 'Find the possible units digits of \\(n\\)',
+                topic: "modular arithmetic"  
+    }
     
 
 ]
@@ -2341,6 +2527,25 @@ colorings have exactly two red squares in each row?`,
     hint: "Use the gambler's ruin formula",
     step: "Use gambler's ruin \\(\\frac{\\textup{failire location}}{\\textup{goal + failiure location}}\\)",
     topic: "counting"
+},
+{
+    title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Problem 1</a>`,
+    text: `Seven people arrive at a hotel with three rooms. \\(A\\) and \\(B\\) hold two people ach, and \\(C\\) holds three people. How many ways can seven people be assigned to the rooms?`,
+    solution: `<b>210</b><p>We have \\(\\binom{7}{2}=\\frac{7 \\times 6}{2}=21\\) ways of picking the people for room \\(A\\). From there, we have \\(\\binom{5}[2}=\\frac{5 \\times 4}{2}=10\\) ways of picking 
+    for room \\(B\\). The rest will be in room \\(C\\), so we have \\(21 \\times 10=210\\)`,
+    answer: '210',
+    hint: "Calculate each room independently",
+    step: "Use \\(\\binom{7}{2}\\) to find the people in room \\(A\\)",
+    topic: "counting"
+},
+{
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Problem 4</a>`,
+        text: `Two octagonal prisms and five cubes are given. A face is chosen uniformly at random from all faces. The probability that the chosen face comes from a cube is \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
+        solution: `<b>8</b><p>An octagonal prism is just like stacking a bunch of octagons. It has \\(8\\) faces plus a top and bottom for \\(10\\) total. Each cube has \\(6\\) faces, so we have \\(\\frac{5(6)}{2(10)+5(6)}=\\frac{30}{50}=\\frac{3}{5}\\) for \\(3+5=8\\)`,
+        answer: '8',
+        hint: "An octagonal prism has \\(10\\) faces",
+        step: "Find the total number of faces",
+        topic: "logic"
 }
 ]
 console.log(questions)

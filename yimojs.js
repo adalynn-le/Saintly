@@ -734,6 +734,17 @@ const geometryQ = [{
 }]
 const numTheoryQ = [
     {
+           title: `YIMO Divison 2 Problem Of The Day 6`,
+            text: `Determine the number of positive divisors of \\(30^{30}\\) that are perfect squares but not perfect cubes`,
+            solution: `<b>3880</b><p>The prime factorization of \\(30^{30}=2^{30} \\times 3^{30} \\times 5^{30}\\). Whenever a power is raised to an even number or \\(0\\), that yields a perfect square so we find \\(16^3=4096\\).</p>
+            <p>This, however, overcounts all of the perfect cubes that we were supposed to eliminate. In order for it to be a perfect cube and suqare, it needs to be raised to a power that is a multiple of \\(6\\) (the \\(\\textup{LCM}\\) of both of those numbers). We find that there are \\(6\\) expoential values in 
+            range that are multiples of \\(6\\), so we have \\(6^3=216\\) for \\(4096-216=3880\\) `,
+            answer: '3880',
+            hint: "Find the total number of squares and subtract the number of squares and cubes",
+            step: "Find the prime factorization",
+            topic: "prime factorization"
+    },
+    {
         title: "YIMO Divison 1 Problem Of The Day 1",
         text: `<p>Find the number of ordered pairs \\((a,b)\\) of positive integers with \\(a+b\\leq{100}\\) such that </p>
         $$
@@ -824,7 +835,8 @@ const probabilityQ = [{
         hint: "Express in sigma notation",
         step: 'Use \\(\\sum_{i=1}^{n}i^3= (\\frac{n(n+1)}{2})^2\\)',
         topic: "prime factorization"
-}]
+},
+]
 let algebraIndex = 0
 let geometryIndex = 0
 let numIndex = 0
