@@ -1,8 +1,9 @@
-// Fix: use only one client
+
 import { createClient } from 'https://esm.sh/@supabase/supabase-js';
 const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
 const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
 const supabase = createClient(supabaseURL, supabaseKey);
+let streakCount = 0
 let unfamiliar = 0
 let stuck = 0
 let mistake = 0
@@ -54,6 +55,92 @@ let algebraTotal = 0
 let geometryTotal = 0
 let numTotal = 0
 let probTotal = 0
+let algTotalTrue = localStorage.getItem("algebraTotal")
+
+if (algTotalTrue === null){
+    algebraTotal = 0
+} else {
+    algebraTotal = parseInt(algTotalTrue)
+}
+
+let algWrongTrue = localStorage.getItem("algebraWrong")
+if (algWrongTrue === null){
+    algebraWrong = 0
+} else {
+    algebraWrong = parseInt(algWrongTrue)
+}
+
+let geometryTotalTrue = localStorage.getItem("geometryTotal")
+if (geometryTotalTrue === null){
+    geometryTotal = 0
+} else {
+    geometryTotal = parseInt(geometryTotalTrue)
+}
+
+let geometryWrongTrue = localStorage.getItem("geometryWrong")
+if (geometryWrongTrue === null){
+    geometryWrong = 0
+} else {
+    geometryWrong = parseInt(geometryWrongTrue)
+}
+
+let numTotalTrue = localStorage.getItem("numTotal")
+if (numTotalTrue === null){
+    numTotal = 0
+} else {
+    numTotal = parseInt(numTotalTrue)
+}
+
+let numWrongTrue = localStorage.getItem("numWrong")
+if (numWrongTrue === null){
+    numWrong = 0
+} else {
+    numWrong = parseInt(numWrongTrue)
+}
+
+let probTotalTrue = localStorage.getItem("probTotal")
+if (probTotalTrue === null){
+    probTotal = 0
+} else {
+    probTotal = parseInt(probTotalTrue)
+}
+
+let probWrongTrue = localStorage.getItem("probWrong")
+if (probWrongTrue === null){
+    probWrong = 0
+} else {
+    probWrong = parseInt(probWrongTrue)
+}
+let streakCountTrue = localStorage.getItem("streakCount")
+if (streakCountTrue === null){
+    streakCount = 0
+} else {
+    streakCount = parseInt(streakCountTrue)
+}
+let mistakeTrue = localStorage.getItem("mistake")
+if (mistakeTrue === null){
+    mistake = 0
+} else {
+    mistake = parseInt(mistakeTrue)
+}
+let unfamiliarTrue = localStorage.getItem("unfamiliar")
+if (unfamiliarTrue === null){
+    unfamiliar = 0
+} else {
+    unfamiliar = parseInt(unfamiliarTrue)
+}
+let stuckTrue = localStorage.getItem("stuck")
+if (stuckTrue === null){
+    stuck = 0
+} else {
+    streakCount = parseInt(streakCountTrue)
+}
+let topicsToWorkOnTrue = localStorage.getItem("topicsToWorkOn")
+if (topicsToWorkOnTrue === null){
+    topicsToWorkOn = []
+} else {
+    topicsToWorkOn = JSON.parse(topicsToWorkOnTrue)
+}
 if (get() === null){
         userRatingAll = 800;
 } else {
@@ -71,9 +158,483 @@ function toggleSubMenu(button){
 function updateAllRating(){
     userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
 }
+let topicsGlossarySetTrue = localStorage.getItem("topicGlossarySet")
+let TOPIC_GLOSSARY = []
+if (topicsGlossarySetTrue === null){
+    console.log("topic glossary set")
+ TOPIC_GLOSSARY = [
+    {
+        id: "word problems",
+        title: `Word Problems`,
+        description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
+        workOn: [
+            "Identifying keywords",
+            "Setting up equations",
+            "Avoiding misinterpretation"
+        ],
+        errors: 0,
+    },
+    {
+        id: "algebraic manipulation",
+        title: `Algebraic Manipulation`,
+        description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
+        workOn: [
+            "Factoring",
+            "Combining like terms",
+            "Recognizing algebraic patterns"
+        ],
+        errors: 0,
+    },
+ {
+    id: "arithmetic"  ,  
+    title: `Arithmetic`,
+        description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
+        workOn: [
+            "Mental/Quick Math",
+            "Identifying keywords",
+            "Shortcuts and factoring (for multiplication and division)"
+        ],
+        errors: 0,
+    },
+ {
+    id: "systems of equations",    
+    title: `Systems of Equations`,
+        description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
+        workOn: [
+            "Logic",
+            "Substitution", 
+            "Elimination",
+        ],
+        errors: 0,
+    },
+{
+    id: 'functions and graphing',   
+    title: `Functions and Graphing`,
+        description: "Recognizing and manipulating popular parent functions and being able to identify them",
+        workOn: [
+            "Parent Functions",
+            "Composition of Functions",
+            ""
+        ],
+        errors: 0,
+    },
+     {
+        id: 'logic',
+        title: `Logic`,
+        description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
+        workOn: [
+            "Recognizing Patterns", 
+            "Quick Mental Math",
+        ],
+        errors: 0,
+    },
+{
+    id: 'inequalities',    
+    title: `Inequalities`,
+        description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
+        workOn: [
+            "Graphing Inequalities",
+            "Understanding when a question is asking for inequalities",
+            "Composition of Functions"
+        ],
+        errors: 0,
+    },
+{
+    id: 'modular arithmetic',
+    title: `Modular Arithmetic`,
+        description: "These problems pertain to the remainders (mods) of operations (typically division)",
+        workOn: [
+            "Modular Arithmetic Rules",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'factoring' , 
+    title: `Factoring`,
+        description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
+        workOn: [
+            "Sum/difference of squares",
+            "GCF and LCM",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'prime factorization',
+        title: `Prime Factorization`,
+        description: "Reducing a number to its prime factors and using it to solve problems",
+        workOn: [
+            "Factor Trees (or whatever method you like to use)",
+            "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'percents',    
+    title: `Percents`,
+        description: "A different representation of fractions and ratios, make sure you understand what percents are",
+        workOn: [
+            "Decimal Multiplication",
+            "Converting numbers between Percents, Ratios, and Fractions",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'graphing'  ,  
+    title: `Graphing`,
+        description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
+        workOn: [
+            "Parent Functions",
+            "Logic + Intuition",
+        ],
+        errors: 0,
+    },
+    {
+       id: 'floor functions',
+        title: `Floor Functions`,
+        description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
+        workOn:[
+            'Graphing',
+            'Logic + Intuition',
+        ],
+        errors: 0,
+    },
+     {
+       id: 'speed-distance-time',
+        title: `Speed Distance Time`,
+        description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
+        workOn: [
+            "Memorizing the speed, distance, time equation",
+            "Understanding conversions and how the different variables relate to each other",
+            "Word problems and conceptualy understanding what is being asked",
+        ],
+        errors: 0,
+    },{
+        id: 'averages',
+        title: `Averages`,
+        description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
+        workOn: [
+            'Deriving equations',
+            'Arithmetic mean',
+            'Statistics',
+        ],
+        errors: 0,
+    },
+ {
+        id: 'induction',
+        title: `Induction`,
+        description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
+        workOn: [
+            "Making educated guesses",
+            "Recognizing Patterns",
+            "'Limiting' solutions",
+        ],
+        errors: 0,
+    }, 
+ {
+        id: 'series',
+        title: `Series`,
+        description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
+        workOn: [
+            "Memorizing equations for series",
+            "Arithmetic and Geometric Series",
+            "Recognizing patterns",
+        ],
+        errors: 0,
+    },
+{
+    id: 'absolute value',    
+    title: `Absolute Value`,
+        description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
+        workOn:
+        [ 
+            "Graphing",
+            "Intuition"
+        ],
+        errors: 0,
+    },
+ {
+        id: 'exponents',
+        title: `Exponents`,
+        description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
+        workOn: 
+        [
+            "Change of base",
+            "Adding, subtracting, multiplying, dividing exponents",
+            "Factoring out squares",
+        ],
+        errors: 0,
+
+    },
+ {
+    id: 'discriminant' ,   
+    title: `Discriminant`,
+        description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
+        workOn:[
+            "Quadratic Formula"
+        ],
+        errors:0,
+    },
+{
+    id: 'casework',    
+    title: `Casework`,
+        description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
+        workOn: [
+            'Absolute Value Questions',
+            'Quadratics',
+        ],
+        errors: 0,
+    },
+ {
+  id: 'medians',
+    title: `Medians`,
+        description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
+        workOn: [
+            'Statistics',
+            'Datasets',
+        ],
+        errors: 0,
+    },
+{
+    id: 'similar triangles'  , 
+    title: `Similar Triangles`,
+        description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
+        workOn: [
+            "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
+            "Ratios",
+        ],
+        errors: 0,
+    },
+{
+        id: 'surface area',
+        title: `Surface Area`,
+        description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
+        workOn: [
+            "Surface Area equations (for spheres and cones in addition to typical polygons)",
+            "3D conceptualization (e.g. imagining how it looks so you can understand it)",
+        ],
+        errors: 0,
+    },
+{
+    id: 'triangle lines'  , 
+    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors`,
+        description: `<p>Remember the following lines that you can add to a triangle</p>
+        <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
+        <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
+        <p>Perpendicular Bisectors: Lines that pass through a side and are perpendicular and bisect it. Intersect at the circumcenter that is the center for the circumscribed circle (touching all vertices)</p>
+        <p>Angle Bisectors: Lines that bisect angles, intersect at the incenter, the center of the inscribed circle (tangent to all sides)</p>`,
+        workOn: [
+            "Medians",
+            "Perpendicular Bisectors",
+            "Angle Bisectors",
+        ],
+        errors: 0,
+    },
+{
+    id: 'counting',
+        title: `Counting`,
+        description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
+        workOn: [
+            "Optimization",
+            "Logic",
+            "Casework"
+        ],
+        errors: 0,
+    },
+{
+    id: 'composite shapes',
+        title: `Composite Shapes`,
+        description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
+        workOn: [
+            "Area",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'transformations',
+        title: `Transformations`,
+        description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
+        workOn: [
+            "Translations",
+            "Reflections",
+            "Rotations",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'volume',
+        title: `Volume`,
+        description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
+        workOn: [
+            "Volume Formulas",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'prime numbers',
+        title: `Prime Numbers`,
+        description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
+        workOn: [
+            "Factoring"
+        ],
+        errors: 0,
+    },
+{
+    id: 'hexagons',
+        title: `Hexagons`,
+        description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
+        workOn: [
+            "Area of a hexagon",
+            "Area of equilateral triangles",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'optimization',
+        title: `Optimization`,
+        description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
+        workOn: [
+            "Casework",
+            "Counting"
+        ],
+        errors: 0,
+    },
+{
+    id: 'volume relationships',
+        title: `Volume Relationships`,
+        description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
+        workOn: [
+            "ratios"
+        ],
+        errors: 0,
+    },
+ {
+    id: 'pyramids',
+        title: `Pyramids`,
+        description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
+        workOn: [
+            "Pythagorean theorem",
+            "Surface Area"
+        ],
+        errors: 0,
+    },
+ {
+    id: 'trigonometry',
+        title: `Trigonometry`,
+        description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
+        workOn: [
+            "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
+            "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
+            "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
+        ],
+        errors: 0,
+    },
+{
+    id: 'coordinate plane',
+        title: `Coordinate Plane`,
+        description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
+        workOn: [
+            "Slope",
+            "Functions",
+            "Graphing",
+        ],
+        errors: 0,
+    },
+{
+    title: "Pythagorean Theorem",
+    id: 'pythagorean theorem',
+        description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
+        workOn: [
+            "Pythagorean Triples",
+            "Theorem",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'forced simplification',
+        title: `Forced Simplification`,
+        description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
+        workOn: [
+            "Logic",
+            "Understanding problems",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'power of a point',
+        title: `Power of A Point`,
+        description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
+        workOn: [
+            "Chords",
+            "Tangents",
+            "Secants",
+        ],
+        errors: 0,
+ },
+ {
+    id: 'bases',
+        title: `Bases`,
+        description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
+        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
+        workOn: [
+            "Changing from base \\(10\\)",
+            "Changing to base \\(10\\)",
+            "Modular Arithmetic",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'combinations',
+        title: `Combinations`,
+        description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
+        workOn:
+            [
+                "Recognizing combinations vs permutations",
+                "Combinations equation",
+            ],
+            errors: 0,
+    },
+    {
+        id: 'counting',
+        title: `Counting`,
+        description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
+        workOn:
+        [
+            `Permutations Formula \\(n!\\)`,
+            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
+            'Factorials',
+        ],
+        errors: 0,
+    },
+    {
+        id: 'expected outcome',
+        title: `Expected Outcome`,
+        description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
+        workOn:
+        [
+            'Expected Outcome Formula'
+        ],
+        errors: 0,
+    },
+    {
+        id: 'complementary counting',
+        title: `Complementary Counting`,
+        description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
+        workOn: [
+            "Saving time"
+        ],
+        errors: 0,
+    }
+
+];
+TOPIC_GLOSSARY.forEach(q =>{
+        q.attempts = 0;
+})
+} else {
+    console.log("topic glossary set (past)")
+     TOPIC_GLOSSARY = JSON.parse(localStorage.getItem("topicGlossary"))
+}
 // ---------- Shuffle Function ----------
 const highlight = document.getElementById("highlight");
-let streakCount = 0;
 let streakEnabled = true;
 function showHighlight() {
 
@@ -4399,7 +4960,10 @@ rating: 800,
         type: 'fr',
         solution: `<b>6</b><p>Find the area of the whole rectangle that encloses everything, than subtract some parts out:</p>
         $$
-        4 \\cdot 5 - (\\frac{1}{2}(4 \\cdot 2) + 2(\\frac{1}{2}(2 \\cdot 5))) = 20-4-10=6`,
+        4 \\cdot 5 - (\\frac{1}{2}(4 \\cdot 2) + 2(\\frac{1}{2}(2 \\cdot 5))) = 20-4-10=6</p>
+        <p>Solution by Toulouse 100</p>
+        <p>The shaded area at the bottom has a triangle taken out of it. The triangle's area is \\(4\\) (the formula for the area of triangles \\(\\frac{1}{2} \\textup{base} \\times \\textup{height}\\) so we find \\(\\frac{1}{2} \\times 4 \\times 2 = 2\\)). If you get
+        rid of the small triangle the shaded area becaomse a triangle with \\(4\\) by \\(5\\) for an area of \\(10\\) and \\(10-4=6\\)`,
         answer: '6',
         topic: 'area',
         hint : "Find the whole thing, then remove",
@@ -8636,473 +9200,8 @@ let percentage = 0;
 let percetnageStr = "0";
 let test = document.getElementById("test");
 let scoreCount = document.getElementById("score-count");
-const TOPIC_GLOSSARY = [
-    {
-        id: "word problems",
-        title: `Word Problems`,
-        description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
-        workOn: [
-            "Identifying keywords",
-            "Setting up equations",
-            "Avoiding misinterpretation"
-        ],
-        errors: 0,
-    },
-    {
-        id: "algebraic manipulation",
-        title: `Algebraic Manipulation`,
-        description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
-        workOn: [
-            "Factoring",
-            "Combining like terms",
-            "Recognizing algebraic patterns"
-        ],
-        errors: 0,
-    },
- {
-    id: "arithmetic"  ,  
-    title: `Arithmetic`,
-        description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
-        workOn: [
-            "Mental/Quick Math",
-            "Identifying keywords",
-            "Shortcuts and factoring (for multiplication and division)"
-        ],
-        errors: 0,
-    },
- {
-    id: "systems of equations",    
-    title: `Systems of Equations`,
-        description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
-        workOn: [
-            "Logic",
-            "Substitution", 
-            "Elimination",
-        ],
-        errors: 0,
-    },
-{
-    id: 'functions and graphing',   
-    title: `Functions and Graphing`,
-        description: "Recognizing and manipulating popular parent functions and being able to identify them",
-        workOn: [
-            "Parent Functions",
-            "Composition of Functions",
-            ""
-        ],
-        errors: 0,
-    },
-     {
-        id: 'logic',
-        title: `Logic`,
-        description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
-        workOn: [
-            "Recognizing Patterns", 
-            "Quick Mental Math",
-        ],
-        errors: 0,
-    },
-{
-    id: 'inequalities',    
-    title: `Inequalities`,
-        description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
-        workOn: [
-            "Graphing Inequalities",
-            "Understanding when a question is asking for inequalities",
-            "Composition of Functions"
-        ],
-        errors: 0,
-    },
-{
-    id: 'modular arithmetic',
-    title: `Modular Arithmetic`,
-        description: "These problems pertain to the remainders (mods) of operations (typically division)",
-        workOn: [
-            "Modular Arithmetic Rules",
-        ],
-        errors: 0,
-    },
- {
-    id: 'factoring' , 
-    title: `Factoring`,
-        description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
-        workOn: [
-            "Sum/difference of squares",
-            "GCF and LCM",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'prime factorization',
-        title: `Prime Factorization`,
-        description: "Reducing a number to its prime factors and using it to solve problems",
-        workOn: [
-            "Factor Trees (or whatever method you like to use)",
-            "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
-        ],
-        errors: 0,
-    },
- {
-    id: 'percents',    
-    title: `Percents`,
-        description: "A different representation of fractions and ratios, make sure you understand what percents are",
-        workOn: [
-            "Decimal Multiplication",
-            "Converting numbers between Percents, Ratios, and Fractions",
-        ],
-        errors: 0,
-    },
- {
-    id: 'graphing'  ,  
-    title: `Graphing`,
-        description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
-        workOn: [
-            "Parent Functions",
-            "Logic + Intuition",
-        ],
-        errors: 0,
-    },
-    {
-       id: 'floor functions',
-        title: `Floor Functions`,
-        description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
-        workOn:[
-            'Graphing',
-            'Logic + Intuition',
-        ],
-        errors: 0,
-    },
-     {
-       id: 'speed-distance-time',
-        title: `Speed Distance Time`,
-        description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
-        workOn: [
-            "Memorizing the speed, distance, time equation",
-            "Understanding conversions and how the different variables relate to each other",
-            "Word problems and conceptualy understanding what is being asked",
-        ],
-        errors: 0,
-    },{
-        id: 'averages',
-        title: `Averages`,
-        description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
-        workOn: [
-            'Deriving equations',
-            'Arithmetic mean',
-            'Statistics',
-        ],
-        errors: 0,
-    },
- {
-        id: 'induction',
-        title: `Induction`,
-        description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
-        workOn: [
-            "Making educated guesses",
-            "Recognizing Patterns",
-            "'Limiting' solutions",
-        ],
-        errors: 0,
-    }, 
- {
-        id: 'series',
-        title: `Series`,
-        description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
-        workOn: [
-            "Memorizing equations for series",
-            "Arithmetic and Geometric Series",
-            "Recognizing patterns",
-        ],
-        errors: 0,
-    },
-{
-    id: 'absolute value',    
-    title: `Absolute Value`,
-        description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
-        workOn:
-        [ 
-            "Graphing",
-            "Intuition"
-        ],
-        errors: 0,
-    },
- {
-        id: 'exponents',
-        title: `Exponents`,
-        description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
-        workOn: 
-        [
-            "Change of base",
-            "Adding, subtracting, multiplying, dividing exponents",
-            "Factoring out squares",
-        ],
-        errors: 0,
 
-    },
- {
-    id: 'discriminant' ,   
-    title: `Discriminant`,
-        description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
-        workOn:[
-            "Quadratic Formula"
-        ],
-        errors:0,
-    },
-{
-    id: 'casework',    
-    title: `Casework`,
-        description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
-        workOn: [
-            'Absolute Value Questions',
-            'Quadratics',
-        ],
-        errors: 0,
-    },
- {
-  id: 'medians',
-    title: `Medians`,
-        description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
-        workOn: [
-            'Statistics',
-            'Datasets',
-        ],
-        errors: 0,
-    },
-{
-    id: 'similar triangles'  , 
-    title: `Similar Triangles`,
-        description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
-        workOn: [
-            "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
-            "Ratios",
-        ],
-        errors: 0,
-    },
-{
-        id: 'surface area',
-        title: `Surface Area`,
-        description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
-        workOn: [
-            "Surface Area equations (for spheres and cones in addition to typical polygons)",
-            "3D conceptualization (e.g. imagining how it looks so you can understand it)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'triangle lines'  , 
-    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors`,
-        description: `<p>Remember the following lines that you can add to a triangle</p>
-        <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
-        <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
-        <p>Perpendicular Bisectors: Lines that pass through a side and are perpendicular and bisect it. Intersect at the circumcenter that is the center for the circumscribed circle (touching all vertices)</p>
-        <p>Angle Bisectors: Lines that bisect angles, intersect at the incenter, the center of the inscribed circle (tangent to all sides)</p>`,
-        workOn: [
-            "Medians",
-            "Perpendicular Bisectors",
-            "Angle Bisectors",
-        ],
-        errors: 0,
-    },
-{
-    id: 'counting',
-        title: `Counting`,
-        description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
-        workOn: [
-            "Optimization",
-            "Logic",
-            "Casework"
-        ],
-        errors: 0,
-    },
-{
-    id: 'composite shapes',
-        title: `Composite Shapes`,
-        description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
-        workOn: [
-            "Area",
-        ],
-        errors: 0,
-    },
- {
-    id: 'transformations',
-        title: `Transformations`,
-        description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
-        workOn: [
-            "Translations",
-            "Reflections",
-            "Rotations",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'volume',
-        title: `Volume`,
-        description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
-        workOn: [
-            "Volume Formulas",
-        ],
-        errors: 0,
-    },
- {
-    id: 'prime numbers',
-        title: `Prime Numbers`,
-        description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
-        workOn: [
-            "Factoring"
-        ],
-        errors: 0,
-    },
-{
-    id: 'hexagons',
-        title: `Hexagons`,
-        description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
-        workOn: [
-            "Area of a hexagon",
-            "Area of equilateral triangles",
-        ],
-        errors: 0,
-    },
- {
-    id: 'optimization',
-        title: `Optimization`,
-        description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
-        workOn: [
-            "Casework",
-            "Counting"
-        ],
-        errors: 0,
-    },
-{
-    id: 'volume relationships',
-        title: `Volume Relationships`,
-        description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
-        workOn: [
-            "ratios"
-        ],
-        errors: 0,
-    },
- {
-    id: 'pyramids',
-        title: `Pyramids`,
-        description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
-        workOn: [
-            "Pythagorean theorem",
-            "Surface Area"
-        ],
-        errors: 0,
-    },
- {
-    id: 'trigonometry',
-        title: `Trigonometry`,
-        description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
-        workOn: [
-            "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
-            "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
-            "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'coordinate plane',
-        title: `Coordinate Plane`,
-        description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
-        workOn: [
-            "Slope",
-            "Functions",
-            "Graphing",
-        ],
-        errors: 0,
-    },
-{
-    title: "Pythagorean Theorem",
-    id: 'pythagorean theorem',
-        description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
-        workOn: [
-            "Pythagorean Triples",
-            "Theorem",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'forced simplification',
-        title: `Forced Simplification`,
-        description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
-        workOn: [
-            "Logic",
-            "Understanding problems",
-        ],
-        errors: 0,
-    },
- {
-    id: 'power of a point',
-        title: `Power of A Point`,
-        description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
-        workOn: [
-            "Chords",
-            "Tangents",
-            "Secants",
-        ],
-        errors: 0,
- },
- {
-    id: 'bases',
-        title: `Bases`,
-        description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
-        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
-        workOn: [
-            "Changing from base \\(10\\)",
-            "Changing to base \\(10\\)",
-            "Modular Arithmetic",
-        ],
-        errors: 0,
-    },
- {
-    id: 'combinations',
-        title: `Combinations`,
-        description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
-        workOn:
-            [
-                "Recognizing combinations vs permutations",
-                "Combinations equation",
-            ],
-            errors: 0,
-    },
-    {
-        id: 'counting',
-        title: `Counting`,
-        description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
-        workOn:
-        [
-            `Permutations Formula \\(n!\\)`,
-            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
-            'Factorials',
-        ],
-        errors: 0,
-    },
-    {
-        id: 'expected outcome',
-        title: `Expected Outcome`,
-        description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
-        workOn:
-        [
-            'Expected Outcome Formula'
-        ],
-        errors: 0,
-    },
-    {
-        id: 'complementary counting',
-        title: `Complementary Counting`,
-        description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
-        workOn: [
-            "Saving time"
-        ],
-        errors: 0,
-    }
 
-];
-TOPIC_GLOSSARY.forEach(q =>{
-        q.attempts = 0;
-})
 function getProblemNumber(array) {
     array.forEach(q => {
   const match = q.title.match(/Problem (\d+)/);
@@ -9133,12 +9232,15 @@ function recordWrongTopic(topic) {
 
     if (!topicsToWorkOn.includes(topicToUpdate)) {
         topicsToWorkOn.push(topicToUpdate);
+        localStorage.setItem("topicsToWorkOn", JSON.stringify(topicsToWorkOn))
     }
 
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
     if (topicObj) {
         topicObj.errors += 1;
         topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
+        localStorage.setItem("topicGlossary", JSON.stringify(TOPIC_GLOSSARY))
+        localStorage.setItem("topicGlossarySet", true)
     }
 
     updateTopicsDropdown();
@@ -9470,6 +9572,7 @@ function checkAnswerGeometry() {
     if (strikes == 2){
                 
                 geometryTotal += 1
+                localStorage.setItem("geometryTotal", geometryTotal)
                     updateRadarChart()
     }
 
@@ -9487,6 +9590,7 @@ function checkAnswerGeometry() {
         score = score + geometryQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
+            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgressG++;
             if (difficultyG == 1 && difficultyProgressG == 4){
@@ -9529,6 +9633,7 @@ check
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
            if (strikes ==  2){
             geometryWrong += 1
+            localStorage.setItem("geometryWrong", geometryWrong)
 
             
             errors += 1
@@ -9608,6 +9713,7 @@ function checkAnswerAlgebra(){
     updateRadarChart()
     if (strikes == 2){
                 algebraTotal += 1
+                localStorage.setItem("algebraTotal", algebraTotal)
                 updateRadarChart()
     }
 
@@ -9631,6 +9737,7 @@ function checkAnswerAlgebra(){
         score = score + algebraQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
+            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgress++;
             if (difficulty == 1 && difficultyProgress == 4){
@@ -9672,6 +9779,7 @@ check
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         if (strikes ==  2){
             algebraWrong += 1
+            localStorage.setItem("algebraWrong", algebraWrong)
 
             errors += 1
             logAttempt(algebraQuestion.title, false)
@@ -9761,6 +9869,7 @@ function checkAnswerAll() {
         score = score + allQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
+            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgressAll++;
             if (difficultyAll == 1 && difficultyProgressAll == 4){
@@ -9844,6 +9953,7 @@ function checkAnswerProb() {
     updateRadarChart()
     if (strikes == 2){
             probTotal += 1
+            localStorage.setItem("probTotal", probTotal)
             updateRadarChart()
     }
 
@@ -9861,6 +9971,7 @@ function checkAnswerProb() {
         score = score + probQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
+            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgressP++;
             if (difficultyP == 1 && difficultyProgressP == 1){
@@ -9900,6 +10011,7 @@ check
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
      if (strikes ==  2){
         probWrong += 1
+        localStorage.setItem("probWrong", probWrong)
         errors += 1
                 logAttempt(probQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
@@ -9980,6 +10092,7 @@ function checkAnswerNum() {
     updateRadarChart()
     if (strikes == 2){
             numTotal += 1
+            localStorage.setItem("numTotal", numTotal)
             updateRadarChart()
     }
 
@@ -9997,6 +10110,7 @@ function checkAnswerNum() {
         score = score + numQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
+            localStorage.setItem("streakCount")
             correctCount++;
             difficultyProgressN++;
             if (difficultyN == 1 && difficultyProgressN == 4){
@@ -10039,6 +10153,7 @@ check
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
     if (strikes ==  2){
         numWrong += 1
+        localStorage.setItem("numWrong", numTotal)
         errors += 1
                 logAttempt(numQuestion.title, false)
                 scoreCount.innerHTML = Math.round(userRatingAll);
@@ -11016,14 +11131,17 @@ if (q.type === 'mc'){
 }
 mistakeBtn.addEventListener("click", function(){
     mistake += 1
+    localStorage.setItem("mistake", mistake)
     updateBarGraph()
 })
 unfamiliarBtn.addEventListener("click", function(){
     unfamiliar += 1
+    localStorage.setItem("unfamiliar", unfamiliar)
     updateBarGraph()
 })
 stuckBtn.addEventListener("click", function(){
     stuck += 1
+    localStorage.setItem("stuck", stuck)
     updateBarGraph()
 })
 let myChart = null; // 1. Define this OUTSIDE the function
@@ -11061,18 +11179,22 @@ function updateBarGraph() {
 }
 let pieChart = null
 function updatePieChart(){
-    let barColor = ["#88B0FF"]
     console.log("updating pie chart")
     if (pieChart) {
         pieChart.destroy();
     }
-
+    console.log(topicsToWorkOn)
     const ctx = document.getElementById("pieChart");
     let xValues = []
     let yValues = []
     topicsToWorkOn.forEach(i => {
+        console.log(i)
+        console.log(TOPIC_GLOSSARY)
         const topicObj = TOPIC_GLOSSARY.find(x => x.id === i);
+                console.log("running for each")
+                console.log(topicObj)
 if (topicObj && topicObj.errors && topicObj.errors > 0) {
+            console.log('running search')
             console.log("Adding to chart:", topicObj.id, topicObj.errors);
             xValues.push(topicObj.name || topicObj.id); // Use name if available
             yValues.push(topicObj.errors);
@@ -11085,7 +11207,6 @@ pieChart = new Chart("pieChart", {
     labels: xValues,
     datasets: [{
       data: yValues,
-      backgroundColor: barColor,
     }]
   },
   options: {
@@ -11174,3 +11295,10 @@ async function logAttempt(questionTitle, isCorrect) {
 window.loadTopicQuestion = loadTopicQuestion;
 window.loadQuestion = loadQuestion;
 // etc. for any function called from HTML onclick attributes
+const array = []
+allQ.forEach(i => {
+    if (i.topic == "prime factorization"){
+        array.push(i)
+    }
+})
+console.log(array)
