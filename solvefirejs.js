@@ -663,6 +663,25 @@ const myConfetti = confetti.create(confettiCanvas, {
 
 const questions = [
     {
+                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 5</a>`,
+                text: `Let \\(p(x)=x^2-10x+k\\) for some positive integer \\(k\\). Suppose that both roots of \\(p(x)\\) are real and that \\(\\frac{1}{\\alpha ^2}+\\frac{1}{\\beta ^2}=\\frac{21}{16}\\), where \\(\\alpha\\) and \\(\\beta\\) are the two roots of \\(p(x)\\). Find \\(k\\)`,
+                solution: `<b>8</b><p>We have that \\(\\frac{\\alpha ^2 + \\beta ^2}{(ab)^2}\\). By Vieta's rules, we know that \\(\\alpha + \\beta = - \\frac{-10}{1}=10\\) and \\(\\alpha \\times \\beta = k\\). We know that \\(\\alpha ^2 + \\beta ^2 = (\\alpha + \\beta)^2-2\\alpha \\beta = 100 - 2k\\) and obviously, we have \\(k^2\\) in the denominator. We thus have</p>
+                $$
+                \\frac{100-2k}{k^2}=\\frac{21}{16}
+                $$
+                $$
+                1600-32k=21k^2
+                $$
+                $$
+                21k^2+32k-1600=0
+                $$
+                $$
+                k=\\frac{-32 \\pm \\sqrt{32^2+4 \\times 21 \\times 1600}}{42}=8\\)`,
+                answer: '8',
+                hint: "Use Vieta's Formulas",
+                step: "Rewrite the fraction with a common denominator"
+    },
+    {
         title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 3 Problem 9
                 </a>`,
@@ -1240,9 +1259,67 @@ answer: '12',
 hint: "Write equations using \\(s=\\frac{d}{t}\\)",
 step: "You should have \\(s+c=\\frac{d}{20}\\), \\(s-c=\\frac{d}{60}\\), \\(r-c=\\frac{d}{20}\\)",
 topic: "algebraic mainpulation"
+    },
+    {
+title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 7</a>`, 
+text: `<p>Let \\(x\\) and \\(y\\) be real numbers greater than \\(1\\) such that </p>
+$$
+\\textup{log}_{x}y+\\textup{log}_{y}x=\\frac{5}{2}
+$$
+<p>and</p>
+$$
+xy=64
+$$
+<p>Find \\(x+y\\)</p>`,
+solution: `<b>20</b><p>By change of base, we have that \\(\\frac{\\textup{log}y}{\\textup{log}x}+\\frac{\\textup{log}x}{\\textup{log}y}=\\frac{5}{2}\\). We rewrite \\(a=\\textup{log}_{x}y) so our equation becomes \\(a+\\frac{1}{a}=\\frac{5}{2}\\), such that \\(a^2-\\frac{5}{2}a+1=2a^2-5a+2=0\\).</p>
+<p>Factoring this gives \\((2a-1)(a-2)=0\\) for \\(a=\\frac{1}{2}\\) or \\(a=2\\). It really doesn't matter what \\(a\\) is, because \\(x\\) and \\(y\\) need to be interchangeable anyways. Thus, we use \\(a=2\\). We have that \\(x^2=y\\) so \\(x^3=64\\) for \\(x=4, y=16\\), and \\(x+y=20\\)`,
+answer: '20',
+hint: "\\(\\textup{log}_{x}y=\\frac{1}{\\textup{log}_{y}x}\\)",
+step: "Substitute a value ofr \\(\\textup{log}_{x}y\\)",
+topic: "algebraic manipulation"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 1</a>`,
+        text: `<p>Let \\(x\\) and \\(y\\) be positive real numbers satisfying</p>
+        $$
+        \\textup{log}_{2}x+\\textup{log}_{4}y=5 \\textup{and} \\textup{log}_{4}x+\\textup{log}_{2}y=7\\)
+        $$
+        <p>Find \\(xy\\)</p>`,
+        solution: `<b>256</b><p>We change the entire thing into \\(\\textup{log}2\\) w/ change of base so \\(\\textup{log}_{2}x+\\frac{\\textup{log}_{2}y}{2}=5\\) and \\(\\textup{log}_{2}y+\\frac{\\textup{log}_{2}x}{2}=7\\). With \\(a=\\textup{log}_{2}x\\) and \\(b=\\textup{log}_{2}y\\) so we have that \\(a+\\frac{b}{2}=5\\) and \\(\\frac{a}{2}+b=7\\) so</p>
+        $$
+        2a+b=10
+        $$
+        $$
+        a+2b=14
+        $$
+        -3b=-18
+         b=6
+         $$
+         $$
+         a=2
+         $$
+         $$
+         \\textup{log}_{2}(xy)=\\textup{log}_{2}x+\\textup{log}_{2}y=a+b=8
+         $$
+         $$
+         xy=2^8
+         $$`,
+         answer: '256',
+         topic: "functions and graphing",
+         hint: "Use substitution and change of base",
+         step: "Use change of base to change to base \\(2\\)"
     }
 ]
 const geometryQ = [
+    {
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 6</a>`,
+        text: `In triangle \\(ABC, AB=7, BC=8,\\) and \\(\\angle B=60^\\circ\\). Find the square of the circumradius of triangle \\(ABC\\)`,
+        solution: `<b>19</b><p>Using the law of cosines, we have that \\(AC\\), denoted as \\(x\\), is found in \\(x^2=7^2+8^2-2(7)(8)\\textup{cos}(60)=\\sqrt{57}\\). The law of sines tells us that \\(\\frac{AC}{\\textup{sin}\\angle B}=2R\\), for \\(R=\\textup{circumradius}), so we solve for \\(R^2=\\frac{57}{3}=19\\)`,
+        answer: '19',
+        hint: "Use law of sines and law of cosines",
+        step: "Use the law of cosines \\(c^2=a^2+b^2-2ab\\textup{cos}(c)\\) to find \\(AC\\)",
+        topic: "triangle lines"
+    },
       {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 3
@@ -1774,9 +1851,98 @@ answer: '39'
                 hint: "Find the area of the surrounding triangles",
                 step: "Map all the points on the coordinate grid and use systems of equations to find missing coordinates",
                 topic: "functions and graphing"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 6</a>`,
+        text: `Triangle \\(ABC\\) has side lenths \\(AB=13, BC=14,\\) and \\(CA=15\\). The bisector of \\(\\angle A\\) meets \\(\\overline{BC}\\) at \\(D\\). Find the area of triangle \\(ACD\\)`,
+        solution: `<b>45</b><p>We can find the total area of \\(ABC\\) using Heron's Formula \\(a=\\sqrt{s(s-a)(s-b)(s-c)}\\) for \\(s=\\frac{a+b+c}{2}\\). We solve for \\(a=84\\)</p>
+        <p>By angle bisector theorem, we know that \\(\\frac{BD}{CD}=\\frac{BA}{CA}=\\frac{13}{15}\\). This ratio remains the same for their areas, so we have that \\(13x+15x=84\\) and we want \\(15x\\)</p>
+        $$
+        13x+15x=84
+        $$
+        $$
+        28x=84
+        $$
+        $$
+        x=3
+        $$
+        $$
+        15x=45
+        $$`,
+        answer: '45',
+        hint: "Use angle bisector theorem such that \\(\\frac{BD}{CD}=\\frac{BA}{CA}\\)",
+        step: "Find the total area of \\(ABC\\)",
+        topic: "triangle lines"
+
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 8</a>`,
+        text: `In right triangle \\(ABC\\), \\(AC=3\\), \\(BC=6\\), and \\(\\angle C = 90^\\circ\\). Let \\(D\\) be the foot of the
+        altitude from \\(C\\) to \\(AB\\). The circle with diameter \\(\\overline{CD}\\) intersects \\(\\textup{AC}\\) again at \\(E\\) and \\(\\textup{BC}\\) again at \\(F\\). The area of quadrilateral \\(CEDF\\) can
+        be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
+        solution: `<b>97</b><p>We place this on a coordinate grid such that \\(A(0,3), B(6,0), C(0,0)\\). The slope of \\(AB\\) is \\(\\frac{-1}{2}\\), so the slope of \\(CD\\) is \\(y=2x\\). It intersects \\(AB\\) (which has an equation of \\(y=\\frac{-1}{2}x+3\\)) at \\((\\frac{12}{5}, \\frac{6}{5})\\).</p>
+        <p>The diameter of the circle is \\(\\sqrt{\\frac{12}{5}^2+\\frac{6}{5}^2}=\\frac{6\\sqrt{5}}{5}\\). We can tell that \\(CED\\) and \\(CFD\\) are right triangles, meaning we know their coordinates to be \\(E(0,\\frac{6}{5})\\) and \\(F(\\frac{12}{5},0)\\). The total area is just \\(\\frac{12}{5} \\times \\frac{6}{5}=\\frac{72}{25}\\) for \\(72+25=97\\)`,
+        answer: '97',
+        hint: "\\(CED\\) and \\(CDF\\) are right triangles",
+        step: "Model on a coordinate grid",
+        topic: "functions and graphing"
     }
 ]
 const numTheoryQ = [
+    {
+                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 7</a>`,
+                text: `Find the number of ordered triples \\((a,b,c)\\) of positive integers such that \\(abc=360\\)`,
+                solution: `<b>180</b><p>The prime factorization of \\(360=2^3\\times 3^2 \\times 5\\). For each of these, we can do stars and bars to see how their powers are distributed among \\(3\\). We do \\(\\binom{3+3-1}{3-1} \\binom{2+3-1}{3-1} \\binom{1 + 3-1}{3-1}=180\\)`,
+                answer: '180',
+                topic: "counting",
+                hint: "Use stars and bars",
+                step: 'Find the prime factorization of \\(360\\)'
+
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 8</a>`,
+                text: `<p>Find the sum of all real numbers \\(x\\) satisfying</p>
+                $$
+                (x^2-5x+5)^{x^2-7x+12}=1
+                $$`,
+                solution: `<b>10</b><p>We know that \\(x^2-5x+5=1\\) or \\(-1\\) (if \\(x^2-7x+12\\) is even) OR \\(x^2-7x+12=0\\). Solving the latter, we simply factor for \\((x-3)(x-4)\\), which gives \\(3, 4\\)</p>
+                <p>For the former, we split into two cases. If equal to \\(1\\), we have \\(x^2-5x+4=(x-4)(x-1)\\), for \\(4\\) and \\(1\\), but we only count \\(1\\), because that's a repeat</p>
+                <p>Finally, for \\(-1\\), we end up with \\(x^2-5x+6=(x-3)(x-2)\\). We have that \\(x=2\\) makes the exponent \\(2^2-7(2)+12=2\\), which is even, and it doesn't matter what \\(3\\) is because the power will be \\(0\\). We thus have \\(1+2+3+4=10\\)`,
+                answer: '10',
+                hint: "What can the power be? What can the base be?",
+                step: "Find the roots of \\(x^2-7x+12\\)",
+                topic: "logic"
+    },
+    {
+                        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 9</a>`,
+                        text: `<p>How many \\(5-\\) element subsets {a_{1} < a_{2} < a_{3} < a_{4} < a_{5}\\) of {1,2,3...12} satisfy</p>
+                        $$
+                        a_1 + a_2 = a_5
+                        $$`,
+                        solution: `<b>30</b><p>We have that the lowest possible sum is \\(5\\) whereas the highest is \\(12\\). This is easy enough to break int ocases until we can make an induction</p>
+                        <p>For \\(5\\), we have \\((1,4)\\) or \\((2,3)\\), for \\((a_{1},b_{1})\\). Neither of these work because they don't give possible values for \\(a_{3}, a_{4}\\)</p>
+                        <p>For \\(6\\), we have \\((1,5), (2,4)\\). Still no possibilities</p>
+                        <p>\\(7\\) gives \\((1,6), (2,5), (3,4)\\). The first and second give none. The last gives one</p>
+                        <p>\\(8\\) has \\((1,7), (2,6), (3,5)\\). We have one in the last again</p>
+                        <p>\\(9\\) gives \\((1,8), (2,7), (3,6), (4,5)\\) which leaves \\((3,6), (4,5)\\) being valid. However, we no longer are constrained to linearly increasing values. For \\((3,6\\), we are, 
+                        because we need \\(7,8\\), but for \\((4,5)\\), we have \\(\\binom{3}{2}=3\\) ways, so we have \\(4\\0 total</p>
+                        <p>\\(10\\), will give the same result</p>
+                        <p>For \\(11\\), we find \\((1,10), (2,9), (3,8), (4,7), (6,5)\\). The last \\(3\\) work with \\(1, 3, 6\\) options, total for a total of \\(10\\). We thus find \\(1+1+4+4+10+10\\) (because \\(12\\) has the same as \\(11\\)) which sums to \\(30\\)`,
+                        answer: '30',
+                        hint: "Use induction and casework",
+                        step: "Find the possible values of \\(a_{5}\\)",
+                        topic: "counting"
+
+    },
+        {
+                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 3</a>`,
+                text: `Find the number of ordered pairs \\((a, b)\\) of positive integers such that \\(\\textup{lcm}(a,b)=360\\)`,
+                solution: `<b>105</b><p>We have the prime factorization of \\(360=2^3 \\cdot 3^2 \\cdot 5^1\\). We need to divide the frimes such that \\(a\\) and \\(b\\) have distinct primes in their prime factorizations. We have \\(2\\) with a power up to \\(3\\). We double this, because it can be in either, or it can not be there are all, so we have \\(7\\). We do this for all and ed up with \\(7 \\times 5 \\times 3 = 105\\)`,
+                answer: '105',
+                hint: "The prime factors must be divided exclusively",
+                step: "Find the prime factorization of \\(360\\)",
+                topic : "prime factorization"
+    },
     {
         title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 3 Problem 1
@@ -2221,11 +2387,72 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
                 hint: "The units digit of the square of a number with units digit \\(n\\) is consistent for all numbers with units digit \\(n\\)",
                 step: 'Find the possible units digits of \\(n\\)',
                 topic: "modular arithmetic"  
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 2</a>`, 
+                text: `Find the smallest positive integer \\(n\\) such that \\(96n\\) is a perfect square and \\(540n\\) is a perfect cube`,
+                solution: `<b>1350</b><p>We know that \\(n\\) must make an even number of factors when multipled with \\(96\\) raised to even powers, and factors raised to powers of \\(3\\) for \\(540n\\)</p>
+                <p>\\(96=2^5 \\times 3\\). We need at least one \\(3\\) and one \\(2\\).</p>
+                <p>We have \\(540=2^2 \\times 3^3 \\times 5\\). We need \\(5^2\\), which would be fine for both. We also added one \\(3\\) already, which makes the power \\(4\\), so we need to add another \\(2\\), so we currently have \\(2 \\times 5^2 \\times 3^3\\). For the two we already added one which fixes both, so we're good where we are</p>
+                <p>We have that \\(2 \\times 3^3 \\times 5^2=1350\\)`,
+                answer:'1350',
+                hint: "Every power needs to be even for perfect squares, and every power needs to be divisible by \\(3\\) for cubes",
+                step: "Find the prime factorization of \\(96\\) and \\(540\\)",
+                topic: "prime factorization"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 3</a>`, 
+                text: "How many \\(6-\\) digit positive integers can be formed using each of the digits \\(0,1,2,3,4,5\\) exactly once so that the resulting integer is divisible by \\(12\\)",
+                solution: `<b>144</b><p>We need a value that is divisible by both \\(3\\) and \\(4\\). Divisibility by \\(3\\) is guranteed because we know that to be divisible by \\(3\\), the sum of digits
+                has to be divisible by \\(3\\),, and \\(0+1+2+3+4+5=15\\) and \\(15 \\equiv 0 \\textup{ mod }(3)\\).</p>
+                <p>In order to be divisible by \\(4\\), it's last two digits need to be divisible by \\(4\\). With these options, we see \\(04,12,20,24,32,40,52\\). In theory, this should give \\(4!\\) ways to rearrange the rest,
+                but \\(0\\) cannot be in the front. For \\(04, 20, 40\\), we have \\(4!\\). For the rest, however, we have \\(3 \\times 3 \\times 2 \\times 1=18\\). Thus, we have \\((4! \\times 3) + (18 \\times 5) = 144\\)`,
+                answer: '144',
+                hint: "To be divisible by \\(4\\), the last two digits need to be divisible by \\(4\\)",
+                step: "Find the possible last two digits",
+                topic: "counting"
+    },
+    {
+                title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 5</a>`, 
+                text: `<p>How many integers \\(n\\) with \\(1 \\leq n \\leq 1000\\) satisfy</p>
+                $$
+                \\textup{gcd}(n,84)=6
+                $$
+                `,
+                solution: `<b>71</b><p>The prime factorization of \\(84 = 2^2 \\times 3 \\times 7\\). We need multiples of \\(6\\) that are \\(\\leq 1000\\) that are not multiples of \\(4\\) and \\(7\\). There are \\(\\frac{1000}{6} \\aprox 166\\) total 
+                values. We need to erase all of those that are divisible by \\(4\\) or \\(7\\), which we notice is also just not multiples of \\(14\\). Within the \\(166\\) multiples of \\(6\\), we know that \\(\\frac{166}{2}\\) will be divisible by \\(4\\) (by inclusion exclusion), \\(\\frac{166}{7}=23\\) and \\(\\frac{166}{14}=11\\). So we
+                do inclusion exclusion and find \\(166-83-23+11=71\\)`,
+                answer: '71',
+                hint: "Use inclusion exclusion such that for sets \\(M\\) and \\(A\\), the total number of values is \\(M+A-\\textup{both M and A}\\)",
+                step: "Find what values cannot be in the prime factorization of \\(n\\)",
+                topic: "prime factorization"
     }
     
 
 ]
 const probabilityQ = [
+    {
+                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 4</a>`,
+                text: `How many lattice paths are there from \\((0,0)\\) to \\((5,5)\\) moving only one unit right or one unit up at each step, that pass
+                through neither \\((2,3)\\) \\((3,2)\\)`,
+                solution: `<b>52</b><p>There are \\(\\binom{10}{5}=252\\) total paths, because you will always need to take \\(10\\) steps, it just matters which \\(5\\) are up, and you pick \\(5\\) of \\(10\\) for those</p>
+                <p>The paths that reach \\((2,3)\\) are thus \\(\\binom{5}{2} \\times \\binom{5}{3}\\), because you can take two ups and two rights, in any order. We have \\(100\\) for that, and following the same logic, \\(100\\) for \\((3,2)\\). This gives \\(252-100-100=52\\)`,
+                answer: '52',
+                hint: "Use the choose function",
+                step: "Find the total number of paths to \\((5,5)\\)",
+                topic: "counting"
+    }
+    {
+                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 2</a>`,
+                text: `A bag contains \\(4\\) red balls and \\95\\) blue balls. Two balls are drawn simultaneously at random. Given that at
+                least one of the drawn balls is red, the probability that exactly one of them is red can be written as \\(\\frac{m}{n}\\) in lowest terms. Find \\(m+n\\)`,
+                solution: `<b>23</b><p>There are \\(\\binom{4+5}{2}=36\\) ways to pick in total. Of those, there are \\(\\binom{4}{1} \\binom{5}{1}=20\\) ways to pick one red and one blue, and \\(\\binom{5}{2}=10\\) ways to pick two blue, so there are \\(36-10=26\\) ways to pick at least one red. We thus have \\(\\frac{20}{26}=\\frac{10}{13}\\) for \\(10+13=23\\)`,
+                answer: '23',
+                step:  `Find the number of ways to pick at least one red`,
+                hint: "Use complementary counting",
+                topic: "counting"
+    },
+
     {
         title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 3 Problem 3
@@ -2546,6 +2773,30 @@ colorings have exactly two red squares in each row?`,
         hint: "An octagonal prism has \\(10\\) faces",
         step: "Find the total number of faces",
         topic: "logic"
+},
+{
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 1</a>`, 
+        text: `Two fair six-sided dice are rolled. Given that the product of the two numbers is even, the probability that their sum is prime can be written as \\(\\frac{m}{n}\\) in lowest terms. Find \\(m+n\\)`,
+        solution: `<b>41</b><p>We hvae \\(36\\) total outcomes for both dice and \\(3 \\times 3=9\\) where it is odd (because they would both have to be odd). We thus have \\(27\\) even.</p>
+        <p>The possible odd sums are \\(3,5,7,11\\). We know that exactly one dice needs to be even in order for it to be even and have an odd sum, so we solve</p>
+        <p>\\(3\\) has \\((1,2), (2,1)\\), for \\(2\\) combinations</p>
+        <p>\\(5\\) has \\((3,2), (2,3), (4,1), (1,4)\\) for \\(4\\)</p>
+        <p>\\(7\\) gives \\((5,2), (2,5), (3,4), (4,3), (6,1), (1,6)\\) which gives \\(6\\)</p>
+        <p>Finally, \\(11\\) gives only \\((6,1), (1,6)\\) for \\(2\\). We find \\(2+4+6+2=14\\) and \\(\\frac{14}{27}\\) for \\(14+27=41\\)`,
+        answer: '41',
+        hint: "Split into cases",
+        step: "Find the possible prime numbers",
+        topic: "casework"
+},
+{
+title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 9</a>`,
+text: `How many ways are there to choose \\(4\\) vertices of a regular decagon so that no two chosen vertices are adjacent?`,
+solution: `<b>25</b><p>The way to choose nonadjacent vertices in a row is \\(\\binom{\\textup{total vertices} - \\textup{vertices to find} + 1}{\\textup{vertices to find}}\\). However, we aren't dealing with a row, we are dealing with an almost cylic figure. Thus, we either eliminate or include the first vertex</p>
+<p>If we include it, we can't use the two adjacent, so we have \\(7\\) left to distribute about \\(3\\) for \\(binom{7-3+1}{3}=10\\). If we don't, we just do \\(\\binom{9-4+1}{4}=15\\). We have \\(10 +15=25\\)`,
+answer:'25',
+hint: "Imagine they are in a row",
+step: `Do caework on whether the "first" vertex is used or not`,
+topic: "counting"
 }
 ]
 console.log(questions)
