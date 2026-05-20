@@ -7828,7 +7828,7 @@ exclamation
         topic: 'logic',
         type: 'mc',
         choices: ['\\(A) 2021\\)', '\\(B) 2022\\)', '\\(C) 2023\\)', '\\(D) 2024\\)', '\\(E) 2025\\)'],
-        answer: '\\(D) 2024\\)',
+        answer: '\\(B) 2022\\)',
         hint: "What is overcounted?",
         step: "Add and then account for overcounting"
     },
