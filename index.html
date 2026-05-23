@@ -37,7 +37,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=stars" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=ads_click,book,check,close_small,handshake,lab_profile,local_fire_department,playlist_add_check,send,star,update,volunteer_activism" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=ads_click,book,check,close_small,handshake,lab_profile,local_fire_department,playlist_add_check,send,star,sunny,update,volunteer_activism" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 <script type="application/ld+json">
@@ -105,8 +105,11 @@ window.addEventListener("load", function () {
 
 send
 </span>
-<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton">
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton" >
 volunteer_activism
+</span>
+<span class="material-symbols-outlined volunteerButton brightness" id="brightness">
+sunny
 </span>
     </div>
   </div>
@@ -145,7 +148,7 @@ stars
 </span>
 <hr class="vertical-hr">
 <span class = "dataCard">
-  <p class = "dataNum">300+</p>
+  <p class = "dataNum">500+</p>
   <p class = "dataText">Practice Questions</p>
 </span>
 <hr class="vertical-hr">
@@ -233,7 +236,7 @@ local_fire_department
     <span class="howworkcardtitle">Real Problems, Original Solutions</span>
     </div>
     <hr class="hrcard">
-    <div class= "howworkcardtext">Saintly is built <mark class="orange">by students for students</mark>. Our 300+ problems are sourced from AMC 10, Solvefire, and YIMO competitions, and every solution is personally written by
+    <div class= "howworkcardtext">Saintly is built <mark class="orange">by students for students</mark>. Our 500+ problems are sourced from AMC 10, Solvefire, and YIMO competitions, and every solution is personally written by
     a <mark class="orange"> real student</mark> in order to be <mark class="orange">clear, understandable, and helpful</mark></div>
   </span>  
   <span class="howworkcard">
@@ -289,7 +292,7 @@ local_fire_department
   <h3 class="subtitle">A Project Turned Product</h3>
   <p class="par">Shortly after I finished my first AMC 10 Math Competition, I realized that <mark class="blue">self-studying hadn't been enough</mark>. I didn't know how, where, and what to study. That being said, I wasn't about to ask my parents
     to spend thousands on expensive tutors. From there, Saintly was born. As a <mark class="blue">project to help my high school math club</mark>, I named Saintly after my school (Santa Teresa) and built it around providing Santa Teresa students with <mark class="blue">free, quality
-    education. </mark>About halfway through developing the project, I realized Saintly had much bigger applications. I've since been working on scaling Saintly into a global tool that others from around the world can use. <mark class="blue">Saintly currently has 500+ users across over 10 countries</mark>
+    education. </mark>About halfway through developing the project, I realized Saintly had much bigger applications. I've since been working on scaling Saintly into a global tool that others from around the world can use. <mark class="blue">Saintly currently has 650+ users across over 10 countries</mark>
   </p>
   </span>
   
@@ -299,53 +302,61 @@ local_fire_department
 <h3 class="subtitle">Backed by a Community of Learners</h3>
 <div class="indexCarouselContainer">
 <div class="indexCarousel">
-  <div class="indexCarouselItem">
+<div class="indexCarouselItem">
     <a href="https://solvefire.net">
-    <img src="solvefire.png">
+        <img src="solvefire.png" class="carousel-logo-light" alt="Solvefire Logo">
+        <img src="solvefireinvert.png" class="carousel-logo-dark" alt="Solvefire Logo">
     </a>
-  </div>
-  <div class="indexCarouselItem">
-    <a href="https://stemise.org">
-    <img src="stemise.png">
-    </a>
-  </div>
-  <div class="indexCarouselItem">
-    <a href="https://www.yimo-official.org/">
-    <img src="yimo.png">
-    </a>
-  </div>
-  <div class="indexCarouselItem">
-    <a href="https://solvefire.net">
-    <img src="solvefire.png">
-    </a>
-  </div>
-  <div class="indexCarouselItem">
-    <a href="https://stemise.org">
-    <img src="stemise.png">
-    </a>
-  </div>
-  <div class="indexCarouselItem">
-    <a href="https://www.yimo-official.org/">
-    <img src="yimo.png">
-    </a>
-  </div>
-    <div class="indexCarouselItem">
-    <a href="https://solvefire.net">
-    <img src="solvefire.png">
-    </a>
-  </div>
-  <div class="indexCarouselItem">
-    <a href="https://stemise.org">
-    <img src="stemise.png">
-    </a>
-  </div>
-  <div class="indexCarouselItem">
-    <a href="https://www.yimo-official.org/">
-    <img src="yimo.png">
-    </a>
-  </div>
-  
 </div>
+<div class="indexCarouselItem">
+    <a href="https://stemise.org">
+        <img src="stemise.png" class="carousel-logo-light" alt="STEMise Logo">
+        <img src="stemiseinvert.png" class="carousel-logo-dark" alt="STEMise Logo">
+    </a>
+</div>
+  <div class="indexCarouselItem">
+    <a href="https://www.yimo-official.org/">
+      <picture>
+    <img src="yimo.png">
+    </picture>
+    </a>
+  </div>
+<div class="indexCarouselItem">
+    <a href="https://solvefire.net">
+        <img src="solvefire.png" class="carousel-logo-light" alt="Solvefire Logo">
+        <img src="solvefireinvert.png" class="carousel-logo-dark" alt="Solvefire Logo">
+    </a>
+</div>
+<div class="indexCarouselItem">
+    <a href="https://stemise.org">
+        <img src="stemise.png" class="carousel-logo-light" alt="STEMise Logo">
+        <img src="stemiseinvert.png" class="carousel-logo-dark" alt="STEMise Logo">
+    </a>
+</div>
+  <div class="indexCarouselItem">
+    <a href="https://www.yimo-official.org/">
+      <picture>
+    <img src="yimo.png">
+    </picture>
+    </a>
+  </div>
+<div class="indexCarouselItem">
+    <a href="https://solvefire.net">
+        <img src="solvefire.png" class="carousel-logo-light" alt="Solvefire Logo">
+        <img src="solvefireinvert.png" class="carousel-logo-dark" alt="Solvefire Logo">
+    </a>
+</div>
+<div class="indexCarouselItem">
+    <a href="https://stemise.org">
+        <img src="stemise.png" class="carousel-logo-light" alt="STEMise Logo">
+        <img src="stemiseinvert.png" class="carousel-logo-dark" alt="STEMise Logo">
+    </a>
+</div>
+  <div class="indexCarouselItem">
+    <a href="https://www.yimo-official.org/">
+    <img src="yimo.png">
+    </a>
+  </div>
 </div>
 <div id = "helpPannel" class = "helpPannel">
   <h3>Need Some Help?</h3>

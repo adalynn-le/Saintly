@@ -16,6 +16,73 @@ async function getTableData() {
   // 'data' is already an array of objects: [{id: 1, ...}, {id: 2, ...}]           
   return data;
 }
+const toggleBrightness = document.getElementById("brightness")
+const carouselLight = document.querySelectorAll("carousel-logo-light")
+const carouselDark = document.querySelectorAll("carousel-logo-dark")
+let colorMode = 'light'
+let colorModeTrue = localStorage.getItem("colorMode")
+console.log(colorModeTrue)
+if  (colorModeTrue !== false){
+        console.log("setting color mode")
+       colorMode =  colorModeTrue
+       console.log(colorModeTrue)
+ if (colorMode === 'dark'){
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark'; 
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", "dark")
+        } else {
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light';
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", "light")
+        }
+} else {
+function toggleSystemTheme() {
+  const root = document.documentElement;
+  
+  // 1. Check what the system preference is, or if it's already set
+  if (!root.style.colorScheme) {
+    // If it's not set yet, match the user's system preferences
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.style.colorScheme = prefersDark ? 'dark' : 'light';
+  }
+  
+  colorMode = root.style.colorScheme;
+
+  // 2. Add the correct matching class right away so the logos render correctly!
+  if (colorMode === 'dark') {
+      root.classList.add('dark');
+      root.classList.remove('light');
+  } else {
+      root.classList.add('light');
+      root.classList.remove('dark');
+  }
+}
+toggleSystemTheme();
+}
+toggleBrightness.addEventListener("click", function(){
+        if (colorMode === 'dark'){
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light'; 
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", colorMode)
+        } else {
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark';
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", colorMode)
+        }
+        console.log(localStorage.getItem("colorMode"));
+});
 //----------Variables-----------//
 let answerInput1 = 0;
 let userAnswer = 0;
@@ -1224,7 +1291,7 @@ const problem5 = [
         used: false,
         difficulty: 1,
         type: "fr",
-        answer: "10",
+        answer: "\\(A) 10\\)",
         solution: `<b>10</b><p>Let's call the total amount of numbers on the board \\(x\\) and the sum of the numbers on the board, without any altering \\(y\\). </p>
         <p>We know that adding \\(3\\) to each value on the board effectively adds \\(3x\\) to the total sum, making the sum \\(3x+y\\). </p>
         <p>We also know that multiplying each number on the board by \\(3\\) is the same as multiplying the sum by \\(3\\), because of the distributve property. this means that the new sum is \\(3y\\)</p>
@@ -1246,6 +1313,7 @@ const problem5 = [
         `,
         topic:"systems of equations",
         discipline: 'algebra',
+        choices: ['\\(A) 10\\)', '\\(B) 11\\)', '\\(C) 12\\)', '\\(D) 14\\)', '\\(E) 15\\)']
     },
     {
         title: "AMC 10A 2024 Problem 5 ⭐",
