@@ -110,6 +110,38 @@ sunny
   <h1 id = "adaptiveTitle">AMC 10 - Adaptive Practice</h1>
   <p>Adaptive Practice works by using a model based on a chess ELO system that assigns you questions with similar difficulty to your level within a range. Problems that are of a much higher difficulty reward you with more points and take away less when incorrect, with the opposite true for easier problems. Your "ELO" is displayed in the top right corner. You can also advance your
     practice through spaced repetition, where incorrect problems will appear to reinforce your learning. The Topics Glossary is there for your convenience so that you can best understand what and how to study as well as practice topics you are often weak on.</p>
+    <div id="diagnosticStuff">
+      <span class="problemsContainer">
+        <div class="problem problem-wrapper problem-adaptive" id="problems-card">
+          <div id="diagnosticTitle" class="amc10title small">Diagnositc</div>
+          <p class="par" id="diagnosticText">Complete this ten question diagnostic to assess your level and set your ELO to a personalized level. You may also skip this diagnostic to start at entry-level questions.</p>
+          
+    <img id="diagnosticImage"></img>
+    <input type="text" id="diagnosticInput" placeholder="Your answer">
+<div id="diagnostic-mc-container" class="hidden">
+  <button class="diagnostic-choice problemBtn" id = "diagnostic-choice1"></button>
+  <button class="diagnostic-choice problemBtn" id = "diagnostic-choice2"></button>
+  <button class="diagnostic-choice problemBtn" id = "diagnostic-choice3"></button>
+  <button class="diagnostic-choice problemBtn" id = "diagnostic-choice4"></button>
+  <button class="diagnostic-choice problemBtn" id = "diagnostic-choice5"></button>
+</div>
+<button id="diagnosticCheck" class="problemBtn">Check Answer</button>
+     <div class="solution" id="diagnosticSolutionContainer" style="display:none;">
+      <h2>Solution</h2>
+      <p id="diagnosticSolutionText"></p>
+
+      </div>
+
+    <button id="diagnosticNext" class="problemBtn" style="display:none;">Next Question</button>
+
+          <button class="problemBtn topicBtn topic-btn" id="startDiagnostic">Start Diagnostic</button>
+          <button class="problemBtn topicBtn topic-btn" id="skip">Skip</button>
+          <button class="problemBtn topicBtn topic-btn" style="display: none" id="startadaptive">Start Practicing!</button>
+        </div>
+          </div>
+      </span>
+    </div>
+    <div id="actualStuff">
   <h2 class="amc10subtitle">Practice Problems</h2>
 
   <!-- Toggle -->
@@ -141,7 +173,7 @@ close
         <span class="material-symbols-outlined warning">
 warning
 </span>
-Previous Mistake</div>
+<p id="prevErrorText" style="display: inline">Previous Mistake</p></div>
     <div id="question-title" class="amc10title small">Question 1:</div>
         <div id="hint">Hint</div>
     <p id="question-text">Loading question...</p>
@@ -171,13 +203,13 @@ Previous Mistake</div>
       <span style="display: flex; flex-direction: row">
       <button style="flex: 1" class="error-tag" id="unfamiliar"><span class="material-symbols-outlined">
 question_mark
-</span>Unfamiliar with topic</button>
+</span><span class="error-tag-text">Unfamiliar With Topic</span></button>
       <button style="flex: 1" class="error-tag" id="stuck"><span class="material-symbols-outlined">
 lightbulb_2
-</span> Had an idea but hit a dead end</button>
+</span> <span class="error-tag-text">Had an idea but hit a dead end</span></button>
 <button style="flex: 1"class="error-tag" id="mistake"><span class="material-symbols-outlined">
 function
-</span> Small arithmetic mistake</button>
+</span> <span class="error-tag-text">Small Arithmetic Mistake</span></button>
 </span>
 </div>
       <button id="submit-a-solution">Submit a Solution</button>
@@ -380,6 +412,7 @@ function
 <div id="topics-dropdown">You haven't gotten anything wrong yet, keep up the good work</div>
 </div>
 </span>
+</div>
 <div id = "helpPannel" class = "helpPannel">
   <h2>Need Some Help?</h2>
   <p class="par">Contact us through our form</p>

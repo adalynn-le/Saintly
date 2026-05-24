@@ -1,13 +1,20 @@
+
 const toggleBrightness = document.getElementById("brightness")
 let colorMode = 'light'
+let diagnosticCorrect = 0
+let diagnosticAlgebraTotal = 1
+let diagnosticGeometryTotal = 1
+let diagnosticNumTheoryTotal = 1
+let diagnosticProbabilityTotal = 1
+let diagnosticAlgebraCorrect = 0
+let diagnosticGeometryCorrect= 0
+let diagnosticNumTheoryCorrect= 0
+let diagnosticProbabilityCorrect = 0
 let colorModeTrue = localStorage.getItem("colorMode")
-console.log(colorModeTrue)
 let textColor = "#e3e2f0"
 let backgroundColor = "rgb(253, 253, 255)"
 if  (colorModeTrue !== false){
-        console.log("setting color mode")
        colorMode =  colorModeTrue
-       console.log(colorModeTrue)
  if (colorMode === 'dark'){
                 colorMode = 'dark';
                 document.documentElement.style.colorScheme = 'dark'; 
@@ -80,7 +87,6 @@ toggleBrightness.addEventListener("click", function(){
                 updateRadarChart()
                 updateBarGraph()
         }
-        console.log(localStorage.getItem("colorMode"));
 });
 // Gets the live computed color string from your CSS :root
 
@@ -91,6 +97,27 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js';
 const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
 const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
 const supabase = createClient(supabaseURL, supabaseKey);
+const imageDiagnostic = document.getElementById("diagnosticImage")
+    imageDiagnostic.style.display = "none"
+    const diagnosticInput = document.getElementById("diagnosticInput")
+    diagnosticInput.style.display = "none"
+    const diagnosticMCContainer = document.getElementById("diagnostic-mc-container")
+    diagnosticMCContainer.classList.add("hidden")
+    const diagnosticCheck = document.getElementById("diagnosticCheck")
+    diagnosticCheck.style.display = "none"
+    const diagnosticChoices = Array.from(document.querySelectorAll(".diagnostic-choice"));
+    const diagnosticNext = document.getElementById("diagnosticNext")
+    diagnosticNext.style.display = "none"
+    const diagnosticSolutionContainer = document.getElementById("diagnosticSolutionContainer")
+    diagnosticSolutionContainer.style.display = 'none'
+    const diagnosticSolutionText = document.getElementById("diagnosticSolutionText")
+let diagnosticQuestions = []
+let index = 0
+let wrongTopicGeometry = []
+let wrongTopicAlgebra = []
+let wrongTopicNum = []
+let wrongTopicProb = []
+let wrongTopicAll = []
 let streakCount = 0
 let unfamiliar = 0
 let stuck = 0
@@ -125,10 +152,12 @@ let wrongQuestionsNum = []
 let wrongQuestionsProb = []
 let wrongQuestionsAll = []
 let userRating = 800
-let userRatingGeometry = 800;
-let userRatingProbability = 800;
-let userRatingNumTheory = 800;
-let userRatingAll = 800;
+let userRatingGeometry = 800
+let userRatingProbability = 800
+let userRatingNumTheory= 800
+let userRatingAll = 800
+let userRatingAlgTrue = localStorage.getItem("eloAlgebra")
+
 let geometryQuestion = 0
 let numQuestion = 0
 let probQuestion = 0
@@ -221,7 +250,7 @@ let stuckTrue = localStorage.getItem("stuck")
 if (stuckTrue === null){
     stuck = 0
 } else {
-    streakCount = parseInt(streakCountTrue)
+    stuck = parseInt(stuckTrue)
 }
 let topicsToWorkOnTrue = localStorage.getItem("topicsToWorkOn")
 if (topicsToWorkOnTrue === null){
@@ -249,7 +278,6 @@ function updateAllRating(){
 let topicsGlossarySetTrue = localStorage.getItem("topicGlossarySet")
 let TOPIC_GLOSSARY = []
 if (topicsGlossarySetTrue === null){
-    console.log("topic glossary set")
  TOPIC_GLOSSARY = [
     {
         id: "word problems",
@@ -718,7 +746,6 @@ TOPIC_GLOSSARY.forEach(q =>{
         q.attempts = 0;
 })
 } else {
-    console.log("topic glossary set (past)")
      TOPIC_GLOSSARY = JSON.parse(localStorage.getItem("topicGlossary"))
 }
 // ---------- Shuffle Function ----------
@@ -3629,7 +3656,7 @@ rating: 1000,
         type: 'fr',
         solution: `<b>4</b>Rearrange all the terms onto one side</p>
         $$
-        x^2020+y^2-2y=0
+        x^{2020}+y^2-2y=0
         $$
         $$
         x^2020+(y-1)^2-1=0
@@ -4002,7 +4029,6 @@ function getNextQuestion(questions, userRating) {
 }
 
 shuffleArray(questions);
-            algebraQuestion = getNextQuestion(questions, userRating);
 // ---------- Question Data Geometry----------
 
 const geometryQ = [
@@ -5187,6 +5213,7 @@ rating: 1400,
     square, the ones that we created by creating the square, are \\(30-60-90\\), because we rotated each sheet by \\(30^\\circ\\). Thus, to find the top edge of the right triangle, we just find \\(3\\cdot \\tan(30)=\\sqrt{3}\\). That means that the edge of the original triangles we had, those opposite the center, have a dimension of \\(3-\\sqrt{3}\\) and the altitude is just \\(3\\), so the total
     area is \\(\\frac{9-3\\sqrt{3}}{2}\\). There are \\(24\\) of these for a total of \\(108-36\\sqrt{3}\\) and \\(108+36+3=147\\)`,
     answer: '147',
+    type: 'fr',
     topic: 'trigonometry',
     hint: "You need to use trigonometry for this problem",
     step: "Divide one of th esquares into 4 smaller squares of equal size (so like corners), and inside each of those, two congruent triangles that make a kite (modeling the corner)"
@@ -6003,7 +6030,8 @@ type: 'mc',
 choices: ['\\(A) 4+4\\sqrt{5}\\)', '\\(B) 10\\sqrt{2}\\)', '\\(C) 5+5\\sqrt{5}\\)', '\\(D) 10 \\sqrt[4]{8}\\)', '\\(E) 20\\)'],
 topic: 'similarity',
 hint: "Label as many values as possible",
-step: "Draw the diagram and label everything you can with variables"
+step: "Draw the diagram and label everything you can with variables",
+answer: '\\(D) 10 \\sqrt[4]{8}\\)'
     },
     {
         title: `AMC 10B 2024 Problem 6 <span class="material-symbols-outlined">
@@ -7996,6 +8024,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+        answer: "\\(A) 9\\)",
 rating: 1200,
         text: `A group of \\(100\\) students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students \\(A\\) and \\(B\\), student \\(A\\)
         and \\(B\\), student \\(A\\) speaks some language that student \\(B\\) does not speak, and student \\(B\\) speaks some language that student \\(A\\) does not speak. What is the least possible total 
@@ -8384,6 +8413,7 @@ rating: 1600,
         his chances of winning. What is the probability that he chooses to reroll exactly two of the dice? ,       `,
         type: 'mc',
         choices:['\\(A) \\frac{7}{36}\\)', '\\(B) \\frac{5}{24}\\)', '\\(C) \\frac{2}{9}\\)', '\\(D) \\frac{17}{72}\\)', '\\(E) \\frac{1}{4}\\)'],
+        answer: '\\(A) \\frac{7}{36}\\)',
         solution: `<b>\\(\\frac{7}{36}\\)</b><p>Jason rerolls \\(0\\) dice when he already has a \\(7\\) and rerolls \\(3\\) dice when he has a \\(6\\) or \\(5\\), assuming he hasn't already won. This is sort of just intuitive</p>
         <p>For Jason to roll \\(2\\) die, the probability of winning MUST be above that of completely rerolling and that of rerolling one.</p>>
         <p>Jason can win by rerolling \\(3\\) dice (or rolling \\(3\\) dice off the bat) in \\(15\\) ways:</p>
@@ -8765,7 +8795,7 @@ star
         difficulty: 3,
 rating: 1200,
         text: `Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4\\)?`,
-        solution: `<b>'\\(\\frac{59}{64}\\)'</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
+        solution: `<b>\\(\\frac{59}{64}\\)</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
         <p>For it to be odd, we need all the factors to be odd. There's a \\(\\frac{1}{2}^6=\\frac{1}{64}\\) chance of this</p>
         <p>If it's divisble by \\(2\\) but not \\(4\\), we need \\(5\\) odds and then either a \\(2\\) or a \\(6\\). That's \\(\\frac{1}{2}^5 \\cdot \\frac{1}{3}=\\frac{1}{192}\\). However, since there are \\(6\\) positions that the \\(2\\) or \\(6\\) can be in, we multiply by \\(6\\) for \\(\\frac{1}{16}\\). We add these and subtract from \\(1\\) for \\(\\frac{59}{64}\\)</p>
         <h3> Common Mistake <span class="material-symbols-outlined">
@@ -9731,6 +9761,14 @@ check
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+const wrongTopicTrue = wrongTopicGeometry.some(item => item.countdown === 0)
+const wrongEntryTopicTrue = wrongTopicGeometry.some(item => item.topic === geometryQuestion.topic)
+if (wrongEntryTopicTrue === false){
+    const item = {topic: geometryQuestion.topic}
+    wrongTopicGeometry.push(item)
+    wrongTopicGeometry[wrongTopicGeometry.length - 1].errorCount = 0
+    wrongTopicGeometry[wrongTopicGeometry.length-1].countdown = 3
+}
         strikeOne.style.color = "var(--primary-color) !important"
         correct = 0;
         hintBtn.style.display = "inline"
@@ -9747,14 +9785,14 @@ const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown 
         if (wrongEntryTrueAlgebra === false){
         wrongQuestionsGeometry.push(geometryQuestion)
         wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].errorCount = 1;
-        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].countdown = 3
+        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].countdown = 5
                 if (mistakesGeometryTrue === true){
             let alreadyDefined = false
             wrongQuestionsGeometry.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
+                        item.countdown = (2 * item.errorCount)
                     }
                 }
             })
@@ -9777,7 +9815,6 @@ const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown 
     } else {
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
-        console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + geometryQuestion.solution;
@@ -9877,6 +9914,14 @@ check
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+const wrongTopicTrue = wrongTopicAlgebra.some(item => item.countdown === 0)
+const wrongEntryTopicTrue = wrongTopicAlgebra.some(item => item.topic === algebraQuestion.topic)
+if (wrongEntryTopicTrue === false){
+    const item = {topic: algebraQuestion.topic}
+    wrongTopicAlgebra.push(item)
+    wrongTopicAlgebra[wrongTopicAlgebra.length - 1].errorCount = 0
+    wrongTopicAlgebra[wrongTopicAlgebra.length-1].countdown = 3
+}
         strikeOne.style.color = "var(--primary-color) !important"
         correct = 0;
         hintBtn.style.display = "inline"
@@ -9893,14 +9938,14 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         if (wrongEntryTrueAlgebra === false){
         wrongQuestionsAlgebra.push(algebraQuestion)
         wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].errorCount = 1;
-        wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].countdown = 3
+        wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].countdown = 5
                 if (mistakesAlgebraTrue === true){
             let alreadyDefined = false
             wrongQuestionsAlgebra.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
+                        item.countdown = (2 * item.errorCount)
                     }
                 }
             })
@@ -9914,7 +9959,6 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         strikes -= 1
         correct = 0
         getExpectedScore(userRating, algebraQuestion.rating)
-        console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
         updateRadarChart()
         updatePieChart()
@@ -9925,7 +9969,6 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
     } else {
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
-        console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + algebraQuestion.solution;
@@ -9947,6 +9990,7 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
     }
 }
+
 function checkAnswerAll() {
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === allQuestion.topic);
     if (topicObj) {
@@ -10009,7 +10053,7 @@ check
         if (wrongEntryTrueAll === false){
         wrongQuestionsAll.push(allQuestion)
         wrongQuestionsAll[wrongQuestionsAll.length - 1].errorCount = 1;
-        wrongQuestionsAll[wrongQuestionsAll.length - 1].countdown = 3
+        wrongQuestionsAll[wrongQuestionsAll.length - 1].countdown = 5
         }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
@@ -10023,13 +10067,21 @@ close_small
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
 const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
+const wrongTopicTrue = wrongTopicAll.some(item => item.countdown === 0)
+const wrongEntryTopicTrue = wrongTopicAll.some(item => item.topic === allQuestion.topic)
+if (wrongEntryTopicTrue === false){
+    const item = {topic: wrongTopicAll.topic}
+    wrongTopicAll.push(item)
+    wrongTopicAll[wrongTopicAll.length - 1].errorCount = 0
+    wrongTopicAll[wrongTopicAll.length-1].countdown = 3
+}
         if (mistakesAllTrue === true){
             let alreadyDefined = false
             wrongQuestionsAll.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
+                        item.countdown = (2 * item.errorCount)
                     }
                 }
             })
@@ -10124,14 +10176,14 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         if (wrongEntryTrueProb === false){
         wrongQuestionsProb.push(algebraQuestion)
         wrongQuestionsProb[wrongQuestionsProb.length - 1].errorCount = 1;
-        wrongQuestionsProb[wrongQuestionsProb.length - 1].countdown = 3
+        wrongQuestionsProb[wrongQuestionsProb.length - 1].countdown = 5
                 if (mistakesProbTrue === true){
             let alreadyDefined = false
             wrongQuestionsProb.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
+                        item.countdown = (2 * item.errorCount)
                     }
                 }
             })
@@ -10143,7 +10195,6 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
         questionType = "probability"
         getExpectedScore(userRating, algebraQuestion.rating)
-        console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
         strikes -= 1
         updateRadarChart()
@@ -10155,11 +10206,18 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
     } else {
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
-        console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + probQuestion.solution;
 const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+const wrongTopicTrue = wrongTopicProb.some(item => item.countdown === 0)
+const wrongEntryTopicTrue = wrongTopicProb.some(item => item.topic === probQuestion.topic)
+if (wrongEntryTopicTrue === false){
+    const item = {topic: probQuestion.topic}
+    wrongTopicProb.push(item)
+    wrongTopicProb[wrongTopicProb.length - 1].errorCount = 0
+    wrongTopicProb[wrongTopicProb.length-1].countdown = 3
+}
                 solutionDiv.style.display = "block";
     solutionText.style.display = "block"
     nextBtn.style.display = "inline-block";
@@ -10200,7 +10258,7 @@ function checkAnswerNum() {
         score = score + numQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
             streakCount++;
-            localStorage.setItem("streakCount")
+            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgressN++;
             if (difficultyN == 1 && difficultyProgressN == 4){
@@ -10250,6 +10308,14 @@ check
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+const wrongTopicTrue = wrongTopicNum.some(item => item.countdown === 0)
+const wrongEntryTopicTrue = wrongTopicNum.some(item => item.topic === numQuestion.topic)
+if (wrongEntryTopicTrue === false){
+    const item = {topic: numQuestion.topic}
+    wrongTopicNum.push(item)
+    wrongTopicNum[wrongTopicNum.length - 1].errorCount = 0
+    wrongTopicNum[wrongTopicNum.length-1].countdown = 3
+}
         strikeOne.style.color = "var(--primary-color) !important"
         correct = 0;
         hintBtn.style.display = "inline"
@@ -10266,14 +10332,14 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
         if (wrongEntryTrue === false){
         wrongQuestionsNum.push(numQuestion)
         wrongQuestionsNum[wrongQuestionsNum.length - 1].errorCount = 1;
-        wrongQuestionsNum[wrongQuestionsNum.length - 1].countdown = 3
+        wrongQuestionsNum[wrongQuestionsNum.length - 1].countdown = 5
                 if (mistakesNumTrue === true){
             let alreadyDefined = false
             wrongQuestionsNum.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
+                        item.countdown = (2 * item.errorCount)
                     }
                 }
             })
@@ -10286,7 +10352,6 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
         questionType = "numTheory"
         strikes -= 1
         getExpectedScore(userRating, algebraQuestion.rating)
-        console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
         updateRadarChart()
         updatePieChart()
@@ -10298,7 +10363,6 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
         updatePieChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
-        console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + numQuestion.solution;
@@ -10322,7 +10386,6 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
     questionType = "numTheory"
 }
 checkBtn.addEventListener("click", function () {
-        console.log(questionType)
     if (questionType === "algebra"){
             checkAnswerAlgebra();
     }
@@ -10356,17 +10419,23 @@ function restart(){
 }
 // ---------- Next Question ----------
 nextBtn.addEventListener("click", function () {
+    console.log(wrongTopicAlgebra)
         strikesContainer.style.display = "none"
-    console.log(questionType)
     if (questionType === "algebra"){
         algebraNext();
         wrongQuestionsAlgebra.forEach(item => {
             item.countdown -= 1;
         })
+                wrongTopicAlgebra.forEach(item => {
+            item.countdown -= 1
+        })
     } else if (questionType === "geometry"){
         geometryNext();
         wrongQuestionsGeometry.forEach(item =>{
             item.countdown -= 1;
+        })
+        wrongTopicGeometry.forEach(item => {
+            item.countdown -= 1
         })
 
     } else if (questionType === "numTheory"){
@@ -10374,28 +10443,42 @@ nextBtn.addEventListener("click", function () {
         wrongQuestionsNum.forEach(item =>{
             item.countdown -= 1;
         })
+                wrongTopicNum.forEach(item => {
+            item.countdown -= 1
+        })
     } else if (questionType === "probability"){
         probNext();
         wrongQuestionsProb.forEach(item =>{
             item.countdown -= 1;
+        })
+                wrongTopicProb.forEach(item => {
+            item.countdown -= 1
         })
     } else if (questionType === 'all'){
         allNext();
         wrongQuestionsAll.forEach(item =>{
             item.countdown -= 1;
         })
+                wrongTopicAll.forEach(item => {
+            item.countdown -= 1
+        })
     }
 });
 
 function algebraNext() {
     problemsWrapper.classList.add("slide-out");
+
     setTimeout(() => {
+        let alreadyDefined = false
+            let topicMistakesTrue = wrongTopicAlgebra.some(i => i.countdown == 0)
+    console.log(topicMistakesTrue)
+    console.log(wrongTopicAlgebra)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         geometryCurrent++;
         const mistakeAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
         if (mistakeAlgebraTrue === true){
-            let alreadyDefined = false
+            alreadyDefined = false
             wrongQuestionsAlgebra.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
@@ -10407,7 +10490,22 @@ function algebraNext() {
                     }
                 }
             })
-        } else if (currentQuestion < questions.length) {
+        } else if (topicMistakesTrue === true){
+    wrongTopicAlgebra.forEach(item => {
+        if (item.countdown === 0){
+            console.log("countdown reached 0")
+            if (alreadyDefined === false){
+                algebraQuestion = questions.find(question => question.topic === item.topic)
+                prevError.style.display = "inline"
+                document.getElementById('prevErrorText').textContent = item.topic
+                alreadyDefined = true
+                loadAlgebra()
+            } else {
+                item.countdown += 1
+            }
+        }
+    })
+}        else if (currentQuestion < questions.length) {
             prevError.style.display = 'none'
     algebraQuestion = getNextQuestion(questions, userRating);
             loadQuestion();
@@ -10427,28 +10525,45 @@ function findTopic(topic){
 }
 function allNext() {
     problemsWrapper.classList.add("slide-out");
+
     setTimeout(() => {
+        let alreadyDefined = false
+                let topicMistakesTrue = wrongTopicAll.some(i => i.countdown === 0)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         allCurrent++;
         const mistakeAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
         if (mistakeAllTrue === true){
-            let alreadyDefined = false
+            alreadyDefined = false
             wrongQuestionsAll.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         allQuestion = item
                         prevError.style.display = "inline"
+                        document.getElementById('prevErroText').textContent = "Previous Error"
                         loadAll();
                     } else {
                         item.countdown += 1
                     }
                 }
             })
-        } else if (currentQuestion < allQ.length) {
+        } else if (topicMistakesTrue === true){
+    wrongTopicAll.forEach(item => {
+        if (item.countdown === 0){
+            if (alreadyDefined === false){
+                allQuestion = allQ.find(question => question.topic === item.topic)
+                prevError.style.display = "inline"
+                document.getElementById('prevErrorText').textContent = item.topic
+                alreadyDefined = true
+                loadAll()
+            } else {
+                item.countdown += 1
+            }
+        }
+    })
+} else if (currentQuestion < allQ.length) {
             prevError.style.display = 'none'
     allQuestion = getNextQuestion(allQ, userRatingAll);
-    console.log(allQuestion)
             loadAll();
 
             // Slide in effect
@@ -10465,7 +10580,6 @@ function updateTopicsDropdown() {
 
 TOPIC_GLOSSARY.sort((a,b) => b.errors-a.errors)
 const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
-console.log(topicsFixed)
     const container = document.getElementById("topics-dropdown");
 
     container.innerHTML = ""; // clear old content
@@ -10521,21 +10635,42 @@ function geometryNext(){
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         geometryCurrent++;
+        let alreadyDefined = false
         const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+        console.log(wrongTopicGeometry)
+        const topicMistakesTrue = wrongTopicGeometry.some(item => item.countdown === 0)
         if (mistakesGeometryTrue === true){
-            let alreadyDefined = false
+        alreadyDefined = false
             wrongQuestionsGeometry.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         geometryQuestion = item
                         prevError.style.display = "inline"
-                        loadGeometry();
+                        document.getElementById("prevErrorText").textContent = "Previous Error"
+                        alreadyDefined = true
+
                     } else {
                         item.countdown += 1
                     }
                 }
             })
-        } else if (geometryCurrent < geometryQ.length) {
+            loadQuestion()
+        } else if (topicMistakesTrue === true){
+    wrongTopicGeometry.forEach(item => {
+        if (item.countdown === 0){
+            if (alreadyDefined === false){
+                geometryQuestion = geometryQ.find(question => question.topic === item.topic)
+                prevError.style.display = "inline"
+                document.getElementById('prevErrorText').textContent = item.topic
+                alreadyDefined = true
+            } else {
+                item.countdown += 1
+            }
+        }
+    })
+    loadQuestion()
+} else if (geometryCurrent < geometryQ.length) {
+
             prevError.style.display = 'none  '
     geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry);
             loadQuestion(geometryCurrent);
@@ -10550,28 +10685,48 @@ restart();
     }, 300); // matches slide-out duration
 questionType = "geometry";
 }
+
 function probNext() {
+
     // Slide out
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
+        let alreadyDefined = false
+            const topicMistakesTrue = wrongTopicProb.some(i => i.countdown === 0)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         probCurrent++;
         const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         if (mistakesProbTrue === true){
-            let alreadyDefined = false
+            alreadyDefined = false
             wrongQuestionsProb.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         probQuestion = item
                         prevError.style.display = "inline"
+                                   document.getElementById('prevErroText').textContent = "Previous Error"
                         loadProb();
                     } else {
                         item.countdown += 1
                     }
                 }
             })
-        } else if (probCurrent < probabilityQ.length) {
+        } 
+        else if (topicMistakesTrue === true){
+    wrongTopicProb.forEach(item => {
+        if (item.countdown === 0){
+            if (alreadyDefined === false){
+                probQuestion = probabilityQ.find(question => question.topic === item.topic)
+                prevError.style.display = "inline"
+                document.getElementById('prevErrorText').textContent = item.topic
+                alreadyDefined = true
+                loadProb()
+            } else {
+                item.countdown += 1
+            }
+        }
+    })
+} else if (probCurrent < probabilityQ.length) {
             prevError.style.display = 'none'
     probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
             loadProb();
@@ -10586,26 +10741,44 @@ restart();
 }
 function numNext(){
     // Slide out
+
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
+        let alreadyDefined = false
+            const topicMistakesTrue = wrongTopicNum.some(i => i.countdown === 0)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         numCurrent++;
         const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
         if (mistakesNumTrue === true){
-            let alreadyDefined = false
+            alreadyDefined = false
             wrongQuestionsNum.forEach(item => {
                 if (item.countdown === 0) {
                     if (alreadyDefined === false){
                         numQuestion = item
                         prevError.style.display = "inline"
+                               document.getElementById('prevErroText').textContent = "Previous Error"
                         loadNumTheory();
                     } else {
                         item.countdown += 1
                     }
                 }
             })
-        } else if (numCurrent < numTheoryQ.length) {
+        } else if (topicMistakesTrue === true){
+    wrongTopicNum.forEach(item => {
+        if (item.countdown === 0){
+            if (alreadyDefined === false){
+                numQuestion = numTheoryQ.find(question => question.topic === item.topic)
+                prevError.style.display = "inline"
+                document.getElementById('prevErrorText').textContent = item.topic
+                alreadyDefined = true
+                loadNumTheory()
+            } else {
+                item.countdown += 1
+            }
+        }
+    })
+} else if (numCurrent < numTheoryQ.length) {
             prevError.style.display = 'none'
     numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory);
             loadQuestion();
@@ -10772,21 +10945,23 @@ function getExpectedScore(userRating, questionRating){
     updateRating(userRating, expectedRating, correct);
 }
 function updateRating(oldRating, expectedRating, correct){
-        console.log(correct)
     let newRating = oldRating + (250 * (correct - expectedRating))
-    console.log(newRating)
     if (questionType !== "all"){
         if (questionType === "algebra"){
                 userRating = newRating
-                console.log(userRating)
+                localStorage.setItem("eloAlgebra", userRating)
         } else if (questionType === "geometry"){
                 userRatingGeometry = newRating
+                localStorage.setItem("algebraGeometry", userRatingGeometry)
         } else if (questionType === "probability"){
                 userRatingProbability = newRating
+                localStorage.setItem("eloProb", userRatingProbability)
         } else if(questionType === "numTheory"){
                 userRatingNumTheory = newRating
+                localStorage.setItem("eloNum", userRatingNumTheory)
         } else if (questionType === "all"){
                 userRatingAll = newRating
+                localStorage.setItem("elo", userRatingAll)
         }
     }
     updateAllRating();
@@ -10827,7 +11002,6 @@ seeStep.addEventListener("click", function() {
                 } else if (questionType === "geometry"){
                         stepOneText.innerHTML = geometryQuestion.step
                 } else if (questionType === "numTheory"){
-                        console.log("numTheoryStep1")
                         stepOneText.innerHTML = numQuestion.step
                 } else if (questionType === "probability"){
                         stepOneText.innerHTML = probQuestion.step
@@ -10840,7 +11014,6 @@ seeStep.addEventListener("click", function() {
 })
 function save(){
         localStorage.setItem("ELO", userRatingAll);
-        console.log(get())
 }
 function get(){
         return localStorage.getItem("ELO")
@@ -11276,23 +11449,15 @@ scales: {
 let pieChart = null
 function updatePieChart(){
 
-    console.log("updating pie chart")
     if (pieChart) {
         pieChart.destroy();
     }
-    console.log(topicsToWorkOn)
     const ctx = document.getElementById("pieChart");
     let xValues = []
     let yValues = []
     topicsToWorkOn.forEach(i => {
-        console.log(i)
-        console.log(TOPIC_GLOSSARY)
         const topicObj = TOPIC_GLOSSARY.find(x => x.id === i);
-                console.log("running for each")
-                console.log(topicObj)
 if (topicObj && topicObj.errors && topicObj.errors > 0) {
-            console.log('running search')
-            console.log("Adding to chart:", topicObj.id, topicObj.errors);
             xValues.push(topicObj.name || topicObj.id); // Use name if available
             yValues.push(topicObj.errors);
         }
@@ -11392,7 +11557,6 @@ updateBarGraph()
 // ---------- Start ----------
 shuffleArray(questions);
 shuffleArray(allQ)
-loadQuestion();
 buttonsWork();
 updateColors();
 updateTopicsDropdown();
@@ -11424,6 +11588,338 @@ allQ.forEach(i => {
         array.push(i)
     }
 })
-console.log(array)
 
-console.log(allQ.length)
+function runDiagnostic() {
+    document.getElementById("actualStuff").style.display = "none"
+    shuffleArray(questions)
+    shuffleArray(geometryQ)
+    shuffleArray(numTheoryQ)
+    shuffleArray(probabilityQ)
+    shuffleArray(allQ)
+    let questionsUsedCount = 0
+    questions.forEach(item => {
+        if (item.rating >= 1100 && item.rating <= 1800) {
+            item.diagnosticElligible = true
+            questionsUsedCount += 1
+            if (questionsUsedCount < 2){
+                diagnosticQuestions.push(item)
+                diagnosticQuestions[diagnosticQuestions.length - 1].subject = "algebra"
+            }
+        } else {
+            item.diagnosticElligible = false
+        }
+    })
+    questionsUsedCount = 0
+        geometryQ.forEach(item => {
+        if (item.rating >= 1100 && item.rating <= 1800) {
+            item.diagnosticElligible = true
+            questionsUsedCount += 1
+            if (questionsUsedCount < 2){
+                diagnosticQuestions.push(item)
+                diagnosticQuestions[diagnosticQuestions.length - 1].subject = "geometry"
+            }
+        } else {
+            item.diagnosticElligible = false
+        }
+    })
+    questionsUsedCount = 0
+        numTheoryQ.forEach(item => {
+        if (item.rating >= 1100 && item.rating <= 1800) {
+            item.diagnosticElligible = true
+            questionsUsedCount += 1
+            if (questionsUsedCount < 2){
+                diagnosticQuestions.push(item)
+                diagnosticQuestions[diagnosticQuestions.length - 1].subject = "numTheory"
+            }
+        } else {
+            item.diagnosticElligible = false
+        }
+    })
+        questionsUsedCount = 0
+        probabilityQ.forEach(item => {
+        if (item.rating >= 1100 && item.rating <= 1800) {
+            item.diagnosticElligible = true
+            questionsUsedCount += 1
+            if (questionsUsedCount < 2){
+                diagnosticQuestions.push(item)
+                diagnosticQuestions[diagnosticQuestions.length - 1].subject = "probability"
+            }
+        } else {
+            item.diagnosticElligible = false
+        }
+    })
+        questionsUsedCount = 0
+        allQ.forEach(item => {
+        if (item.rating >= 1100 && item.rating <= 1800) {
+            item.diagnosticElligible = true
+            questionsUsedCount += 1
+            if (questionsUsedCount < 2){
+                diagnosticQuestions.push(item)
+                if (questions.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) === true){
+                    diagnosticQuestions[diagnosticQuestions.length - 1].subject = "algebra"
+                    diagnosticAlgebraTotal += 1
+                } else if (geometryQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) ===  true){
+                    diagnosticQuestions[diagnosticQuestions.length - 1].subject = "geometry"
+                    diagnosticGeometryTotal += 1
+                } else if (numTheoryQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) ===  true){
+                    diagnosticQuestions[diagnosticQuestions.length - 1].subject = "numTheory"
+                    diagnosticNumTheoryTotal += 1
+                } else if (probabilityQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) === true){
+                    diagnosticQuestions[diagnosticQuestions.length - 1].subject = "probability"
+                    diagnosticProbabilityTotal += 1
+                }
+            }
+        } else {
+            item.diagnosticElligible = false
+        }
+    })
+    shuffleArray(diagnosticQuestions)
+
+document.getElementById("skip").addEventListener("click", function() {
+    document.getElementById("diagnosticStuff").style.display = "none"
+    document.getElementById("actualStuff").style.display = ""
+    userRatingAll = userRatingAllTrue
+    algebraQuestion = getNextQuestion(questions, userRating)
+    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
+    probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
+    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
+    allQuestion = getNextQuestion(allQ, userRatingAll)
+    localStorage.setItem("eloAlgebra", userRating)
+    localStorage.setItem("eloGeometry", userRatingGeometry)
+    localStorage.setItem("eloProb", userRatingProbability)
+    localStorage.setItem("eloNum", userRatingNumTheory)
+    localStorage.setItem("elo", userRatingAll)
+    loadQuestion();
+    scoreCount.innerHTML = Math.round(userRatingAll);
+    updateRadarChart()
+    updateBarGraph()
+    updatePieChart()
+});
+    document.getElementById("startDiagnostic").addEventListener("click", function() {
+        loadDiagnosticQuestion()
+    })
+ 
+
+
+
+}
+   function loadDiagnosticQuestion() {
+    diagnosticNext.style.display = "none"
+    diagnosticCheck.disabled = false
+    diagnosticInput.value = ""
+    diagnosticInput.innerHTML = ""
+            document.getElementById("diagnosticTitle").innerHTML = diagnosticQuestions[index].title
+        document.getElementById("diagnosticText").innerHTML = diagnosticQuestions[index].text
+        document.getElementById("startDiagnostic").style.display = "none"
+        document.getElementById("skip").style.display = "none"
+        diagnosticSolutionContainer.style.display = "none"
+    if (diagnosticQuestions[index].image){
+        imageDiagnostic.src=diagnosticQuestions[index].image;
+        imageDiagnostic.style.display="block";
+    } else {
+        imageDiagnostic.style.display="none";
+    }
+    if (!diagnosticQuestions[index].type || diagnosticQuestions[index].type === "fr") {
+        diagnosticInput.style.display = "inline-block";
+        diagnosticCheck.style.display = "inline-block";
+        diagnosticMCContainer.classList.add('hidden')
+    }
+    if (diagnosticQuestions[index].type === "mc") {
+        diagnosticMCContainer.classList.remove("hidden");
+        diagnosticMCContainer.style.display = "block"
+        diagnosticInput.style.display = "none"
+
+        diagnosticChoices.forEach((btn, i) => {
+            btn.innerHTML = diagnosticQuestions[index].choices[i];
+            btn.addEventListener("click", function() {
+                handleDiagnosticAnswer(diagnosticQuestions[index].choices[i])
+            })
+            MathJax.typesetPromise([btn]).catch(()=>{})
+        });
+    } else {
+        diagnosticMCContainer.classList.add("hidden")
+        diagnosticMCContainer.style.display = "none"
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([
+            document.getElementById("diagnosticTitle"),
+            document.getElementById("diagnosticText"),
+            document.getElementById("diagnostic-mc-container")
+        ]).catch(()=>{});
+    }
+} 
+
+function handleDiagnosticAnswer(choice) {
+    diagnosticInput.value = choice
+    diagnosticCheck.click();
+    if (nextBtn.style.display !== "none"){
+diagnosticChoices.forEach(btn => btn.disabled = true);
+    }
+}
+diagnosticCheck.addEventListener("click", function () {
+    diagnosticCheck.disabled = true
+    console.log("checking diagnositc answer")
+    const userAnswer = diagnosticInput.value.trim();
+    console.log(userAnswer)
+    const correctAnswer = diagnosticQuestions[index].answer.trim();
+    console.log(correctAnswer)
+    if (userAnswer === correctAnswer) {
+        if (diagnosticQuestions[index].subject === "algebra"){
+            diagnosticAlgebraCorrect += 1
+        } else if (diagnosticQuestions[index].subject === 'geometry'){
+            diagnosticGeometryCorrect += 1
+        } else if (diagnosticQuestions[index].subject === 'numTheory'){
+            diagnosticNumTheoryCorrect += 1
+        } else if (diagnosticQuestions[index].subject === 'probability'){
+            diagnosticProbabilityCorrect += 1
+        }
+        diagnosticCorrect += 1
+        diagnosticSolutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + diagnosticQuestions[index].solution;
+       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
+
+
+    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+        diagnosticSolutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect. ` + diagnosticQuestions[index].solution;
+    }
+    diagnosticSolutionContainer.style.display = "block";
+    diagnosticNext.style.display = "inline-block";
+
+        MathJax.typesetPromise([diagnosticSolutionText]).catch(()=>{});
+});
+diagnosticNext.addEventListener("click", function() {
+    if (index <= 3){
+    index += 1
+    loadDiagnosticQuestion()
+    } else {
+    updatePieChart();
+    updateRadarChart();
+    updateBarGraph();
+    let totalRating = 0
+    diagnosticQuestions.forEach(i => {
+        let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
+        totalRating += expectedRating
+    })
+    userRatingAll = Math.round(1300 + ((50 * (diagnosticCorrect - totalRating))))
+    console.log(userRatingAll)
+        let algebraRating = 0
+    diagnosticQuestions.forEach(i => {
+        if (i.subject === "algebra"){
+            let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
+            algebraRating +=  expectedRating
+        }
+    })
+    userRating = Math.round(1300 + ((50 * (diagnosticAlgebraCorrect - algebraRating))))
+    let geometryRating = 0
+    diagnosticQuestions.forEach(i => {
+        if (i.subject === "geometry"){
+            let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
+            geometryRating +=  expectedRating
+        }
+    })
+    userRatingGeometry = Math.round(1300 + ((50 * (diagnosticGeometryCorrect - geometryRating))))
+    let numTheoryRating = 0
+    diagnosticQuestions.forEach(i => {
+        if (i.subject === "numTheory"){
+            let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
+            numTheoryRating +=  expectedRating
+        }
+    })
+    userRatingNumTheory = Math.round(1300 + ((50 * (diagnosticNumTheoryCorrect - numTheoryRating))))
+    let probRating = 0
+    diagnosticQuestions.forEach(i => {
+        if (i.subject === "probability"){
+            let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
+            probRating +=  expectedRating
+        }
+    })
+    scoreCount.innerHTML = Math.round(userRatingAll);
+    document.getElementById("diagnosticTitle").innerHTML = "Diagnostic Complete"
+    document.getElementById("diagnosticText").innerHTML = `<p>Your ELO: ${userRatingAll}</p>
+    <p>Accuracy: ${diagnosticCorrect}/5</p>`
+    diagnosticMCContainer.style.display = "none"
+    diagnosticSolutionContainer.style.display = "none"
+    diagnosticNext.style.display = "none"
+    diagnosticInput.style.display = "none"
+           myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
+        diagnosticCheck.style.display = "none"
+        imageDiagnostic.style.display = "none"
+        document.getElementById("startadaptive").style.display = "block"
+        
+
+
+    console.log("here")
+    }
+})
+
+if (userRatingAlgTrue === null){
+    userRating = 800
+} else {
+    userRating = userRatingAlgTrue
+}
+let userRatingGeometryTrue = localStorage.getItem("eloGeometry")
+if (userRatingGeometryTrue === null){
+    userRatingGeometry = 800
+} else {
+    userRatingGeometry = userRatingGeometryTrue
+}
+let userRatingProbTrue = localStorage.getItem("eloProb")
+if (userRatingProbTrue === null){
+    userRatingProbability = 800
+} else {
+    userRatingProbability = userRatingProbTrue
+}
+let userRatingNumTrue = localStorage.getItem("eloNum")
+if (userRatingNumTrue === null){
+    userRatingNumTheory = 800
+} else {
+    userRatingNumTheory = userRatingNumTrue
+}
+let userRatingAllTrue = localStorage.getItem("elo")
+if (userRatingAllTrue == null){
+    userRatingAll = 800
+    runDiagnostic()
+} else{
+    userRatingAll = parseInt(userRatingAllTrue)
+        document.getElementById("diagnosticStuff").style.display = "none"
+    userRatingAll = userRatingAllTrue
+    algebraQuestion = getNextQuestion(questions, userRating)
+    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
+    probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
+    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
+    allQuestion = getNextQuestion(allQ, userRatingAll)
+    localStorage.setItem("eloAlgebra", userRating)
+    localStorage.setItem("eloGeometry", userRatingGeometry)
+    localStorage.setItem("eloProb", userRatingProbability)
+    localStorage.setItem("eloNum", userRatingNumTheory)
+    localStorage.setItem("elo", userRatingAll)
+    loadQuestion();
+
+
+}
+document.getElementById("startadaptive").addEventListener("click", function() {
+    document.getElementById("diagnosticStuff").style.display = "none"
+    document.getElementById("actualStuff").style.display = ""
+    userRatingAll = userRatingAllTrue
+    algebraQuestion = getNextQuestion(questions, userRating)
+    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
+    probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
+    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
+    allQuestion = getNextQuestion(allQ, userRatingAll)
+    localStorage.setItem("eloAlgebra", userRating)
+    localStorage.setItem("eloGeometry", userRatingGeometry)
+    localStorage.setItem("eloProb", userRatingProbability)
+    localStorage.setItem("eloNum", userRatingNumTheory)
+    localStorage.setItem("elo", userRatingAll)
+    loadQuestion();
+    scoreCount.innerHTML = Math.round(userRatingAll);
+    updateRadarChart()
+    updateBarGraph()
+    updatePieChart()
+});
+console.log(userRatingAll)

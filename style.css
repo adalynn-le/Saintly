@@ -5,7 +5,7 @@
   --background-variant: light-dark(rgb(255, 255, 255), #212227) ;
   --background-color: light-dark(rgb(253, 253, 255), #222329);
   --highlight-color: light-dark(#ebf3ff, #2c3146);
-  --accent-color: #ffb192;
+  --accent-color: light-dark(#ffb192, #ffb192);
   --text-color: light-dark(#625c6e, #e3e2f0);
   --text-variant: light-dark(#9e99aa, #8e95a5);
   --shadow-color: light-dark(rgb(218, 217, 235), rgba(7, 4, 3, 0.5));
@@ -124,7 +124,7 @@ main {
     height: 100vh;        /* full viewport height */
     width: 175px;
     background-color: var(--background-variant);
-    border-right: 1.9px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
     overflow-y: auto;     /* scroll inside sidebar if content too tall */
   transform: translateX(25px);
   font-family: 'National Park', sans-serif;
@@ -312,7 +312,6 @@ main {
 }
 #leaderboardWrapper{
   width:  75%;
-  margin-left: -150px !important
 }
 
 h1 {
@@ -1691,7 +1690,7 @@ body{
   margin: 20px auto;
   background: transparent;
   border: 1px solid var(--primary-color);
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   border-radius: 10px;
   padding: 5px 10px;
   font-family: "National Park", sans-serif;
@@ -1700,7 +1699,7 @@ body{
 }
 #submit-a-solution:hover{
   background-color: var(--primary-color);
-  color: var(--background-color);
+  color: white !important;
   border: 1px solid var(--primary-color);
   cursor: pointer;
 }
@@ -2200,7 +2199,7 @@ th {
   justify-content:center !important;
   height: fit-content !important;
   position: relative;
-  left: calc(25% - 50px);
+  left: calc(17% - 50px);
 }
 
 .problemsContainer{
@@ -3035,29 +3034,7 @@ main {
     color: #88B0FF; /* Changes color when they hover */
     border-bottom: 2px solid #88B0FF;
 }
-.error-tag{
-  background-color: transparent !important;
-  text-align: center !important;
-  color: var(--primary-color) !important;
-  border: 2px solid var(--primary-color) !important;
-  border-radius: 10px !important;
-  font-family: "National Park", sans-serif
-}
-.error-tag .material-symbols-outlined{
-  font-size: 30px !important;
-  margin-top: 15px !important
-}
-.error-tag:hover{
-  background-color: var(--highlight-color-orange) !important;
-  text-align: center !important;
-  color: var(--accent-color) !important;
-  border: 2px solid var(--accent-color) !important;
-  border-radius: 10px !important;
-}
 
-.error-tag:hover .material-symbols-outlined{
-  color: var(--accent-color) !important;
-}
 .tree-display {
     display: flex;
     flex-direction: column;
@@ -3237,4 +3214,52 @@ html.light .carousel-logo-dark {
 .mc-choice.selected {
   background-color: var(--accent-color) !important;
   color: white !important;
+}
+.error-tag{
+  background-color: transparent !important;
+  text-align: center !important;
+  color: #88B0ff !important;
+  border: 2px solid var(--primary-color) !important;
+  border-radius: 10px !important;
+  font-family: "National Park", sans-serif
+}
+.error-tag .material-symbols-outlined{
+  font-size: 30px !important;
+  margin-top: 15px !important
+}
+.error-tag:hover{
+  background-color: var(--highlight-color-orange) !important;
+  text-align: center !important;
+  color: var(--accent-color) !important;
+  border: 2px solid var(--accent-color) !important;
+  border-radius: 10px !important;
+}
+
+.error-tag:hover .material-symbols-outlined{
+  color: var(--accent-color) !important;
+}
+.error-tag-text{
+  color: var(--primary-color) !important
+}
+.error-tag:hover .error-tag-text{
+  color: var(--accent-color) !important
+}
+/* ==========================================================================
+   Dashboard Content Sizing Fix 
+   ========================================================================== */
+#actualStuff {
+    display: block;        /* Fallback block display */
+    width: 100%;           /* Fill 100% of the space provided by the <main> element */
+    max-width: 100%;       /* Prevent the container from ever forcing horizontal overflow */
+    box-sizing: border-box; /* Ensure paddings and borders don't stretch the width */
+}
+
+/* Ensure any internal chart rows or layout panels wrap cleanly instead of breaking out */
+#actualStuff .dashboard-row, 
+#actualStuff .charts-container {
+    display: flex;
+    flex-wrap: wrap;       /* Allows cards/charts to drop onto the next line if space runs out */
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
