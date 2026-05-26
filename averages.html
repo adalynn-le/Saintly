@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Saintly | Prime Factorization</title>
+  <link rel="stylesheet" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">   
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=ads_click,bedtime,book,check,close_small,exclamation,handshake,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,sunny,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+ 
+<meta name="keywords" content="arithmetic, what is arithmetic, AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+    <meta property="og:title" content="Saintly | Averages" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+<meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+
+</head>
+<body>
+   <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script src="sidebar.js"></script>
+<nav id = "top-bar">
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "topics dash.html">Topics Dashboard</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "algebraic manipulation.html">Speed-Distance-Time</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
+  <div class="right-align">
+    <a href="https://discord.gg/SuAvtn7595" style="justify-self: flex-end;" class="start-practice hover" id="joindiscord">Join Our Discord!</a>
+  <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+
+send
+</span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton" >
+volunteer_activism
+</span>
+<span class="material-symbols-outlined volunteerButton brightness" id="brightness">
+sunny
+</span>
+    </div>
+</nav>
+<main> 
+    <div class="minicontainer">
+
+  <h1 class="amc10title">Averages</h1>
+  <p class="amc10subtitle"></p>
+  <h2 class="amc10subtitle">5 Problems • 3 sub-topics</h2>
+  <h2 class="par" style="display: inline; vertical-align: middle !important;">Adalynn Le • 5/25/2026</h2>
+<!-- Table of Contents  -->
+  <div id="tableOfContents">
+  <h3 class="amc10subtitle ittybitty" style="color: var(--primary-color)">Table of Contents</h3>
+  <ol><a href="#intro">Introduction</a></ol>
+  <ol><a href="#arithmetic">Arithmetic Mean</a></ol>
+<ol><a href="#geometric">Geometric Mean</a></ol>
+<ol><a href="#speed">Average Speed</a></ol>
+<ol><a href="#conclusion">Conclusion</a></ol>
+  </div>
+  <h2 class="amc10subtitle" id="introduction">Introduction</h2>
+  <p class="par">When we think of averages, we tend to think of the typical \(\frac{S_{n}}{n}\) arithmetic mean, but there is quite a bit more to it and its applications. Different types of means are approrpiate and important in different situations, and 
+    they are calculated in different ways. By studying specific averages and means, we end up with different constraints, nescessary information, etc.
+  </p>
+    <span id = "howworkcards">
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">What is it?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">The mean is a statistical measurement that effectively centers data or a dataset. It can be calculated arithmetically or geometrically.
+    </div>
+  </span>
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">Why Study?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">It is difficult to single out the importance of averages and means because they are so widely applicalbe and apply to different things based on their form. The most important to note however are that arithmetic mean gives us an exact middle and can tell us 
+        things about the sum or number of values in a data set. Geometric mean has a lot of applications in triangles and finding values.
+    </div>
+  </span>
+</span> 
+</div>
+<h2 id="arithmetic" class="amc10subtitle">Arithmetic Mean</h2>
+<span style="display: flex; flex-direction: row" style="display: inline-block; flex: 1">
+    <span>
+<p class="par" >The arithmetic mean of a set of numbers is <mark class="blue">the sum of all numbers in the set divided by the number of values in the set.</mark> Algebraicly, it can be writte as \(\frac{S_{n}}{n}\). This is a valuable metric for <mark class="blue">finding the dead center of a set of numbers.</mark> It is a
+key metric in statistics, although for datasets with outliers it can be noticeably skewed.</p>
+<p class="par">Chances are, arithmetic mean is what you think of when you first hear of averages. AMC 10 knows this, so when they say average, it will <mark class = "blue">always refer to arithmetic mean, unless otherwise mentioned.</mark> The reason that it is called arithmetic mean is because the relationship is completely linear. The 
+alternative, geometric mean, uses powers and inverse reciprocal relationships. It is also conveniently used in geometric shapes whereas the arithmetic mean is exclusively for direct arithmetic relationshpis and statistics</p>
+<p class="par">Notice that in an arithmetic mean, you don't need to know each individual value, you just need the sum and number of values. If you have to add values, you just add to the sum and number, not having to recalculate the whole thing. This is a key part of the AMC 10 and their traps and logic.</p>
+</span>
+<span style="display: inline-block; flex: 1; margin-left: 20px" class="howworkcard">
+    <h3 class="amc10subtitle ittyBitty">Arithmetic Mean Calculator</h3>
+    <div style="display: flex; flex-direction: row">
+        <p style="display: inline-block">\(a=\)</p><input type="number" placeholder="some number" id="a">
+            </div>
+        <p style="display: inline-block">\(b=\)</p><input type="number" placeholder="some number" id="b">
+
+            <p id="output"></p>
+</span>
+</span>
+<h2 id="geometric" class="amc10subtitle">Geometric Mean</h2>
+<span style="display: flex; flex-direction: row">
+    <span style="display: flex; flex: 1; max-width: 800px; overflow: hidden; margin-right: 20px" class="howworkcard">
+        <h3 class="amc10subtitle ittyBitty">Geometric Mean Calculator</h3>
+                <p style="display: inline-block">\(a=\)</p><input type="number" placeholder="some number" id="aGeometric">
+            </div>
+        <p style="display: inline-block">\(b=\)</p><input type="number" placeholder="some number" id="bGeometric">
+
+            <p id="outputGeometric"></p>
+            </span>
+            <span style="display: inline-block; flex: 1">
+                <p>The geometric mean of a number, \(x\), satisfies <mark class="blue"> \(\frac{x}{a}=\frac{b}{x}\)and visa versa.</mark> If you solve this for \(x\), you would get \(x=\sqrt{ab}\). My interpretation is that this is called a geometric mean
+                because it has to do with reciprocals and exponents, characteristic of geometric series, although there are also geometric properties. By the AM-GM inequality, we know that <mark class="blue">the geometirc mean will always be less than or equal to the arithmetic mean.</mark> The arithmetic mean can only be found for two
+            numbers, not a whole set, and rather than being the central focal point, has purposes for trigonometry and triangles</p>
+                <p>The geometric mean of two numbers has several geometric features as well, particularly in triangles. Consider a right triangle with an altitude drawn from the right angle to the hypotenuse. It splits the hypotenuse into two parts. <mark class="blue">The geometric means of the lengths of the two sections is equal to the length of the hypotenuse.</mark>
+                Furthermore, if you find <mark class="blue">the geometric mean of the whole hypotenuse and one section of the hypotenuse, it will be equal to the leg adjacnet to thta section.</mark> Both of these can be proved by using the fact that the altitude splits the triangle into similar triangles.</p>
+            </span>
+</span>
+<h2 class="amc10subtitle">Average Speed</h2>
+<p class="par">One final aspect that I would like to highlight about averages is the importance of weighting. For instance, take speed. Average speed over time is weighted by the amount of time spent at each speed, so the average of two numbers is different than the average of two speeds of those magnitudes, assuming the same distance. In arithmetic mean, you would multiply certain values by certain things to represent this. Imagine the same value coming up multiple times in a data set. In the case of 
+    average speed, it's like each second spent at a speed is an entry in the data set, so it gets recorded again, which we simplify as multiplication. A more intuitive example is shown below.
+</p>
+<div class="howworkcard">
+  <h3 class="amc10subtitle">Average Speed</h3>
+  <p class="par">Assume somebody covers the same distance twice at two different speeds, going one way and then going back. What is their average speed in the time it takes them to go back and forth (assume the distance is 10 miles)</p>
+  <p id="avgOneLabel">Speed: 55mph</p>
+  <p id="avgOneTime">Time: 5.5 hrs</p>
+          <input type="range" id="avgOne" min="10" max="100" step="1" value="0`">
+  <p id="avgTwoLabel">Speed: 55mph</p>
+  <p id="avgTwoTime">Time 5.5 hrs</p>
+            <input type="range" id="avgTwo" min="10" max="100" step="1" value="0`">
+  <p id="avgSpeed"></p>
+
+
+</div>
+<h2 id="conclusion" class="amc10subtitle">Conclusion</h2>
+<p class="par">There are different types of averages and means that define different aspects about two numbers. These can be used in different situations, whether it be for geometric figures, statistic, or speed. The way in which it is calculated matters, not just in methodology but also for finding things like the weight and importance of 
+    one value and element in the data set. Since the arithmetic mean is only reliant on the sum, there is no need to find individual values in the set.
+</p>
+
+<div class="problem problemWrapper">
+<h3 id="question-title" class="amc10title small">Question 1:</h3>
+    <p id="question-text">Loading question...</p>
+    <input type="text" id="answer-input" placeholder="Your answer">
+<div id="mc-container" class="hidden">
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+</div>
+
+    <button id="check-btn" class="problemBtn">Check Answer</button>
+
+    <div class="solution" id="solution" style="display:none;">
+      <h2>Solution</h2>
+      <p id="solution-text"></p>
+      <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
+      </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+
+    </main>
+<footer class="saintly-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img class="footer-logo" src="fullLogo.png" height="35px"></img>
+            <p>Making competition math accessible for everyone.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="am10.html">AMC 10</a></li>
+                <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+                <li><a href="amc10algebra.html">Algebra</a></li>
+                <li><a href="algebra.html">Topics Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <div class="social-icons">
+      <a>saintly.math@gmail.com</a>
+              <span style="display: flex; flex-direction: row">
+<a href="https://instagram.com/saintly.math" class="fa fa-instagram" style="display: inline-block"><p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>@saintly.math</p></a>
+</span>
+                            <span style="display: flex; flex-direction: row">
+<a href="https://pinterest.com/saintlymath" class="fa fa-pinterest" style="display: inline-block"><p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>Saintly</p></a>
+
+</span>
+                </div>
+        </div>
+        <div class="footer-section">
+          <h4>Privacy</h4>
+          <ul><li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Saintly Math. Built with drive.
+    </div>
+</footer>
+</body>
+<script src="averagesjs.js" type="module"></script>
+</html>
