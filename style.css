@@ -112,8 +112,14 @@ main {
     flex: 1;
     padding: 10px;
     margin-top: 0px !important;
-    width: 75%;
+    width: 92% !important;
     background-color: var(--background-color);
+    position: relative; 
+    align-self: center;
+}
+body{
+  align-content: center !important;
+  justify-content: center !important
 }
 
 
@@ -1232,7 +1238,8 @@ input, textarea{
     width: 75%;        /* was 50%, which cut off the heading */
     margin-right: auto;
     text-align: center; /* ensures block-level centering */
-    margin-bottom: -100px;
+    margin-bottom: -140px;
+    overflow: visible;
 }
 
 .rounded-text, .cursive-text {
