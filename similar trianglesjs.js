@@ -3508,7 +3508,7 @@ rating: 1000,
         560+49+49=658
         `,
         answer: '658',
-        topic: 'surface area',
+        topic: 'composite shapes',
         hint: "Find the surface area of each `side` independently",
         step: "The non-top and bottom all have surface areas of \\(1^2+2^2+[...]+7^2\\). The top and bottom have surface areas of \\(7^2\\)"
     },

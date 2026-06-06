@@ -1,3 +1,71 @@
+
+const toggleBrightness = document.getElementById("brightness")
+const carouselLight = document.querySelectorAll("carousel-logo-light")
+const carouselDark = document.querySelectorAll("carousel-logo-dark")
+let colorMode = 'light'
+let colorModeTrue = localStorage.getItem("colorMode")
+console.log(colorModeTrue)
+if  (colorModeTrue !== false){
+        console.log("setting color mode")
+       colorMode =  colorModeTrue
+       console.log(colorModeTrue)
+ if (colorMode === 'dark'){
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark'; 
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", "dark")
+        } else {
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light';
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", "light")
+        }
+} else {
+function toggleSystemTheme() {
+  const root = document.documentElement;
+  
+  // 1. Check what the system preference is, or if it's already set
+  if (!root.style.colorScheme) {
+    // If it's not set yet, match the user's system preferences
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.style.colorScheme = prefersDark ? 'dark' : 'light';
+  }
+  
+  colorMode = root.style.colorScheme;
+
+  // 2. Add the correct matching class right away so the logos render correctly!
+  if (colorMode === 'dark') {
+      root.classList.add('dark');
+      root.classList.remove('light');
+  } else {
+      root.classList.add('light');
+      root.classList.remove('dark');
+  }
+}
+toggleSystemTheme();
+}
+toggleBrightness.addEventListener("click", function(){
+        if (colorMode === 'dark'){
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light'; 
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", colorMode)
+        } else {
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark';
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", colorMode)
+        }
+        console.log(localStorage.getItem("colorMode"));
+});
 let correctCount = 0;
 let wrongCount = 0;
 let longestStreak = 0;
@@ -200,7 +268,7 @@ const myConfetti = confetti.create(confettiCanvas, {
 });
 
 
-const questions = [
+let questions = [
     {
         title: `AMC 10A 2020 Problem 7 <span class="material-symbols-outlined">
 star
@@ -1885,14 +1953,6 @@ function loadQuestion(index) {
 
 
 //----------Load Cards-------------
-function loadCards(){
-    if (window.MathJax){
-        MathJax.typsetPromise([cardOneText]).catch(()=>{});
-    }
-}
-
-
-
 //-----------MCQ----
 function handleMCAnswer(choice) {
     answerInput.value = choice; // reuse existing checker
@@ -2124,6 +2184,303 @@ document.getElementById("restart-btn").addEventListener("click", function() {
 // ---------- Start ----------
 console.log(questions.length)
 progressBar.style.width = "0%"
-toggleProblems();
-loadCards();
+toggleProblems()
 loadQuestion(currentQuestion);
+
+ const helpPannel = document.getElementById("helpPannel")
+const { createClient } = window.supabase;
+const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
+const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
+const supabase = createClient(supabaseURL, supabaseKey);
+      let helpOn = false;
+  let helpBtn = document.getElementById('helpButton')
+let accountTrue = false
+let accountBtn = document.getElementById("accountBtn")
+let accountPannel = document.getElementById("accountPannel")
+let overlay = document.getElementById("overlay")
+accountBtn.addEventListener("click", function () {
+        let account = true
+
+    document.getElementById("no-account").addEventListener("click", function() {
+    if (account === false){
+        account = true
+        document.getElementById("login").style.display = "block"
+        document.getElementById("signup").style.display = "none"
+                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+    } else {
+        document.getElementById('login').style.display = "none"
+        account = false
+        document.getElementById("signup").style.display = "block"
+        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+    }
+    })
+    helpPannel.style.display  = "none"
+    if (accountTrue === false){
+        accountPannel.style.display = "block"
+        overlay.style.display = "block"
+        accountTrue = true
+    } else {
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+overlay.addEventListener("click", function(){
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } 
+    if (accountTrue === true){
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+helpBtn.addEventListener("click", function () {
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
+});
+//-----------------------Authentication--------------------------
+document.getElementById("btn-signup").addEventListener("click", async () => {
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+  const { data, error } = await supabase.auth.signUp({ email, password });
+  if (error) return alert(error.message);
+  if (data.user) {
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+        numTheorySorted: questions,
+        numTheoryIndex: currentQuestion,
+        numTheoryStreak: streakCount
+      }
+    ]);
+    
+    alert("Account created!");
+    
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+  }
+});
+async function loadUserStats(userId) {
+  const { data: profile, error } = await supabase
+    .from('profiles')
+   .select('id, username, numTheorySorted, numTheoryIndex')
+   .eq('id', userId)
+
+  if (error) {
+    console.error("Error downloading profile data:");
+    return;
+  }
+
+  if (profile) {
+    console.log(profile)
+    let userProfile = profile[0]
+    console.log(userProfile.username)
+    questions = userProfile.numTheorySorted || questions;
+    currentQuestion = userProfile.numTheoryIndex || 0;
+    document.getElementById("username-display").innerHTML = userProfile.username
+    streakCount =  userProfile.numTheoryStreak || 0
+    document.getElementById("btn-dashboard").innerHTML = userProfile.username
+  } 
+}
+const loginBtn = document.getElementById("btn-login");
+loginBtn.addEventListener("click", async () => {
+  console.log("clicked")
+    const email = document.getElementById("login-email").value.trim()
+    const password = document.getElementById("login-password").value
+    if (!email || !password) {
+        
+document.getElementById("login-error").innerHTML = "Please Input Both Fields"
+    return;
+  }
+  loginBtn.disabled = true;
+const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password,
+  });
+
+  if (error) {
+    alert("Login Error: " + error.message);
+    loginBtn.disabled = false;
+    loginBtn.innerText = "Login";
+    return;
+  }
+  document.getElementById('accountPannel').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+  accountTrue = false
+  // 3. Pull their ELO data out of the database (Step 2 below)
+  await loadUserStats(data.user.id);
+  
+  // Reset button state
+  loginBtn.disabled = false;
+
+})
+const logoutBtn = document.getElementById('btn-logout');
+
+logoutBtn.addEventListener('click', async () => {
+            document.getElementById("login").style.display = "block"
+  // 1. Call Supabase to clear the secure cloud session
+  console.log('logging out')
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    alert("Error logging out: " + error.message);
+    return;
+  }
+
+
+  alert("You have been logged out successfully!");
+  window.location.reload();
+});
+
+const deleteAccountBtn = document.getElementById('btn-delete-account');
+
+if (deleteAccountBtn) {
+  deleteAccountBtn.addEventListener('click', async () => {
+    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
+    
+    if (!confirmed) return;
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+
+    const userId = session.user.id;
+
+    // 3. Clear their specific user row from your public profiles table
+    const { error: dbError } = await supabase
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+
+    if (dbError) {
+      alert("Error erasing profile data: " + dbError.message);
+      return;
+    }
+
+    await supabase.auth.signOut();
+    alert("Your account records and progress have been completely erased.");
+    window.location.reload();
+  });
+}
+
+document.getElementById("btn-signup").addEventListener("click", async () => {
+    
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+
+  // Validate fields aren't empty
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+
+  // 1. Create the user credentials using your existing supabase client
+  const { data, error } = await supabase.auth.signUp({ email, password });
+
+  if (error) return alert(error.message);
+
+  // 2. Insert their CURRENT ELO ratings into your 'profiles' table
+  if (data.user) {
+    
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+      }
+    ]);
+    
+    alert("Account created!");
+    
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+  }
+});
+console.log(supabase)
+
+
+
+supabase.auth.onAuthStateChange(async (event, session) => {
+  const accountBtn = document.getElementById('accountBtn');
+  const logoutBtn = document.getElementById('btn-logout');
+  const loginBtn = document.getElementById('btn-login');
+  const signup = document.getElementById('no-account');
+  const login = document.getElementById('login');
+  const usernameDisplay = document.getElementById("username-display");
+  const createAccount = document.getElementById("no-account")
+  const deleteAccount = document.getElementById("btn-delete-account")
+  const usernameDisplayModal = document.getElementById("btn-dashboard")
+
+  // A. Check if a secure user session actually exists
+  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
+    console.log("Secure adaptive practice session discovered for:", session.user.email);
+
+    // Toggle UI display blocks safely
+    if (logoutBtn) logoutBtn.style.display = 'block';
+    if (login) login.style.display = "none";
+    console.log("login goes invisible")
+    if (createAccount) createAccount.style.display = "none"
+    if (deleteAccount) deleteAccount.style.display = "block"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
+
+    // 1. Fetch cloud records safely using correct lowercase columns
+  const { data: profile, error } = await supabase
+loadUserStats(session.user.id)
+loadQuestion(currentQuestion)
+progressBarFunction()
+  } else  {
+    console.log("No user session found. Reverting adaptive practice to Guest defaults.");
+    if (typeof runDiagnostic === "function")
+    
+    if (logoutBtn) logoutBtn.style.display = 'none';
+    if (login) login.style.display = "block";
+    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
+    if (createAccount) createAccount.style.display = "block"
+    if (deleteAccount) deleteAccount.style.display = "none"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
+    currentQuestion = 0
+
+  }
+});
+
+  async function saveUserStatsToCloud() {
+    console.log("updating")
+  // 1. Get the currently logged-in user session
+  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError || !session) {
+    return; // Stop here if they are a guest
+  }
+
+  const userId = session.user.id;
+  // 2. Push all the live active values up to the database
+  const { data, error } = await supabase
+    .from('profiles')
+    .update({
+numTheorySorted: questions,
+numTheoryIndex: currentQuestion,
+numTheoryStreak: streakCount
+
+    })
+    .eq('id', userId); // ⚠️ CRITICAL: Ensure you only update THIS user's row!
+
+  if (error) {
+    console.error("Failed to sync stats to cloud database:", error.message);
+  }
+
+}

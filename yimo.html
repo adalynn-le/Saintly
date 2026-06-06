@@ -29,7 +29,7 @@ src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">   
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=ads_click,bedtime,book,check,close_small,exclamation,function,handshake,lab_profile,leaderboard,lightbulb_2,local_fire_department,playlist_add_check,question_mark,send,star,sunny,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=account_circle,ads_click,bedtime,book,check,close_small,exclamation,function,handshake,lab_profile,leaderboard,lightbulb_2,local_fire_department,playlist_add_check,question_mark,send,star,sunny,volunteer_activism,warning" />
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <script>
@@ -60,7 +60,7 @@ window.addEventListener("load", function () {
   </p>
 </div>
 <div id="sidebarPlaceholder"></div>
-<script src="sidebar.js"></script>
+<script type="module" src="sidebar.js"></script>
 <nav id = "top-bar">
   <a class="aContainer" href="index.html">Home</a>
   <p class="aContainer">•</p>
@@ -76,7 +76,7 @@ window.addEventListener("load", function () {
 
   </div>
   <div class="right-align">
-    <a href="https://discord.gg/SuAvtn7595" style="justify-self: flex-end;" class="start-practice hover" id="joindiscord">Join Our Discord!</a>
+
   <span class="material-symbols-outlined airplane helpButton" id="helpButton">
 
 send
@@ -87,6 +87,13 @@ volunteer_activism
 <span class="material-symbols-outlined volunteerButton brightness" id="brightness">
 sunny
 </span>
+    <a href="https://discord.gg/SuAvtn7595" style="justify-self: flex-end;" class="start-practice hover" id="joindiscord">Join Our Discord!</a>
+<button id="accountBtn" style=" height: 34px; display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 6px; color: #88b0ff; font-family: 'National Park', sans-serif; padding: 0 12px; margin: 0 5px; cursor: pointer;  width: auto !important; max-width: fit-content !important;" class="start-practice hover">
+  <span class="material-symbols-outlined" style="margin: 0; font-size: 20px; display: inline-flex; align-items: center; justify-content: center; color: #88b0ff;">
+    account_circle
+  </span>
+  <span style="white-space: nowrap;" id="username-display">Log In</span>
+</button>
     </div>
 </nav>
 <main>  
@@ -253,6 +260,38 @@ function
 <div id="topics-dropdown">You haven't gotten anything wrong yet, keep up the good work</div>
 </div>
 </span>
+<div class="helpPannel"  id="accountPannel">
+  <div id="login">
+    <h2 class="amc10subtitle ittyBitty">Welcome Back!</h2>
+      <p class="par">Access your progress across all your devices</p>
+    <p id="login-error" style="color: red"></p>
+    <input type="email" id="login-email" placeholder="Email"/>
+    <input type="password" id="login-password" placeholder = "Password"/>
+  <span style="display: flex; flex-direction: row; justify-content: flex-start; gap: 16px">
+
+  </span>
+        <button id="btn-login" class="start-practice">Log In</button>
+
+
+  </div>
+  <div id="signup" style="display: none">
+    <p id="signup-error" style="color: red"></p>
+  <h2 class="amc10subtitle ittyBitty">Make an Account</h2>
+  <p class="par">Want to store your progress, see how you stand in comparison to other students, and climb the leaderboard? Create a free account today!</p>
+  <div id="auth-container">
+  <input type="email" id="auth-email" placeholder="Email" />
+  <input type="password" id="auth-password" placeholder="Password" />
+  <input type="text" id="auth-username" placeholder="Display Name" />
+  </div>
+      <button id="btn-signup" class="start-practice">Sign Up</button>
+</div>
+<a class="amc10subtitle ittyBitty pset-link" href="your dashboard.html" id="btn-dashboard">Username</a>
+        <button id="btn-logout" class="start-practice"style="display: none; cursor: pointer;">Log Out</button>
+  <button id="no-account" class="start-practice">Don't have an account? Sign Up!</button>
+  <button id="btn-delete-account" class="start-practice" style="display: none">
+  Delete Account & Wipe Progress
+</button>
+</div>
 <div id = "helpPannel" class = "helpPannel">
   <h2>Need Some Help?</h2>
   <p class="par">Contact us through our form</p>
@@ -383,7 +422,6 @@ function
 <canvas id="confetti-canvas"></canvas>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script type = "module" src="yimojs.js"></script>
 <script src="footer.js"></script>
 </html>

@@ -1,13 +1,14 @@
+const { createClient } = window.supabase;
+const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
+const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
+const supabase = createClient(supabaseURL, supabaseKey);
 const toggleBrightness = document.getElementById("brightness")
 let colorMode = 'light'
 let colorModeTrue = localStorage.getItem("colorMode")
-console.log(colorModeTrue)
 let textColor = "#e3e2f0"
 let backgroundColor = "rgb(253, 253, 255)"
 if  (colorModeTrue !== false){
-        console.log("setting color mode")
        colorMode =  colorModeTrue
-       console.log(colorModeTrue)
  if (colorMode === 'dark'){
                 colorMode = 'dark';
                 document.documentElement.style.colorScheme = 'dark'; 
@@ -80,7 +81,6 @@ toggleBrightness.addEventListener("click", function(){
                 updateRadarChart()
                 updateBarGraph()
         }
-        console.log(localStorage.getItem("colorMode"));
 });
 // Gets the live computed color string from your CSS :root
 
@@ -212,7 +212,6 @@ if (topicsToWorkOnTrue === null){
 let topicsGlossarySetTrue = localStorage.getItem("topicGlossarySetYIMO")
 let TOPIC_GLOSSARY = []
 if (topicsGlossarySetTrue === null){
-    console.log("topic glossary set")
  TOPIC_GLOSSARY = [
     {
         id: "word problems",
@@ -761,7 +760,8 @@ const questions = [
         \\(4r=16\\) for \\(r=4\\). By grouping by \\(2\\), we have \\(6r^2-10d^2=86\\) so \\(86-10d^2=86\\) so \\(d=1\\). We thus have roots \\(1,3,5,7\\) so we write \\((x-1)(x-3)(x-5)(x-7)\\) and expand for \\(|-176+105|=71\\)`,
         hint: "Center the roots around a common value",
         step: "Write the roots are \\(r-3d, r-d, r+d, r+3d\\) where \\(r\\) is the average of the middle two roots",
-        topic: "algebraic maniupulation"
+        topic: "algebraic maniupulation",
+        answer: '71'
     }
 ]
 const geometryQ = [{
@@ -944,7 +944,6 @@ allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
-console.log(allQ)
 // ---------- DOM Elements ----------
 const questionTitle = document.getElementById("question-title");
 const questionText = document.getElementById("question-text");
@@ -987,6 +986,46 @@ const mistakeBtn = document.getElementById("mistake")
 const unfamiliarBtn = document.getElementById("unfamiliar")
 const stuckBtn = document.getElementById("stuck")
 const errorTags = document.getElementById("tagQuestion")
+let accountTrue = false
+accountBtn.addEventListener("click", function () {
+        let account = true
+
+    document.getElementById("no-account").addEventListener("click", function() {
+    if (account === false){
+        account = true
+        document.getElementById("login").style.display = "block"
+        document.getElementById("signup").style.display = "none"
+                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+    } else {
+        document.getElementById('login').style.display = "none"
+        account = false
+        document.getElementById("signup").style.display = "block"
+        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+    }
+    })
+    helpPannel.style.display  = "none"
+    if (accountTrue === false){
+        accountPannel.style.display = "block"
+        overlay.style.display = "block"
+        accountTrue = true
+    } else {
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+overlay.addEventListener("click", function(){
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } 
+    if (accountTrue === true){
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
 helpBtn.addEventListener("click", function () {
     if (helpOn === true){
         helpPannel.style.display = "none";
@@ -998,6 +1037,7 @@ helpBtn.addEventListener("click", function () {
         helpOn = true
     }
 });
+
 let questionsAnswered = 0;
 let percentage = 0;
 let percetnageStr = "0";
@@ -1029,8 +1069,6 @@ function recordWrongTopic(topic) {
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
     if (topicObj) {
         topicObj.errors += 1;
-        console.log(topicObj.errors)
-        console.log(topicObj.attempts)
         topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
         localStorage.setItem("topicGlossaryYIMO", JSON.stringify(TOPIC_GLOSSARY))
         localStorage.setItem("topicGlossarySetYIMO", true)
@@ -1047,6 +1085,8 @@ function buttonsWork(){
         loadQuestion();
     });
     geometryButton.addEventListener("click", function() {
+
+        console.log("geometry button clicked")
         questionType = "geometry";
         updateColors();
         prevError.style.display = "none"
@@ -1289,7 +1329,6 @@ function loadNumTheory() {
 
     probQuestion = probabilityQ[probIndex]
 function loadProb() {
-    console.log("loading prob")
     mcChoices.forEach(btn => btn.disabled = false);
 
     questionTitle.innerHTML = probQuestion.title;
@@ -1474,7 +1513,6 @@ const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown 
         updateRadarChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
-        console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + geometryQuestion.solution;
@@ -1605,7 +1643,6 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         strikes -= 1
         correct = 0
         getExpectedScore(userRating, algebraQuestion.rating)
-        console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
@@ -1617,7 +1654,6 @@ const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown ==
         updateRadarChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
-        console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + algebraQuestion.solution;
@@ -1829,7 +1865,6 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
         questionType = "probability"
         getExpectedScore(userRating, algebraQuestion.rating)
-        console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
         strikes -= 1
     } else  if (strikes === 1){
@@ -1843,7 +1878,6 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         updateRadarChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
-        console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + probQuestion.solution;
@@ -1968,7 +2002,6 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
         questionType = "numTheory"
         strikes -= 1
         getExpectedScore(userRating, algebraQuestion.rating)
-        console.log(userRatingAll)
         scoreCount.innerHTML = Math.round(userRatingAll)
     } else  if (strikes === 1){
         seeStep.style.display = "inline"
@@ -1981,7 +2014,6 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
         updateRadarChart()
         errorTags.style.display = "inline"
         strikeThree.style.color = "var(--primary-color) !important"
-        console.log("no strikes")
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + numQuestion.solution;
@@ -2005,7 +2037,6 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
     questionType = "numTheory"
 }
 checkBtn.addEventListener("click", function () {
-        console.log(questionType)
     if (questionType === "algebra"){
             checkAnswerAlgebra();
     }
@@ -2135,7 +2166,6 @@ function allNext() {
         } else if (currentQuestion < allQ.length) {
             prevError.style.display = 'none'
     allQuestion = allQ[index]
-    console.log(allQuestion)
             loadAll();
 
             // Slide in effect
@@ -2152,7 +2182,6 @@ function updateTopicsDropdown() {
 
 TOPIC_GLOSSARY.sort((a,b) => b.errors-a.errors)
 const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
-console.log(topicsFixed)
     const container = document.getElementById("topics-dropdown");
 
     container.innerHTML = ""; // clear old content
@@ -2364,20 +2393,8 @@ if (questionType === "probability"){
         loadAll(allCurrent);
         questionType = 'all'
     }
-
+saveUserStatsToCloud()
 }
-overlay.addEventListener("click", function(){
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-    
-});
 shuffleArray(probabilityQ)
 
     // 5. Update Container HTML
@@ -2459,13 +2476,10 @@ function getExpectedScore(userRating, questionRating){
     updateRating(userRating, expectedRating, correct);
 }
 function updateRating(oldRating, expectedRating, correct){
-        console.log(correct)
     let newRating = oldRating + (250 * (correct - expectedRating))
-    console.log(newRating)
     if (questionType !== "all"){
         if (questionType === "algebra"){
                 userRating = newRating
-                console.log(userRating)
         } else if (questionType === "geometry"){
                 userRatingGeometry = newRating
         } else if (questionType === "probability"){
@@ -2510,7 +2524,6 @@ seeStep.addEventListener("click", function() {
                 } else if (questionType === "geometry"){
                         stepOneText.innerHTML = geometryQuestion.step
                 } else if (questionType === "numTheory"){
-                        console.log("numTheoryStep1")
                         stepOneText.innerHTML = numQuestion.step
                 } else if (questionType === "probability"){
                         stepOneText.innerHTML = probQuestion.step
@@ -2657,23 +2670,15 @@ scales: {
 let pieChart = null
 function updatePieChart(){
 
-    console.log("updating pie chart")
     if (pieChart) {
         pieChart.destroy();
     }
-    console.log(topicsToWorkOn)
     const ctx = document.getElementById("pieChart");
     let xValues = []
     let yValues = []
     topicsToWorkOn.forEach(i => {
-        console.log(i)
-        console.log(TOPIC_GLOSSARY)
         const topicObj = TOPIC_GLOSSARY.find(x => x.id === i);
-                console.log("running for each")
-                console.log(topicObj)
 if (topicObj && topicObj.errors && topicObj.errors > 0) {
-            console.log('running search')
-            console.log("Adding to chart:", topicObj.id, topicObj.errors);
             xValues.push(topicObj.name || topicObj.id); // Use name if available
             yValues.push(topicObj.errors);
         }
@@ -2771,3 +2776,315 @@ updatePieChart()
 updateRadarChart()
 updateBarGraph()
 loadQuestion()
+
+
+//-----------------------Authentication--------------------------
+document.getElementById("btn-signup").addEventListener("click", async () => {
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+  const { data, error } = await supabase.auth.signUp({ email, password });
+  if (error) return alert(error.message);
+  if (data.user) {
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+        topicsToWorkOnYimo: topicsToWorkOn,
+        TOPICGLOSSARYYimo: TOPIC_GLOSSARY,
+        unfamiliarYimo:  unfamiliar,
+        stuckYimo: stuck,
+        mistakeYimo: mistake,
+        algebraTotalYimo: algebraTotal,
+        algebraWrongYimo: algebraWrong,
+        geometryTotalYimo: geometryTotal,
+        geometryWrongYimo: geometryWrong,
+        numTotalYimo: numTotal,
+        probTotalYimo: probTotal,
+        numWrongYimo: numWrong,
+        probWrongYimo: probWrong,
+        streakYimo: streakCount
+      }
+    ]);
+    
+    alert("Account created!");
+    
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+    loadQuestion()
+  }
+});
+async function loadUserStats(userId) {
+  const { data: profile, error } = await supabase
+    .from('profiles')
+   .select('id, username, topicsToWorkOnYimo, TOPICGLOSSARYYimo, unfamiliarYimo, stuckYimo, mistakeYimo, algebraTotalYimo, algebraWrongYimo, geometryTotalYimo, geometryWrongYimo, numTotalYimo, numWrongYimo, probTotalYimo, probWrongYimo, streakYimo')
+   .eq('id', userId)
+
+  if (error) {
+    console.error("Error downloading profile data:", error);
+    return;
+  }
+
+  if (profile) {
+    let userProfile = profile[0]
+    document.getElementById("username-display").innerHTML = userProfile.username
+    document.getElementById("streak-count").innerHTML = userProfile.streakYimo;
+    topicsToWorkOn = userProfile.topicsToWorkOnYimo || [];
+    TOPIC_GLOSSARY = userProfile.TOPICGLOSSARYYimo || TOPIC_GLOSSARY;
+    unfamiliar = userProfile.unfamiliarYimo || 0;
+    stuck = userProfile.stuckYimo || 0;
+    mistake = userProfile.mistakeYimo || 0;
+    algebraTotal = userProfile.algebraTotalYimo || 0;
+    algebraWrong = userProfile.algebraWrongYimo || 0;
+    geometryTotal = userProfile.geometryTotalYimo || 0;
+    geometryWrong = userProfile.geometryWrongYimo || 0;
+    numTotal = userProfile.numTotalYimo || 0;
+    numWrong = userProfile.numWrongYimo || 0;
+    probTotal = userProfile.probTotalYimo || 0;
+    probWrong = userProfile.probWrongYimo || 0;
+    document.getElementById("btn-dashboard").innerHTML = userProfile.username
+
+
+    
+    // 3. Trigger your chart re-renders
+    if (typeof updateRadarChart === "function") updateRadarChart();
+    if (typeof updateBarGraph === "function") updateBarGraph();
+    if (typeof updatePieChart === "function") updatePieChart()
+  } 
+}
+const loginBtn = document.getElementById('btn-login');
+loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("login-email").value.trim()
+    const password = document.getElementById("login-password").value
+    if (!email || !password) {
+        
+document.getElementById("login-error").innerHTML = "Please Input Both Fields"
+    return;
+  }
+  loginBtn.disabled = true;
+const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password,
+  });
+
+  if (error) {
+    alert("Login Error: " + error.message);
+    loginBtn.disabled = false;
+    loginBtn.innerText = "Login";
+    return;
+  }
+  document.getElementById('accountPannel').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+  accountTrue = false
+  // 3. Pull their ELO data out of the database (Step 2 below)
+  await loadUserStats(data.user.id);
+  
+  // Reset button state
+  loginBtn.disabled = false;
+  loadQuestion()
+  updateRadarChart()
+  updateBarGraph()
+  updatePieChart()
+
+    loadQuestion();
+
+})
+const logoutBtn = document.getElementById('btn-logout');
+
+logoutBtn.addEventListener('click', async () => {
+      mistake = 0
+  stuck = 0
+  unfamiliar = 0
+  algebraTotal = 0
+  algebraWrong = 0
+  geometryTotal = 0
+  geometryWrong = 0
+  numTotal = 0
+  numWrong = 0
+  probTotal = 0
+  probWrong = 0
+  topicsToWorkOn = []
+  TOPIC_GLOSSARY.forEach(i => {
+    i.errors = 0
+  })
+  loadQuestion()
+  updateRadarChart()
+  updateBarGraph()
+  updatePieChart()
+            document.getElementById("login").style.display = "block"
+  // 1. Call Supabase to clear the secure cloud session
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    alert("Error logging out: " + error.message);
+    return;
+  }
+
+
+  alert("You have been logged out successfully!");
+  window.location.reload();
+});
+
+const deleteAccountBtn = document.getElementById('btn-delete-account');
+
+if (deleteAccountBtn) {
+  deleteAccountBtn.addEventListener('click', async () => {
+    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
+    
+    if (!confirmed) return;
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+
+    const userId = session.user.id;
+
+    // 3. Clear their specific user row from your public profiles table
+    const { error: dbError } = await supabase
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+
+    if (dbError) {
+      alert("Error erasing profile data: " + dbError.message);
+      return;
+    }
+
+    await supabase.auth.signOut();
+
+    localStorage.clear();
+    loadQuestion()
+
+    alert("Your account records and progress have been completely erased.");
+    window.location.reload();
+  });
+}
+
+document.getElementById("btn-signup").addEventListener("click", async () => {
+    
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+  const { data, error } = await supabase.auth.signUp({ email, password });
+  if (error) return alert(error.message);
+  if (data.user) {
+    
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+      }
+    ]);
+    
+    alert("Account created!");
+    
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+    loadQuestion()
+  }
+});
+
+
+
+supabase.auth.onAuthStateChange(async (event, session) => {
+  const accountBtn = document.getElementById('accountBtn');
+  const logoutBtn = document.getElementById('btn-logout');
+  const loginBtn = document.getElementById('btn-login');
+  const signup = document.getElementById('no-account');
+  const login = document.getElementById('login');
+  const usernameDisplay = document.getElementById("username-display");
+  const createAccount = document.getElementById("no-account")
+  const deleteAccount = document.getElementById("btn-delete-account")
+  const usernameDisplayModal = document.getElementById("btn-dashboard")
+
+  // A. Check if a secure user session actually exists
+  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
+
+    // Toggle UI display blocks safely
+    if (logoutBtn) logoutBtn.style.display = 'block';
+    if (login) login.style.display = "none";
+    if (createAccount) createAccount.style.display = "none"
+    if (deleteAccount) deleteAccount.style.display = "block"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
+
+    // 1. Fetch cloud records safely using correct lowercase columns
+  const { data: profile, error } = await supabase
+loadUserStats(session.user.id)
+  } else  {
+    if (typeof runDiagnostic === "function") runDiagnostic();
+    
+    if (logoutBtn) logoutBtn.style.display = 'none';
+    if (login) login.style.display = "block";
+    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
+    if (createAccount) createAccount.style.display = "block"
+    if (deleteAccount) deleteAccount.style.display = "none"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
+    // Reset runtime math parameters back to baseline
+    userRatingAll = 1200;
+    userRating = 1200;
+    userRatingGeometry = 1200;
+    userRatingNumTheory = 1200;
+    userRatingProbability = 1200;
+    mistake = 0;
+    stuck = 0;
+    unfamiliar = 0;
+    topicsToWorkOn = [];
+    
+    if (Array.isArray(TOPIC_GLOSSARY)) {
+      TOPIC_GLOSSARY.forEach(i => { if(i) i.errors = 0; });
+    }
+
+    const scoreCountElement = document.getElementById('scoreCount');
+    if (scoreCountElement) scoreCountElement.innerHTML = 1200;
+
+    // Redraw empty guest charts
+    if (typeof updateBarGraph === "function") updateBarGraph();
+    if (typeof updateRadarChart === "function") updateRadarChart();
+    if (typeof updatePieChart === "function") updatePieChart();
+
+  }
+});
+  async function saveUserStatsToCloud() {
+  // 1. Get the currently logged-in user session
+  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError || !session) {
+    return; // Stop here if they are a guest
+  }
+
+  const userId = session.user.id;
+
+  // 2. Push all the live active values up to the database
+  const { data, error } = await supabase
+    .from('profiles')
+    .update({
+        topicsToWorkOnYimo: topicsToWorkOn,
+        TOPICGLOSSARYYimo: TOPIC_GLOSSARY,
+        unfamiliarYimo:  unfamiliar,
+        stuckYimo: stuck,
+        mistakeYimo: mistake,
+        algebraTotalYimo: algebraTotal,
+        algebraWrongYimo: algebraWrong,
+        geometryTotalYimo: geometryTotal,
+        geometryWrongYimo: geometryWrong,
+        numTotalYimo: numTotal,
+        probTotalYimo: probTotal,
+        numWrongYimo: numWrong,
+        probWrongYimo: probWrong,
+        streakYimo: streakCount
+    })
+    .eq('id', userId); // ⚠️ CRITICAL: Ensure you only update THIS user's row!
+
+  if (error) {
+    console.error("Failed to sync stats to cloud database:", error.message);
+  }
+
+}
+buttonsWork()

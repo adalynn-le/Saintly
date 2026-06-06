@@ -1,12 +1,4 @@
 
-// Main Functions
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-import Chart from 'https://esm.sh/chart.js/auto';
 const questions = [
     {
 title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
@@ -83,12 +75,12 @@ star
     used: false, 
     difficulty: 2,
 rating: 1000, 
+type: 'mc',
     text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`, 
     solution: `<b>18</b><p>We do synthetic division, effectively treating \\(a\\) and \\(b\\) like numbers. We end up with \\(a+b+2=4\\) and \\(2a+b+12=6\\). We solve for \\(a=-8\\), \\(b=10\\), so \\(10-(-8)=18\\)`, 
     choices: ['\\(A) 14\\)','\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'], 
     answer: '\\(E) 18\\)', 
     topic: 'division',
-    type: "mc",
     hint: `Try using synthetic division`,
     step: "Do synthetic division and treat \\(a\\) and \\(b\\) as constants to get algebraic equations that you can solve to find the variables"
 },
@@ -250,9 +242,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         h=2
         $$
         <p> Two hours after Betsy's starting time is <b> 4:30 <b> </p>
-
+        <p><b>Solution by Fluffy1234</b><p>
+        <p>First, use \\(d=rt\\) to find the time it took to reach another. With the distance as \\(45\\) miles and the rate as \\(30\\), (The math: \\(18+12=30\\)) we get time as \\(1 \\frac{1}{2}\\) hours. At this point Beth has traveled \\(18\\) miles (\\(12 \\cdot 1.5 = 18\\)) and Alicia has biked \\(27\\) (\\(18 \\cdot 1.5)\\). Checking we get \\(27+18=45\\). Ergo, our answer is twenty-seven.</p>
+        <b>Solution by Toulouse 100</b>
+        <p>Andy travels \\(8\\) miles before Betsy starts, subtracting his distance from hers, she travels \\(4\\)mph faster, therefore it would take \\(2\\) hours
         `,
-        video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         topic: "systems of equations",
         hint: "Set up an algebraic equation relating the two",
         step: "Use the expressions \\(8(h+1)\\) and \\(12h\\) to model the distance that each person travels"
@@ -313,34 +307,14 @@ star
         text: "What is \\(10! - 7! \\cdot 6!\\)",
         type: "mc",
         choices: ["\\(A) -120\\)", "\\(B) 0\\)", "\\(C) 120\\)", "\\(D) 600\\)", "\\(E) 720\\)"],
-        answer: "\\(A) -120\\)",
-        solution: `<b> -120 </b> <p>Pure intuition tells is that \\(10!\\) is going to be less than \\(7! \\cdot 6!\\), but let's expand that further.</p>
-        <p> First let's consider the definition of a factorial, and expand it all out: </p>
-        $$
-        10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        $$
-        7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        $$
-        6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        <p>Note that the majority of \\(10!\\) overlaps with \\(7!\\). If we can account for the other numbers, \\(10\\), \\(9\\), and \\(8\\), we can prove that the second term is larger.</p> 
-        <p>\\(10\\) is \\(5 \\cdot 2 \\), which we can find in \\(6!\\) </p>
-        <p> With the numbers we have left, we can't get \\(9\\) or \\(8\\), but we can we can confidently say that the remaining product is greater than \\(6!\\). This means that \\(10!\\) is less than \\(7! \\cdot 6!\\), meaning that the answer would be negative. Since there is only one negative answer, the answer must be -120. </p>
-        <p> On the AMC 10, it is not always the best option to compute everything. Due to the time constraint, if you see an answer that is different, or if you have a strong intuition, it could be strategic to go with that. </p> 
-        
-        <h3>Common Mistake<span class="material-symbols-outlined">
-exclamation
-</span><span class="material-symbols-outlined">
-exclamation
-</span><span class="material-symbols-outlined">
-exclamation
-</span></h3>
-        <p>Don't overcomplicate! Be sure to read the whole question, with all answers first. If one sticks out, ask yourself why. No need to solve a whole factorial when you can ues logic.</p>`,
-        topic: "logic",
-        hint:"Which answer sticks out?",
-        step: "Expand the factorial",
+        answer: "\\(B) 0\\)",
+        solution: `<b>0</b>
+        <p><b>Solution by Mason</b></p>
+        <p>We can factor out \\(7!\\) and get \\(7!(8 \\cdot 9 - 6!)\\). Expand this to find \\(7!(720-720)=0\\)
+        `,
+        topic: "factoring",
+        hint:"What can you factor out?",
+        step: "Factor out \\(7!\\)",
     },
     {
         used: false,
@@ -351,8 +325,8 @@ star
 </span>`,
         text: "For how many integer values \\(x\\) is \\(|2x| \\le 7\\pi \\)",
         type: "fr",
-        answer: "19",
-        solution: `<b> 19 </b> <p> First, let's get an approximation for \\(7\\pi\\). Assuming \\(\\pi = 3.14\\) we can just multiply them and find the nearest integer that is less than or equal to the product. Since 0.14 is a relatively small decimal, it's pretty intuitive that this integer is \\(21\\). Knowing this, we can rewrite our question to </p>
+        answer: "21",
+        solution: `<b>21</b> <p> First, let's get an approximation for \\(7\\pi\\). Assuming \\(\\pi = 3.14\\) we can just multiply them and find the nearest integer that is less than or equal to the product. Since 0.14 is a relatively small decimal, it's pretty intuitive that this integer is \\(21\\). Knowing this, we can rewrite our question to </p>
         $$
         |2x| \\le 21
         $$
@@ -366,7 +340,7 @@ star
         $$
         2x \\ge -21
         $$
-        <p>From here, we know that the bounds are \\(x = 10\\) and \\(x = -10\\). Counting all integers between these two numbers yields 19, because 0 can only be counted once. </p>
+        <p>From here, we know that the bounds are \\(x = 10\\) and \\(x = -10\\). Counting all integers between these two numbers yields 21, because 0 can only be counted once. </p>
         <h3>Common Mistake<span class="material-symbols-outlined">
 exclamation
 </span><span class="material-symbols-outlined">
@@ -374,7 +348,7 @@ exclamation
 </span><span class="material-symbols-outlined">
 exclamation
 </span></h3>
-        <p>Don't double-count 0. An easy mistake to make is thinking the answer is 10+10, but remember that 0 can only be counted once. You can also just check that the answer is 19 by counting on your fingers(yes you'd have to reset, but it is a decent way to assure youreslf of your answer.)</p>
+        <p>Don't double-count 0. An easy mistake to make is thinking the answer is 10+10, but remember that 0 can only be counted once. You can also just check that the answer is 21 by counting on your fingers(yes you'd have to reset, but it is a decent way to assure youreslf of your answer.)</p>
         `,
         topic: "inequalities",
         hint: "What is \\(7\\pi\\) equal to? Can we do casework in this situation?",
@@ -877,7 +851,7 @@ rating: 800,
         $$
         x=50
         $$`,
-        topic: "percents",
+        topic: "algebraic manipulation",
         hint: "Try to set up an algebraic equation using the decimal form of percents.",
         step: "Use the equation \\(1.085(0.8x)=43\\)"
     },
@@ -1017,7 +991,7 @@ rating: 1600,
         <p>We rewrite the equation as \\(\\lfloor{x}^2\\rfloor=3x-2\\). This tells us that a linear graph is equal to the exponential progression of another graph. Since we have a square on one side, and a square of an integer, we know that the LHS must be \\(geq 0\\). If it is \\(0\\), that gives \\(\\frac{2}{3}\\). We can test a few other values within 
         reason for \\(\\lfloor{x}^2\\rfloor\\), \\(1\\) gives us \\(x=1\\), we knew that. \\(4\\) gives us \\(2\\), once again,we knew that. \\(9\\) gives us \\(\\frac{11}{3}\\)). \\(16\\) gives us \\(\\frac{18}{3}\\) which is greater than \\(5\\). From here on out, we can make the
         conjecture that the values of \\(x\\) won't fit the floor function, giving us \\(4\\) solutions`,
-        topic: "floor functions",
+        topic: "functions and graphing",
         hint: "Imagine the behavior in a normal graph, and then consider the floor",
         step: "Rewrite has \\(\\lfloor{x}^2\\rfloor=3x-2\\)"
     },
@@ -1213,7 +1187,7 @@ rating: 800,
         step: "Substitute everything in and solve the equation \\(|1-|2-3||-||1-2|-3|\\)"
     },
     {
-        title: `<span class="material-symbols-outlined">
+        title: `AMC 10B 2022 Problem 5 <span class="material-symbols-outlined">
 star
 </span>`,
         difficulty: 1,
@@ -1646,7 +1620,7 @@ rating: 1000,
         choices: ["\\(A) 3-2a\\)", "\\(B) 1-a\\)", "\\(C) 1\\)", "\\(D) a+1\\)", "\\(E) 3\\)"],
         solution: `<b>\\(3-2a\\)</b><p>Recognize that \\(-\\sqrt{(a-1)^2}\\) is equal to \\(a-1\\). Add this to \\(a-2\\) and get \\(2a-3\\). The absolute value of this becomes \\(3-2a\\).</p>`,
         answer: "\\(A) 3-2a\\)",
-        topic: "absolute value",
+        topic: "functions and graphing",
         hint: "How does squaring and absolute value affect the equation?",
         step: "Go operation by operation with \\(-a\\)"
 
@@ -1787,6 +1761,8 @@ star
 rating: 800,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
         solution: `<b>11110</b><p>With something like this, it's simply easier to just brute force your way through. Add the values and find that it is \\(11110\\).</p>
+        <p><b>Solution by Fluffy1234</b><p>
+        <p>If you add all the ones digits you will get \\(10\\). (The math: \\(1+2+3+4=10\\)) Notice that the tens digit, the hundreds digit and thousands digit all have the same value, ten. So the ones digit is \\(0\\) and since they are tens there is a one for each digit after that and with a total of \\(4\\) numbers get \\(11110\\) as our answer.
         <h3>Common Mistake <span class="material-symbols-outlined">
 exclamation
 </span><span class="material-symbols-outlined">
@@ -2161,7 +2137,7 @@ rating: 1400,
         Taking the absolute value of this, however, has the same effect it did on \\(\\lfloor x \\rfloor \\). We end up with a graph that looks almost exactly the same. That being said, what changes is the values that are included. If we were to graph this, the lines would be of the same length, and at the same places. However,
         when we actually think about it, the endpoints, (circles that are filled or unfilled) are reversed. When we subtract the two equations, we don't end up with \\(0\\), but a set of values that are above and below the y intercept, centered around point \\(\\frac{1}{2}\\).`,
         answer: "\\(D)\\) the point \\((\\frac{1}{2}, 0)\\)",
-        topic: "floor function",
+        topic: "functions and graphing",
         hint: "Calculate the symetry of each operation independently and the effect they have on each other",
         step: "Start by calculating the symetry of \\(|\\lfloor x \\rfloor|\\)"
     },
@@ -2193,7 +2169,7 @@ rating: 1400,
         <p>From here on out, there's a lot of ways you can solve it. You can either graph and see what matches, or do casework to find different possibilities. Since all you're doing is solving for integers that solve the inequality, I figure it's easy enough and there's enough
         ways to do it to not go too far into depth. Effectively, however, you can just test out a few basic values for \\(n\\) and \\(m\\) and get the solutions: \\((1,1), (1,2), (2,1), (2,2), (3,3), (4,4)\\), which is 6 possible ordered pairs. `,
         answer: "6",
-        topic: "discriminant",
+        topic: "functions and graphing",
         hint: "What equation gives us the number of solutions for a quadratic equation?",
         step: "Use the discriminant \\(b^2 -4ac\\) and find the values of \\(b\\) and \\(c\\) that let the discriminant be greater than \\(0\\)"
     },
@@ -2654,7 +2630,11 @@ rating: 1400,
         <p>By Vieta's rules, we know that the the factors of the equation, when factoring, must multiply to \\(-20100\\) and sum to \\(1\\). We're looking for something 
         close to the square root. We don't have the luxury of a calculator, but what we can do is use the answer choices to approximate.</p>
         <p>Right off the bat, we know that \\(100.5\\) would be too low because \\(100^2=10000\\). \\(134^2=17956\\), still too low, \\(142^2=20164\\), which is as close as we can get.</p>
-        <p>It's not exact because we know that there are multiple items valued at \\(142\\), but we can still count that as our answer.</p>`,
+        <p>It's not exact because we know that there are multiple items valued at \\(142\\), but we can still count that as our answer.</p>
+        <p><b>Solution by Khang Pham</b></p>
+        <p>We can see \\(n\\) repeat \\(n\\) times from \\(1\\) to \\(200\\), which means the number of numbers is the sum of the integers from \\(1\\) to \\(200\\). We use \\(S_{200}=200 \\frac{1+200}{2}=100 \\cdot 201 = 20100\\).</p>
+        <p>With this knowledge, we can find that the median is going to be the average of the \\(10500\\)th and \\(10501\\)th numbers. Now, we look for a number such that \\(S_{n}\\) is close to \\(10500\\). We solve for \\(10500 = n \\frac{n+1}{2}\\). Solving gives \\(n=141.27\\). We round up though, because the sum needs to be at least \\(10500\\). Thus we have 
+        \\(142\\) in position \\(10500\\). We realize that the next value also cannot be \\(143\\) because it's not close enough, so both values are \\(142\\) for a median of \\(142\\)`,
         answer: "\\(C) 142\\)",
         solution: "word problems",
         topic: `series`,
@@ -2800,7 +2780,7 @@ rating: 1400,
         <p>graphing these results in a square of side length \\(6\\) with a semicircle of radius \\(r\\) on each edge.</p>
         <p>The \\(m\\) represents the area of the square, \\(6 \\cdot 6 = 36\\) whereas \\(n\\) represents the area of the combined semicircles \\(2(3^2)=18 \\). Add
         these to get an answer of \\(54\\)`,
-        topic: "absolute value",
+        topic: "functions and graphing",
         hint: "What is the LHS and what is the RHS an equation for?",
         step: "Identify that the LHS is a circle and the RHS is its radius. Solve with casework"
 
@@ -2843,7 +2823,7 @@ star
 rating: 800,
         used: false,
         type: 'fr',
-        text: `<p>What is the value of \\(1-(-2)-3-(-4)-5(-(-6)\\)?</p>`,
+        text: `<p>What is the value of \\(1-(-2)-3-(-4)-5-(-6)\\)?</p>`,
         solution: `<b>5</b><p>Solve</p>
         $$
         1+2-3+4-5+6
@@ -2888,7 +2868,7 @@ rating: 1000,
         type: 'fr',
         solution: `<b>4</b>Rearrange all the terms onto one side</p>
         $$
-        x^2020+y^2-2y=0
+        x^{2020}+y^2-2y=0
         $$
         $$
         x^2020+(y-1)^2-1=0
@@ -3101,7 +3081,8 @@ rating: 1200,
         that some of these are duplicates. We are looking for the \\(2020\\)th and \\(2021\\)th numbers, since the median would be between those two numbers. </p>
         <p>\\(44^2=1936\\) which is \\(2064-1936=84\\) less than \\(2020\\). We're trying to find the term\\(44\\) and \\(43\\) terms less than that, so we don't have to worry about duplicate squares.</p>
         <p>We subtract 44 and 43 from \\(2020\\) and find the average to be \\(1976.5\\)</p>`,
-        answer: "1976.5",
+        answer: "\\(B) 1976.5\\)",
+        choices: ['\\(A) 1976\\)', '\\(B) 1976.5\\)', '\\(C) 1977\\)', '\\(D) 1977.5\\)', '\\(E) 1978\\)'],
         topic: 'medians',
         hint: "Don't forget that some numbers might be duplicates, and calculate the total number of values",
         step: "Find the number of squares below and above \\(2020\\)"
@@ -3443,7 +3424,7 @@ rating: 1000,
         560+49+49=658
         `,
         answer: '658',
-        topic: 'surface area',
+        topic: 'composite shapes',
         hint: "Find the surface area of each `side` independently",
         step: "The non-top and bottom all have surface areas of \\(1^2+2^2+[...]+7^2\\). The top and bottom have surface areas of \\(7^2\\)"
     },
@@ -3877,7 +3858,7 @@ rating: 1600,
         step: "Use the formula for the area of a equilateral triangle to find the side length"
     },
     {
-        title: `AMC 10B 2021 Spring  Problem 7 <span class="material-symbols-outlined">
+        title: `AMC 10B 2021 Spring Problem 7 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -4262,7 +4243,10 @@ rating: 800,
         type: 'fr',
         solution: `<b>6</b><p>Find the area of the whole rectangle that encloses everything, than subtract some parts out:</p>
         $$
-        4 \\cdot 5 - (\\frac{1}{2}(4 \\cdot 2) + 2(\\frac{1}{2}(2 \\cdot 5))) = 20-4-10=6`,
+        4 \\cdot 5 - (\\frac{1}{2}(4 \\cdot 2) + 2(\\frac{1}{2}(2 \\cdot 5))) = 20-4-10=6</p>
+        <p>Solution by Toulouse 100</p>
+        <p>The shaded area at the bottom has a triangle taken out of it. The triangle's area is \\(4\\) (the formula for the area of triangles \\(\\frac{1}{2} \\textup{base} \\times \\textup{height}\\) so we find \\(\\frac{1}{2} \\times 4 \\times 2 = 2\\)). If you get
+        rid of the small triangle the shaded area becaomse a triangle with \\(4\\) by \\(5\\) for an area of \\(10\\) and \\(10-4=6\\)`,
         answer: '6',
         topic: 'area',
         hint : "Find the whole thing, then remove",
@@ -4396,6 +4380,7 @@ rating: 1400,
     square, the ones that we created by creating the square, are \\(30-60-90\\), because we rotated each sheet by \\(30^\\circ\\). Thus, to find the top edge of the right triangle, we just find \\(3\\cdot \\tan(30)=\\sqrt{3}\\). That means that the edge of the original triangles we had, those opposite the center, have a dimension of \\(3-\\sqrt{3}\\) and the altitude is just \\(3\\), so the total
     area is \\(\\frac{9-3\\sqrt{3}}{2}\\). There are \\(24\\) of these for a total of \\(108-36\\sqrt{3}\\) and \\(108+36+3=147\\)`,
     answer: '147',
+    type: 'fr',
     topic: 'trigonometry',
     hint: "You need to use trigonometry for this problem",
     step: "Divide one of th esquares into 4 smaller squares of equal size (so like corners), and inside each of those, two congruent triangles that make a kite (modeling the corner)"
@@ -4892,6 +4877,7 @@ rating: 1400,
         <p>Back to our second side, the remaining part is \\(30-21=9\\) so we know the side length is \\(15\\) and thus the perimeer is \\(34+35+15=84\\)`,
         type: 'mc',
         choices: ['\\(A) 84\\)', '\\(B) 86\\)', '\\(C) 88\\)', '\\(D) 90\\)', '\\(E) 92\\)'],
+        answer: '\\(A) 84\\)',
         topic: 'pythagorean theorem',
         hint: "Do you recognize any pythagorean triples",
         step: "Test out values to find pythagorean triples. Identify the pythagorean triples that you know "
@@ -5212,7 +5198,8 @@ type: 'mc',
 choices: ['\\(A) 4+4\\sqrt{5}\\)', '\\(B) 10\\sqrt{2}\\)', '\\(C) 5+5\\sqrt{5}\\)', '\\(D) 10 \\sqrt[4]{8}\\)', '\\(E) 20\\)'],
 topic: 'similarity',
 hint: "Label as many values as possible",
-step: "Draw the diagram and label everything you can with variables"
+step: "Draw the diagram and label everything you can with variables",
+answer: '\\(D) 10 \\sqrt[4]{8}\\)'
     },
     {
         title: `AMC 10B 2024 Problem 6 <span class="material-symbols-outlined">
@@ -5434,7 +5421,7 @@ rating: 1000,
         step: "Just draw and keep labeling everything you know =P"
     }
 
-];
+]
 const numTheoryQ = [
     {
 title: `AMC 10A 2025 Problem 11 <span class="material-symbols-outlined">
@@ -7126,7 +7113,7 @@ exclamation
         topic: 'logic',
         type: 'mc',
         choices: ['\\(A) 2021\\)', '\\(B) 2022\\)', '\\(C) 2023\\)', '\\(D) 2024\\)', '\\(E) 2025\\)'],
-        answer: '\\(D) 2024\\)',
+        answer: '\\(B) 2022\\)',
         hint: "What is overcounted?",
         step: "Add and then account for overcounting"
     },
@@ -7204,6 +7191,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+        answer: "\\(A) 9\\)",
 rating: 1200,
         text: `A group of \\(100\\) students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students \\(A\\) and \\(B\\), student \\(A\\)
         and \\(B\\), student \\(A\\) speaks some language that student \\(B\\) does not speak, and student \\(B\\) speaks some language that student \\(A\\) does not speak. What is the least possible total 
@@ -7591,6 +7579,7 @@ rating: 1600,
         his chances of winning. What is the probability that he chooses to reroll exactly two of the dice? ,       `,
         type: 'mc',
         choices:['\\(A) \\frac{7}{36}\\)', '\\(B) \\frac{5}{24}\\)', '\\(C) \\frac{2}{9}\\)', '\\(D) \\frac{17}{72}\\)', '\\(E) \\frac{1}{4}\\)'],
+        answer: '\\(A) \\frac{7}{36}\\)',
         solution: `<b>\\(\\frac{7}{36}\\)</b><p>Jason rerolls \\(0\\) dice when he already has a \\(7\\) and rerolls \\(3\\) dice when he has a \\(6\\) or \\(5\\), assuming he hasn't already won. This is sort of just intuitive</p>
         <p>For Jason to roll \\(2\\) die, the probability of winning MUST be above that of completely rerolling and that of rerolling one.</p>>
         <p>Jason can win by rerolling \\(3\\) dice (or rolling \\(3\\) dice off the bat) in \\(15\\) ways:</p>
@@ -7972,7 +7961,7 @@ star
         difficulty: 3,
 rating: 1200,
         text: `Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4\\)?`,
-        solution: `<b>'\\(\\frac{59}{64}\\)'</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
+        solution: `<b>\\(\\frac{59}{64}\\)</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
         <p>For it to be odd, we need all the factors to be odd. There's a \\(\\frac{1}{2}^6=\\frac{1}{64}\\) chance of this</p>
         <p>If it's divisble by \\(2\\) but not \\(4\\), we need \\(5\\) odds and then either a \\(2\\) or a \\(6\\). That's \\(\\frac{1}{2}^5 \\cdot \\frac{1}{3}=\\frac{1}{192}\\). However, since there are \\(6\\) positions that the \\(2\\) or \\(6\\) can be in, we multiply by \\(6\\) for \\(\\frac{1}{16}\\). We add these and subtract from \\(1\\) for \\(\\frac{59}{64}\\)</p>
         <h3> Common Mistake <span class="material-symbols-outlined">
@@ -8429,22 +8418,54 @@ rating: 1600,
     
 
 ]
-const allQ = []
-allQ.push(...questions)
-allQ.push(...geometryQ)
-allQ.push(...numTheoryQ)
-allQ.push(...probabilityQ)
-
+let perTopic = []
+let index = 0
+const hintBtn = document.getElementById("hintBtn")
+const seeStep = document.getElementById("seeStep")
+const hintText = document.getElementById("hint")
+const stepOne = document.getElementById("stepOne")
+const stepOneText = document.getElementById("stepOneText")
+const strikeOne = document.getElementById("strikeOne")
+const strikeTwo = document.getElementById("strikeTwo")
+const strikeThree = document.getElementById("strikeThree")
+const strikesContainer = document.getElementById("strikesContainer")
+const solutionDiv = document.getElementById("solution");
+const solutionText = document.getElementById("solution-text");
+const nextBtn = document.getElementById("next-btn");
+let strikes  = 2
+// ---------- Start ----------
+let userRating = 1200
+let userRatingGeometry = 1200
+let userRatingProbability = 1200
+let userRatingNumTheory= 1200
+let userRatingAll = 1200
 const toggleBrightness = document.getElementById("brightness")
-const carouselLight = document.querySelectorAll("carousel-logo-light")
-const carouselDark = document.querySelectorAll("carousel-logo-dark")
 let colorMode = 'light'
+let diagnosticCorrect = 0
+let diagnosticAlgebraTotal = 1
+let diagnosticGeometryTotal = 1
+let diagnosticNumTheoryTotal = 1
+let diagnosticProbabilityTotal = 1
+let diagnosticAlgebraCorrect = 0
+let diagnosticGeometryCorrect= 0
+let diagnosticNumTheoryCorrect= 0
+let diagnosticProbabilityCorrect = 0
 let colorModeTrue = localStorage.getItem("colorMode")
-console.log(colorModeTrue)
+let textColor = "#e3e2f0"
+let algebraTotal = 0
+let geometryTotal = 0
+let numTotal = 0
+let probTotal = 0
+let algebraWrong = 0
+let geometryWrong = 0
+let numWrong = 0
+let probWrong = 0
+let TOPIC_GLOSSARY = []
+let TOPIC_GLOSSARY_SOLVEFIRE = []
+let TOPIC_GLOSSARY_YIMO = []
+let backgroundColor = "rgb(253, 253, 255)"
 if  (colorModeTrue !== false){
-        console.log("setting color mode")
        colorMode =  colorModeTrue
-       console.log(colorModeTrue)
  if (colorMode === 'dark'){
                 colorMode = 'dark';
                 document.documentElement.style.colorScheme = 'dark'; 
@@ -8452,6 +8473,9 @@ if  (colorModeTrue !== false){
                 document.documentElement.classList.remove('light');
                 toggleBrightness.textContent = "sunny"
                 localStorage.setItem("colorMode", "dark")
+                textColor = "#e3e2f0"
+                backgroundColor = "#222329"
+
         } else {
                 colorMode = 'light';
                 document.documentElement.style.colorScheme = 'light';
@@ -8459,6 +8483,8 @@ if  (colorModeTrue !== false){
                 document.documentElement.classList.remove('dark');
                 toggleBrightness.textContent = "bedtime"
                 localStorage.setItem("colorMode", "light")
+                textColor = "#625c6e"
+                backgroundColor = "rgb(253, 253, 255)"
         }
 } else {
 function toggleSystemTheme() {
@@ -8477,9 +8503,11 @@ function toggleSystemTheme() {
   if (colorMode === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
+      textColor = "#e3e2f0"
   } else {
       root.classList.add('light');
       root.classList.remove('dark');
+      textColor = "#625c6e"
   }
 }
 toggleSystemTheme();
@@ -8492,6 +8520,10 @@ toggleBrightness.addEventListener("click", function(){
                 document.documentElement.classList.remove('dark');
                 toggleBrightness.textContent = "bedtime"
                 localStorage.setItem("colorMode", colorMode)
+                textColor = "#625c6e"
+                backgroundColor="rgb(253, 253, 255)"
+                updateRadarChart()
+                updateBarGraph()
         } else {
                 colorMode = 'dark';
                 document.documentElement.style.colorScheme = 'dark';
@@ -8499,241 +8531,567 @@ toggleBrightness.addEventListener("click", function(){
                 document.documentElement.classList.remove('light');
                 toggleBrightness.textContent = "sunny"
                 localStorage.setItem("colorMode", colorMode)
+                textColor = "#e3e2f0"
+                backgroundColor = "#222329"
+                updateRadarChart()
+                updateBarGraph()
         }
-        console.log(localStorage.getItem("colorMode"));
 });
-//--------------Final Question---------------
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
-const mcContainer = document.getElementById("mc-container");
-const questionChoices = document.getElementById("mc-container")
-const topicQ = []
-let currentQuestion = 0
-allQ.forEach(i => {
-        if (i.topic == 'speed-distance-time'){
-                topicQ.push(i)
-        }
-})
-shuffleArray(topicQ)
-function loadQuestion(){
-        let topicQuestion = topicQ[currentQuestion]
-        document.getElementById("question-title").innerHTML = topicQuestion.title
-        document.getElementById("question-text").innerHTML = topicQuestion.text
-        mcChoices.forEach(btn => btn.disabled = false)
-            document.getElementById("solution-text").innerHTML = ""
-    document.getElementById("solution").style.display = "none"
-    document.getElementById("next-btn").style.display = "none"
-    
-    document.getElementById("answer-input").value = ""
-            document.getElementById("answer-input").style.display = "none"
-    document.getElementById("check-btn").style.display = "none"
-    mcContainer.classList.add("hidden")
+// Gets the live computed color string from your CSS :root
 
-    if (!topicQuestion.type || topicQuestion.type === "fr") {
-        document.getElementById("answer-input").style.display = "inline-block"
-        document.getElementById("check-btn").style.display = "inline-block"
-    }
-    if (topicQuestion.type === "mc") {
-        mcContainer.classList.remove("hidden")
-
-        mcChoices.forEach((btn, i) => {
-            btn.textContent = topicQuestion.choices[i];
-            btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
-        });
-    }
-    if (window.MathJax) {
-        MathJax.typesetPromise([document.getElementById("question-text")]).catch(()=>{})
-        MathJax.typesetPromise([questionChoices]).catch(()=>{})
-    }
+function getThemeColor(variableName) {
+    return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
 }
-function handleMCAnswer(choice) {
-    document.getElementById("answer-input").value = choice; // reuse existing checker
-    document.getElementById("check-btn").click();
-mcChoices.forEach(btn => btn.disabled = true);
-}
-document.getElementById("check-btn").addEventListener("click", function(){
-        const userAnswer = document.getElementById("answer-input").value
-        const correctAnswer = topicQ[currentQuestion].answer
-        const solutionText = document.getElementById("solution-text")
-        const nextBtn = document.getElementById("next-btn")
-        const solution = document.getElementById("solution")
-        if (userAnswer === correctAnswer){
-                solutionText.innerHTML = "Correct!" + topicQ[currentQuestion].solution
-        } else {
-            solutionText.innerHTML = "Incorrect" + topicQ[currentQuestion].solution    
-        }
-        solution.style.display = "block"
-        nextBtn.style.display = "block"
-        solutionText.style.display = "block"
-        MathJax.typesetPromise([solution]).catch(()=>{})
-})
-document.getElementById("next-btn").addEventListener("click", function() {
-        let subtract = (topicQ.length - 1)
-        const correct = (currentQuestion === subtract)
-        if (correct === true){
-                currentQuestion = 0
-                shuffleArray(topicQ)
-                loadQuestion()
-        } else if (currentQuestion < topicQ.length){
-                currentQuestion += 1
-                loadQuestion()
-        } 
-        
-})
-loadQuestion()
+let usernameStr = ""
+let totalAttempts = 0
+let totalWrong = 0
+let averageAccuracy = 0
+let mistake = 0
+let unfamiliar = 0
+let stuck = 0
+const helpPannel = document.getElementById("helpPannel")
+const { createClient } = window.supabase;
+const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
+const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
+const supabase = createClient(supabaseURL, supabaseKey);
+      let helpOn = false;
+  let helpBtn = document.getElementById('helpButton')
+let accountTrue = false
+let accountBtn = document.getElementById("accountBtn")
+let accountPannel = document.getElementById("accountPannel")
+let overlay = document.getElementById("overlay")
+accountBtn.addEventListener("click", function () {
+        let account = true
 
-
-//-----------------------------Actual Functions Fr Fr------------------------------
-const incorrectBtns = Array.from(document.querySelectorAll(".incorrect"))
-incorrectBtns.forEach(btn => {
-        console.log("clicked")
-        btn.addEventListener("click", function() {
-                document.getElementById("sdt-hint").style.display = "block"
-        })
+    document.getElementById("no-account").addEventListener("click", function() {
+    if (account === false){
+        account = true
+        document.getElementById("login").style.display = "block"
+        document.getElementById("signup").style.display = "none"
+                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+    } else {
+        document.getElementById('login').style.display = "none"
+        account = false
+        document.getElementById("signup").style.display = "block"
+        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+    }
+    })
+    helpPannel.style.display  = "none"
+    if (accountTrue === false){
+        accountPannel.style.display = "block"
+        overlay.style.display = "block"
+        accountTrue = true
+    } else {
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
 })
-const correct = document.getElementById("correct")
-correct.addEventListener("click", function() {
-        document.getElementById("solution-text-sdt").style.display = "block"
-        document.getElementById("sdt-hint").style.display = "none"
-        incorrectBtns.forEach(btn => {
-                btn.disabled = true
-        })
-
+overlay.addEventListener("click", function(){
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } 
+    if (accountTrue === true){
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+helpBtn.addEventListener("click", function () {
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
 });
-    const r1 = document.getElementById("runner1");
-    const r2 = document.getElementById("runner2");
-    const headStartSlider = document.getElementById("headStartSlider");
-    const leaderSpeedSlider = document.getElementById("leaderSpeedSlider");
-    const chaserSpeedSlider = document.getElementById("chaserSpeedSlider");
+//-----------------------Authentication--------------------------
+document.getElementById("btn-signup").addEventListener("click", async () => {
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+  const { data, error } = await supabase.auth.signUp({ email, password });
+  if (error) return alert(error.message);
+  if (data.user) {
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+      }
+    ]);
     
-    const eqLeader = document.getElementById("eqLeader");
-    const eqChaser = document.getElementById("eqChaser");
-    const explanation = document.getElementById("sdtExplanation");
-    const catchLine = document.getElementById("catchUpLine");
+    alert("Account created!");
+    
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+  }
+});
+async function loadUserStats(userId) {
+  const { data: profile, error } = await supabase
+    .from('profiles')
+   .select('id, username, probabilityIndex, algebraIndex, numTheoryIndex, geometryIndex, algebraTotal, geometryTotal, numTotal, probTotal, algebraWrong, geometryWrong, numWrong, probWrong, algebraTotalSolvefire, geometryTotalSolvefire, numTotalSolvefire, probTotalSolvefire, algebraWrongSolvefire, geometryWrongSolvefire, numWrongSolvefire, probWrongSolvefire, algebraTotalYimo, geometryTotalYimo, numTotalYimo, probTotalYimo, algebraWrongYimo, geometryWrongYimo, numWrongYimo, probWrongYimo, longestStreak, elo, mistake, unfamiliar, stuck, mistakeSolvefire, unfamiliarSolvefire, stuckSolvefire, mistakeYimo, unfamiliarYimo, stuckYimo, TOPICGLOSSARY, TOPICGLOSSARYSolvefire, TOPICGLOSSARYYimo')
+   .eq('id', userId)
 
-    function updateRace() {
-        const d1_start = parseFloat(headStartSlider.value); 
-        const s1 = parseFloat(leaderSpeedSlider.value); 
-        const s2 = parseFloat(chaserSpeedSlider.value); 
+  if (error) {
+    console.error("Error downloading profile data:");
+    return;
+  }
+
+  if (profile) {
+    let userProfile = profile[0]
+    totalAttempts = userProfile.algebraIndex + userProfile.geometryIndex + userProfile.numTheoryIndex + userProfile.probabilityIndex + userProfile.algebraTotal + userProfile.geometryTotal + userProfile.numTotal + userProfile.probTotal + userProfile.algebraTotalSolvefire + userProfile.geometryTotalSolvefire + userProfile.numTotalSolvefire + userProfile.probTotalSolvefire + userProfile.algebraTotalYimo + userProfile.geometryTotalYimo + userProfile.numTotalYimo + userProfile.probTotalYimo || 0
+    totalWrong = userProfile.algebraWrong + userProfile.geometryWrong + userProfile.numWrong + userProfile.probWrong + userProfile.algebraWrongSolvefire + userProfile.geometryWrongSolvefire + userProfile.numWrongSolvefire + userProfile.probWrongSolvefire + userProfile.algebraWrongYimo + userProfile.geometryWrongYimo + userProfile.numWrongYimo + userProfile.probWrongYimo || 0
+    averageAccuracy = totalAttempts > 0 ? Math.round(((totalAttempts - totalWrong) / totalAttempts) * 100) : 0
+    usernameStr = userProfile.username
+    mistake = userProfile.mistake + userProfile.mistakeSolvefire + userProfile.mistakeYimo
+    unfamiliar = userProfile.unfamiliar + userProfile.unfamiliarSolvefire + userProfile.unfamiliarYimo
+    stuck = userProfile.stuck + userProfile.stuckSolvefire + userProfile.stuckYimo
+    document.getElementById("longestStreak").innerHTML = `${userProfile.longestStreak} Days`
+    document.getElementById("username-display").innerHTML = userProfile.username
+    document.getElementById('avgAccuracy').innerHTML = `${averageAccuracy}%`
+    document.getElementById('questionsSolved').innerHTML = `${totalAttempts}`
+    document.getElementById("title").innerHTML = `${userProfile.username}'s Dashboard`
+    document.getElementById("eloRating").innerHTML = `${userProfile.elo}`
+    algebraTotal = userProfile.algebraTotal + userProfile.algebraTotalSolvefire + userProfile.algebraTotalYimo
+    geometryTotal = userProfile.geometryTotal + userProfile.geometryTotalSolvefire + userProfile.geometryTotalYimo
+    numTotal = userProfile.numTotal + userProfile.numTotalSolvefire + userProfile.numTotalYimo
+    probTotal = userProfile.probTotal + userProfile.probTotalSolvefire + userProfile.probTotalYimo
+    algebraWrong = userProfile.algebraWrong + userProfile.algebraWrongSolvefire + userProfile.algebraWrongYimo
+    geometryWrong = userProfile.geometryWrong + userProfile.geometryWrongSolvefire + userProfile.geometryWrongYimo
+    numWrong = userProfile.numWrong + userProfile.numWrongSolvefire + userProfile.numWrongYimo
+    probWrong = userProfile.probWrong + userProfile.probWrongSolvefire + userProfile.probWrongYimo
+    TOPIC_GLOSSARY = userProfile.TOPICGLOSSARY || [];
+    TOPIC_GLOSSARY_YIMO = userProfile.TOPICGLOSSARYYimo || [];
+    TOPIC_GLOSSARY_SOLVEFIRE = userProfile.TOPICGLOSSARYSolvefire || [];
+    document.getElementById('btn-dashboard').innerHTML = userProfile.username
+    
+  } 
+  updateBarGraph()
+  updateRadarChart()
+  updatePieChart()
+}
+const loginBtn = document.getElementById("btn-login");
+loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("login-email").value.trim()
+    const password = document.getElementById("login-password").value
+    if (!email || !password) {
         
-        // Update Equation Text
-        eqLeader.innerHTML = `\\(d = ${s1}t + ${d1_start}\\)`;
-        eqChaser.innerHTML = `\\(d = ${s2}t\\)`;
+document.getElementById("login-error").innerHTML = "Please Input Both Fields"
+    return;
+  }
+  loginBtn.disabled = true;
+const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password,
+  });
 
-        // Visual Start Positions
-        r1.style.left = `${d1_start}%`;
-        r2.style.left = `0%`;
+  if (error) {
+    alert("Login Error: " + error.message);
+    loginBtn.disabled = false;
+    loginBtn.innerText = "Login";
+    return;
+  }
+  document.getElementById('accountPannel').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+  accountTrue = false
+  await loadUserStats(data.user.id);
+  loginBtn.disabled = false;
+})
+const logoutBtn = document.getElementById('btn-logout');
 
-        // Logic: s1*t + headstart = s2*t  =>  headstart = (s2 - s1)*t
-        if (s2 <= s1) {
-            catchLine.style.display = "none";
-            explanation.innerHTML = "If the Chaser isn't faster than the Leader, they will <span style='color:red'>never catch up!</span>";
-        } else {
-            const relativeSpeed = s2 - s1;
-            const timeToCatch = d1_start / relativeSpeed;
-            const catchPoint = s2 * timeToCatch;
+logoutBtn.addEventListener('click', async () => {
+            document.getElementById("login").style.display = "block"
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    alert("Error logging out: " + error.message);
+    return;
+  }
+  alert("You have been logged out successfully!");
+  window.location.reload();
+});
 
-            if (catchPoint <= 100) {
-                catchLine.style.display = "block";
-                catchLine.style.left = `${catchPoint}%`;
-                explanation.innerHTML = `They meet at \\(t = ${timeToCatch.toFixed(2)}\\) hours, which is \\(d = ${catchPoint.toFixed(1)}\\) miles out.`;
-            } else {
-                catchLine.style.display = "none";
-                explanation.innerHTML = "They eventually meet, but it's off the edge of this track!";
+const deleteAccountBtn = document.getElementById('btn-delete-account');
+
+if (deleteAccountBtn) {
+  deleteAccountBtn.addEventListener('click', async () => {
+    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
+    if (!confirmed) return;
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+    const userId = session.user.id;
+    const { error: dbError } = await supabase
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+    if (dbError) {
+      alert("Error erasing profile data: " + dbError.message);
+      return;
+    }
+    await supabase.auth.signOut();
+    alert("Your account records and progress have been completely erased.");
+    window.location.reload();
+  });
+}
+
+document.getElementById("btn-signup").addEventListener("click", async () => {
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+  const { data, error } = await supabase.auth.signUp({ email, password })
+  if (error) return alert(error.message);
+  if (data.user) { 
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+      }
+    ]);
+    alert("Account created!");
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+  }
+})
+supabase.auth.onAuthStateChange(async (event, session) => {
+  const accountBtn = document.getElementById('accountBtn');
+  const logoutBtn = document.getElementById('btn-logout');
+  const loginBtn = document.getElementById('btn-login');
+  const signup = document.getElementById('no-account');
+  const login = document.getElementById('login');
+  const usernameDisplay = document.getElementById("username-display");
+  const createAccount = document.getElementById("no-account")
+  const deleteAccount = document.getElementById("btn-delete-account")
+  const usernameDisplayModal = document.getElementById("btn-dashboard")
+  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
+    if (logoutBtn) logoutBtn.style.display = 'block';
+    if (login) login.style.display = "none";
+    if (createAccount) createAccount.style.display = "none"
+    if (deleteAccount) deleteAccount.style.display = "block"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "block" 
+  const { data: profile, error } = await supabase
+loadUserStats(session.user.id)
+
+
+  } else  {
+
+    if (logoutBtn) logoutBtn.style.display = 'none';
+    if (login) login.style.display = "block";
+    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
+    if (createAccount) createAccount.style.display = "block"
+    if (deleteAccount) deleteAccount.style.display = "none"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "none" 
+
+  }
+});
+
+let myChart = null
+function updateBarGraph() {
+    const xValues = ["Unfamiliar With Topic", "Stuck / Reached Dead End", "Arithmetic Issue"];
+    const yValues = [unfamiliar, stuck, mistake];
+    const barColors = ["#88B0FF", "#88B0FF", "#88B0FF"];
+    const ctx = document.getElementById("barChart");
+    myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues,
+                borderRadius: 6 // Optional: makes it look more "Saintly"
+            }]
+        },
+        options: {
+            responsive: true,
+scales: {
+                x: {
+                    grid: { color: textColor }, // Dynamic gridlines
+                    ticks: { color: textColor } // Dynamic label text
+                },
+                y: {
+                    grid: { color: textColor },
+                    ticks: { color: textColor }
+                }
+            },
+            plugins: {
+                legend: { display: false }
             }
         }
-        
-        MathJax.typesetPromise([eqLeader, eqChaser, explanation]).catch(()=>{});
+    });
+}
+let myRadarChart = null
+function updateRadarChart(){
+                    const data = {
+        labels: 
+        ["Algebra", "Geometry", "Number Theory", "Probability"],
+        datasets: [{label: "Incorrect", 
+            data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
+        },
+        {label: "Attempted", 
+            data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#ebf3ff'
+        },
+]
+
+    }
+            if (colorMode  === 'dark'){
+                const data = {
+        labels: 
+        ["Algebra", "Geometry", "Number Theory", "Probability"],
+        datasets: [{label: "Incorrect", 
+            data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
+        },
+        {label: "Attempted", 
+            data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#88B0FF'
+        },
+]
+        }      
+        }
+
+if (myRadarChart) {
+        myRadarChart.destroy();
     }
 
-[headStartSlider, leaderSpeedSlider, chaserSpeedSlider].forEach(s => s.addEventListener("input", updateRace));
-    updateRace();
+    // 3. Create the chart
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+ options: {
+    scales: {
+      r: {
+        // 1. Change color of the category labels (e.g., "Speed", "Strength")
+        pointLabels: {
+          color: textColor, 
+          font: {
+            size: 14
+          }
+        },
+        // 2. Change color of the numbers on the radial axis
+        ticks: {
+          color: textColor,
+          showLabelBackdrop: false,
 
+        }
+      }
+    },
+    plugins: {
+      // 3. Change color of the legend text
+      legend: {
+        labels: {
+          color: textColor
+        }
+      }
+    }
+  }
 
-const avgSpeed = document.getElementById("avgSpeed")
-const avgOneLabel = document.getElementById('avgOneLabel')
-const avgOne = document.getElementById("avgOne")
-const avgOneTime = document.getElementById("avgOneTime")
-let oneTime = 5.5
-let twoTime = 5.5
-let oneSpeed = 55
-let twoSpeed = 55
-avgOne.addEventListener("input", updateLabelOne)
-avgOne.addEventListener("input", updateAvgSpeed)
-function updateLabelOne(){
-    avgOneLabel.innerHTML = `Speed: ${avgOne.value} mph`
-    let time = (avgOne.value / 10)
-    oneTime = time
-    oneSpeed = avgOne.value
-    avgOneTime.innerHTML = `Time \\(\\frac{${avgOne.value}}{10}=${time}\\) hrs`
-    MathJax.typesetPromise([avgOneTime]).catch(()=>{});
-    MathJax.typesetPromise([avgOneLabel]).catch(()=>{});
+    })
 }
-const avgTwoLabel = document.getElementById("avgTwoLabel")
-const avgTwo = document.getElementById("avgTwo")
-const avgTwoTime = document.getElementById("avgTwoTime")
-avgTwo.addEventListener("input", updateLabelTwo)
-avgTwo.addEventListener("input", updateAvgSpeed)
-function updateLabelTwo(){
-    avgTwoLabel.innerHTML = `Speed: ${avgTwo.value} mph`
-    let time = (avgTwo.value / 10)
-    twoTime = time
-    twoSpeed = avgTwo.value
-    avgTwoTime.innerHTML = `Time: \\(\\frac{${avgTwo.value}}{10}=${time}\\) hrs`
-    MathJax.typesetPromise([avgTwoTime]).catch(()=>{});
-    MathJax.typesetPromise([avgTwoLabel]).catch(()=>{});
-}
-function updateAvgSpeed(){
-    let avgSpeedVar = Math.round((((oneTime * oneSpeed) + (twoTime * twoSpeed)) / (oneTime + twoTime)), 5)
-    avgSpeed.innerHTML = `Average Speed: \\(\\frac{${oneSpeed} \\times ${oneTime} + ${twoSpeed} \\times ${twoSpeed}}{${oneTime}+${twoTime}}=${avgSpeedVar}\\)`
-    MathJax.typesetPromise([avgSpeed]).catch(()=>{});
-}
-updateAvgSpeed
-updateAvgSpeed
-function updateVectors() {
-    const boatMag = parseFloat(document.getElementById("magBoat").value);
-    const currMag = parseFloat(document.getElementById("magCurrent").value);
-    const currAngleDeg = parseFloat(document.getElementById("angleCurrent").value);
-    document.getElementById("angleVal").innerText = currAngleDeg;
+let pieChart = null;
 
-    // 1. Convert to Radians (Boat is always pointing 0 deg / North for simplicity)
-    const boatRad = -90 * (Math.PI / 180); // Pointing UP
-    const currRad = (currAngleDeg - 90) * (Math.PI / 180); 
+function updatePieChart() {
+    if (pieChart) {
+        pieChart.destroy();
+    }
 
-    // 2. Component Math (v_total_x = v1_x + v2_x)
-    const bx = boatMag * Math.cos(boatRad);
-    const by = boatMag * Math.sin(boatRad);
-    const cx = currMag * Math.cos(currRad);
-    const cy = currMag * Math.sin(currRad);
+    const ctx = document.getElementById("pieChart");
+    if (!ctx) return; // Guard clause in case the element isn't on the current page
 
-    const rx = bx + cx;
-    const ry = by + cy;
-    const rMag = Math.sqrt(rx*rx + ry*ry);
-    const rAngle = Math.atan2(ry, rx) * (180 / Math.PI);
+    // 1. Create a dictionary to accumulate errors: { topicId: { name: "...", errors: X } }
+    const combinedData = [];
 
-    // 3. Update Visuals
-    document.getElementById("boatVector").style.width = boatMag + "px";
-    document.getElementById("boatVector").style.transform = `rotate(${-90}deg)`;
-
-    document.getElementById("currentVector").style.width = currMag + "px";
-    document.getElementById("currentVector").style.transform = `rotate(${currAngleDeg - 90}deg)`;
-
-    document.getElementById("resultantVector").style.width = rMag + "px";
-    document.getElementById("resultantVector").style.transform = `rotate(${rAngle}deg)`;
-
-    const explanation = document.getElementById("vectorExplanation");
-    explanation.innerHTML = `
-        Object Movement: \\(${boatMag}\\) units North <br>
-        Current/Wind: \\(${currMag}\\) units at \\(${currAngleDeg}^\\circ\\) <br>
-        <b>Resultant Speed: \\(${rMag.toFixed(1)}\\) units</b>
-        <p>You calculate your movement b finding the sin of the angle times the magnitude and adding it to the object movement. Notice, we do not need cosine
-        because we are going directly verticaly.</p>
-    `;
-    MathJax.typesetPromise([explanation]).catch(()=>{});
-}
-
-["magBoat", "magCurrent", "angleCurrent"].forEach(id => {
-    document.getElementById(id).addEventListener("input", updateVectors);
+    // 2. Helper function to cleanly parse and merge any glossary array
+    function mergeGlossary(glossaryArray) {
+        if (!Array.isArray(glossaryArray)) return;
+        glossaryArray.forEach(topic => {
+            if (topic && topic.id) {
+                const topicId = topic.id;
+                const topicName = topic.name || topicId;
+                const errorCount = parseInt(topic.errors, 10) || 0;
+                if ((combinedData.every(user => user.name !== topicId) == true)) {
+                  let push = {name: `${topicId}`,
+                errors: 0}
+                combinedData.push(push)
+                }
+                combinedData[combinedData.length - 1].errors += errorCount;
+            }
+        });
+    }
+    mergeGlossary(TOPIC_GLOSSARY)
+    mergeGlossary(TOPIC_GLOSSARY_YIMO)
+    mergeGlossary(TOPIC_GLOSSARY_SOLVEFIRE)
+    let xValues = []
+    let yValues = []
+    Object.keys(combinedData).forEach(topicId => {
+        const item = combinedData[topicId];
+        if (item.errors > 0) {
+            xValues.push(item.name);
+            yValues.push(item.errors);
+        }
+    });
+    if (xValues.length === 0) {
+        return;
+    }
+pieChart = new Chart("pieChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      data: yValues,
+      backgroundColor: ["#88B0FF", "#c7deff", "#FFB192", "#ffd0c0"],
+      borderColor: backgroundColor
+    }]
+  },
+options: {
+    plugins: {
+      legend: {
+        labels: {
+          color: textColor
+        }
+      }
+    }
+  }
 });
-updateVectors();
+let max = 0
+let worstTopic = ""
+console.log(combinedData)
+combinedData.forEach(i => {
+  if (i.errors > 0){
+    worstTopic = i.name
+  }
+})
+let allQ = []
+allQ.push(...questions)
+allQ.push(...geometryQ)
+allQ.push(...numTheoryQ)
+allQ.push(...probabilityQ)
+console.log(allQ)
+allQ.forEach(i => {
+  if (i.topic === worstTopic){
+    perTopic.push(i)
+  }
+})
+document.getElementById('prevErrorText').innerHTML = worstTopic
+console.log(perTopic)
+console.log(max)
+console.log(worstTopic)
+shuffleArray(perTopic)
+loadQuestion()
+}
+function loadQuestion() {
+      stepOne.style.display = "none"
+    hintBtn.style.display = "none"
+    hintText.style.display = "none"
+    seeStep.style.display = "none"
+  strikes = 2
+  let problem = perTopic[index]
+  document.getElementById("question-title").innerHTML = problem.title
+  document.getElementById("question-text").innerHTML = problem.text
+      if (window.MathJax) {
+        MathJax.typesetPromise([document.getElementById('question-title')]).catch(()=>{});
+        MathJax.typesetPromise([document.getElementById('question-text')]).catch(()=>{});
+    }
+}
 
+document.getElementById("check-btn").addEventListener('click', function() {
+    const userAnswer = document.getElementById("answer-input").value.trim();
+    const correctAnswer = perTopic[index].answer.trim();
+    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+            nextBtn.style.display = "inline-block";
+    stepOne.style.display = "none"
+    hintBtn.style.display = "none"
+    hintText.style.display = "none"
+    seeStep.style.display = "none"
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + perTopic[index].solution;
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+        if (strikes ==  2){
+                hintBtn.innerHTML  = "Show Hint"
+        strikeOne.style.color = "var(--primary-color) !important"
+        hintBtn.style.display = "inline"
 
+        document.getElementById("problems-card").classList.add("shake");
+        setTimeout(() => document.getElementById("problems-card").classList.remove("shake"), 400);
+        strikes -= 1
+    } else  if (strikes === 1){
+        seeStep.style.display = "inline"
+        strikeTwo.style.color = "var(--primary-color) !important"
+        strikes -= 1
+    } else {
+        strikeThree.style.color = "var(--primary-color) !important"
+            solutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect` + perTopic[index].solution
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+    stepOne.style.display = "none"
+    hintBtn.style.display = "none"
+    hintText.style.display = "none"
+    seeStep.style.display = "none"
+}
+
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, document.getElementById("question-text")]).catch(()=>{});
+    }
+})
+
+hintBtn.addEventListener("click", function(){
+        if (hintText.style.display === "none"){
+                hintText.style.display = "block"
+                hintBtn.innerHTML = "Hide Hint"
+             hintText.innerHTML = perTopic[index].hint
+                MathJax.typesetPromise([hintText]);
+        } else {
+                hintText.style.display = "none"
+                hintBtn.innerHTML = "Show Hint"
+        }
+})
+seeStep.addEventListener("click", function() {
+        if (stepOne.style.display === "none"){
+                stepOne.style.display = "block"
+                seeStep.innerHTML = "Hide First Step"
+             stepOne.innerHTML = perTopic[index].step
+                MathJax.typesetPromise([stepOne]);
+        } else {
+                stepOne.style.display = "none"
+                seeStep.innerHTML = "See The First Step"
+        }        
+})
+nextBtn.addEventListener("click", function() {
+  if (index < (perTopic.length - 1)) {
+    index += 1
+  } else {
+    index = 0
+    shuffleArray(perTopic)
+  }
+  loadQuestion()
+  solutionDiv.style.display = "none"
+  hintText.style.display = "none"
+  hintBtn.style.display = "none"
+  seeStep.style.display = "none"
+  stepOne.style.display = "none"
+})
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}

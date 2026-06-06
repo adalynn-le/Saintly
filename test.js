@@ -1,4 +1,8 @@
-
+let userRating = 1200
+let userRatingGeometry = 1200
+let userRatingProbability = 1200
+let userRatingNumTheory= 1200
+let userRatingAll = 1200
 const toggleBrightness = document.getElementById("brightness")
 let colorMode = 'light'
 let diagnosticCorrect = 0
@@ -151,12 +155,6 @@ let wrongQuestionsGeometry = []
 let wrongQuestionsNum = []
 let wrongQuestionsProb = []
 let wrongQuestionsAll = []
-let userRating = 800
-let userRatingGeometry = 800
-let userRatingProbability = 800
-let userRatingNumTheory= 800
-let userRatingAll = 800
-let userRatingAlgTrue = localStorage.getItem("eloAlgebra")
 
 let geometryQuestion = 0
 let numQuestion = 0
@@ -172,97 +170,7 @@ let algebraTotal = 0
 let geometryTotal = 0
 let numTotal = 0
 let probTotal = 0
-let algTotalTrue = localStorage.getItem("algebraTotal")
 
-if (algTotalTrue === null){
-    algebraTotal = 0
-} else {
-    algebraTotal = parseInt(algTotalTrue)
-}
-
-let algWrongTrue = localStorage.getItem("algebraWrong")
-if (algWrongTrue === null){
-    algebraWrong = 0
-} else {
-    algebraWrong = parseInt(algWrongTrue)
-}
-
-let geometryTotalTrue = localStorage.getItem("geometryTotal")
-if (geometryTotalTrue === null){
-    geometryTotal = 0
-} else {
-    geometryTotal = parseInt(geometryTotalTrue)
-}
-
-let geometryWrongTrue = localStorage.getItem("geometryWrong")
-if (geometryWrongTrue === null){
-    geometryWrong = 0
-} else {
-    geometryWrong = parseInt(geometryWrongTrue)
-}
-
-let numTotalTrue = localStorage.getItem("numTotal")
-if (numTotalTrue === null){
-    numTotal = 0
-} else {
-    numTotal = parseInt(numTotalTrue)
-}
-
-let numWrongTrue = localStorage.getItem("numWrong")
-if (numWrongTrue === null){
-    numWrong = 0
-} else {
-    numWrong = parseInt(numWrongTrue)
-}
-
-let probTotalTrue = localStorage.getItem("probTotal")
-if (probTotalTrue === null){
-    probTotal = 0
-} else {
-    probTotal = parseInt(probTotalTrue)
-}
-
-let probWrongTrue = localStorage.getItem("probWrong")
-if (probWrongTrue === null){
-    probWrong = 0
-} else {
-    probWrong = parseInt(probWrongTrue)
-}
-let streakCountTrue = localStorage.getItem("streakCount")
-if (streakCountTrue === null){
-    streakCount = 0
-} else {
-    streakCount = parseInt(streakCountTrue)
-}
-let mistakeTrue = localStorage.getItem("mistake")
-if (mistakeTrue === null){
-    mistake = 0
-} else {
-    mistake = parseInt(mistakeTrue)
-}
-let unfamiliarTrue = localStorage.getItem("unfamiliar")
-if (unfamiliarTrue === null){
-    unfamiliar = 0
-} else {
-    unfamiliar = parseInt(unfamiliarTrue)
-}
-let stuckTrue = localStorage.getItem("stuck")
-if (stuckTrue === null){
-    stuck = 0
-} else {
-    stuck = parseInt(stuckTrue)
-}
-let topicsToWorkOnTrue = localStorage.getItem("topicsToWorkOn")
-if (topicsToWorkOnTrue === null){
-    topicsToWorkOn = []
-} else {
-    topicsToWorkOn = JSON.parse(topicsToWorkOnTrue)
-}
-if (get() === null){
-        userRatingAll = 800;
-} else {
-        userRatingAll = get()
-}
 let strikes = 2;
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
@@ -275,10 +183,8 @@ function toggleSubMenu(button){
 function updateAllRating(){
     userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
 }
-let topicsGlossarySetTrue = localStorage.getItem("topicGlossarySet")
-let TOPIC_GLOSSARY = []
-if (topicsGlossarySetTrue === null){
- TOPIC_GLOSSARY = [
+
+let TOPIC_GLOSSARY = [
     {
         id: "word problems",
         title: `Word Problems`,
@@ -532,7 +438,7 @@ if (topicsGlossarySetTrue === null){
     },
 {
     id: 'triangle lines'  , 
-    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors`,
+    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
         description: `<p>Remember the following lines that you can add to a triangle</p>
         <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
         <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
@@ -745,9 +651,7 @@ if (topicsGlossarySetTrue === null){
 TOPIC_GLOSSARY.forEach(q =>{
         q.attempts = 0;
 })
-} else {
-     TOPIC_GLOSSARY = JSON.parse(localStorage.getItem("topicGlossary"))
-}
+
 // ---------- Shuffle Function ----------
 const highlight = document.getElementById("highlight");
 let streakEnabled = true;
@@ -1639,7 +1543,7 @@ rating: 800,
         $$
         x=50
         $$`,
-        topic: "percents",
+        topic: "algebraic manipulation",
         hint: "Try to set up an algebraic equation using the decimal form of percents.",
         step: "Use the equation \\(1.085(0.8x)=43\\)"
     },
@@ -1779,7 +1683,7 @@ rating: 1600,
         <p>We rewrite the equation as \\(\\lfloor{x}^2\\rfloor=3x-2\\). This tells us that a linear graph is equal to the exponential progression of another graph. Since we have a square on one side, and a square of an integer, we know that the LHS must be \\(geq 0\\). If it is \\(0\\), that gives \\(\\frac{2}{3}\\). We can test a few other values within 
         reason for \\(\\lfloor{x}^2\\rfloor\\), \\(1\\) gives us \\(x=1\\), we knew that. \\(4\\) gives us \\(2\\), once again,we knew that. \\(9\\) gives us \\(\\frac{11}{3}\\)). \\(16\\) gives us \\(\\frac{18}{3}\\) which is greater than \\(5\\). From here on out, we can make the
         conjecture that the values of \\(x\\) won't fit the floor function, giving us \\(4\\) solutions`,
-        topic: "floor functions",
+        topic: "functions and graphing",
         hint: "Imagine the behavior in a normal graph, and then consider the floor",
         step: "Rewrite has \\(\\lfloor{x}^2\\rfloor=3x-2\\)"
     },
@@ -2408,7 +2312,7 @@ rating: 1000,
         choices: ["\\(A) 3-2a\\)", "\\(B) 1-a\\)", "\\(C) 1\\)", "\\(D) a+1\\)", "\\(E) 3\\)"],
         solution: `<b>\\(3-2a\\)</b><p>Recognize that \\(-\\sqrt{(a-1)^2}\\) is equal to \\(a-1\\). Add this to \\(a-2\\) and get \\(2a-3\\). The absolute value of this becomes \\(3-2a\\).</p>`,
         answer: "\\(A) 3-2a\\)",
-        topic: "absolute value",
+        topic: "functions and graphing",
         hint: "How does squaring and absolute value affect the equation?",
         step: "Go operation by operation with \\(-a\\)"
 
@@ -2925,7 +2829,7 @@ rating: 1400,
         Taking the absolute value of this, however, has the same effect it did on \\(\\lfloor x \\rfloor \\). We end up with a graph that looks almost exactly the same. That being said, what changes is the values that are included. If we were to graph this, the lines would be of the same length, and at the same places. However,
         when we actually think about it, the endpoints, (circles that are filled or unfilled) are reversed. When we subtract the two equations, we don't end up with \\(0\\), but a set of values that are above and below the y intercept, centered around point \\(\\frac{1}{2}\\).`,
         answer: "\\(D)\\) the point \\((\\frac{1}{2}, 0)\\)",
-        topic: "floor function",
+        topic: "functions and graphing",
         hint: "Calculate the symetry of each operation independently and the effect they have on each other",
         step: "Start by calculating the symetry of \\(|\\lfloor x \\rfloor|\\)"
     },
@@ -2957,7 +2861,7 @@ rating: 1400,
         <p>From here on out, there's a lot of ways you can solve it. You can either graph and see what matches, or do casework to find different possibilities. Since all you're doing is solving for integers that solve the inequality, I figure it's easy enough and there's enough
         ways to do it to not go too far into depth. Effectively, however, you can just test out a few basic values for \\(n\\) and \\(m\\) and get the solutions: \\((1,1), (1,2), (2,1), (2,2), (3,3), (4,4)\\), which is 6 possible ordered pairs. `,
         answer: "6",
-        topic: "discriminant",
+        topic: "functions and graphing",
         hint: "What equation gives us the number of solutions for a quadratic equation?",
         step: "Use the discriminant \\(b^2 -4ac\\) and find the values of \\(b\\) and \\(c\\) that let the discriminant be greater than \\(0\\)"
     },
@@ -3568,7 +3472,7 @@ rating: 1400,
         <p>graphing these results in a square of side length \\(6\\) with a semicircle of radius \\(r\\) on each edge.</p>
         <p>The \\(m\\) represents the area of the square, \\(6 \\cdot 6 = 36\\) whereas \\(n\\) represents the area of the combined semicircles \\(2(3^2)=18 \\). Add
         these to get an answer of \\(54\\)`,
-        topic: "absolute value",
+        topic: "functions and graphing",
         hint: "What is the LHS and what is the RHS an equation for?",
         step: "Identify that the LHS is a circle and the RHS is its radius. Solve with casework"
 
@@ -3869,7 +3773,8 @@ rating: 1200,
         that some of these are duplicates. We are looking for the \\(2020\\)th and \\(2021\\)th numbers, since the median would be between those two numbers. </p>
         <p>\\(44^2=1936\\) which is \\(2064-1936=84\\) less than \\(2020\\). We're trying to find the term\\(44\\) and \\(43\\) terms less than that, so we don't have to worry about duplicate squares.</p>
         <p>We subtract 44 and 43 from \\(2020\\) and find the average to be \\(1976.5\\)</p>`,
-        answer: "1976.5",
+        answer: "\\(B) 1976.5\\)",
+        choices: ['\\(A) 1976\\)', '\\(B) 1976.5\\)', '\\(C) 1977\\)', '\\(D) 1977.5\\)', '\\(E) 1978\\)'],
         topic: 'medians',
         hint: "Don't forget that some numbers might be duplicates, and calculate the total number of values",
         step: "Find the number of squares below and above \\(2020\\)"
@@ -4257,7 +4162,7 @@ rating: 1000,
         560+49+49=658
         `,
         answer: '658',
-        topic: 'surface area',
+        topic: 'composite shapes',
         hint: "Find the surface area of each `side` independently",
         step: "The non-top and bottom all have surface areas of \\(1^2+2^2+[...]+7^2\\). The top and bottom have surface areas of \\(7^2\\)"
     },
@@ -4691,7 +4596,7 @@ rating: 1600,
         step: "Use the formula for the area of a equilateral triangle to find the side length"
     },
     {
-        title: `AMC 10B 2021 Spring  Problem 7 <span class="material-symbols-outlined">
+        title: `AMC 10B 2021 Spring Problem 7 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -5710,6 +5615,7 @@ rating: 1400,
         <p>Back to our second side, the remaining part is \\(30-21=9\\) so we know the side length is \\(15\\) and thus the perimeer is \\(34+35+15=84\\)`,
         type: 'mc',
         choices: ['\\(A) 84\\)', '\\(B) 86\\)', '\\(C) 88\\)', '\\(D) 90\\)', '\\(E) 92\\)'],
+        answer: '\\(A) 84\\)',
         topic: 'pythagorean theorem',
         hint: "Do you recognize any pythagorean triples",
         step: "Test out values to find pythagorean triples. Identify the pythagorean triples that you know "
@@ -9282,6 +9188,8 @@ const restartButton = document.getElementById("restart-btn");
 const problemsWrapper = document.getElementById("problems-card");
 const helpBtn = document.getElementById("helpButton");
 const helpPannel = document.getElementById("helpPannel");
+const accountPannel = document.getElementById("accountPannel")
+const accountBtn = document.getElementById("accountBtn")
 const overlay = document.getElementById("overlay");
 const submitSolutionButton = document.getElementById("submit-a-solution");
 const submitSolutionForm = document.getElementById("submit-a-solution-form");
@@ -9304,6 +9212,35 @@ const mistakeBtn = document.getElementById("mistake")
 const unfamiliarBtn = document.getElementById("unfamiliar")
 const stuckBtn = document.getElementById("stuck")
 const errorTags = document.getElementById("tagQuestion")
+const loginBtn = document.getElementById("btn-login")
+let accountTrue = false
+accountBtn.addEventListener("click", function () {
+        let account = true
+
+    document.getElementById("no-account").addEventListener("click", function() {
+    if (account === false){
+        account = true
+        document.getElementById("login").style.display = "block"
+        document.getElementById("signup").style.display = "none"
+                       document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+    } else {
+        document.getElementById('login').style.display = "none"
+        account = false
+        document.getElementById("signup").style.display = "block"
+        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+    }
+    })
+    helpPannel.style.display  = "none"
+    if (accountTrue === false){
+        accountPannel.style.display = "block"
+        overlay.style.display = "block"
+        accountTrue = true
+    } else {
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
 helpBtn.addEventListener("click", function () {
     if (helpOn === true){
         helpPannel.style.display = "none";
@@ -9315,6 +9252,7 @@ helpBtn.addEventListener("click", function () {
         helpOn = true
     }
 });
+
 let questionsAnswered = 0;
 let percentage = 0;
 let percetnageStr = "0";
@@ -9352,15 +9290,12 @@ function recordWrongTopic(topic) {
 
     if (!topicsToWorkOn.includes(topicToUpdate)) {
         topicsToWorkOn.push(topicToUpdate);
-        localStorage.setItem("topicsToWorkOn", JSON.stringify(topicsToWorkOn))
     }
 
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
     if (topicObj) {
         topicObj.errors += 1;
         topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
-        localStorage.setItem("topicGlossary", JSON.stringify(TOPIC_GLOSSARY))
-        localStorage.setItem("topicGlossarySet", true)
     }
 
     updateTopicsDropdown();
@@ -9692,7 +9627,6 @@ function checkAnswerGeometry() {
     if (strikes == 2){
                 
                 geometryTotal += 1
-                localStorage.setItem("geometryTotal", geometryTotal)
                     updateRadarChart()
     }
 
@@ -9708,9 +9642,8 @@ function checkAnswerGeometry() {
         correct = 1;
         getExpectedScore(userRatingGeometry, geometryQuestion.rating)
         score = score + geometryQuestion.difficulty;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
             streakCount++;
-            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgressG++;
             if (difficultyG == 1 && difficultyProgressG == 4){
@@ -9753,7 +9686,6 @@ check
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
            if (strikes ==  2){
             geometryWrong += 1
-            localStorage.setItem("geometryWrong", geometryWrong)
 
             
             errors += 1
@@ -9777,7 +9709,7 @@ if (wrongEntryTopicTrue === false){
         difficultyG = Math.max(1, difficultyG - 1);
         difficultyProgressG = 0;
         score = score - difficultyG;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(geometryQuestion.topic);
         wrongCount++;
@@ -9805,7 +9737,7 @@ if (wrongEntryTopicTrue === false){
         questionType = "geometry"
         strikes -= 1
         getExpectedScore(userRating, geometryQuestion.rating)
-                        scoreCount.innerHTML = Math.round(userRatingAll);
+                        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
                         updateRadarChart()
                         updatePieChart()
     } else  if (strikes === 1){
@@ -9840,7 +9772,6 @@ function checkAnswerAlgebra(){
     updateRadarChart()
     if (strikes == 2){
                 algebraTotal += 1
-                localStorage.setItem("algebraTotal", algebraTotal)
                 updateRadarChart()
     }
 
@@ -9862,9 +9793,8 @@ function checkAnswerAlgebra(){
         correct = 1;
         getExpectedScore(userRating, algebraQuestion.rating)
         score = score + algebraQuestion.difficulty;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
             streakCount++;
-            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgress++;
             if (difficulty == 1 && difficultyProgress == 4){
@@ -9906,11 +9836,10 @@ check
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
         if (strikes ==  2){
             algebraWrong += 1
-            localStorage.setItem("algebraWrong", algebraWrong)
 
             errors += 1
             logAttempt(algebraQuestion.title, false)
-                scoreCount.innerHTML = Math.round(userRatingAll);
+                scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
@@ -9930,7 +9859,7 @@ if (wrongEntryTopicTrue === false){
         difficulty = Math.max(1, difficulty - 1);
         difficultyProgress = 0;
         score = score - difficulty;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(algebraQuestion.topic);
         wrongCount++;
@@ -9959,7 +9888,7 @@ if (wrongEntryTopicTrue === false){
         strikes -= 1
         correct = 0
         getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML = Math.round(userRatingAll)
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')))
         updateRadarChart()
         updatePieChart()
     } else  if (strikes === 1){
@@ -10001,9 +9930,8 @@ function checkAnswerAll() {
 
     if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
         score = score + allQuestion.difficulty;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
             streakCount++;
-            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgressAll++;
             if (difficultyAll == 1 && difficultyProgressAll == 4){
@@ -10045,7 +9973,7 @@ check
         difficultyAll = Math.max(1, difficultyAll - 1);
         difficultyProgressAll = 0;
         score = score - difficulty;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(allQuestion.topic);
         wrongCount++;
@@ -10095,7 +10023,6 @@ function checkAnswerProb() {
     updateRadarChart()
     if (strikes == 2){
             probTotal += 1
-            localStorage.setItem("probTotal", probTotal)
             updateRadarChart()
     }
 
@@ -10111,9 +10038,8 @@ function checkAnswerProb() {
             correct = 1;
         getExpectedScore(userRatingProbability, probQuestion.rating)
         score = score + probQuestion.difficulty;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
             streakCount++;
-            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgressP++;
             if (difficultyP == 1 && difficultyProgressP == 1){
@@ -10153,10 +10079,9 @@ check
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
      if (strikes ==  2){
         probWrong += 1
-        localStorage.setItem("probWrong", probWrong)
         errors += 1
                 logAttempt(probQuestion.title, false)
-                scoreCount.innerHTML = Math.round(userRatingAll);
+                scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
@@ -10168,7 +10093,7 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         difficultyP = Math.max(1, difficultyP - 1);
         difficultyProgressP = 0;
         score = score - difficultyP;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(probQuestion.topic);
         wrongCount++;
@@ -10195,7 +10120,7 @@ const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
         setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
         questionType = "probability"
         getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML = Math.round(userRatingAll)
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')))
         strikes -= 1
         updateRadarChart()
         updatePieChart()
@@ -10240,7 +10165,6 @@ function checkAnswerNum() {
     updateRadarChart()
     if (strikes == 2){
             numTotal += 1
-            localStorage.setItem("numTotal", numTotal)
             updateRadarChart()
     }
 
@@ -10256,9 +10180,8 @@ function checkAnswerNum() {
             correct = 1;
         getExpectedScore(userRatingNumTheory, numQuestion.rating)
         score = score + numQuestion.difficulty;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
             streakCount++;
-            localStorage.setItem("streakCount", streakCount)
             correctCount++;
             difficultyProgressN++;
             if (difficultyN == 1 && difficultyProgressN == 4){
@@ -10301,10 +10224,9 @@ check
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
     if (strikes ==  2){
         numWrong += 1
-        localStorage.setItem("numWrong", numTotal)
         errors += 1
                 logAttempt(numQuestion.title, false)
-                scoreCount.innerHTML = Math.round(userRatingAll);
+                scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
                 hintBtn.innerHTML  = "Show Hint"
                 strikesContainer.style.display = "inline"
 const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
@@ -10324,7 +10246,7 @@ if (wrongEntryTopicTrue === false){
         difficultyN = Math.max(1, difficultyN - 1);
         difficultyProgressN = 0;
         score = score - difficultyN;
-        scoreCount.innerHTML = Math.round(userRatingAll);
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(numQuestion.topic);
         wrongCount++;
@@ -10352,7 +10274,7 @@ if (wrongEntryTopicTrue === false){
         questionType = "numTheory"
         strikes -= 1
         getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML = Math.round(userRatingAll)
+        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')))
         updateRadarChart()
         updatePieChart()
     } else  if (strikes === 1){
@@ -10419,7 +10341,6 @@ function restart(){
 }
 // ---------- Next Question ----------
 nextBtn.addEventListener("click", function () {
-    console.log(wrongTopicAlgebra)
         strikesContainer.style.display = "none"
     if (questionType === "algebra"){
         algebraNext();
@@ -10471,8 +10392,6 @@ function algebraNext() {
     setTimeout(() => {
         let alreadyDefined = false
             let topicMistakesTrue = wrongTopicAlgebra.some(i => i.countdown == 0)
-    console.log(topicMistakesTrue)
-    console.log(wrongTopicAlgebra)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         geometryCurrent++;
@@ -10493,7 +10412,6 @@ function algebraNext() {
         } else if (topicMistakesTrue === true){
     wrongTopicAlgebra.forEach(item => {
         if (item.countdown === 0){
-            console.log("countdown reached 0")
             if (alreadyDefined === false){
                 algebraQuestion = questions.find(question => question.topic === item.topic)
                 prevError.style.display = "inline"
@@ -10637,7 +10555,6 @@ function geometryNext(){
         geometryCurrent++;
         let alreadyDefined = false
         const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
-        console.log(wrongTopicGeometry)
         const topicMistakesTrue = wrongTopicGeometry.some(item => item.countdown === 0)
         if (mistakesGeometryTrue === true){
         alreadyDefined = false
@@ -10819,9 +10736,50 @@ geometryCurrent = 0;
 numCurrent = 0;
 probCurrent = 0;
 
+  async function saveUserStatsToCloud() {
+  // 1. Get the currently logged-in user session
+  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError || !session) {
+    return; // Stop here if they are a guest
+  }
 
+  const userId = session.user.id;
+console.log(TOPIC_GLOSSARY)
+  // 2. Push all the live active values up to the database
+  const { data, error } = await supabase
+    .from('profiles')
+    .update({
+        elo: Math.round(userRatingAll),                
+        eloAlgebra: Math.round(userRating),             
+        eloGeometry: Math.round(userRatingGeometry),
+        eloNum: Math.round(userRatingNumTheory),
+        eloProb: Math.round(userRatingProbability)   ,
+        topicsToWorkOn: topicsToWorkOn,
+        TOPICGLOSSARY: TOPIC_GLOSSARY,
+        unfamiliar:  unfamiliar,
+        stuck: stuck,
+        mistake: mistake,
+        algebraTotal: algebraTotal,
+        algebraWrong: algebraWrong,
+        geometryTotal: geometryTotal,
+        geometryWrong: geometryWrong,
+        numTotal: numTotal,
+        probTotal: probTotal,
+        numWrong: numWrong,
+        probWrong: probWrong,
+        streak: streakCount,
+        TOPICGLOSSARY: TOPIC_GLOSSARY
+    })
+    .eq('id', userId); // ⚠️ CRITICAL: Ensure you only update THIS user's row!
+
+  if (error) {
+    console.error("Failed to sync stats to cloud database:", error.message);
+  }
+
+}
 //------------Switch Subjects--------------
 function loadQuestion() {
+    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
     errorTags.style.display = "none"
         strikesContainer.display = "none"
         seeStep.style.display = "none"
@@ -10850,18 +10808,22 @@ if (questionType === "probability"){
         loadAll(allCurrent);
         questionType = 'all'
     }
+      saveUserStatsToCloud()
 
+      
 }
 overlay.addEventListener("click", function(){
     if (helpOn === true){
         helpPannel.style.display = "none";
         overlay.style.display = "none"; 
         helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
+    } 
+    if (accountTrue === true){
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
     }
+document.getElementById("streak-count").innerHTML = streakCount;
     
 });
 shuffleArray(probabilityQ)
@@ -10949,26 +10911,20 @@ function updateRating(oldRating, expectedRating, correct){
     if (questionType !== "all"){
         if (questionType === "algebra"){
                 userRating = newRating
-                localStorage.setItem("eloAlgebra", userRating)
         } else if (questionType === "geometry"){
                 userRatingGeometry = newRating
-                localStorage.setItem("algebraGeometry", userRatingGeometry)
         } else if (questionType === "probability"){
                 userRatingProbability = newRating
-                localStorage.setItem("eloProb", userRatingProbability)
         } else if(questionType === "numTheory"){
                 userRatingNumTheory = newRating
-                localStorage.setItem("eloNum", userRatingNumTheory)
         } else if (questionType === "all"){
                 userRatingAll = newRating
-                localStorage.setItem("elo", userRatingAll)
         }
     }
     updateAllRating();
     save();
 }
 function store() {
-localStorage.setItem("elo", userRatingAll)
 }
 hintBtn.addEventListener("click", function(){
         if (hintText.style.display === "none"){
@@ -11013,7 +10969,6 @@ seeStep.addEventListener("click", function() {
         }        
 })
 function save(){
-        localStorage.setItem("ELO", userRatingAll);
 }
 function get(){
         return localStorage.getItem("ELO")
@@ -11394,17 +11349,14 @@ if (q.type === 'mc'){
 }
 mistakeBtn.addEventListener("click", function(){
     mistake += 1
-    localStorage.setItem("mistake", mistake)
     updateBarGraph()
 })
 unfamiliarBtn.addEventListener("click", function(){
     unfamiliar += 1
-    localStorage.setItem("unfamiliar", unfamiliar)
     updateBarGraph()
 })
 stuckBtn.addEventListener("click", function(){
     stuck += 1
-    localStorage.setItem("stuck", stuck)
     updateBarGraph()
 })
 let myChart = null;
@@ -11570,7 +11522,7 @@ getProblemNumber(probabilityQ)
 getInitialRating(probabilityQ)
 getProblemNumber(allQ)
 getInitialRating(allQ)
-scoreCount.innerHTML = Math.round(userRatingAll);
+scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
 async function logAttempt(questionTitle, isCorrect) {
   await supabase.rpc('log_attempt', {
     q_title: questionTitle,
@@ -11584,13 +11536,14 @@ window.loadQuestion = loadQuestion;
 // etc. for any function called from HTML onclick attributes
 const array = []
 allQ.forEach(i => {
-    if (i.topic == "prime factorization"){
+    if (i.topic == "surface area"){
         array.push(i)
     }
 })
 
 function runDiagnostic() {
     document.getElementById("actualStuff").style.display = "none"
+    document.getElementById("diagnosticStuff").style.display = "block"
     shuffleArray(questions)
     shuffleArray(geometryQ)
     shuffleArray(numTheoryQ)
@@ -11678,19 +11631,19 @@ function runDiagnostic() {
 document.getElementById("skip").addEventListener("click", function() {
     document.getElementById("diagnosticStuff").style.display = "none"
     document.getElementById("actualStuff").style.display = ""
-    userRatingAll = userRatingAllTrue
     algebraQuestion = getNextQuestion(questions, userRating)
     geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
     probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
     numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
     allQuestion = getNextQuestion(allQ, userRatingAll)
-    localStorage.setItem("eloAlgebra", userRating)
-    localStorage.setItem("eloGeometry", userRatingGeometry)
-    localStorage.setItem("eloProb", userRatingProbability)
-    localStorage.setItem("eloNum", userRatingNumTheory)
-    localStorage.setItem("elo", userRatingAll)
+
     loadQuestion();
-    scoreCount.innerHTML = Math.round(userRatingAll);
+    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
+    mistake = 0
+    stuck = 0
+    unfamiliar = 0
+    topicsToWorkOn = []
+    TOPIC_GLOSSARY.forEach(i => i.errors = 0)
     updateRadarChart()
     updateBarGraph()
     updatePieChart()
@@ -11758,11 +11711,8 @@ diagnosticChoices.forEach(btn => btn.disabled = true);
 }
 diagnosticCheck.addEventListener("click", function () {
     diagnosticCheck.disabled = true
-    console.log("checking diagnositc answer")
     const userAnswer = diagnosticInput.value.trim();
-    console.log(userAnswer)
     const correctAnswer = diagnosticQuestions[index].answer.trim();
-    console.log(correctAnswer)
     if (userAnswer === correctAnswer) {
         if (diagnosticQuestions[index].subject === "algebra"){
             diagnosticAlgebraCorrect += 1
@@ -11805,7 +11755,6 @@ diagnosticNext.addEventListener("click", function() {
         totalRating += expectedRating
     })
     userRatingAll = Math.round(1300 + ((50 * (diagnosticCorrect - totalRating))))
-    console.log(userRatingAll)
         let algebraRating = 0
     diagnosticQuestions.forEach(i => {
         if (i.subject === "algebra"){
@@ -11837,7 +11786,7 @@ diagnosticNext.addEventListener("click", function() {
             probRating +=  expectedRating
         }
     })
-    scoreCount.innerHTML = Math.round(userRatingAll);
+    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
     document.getElementById("diagnosticTitle").innerHTML = "Diagnostic Complete"
     document.getElementById("diagnosticText").innerHTML = `<p>Your ELO: ${userRatingAll}</p>
     <p>Accuracy: ${diagnosticCorrect}/5</p>`
@@ -11853,55 +11802,8 @@ diagnosticNext.addEventListener("click", function() {
         
 
 
-    console.log("here")
     }
 })
-
-if (userRatingAlgTrue === null){
-    userRating = 800
-} else {
-    userRating = userRatingAlgTrue
-}
-let userRatingGeometryTrue = localStorage.getItem("eloGeometry")
-if (userRatingGeometryTrue === null){
-    userRatingGeometry = 800
-} else {
-    userRatingGeometry = userRatingGeometryTrue
-}
-let userRatingProbTrue = localStorage.getItem("eloProb")
-if (userRatingProbTrue === null){
-    userRatingProbability = 800
-} else {
-    userRatingProbability = userRatingProbTrue
-}
-let userRatingNumTrue = localStorage.getItem("eloNum")
-if (userRatingNumTrue === null){
-    userRatingNumTheory = 800
-} else {
-    userRatingNumTheory = userRatingNumTrue
-}
-let userRatingAllTrue = localStorage.getItem("elo")
-if (userRatingAllTrue == null){
-    userRatingAll = 800
-    runDiagnostic()
-} else{
-    userRatingAll = parseInt(userRatingAllTrue)
-        document.getElementById("diagnosticStuff").style.display = "none"
-    userRatingAll = userRatingAllTrue
-    algebraQuestion = getNextQuestion(questions, userRating)
-    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
-    probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
-    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
-    allQuestion = getNextQuestion(allQ, userRatingAll)
-    localStorage.setItem("eloAlgebra", userRating)
-    localStorage.setItem("eloGeometry", userRatingGeometry)
-    localStorage.setItem("eloProb", userRatingProbability)
-    localStorage.setItem("eloNum", userRatingNumTheory)
-    localStorage.setItem("elo", userRatingAll)
-    loadQuestion();
-
-
-}
 document.getElementById("startadaptive").addEventListener("click", function() {
     document.getElementById("diagnosticStuff").style.display = "none"
     document.getElementById("actualStuff").style.display = ""
@@ -11911,15 +11813,825 @@ document.getElementById("startadaptive").addEventListener("click", function() {
     probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
     numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
     allQuestion = getNextQuestion(allQ, userRatingAll)
-    localStorage.setItem("eloAlgebra", userRating)
-    localStorage.setItem("eloGeometry", userRatingGeometry)
-    localStorage.setItem("eloProb", userRatingProbability)
-    localStorage.setItem("eloNum", userRatingNumTheory)
-    localStorage.setItem("elo", userRatingAll)
     loadQuestion();
-    scoreCount.innerHTML = Math.round(userRatingAll);
+    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
     updateRadarChart()
     updateBarGraph()
     updatePieChart()
 });
-console.log(userRatingAll)
+document.getElementById("btn-signup").addEventListener("click", async () => {
+    
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+
+  // Validate fields aren't empty
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+
+  // 1. Create the user credentials using your existing supabase client
+  const { data, error } = await supabase.auth.signUp({ email, password });
+
+  if (error) return alert(error.message);
+
+  // 2. Insert their CURRENT ELO ratings into your 'profiles' table
+  if (data.user) {
+    
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+        elo: Math.round(userRatingAll),                
+        eloAlgebra: Math.round(userRating),             
+        eloGeometry: Math.round(userRatingGeometry),
+        eloNum: Math.round(userRatingNumTheory),
+        eloProb: Math.round(userRatingProbability)   ,
+        topicsToWorkOn: topicsToWorkOn,
+        TOPICGLOSSARY: TOPIC_GLOSSARY,
+        unfamiliar:  unfamiliar,
+        stuck: stuck,
+        mistake: mistake,
+        algebraTotal: algebraTotal,
+        algebraWrong: algebraWrong,
+        geometryTotal: geometryTotal,
+        geometryWrong: geometryWrong,
+        numTotal: numTotal,
+        probTotal: probTotal,
+        numWrong: numWrong,
+        probWrong: probWrong,
+        streak: streakCount
+      }
+    ]);
+    
+    alert("Account created!");
+    
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+    loadQuestion()
+  }
+})
+async function loadUserStats(userId) {
+  const { data: profile, error } = await supabase
+    .from('profiles')
+    .select('elo, eloAlgebra, eloNum, eloGeometry, eloProb, eloNum, username, topicsToWorkOn, "TOPICGLOSSARY", unfamiliar, stuck, mistake, algebraTotal, algebraWrong, geometryTotal, geometryWrong, numTotal, numWrong, probTotal, probWrong, streak')
+    .eq('id', userId)
+    .single(); // Tells Supabase to return one object, not an array
+
+  if (error) {
+    console.error("Error downloading profile data:");
+    return;
+  }
+
+  if (profile) {
+    let userProfile = profile[0]
+    TOPIC_GLOSSARY = profile.TOPICGLOSSARY || TOPIC_GLOSSARY
+    topicsToWorkOn = profile.topicsToWorkOn || [];
+    userRatingAll = profile.elo; 
+    userRating = profile.eloAlgebra
+    userRatingNumTheory = profile.eloNum
+    userRatingProbability = profile.eloProb
+    userRatingGeometry = profile.eloGeometry
+    unfamiliar = profile.unfamiliar
+    stuck = profile.stuck
+    mistake = profile.mistake
+    algebraTotal = profile.algebraTotal
+    algebraWrong = profile.algebraWrong
+    geometryTotal = profile.geometryTotal
+    geometryWrong = profile.geometryWrong
+    numTotal = profile.numTotal
+    numWrong = profile.numWrong
+    probTotal = profile.probTotal
+    probWrong = profile.probWrong
+    streakCount = profile.streak
+    document.getElementById("btn-dashboard").innerHTML = userProfile.username
+      document.getElementById("username-display").innerHTML = profile.username;
+    
+    // 2. Update your frontend UI elements
+    const scoreCountElement = document.getElementById('scoreCount'); // update with your real ID if different
+    if (scoreCountElement) {
+      scoreCountElement.innerHTML = Math.round(userRatingAll);
+    }
+    document.getElementById("streak-count").innerHTML = streakCount;
+
+
+    
+    // 3. Trigger your chart re-renders
+    if (typeof updateRadarChart === "function") updateRadarChart();
+    if (typeof updateBarGraph === "function") updateBarGraph();
+    updatePieChart()
+  }
+}
+loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("login-email").value.trim()
+    const password = document.getElementById("login-password").value
+    if (!email || !password) {
+        
+document.getElementById("login-error").innerHTML = "Please Input Both Fields"
+    return;
+  }
+  loginBtn.disabled = true;
+const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password,
+  });
+
+  if (error) {
+    alert("Login Error: " + error.message);
+    loginBtn.disabled = false;
+    loginBtn.innerText = "Login";
+    return;
+  }
+  document.getElementById('accountPannel').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+  accountTrue = false
+  // 3. Pull their ELO data out of the database (Step 2 below)
+  await loadUserStats(data.user.id);
+  
+  // Reset button state
+  loginBtn.disabled = false;
+  loadQuestion()
+  updateRadarChart()
+  updateBarGraph()
+  updatePieChart()
+      document.getElementById("diagnosticStuff").style.display = "none"
+    document.getElementById("actualStuff").style.display = ""
+    userRatingAll = userRatingAllTrue
+    algebraQuestion = getNextQuestion(questions, userRating)
+    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
+    probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
+    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
+    allQuestion = getNextQuestion(allQ, userRatingAll)
+    loadQuestion();
+    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
+    updateRadarChart()
+    updateBarGraph()
+    updatePieChart()
+
+})
+const logoutBtn = document.getElementById('btn-logout');
+
+logoutBtn.addEventListener('click', async () => {
+      mistake = 0
+  stuck = 0
+  unfamiliar = 0
+  algebraTotal = 0
+  algebraWrong = 0
+  geometryTotal = 0
+  geometryWrong = 0
+  numTotal = 0
+  numWrong = 0
+  probTotal = 0
+  probWrong = 0
+  topicsToWorkOn = []
+  TOPIC_GLOSSARY.forEach(i => {
+    i.errors = 0
+  })
+  userRatingAll = 1200
+  userRating = 1200
+  userRatingGeometry = 1200
+  userRatingNumTheory = 1200
+  userRatingProbability = 1200
+  loadQuestion()
+  updateRadarChart()
+  updateBarGraph()
+  updatePieChart()
+            document.getElementById("login").style.display = "block"
+  // 1. Call Supabase to clear the secure cloud session
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    alert("Error logging out: " + error.message);
+    return;
+  }
+
+  // 2. Clear out your app's local storage so guest data doesn't get mixed up
+  localStorage.removeItem("elo");
+  localStorage.removeItem("eloAlgebra");
+  localStorage.removeItem("eloGeometry");
+  localStorage.removeItem("eloProb");
+  localStorage.removeItem("eloNum");
+
+
+  alert("You have been logged out successfully!");
+
+  // 3. Force a page reload to refresh the state back to defaults (or manually reset variables)
+  window.location.reload();
+});
+
+const deleteAccountBtn = document.getElementById('btn-delete-account');
+
+if (deleteAccountBtn) {
+  deleteAccountBtn.addEventListener('click', async () => {
+    // 1. Double check confirmation so they don't accidentally click it
+    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
+    
+    if (!confirmed) return;
+
+    // 2. Fetch active session
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+
+    const userId = session.user.id;
+
+    // 3. Clear their specific user row from your public profiles table
+    const { error: dbError } = await supabase
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+
+    if (dbError) {
+      alert("Error erasing profile data: " + dbError.message);
+      return;
+    }
+
+    // 4. Sign them out completely from the auth system
+    await supabase.auth.signOut();
+
+    // 5. Clean up any remaining guest browser cache tracks
+    localStorage.clear();
+    loadQuestion()
+
+    alert("Your account records and progress have been completely erased.");
+    window.location.reload();
+  });
+}// ONE CLEAN LISTEN BLOCK FOR ADAPTIVE PRACTICE (test.js)
+supabase.auth.onAuthStateChange(async (event, session) => {
+  const accountBtn = document.getElementById('accountBtn');
+  const logoutBtn = document.getElementById('btn-logout');
+  const loginBtn = document.getElementById('btn-login');
+  const signup = document.getElementById('no-account');
+  const login = document.getElementById('login');
+  const usernameDisplay = document.getElementById("username-display");
+  const createAccount = document.getElementById("no-account")
+  const deleteAccount = document.getElementById("btn-delete-account")
+  const usernameDisplayModal = document.getElementById("btn-dashboard")
+
+  // A. Check if a secure user session actually exists
+  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
+
+    // Toggle UI display blocks safely
+    if (logoutBtn) logoutBtn.style.display = 'block';
+    if (login) login.style.display = "none";
+    if (createAccount) createAccount.style.display = "none"
+    if (deleteAccount) deleteAccount.style.display = "block"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
+
+    // 1. Fetch cloud records safely using correct lowercase columns
+    const { data: profile, error } = await supabase
+      .from('profiles')
+      .select('username, elo, eloAlgebra, eloGeometry, eloNum, eloProb, topicsToWorkOn, "TOPICGLOSSARY", mistake, stuck, unfamiliar,algebraTotal, algebraWrong, geometryTotal, geometryWrong, numTotal, numWrong, probTotal, probWrong')
+      .eq('id', session.user.id)
+      .single();
+
+    if (error) {
+      console.error("Error downloading adaptive practice data:", error.message);
+      return;
+    }
+
+    if (profile) {
+      
+      // 2. Synchronize database states to local runtime memory
+      userRatingAll = profile.elo || 1200;
+      userRating = profile.eloAlgebra || 1200;
+      userRatingGeometry = profile.eloGeometry || 1200;
+      userRatingNumTheory = profile.eloNum || 1200;
+      userRatingProbability = profile.eloProb || 1200;
+      TOPIC_GLOSSARY = profile.TOPICGLOSSARY || TOPIC_GLOSSARY;
+      
+      topicsToWorkOn = profile.topicsToWorkOn || [];
+      mistake = profile.mistake || 0;
+      stuck = profile.stuck || 0;
+      unfamiliar = profile.unfamiliar || 0;
+      algebraWrong = profile.algebraWrong || 0;
+      algebraTotal = profile.algebraTotal || 0;
+      geometryTotal = profile.geometryTotal || 0;
+      geometryWrong = profile.geometryWrong || 0;
+      numTotal = profile.numTotal || 0;
+      numWrong = profile.numWrong || 0;
+      probTotal = profile.probTotal
+      probWrong = profile.probWrong
+      if (usernameDisplayModal) usernameDisplayModal.innerHTML = profile.username
+
+      // 3. Update DOM text values
+      if (usernameDisplay) usernameDisplay.innerHTML = profile.username;
+      
+      const scoreCountElement = document.getElementById('scoreCount');
+      if (scoreCountElement) {
+        scoreCountElement.innerHTML = Math.round(Number(userRatingAll.toString().replace(/,/g, '')));
+      }
+
+      // 4. Re-render visual analytics blocks
+      if (typeof updateBarGraph === "function") updateBarGraph();
+      if (typeof updateRadarChart === "function") updateRadarChart();
+      if (typeof updatePieChart === "function") updatePieChart();
+    }
+            document.getElementById("diagnosticStuff").style.display = "none"
+    algebraQuestion = getNextQuestion(questions, userRating)
+    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
+    probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
+    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
+    allQuestion = getNextQuestion(allQ, userRatingAll)
+    loadQuestion();
+
+  } else  {
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
+    if (typeof runDiagnostic === "function") runDiagnostic();
+    TOPIC_GLOSSARY = [ {
+        id: "word problems",
+        title: `Word Problems`,
+        description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
+        workOn: [
+            "Identifying keywords",
+            "Setting up equations",
+            "Avoiding misinterpretation"
+        ],
+        errors: 0,
+    },
+    {
+        id: "algebraic manipulation",
+        title: `Algebraic Manipulation`,
+        description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
+        workOn: [
+            "Factoring",
+            "Combining like terms",
+            "Recognizing algebraic patterns"
+        ],
+        errors: 0,
+    },
+ {
+    id: "arithmetic"  ,  
+    title: `Arithmetic`,
+        description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
+        workOn: [
+            "Mental/Quick Math",
+            "Identifying keywords",
+            "Shortcuts and factoring (for multiplication and division)"
+        ],
+        errors: 0,
+    },
+ {
+    id: "systems of equations",    
+    title: `Systems of Equations`,
+        description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
+        workOn: [
+            "Logic",
+            "Substitution", 
+            "Elimination",
+        ],
+        errors: 0,
+    },
+{
+    id: 'functions and graphing',   
+    title: `Functions and Graphing`,
+        description: "Recognizing and manipulating popular parent functions and being able to identify them",
+        workOn: [
+            "Parent Functions",
+            "Composition of Functions",
+            ""
+        ],
+        errors: 0,
+    },
+     {
+        id: 'logic',
+        title: `Logic`,
+        description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
+        workOn: [
+            "Recognizing Patterns", 
+            "Quick Mental Math",
+        ],
+        errors: 0,
+    },
+{
+    id: 'inequalities',    
+    title: `Inequalities`,
+        description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
+        workOn: [
+            "Graphing Inequalities",
+            "Understanding when a question is asking for inequalities",
+            "Composition of Functions"
+        ],
+        errors: 0,
+    },
+{
+    id: 'modular arithmetic',
+    title: `Modular Arithmetic`,
+        description: "These problems pertain to the remainders (mods) of operations (typically division)",
+        workOn: [
+            "Modular Arithmetic Rules",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'factoring' , 
+    title: `Factoring`,
+        description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
+        workOn: [
+            "Sum/difference of squares",
+            "GCF and LCM",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'prime factorization',
+        title: `Prime Factorization`,
+        description: "Reducing a number to its prime factors and using it to solve problems",
+        workOn: [
+            "Factor Trees (or whatever method you like to use)",
+            "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'percents',    
+    title: `Percents`,
+        description: "A different representation of fractions and ratios, make sure you understand what percents are",
+        workOn: [
+            "Decimal Multiplication",
+            "Converting numbers between Percents, Ratios, and Fractions",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'graphing'  ,  
+    title: `Graphing`,
+        description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
+        workOn: [
+            "Parent Functions",
+            "Logic + Intuition",
+        ],
+        errors: 0,
+    },
+    {
+       id: 'floor functions',
+        title: `Floor Functions`,
+        description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
+        workOn:[
+            'Graphing',
+            'Logic + Intuition',
+        ],
+        errors: 0,
+    },
+     {
+       id: 'speed-distance-time',
+        title: `Speed Distance Time`,
+        description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
+        workOn: [
+            "Memorizing the speed, distance, time equation",
+            "Understanding conversions and how the different variables relate to each other",
+            "Word problems and conceptualy understanding what is being asked",
+        ],
+        errors: 0,
+    },{
+        id: 'averages',
+        title: `Averages`,
+        description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
+        workOn: [
+            'Deriving equations',
+            'Arithmetic mean',
+            'Statistics',
+        ],
+        errors: 0,
+    },
+ {
+        id: 'induction',
+        title: `Induction`,
+        description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
+        workOn: [
+            "Making educated guesses",
+            "Recognizing Patterns",
+            "'Limiting' solutions",
+        ],
+        errors: 0,
+    }, 
+ {
+        id: 'series',
+        title: `Series`,
+        description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
+        workOn: [
+            "Memorizing equations for series",
+            "Arithmetic and Geometric Series",
+            "Recognizing patterns",
+        ],
+        errors: 0,
+    },
+{
+    id: 'absolute value',    
+    title: `Absolute Value`,
+        description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
+        workOn:
+        [ 
+            "Graphing",
+            "Intuition"
+        ],
+        errors: 0,
+    },
+ {
+        id: 'exponents',
+        title: `Exponents`,
+        description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
+        workOn: 
+        [
+            "Change of base",
+            "Adding, subtracting, multiplying, dividing exponents",
+            "Factoring out squares",
+        ],
+        errors: 0,
+
+    },
+ {
+    id: 'discriminant' ,   
+    title: `Discriminant`,
+        description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
+        workOn:[
+            "Quadratic Formula"
+        ],
+        errors:0,
+    },
+{
+    id: 'casework',    
+    title: `Casework`,
+        description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
+        workOn: [
+            'Absolute Value Questions',
+            'Quadratics',
+        ],
+        errors: 0,
+    },
+ {
+  id: 'medians',
+    title: `Medians`,
+        description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
+        workOn: [
+            'Statistics',
+            'Datasets',
+        ],
+        errors: 0,
+    },
+{
+    id: 'similar triangles'  , 
+    title: `Similar Triangles`,
+        description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
+        workOn: [
+            "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
+            "Ratios",
+        ],
+        errors: 0,
+    },
+{
+        id: 'surface area',
+        title: `Surface Area`,
+        description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
+        workOn: [
+            "Surface Area equations (for spheres and cones in addition to typical polygons)",
+            "3D conceptualization (e.g. imagining how it looks so you can understand it)",
+        ],
+        errors: 0,
+    },
+{
+    id: 'triangle lines'  , 
+    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
+        description: `<p>Remember the following lines that you can add to a triangle</p>
+        <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
+        <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
+        <p>Perpendicular Bisectors: Lines that pass through a side and are perpendicular and bisect it. Intersect at the circumcenter that is the center for the circumscribed circle (touching all vertices)</p>
+        <p>Angle Bisectors: Lines that bisect angles, intersect at the incenter, the center of the inscribed circle (tangent to all sides)</p>`,
+        workOn: [
+            "Medians",
+            "Perpendicular Bisectors",
+            "Angle Bisectors",
+        ],
+        errors: 0,
+    },
+{
+    id: 'counting',
+        title: `Counting`,
+        description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
+        workOn: [
+            "Optimization",
+            "Logic",
+            "Casework"
+        ],
+        errors: 0,
+    },
+{
+    id: 'composite shapes',
+        title: `Composite Shapes`,
+        description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
+        workOn: [
+            "Area",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'transformations',
+        title: `Transformations`,
+        description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
+        workOn: [
+            "Translations",
+            "Reflections",
+            "Rotations",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'volume',
+        title: `Volume`,
+        description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
+        workOn: [
+            "Volume Formulas",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'prime numbers',
+        title: `Prime Numbers`,
+        description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
+        workOn: [
+            "Factoring"
+        ],
+        errors: 0,
+    },
+{
+    id: 'hexagons',
+        title: `Hexagons`,
+        description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
+        workOn: [
+            "Area of a hexagon",
+            "Area of equilateral triangles",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'optimization',
+        title: `Optimization`,
+        description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
+        workOn: [
+            "Casework",
+            "Counting"
+        ],
+        errors: 0,
+    },
+{
+    id: 'volume relationships',
+        title: `Volume Relationships`,
+        description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
+        workOn: [
+            "ratios"
+        ],
+        errors: 0,
+    },
+ {
+    id: 'pyramids',
+        title: `Pyramids`,
+        description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
+        workOn: [
+            "Pythagorean theorem",
+            "Surface Area"
+        ],
+        errors: 0,
+    },
+ {
+    id: 'trigonometry',
+        title: `Trigonometry`,
+        description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
+        workOn: [
+            "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
+            "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
+            "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
+        ],
+        errors: 0,
+    },
+{
+    id: 'coordinate plane',
+        title: `Coordinate Plane`,
+        description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
+        workOn: [
+            "Slope",
+            "Functions",
+            "Graphing",
+        ],
+        errors: 0,
+    },
+{
+    title: "Pythagorean Theorem",
+    id: 'pythagorean theorem',
+        description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
+        workOn: [
+            "Pythagorean Triples",
+            "Theorem",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'forced simplification',
+        title: `Forced Simplification`,
+        description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
+        workOn: [
+            "Logic",
+            "Understanding problems",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'power of a point',
+        title: `Power of A Point`,
+        description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
+        workOn: [
+            "Chords",
+            "Tangents",
+            "Secants",
+        ],
+        errors: 0,
+ },
+ {
+    id: 'bases',
+        title: `Bases`,
+        description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
+        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
+        workOn: [
+            "Changing from base \\(10\\)",
+            "Changing to base \\(10\\)",
+            "Modular Arithmetic",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'combinations',
+        title: `Combinations`,
+        description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
+        workOn:
+            [
+                "Recognizing combinations vs permutations",
+                "Combinations equation",
+            ],
+            errors: 0,
+    },
+    {
+        id: 'counting',
+        title: `Counting`,
+        description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
+        workOn:
+        [
+            `Permutations Formula \\(n!\\)`,
+            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
+            'Factorials',
+        ],
+        errors: 0,
+    },
+    {
+        id: 'expected outcome',
+        title: `Expected Outcome`,
+        description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
+        workOn:
+        [
+            'Expected Outcome Formula'
+        ],
+        errors: 0,
+    },
+    {
+        id: 'complementary counting',
+        title: `Complementary Counting`,
+        description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
+        workOn: [
+            "Saving time"
+        ],
+        errors: 0,
+    }
+]
+    if (logoutBtn) logoutBtn.style.display = 'none';
+    if (login) login.style.display = "block";
+    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
+    if (createAccount) createAccount.style.display = "block"
+    if (deleteAccount) deleteAccount.style.display = "none"
+    // Reset runtime math parameters back to baseline
+    userRatingAll = 1200;
+    userRating = 1200;
+    userRatingGeometry = 1200;
+    userRatingNumTheory = 1200;
+    userRatingProbability = 1200;
+    mistake = 0;
+    stuck = 0;
+    unfamiliar = 0;
+    topicsToWorkOn = [];
+    
+    if (Array.isArray(TOPIC_GLOSSARY)) {
+      TOPIC_GLOSSARY.forEach(i => { if(i) i.errors = 0; });
+    }
+
+    const scoreCountElement = document.getElementById('scoreCount');
+    if (scoreCountElement) scoreCountElement.innerHTML = 1200;
+
+    // Redraw empty guest charts
+    if (typeof updateBarGraph === "function") updateBarGraph();
+    if (typeof updateRadarChart === "function") updateRadarChart();
+    if (typeof updatePieChart === "function") updatePieChart();
+
+  }
+});
+const arrayPrint = []
+TOPIC_GLOSSARY.forEach(i => {
+    arrayPrint.push(i.id)
+})
