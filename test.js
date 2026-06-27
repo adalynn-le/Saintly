@@ -10311,7 +10311,7 @@ const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
     }
     questionType = "numTheory"
 }
-checkBtn.addEventListener("click", function () {
+checkBtn.addEventListener("click", async function () {
     if (questionType === "algebra"){
             checkAnswerAlgebra();
     }
@@ -10327,6 +10327,35 @@ checkBtn.addEventListener("click", function () {
     if (questionType === 'all'){
         checkAnswerAll();
     }
+    console.log("running code")
+    // Inside your "Correct Answer" logic block:
+clearInterval(timerInterval); // Freeze the clock immediately
+
+// Add current performance metrics to your local totals
+userTotalTimeSpent += currentQuestionSeconds;
+console.log(userTotalTimeSpent)
+userTimedQuestionsCount += 1;
+console.log(userTimedQuestionsCount)
+
+// Update your interface displays
+updateAvgTimerUI();
+
+// Sync the updated duration metrics directly to your Supabase profiles table
+const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+if (session && !sessionError) {
+    console.log("updating")
+const { error: timerSyncError } = await supabase
+  .from('profiles')
+  .update({
+      totalTimeSpent: userTotalTimeSpent,
+      timedQuestionsCount: userTimedQuestionsCount
+  })
+  .eq('id', session.user.id); // Matches user session profile
+
+if (timerSyncError) {
+  console.error("Failed to sync structural timing metrics:", timerSyncError.message);
+}
+  }
 });
 function restart(){
     currentQuestion = 0;
@@ -10783,6 +10812,7 @@ console.log(TOPIC_GLOSSARY)
 }
 //------------Switch Subjects--------------
 function loadQuestion() {
+    startQuestionTimer()
     scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
     errorTags.style.display = "none"
         strikesContainer.display = "none"
@@ -12552,7 +12582,7 @@ supabase.auth.onAuthStateChange(async (event, session) => {
     // 1. Fetch cloud records safely using correct lowercase columns
     const { data: profile, error } = await supabase
       .from('profiles')
-      .select('username, elo, eloAlgebra, eloGeometry, eloNum, eloProb, topicsToWorkOn, "TOPICGLOSSARY", mistake, stuck, unfamiliar,algebraTotal, algebraWrong, geometryTotal, geometryWrong, numTotal, numWrong, probTotal, probWrong')
+      .select('username, elo, eloAlgebra, eloGeometry, eloNum, eloProb, topicsToWorkOn, "TOPICGLOSSARY", mistake, stuck, unfamiliar,algebraTotal, algebraWrong, geometryTotal, geometryWrong, numTotal, numWrong, probTotal, probWrong, totalTimeSpent, timedQuestionsCount')
       .eq('id', session.user.id)
       .single();
 
@@ -12569,7 +12599,14 @@ supabase.auth.onAuthStateChange(async (event, session) => {
       userRatingGeometry = profile.eloGeometry || 1200;
       userRatingNumTheory = profile.eloNum || 1200;
       userRatingProbability = profile.eloProb || 1200;
+      userTotalTimeSpent = profile.totalTimeSpent || 0;
+userTimedQuestionsCount = profile.timedQuestionsCount || 0;
+updateAvgTimerUI();
+console.log(userTimedQuestionsCount)
+console.log(userTotalTimeSpent)
       TOPIC_GLOSSARY = profile.TOPICGLOSSARY || [ {
+        // Inside your user authentication profile parsing sequence:
+
         id: "word problems",
         title: `Word Problems`,
         description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
@@ -13589,4 +13626,41 @@ if (resetBtn) {
       alert("Check your inbox! A secure password reset link has been sent.");
     }
   });
+}
+
+// --- 1. Timer State Variables ---
+let timerInterval;
+let currentQuestionSeconds = 0;
+let userTotalTimeSpent = 0;       // Fetched from database on login
+let userTimedQuestionsCount = 0;  // Fetched from database on login
+
+// --- 2. Helper: Format seconds into MM:SS ---
+function formatTime(totalSeconds) {
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+// --- 3. Core Functions: Start and Stop ---
+function startQuestionTimer() {
+  // Clear any old ticking interval safety check
+  clearInterval(timerInterval);
+  currentQuestionSeconds = 0;
+  document.getElementById("current-timer").innerText = "0:00";
+
+  // Tick every 1 second
+  timerInterval = setInterval(() => {
+    currentQuestionSeconds++;
+    document.getElementById("current-timer").innerText = formatTime(currentQuestionSeconds);
+  }, 1000);
+}
+
+// Update UI display for lifetime average
+function updateAvgTimerUI() {
+  if (userTimedQuestionsCount === 0) {
+    document.getElementById("avg-timer").innerText = "0:00";
+    return;
+  }
+  const avgSeconds = Math.round(userTotalTimeSpent / userTimedQuestionsCount);
+  document.getElementById("avg-timer").innerText = formatTime(avgSeconds);
 }
