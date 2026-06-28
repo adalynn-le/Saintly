@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
-  <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<html lang="en">
+<head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+<meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+<meta name="twitter:card" content="summary_large_image">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3X50VWZM2"></script>
+<script src="https://t.contentsquare.net/uxa/cb77e0fd80dbf.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -11,30 +17,53 @@
 
   gtag('config', 'G-N3X50VWZM2');
 </script>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <title>AMC 10</title>
-
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://t.contentsquare.net/uxa/cb77e0fd80dbf.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,balance,bedtime,book,dashboard_2_gear,draw_abstract,function,functions,handshake,ifl,leaderboard,local_fire_department,send,sunny,volunteer_activism" />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta charset="UTF-8">
+  <title>Saintly | Pythagorean Theorem</title>
+  <link rel="stylesheet" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-  </head>
-  <body>
-    <div id="sidebarPlaceholder"></div>
-    <script type="module" src="sidebar.js"></script>
-   
+<link rel="manifest" href="site.webmanifest">   
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=account_circle,ads_click,bedtime,book,check,close_small,exclamation,handshake,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,sunny,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+ 
+</head>
+
+<body>
+   <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script type="module" src="sidebar.js"></script>
 <nav id = "top-bar">
   <a class="aContainer" href="index.html">Home</a>
   <p class="aContainer">•</p>
   <a class="aContainer" href = "topics dash.html">Topics Dashboard</a>
   <p class="aContainer">•</p>
-  <a class="aContainer" href = "algebraic manipulation.html">Series</a>
+  <a class="aContainer" href = "pythagorean theorem.html">Pythagorean Theorem</a>
   <div class="center-align">
   <button class='topBtn' onclick="window.location.href='index.html'">
   <img class="fullLogo" src="fullLogo.png">
@@ -61,151 +90,127 @@ sunny
 </button>
     </div>
 </nav>
-<main>
-  <div id="overlay"></div>
-  <div class="amc10container">      
-  <h1 class="amc10title">Topics Dashboard</h1>
-<p class="par">We've divided every one of the past 300 questions on the AMC 10 into 58 topics and are working to create in-depth guides for each one. These are the same topics you'll see on the Adaptive Practice, so you can learn more about what you are consistently getting wrong.</p>
-<span class="howworkcardsrow" style="display: flex; flex-direction: row">
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="word problems.html">
-    <p class="amc10subtitle">Word Problems</p>
-    <hr>
-    <p class="par">Learn to understand the AMC 10's wording and structure by recognizing keywords, modeling systems of equations, and setting limits.</p>
-    <p class="par">Adalynn Le • 5/2/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="algebraic manipulation.html">
-    <p class="amc10subtitle">Algebraic Manipulation</p>
-    <hr>
-    <p class="par">Understand how to use algebra and factoring to understand and solve and simplify advanced systems of equations and expressions.</p>
-    <p class="par">Adalynn Le • 5/2/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="arithmetic.html">
-    <p class="amc10subtitle">Arithmetic</p>
-    <hr>
-    <p class="par">Build on a basic understanding of arithmetic operations in order to get deeper knowledge and learn more skills to work faster.</p>
-    <p class="par">Adalynn Le • 5/3/2026</p>
-</a>
-  <a  href = "functions and graphing.html" class="howworkcard" style="display: inline-block; flex: 1">
-      <p class="amc10subtitle">Functions and Graphing</p>
-      <hr>
-      <p class="par">Understand basic functions and learn how to graph effectively and efficiently on the AMC 10.</p>
-      <p class="par">Adalynn Le • 5/6/2026</p>
-  </a>
-</span>
-<span class="howworkcardsrow" style="display: flex; flex-direction: row">
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="systems of equations.html">
-    <p class="amc10subtitle">Systems of Equations</p>
-    <hr>
-    <p class="par">Solve for multiple variables by learning to model and solve systems of equations</p>
-    <p class="par">Adalynn Le • 5/6/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="logic.html">
-    <p class="amc10subtitle">Logic</p>
-    <hr>
-    <p class="par">Heighten your intuitiion and delve into theory through logic</p>
-    <p class="par">Adalynn Le • 5/9/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="inequalities.html">
-    <p class="amc10subtitle">Inequalities</p>
-    <hr>
-    <p class="par">Learn how inequalities can affect functions and how to use them well</p>
-    <p class="par">Adalynn Le • 5/10/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="modular arithmetic.html">
-    <p class="amc10subtitle">Modular Arithmetic</p>
-    <hr>
-    <p class="par">Study the relationships between numbers and their remainders</p>
-    <p class="par">Adalynn Le • 5/11/2026</p>
-</a>
-</span>
-<span style="display: flex; flex-direction: row">
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="factoring.html">
-    <p class="amc10subtitle">Factoring</p>
-    <hr>
-    <p class="par">Learn how to simplify complex expressions through factoring and FOIL</p>
-    <p class="par">Adalynn Le • 5/15/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="prime factorization.html">
-    <p class="amc10subtitle">Prime Factorization</p>
-    <hr>
-    <p class="par">Break down numbers into smaller prime factors and use those to find important metrics</p>
-    <p class="par">Adalynn Le • 5/16/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="speed-distance-time.html">
-    <p class="amc10subtitle">Speed Distance Time</p>
-    <hr>
-    <p class="par">Solve different types of speed distance time problems</p>
-    <p class="par">Adalynn Le • 5/25/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="averages.html">
-    <p class="amc10subtitle">Averages</p>
-    <hr>
-    <p class="par">Learn about the different types of averages and means</p>
-    <p class="par">Adalynn Le • 5/25/2026</p>
-</a>
+<main>  
 
-</span>
-<span style="display: flex; flex-direction: row">
-  <a class="howworkcard" style=" display: inline-block; flex: 1" href="series.html">
-    <p class="amc10subtitle">Series</p>
-    <hr>
-    <p class="par">Understand the sums of geometric and arithmetic sequences</p>
-    <p class="par">Adalynn Le • 5/25/2026</p>
-</a>
-  <a class="howworkcard" style=" display: inline-block; flex: 1" href="absolute value.html">
-    <p class="amc10subtitle">Absolute Value</p>
-    <hr>
-    <p class="par">Learn the imortance of absolute value equations and how to solve them</p>
-    <p class="par">Adalynn Le • 5/26/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="casework.html">
-    <p class="amc10subtitle">Casework</p>
-    <hr>
-    <p class="par">Get faster and more efficient at solving combinatorics by understanding when and how to use casework</p>
-    <p class="par">Adalynn Le • 5/27/2026</p>
-</a>
-<a class="howworkcard" style=" display: inline-block; flex: 1" href="induction.html">
-    <p class="amc10subtitle">Induction</p>
-    <hr>
-    <p class="par">Master a principle of proof and counting</p>
-    <p class="par">Adalynn Le • 5/27/2026</p>
-</a>
+<div class="minicontainer">
 
+  <h1 class="amc10title">Pythagorean Theorem</h1>
+  <p class="amc10subtitle"></p>
+  <h2 class="amc10subtitle">7 Problems • 4 sub-topics</h2>
+  <h2 class="par" style="display: inline; vertical-align: middle !important;">Isaac Cho • 6/28/2026</h2>
+<!-- Table of Contents  -->
+  <div id="tableOfContents">
+  <h3 class="amc10subtitle ittybitty" style="color: var(--primary-color)">Table of Contents</h3>
+  <ol><a href="#intro">Introduction</a></ol>
+<ol><a href="#equation">The Equation</a></ol>
+<ol><a href="#applications">Applications</a></ol>
+<ol><a href="#triples">Pythagorean Triples</a></ol>
+<ol><a href="#conclusion">Conclusion</a></ol>
+  </div>
+
+
+
+<!--Intro-->
+  <div id="introContainer">
+    <h2 class="amc10subtitle" id="intro">Introduction</h2>
+  <p class="par">The pythagorean theorem is probably the most known and most widely used equation in all of geometry. It gives a simple way to find the length of any side of a right triangle (provided you know the other two) using arithmetic.</p>
+   </div>
+   
+<span id = "howworkcards">
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">What is it?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">The equation is written as \(a^2+b^2=c^2\), with \(a\) and \(b\) as "legs", the perpendicular shortest sides of a right triangle. \(c\) represents the hypotenuse, or slanted longest side of the triangle.</div>
+  </span>
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">Why Study?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">The pythagorean theorem is a shockingly simple equation that can tell us a lot about right triangles. It allows us an easy way to solve and understand them without reqiuring advanced trigonometry or other such computations.</div>
+  </span>
 </span>
-<span style="display: flex; flex-direction: row">
-    <a class="howworkcard" style=" display: inline-block; flex: 1" href="exponents.html">
-    <p class="amc10subtitle">Exponents</p>
-    <hr>
-    <p class="par">Master the rules and properties of exponents</p>
-    <p class="par">Adalynn Le • 5/26/2026</p>
-</a>
-    <a class="howworkcard" style=" display: inline-block; flex: 1" href="medians.html">
-    <p class="amc10subtitle">Medians</p>
-    <hr>
-    <p class="par">Grasp the true center of any dataset</p>
-    <p class="par">Adalynn Le • 5/26/2026</p>
-</a>
-    <a class="howworkcard" style=" display: inline-block; flex: 1" href="similar triangles.html">
-    <p class="amc10subtitle">Similar Triangles</p>
-    <hr>
-    <p class="par">Learn the properties and applications of similar triangles</p>
-    <p class="par">Adalynn Le • 5/26/2026</p>
-</a>
-    <a class="howworkcard" style=" display: inline-block; flex: 1" href="similar triangles.html">
-    <p class="amc10subtitle">Triangle Lines</p>
-    <hr>
-    <p class="par">Explore medians, altitudes, angle bisectors, and perpendicular bisectors</p>
-    <p class="par">Adalynn Le • 5/27/2026</p>
-</a>
-</span>
-<span style="display: flex; flex-direction: row">
-      <a class="howworkcard" style=" display: inline-block; flex: 0.22" href="pythagorean theorem.html">
-    <p class="amc10subtitle">Pythagorean Theorem</p>
-    <hr>
-    <p class="par">Understand when and how to use the pythagorean theorem</p>
-    <p class="par">Isaac Cho • 6/28/2026</p>
-</a>
-</span>
+<div id="equation">
+    <h2 class="amc10subtitle">The Equation
+    </h2>
+    <span style="display: flex; flex-direction: row; gap: 100px">
+        <span style="flex: 1">
+    <p class="par">
+        The Pythagorean theorem is one of the most commonly used formulas when dealing with triangles. 
+</p>
+<p>
+For a given right angled (90°) triangle, the Pythagorean theorem states that:
+</p>
+\(a^2+b^2=c^2\), where a and b are legs of the triangle and c is the hypotenuse (the longest side / the side directly opposite to the right angle)
+<p>
+Using this, the formula can also be manipulated so you can find the value for one side using:
+</p>
+<p>
+\(c=\sqrt{a^2+b^2}\) → where you are trying to find the hypotenuse
+</p>
+<p>
+\(a=\sqrt{c^2-b^2}\) → where you are trying to find the triangle’s leg
+
+    </p>
+    </span>
+    <img src="pythagoreantheoremimg1.png" style="display: inline-flex; flex: 1">
+    </span>
+   </div>
+   <div id="applications">
+    <h2 class="amc10subtitle">Applications</h2>
+    <p>The Pythagorean theorem helps in 2 main ways:
+
+<ol>It allows you to identify the missing side of the triangle if you know the remaining two sides as well as the fact that the triangle is right-angled
+</ol><ol>It helps you determine whether a triangle is right-angled if you know all 3 sides</ol>
+
+</p>
+   </div>
+   <div id="triples">
+    <h2 class="amc10subtitle">Pythagorean Triples</h2>
+    <p class="par">
+      <p>  Using the Pythagorean theorem, we can generate something called Pythagorean triples. Essentially, these are sets of 3 positive integers that fit the Pythagorean formula.>
+</p><p>
+Each set is in the form (a, b, c), where a2+b2=c2. A few common examples are:
+</p>
+<ol>
+(3, 4, 5)
+</ol><ol>
+(6, 8, 10)
+</ol><ol>
+(5, 12, 13)
+</ol><ol>(8, 15, 17)</ol>
+<p>
+Knowing a few of these Pythagorean triples are helpful as they will help you instantly recognize if a triangle is right angled, or allows you to easily find the remaining side of a right angled triangle with integer valued sides.
+
+    </p>
+   </div>
+<h3 id="conclusion"class="amc10subtitle">Conclusion</h3>
+<p class="par">The pythagorean equation plays a vital role in geometry and understanding the functions of right ttrinagles. From the pythagorean equation, we can produce pythagorean triples which are important to know in order to 
+    be able to rapidly understand and classify triangles or shapes in the AMC 10.
+<div class="problem problemWrapper">
+<h3 id="question-title" class="amc10title small">Question 1:</h3>
+    <p id="question-text">Loading question...</p>
+    <input type="text" id="answer-input" placeholder="Your answer">
+<div id="mc-container" class="hidden">
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+</div>
+
+    <button id="check-btn" class="problemBtn">Check Answer</button>
+
+    <div class="solution" id="solution" style="display:none;">
+      <h2>Solution</h2>
+      <p id="solution-text"></p>
+      <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
+      </div>
+</div>
 <div id = "helpPannel" class = "helpPannel">
   <h2>Need Some Help?</h2>
   <p class="par">Contact us through our form</p>
@@ -258,13 +263,30 @@ sunny
     </label>
   </div>
 </label>
-  <button type="submit">Send</button>
+  <button type="submit" class="problemBtn">Send</button>
 </form>
   <p>Or email us at <a href="mailto:saintly.math@gmail.com">saintly.math@gmail.com</a></p>
 </div>
-
+<div class="helpPannel" id="privacyPolicy" display="none">
+  <h4>Privacy Policy</h4>
+  <h5>Data Collection</h5>
+  <li>We use local storage to track and save your ELO on your device</li>
+  <li>We use Supabase backend to track overall acuracy on questions</li>
+  <li>We trackk individual user usage on our website, pages, etc. by tracking time spent and interaction</li>
+  <h5>How we use your data</h5>
+  <li>To personalize your learning experience</li>
+  <li>We never sell your data to third parties</li>
+  <h5>Children's Privacy</h5>
+  <li>Saintly is intended for students. We encourage parents to monitor their children's internet usage. We do not knowingly collect personal information from children under 13 without parental consent (per COPPA guidelines).</li>
 </div>
-
+<div class="helpPannel" id="termsAndConditions" display="none">
+  <h4>Terms and Conditions</h4>
+  <li>By using Saintly you agree to the terms and conditions</li>
+  <li>You may not scrape the site or re-distribute our unique interactive code without permission.</li>
+  <li>Be "Saintly." No harassment, no attempts to hack the site, and no using the platform to cheat on active competitions.</li>
+  <li>Math is hard! While we strive for 100% accuracy, Saintly is provided "as is." We aren't responsible if a specific formula explanation doesn't lead to a perfect AMC score (though we hope it does!).</li>
+  <li>Saintly and its volunteers are not liable for any damages arising from your use of the site.</li>
+</div>
 <div class="helpPannel"  id="accountPannel">
   <div id="login">
     <h2 class="amc10subtitle ittyBitty">Welcome Back!</h2>
@@ -340,29 +362,8 @@ sunny
     </label>
   </div>
 </label></form></div>
-<div class="helpPannel" id="privacyPolicy" display="none">
-  <h4>Privacy Policy</h4>
-  <h5>Data Collection</h5>
-  <li>We use local storage to track and save your ELO on your device</li>
-  <li>We use Supabase backend to track overall acuracy on questions</li>
-  <li>We trackk individual user usage on our website, pages, etc. by tracking time spent and interaction</li>
-  <h5>How we use your data</h5>
-  <li>To personalize your learning experience</li>
-  <li>We never sell your data to third parties</li>
-  <h5>Children's Privacy</h5>
-  <li>Saintly is intended for students. We encourage parents to monitor their children's internet usage. We do not knowingly collect personal information from children under 13 without parental consent (per COPPA guidelines).</li>
-</div>
-<div class="helpPannel" id="termsAndConditions" display="none">
-  <h4>Terms and Conditions</h4>
-  <li>By using Saintly you agree to the terms and conditions</li>
-  <li>You may not scrape the site or re-distribute our unique interactive code without permission.</li>
-  <li>Be "Saintly." No harassment, no attempts to hack the site, and no using the platform to cheat on active competitions.</li>
-  <li>Math is hard! While we strive for 100% accuracy, Saintly is provided "as is." We aren't responsible if a specific formula explanation doesn't lead to a perfect AMC score (though we hope it does!).</li>
-  <li>Saintly and its volunteers are not liable for any damages arising from your use of the site.</li>
-</div>
 </main>
-
-<div id="overlay"></div>
+</div>
 <footer class="saintly-footer">
     <div class="footer-content">
         <div class="footer-section">
@@ -382,8 +383,15 @@ sunny
         </div>
         <div class="footer-section">
             <h4>Contact</h4>
-            <p>saintly.math@gmail.com</p>
             <div class="social-icons">
+      <a>saintly.math@gmail.com</a>
+              <span style="display: flex; flex-direction: row">
+<a href="https://instagram.com/saintly.math" class="fa fa-instagram" style="display: inline-block"><p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>@saintly.math</p></a>
+</span>
+                            <span style="display: flex; flex-direction: row">
+<a href="https://pinterest.com/saintlymath" class="fa fa-pinterest" style="display: inline-block"><p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>Saintly</p></a>
+
+</span>
                 </div>
         </div>
         <div class="footer-section">
@@ -398,77 +406,20 @@ sunny
         &copy; 2026 Saintly Math. Built with drive.
     </div>
 </footer>
-<script>
-  const toggleBrightness = document.getElementById("brightness")
-const carouselLight = document.querySelectorAll("carousel-logo-light")
-const carouselDark = document.querySelectorAll("carousel-logo-dark")
-let colorMode = 'light'
-let colorModeTrue = localStorage.getItem("colorMode")
-console.log(colorModeTrue)
-if  (colorModeTrue !== false){
-        console.log("setting color mode")
-       colorMode =  colorModeTrue
-       console.log(colorModeTrue)
- if (colorMode === 'dark'){
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark'; 
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", "dark")
-        } else {
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light';
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", "light")
-        }
-} else {
-function toggleSystemTheme() {
-  const root = document.documentElement;
-  
-  // 1. Check what the system preference is, or if it's already set
-  if (!root.style.colorScheme) {
-    // If it's not set yet, match the user's system preferences
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.style.colorScheme = prefersDark ? 'dark' : 'light';
-  }
-  
-  colorMode = root.style.colorScheme;
+</body>
+<div id="level-toast" class="level-toast">
+  Level Up
+</div>
+<div id="overlay"></div>
 
-  // 2. Add the correct matching class right away so the logos render correctly!
-  if (colorMode === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-  } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-  }
-}
-toggleSystemTheme();
-}
-toggleBrightness.addEventListener("click", function(){
-        if (colorMode === 'dark'){
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light'; 
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", colorMode)
-        } else {
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark';
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", colorMode)
-        }
-        console.log(localStorage.getItem("colorMode"));
-});
-</script>
-    </body>
+<!-- Confetti Canvas -->
+<canvas id="confetti-canvas"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="pythagorean theoremjs.js"></script>
 <script src="footer.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script type="module">
@@ -738,3 +689,4 @@ if (resetBtn) {
 }
     </script>
 </html>
+
