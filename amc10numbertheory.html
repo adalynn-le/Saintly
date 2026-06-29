@@ -93,6 +93,9 @@ sunny
       <div class = "progress-bar" id = "progress-bar"></div>
     </div>
     <h3 id="question-title" class="amc10title small">Question 1:</h3>
+    <div class="scratchpad-controls" style="margin-bottom: 10px; position: relative; z-index: 20;">
+  <button id="btn-toggle-scratchpad" class="start-practice" style="border: 1px solid #88b1ff; background-color: transparent;">Open Scratchpad</button>
+</div>
     <p id="question-text">Loading question...</p>
     <input type="text" id="answer-input" placeholder="Your answer">
 <div id="mc-container" class="hidden">
@@ -145,6 +148,20 @@ sunny
 
     <button id="next-btn" style="display:none;" class="problemBtn">Next Question</button>
   </div>
+  <div id="scratchpad-popup" style="display: none; position: fixed; top: 150px; left: 50px; width: 420px; background: rgb(255, 255, 255); border: 2px solid var(--primary-color, #88b1ff); border-radius: 8px;  z-index: 1000; overflow: hidden; ">
+  
+  <div id="scratchpad-header" style="padding: 10px; background: rgb(255, 255, 255); cursor: move; display: flex; justify-content: space-between; align-items: center; user-select: none; border-bottom: 1px solid rgb(235, 234, 241);">
+    <span style=" color: #88B1ff; font-size: 14px; font-family: 'National Park' sans-serif;">Scratchpad</span>
+    <div style="display: flex; gap: 6px;">
+      <button id="btn-clear-scratchpad" style="padding: 4px 8px; cursor: pointer; background: rgb(255, 255, 255); border: none; border-radius: 4px; color: #88B1ff; font-size: 12px; font-family: 'National Park', sans-serif">Clear</button>
+      <button id="btn-close-scratchpad" style="padding: 4px 8px; cursor: pointer; background: #ff5c5c; border: none; border-radius: 4px; color: white; font-size: 12px; font-weight: bold;">X</button>
+    </div>
+  </div>
+
+  <div style="padding: 10px; background: rgb(255, 255, 255); display: flex; justify-content: center;">
+    <canvas id="scratchpad-canvas" width="400" height="300" style="display: block; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px; cursor: crosshair;"></canvas>
+  </div>
+</div>
 <div id="stats-dashboard" class="hidden">
   <h2>📊 Your Stats</h2>
   <p>Total Questions: <span id="total-questions">0</span></p>

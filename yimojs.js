@@ -3084,3 +3084,143 @@ if (resetBtn) {
     }
   });
 }
+// --- Integrated Draggable Floating Scratchpad Engine ---
+const scratchPopup = document.getElementById("scratchpad-popup");
+const scratchHeader = document.getElementById("scratchpad-header");
+const scratchCanvas = document.getElementById("scratchpad-canvas");
+const toggleScratchBtn = document.getElementById("btn-toggle-scratchpad");
+const clearScratchBtn = document.getElementById("btn-clear-scratchpad");
+const closeScratchBtn = document.getElementById("btn-close-scratchpad");
+
+if (scratchPopup && scratchHeader && scratchCanvas) {
+  const ctx = scratchCanvas.getContext("2d");
+  let isDrawing = false;
+  let lastX = 0, lastY = 0;
+
+  // --- 1. Open / Close Window Visibility Toggles ---
+  function openScratchpad() {
+    scratchPopup.style.display = "block";
+    setupBrushColors();
+  }
+
+  function closeScratchpad() {
+    toggleScratchBtn.innerHTML = "Open Scratchpad"
+    scratchPopup.style.display = "none";
+  }
+
+  toggleScratchBtn.addEventListener("click", () => {
+    if (scratchPopup.style.display === "none" || scratchPopup.style.display === "") {
+      openScratchpad();
+      toggleScratchBtn.innerHTML = "Close Scratchpad"
+    } else {
+      closeScratchpad();
+      toggleScratchBtn.innerHTML = "Open Scratchpad"
+    }
+  });
+
+  closeScratchBtn.addEventListener("click", closeScratchpad);
+  
+  clearScratchBtn.addEventListener("click", () => {
+    ctx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+  });
+
+  function setupBrushColors() {
+    let computedColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+    ctx.strokeStyle = computedColor ? computedColor : '#4A90E2'; 
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+  }
+
+  // --- 2. Canvas Core Drawing Mechanics ---
+  function getCanvasCoordinates(e) {
+    const rect = scratchCanvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return {
+      x: clientX - rect.left,
+      y: clientY - rect.top
+    };
+  }
+
+  scratchCanvas.addEventListener("mousedown", (e) => {
+    isDrawing = true;
+    const coords = getCanvasCoordinates(e);
+    [lastX, lastY] = [coords.x, coords.y];
+  });
+
+  scratchCanvas.addEventListener("mousemove", (e) => {
+    if (!isDrawing) return;
+    e.preventDefault();
+    const coords = getCanvasCoordinates(e);
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(coords.x, coords.y);
+    ctx.stroke();
+    [lastX, lastY] = [coords.x, coords.y];
+  });
+
+  const stopDrawing = () => isDrawing = false;
+  scratchCanvas.addEventListener("mouseup", stopDrawing);
+  scratchCanvas.addEventListener("mouseleave", stopDrawing);
+
+  // Mobile Drawing Support
+  scratchCanvas.addEventListener("touchstart", (e) => {
+    isDrawing = true;
+    const coords = getCanvasCoordinates(e);
+    [lastX, lastY] = [coords.x, coords.y];
+  });
+  scratchCanvas.addEventListener("touchmove", (e) => {
+    if (!isDrawing) return;
+    e.preventDefault();
+    const coords = getCanvasCoordinates(e);
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(coords.x, coords.y);
+    ctx.stroke();
+    [lastX, lastY] = [coords.x, coords.y];
+  });
+  scratchCanvas.addEventListener("touchend", stopDrawing);
+
+
+  // --- 3. Window Translation Component (Dragging Logic) ---
+  let isDraggingWindow = false;
+  let offsetX = 0, offsetY = 0;
+
+  function startWindowDrag(e) {
+    // Prevent text highlight selection artifacts during runtime translation
+    if (e.target === clearScratchBtn || e.target === closeScratchBtn) return;
+    
+    isDraggingWindow = true;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    offsetX = clientX - scratchPopup.offsetLeft;
+    offsetY = clientY - scratchPopup.offsetTop;
+  }
+
+  function dragWindow(e) {
+    if (!isDraggingWindow) return;
+    e.preventDefault();
+    
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    scratchPopup.style.left = (clientX - offsetX) + "px";
+    scratchPopup.style.top = (clientY - offsetY) + "px";
+  }
+
+  function stopWindowDrag() {
+    isDraggingWindow = false;
+  }
+
+  // Desktop Drag Bindings
+  scratchHeader.addEventListener("mousedown", startWindowDrag);
+  document.addEventListener("mousemove", dragWindow);
+  document.addEventListener("mouseup", stopWindowDrag);
+
+  // Mobile Drag Bindings
+  scratchHeader.addEventListener("touchstart", startWindowDrag);
+  document.addEventListener("touchmove", dragWindow, { passive: false });
+  document.addEventListener("touchend", stopWindowDrag);
+}

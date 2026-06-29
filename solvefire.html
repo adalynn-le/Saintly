@@ -155,6 +155,9 @@ warning
 </span>
 Previous Mistake</div>
     <div id="question-title" class="amc10title small">Question 1:</div>
+    <div class="scratchpad-controls" style="margin-bottom: 10px; position: relative; z-index: 20;">
+  <button id="btn-toggle-scratchpad" class="start-practice" style="border: 1px solid #88b1ff; background-color: transparent;">Open Scratchpad</button>
+</div>
         <div id="hint">Hint</div>
     <p id="question-text">Loading question...</p>
     <img id="question-image"></img>
@@ -233,7 +236,20 @@ function
     <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
   </div>
   </span>
+  <div id="scratchpad-popup" style="display: none; position: fixed; top: 150px; left: 50px; width: 420px; background: rgb(255, 255, 255); border: 2px solid var(--primary-color, #88b1ff); border-radius: 8px;  z-index: 1000; overflow: hidden; ">
   
+  <div id="scratchpad-header" style="padding: 10px; background: rgb(255, 255, 255); cursor: move; display: flex; justify-content: space-between; align-items: center; user-select: none; border-bottom: 1px solid rgb(235, 234, 241);">
+    <span style=" color: #88B1ff; font-size: 14px; font-family: 'National Park' sans-serif;">Scratchpad</span>
+    <div style="display: flex; gap: 6px;">
+      <button id="btn-clear-scratchpad" style="padding: 4px 8px; cursor: pointer; background: rgb(255, 255, 255); border: none; border-radius: 4px; color: #88B1ff; font-size: 12px; font-family: 'National Park', sans-serif">Clear</button>
+      <button id="btn-close-scratchpad" style="padding: 4px 8px; cursor: pointer; background: #ff5c5c; border: none; border-radius: 4px; color: white; font-size: 12px; font-weight: bold;">X</button>
+    </div>
+  </div>
+
+  <div style="padding: 10px; background: rgb(255, 255, 255); display: flex; justify-content: center;">
+    <canvas id="scratchpad-canvas" width="400" height="300" style="display: block; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px; cursor: crosshair;"></canvas>
+  </div>
+</div>
 <span style="display: flex; flex-direction: row" id="graphs">
   <span style="display: inline-block; flex: 1" class="howworkcard">
       <h3 class="amc10subtitle">Your Most Common Mistakes</h3>
