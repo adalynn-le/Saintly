@@ -1332,6 +1332,12 @@ hr {
 .dataText{
   margin-top: -20px;
 }
+.tinytiny{
+  font-size: 15px !important;
+}
+.label{
+  color:var(--text-color) !important
+}
 .tinytitle{
  font-family: "National Park", sans-serif; 
  color: var(--accent-color);
