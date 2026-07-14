@@ -63,9 +63,14 @@ sunny
 </nav>
 <main>
   <div id="overlay"></div>
-  <div class="amc10container">      
-  <h1 class="amc10title">Topics Dashboard</h1>
+  <div class="amc10container">      <h1 class="amc10title">Topics Dashboard</h1>
 <p class="par">We've divided every one of the past 300 questions on the AMC 10 into 58 topics and are working to create in-depth guides for each one. These are the same topics you'll see on the Adaptive Practice, so you can learn more about what you are consistently getting wrong.</p>
+
+<div style="max-width: 500px; margin: 20px auto 30px auto; padding: 0 10px;">
+    <input type="text" id="topic-search" placeholder="Search math topics (e.g., Algebra, Modular, Series)..." 
+           style="width: 100%; padding: 12px 20px; font-size: 16px; border: 2px solid var(--border-color); border-radius: 25px; background-color: var(--background-variant); color: var(--text-color); outline: none; transition: border-color 0.3s ease;">
+    <p id="no-results" style="display: none; text-align: center; color: var(--text-variant); margin-top: 15px;">No matching topics found.</p>
+</div>
 <span class="howworkcardsrow" style="display: flex; flex-direction: row">
 <a class="howworkcard" style=" display: inline-block; flex: 1" href="word problems.html">
     <p class="amc10subtitle">Word Problems</p>
@@ -751,6 +756,44 @@ if (resetBtn) {
       alert("Error: " + error.message);
     } else {
       alert("Check your inbox! A secure password reset link has been sent.");
+    }
+  });
+}
+//-----------------------Search Engine Filter Logic--------------------------
+const searchInput = document.getElementById("topic-search");
+const noResultsMsg = document.getElementById("no-results");
+
+if (searchInput) {
+  searchInput.addEventListener("input", function() {
+    // 1. Grab search term and make it lowercase
+    const filter = searchInput.value.toLowerCase();
+    
+    // 2. Select your actual card structures 
+    const cards = document.querySelectorAll(".howworkcard");
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      // 3. Find the subtitle title and the description paragraph tags inside this specific card
+      const titleEl = card.querySelector(".amc10subtitle");
+      const descEl = card.querySelector(".par"); // Grabs the first paragraph inside the card
+      
+      const titleText = titleEl ? titleEl.textContent.toLowerCase() : "";
+      const descText = descEl ? descEl.textContent.toLowerCase() : "";
+
+      // 4. If query matches title or body text, show it; otherwise hide it
+      if (titleText.includes(filter) || descText.includes(filter)) {
+        card.style.display = "inline-block"; // Matches your original CSS structure
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    // 5. If everything gets hidden, display your friendly empty state warning
+    if (visibleCount === 0) {
+      noResultsMsg.style.display = "block";
+    } else {
+      noResultsMsg.style.display = "none";
     }
   });
 }
