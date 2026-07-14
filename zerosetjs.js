@@ -1,0 +1,3110 @@
+const { createClient } = window.supabase;
+const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
+const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
+const supabase = createClient(supabaseURL, supabaseKey);
+const toggleBrightness = document.getElementById("brightness")
+let colorMode = 'light'
+let colorModeTrue = localStorage.getItem("colorMode")
+let textColor = "#e3e2f0"
+let backgroundColor = "rgb(253, 253, 255)"
+if  (colorModeTrue !== false){
+       colorMode =  colorModeTrue
+ if (colorMode === 'dark'){
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark'; 
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", "dark")
+                textColor = "#e3e2f0"
+                backgroundColor = "#222329"
+
+        } else {
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light';
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", "light")
+                textColor = "#625c6e"
+                backgroundColor = "rgb(253, 253, 255)"
+        }
+} else {
+function toggleSystemTheme() {
+  const root = document.documentElement;
+  
+  // 1. Check what the system preference is, or if it's already set
+  if (!root.style.colorScheme) {
+    // If it's not set yet, match the user's system preferences
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.style.colorScheme = prefersDark ? 'dark' : 'light';
+  }
+  
+  colorMode = root.style.colorScheme;
+
+  // 2. Add the correct matching class right away so the logos render correctly!
+  if (colorMode === 'dark') {
+      root.classList.add('dark');
+      root.classList.remove('light');
+      textColor = "#e3e2f0"
+  } else {
+      root.classList.add('light');
+      root.classList.remove('dark');
+      textColor = "#625c6e"
+  }
+}
+toggleSystemTheme();
+}
+toggleBrightness.addEventListener("click", function(){
+        if (colorMode === 'dark'){
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light'; 
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", colorMode)
+                textColor = "#625c6e"
+                backgroundColor="rgb(253, 253, 255)"
+                updatePieChart()
+                updateRadarChart()
+                updateBarGraph()
+        } else {
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark';
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", colorMode)
+                textColor = "#e3e2f0"
+                backgroundColor = "#222329"
+                updatePieChart()
+                updateRadarChart()
+                updateBarGraph()
+        }
+});
+// Gets the live computed color string from your CSS :root
+
+function getThemeColor(variableName) {
+    return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
+}
+let correctCount = 0;
+let wrongCount = 0;
+let longestStreak = 0;
+let difficulty = 1;
+let questionType = "algebra";
+let difficultyProgress = 0;
+let algebraQuestion = 0;
+let difficultyG=  1;
+let difficultyProgressG = 0;
+let topicsToWorkOn = [];
+let topicToUpdate = ''
+let topicWrong = '';
+let difficultyN = 4;
+let difficultyProgressN = 0;
+let difficultyP = 1;
+let difficultyProgressP = 0;
+let helpOn = false;
+let topicsSorted = [];
+let probCurrent = 0;
+let allQuestion = 0;
+let difficultyAll = 0;
+let difficultyProgressAll = 0;
+let allCurrent = 0;
+let wrongQuestionsAlgebra = []
+let wrongQuestionsGeometry = []
+let wrongQuestionsNum = []
+let wrongQuestionsProb = []
+let wrongQuestionsAll = []
+let userRating = 800
+let userRatingGeometry = 800;
+let userRatingProbability = 800;
+let userRatingNumTheory = 800;
+let userRatingAll = 800;
+let geometryQuestion = 0
+let numQuestion = 0
+let probQuestion = 0
+let currentQuestion = 0
+let geometryCurrent = 0
+let numCurrent = 0
+let mistake = 0
+let unfamiliar = 0
+let stuck = 0
+let algebraTotal = 0
+let algebraWrong = 0
+let geometryTotal = 0 
+let geometryWrong = 0
+let numTotal = 0
+let numWrong = 0
+let probTotal = 0
+let probWrong = 0
+let mistakeSolveTrue = localStorage.getItem("mistakeYIMO")
+if (mistakeSolveTrue ===  null){
+    mistake = 0
+} else {
+    mistake = parseInt(mistakeSolveTrue)
+}
+let unfamiliarSolveTrue = localStorage.getItem("unfamiliarYIMO")
+if (unfamiliarSolveTrue === null){
+    unfamiliar = 0
+} else {
+    unfamiliar  = parseInt(unfamiliarSolveTrue)
+}
+let stuckSolveTrue = localStorage.getItem("stuckYIMO")
+if (stuckSolveTrue === null){
+    stuck = 0
+} else {
+    stuck = parseInt(stuckSolveTrue)
+}
+let algebraTotalTrue = localStorage.getItem("algebraTotalYIMO")
+if (algebraTotalTrue === null){
+    algebraTotal = 0
+} else {
+    algebraTotal = parseInt(algebraTotalTrue)
+}
+let algebraWrongTrue = localStorage.getItem("algebraWrongYIMO")
+if (algebraWrongTrue === null){
+    algebraWrong = 0
+} else {
+    algebraWrong = parseInt(algebraWrongTrue)
+}
+let geometryTotalTrue = localStorage.getItem("geometryTotalYIMO")
+if (geometryTotalTrue === null){
+    geometryTotal = 0
+} else {
+    geometryTotal = parseInt(geometryTotalTrue)
+}
+let geometryWrongTrue = localStorage.getItem("geometryWrongYIMO")
+if (geometryWrongTrue === null){
+    geometryWrong = 0
+} else {
+    geometryWrong = parseInt(geometryWrongTrue)
+}
+let numTotalTrue = localStorage.getItem("numTotalYIMO")
+if (numTotalTrue === null){
+    numTotal = 0
+} else {
+    numTotal = parseInt(numTotalTrue)
+}
+let numWrongTrue = localStorage.getItem("numWrongYIMO")
+if (numWrongTrue === null){
+    numWrong = 0
+} else {
+    numWrong = parseInt(numWrongTrue)
+}
+let probTotalTrue = localStorage.getItem("probTotalYIMO")
+if (probTotalTrue === null){
+    probTotal = 0
+} else {
+    probTotal = parseInt(probTotalTrue)
+}
+let probWrongTrue = localStorage.getItem("probWrongYIMO")
+if (probWrongTrue === null){
+    probWrong = 0
+} else {
+    probWrong = parseInt(probWrongTrue)
+}
+let topicsToWorkOnTrue = localStorage.getItem("topicsToWorkOnYIMO")
+if (topicsToWorkOnTrue === null){
+    topicsToWorkOn = []
+} else {
+    topicsToWorkOn = JSON.parse(topicsToWorkOnTrue)
+}
+let topicsGlossarySetTrue = localStorage.getItem("topicGlossarySetYIMO")
+let TOPIC_GLOSSARY = []
+if (topicsGlossarySetTrue === null){
+ TOPIC_GLOSSARY = [
+    {
+        id: "word problems",
+        title: `Word Problems`,
+        description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
+        workOn: [
+            "Identifying keywords",
+            "Setting up equations",
+            "Avoiding misinterpretation"
+        ],
+        errors: 0,
+    },
+    {
+        id: "algebraic manipulation",
+        title: `Algebraic Manipulation`,
+        description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
+        workOn: [
+            "Factoring",
+            "Combining like terms",
+            "Recognizing algebraic patterns"
+        ],
+        errors: 0,
+    },
+ {
+    id: "arithmetic"  ,  
+    title: `Arithmetic`,
+        description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
+        workOn: [
+            "Mental/Quick Math",
+            "Identifying keywords",
+            "Shortcuts and factoring (for multiplication and division)"
+        ],
+        errors: 0,
+    },
+ {
+    id: "systems of equations",    
+    title: `Systems of Equations`,
+        description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
+        workOn: [
+            "Logic",
+            "Substitution", 
+            "Elimination",
+        ],
+        errors: 0,
+    },
+{
+    id: 'functions and graphing',   
+    title: `Functions and Graphing`,
+        description: "Recognizing and manipulating popular parent functions and being able to identify them",
+        workOn: [
+            "Parent Functions",
+            "Composition of Functions",
+            ""
+        ],
+        errors: 0,
+    },
+     {
+        id: 'logic',
+        title: `Logic`,
+        description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
+        workOn: [
+            "Recognizing Patterns", 
+            "Quick Mental Math",
+        ],
+        errors: 0,
+    },
+{
+    id: 'inequalities',    
+    title: `Inequalities`,
+        description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
+        workOn: [
+            "Graphing Inequalities",
+            "Understanding when a question is asking for inequalities",
+            "Composition of Functions"
+        ],
+        errors: 0,
+    },
+{
+    id: 'modular arithmetic',
+    title: `Modular Arithmetic`,
+        description: "These problems pertain to the remainders (mods) of operations (typically division)",
+        workOn: [
+            "Modular Arithmetic Rules",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'factoring' , 
+    title: `Factoring`,
+        description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
+        workOn: [
+            "Sum/difference of squares",
+            "GCF and LCM",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'prime factorization',
+        title: `Prime Factorization`,
+        description: "Reducing a number to its prime factors and using it to solve problems",
+        workOn: [
+            "Factor Trees (or whatever method you like to use)",
+            "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'percents',    
+    title: `Percents`,
+        description: "A different representation of fractions and ratios, make sure you understand what percents are",
+        workOn: [
+            "Decimal Multiplication",
+            "Converting numbers between Percents, Ratios, and Fractions",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'graphing'  ,  
+    title: `Graphing`,
+        description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
+        workOn: [
+            "Parent Functions",
+            "Logic + Intuition",
+        ],
+        errors: 0,
+    },
+    {
+       id: 'floor functions',
+        title: `Floor Functions`,
+        description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
+        workOn:[
+            'Graphing',
+            'Logic + Intuition',
+        ],
+        errors: 0,
+    },
+     {
+       id: 'speed-distance-time',
+        title: `Speed Distance Time`,
+        description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
+        workOn: [
+            "Memorizing the speed, distance, time equation",
+            "Understanding conversions and how the different variables relate to each other",
+            "Word problems and conceptualy understanding what is being asked",
+        ],
+        errors: 0,
+    },{
+        id: 'averages',
+        title: `Averages`,
+        description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
+        workOn: [
+            'Deriving equations',
+            'Arithmetic mean',
+            'Statistics',
+        ],
+        errors: 0,
+    },
+ {
+        id: 'induction',
+        title: `Induction`,
+        description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
+        workOn: [
+            "Making educated guesses",
+            "Recognizing Patterns",
+            "'Limiting' solutions",
+        ],
+        errors: 0,
+    }, 
+ {
+        id: 'series',
+        title: `Series`,
+        description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
+        workOn: [
+            "Memorizing equations for series",
+            "Arithmetic and Geometric Series",
+            "Recognizing patterns",
+        ],
+        errors: 0,
+    },
+{
+    id: 'absolute value',    
+    title: `Absolute Value`,
+        description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
+        workOn:
+        [ 
+            "Graphing",
+            "Intuition"
+        ],
+        errors: 0,
+    },
+ {
+        id: 'exponents',
+        title: `Exponents`,
+        description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
+        workOn: 
+        [
+            "Change of base",
+            "Adding, subtracting, multiplying, dividing exponents",
+            "Factoring out squares",
+        ],
+        errors: 0,
+
+    },
+ {
+    id: 'discriminant' ,   
+    title: `Discriminant`,
+        description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
+        workOn:[
+            "Quadratic Formula"
+        ],
+        errors:0,
+    },
+{
+    id: 'casework',    
+    title: `Casework`,
+        description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
+        workOn: [
+            'Absolute Value Questions',
+            'Quadratics',
+        ],
+        errors: 0,
+    },
+ {
+  id: 'medians',
+    title: `Medians`,
+        description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
+        workOn: [
+            'Statistics',
+            'Datasets',
+        ],
+        errors: 0,
+    },
+{
+    id: 'similar triangles'  , 
+    title: `Similar Triangles`,
+        description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
+        workOn: [
+            "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
+            "Ratios",
+        ],
+        errors: 0,
+    },
+{
+        id: 'surface area',
+        title: `Surface Area`,
+        description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
+        workOn: [
+            "Surface Area equations (for spheres and cones in addition to typical polygons)",
+            "3D conceptualization (e.g. imagining how it looks so you can understand it)",
+        ],
+        errors: 0,
+    },
+{
+    id: 'triangle lines'  , 
+    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors`,
+        description: `<p>Remember the following lines that you can add to a triangle</p>
+        <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
+        <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
+        <p>Perpendicular Bisectors: Lines that pass through a side and are perpendicular and bisect it. Intersect at the circumcenter that is the center for the circumscribed circle (touching all vertices)</p>
+        <p>Angle Bisectors: Lines that bisect angles, intersect at the incenter, the center of the inscribed circle (tangent to all sides)</p>`,
+        workOn: [
+            "Medians",
+            "Perpendicular Bisectors",
+            "Angle Bisectors",
+        ],
+        errors: 0,
+    },
+{
+    id: 'counting',
+        title: `Counting`,
+        description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
+        workOn: [
+            "Optimization",
+            "Logic",
+            "Casework"
+        ],
+        errors: 0,
+    },
+{
+    id: 'composite shapes',
+        title: `Composite Shapes`,
+        description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
+        workOn: [
+            "Area",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'transformations',
+        title: `Transformations`,
+        description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
+        workOn: [
+            "Translations",
+            "Reflections",
+            "Rotations",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'volume',
+        title: `Volume`,
+        description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
+        workOn: [
+            "Volume Formulas",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'prime numbers',
+        title: `Prime Numbers`,
+        description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
+        workOn: [
+            "Factoring"
+        ],
+        errors: 0,
+    },
+{
+    id: 'hexagons',
+        title: `Hexagons`,
+        description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
+        workOn: [
+            "Area of a hexagon",
+            "Area of equilateral triangles",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'optimization',
+        title: `Optimization`,
+        description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
+        workOn: [
+            "Casework",
+            "Counting"
+        ],
+        errors: 0,
+    },
+{
+    id: 'volume relationships',
+        title: `Volume Relationships`,
+        description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
+        workOn: [
+            "ratios"
+        ],
+        errors: 0,
+    },
+ {
+    id: 'pyramids',
+        title: `Pyramids`,
+        description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
+        workOn: [
+            "Pythagorean theorem",
+            "Surface Area"
+        ],
+        errors: 0,
+    },
+ {
+    id: 'trigonometry',
+        title: `Trigonometry`,
+        description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
+        workOn: [
+            "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
+            "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
+            "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
+        ],
+        errors: 0,
+    },
+{
+    id: 'coordinate plane',
+        title: `Coordinate Plane`,
+        description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
+        workOn: [
+            "Slope",
+            "Functions",
+            "Graphing",
+        ],
+        errors: 0,
+    },
+{
+    title: "Pythagorean Theorem",
+    id: 'pythagorean theorem',
+        description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
+        workOn: [
+            "Pythagorean Triples",
+            "Theorem",
+        ],
+        errors: 0,
+    },
+    {
+        id: 'forced simplification',
+        title: `Forced Simplification`,
+        description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
+        workOn: [
+            "Logic",
+            "Understanding problems",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'power of a point',
+        title: `Power of A Point`,
+        description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
+        workOn: [
+            "Chords",
+            "Tangents",
+            "Secants",
+        ],
+        errors: 0,
+ },
+ {
+    id: 'bases',
+        title: `Bases`,
+        description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
+        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
+        workOn: [
+            "Changing from base \\(10\\)",
+            "Changing to base \\(10\\)",
+            "Modular Arithmetic",
+        ],
+        errors: 0,
+    },
+ {
+    id: 'combinations',
+        title: `Combinations`,
+        description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
+        workOn:
+            [
+                "Recognizing combinations vs permutations",
+                "Combinations equation",
+            ],
+            errors: 0,
+    },
+    {
+        id: 'counting',
+        title: `Counting`,
+        description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
+        workOn:
+        [
+            `Permutations Formula \\(n!\\)`,
+            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
+            'Factorials',
+        ],
+        errors: 0,
+    },
+    {
+        id: 'expected outcome',
+        title: `Expected Outcome`,
+        description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
+        workOn:
+        [
+            'Expected Outcome Formula'
+        ],
+        errors: 0,
+    },
+    {
+        id: 'complementary counting',
+        title: `Complementary Counting`,
+        description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
+        workOn: [
+            "Saving time"
+        ],
+        errors: 0,
+    }
+
+];
+TOPIC_GLOSSARY.forEach(q =>{
+        q.attempts = 0;
+})
+} else {
+     TOPIC_GLOSSARY = JSON.parse(localStorage.getItem("topicGlossaryYIMO"))
+}
+let strikes = 2;
+function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
+let score = 0;
+function toggleSubMenu(button){
+    button.nextElementSibling.classList.toggle('show');
+    button.classList.toggle('rotate');
+}
+function updateAllRating(){
+    userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
+}
+// ---------- Shuffle Function ----------
+const highlight = document.getElementById("highlight");
+let streakCount = 0;
+let streakEnabled = true;
+function showHighlight() {
+
+
+    // reset
+    highlight.style.transition = 'none';
+    highlight.style.transform = 'scaleX(0)';
+    highlight.style.left = '0';
+    highlight.offsetHeight; // force reflow
+            // Step 1: expand from left to right
+    highlight.style.transition = 'transform 0.3s ease-out';
+    highlight.style.transform = 'scaleX(1)';
+
+    // Step 2: slide left edge in to close
+    setTimeout(() => {
+        highlight.style.transition = 'transform 0.3s ease-in, left 0.3s ease-in';
+        highlight.style.transform = 'scaleX(0)';
+        highlight.style.left = '100%';
+    }, 300);
+
+    // Reset after animation
+    setTimeout(() => {
+        highlight.style.transition = 'none';
+        highlight.style.left = '0';
+        highlight.style.transform = 'scaleX(0)';
+    }, 700);
+}
+
+
+
+// ---------- Question Data ----------
+const confettiCanvas = document.getElementById("confetti-canvas");
+const myConfetti = confetti.create(confettiCanvas, {
+    resize: true,
+    useWorker: true
+});
+
+const questions = [
+    {
+        title: "Proof Practice",
+        text: `For what values of \\(n\\) is 
+        $$
+        \\sum_{k=1}^{n} k^3 = \\left(\\frac{n(n+1)}{2}\\right)^2
+        $$`,
+        type: 'mc',
+        choices: ['\\(A) n > 0\\)', '\\(B) n \\geq 0\\)', '\\(C) n > 1\\)', '\\(D) n \\geq 1\\)', '\\(E) n \\leq 1\\)'],
+        answer: '\\(B) n \\geq 0\\)',
+        solution: `<b>\\(B) n \\geq 0\\)</b><p>By induction, we can test starting from \\(0\\) and see that the pattern holds true. We can also expand for values of \\(n+1\\)</p>
+        $$
+        \\sum_{k=1}^{n+1} k^{3} = (\\frac{n(n+1)}{2}^2) + (n+1)^3 = (n+1)^2 (\\frac{n^2}{4}+(n+1)) = (n+1)^2 \\cdot \\frac{(n+2)^2}{4} = \\frac{(n+1)(n+2)}{2}^2
+        $$`,
+    },
+    {
+        title: "Proof Practice",
+        text: `What form fits this relation for \\(n \\geq 2\\)?
+        $$
+        a_0 = 0
+        $$
+        $$
+        a_1 = 1
+        $$
+        $$
+        a_n=4a_{n-1}-4a{n-2}
+        $$
+        `,
+        type: 'mc',
+        choices: ['\\(A) a_{n} = (\\frac{n}{2}) \\cdot 2^{n}\\)', '\\(B) a_{n}=(\\frac{n}{3}\\) \\cdot 3^{n}\\)', '\\(C) \\frac{1}{n} \\cdot 2^{n-1}\\)', '\\(D) 2^{n}\\)', '\\(E) 2^n \\times 2^{n-1}\\)'],
+        answer: '\\(A) a_{n} = (\\frac{n}{2}) \\cdot 2^{n}\\)',
+        solution: `<b>\\(A) a_{n} = (\\frac{n}{2}) \\cdot 2^{n}\\)</b><p>The characteristic polynomial is \\(r^2-4r+4 = (r-2)^2\\) so the genral solution is \\(a_{n}=(A+Bn) \\cdot 2^{n}\\). From
+        \\(a_0=0 : A = 0\\). From \\(a_{1} = 1:B \\cdot 2 = 1\\) so \\(B = \\frac{1}{2}\\). Hence \\(a_{n}=\\frac{n}{2} \\cdot 2^{n} = n 2^{n-1}\\)`,
+    },
+    {
+        title: "Counting Without Counting 1 - Tennis Rivalry",
+        text: `Jenny and Rob play together on the same tennis league. There are \\(12\\) people on this tennis league. The tennis league
+        splits up to play dubles amongst themselves. The \\(12\\) people will split into \\(3\\) groups of \\(4\\). However, Jenny and Rob hate each
+        other so much that they refuse to play together on the same team, but they will play on opposing teams in the same doubles match. In how many ways can you split the league 
+        into their \\(3\\) groups while keeping Jenny and Rob satisfied?`,
+        answer: '1575',
+        solution: `<b>5775</b><p>Jenny and Rob must be in the same group of \\(4\\), but different teams. There are \\(\\binom{10}{2}=45\\) ways to choose the other two people in their group. There are \\(\\binom{8}{4}=35\\) ways to pick the remaining players. Multiplying these gives \\(35 \\times 45 = 1575\\)
+        `
+    },
+    {
+        title: "Counting Without Counting 2 - Circular Table Dynamics",
+        text: `8 students sit down at a circular table. There are four boys and four girls. However, no two boys are allowed to sit next to each other. How many ways can they be seated in?`,
+        answer: '144',
+        solution: `<b>144</b><p>The order must be \\(BGBGBGBG\\). There are \\(4!\\) ways of ordering the boys and \\(4!\\) ways of ordering the girls. We thus have \\(24 \\times 24\\). However, this is overcounting because it assumes a linear dynamic. The circle is rotatable. We can rotate it \\(4\\) places while preserving the order of boys and girls. Thus, we divide \\(\\frac{576}{4}=144\\)`,
+    },
+    {
+        title: "Counting Without Counting 3 - Being Nice to Children",
+        text: `You have \\(10\\) indistinguishable candies to distribute to \\(4\\) children, Aiden, Bob, Carly, and Diane. How many different ways can you distribute the candies bteweent hem if each child has to have at least one?`,
+        answer: '84',
+        solution: `<b>84</b><p>We have stars and bars, in this situation with \\(\\binom{n+k-1}{k-1}\\) where \\(n\\) is the number of "stars" separated by \\(k-1\\) bars. Since we know each child must have at least one candy, we have \\(6\\) left to distribute among
+        \\(4\\) kids. This gives us \\(\\binom{6+3}{3}=84\\)`
+    },
+    {
+        title: "Counting Without Counting 4 - Capybaras and Watermelons",
+        text: `A hungry capybara is trying to navigate a city street layout from the bottom-left corner (0,0) to a giant pile of watermelons at the top-right corner (4,4). However, a territorial alligator is guarding the diagonal line y = x. If stepping onto or crossing the alligator's territory means getting chased, how many completely peaceful paths can the capybara take to get his watermelons?`,
+        solution: `<b>10</b><p>The capybara must take a total of \\(8\\) movies, \\(4\\) to the right and \\(4\\) up, exactly. There are \\(\\binom{8}{4}=70\\) ways to do this, because any \\(4\\) of the \\(8\\) turns can be up. </p>
+        <p>We do casework for every point where the capybara acan cross \\(y=x\\). Starting with \\(1,1\\), there are \\(2\\), either up, right, or right, up. There are \\(\\binom{6}{3}=20\\0 ways to go from here. That makes away \\(40\\) paths</p>
+        <p>With \\((2,2\\), we have up up right right or right right up up. We cannot have up right or right up, because then he would hit \\(1,1)\\). That gives \\(2\\) with \\(\\binom{4}{2}=6\\) paths after, so \\(12\\)</p>
+        <p>Finally, with \\((3,3)\\) we have up up up right right right, up up right up right right, and the same for reversing ups and rights. There are \\(2\\) paths going from \\((3,3)\\), being up right or right up. We thus have \\(8\\)</p>
+        <p>We find \\(70-40-8-12=10\\)`,
+        answer: '10'
+    },
+    {
+        title: "Counting Without Counting 5",
+        text: `A digital grid matrix contains a 10 times 10 cluster of server nodes. Currently, 99 of these nodes are completely stable (colored white), but a single rogue node in the exact bottom-left corner is glitched (colored black).The grid spreads the glitch using a strict automated override rule: You can select any 2 times 2 square of nodes and invert the state of all 4 nodes inside it simultaneously (shifting black to white, and white to black).Can you execute a sequence of overrides to clear the grid completely so that all 100 nodes become stable and white?`,
+        type: 'mc',
+        choices: ['\\(A) \\textup{ Yes}\\)', '\\(B) \\textup{ No}\\)'],
+        answer: '\\(B) \\textup{ No}\\)',
+        solution: `<b>\\(B) \\textup{ No}\\)</b><p>Because we have exactly one black square, any \\(2 \\times 2) grid covering the rogue will leve an odd number of other rogues. In a \\(100 \\times 100\\) (even by even) grid, you cannot layer
+        \\(2 \\times 2\\) squares in a way that succesfully clears `
+    }
+] 
+const geometryQ = []
+const numTheoryQ = []
+const probabilityQ = []
+let algebraIndex = 0
+let geometryIndex = 0
+let numIndex = 0
+let probIndex = 0
+let allIndex = 0
+
+shuffleArray(questions);
+algebraQuestion = questions[algebraIndex]
+// ---------- Question Data Geometry----------
+
+
+shuffleArray(geometryQ);
+
+shuffleArray(numTheoryQ);
+const allQ = []
+allQ.push(...questions)
+allQ.push(...geometryQ)
+allQ.push(...numTheoryQ)
+allQ.push(...probabilityQ)
+// ---------- DOM Elements ----------
+const questionTitle = document.getElementById("question-title");
+const questionText = document.getElementById("question-text");
+const questionChoices = document.getElementById("mc-container")
+const answerInput = document.getElementById("answer-input");
+const checkBtn = document.getElementById("check-btn");
+const solutionDiv = document.getElementById("solution");
+const solutionText = document.getElementById("solution-text");
+const nextBtn = document.getElementById("next-btn");
+const toggleStreakBtn = document.getElementById("toggle-streak");
+const streakWrapper = document.getElementById("streak-wrapper");
+const streakBar = document.getElementById("streak-bar");
+const backBtn = document.querySelector(".back-btn");
+const mcContainer = document.getElementById("mc-container");
+const mcChoices = Array.from(document.querySelectorAll(".mc-choice"));
+const algButton = document.getElementById("algebraButton");
+const geometryButton = document.getElementById("geometryButton");
+const numButton = document.getElementById("numtheoryButton");
+const probButton = document.getElementById("probabilityButton");
+const allButton = document.getElementById("allButton");
+const image = document.getElementById("question-image")
+const restartButton = document.getElementById("restart-btn");
+const problemsWrapper = document.getElementById("problems-card");
+const helpBtn = document.getElementById("helpButton");
+const helpPannel = document.getElementById("helpPannel");
+const overlay = document.getElementById("overlay");
+const submitSolutionButton = document.getElementById("submit-a-solution");
+const submitSolutionForm = document.getElementById("submit-a-solution-form");
+const prevError = document.getElementById("prevError")
+const hintBtn = document.getElementById("hintBtn")
+const seeStep = document.getElementById("seeStep")
+const hintText = document.getElementById("hint")
+const stepOne = document.getElementById("stepOne")
+const stepOneText = document.getElementById("stepOneText")
+const strikeOne = document.getElementById("strikeOne")
+const strikeTwo = document.getElementById("strikeTwo")
+const strikeThree = document.getElementById("strikeThree")
+const strikesContainer = document.getElementById("strikesContainer")
+const mistakeBtn = document.getElementById("mistake")
+const unfamiliarBtn = document.getElementById("unfamiliar")
+const stuckBtn = document.getElementById("stuck")
+const errorTags = document.getElementById("tagQuestion")
+let accountTrue = false
+accountBtn.addEventListener("click", function () {
+        let account = true
+
+    document.getElementById("no-account").addEventListener("click", function() {
+    if (account === false){
+        account = true
+        document.getElementById("login").style.display = "block"
+        document.getElementById("signup").style.display = "none"
+                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+    } else {
+        document.getElementById('login').style.display = "none"
+        account = false
+        document.getElementById("signup").style.display = "block"
+        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+    }
+    })
+    helpPannel.style.display  = "none"
+    if (accountTrue === false){
+        accountPannel.style.display = "block"
+        overlay.style.display = "block"
+        accountTrue = true
+    } else {
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+overlay.addEventListener("click", function(){
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } 
+    if (accountTrue === true){
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+helpBtn.addEventListener("click", function () {
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
+});
+
+let questionsAnswered = 0;
+let percentage = 0;
+let percetnageStr = "0";
+let test = document.getElementById("test");
+let scoreCount = document.getElementById("score-count");
+
+function recordWrongTopic(topic) {
+    let topicToUpdate;
+
+    if (questionType === "geometry") {
+        topicToUpdate = geometryQuestion.topic;
+
+    } else if (questionType === "algebra") {
+        topicToUpdate = algebraQuestion.topic;
+
+    } else if (questionType === "numTheory") {
+        topicToUpdate = numQuestion.topic;
+    } else if (questionType === "probability") {
+        topicToUpdate = probQuestion.topic;
+    } else if (questionType === "all") {
+        topicToUpdate = allQuestion.topic;}
+    if (!topicToUpdate) return;
+
+    if (!topicsToWorkOn.includes(topicToUpdate)) {
+        topicsToWorkOn.push(topicToUpdate);
+        localStorage.setItem("topicsToWorkOnYIMO", JSON.stringify(topicsToWorkOn))
+    }
+
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
+    if (topicObj) {
+        topicObj.errors += 1;
+        topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
+        localStorage.setItem("topicGlossaryYIMO", JSON.stringify(TOPIC_GLOSSARY))
+        localStorage.setItem("topicGlossarySetYIMO", true)
+
+    }
+
+    updateTopicsDropdown();
+}
+function buttonsWork(){
+    algButton.addEventListener("click", function() {
+        questionType = "algebra";
+        updateColors();
+        prevError.style.display = "none"
+        loadQuestion();
+    });
+    geometryButton.addEventListener("click", function() {
+
+        console.log("geometry button clicked")
+        questionType = "geometry";
+        updateColors();
+        prevError.style.display = "none"
+        loadQuestion();
+    });
+    numButton.addEventListener("click", function() {
+        questionType = "numTheory"
+        updateColors();
+        loadQuestion();
+    })
+    probButton.addEventListener("click", function() {
+        questionType = "probability"
+        updateColors();
+        prevError.style.display = "none"
+        loadQuestion();
+    });
+    allButton.addEventListener("click", function() {
+        questionType = "all"
+        updateColors();
+        prevError.style.display = "none"
+        loadQuestion();
+    });
+}
+function updateColors(){
+    if (questionType === "algebra"){
+        algButton.classList.add("topicEnabled")
+        geometryButton.classList.remove("topicEnabled")
+        probButton.classList.remove("topicEnabled")
+        numButton.classList.remove("topicEnabled")
+        allButton.classList.remove("topicEnabled")
+    } else if (questionType === "geometry") {
+        geometryButton.classList.add("topicEnabled")
+        algButton.classList.remove("topicEnabled")
+        probButton.classList.remove("topicEnabled")
+        numButton.classList.remove("topicEnabled")
+        allButton.classList.remove("topicEnabled")
+    } else if (questionType === "numTheory"){
+        numButton.classList.add("topicEnabled")
+        geometryButton.classList.remove("topicEnabled")
+        probButton.classList.remove("topicEnabled")
+        algButton.classList.remove("topicEnabled")
+        allButton.classList.remove("topicEnabled")
+    } else if (questionType === "probability") {
+        probButton.classList.add("topicEnabled")
+        geometryButton.classList.remove("topicEnabled")
+        algButton.classList.remove("topicEnabled")
+        numButton.classList.remove("topicEnabled")
+        allButton.classList.remove("topicEnabled")
+    } else if (questionType === "all") {
+        allButton.classList.add("topicEnabled")
+        geometryButton.classList.remove("topicEnabled")
+        probButton.classList.remove("topicEnabled")
+        numButton.classList.remove("topicEnabled")
+        algButton.classList.remove("topicEnabled")
+    }
+}
+
+// ---------- Load Question ----------
+function loadAlgebra() {
+    mcChoices.forEach(btn => btn.disabled = false);
+    questionTitle.innerHTML = algebraQuestion.title;
+    questionText.innerHTML = algebraQuestion.text;
+
+    solutionText.innerHTML = "";
+    solutionDiv.style.display = "none";
+    nextBtn.style.display = "none";
+
+    // Reset
+    answerInput.value = "";
+    answerInput.style.display = "none";
+    checkBtn.style.display = "none";
+    mcContainer.classList.add("hidden");
+
+    // ----- FREE RESPONSE -----
+    if (!algebraQuestion.type || algebraQuestion.type === "fr") {
+        answerInput.style.display = "inline-block";
+        checkBtn.style.display = "inline-block";
+    }
+
+    // ----- MULTIPLE CHOICE -----
+    if (algebraQuestion.type === "mc") {
+        mcContainer.classList.remove("hidden");
+
+        mcChoices.forEach((btn, i) => {
+            btn.innerHTML = algebraQuestion.choices[i];
+            btn.onclick = () => handleMCAnswer(algebraQuestion.choices[i]);
+        });
+    }
+    if (algebraQuestion.image){
+        image.src=algebraQuestion.image;
+        image.style.display="block";
+    } else {
+        image.style.display="none";
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+    }
+}
+allQuestion = allQ[allIndex]
+function loadAll() {
+    mcChoices.forEach(btn => btn.disabled = false);
+
+    questionTitle.innerHTML = allQuestion.title;
+    questionText.innerHTML = allQuestion.text;
+
+    solutionText.innerHTML = "";
+    solutionDiv.style.display = "none";
+    nextBtn.style.display = "none";
+
+    // Reset
+    answerInput.value = "";
+    answerInput.style.display = "none";
+    checkBtn.style.display = "none";
+    mcContainer.classList.add("hidden");
+
+    // ----- FREE RESPONSE -----
+    if (!allQuestion.type || allQuestion.type === "fr") {
+        answerInput.style.display = "inline-block";
+        checkBtn.style.display = "inline-block";
+    }
+
+    // ----- MULTIPLE CHOICE -----
+    if (allQuestion.type === "mc") {
+        mcContainer.classList.remove("hidden");
+
+        mcChoices.forEach((btn, i) => {
+            btn.innerHTML = allQuestion.choices[i];
+            btn.onclick = () => handleMCAnswer(allQuestion.choices[i]);
+        });
+    }
+    if (allQuestion.image){
+        image.src=allQuestion.image;
+        image.style.display="block";
+    } else {
+        image.style.display="none";
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+    }
+}
+geometryQuestion = geometryQ[geometryIndex]
+
+function loadGeometry() {
+    questionType = "geometry",
+    mcChoices.forEach(btn => btn.disabled = false);
+
+    questionTitle.innerHTML = geometryQuestion.title;
+    questionText.innerHTML = geometryQuestion.text;
+
+    solutionText.innerHTML = "";
+    solutionDiv.style.display = "none";
+    nextBtn.style.display = "none";
+
+    // Reset
+    answerInput.value = "";
+    answerInput.style.display = "none";
+    checkBtn.style.display = "none";
+    mcContainer.classList.add("hidden");
+
+    // ----- FREE RESPONSE -----
+    if (!geometryQuestion.type || geometryQuestion.type === "fr") {
+        answerInput.style.display = "inline-block";
+        checkBtn.style.display = "inline-block";
+    }
+
+    // ----- MULTIPLE CHOICE -----
+    if (geometryQuestion.type === "mc") {
+        mcContainer.classList.remove("hidden");
+
+        mcChoices.forEach((btn, i) => {
+            btn.innerHTML = geometryQuestion.choices[i];
+            btn.onclick = () => handleMCAnswer(geometryQuestion.choices[i]);
+        });
+    }
+    if (geometryQuestion.image){
+        image.src=geometryQuestion.image;
+        image.style.display="block";
+    } else {
+        image.style.display="none";
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+    }
+}
+numQuestion = numTheoryQ[numIndex]
+function loadNumTheory() {
+    mcChoices.forEach(btn => btn.disabled = false);
+
+    questionTitle.innerHTML = numQuestion.title;
+    questionText.innerHTML = numQuestion.text;
+
+    solutionText.innerHTML = "";
+    solutionDiv.style.display = "none";
+    nextBtn.style.display = "none";
+
+    // Reset
+    answerInput.value = "";
+    answerInput.style.display = "none";
+    checkBtn.style.display = "none";
+    mcContainer.classList.add("hidden");
+
+    // ----- FREE RESPONSE -----
+    if (!numQuestion.type || numQuestion.type === "fr") {
+        answerInput.style.display = "inline-block";
+        checkBtn.style.display = "inline-block";
+    }
+
+    // ----- MULTIPLE CHOICE -----
+    if (numQuestion.type === "mc") {
+        mcContainer.classList.remove("hidden");
+
+        mcChoices.forEach((btn, i) => {
+            btn.innerHTML = numQuestion.choices[i];
+            btn.onclick = () => handleMCAnswer(numQuestion.choices[i]);
+        });
+    }
+    if (numQuestion.image){
+        image.src=numQuestion.image;
+        image.style.display="block";
+    } else {
+        image.style.display="none";
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+    }
+}
+
+
+    probQuestion = probabilityQ[probIndex]
+function loadProb() {
+    mcChoices.forEach(btn => btn.disabled = false);
+
+    questionTitle.innerHTML = probQuestion.title;
+    questionText.innerHTML = probQuestion.text;
+
+    solutionText.innerHTML = "";
+    solutionDiv.style.display = "none";
+    nextBtn.style.display = "none";
+
+    // Reset
+    answerInput.value = "";
+    answerInput.style.display = "none";
+    checkBtn.style.display = "none";
+    mcContainer.classList.add("hidden");
+
+    // ----- FREE RESPONSE -----
+    if (!probQuestion.type || probQuestion.type === "fr") {
+        answerInput.style.display = "inline-block";
+        checkBtn.style.display = "inline-block";
+    }
+
+    // ----- MULTIPLE CHOICE -----
+    if (probQuestion.type === "mc") {
+        mcContainer.classList.remove("hidden");
+
+        mcChoices.forEach((btn, i) => {
+            btn.innerHTML = probQuestion.choices[i];
+            btn.onclick = () => handleMCAnswer(probQuestion.choices[i]);
+        });
+    }
+    if (probQuestion.image){
+        image.src=numQuestion.image;
+        image.style.display="block";
+    } else {
+        image.style.display="none";
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+    }
+}
+
+
+//-----------MCQ----
+function handleMCAnswer(choice) {
+    answerInput.value = choice; // reuse existing checker
+    checkBtn.click();
+    if (nextBtn.style.display !== "none"){
+mcChoices.forEach(btn => btn.disabled = true);
+    }
+}
+
+
+
+
+
+// ---------- Popup ----------
+function showPopup(message, isCorrect) {
+    popup.innerHTML = message;
+    popup.style.backgroundColor = isCorrect ? "#4CAF50" : "#f44336";
+    popup.style.opacity = "1";
+    setTimeout(() => popup.style.opacity = "0", 2000);
+}
+// Example Usage:
+const originalString = "hello world";
+const capitalizedString = capitalizeFirstLetter(originalString);
+
+// ---------- Check Answer ----------
+let correct = 1
+function checkAnswerGeometry() {
+
+    if (strikes == 2){
+        geometryTotal += 1
+        localStorage.setItem("geometryTotalYIMO", geometryTotal)
+            updateRadarChart()
+    }
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === geometryQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
+    const userAnswer = answerInput.value.trim();
+    const correctAnswer = geometryQuestion.answer.trim();
+
+    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+        correct = 1;
+        getExpectedScore(userRatingGeometry, geometryQuestion.rating)
+        score = score + geometryQuestion.difficulty;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount++;
+            correctCount++;
+            difficultyProgressG++;
+            if (difficultyG == 1 && difficultyProgressG == 4){
+                difficultyG++;
+                difficultyProgressG = 0;
+                
+            } else if (difficultyG == 2 && difficultyProgressG  == 3){
+                difficultyG++;
+                difficultyProgressG = 0;
+                
+            } else if (difficultyG == 3 && difficultyProgressG  == 2){
+                difficultyG++;
+                difficultyProgressG = 0;
+                
+            } else if (difficultyG == 4 && difficultyProgressG == 1){
+                difficultyG ++;
+                difficultyProgressG = 0;
+                
+            }
+        document.getElementById("streak-count").innerHTML = streakCount;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + geometryQuestion.solution;
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+
+      // Existing confetti
+       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
+
+    // Your existing streak bar animation
+        showHighlight();
+        if (streakCount >= longestStreak){
+            longestStreak=streakCount;
+        }
+
+
+
+    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+           if (strikes ==  2){
+            updateRadarChart()
+                hintBtn.innerHTML  = "Show Hint"
+                strikesContainer.style.display = "inline"
+const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+        strikeOne.style.color = "var(--primary-color) !important"
+        correct = 0;
+        hintBtn.style.display = "inline"
+        getExpectedScore(userRating, geometryQuestion.rating)
+        recordWrongTopic(geometryQuestion.topic);
+        updatePieChart()
+        difficultyG = Math.max(1, difficultyG - 1);
+        difficultyProgressG = 0;
+        score = score - difficultyG;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+        streakCount = 0;
+        topicWrong = capitalizeFirstLetter(geometryQuestion.topic);
+        wrongCount++;
+        const wrongEntryTrueAlgebra = wrongQuestionsGeometry.some(item => item.title === wrongQuestionsGeometry.title);
+        if (wrongEntryTrueAlgebra === false){
+        wrongQuestionsGeometry.push(geometryQuestion)
+        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].errorCount = 1;
+        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].countdown = 3
+                if (mistakesGeometryTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsGeometry.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                    }
+                }
+            })
+        }
+        }
+        document.getElementById("streak-count").innerHTML = streakCount;
+
+        problemsWrapper.classList.add("shake");
+        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "geometry"
+        strikes -= 1
+        getExpectedScore(userRating, geometryQuestion.rating)
+                        scoreCount.innerHTML = Math.round(userRatingAll);
+    } else  if (strikes === 1){
+        seeStep.style.display = "inline"
+        strikeTwo.style.color = "var(--primary-color) !important"
+        strikes -= 1
+    } else {
+        geometryWrong += 1
+        localStorage.setItem("geometryWrongYIMO", geometryWrong)
+        updateRadarChart()
+        errorTags.style.display = "inline"
+        strikeThree.style.color = "var(--primary-color) !important"
+            solutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect` + geometryQuestion.solution;
+const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+    stepOne.style.display = "none"
+    hintBtn.style.display = "none"
+    hintText.style.display = "none"
+    seeStep.style.display = "none"
+}
+
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+}
+function checkAnswerAlgebra(){
+
+    if (strikes == 2){
+        algebraTotal += 1
+        localStorage.setItem("algebraTotalYIMO", algebraTotal)
+            updateRadarChart()
+    }
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === algebraQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
+
+    const userAnswer = answerInput.value.trim();
+    const correctAnswer = algebraQuestion.answer.trim();
+
+    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+            nextBtn.style.display = "inline-block";
+    stepOne.style.display = "none"
+    hintBtn.style.display = "none"
+    hintText.style.display = "none"
+    seeStep.style.display = "none"
+        correct = 1;
+        getExpectedScore(userRating, algebraQuestion.rating)
+        score = score + algebraQuestion.difficulty;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount++;
+            correctCount++;
+            difficultyProgress++;
+            if (difficulty == 1 && difficultyProgress == 4){
+                difficulty++;
+                difficultyProgress = 0;
+                
+            } else if (difficulty == 2 && difficultyProgress  == 3){
+                difficulty++;
+                difficultyProgress = 0;
+                
+            } else if (difficulty == 3 && difficultyProgress  == 2){
+                difficulty++;
+                difficultyProgress = 0;
+                
+            } else if (difficulty == 4 && difficultyProgress == 1){
+                difficulty ++;
+                difficultyProgress = 0;
+                
+            }
+        document.getElementById("streak-count").innerHTML = streakCount;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + algebraQuestion.solution;
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+      // Existing confetti
+       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
+
+    // Your existing streak bar animation
+        showHighlight();
+        if (streakCount >= longestStreak){
+            longestStreak=streakCount;
+        }
+
+
+
+    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+                algebraWrong += 1
+        localStorage.setItem("algebraWrongYIMO", algebraWrong)
+        updateRadarChart()
+        errorTags.style.display = "inline"
+        strikeThree.style.color = "var(--primary-color) !important"
+            solutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect` + algebraQuestion.solution;
+const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+    stepOne.style.display = "none"
+    hintBtn.style.display = "none"
+    hintText.style.display = "none"
+    seeStep.style.display = "none"
+
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+}
+function checkAnswerAll() {
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === allQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
+    const userAnswer = answerInput.value.trim();
+    const correctAnswer = allQuestion.answer.trim();
+
+    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+        score = score + allQuestion.difficulty;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount++;
+            correctCount++;
+            difficultyProgressAll++;
+            if (difficultyAll == 1 && difficultyProgressAll == 4){
+                difficultyAll++;
+                difficultyProgressAll = 0;
+                
+            } else if (difficultyAll == 2 && difficultyProgressAll  == 3){
+                difficultyAll++;
+                difficultyProgressAll = 0;
+                
+            } else if (difficultyAll == 3 && difficultyProgressAll  == 2){
+                difficultyAll++;
+                difficultyProgressAll = 0;
+                
+            } else if (difficultyAll == 4 && difficultyProgressAll == 1){
+                difficultyAll ++;
+                difficultyProgressAll = 0;
+                
+            }
+        document.getElementById("streak-count").innerHTML = streakCount;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + allQuestion.solution;
+
+      // Existing confetti
+       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
+
+    // Your existing streak bar animation
+        showHighlight();
+        if (streakCount >= longestStreak){
+            longestStreak=streakCount;
+        }
+
+
+
+    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+        recordWrongTopic(allQuestion.topic);
+        difficultyAll = Math.max(1, difficultyAll - 1);
+        difficultyProgressAll = 0;
+        score = score - difficulty;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+        streakCount = 0;
+        topicWrong = capitalizeFirstLetter(allQuestion.topic);
+        wrongCount++;
+        const wrongEntryTrueAll = wrongQuestionsAll.some(item => item.title === wrongQuestionsAll.title);
+        if (wrongEntryTrueAll === false){
+        wrongQuestionsAll.push(allQuestion)
+        wrongQuestionsAll[wrongQuestionsAll.length - 1].errorCount = 1;
+        wrongQuestionsAll[wrongQuestionsAll.length - 1].countdown = 3
+        }
+        document.getElementById("streak-count").innerHTML = streakCount;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect` + allQuestion.solution;
+        problemsWrapper.classList.add("shake");
+        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "all"
+    }
+
+    solutionDiv.style.display = "block";
+    nextBtn.style.display = "inline-block";
+const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
+        if (mistakesAllTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsAll.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                    }
+                }
+            })
+        }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+}
+
+
+function checkAnswerProb() {
+
+    if (strikes == 2){
+        probTotal += 1
+        localStorage.setItem("problTotalYIMO", probTotal)
+            updateRadarChart()
+    }
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === probQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
+    const userAnswer = answerInput.value.trim();
+    const correctAnswer = probQuestion.answer.trim();
+
+    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+            correct = 1;
+        getExpectedScore(userRatingProbability, probQuestion.rating)
+        score = score + probQuestion.difficulty;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount++;
+            correctCount++;
+            difficultyProgressP++;
+            if (difficultyP == 1 && difficultyProgressP == 1){
+                difficultyP++;
+                difficultyProgressP = 0;
+                
+            } else if (difficultyP == 2 && difficultyProgressP  == 3){
+                difficultyN++;
+                difficultyProgressP = 0;
+                
+            } else if (difficultyP == 3 && difficultyProgressP  == 2){
+                difficultyP++;
+                difficultyProgressP = 0;
+                
+            } else if (difficultyP == 4 && difficultyProgressP == 1){
+                difficultyP ++;
+                difficultyProgressP = 0;
+                
+            }
+        document.getElementById("streak-count").innerHTML = streakCount;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + probQuestion.solution;
+
+      // Existing confetti
+       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
+
+    // Your existing streak bar animation
+        showHighlight();
+        if (streakCount >= longestStreak){
+            longestStreak=streakCount;
+        }
+
+
+
+    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+     if (strikes ==  2){
+                scoreCount.innerHTML = Math.round(userRatingAll);
+                hintBtn.innerHTML  = "Show Hint"
+                strikesContainer.style.display = "inline"
+const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+        strikeOne.style.color = "var(--primary-color) !important"
+        correct = 0;
+        hintBtn.style.display = "inline"
+        getExpectedScore(userRating, probQuestion.rating)
+        recordWrongTopic(probQuestion.topic);
+        updatePieChart()
+        difficultyP = Math.max(1, difficultyP - 1);
+        difficultyProgressP = 0;
+        score = score - difficultyP;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+        streakCount = 0;
+        topicWrong = capitalizeFirstLetter(probQuestion.topic);
+        wrongCount++;
+        const wrongEntryTrueProb = wrongQuestionsProb.some(item => item.title === wrongQuestionsProb.title);
+        if (wrongEntryTrueProb === false){
+        wrongQuestionsProb.push(algebraQuestion)
+        wrongQuestionsProb[wrongQuestionsProb.length - 1].errorCount = 1;
+        wrongQuestionsProb[wrongQuestionsProb.length - 1].countdown = 3
+                if (mistakesProbTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsProb.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                    }
+                }
+            })
+        }
+        }
+        document.getElementById("streak-count").innerHTML = streakCount;
+
+        problemsWrapper.classList.add("shake");
+        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "probability"
+        getExpectedScore(userRating, algebraQuestion.rating)
+        scoreCount.innerHTML = Math.round(userRatingAll)
+        strikes -= 1
+    } else  if (strikes === 1){
+        seeStep.style.display = "inline"
+        strikeTwo.style.color = "var(--primary-color) !important"
+        strikes -= 1
+    } else {
+        updatePieChart()
+        probWrong += 1
+        localStorage.setItem("probWrongYIMO", probWrong)
+        updateRadarChart()
+        errorTags.style.display = "inline"
+        strikeThree.style.color = "var(--primary-color) !important"
+            solutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect` + probQuestion.solution;
+const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+    stepOne.style.display = "none"
+    hintBtn.style.display = "none"
+    hintText.style.display = "none"
+    seeStep.style.display = "none"
+}
+
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+    questionType = "probability"
+}
+function checkAnswerNum() {
+
+    if (strikes == 2){
+        numTotal += 1
+        localStorage.setItem("numTotalYIMO", numTotal)
+            updateRadarChart()
+    }
+    const topicObj = TOPIC_GLOSSARY.find(x => x.id === numQuestion.topic);
+    if (topicObj) {
+        topicObj.attempts += 1;
+    }
+    const userAnswer = answerInput.value.trim();
+    const correctAnswer = numQuestion.answer.trim();
+
+    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+            correct = 1;
+        getExpectedScore(userRatingNumTheory, numQuestion.rating)
+        score = score + numQuestion.difficulty;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount++;
+            correctCount++;
+            difficultyProgressN++;
+            if (difficultyN == 1 && difficultyProgressN == 4){
+                difficultyN++;
+                difficultyProgressN = 0;
+                
+            } else if (difficultyN == 2 && difficultyProgressN  == 3){
+                difficultyN++;
+                difficultyProgressN = 0;
+                
+            } else if (difficultyN == 3 && difficultyProgressN  == 2){
+                difficultyN++;
+                difficultyProgressN = 0;
+                
+            } else if (difficultyN == 4 && difficultyProgressN == 1){
+                difficultyN ++;
+                difficultyProgressN = 0;
+                
+            }
+        document.getElementById("streak-count").innerHTML = streakCount;
+        solutionText.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ` + numQuestion.solution;
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+
+      // Existing confetti
+       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
+
+    // Your existing streak bar animation
+        showHighlight();
+        if (streakCount >= longestStreak){
+            longestStreak=streakCount;
+        }
+
+
+
+    } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
+    if (strikes ==  2){
+                scoreCount.innerHTML = Math.round(userRatingAll);
+                hintBtn.innerHTML  = "Show Hint"
+                strikesContainer.style.display = "inline"
+const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+        strikeOne.style.color = "var(--primary-color) !important"
+        correct = 0;
+        hintBtn.style.display = "inline"
+        getExpectedScore(userRating, numQuestion.rating)
+        recordWrongTopic(numQuestion.topic);
+        updatePieChart()
+        difficultyN = Math.max(1, difficultyN - 1);
+        difficultyProgressN = 0;
+        score = score - difficultyN;
+        scoreCount.innerHTML = Math.round(userRatingAll);
+        streakCount = 0;
+        topicWrong = capitalizeFirstLetter(numQuestion.topic);
+        wrongCount++;
+        const wrongEntryTrue = wrongQuestionsNum.some(item => item.title === wrongQuestionsNum.title);
+        if (wrongEntryTrue === false){
+        wrongQuestionsNum.push(numQuestion)
+        wrongQuestionsNum[wrongQuestionsNum.length - 1].errorCount = 1;
+        wrongQuestionsNum[wrongQuestionsNum.length - 1].countdown = 3
+                if (mistakesNumTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsNum.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        item.errorCount += 1
+                        item.countdown = (2 ** item.errorCount)
+                    }
+                }
+            })
+        }
+        }
+        document.getElementById("streak-count").innerHTML = streakCount;
+
+        problemsWrapper.classList.add("shake");
+        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+        questionType = "numTheory"
+        strikes -= 1
+        getExpectedScore(userRating, algebraQuestion.rating)
+        scoreCount.innerHTML = Math.round(userRatingAll)
+    } else  if (strikes === 1){
+        seeStep.style.display = "inline"
+        strikeTwo.style.color = "var(--primary-color) !important"
+        strikes -= 1
+    } else {
+        updatePieChart()
+        numWrong += 1
+        localStorage.setItem("numWrongYIMO", numWrong)
+        updateRadarChart()
+        errorTags.style.display = "inline"
+        strikeThree.style.color = "var(--primary-color) !important"
+            solutionText.innerHTML = `<span class="material-symbols-outlined">
+close_small
+</span> Incorrect` + numQuestion.solution;
+const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+                solutionDiv.style.display = "block";
+    solutionText.style.display = "block"
+    nextBtn.style.display = "inline-block";
+    stepOne.style.display = "none"
+    hintBtn.style.display = "none"
+    hintText.style.display = "none"
+    seeStep.style.display = "none"
+}
+
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+    if (window.MathJax) {
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+    }
+    questionType = "numTheory"
+}
+checkBtn.addEventListener("click", function () {
+    if (questionType === "algebra"){
+            checkAnswerAlgebra();
+    }
+    if (questionType ==="geometry"){
+        checkAnswerGeometry();
+    }
+    if (questionType ==="numTheory"){
+        checkAnswerNum();
+    }
+    if (questionType === "probability"){
+        checkAnswerProb();
+    } 
+    if (questionType === 'all'){
+        checkAnswerAll();
+    }
+});
+function restart(){
+    currentQuestion = 0;
+    document.getElementById("streak-count").innerHTML = streakCount;
+    shuffleArray(questions);
+    shuffleArray(geometryQ);
+    shuffleArray(numTheoryQ);
+    shuffleArray(probabilityQ);
+    shuffleArray(allQ);
+    questions.used = false;
+    // Hide dashboard
+
+    // Show questions again
+    loadQuestion();
+    problemsWrapper.classList.remove("hidden");
+}
+// ---------- Next Question ----------
+nextBtn.addEventListener("click", function () {
+        strikesContainer.style.display = "none"
+    if (questionType === "algebra"){
+        algebraIndex += 1
+        algebraNext();
+        wrongQuestionsAlgebra.forEach(item => {
+            item.countdown -= 1;
+        })
+    } else if (questionType === "geometry"){
+        geometryIndex += 1
+        geometryNext();
+        wrongQuestionsGeometry.forEach(item =>{
+            item.countdown -= 1;
+        })
+
+    } else if (questionType === "numTheory"){
+        numIndex += 1
+        numNext();
+        wrongQuestionsNum.forEach(item =>{
+            item.countdown -= 1;
+        })
+    } else if (questionType === "probability"){
+        probIndex += 1
+        probNext();
+        wrongQuestionsProb.forEach(item =>{
+            item.countdown -= 1;
+        })
+    } else if (questionType === 'all'){
+        allIndex += 1
+        allNext();
+        wrongQuestionsAll.forEach(item =>{
+            item.countdown -= 1;
+        })
+    }
+});
+
+function algebraNext() {
+    problemsWrapper.classList.add("slide-out");
+    setTimeout(() => {
+        // Remove slide-out and load next question
+        problemsWrapper.classList.remove("slide-out");
+        geometryCurrent++;
+        const mistakeAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+        if (mistakeAlgebraTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsAlgebra.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        algebraQuestion = item
+                        prevError.style.display = "inline"
+                        loadAlgebra();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (currentQuestion < questions.length) {
+            prevError.style.display = 'none'
+    algebraQuestion = questions[algebraIndex]
+            loadQuestion();
+
+            // Slide in effect
+            problemsWrapper.classList.add("slide-in");
+            setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
+        } else {
+restart();
+}
+
+    }, 300); // matches slide-out duration
+questionType = "algebra";
+}
+function findTopic(topic){
+    return topic.name === topic;
+}
+function allNext() {
+    problemsWrapper.classList.add("slide-out");
+    setTimeout(() => {
+        // Remove slide-out and load next question
+        problemsWrapper.classList.remove("slide-out");
+        allCurrent++;
+        const mistakeAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
+        if (mistakeAllTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsAll.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        allQuestion = item
+                        prevError.style.display = "inline"
+                        loadAll();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (currentQuestion < allQ.length) {
+            prevError.style.display = 'none'
+    allQuestion = allQ[index]
+            loadAll();
+
+            // Slide in effect
+            problemsWrapper.classList.add("slide-in");
+            setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
+        } else {
+restart();
+}
+
+    }, 300); // matches slide-out duration
+questionType = "all";
+}
+function updateTopicsDropdown() {
+
+TOPIC_GLOSSARY.sort((a,b) => b.errors-a.errors)
+const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
+    const container = document.getElementById("topics-dropdown");
+
+    container.innerHTML = ""; // clear old content
+    topicsFixed.forEach(topic => {
+        const info = TOPIC_GLOSSARY.find(u => u.id === topic);
+        if (!info) return;
+        const wrapper = document.createElement("div");
+        wrapper.className = "topic-item";
+    let show = info.errors;
+    let mastery = info.mastery;
+wrapper.innerHTML = `
+  <button class="topic-button">
+    ${info.title}
+    <svg class="dropdown-icon" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+    </svg>
+  </button>
+  <div class="topic-content">
+    <p>${info.description}</p>
+    <h4>Errors: ${show}</h4>
+    <h4>Accuracy: ${mastery}</h4>
+    <h4>How to Improve:</h4>
+    <ul>${info.workOn.map(skill => `<li>${skill}</li>`).join("")}</ul>
+    <h4>Practice a question from this topic:</h4>
+    <div id="mini-practice-${info.id.replace(/\s+/g, '-')}" class='problem problem-wrapper deactivated'>
+      <button class="problemBtn" onclick="loadTopicQuestion('${info.id}')">Practice This Topic</button>
+    </div>
+  </div>
+`;
+
+
+        container.appendChild(wrapper);
+    MathJax.typesetPromise([wrapper]).catch(()=>{})
+        
+        }
+    )};
+document.getElementById("topics-dropdown").addEventListener("click", function(e) {
+    const button = e.target.closest(".topic-button");
+    if (!button) return;
+
+    button.classList.toggle("active");
+    button.nextElementSibling.classList.toggle("show");
+});
+
+
+
+
+// ---------- Next Question Geometry ----------
+function geometryNext(){
+    // Slide out
+    problemsWrapper.classList.add("slide-out");
+    setTimeout(() => {
+        // Remove slide-out and load next question
+        problemsWrapper.classList.remove("slide-out");
+        geometryCurrent++;
+        const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+        if (mistakesGeometryTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsGeometry.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        geometryQuestion = item
+                        prevError.style.display = "inline"
+                        loadGeometry();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (geometryCurrent < geometryQ.length) {
+            prevError.style.display = 'none  '
+    geometryQuestion = geometryQ[geometryIndex]
+            loadQuestion(geometryCurrent);
+
+            // Slide in effect
+            problemsWrapper.classList.add("slide-in");
+            setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
+        } else {
+restart();
+}
+
+    }, 300); // matches slide-out duration
+questionType = "geometry";
+}
+function probNext() {
+    // Slide out
+    problemsWrapper.classList.add("slide-out");
+    setTimeout(() => {
+        // Remove slide-out and load next question
+        problemsWrapper.classList.remove("slide-out");
+        probCurrent++;
+        const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+        if (mistakesProbTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsProb.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        probQuestion = item
+                        prevError.style.display = "inline"
+                        loadProb();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (probCurrent < probabilityQ.length) {
+            prevError.style.display = 'none'
+    probQuestion = probabilityQ[probIndex]
+            loadProb();
+
+            // Slide in effect
+            problemsWrapper.classList.add("slide-in");
+            setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
+        } else {
+restart();
+}
+})
+}
+function numNext(){
+    // Slide out
+    problemsWrapper.classList.add("slide-out");
+    setTimeout(() => {
+        // Remove slide-out and load next question
+        problemsWrapper.classList.remove("slide-out");
+        numCurrent++;
+        const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+        if (mistakesNumTrue === true){
+            let alreadyDefined = false
+            wrongQuestionsNum.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false){
+                        numQuestion = item
+                        prevError.style.display = "inline"
+                        loadNumTheory();
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (numCurrent < numTheoryQ.length) {
+            prevError.style.display = 'none'
+    numQuestion = numTheoryQ[numIndex]
+            loadQuestion();
+
+            // Slide in effect
+            problemsWrapper.classList.add("slide-in");
+            setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
+        } else {
+restart();
+}
+})
+}
+
+// ---------- Enter Key ----------
+answerInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && nextBtn.style.display === "none") {
+        e.preventDefault();
+        checkBtn.click();
+    } if (e.key === "Tab" && nextBtn.style.display !== "none") {
+        e.preventDefault();
+        nextBtn.click();
+    }
+});
+
+
+
+
+
+// ---------- Shuffle Questions ----------
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+currentQuestion = 0;
+geometryCurrent = 0;
+numCurrent = 0;
+probCurrent = 0;
+
+
+//------------Switch Subjects--------------
+function loadQuestion() {
+        errorTags.style.display = "none"
+        strikesContainer.display = "none"
+        seeStep.style.display = "none"
+        stepOne.style.display = "none"
+        hintText.style.display = "none"
+        strikes = 2;
+        hintBtn.style.display = 'none'
+        strikeOne.style.color = 'var(--shadow-color) !important'
+        strikeTwo.style.color = 'var(--shadow-color) !important'
+        strikeThree.style.color = 'var(--shadow-color) !important'
+    submitSolutionForm.style.display = "none";
+    submitSolutionButton.style.display='block'
+if (questionType === "probability"){
+        loadProb(probCurrent);
+        questionType = "probability"
+    }
+    if (questionType === "algebra") {
+        loadAlgebra(currentQuestion);
+    } else if (questionType === "geometry"){
+        loadGeometry(geometryCurrent);
+        questionType = "geometry";
+    } else if (questionType === "numTheory"){
+        loadNumTheory(numCurrent)
+        questionType = "numTheory"
+    } else if (questionType === 'all'){
+        loadAll(allCurrent);
+        questionType = 'all'
+    }
+}
+shuffleArray(probabilityQ)
+
+    // 5. Update Container HTML
+
+
+function checkMiniMC(selected, correct, solution, containerId) {
+    const container = document.getElementById(containerId);
+    
+    // Disable all choice buttons
+    container.querySelectorAll('.mini-mc-btn').forEach(b => b.disabled = true);
+    const solutionDiv = container.querySelector('.mini-solution');
+    const nextBtn = container.querySelector('.next-topic-btn');
+
+
+    if (selected.trim() === correct.trim()) {
+        solutionDiv.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ${solution}`;
+    } else {
+        solutionDiv.innerHTML = `<span class="material-symbols-outlined">
+close_small</span> Incorrect. ${solution}`;
+    }
+
+    solutionDiv.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
+    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
+}
+
+function checkMiniAnswer(btn, answer, solution, containerId) {
+    const container = document.getElementById(containerId)
+    const input = container.querySelector('.mini-answer');
+    const solutionDiv = container.querySelector('.mini-solution');
+    const nextBtn = container.querySelector('.next-topic-btn');
+
+    if (input.value.trim().toLowerCase() === answer.trim().toLowerCase()) {
+        solutionDiv.innerHTML = `<span class="material-symbols-outlined">
+check
+</span> Correct! ${solution}`;
+    } else {
+        solutionDiv.innerHTML = `<span class="material-symbols-outlined">
+close_small</span> Incorrect. ${solution}`;
+    }
+
+    input.disabled = true;
+    btn.disabled = true;
+    solutionDiv.style.display = 'block';
+    nextBtn.style.display = 'inline-block';
+    
+    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
+}
+submitSolutionButton.addEventListener("click", function() {
+        submitSolutionForm.style.display = 'block';
+        submitSolutionButton.style.display = 'none';
+})
+function noHint(array,object) {
+        array.forEach(i => {
+                if (i.object === null){
+                        i.object = "Not available for this question"
+                }
+        })
+}
+noHint(questions, hint)
+noHint(geometryQ, hint)
+noHint(numTheoryQ, hint)
+noHint(probabilityQ)
+function noStep(array) {
+        array.forEach(i => {
+                if (i.step === null){
+                        i.step = "Not available for this question"
+                }
+        })
+}
+noStep(questions)
+noStep(geometryQ)
+noStep(numTheoryQ)
+noStep(probabilityQ)
+function getExpectedScore(userRating, questionRating){
+    let expectedRating = (1 / (1 + Math.pow(10, (questionRating - userRating) / 400)));
+    updateRating(userRating, expectedRating, correct);
+}
+function updateRating(oldRating, expectedRating, correct){
+    let newRating = oldRating + (250 * (correct - expectedRating))
+    if (questionType !== "all"){
+        if (questionType === "algebra"){
+                userRating = newRating
+        } else if (questionType === "geometry"){
+                userRatingGeometry = newRating
+        } else if (questionType === "probability"){
+                userRatingProbability = newRating
+        } else if(questionType === "numTheory"){
+                userRatingNumTheory = newRating
+        } else if (questionType === "all"){
+                userRatingAll = newRating
+        }
+    }
+    updateAllRating();
+}
+hintBtn.addEventListener("click", function(){
+        if (hintText.style.display === "none"){
+                hintText.style.display = "block"
+                hintBtn.innerHTML = "Hide Hint"
+                if (questionType === "algebra"){
+                        hintText.innerHTML = "<b>HINT: </b>" + algebraQuestion.hint
+                        hint.style.color = "var(--accent-color)"
+                } else if (questionType === "geometry"){
+                        hintText.innerHTML = "<b>HINT: </b>" + geometryQuestion.hint
+                        hint.style.color = "var(--accent-color)"                
+                } else if (questionType === "numTheory"){
+                        hintText.innerHTML = "<b>HINT: </b>" + numQuestion.hint
+                        hint.style.color = "var(--accent-color)"                        
+                } else if (questionType === "probability"){
+                        hintText.innerHTML = "<b>HINT: </b>" + probQuestion.hint
+                        hint.style.color = "var(--accent-color)"    
+                }
+                MathJax.typesetPromise([hintText]);
+        } else {
+                hintText.style.display = "none"
+                hintBtn.innerHTML = "Show Hint"
+        }
+})
+seeStep.addEventListener("click", function() {
+        if (stepOne.style.display === "none"){
+                stepOne.style.display = "block"
+                seeStep.innerHTML = "Hide First Step"
+                if (questionType === "algebra"){
+                        stepOneText.innerHTML = algebraQuestion.step
+                } else if (questionType === "geometry"){
+                        stepOneText.innerHTML = geometryQuestion.step
+                } else if (questionType === "numTheory"){
+                        stepOneText.innerHTML = numQuestion.step
+                } else if (questionType === "probability"){
+                        stepOneText.innerHTML = probQuestion.step
+                }
+                MathJax.typesetPromise([stepOneText]);
+        } else {
+                stepOne.style.display = "none"
+                seeStep.innerHTML = "See The First Step"
+        }        
+})
+
+function loadTopicQuestion(topic) {
+    // 1. Combine all arrays and filter by topic
+    const topicQuestions = allQ.filter(q => q.topic === topic)
+    // 2. Select a random question
+    const q = topicQuestions[Math.floor(Math.random() * topicQuestions.length)];
+
+    // 3. Find the container
+    const containerId = `mini-practice-${topic.replace(/\s+/g, '-')}`;
+    const checkBtnId = `mini-check-${topic.replace(/\s+/g, '-')}`;
+    const container = document.getElementById(containerId);
+    container.classList.remove('deactivated')
+    if (!container) return;
+
+    // 4. Build answer UI
+    let answerHTML = '';
+    if (q.type === 'mc' && q.choices) {
+        answerHTML = `
+            <div class="mini-mc">
+                ${q.choices.map(choice => `
+                    <button class="mc-choice problemBtn mini-mc-btn" id="${choice}">
+                        ${choice}
+                    </button>
+                `).join('')}
+                            </div>`;
+    } else {
+        answerHTML = `
+            <div class="mini-fr">
+                <input type="text" class="mini-answer" placeholder="Your answer">
+                <button class="problemBtn checkBtnMini" id="mini-check-${topic.replace(/\s+/g, '-')}">
+                    Check
+                </button>
+            </div>`;
+}
+
+    container.innerHTML = `
+<div class="miniTitleContainer">
+        <p class="amc10title mini">${q.title}</p>
+                <div class="miniTag">${topic}</div>
+                </div>
+        <p class="mini-question-text par">${q.text}</p>
+        ${answerHTML}
+        <div class="mini-solution solution" style="display:none; margin-top:10px;"></div>
+        <button class="problemBtn next-topic-btn" style="display:none; margin-top:10px;" 
+            onclick="loadTopicQuestion('${topic}')">
+            Next Question
+        </button>
+    `;
+    if (window.MathJax) MathJax.typesetPromise([container]).catch(()=>{});
+    if (q.type != 'mc'){
+    const checkBtnMini = document.getElementById(checkBtnId)
+    checkBtnMini.addEventListener("click", function () {
+        checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
+    })
+}
+if (q.type === 'mc'){
+    const option1 = document.getElementById(q.choices[0])
+    const option2 = document.getElementById(q.choices[1])
+    const option3 = document.getElementById(q.choices[2])
+    const option4 = document.getElementById(q.choices[3])
+    const option5 = document.getElementById(q.choices[4])
+    option1.addEventListener("click", function() {
+        checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
+    })
+    option2.addEventListener("click", function() {
+        checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
+    })
+    option3.addEventListener("click", function() {
+        checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
+    })
+    option4.addEventListener("click", function() {
+        checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
+    })
+    option5.addEventListener("click", function() {
+        checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
+    })
+}
+}
+
+mistakeBtn.addEventListener("click", function(){
+    mistake += 1
+    localStorage.setItem("mistakeYIMO", mistake)
+    updateBarGraph()
+})
+unfamiliarBtn.addEventListener("click", function(){
+    unfamiliar += 1
+    localStorage.setItem("unfamiliarYIMO", unfamiliar)
+    updateBarGraph()
+})
+stuckBtn.addEventListener("click", function(){
+    stuck += 1
+    updateBarGraph()
+    localStorage.setItem("stuckYIMO", stuck)
+})
+let myChart = null;
+
+function updateBarGraph() {
+    const xValues = ["Unfamiliar With Topic", "Stuck / Reached Dead End", "Arithmetic Issue"];
+    const yValues = [unfamiliar, stuck, mistake];
+    const barColors = ["#88B0FF", "#88B0FF", "#88B0FF"];
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    const ctx = document.getElementById("barChart");
+    myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues,
+                borderRadius: 6 // Optional: makes it look more "Saintly"
+            }]
+        },
+        options: {
+            responsive: true,
+scales: {
+                x: {
+                    grid: { color: textColor }, // Dynamic gridlines
+                    ticks: { color: textColor } // Dynamic label text
+                },
+                y: {
+                    grid: { color: textColor },
+                    ticks: { color: textColor }
+                }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+}
+let pieChart = null
+function updatePieChart(){
+
+    if (pieChart) {
+        pieChart.destroy();
+    }
+    const ctx = document.getElementById("pieChart");
+    let xValues = []
+    let yValues = []
+    topicsToWorkOn.forEach(i => {
+        const topicObj = TOPIC_GLOSSARY.find(x => x.id === i);
+if (topicObj && topicObj.errors && topicObj.errors > 0) {
+            xValues.push(topicObj.name || topicObj.id); // Use name if available
+            yValues.push(topicObj.errors);
+        }
+
+    })
+pieChart = new Chart("pieChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      data: yValues,
+      backgroundColor: ["#88B0FF", "#c7deff", "#FFB192", "#ffd0c0"],
+      borderColor: backgroundColor
+    }]
+  },
+options: {
+    plugins: {
+      legend: {
+        labels: {
+          color: textColor
+        }
+      }
+    }
+  }
+});
+}
+let myRadarChart = null
+function updateRadarChart(){
+                    const data = {
+        labels: 
+        ["Algebra", "Geometry", "Number Theory", "Probability"],
+        datasets: [{label: "Incorrect", 
+            data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
+        },
+        {label: "Attempted", 
+            data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#ebf3ff'
+        },
+]
+
+    }
+            if (colorMode  === 'dark'){
+                const data = {
+        labels: 
+        ["Algebra", "Geometry", "Number Theory", "Probability"],
+        datasets: [{label: "Incorrect", 
+            data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
+        },
+        {label: "Attempted", 
+            data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#88B0FF'
+        },
+]
+        }      
+        }
+
+if (myRadarChart) {
+        myRadarChart.destroy();
+    }
+
+    // 3. Create the chart
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+ options: {
+    scales: {
+      r: {
+        // 1. Change color of the category labels (e.g., "Speed", "Strength")
+        pointLabels: {
+          color: textColor, 
+          font: {
+            size: 14
+          }
+        },
+        // 2. Change color of the numbers on the radial axis
+        ticks: {
+          color: textColor,
+          showLabelBackdrop: false,
+
+        }
+      }
+    },
+    plugins: {
+      // 3. Change color of the legend text
+      legend: {
+        labels: {
+          color: textColor
+        }
+      }
+    }
+  }
+
+    })
+}
+updatePieChart()
+updateRadarChart()
+updateBarGraph()
+loadQuestion()
+
+
+//-----------------------Authentication--------------------------
+document.getElementById("btn-signup").addEventListener("click", async () => {
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+  const passwordCheck = document.getElementById("auth-password-check").value
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+    if (password === passwordCheck){
+  const { data, error } = await supabase.auth.signUp({ email, password });
+  if (error) return alert(error.message);
+  if (data.user) {
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+        topicsToWorkOnYimo: topicsToWorkOn,
+        TOPICGLOSSARYYimo: TOPIC_GLOSSARY,
+        unfamiliarYimo:  unfamiliar,
+        stuckYimo: stuck,
+        mistakeYimo: mistake,
+        algebraTotalYimo: algebraTotal,
+        algebraWrongYimo: algebraWrong,
+        geometryTotalYimo: geometryTotal,
+        geometryWrongYimo: geometryWrong,
+        numTotalYimo: numTotal,
+        probTotalYimo: probTotal,
+        numWrongYimo: numWrong,
+        probWrongYimo: probWrong,
+        streakYimo: streakCount
+      }
+    ]);
+    
+    alert("Account created!");
+    
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+    loadQuestion()
+  }
+  } else {
+    document.getElementById("signup-error").innerHTML = "Passwords do not match"
+  }
+});
+async function loadUserStats(userId) {
+  const { data: profile, error } = await supabase
+    .from('profiles')
+   .select('id, username, topicsToWorkOnYimo, TOPICGLOSSARYYimo, unfamiliarYimo, stuckYimo, mistakeYimo, algebraTotalYimo, algebraWrongYimo, geometryTotalYimo, geometryWrongYimo, numTotalYimo, numWrongYimo, probTotalYimo, probWrongYimo, streakYimo')
+   .eq('id', userId)
+
+  if (error) {
+    console.error("Error downloading profile data:", error);
+    return;
+  }
+
+  if (profile) {
+    let userProfile = profile[0]
+    document.getElementById("username-display").innerHTML = userProfile.username
+    document.getElementById("streak-count").innerHTML = userProfile.streakYimo;
+    topicsToWorkOn = userProfile.topicsToWorkOnYimo || [];
+    TOPIC_GLOSSARY = userProfile.TOPICGLOSSARYYimo || TOPIC_GLOSSARY;
+    unfamiliar = userProfile.unfamiliarYimo || 0;
+    stuck = userProfile.stuckYimo || 0;
+    mistake = userProfile.mistakeYimo || 0;
+    algebraTotal = userProfile.algebraTotalYimo || 0;
+    algebraWrong = userProfile.algebraWrongYimo || 0;
+    geometryTotal = userProfile.geometryTotalYimo || 0;
+    geometryWrong = userProfile.geometryWrongYimo || 0;
+    numTotal = userProfile.numTotalYimo || 0;
+    numWrong = userProfile.numWrongYimo || 0;
+    probTotal = userProfile.probTotalYimo || 0;
+    probWrong = userProfile.probWrongYimo || 0;
+    document.getElementById("btn-dashboard").innerHTML = userProfile.username
+
+
+    
+    // 3. Trigger your chart re-renders
+    if (typeof updateRadarChart === "function") updateRadarChart();
+    if (typeof updateBarGraph === "function") updateBarGraph();
+    if (typeof updatePieChart === "function") updatePieChart()
+  } 
+}
+const loginBtn = document.getElementById('btn-login');
+loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("login-email").value.trim()
+    const password = document.getElementById("login-password").value
+    if (!email || !password) {
+        
+document.getElementById("login-error").innerHTML = "Please Input Both Fields"
+    return;
+  }
+  loginBtn.disabled = true;
+const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password,
+  });
+
+  if (error) {
+    alert("Login Error: " + error.message);
+    loginBtn.disabled = false;
+    loginBtn.innerText = "Login";
+    return;
+  }
+  document.getElementById('accountPannel').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+  accountTrue = false
+  // 3. Pull their ELO data out of the database (Step 2 below)
+  await loadUserStats(data.user.id);
+  
+  // Reset button state
+  loginBtn.disabled = false;
+  loadQuestion()
+  updateRadarChart()
+  updateBarGraph()
+  updatePieChart()
+
+    loadQuestion();
+
+})
+const logoutBtn = document.getElementById('btn-logout');
+
+logoutBtn.addEventListener('click', async () => {
+      mistake = 0
+  stuck = 0
+  unfamiliar = 0
+  algebraTotal = 0
+  algebraWrong = 0
+  geometryTotal = 0
+  geometryWrong = 0
+  numTotal = 0
+  numWrong = 0
+  probTotal = 0
+  probWrong = 0
+  topicsToWorkOn = []
+  TOPIC_GLOSSARY.forEach(i => {
+    i.errors = 0
+  })
+  loadQuestion()
+  updateRadarChart()
+  updateBarGraph()
+  updatePieChart()
+            document.getElementById("login").style.display = "block"
+  // 1. Call Supabase to clear the secure cloud session
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    alert("Error logging out: " + error.message);
+    return;
+  }
+
+
+  alert("You have been logged out successfully!");
+  window.location.reload();
+});
+
+const deleteAccountBtn = document.getElementById('btn-delete-account');
+
+if (deleteAccountBtn) {
+  deleteAccountBtn.addEventListener('click', async () => {
+    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
+    
+    if (!confirmed) return;
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+
+    const userId = session.user.id;
+
+    // 3. Clear their specific user row from your public profiles table
+    const { error: dbError } = await supabase
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+
+    if (dbError) {
+      alert("Error erasing profile data: " + dbError.message);
+      return;
+    }
+
+    await supabase.auth.signOut();
+
+    localStorage.clear();
+    loadQuestion()
+
+    alert("Your account records and progress have been completely erased.");
+    window.location.reload();
+  });
+}
+supabase.auth.onAuthStateChange(async (event, session) => {
+  const accountBtn = document.getElementById('accountBtn');
+  const logoutBtn = document.getElementById('btn-logout');
+  const loginBtn = document.getElementById('btn-login');
+  const signup = document.getElementById('no-account');
+  const login = document.getElementById('login');
+  const usernameDisplay = document.getElementById("username-display");
+  const createAccount = document.getElementById("no-account")
+  const deleteAccount = document.getElementById("btn-delete-account")
+  const usernameDisplayModal = document.getElementById("btn-dashboard")
+
+  // A. Check if a secure user session actually exists
+  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
+
+    // Toggle UI display blocks safely
+    if (logoutBtn) logoutBtn.style.display = 'block';
+    if (login) login.style.display = "none";
+    if (createAccount) createAccount.style.display = "none"
+    if (deleteAccount) deleteAccount.style.display = "block"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
+
+    // 1. Fetch cloud records safely using correct lowercase columns
+  const { data: profile, error } = await supabase
+loadUserStats(session.user.id)
+  } else  {
+    if (typeof runDiagnostic === "function") runDiagnostic();
+    
+    if (logoutBtn) logoutBtn.style.display = 'none';
+    if (login) login.style.display = "block";
+    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
+    if (createAccount) createAccount.style.display = "block"
+    if (deleteAccount) deleteAccount.style.display = "none"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
+    // Reset runtime math parameters back to baseline
+    userRatingAll = 1200;
+    userRating = 1200;
+    userRatingGeometry = 1200;
+    userRatingNumTheory = 1200;
+    userRatingProbability = 1200;
+    mistake = 0;
+    stuck = 0;
+    unfamiliar = 0;
+    topicsToWorkOn = [];
+    
+    if (Array.isArray(TOPIC_GLOSSARY)) {
+      TOPIC_GLOSSARY.forEach(i => { if(i) i.errors = 0; });
+    }
+
+    const scoreCountElement = document.getElementById('scoreCount');
+    if (scoreCountElement) scoreCountElement.innerHTML = 1200;
+
+    // Redraw empty guest charts
+    if (typeof updateBarGraph === "function") updateBarGraph();
+    if (typeof updateRadarChart === "function") updateRadarChart();
+    if (typeof updatePieChart === "function") updatePieChart();
+
+  }
+});
+  async function saveUserStatsToCloud() {
+  // 1. Get the currently logged-in user session
+  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError || !session) {
+    return; // Stop here if they are a guest
+  }
+
+  const userId = session.user.id;
+
+  // 2. Push all the live active values up to the database
+  const { data, error } = await supabase
+    .from('profiles')
+    .update({
+        topicsToWorkOnYimo: topicsToWorkOn,
+        TOPICGLOSSARYYimo: TOPIC_GLOSSARY,
+        unfamiliarYimo:  unfamiliar,
+        stuckYimo: stuck,
+        mistakeYimo: mistake,
+        algebraTotalYimo: algebraTotal,
+        algebraWrongYimo: algebraWrong,
+        geometryTotalYimo: geometryTotal,
+        geometryWrongYimo: geometryWrong,
+        numTotalYimo: numTotal,
+        probTotalYimo: probTotal,
+        numWrongYimo: numWrong,
+        probWrongYimo: probWrong,
+        streakYimo: streakCount
+    })
+    .eq('id', userId); // ⚠️ CRITICAL: Ensure you only update THIS user's row!
+
+  if (error) {
+    console.error("Failed to sync stats to cloud database:", error.message);
+  }
+
+}
+buttonsWork()
+const resetBtn = document.getElementById("btn-request-reset");
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", async () => {
+    const email = document.getElementById("login-email").value;
+
+    if (!email) {
+      alert("Please enter your email address first.");
+      return;
+    }
+
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/update-password.html',
+    });
+
+    if (error) {
+      console.error("Reset request failed:", error.message);
+      alert("Error: " + error.message);
+    } else {
+      alert("Check your inbox! A secure password reset link has been sent.");
+    }
+  });
+}
+// --- Integrated Draggable Floating Scratchpad Engine ---
+const scratchPopup = document.getElementById("scratchpad-popup");
+const scratchHeader = document.getElementById("scratchpad-header");
+const scratchCanvas = document.getElementById("scratchpad-canvas");
+const toggleScratchBtn = document.getElementById("btn-toggle-scratchpad");
+const clearScratchBtn = document.getElementById("btn-clear-scratchpad");
+const closeScratchBtn = document.getElementById("btn-close-scratchpad");
+
+if (scratchPopup && scratchHeader && scratchCanvas) {
+  const ctx = scratchCanvas.getContext("2d");
+  let isDrawing = false;
+  let lastX = 0, lastY = 0;
+
+  // --- 1. Open / Close Window Visibility Toggles ---
+  function openScratchpad() {
+    scratchPopup.style.display = "block";
+    setupBrushColors();
+  }
+
+  function closeScratchpad() {
+    toggleScratchBtn.innerHTML = "Open Scratchpad"
+    scratchPopup.style.display = "none";
+  }
+
+  toggleScratchBtn.addEventListener("click", () => {
+    if (scratchPopup.style.display === "none" || scratchPopup.style.display === "") {
+      openScratchpad();
+      toggleScratchBtn.innerHTML = "Close Scratchpad"
+    } else {
+      closeScratchpad();
+      toggleScratchBtn.innerHTML = "Open Scratchpad"
+    }
+  });
+
+  closeScratchBtn.addEventListener("click", closeScratchpad);
+  
+  clearScratchBtn.addEventListener("click", () => {
+    ctx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+  });
+
+  function setupBrushColors() {
+    let computedColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+    ctx.strokeStyle = computedColor ? computedColor : '#4A90E2'; 
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+  }
+
+  // --- 2. Canvas Core Drawing Mechanics ---
+  function getCanvasCoordinates(e) {
+    const rect = scratchCanvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return {
+      x: clientX - rect.left,
+      y: clientY - rect.top
+    };
+  }
+
+  scratchCanvas.addEventListener("mousedown", (e) => {
+    isDrawing = true;
+    const coords = getCanvasCoordinates(e);
+    [lastX, lastY] = [coords.x, coords.y];
+  });
+
+  scratchCanvas.addEventListener("mousemove", (e) => {
+    if (!isDrawing) return;
+    e.preventDefault();
+    const coords = getCanvasCoordinates(e);
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(coords.x, coords.y);
+    ctx.stroke();
+    [lastX, lastY] = [coords.x, coords.y];
+  });
+
+  const stopDrawing = () => isDrawing = false;
+  scratchCanvas.addEventListener("mouseup", stopDrawing);
+  scratchCanvas.addEventListener("mouseleave", stopDrawing);
+
+  // Mobile Drawing Support
+  scratchCanvas.addEventListener("touchstart", (e) => {
+    isDrawing = true;
+    const coords = getCanvasCoordinates(e);
+    [lastX, lastY] = [coords.x, coords.y];
+  });
+  scratchCanvas.addEventListener("touchmove", (e) => {
+    if (!isDrawing) return;
+    e.preventDefault();
+    const coords = getCanvasCoordinates(e);
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(coords.x, coords.y);
+    ctx.stroke();
+    [lastX, lastY] = [coords.x, coords.y];
+  });
+  scratchCanvas.addEventListener("touchend", stopDrawing);
+
+
+  // --- 3. Window Translation Component (Dragging Logic) ---
+  let isDraggingWindow = false;
+  let offsetX = 0, offsetY = 0;
+
+  function startWindowDrag(e) {
+    // Prevent text highlight selection artifacts during runtime translation
+    if (e.target === clearScratchBtn || e.target === closeScratchBtn) return;
+    
+    isDraggingWindow = true;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    offsetX = clientX - scratchPopup.offsetLeft;
+    offsetY = clientY - scratchPopup.offsetTop;
+  }
+
+  function dragWindow(e) {
+    if (!isDraggingWindow) return;
+    e.preventDefault();
+    
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    scratchPopup.style.left = (clientX - offsetX) + "px";
+    scratchPopup.style.top = (clientY - offsetY) + "px";
+  }
+
+  function stopWindowDrag() {
+    isDraggingWindow = false;
+  }
+
+  // Desktop Drag Bindings
+  scratchHeader.addEventListener("mousedown", startWindowDrag);
+  document.addEventListener("mousemove", dragWindow);
+  document.addEventListener("mouseup", stopWindowDrag);
+
+  // Mobile Drag Bindings
+  scratchHeader.addEventListener("touchstart", startWindowDrag);
+  document.addEventListener("touchmove", dragWindow, { passive: false });
+  document.addEventListener("touchend", stopWindowDrag);
+}
+function updateCountdown() {
+    const now = new Date();
+    
+    // Create a target date object in UTC
+    let targetMonday = new Date();
+    
+    // Find how many days to add to get to the next Monday
+    // now.getUTCDay() returns 0 for Sunday, 1 for Monday, etc.
+    let daysUntilMonday = (1 - now.getUTCDay() + 7) % 7;
+    
+    // If it is currently Monday, check if 5:00 AM UTC has already passed
+    if (daysUntilMonday === 0) {
+        const currentUTCHours = now.getUTCHours();
+        // Change 5 to 4 if tracking EDT (Daylight Saving Time)
+        if (currentUTCHours >= 5) {
+            daysUntilMonday = 7; // Target next week's Monday instead
+        }
+    }
+    
+    // Set the target date matching next Monday at 5:00 AM UTC (12:00 AM EST)
+    targetMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
+    targetMonday.setUTCHours(5, 0, 0, 0); // 5 AM UTC = 12 AM EST
+
+    const timeDifference = targetMonday - now;
+
+    // If the countdown is finished
+    if (timeDifference <= 0) {
+        document.getElementById("countdown-timer").innerHTML = "🎉 New Content Unlocked!";
+        return;
+    }
+
+    // Time calculations for days, hours, minutes, and seconds
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    // Display the results with leading zeros for clean formatting
+    document.getElementById("days").innerText = String(days).padStart(2, '0');
+    document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+    document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+}
+
+// Run the timer immediately on page load, then refresh every 1 second
+updateCountdown();
+setInterval(updateCountdown, 1000);

@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
               </svg>
             </button>
             <ul class="sub-menu">
-              <li><a href="amc10algebra.html">Algebra</a></li>
+              <li><a href="algebralearningpath.html">Algebra</a></li>
               <li><a href="amc10geometry.html">Geometry</a></li>
               <li><a href="amc10numbertheory.html">Number Theory</a></li>
               <li><a href="amc10combinatorics.html">Probability</a></li>
@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <ul class="sub-menu">
               <li><a href="solvefire.html">Solvefire</a></li>
               <li><a href="yimo.html">STEMise + YIMO</a></li>
+              <li><a href="zeroset.html">ZeroSet</a></li>
             </ul>
           </li>
           <li>

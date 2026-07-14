@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Saintly | Inequalities Learning Path</title>
+  <link rel="stylesheet" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">   
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=account_circle,ads_click,bedtime,book,check,close_small,exclamation,handshake,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,sunny,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+ 
+<meta name="keywords" content="arithmetic, what is arithmetic, AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+    <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+<meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+
+</head>
+<body>
+   <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script type="module" src="sidebar.js"></script>
+<nav id = "top-bar">
+  <a class="aContainer" href="index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "algebralearningpath.html">Algebra</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "inequalities learning path.html">Inequalities Learning Path</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='index.html'">
+  <img class="fullLogo" src="fullLogo.png">
+  </button>
+  </div>
+<div class="right-align">
+
+  <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+
+send
+</span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton" >
+volunteer_activism
+</span>
+<span class="material-symbols-outlined volunteerButton brightness" id="brightness">
+sunny
+</span>
+    <a href="https://discord.gg/SuAvtn7595" style="justify-self: flex-end;" class="start-practice hover" id="joindiscord">Join Our Discord!</a>
+<button id="accountBtn" style=" height: 34px; display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 6px; color: #88b0ff; font-family: 'National Park', sans-serif; padding: 0 12px; margin: 0 5px; cursor: pointer;  width: auto !important; max-width: fit-content !important;" class="start-practice hover">
+  <span class="material-symbols-outlined" style="margin: 0; font-size: 20px; display: inline-flex; align-items: center; justify-content: center; color: #88b0ff;">
+    account_circle
+  </span>
+  <span style="white-space: nowrap;" id="username-display">Log In</span>
+</button>
+    </div>
+</nav>
+<main> 
+    <div id="overlay"></div>
+    <div class="minicontainer">
+
+  <h1 class="amc10title">Inequalities</h1>
+  <p class="amc10subtitle"></p>
+  <h2 class="amc10subtitle">4 Problems • 4 sub-topics</h2>
+  <h2 class="par" style="display: inline; vertical-align: middle !important;">Adalynn Le • 5/10/2026</h2>
+<!-- Table of Contents  -->
+  <div id="tableOfContents">
+  <h3 class="amc10subtitle ittybitty" style="color: var(--primary-color)">Table of Contents</h3>
+  <ol><a href="#intro">Introduction</a></ol>
+  <ol><a href="#vs">Inequalities vs Equations</a></ol>
+<ol><a href="#graphing">Graphing Inequalities</a></ol>
+<ol><a href="#absolute">Absolute Value</a></ol>
+<ol><a href="#theorems">Theorems</a></ol>
+<ol><a href="#conclusion">Conclusion</a></ol>
+  </div>
+  <h2 class="amc10subtitle" id="introduction">Introduction</h2>
+  <p class="par">Inequalities are <mark class="blue">two expressions that are related somehow, but not explicity equivalent to each other.</mark> They are heavily used on the AMC 10 both for word problems that model something that reqiures an inequality, and especially in geometry and geometry on the coordinate grid to express covered area. This will all be covered later in this article.
+  </p>
+    <span id = "howworkcards">
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">What is it?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Inequalities are a set of two or more expressions <mark class="orange">related by some comparisson that is not equivalency.</mark> When graphed, inequalities will appear shaded in certain areas. <mark class="orange">Instead of having a defined set of solutions, they have a continous range of answers</mark></div>
+  </span>
+  <span class="howworkcard">
+    <div class="howworkcardicon">
+    <span class="material-symbols-outlined">select_check_box</span>
+    <span class="howworkcardtitle">Why Study?</span>
+    </div>
+    <hr class="hrcard">
+    <div class= "howworkcardtext">Inequalities are what I like to think of as <mark class="orange">a levelup to functions</mark> because they can modify the way they behave and look when graphed. Inequalities are particularly helpful on the AMC 10 for <mark class="orange">finding ranges of solutions, finding constrained area on a coordinate grid, and modeling the relationship etween geometric features.</mark></div>
+  </span>
+</span> 
+</div>
+<h2 class="amc10subtitle" id="vs">Inequalities vs Equations</h2>
+<p>Like I've said before, the difference between inequalities and equations is that the prior <mark class="blue">is based off a relationship where the two expressions are not equal, and the latter is.</mark> On the surface, this is a small change but it greatly affects the behavior and modeling of such expressions.
+    <div class="subsubtopic">
+        <h3 class="amc10subtitle ittyBitty">Solving Inequalities</h3>
+One of the most notable examples is that there are multiple types of inequalities: <mark class="blue">less than, greater than, less than equal to, greater than equal to.</mark> The constraints by each of these are self explanatory, but the most important thing to remember is that <mark class="blue">when solving an equation, you can switch the sign and always need to be conscious of where it 
+    is facing.</mark> For example, the equation \(4 < x\) is equal to \(x > 4\), but the latter is preffered for standard formatting. In typical equations, it is standard to switch the order of the expressions to conform with standard mathematical best practices, but in inequalities,<mark class="blue"> you need to make sure you are preserving the direction of the inequality with respect to the expression.</mark>
+ <mark class="blue">The process for solving inequalities, in the sense of isolating a variable, is almost exaclty the same as solving an equation</mark>. The most notable difference is that <mark class="blue">when dividing by a negative value, you must switch the direction of the inequality</mark>. The reason for this is pretty interesting: the absolute value of a number increases as it gets further from the number line (or is it farther? does math count as physical distance?)
+but for negative numbers, the actual value decreases. When we multiply by a negative number, we are switching the order of which numbers are bigger, because now the closer you are to the numberline the bigger. This thus forces us to change the sign of a inequality</p>
+<h3 class="amc10subtitle ittyBitty">Squaring Inequalities</h3>
+<p class="par">Obviously, whenever we square any real number, the result will be positive. However, with inequalities which model the relationships of expressions, this can cause errors. Say you have the equation \(a < b\) for \(a < 0 < b\). Furthermore, let's assume that \(|a| > |b|\). Squaring \(a\) will give a positive value greater than the square of \(b\), but \(a^2 < b^2\) can't be true then. 
+    We can't make it a rule to switch the sign, because we cannot always assure that \(|a| > |b|\). Thus, <mark class="blue">it is generally considered wrong to square an inequality when \(a\) and \(b\) are of different signs.</mark>
+</p>
+<p class="par">Another example of how squaring can become troubling in inequalities is with the equation \(x^2 < 4\). If we take the root of both sides, we get \(x < 2\), which albeit one bound for the solutions of the equation, fails to encompass \(x > -2\), demonstrating how when using negative numbers, we also must switch the direction of the inequality. Because of the issues that arise from
+squaring inequalities, it is important to employ <a href="logic.html">logic</a> when solving inequalities that deal with squares or powers. </p>
+<h3 class="amc10subtitle ittyBity">Reciprocals</h3>
+<p class="par">In a way, reciprocals of inequalities are going to be similar to squares, because after all, the reciprocal is just the expression raised to \(-1\). If the signs of the expressions or values on either side of the inequality are the same, <mark class="blue">you will always have to flip the inequality.</mark> The logic for this is similar to that of negatives.
+<mark class="blue">For \(\frac{1}{n}\), as \(n\) increases, \(\frac{1}{n}\) decreases.</mark></p>
+<h3 class="amc10subtitle ittyBitty">Modeling</h3>
+<p class="par">When modeling word problems or other equatoins, it is important to distinguish when to use an equation and when to use an inequality. I will be honest, <mark class="blue">it is rare to need an inequality to solve something,</mark> simply because it is pretty easy to just mentally bound the situations. Inequalities really only come in handy in equations where there are a lot of 
+sign changes. That being said, a good rule of thumb is to <mark class="blue">use inequalities when modeling anything that does not explicitly say equals.</mark> The lack of strictness will also help you model the problem more accurately than how rigid equations are</p>
+</div>
+<h3 class="amc10subtitle" id="graphing">Graphing Inequalities</h3>
+<p class="par">I'm not going to focus so much on graphing the actual line/shape of the graph, because that isn't as related to inequalities. If you would like to know more about that, I would check our page on <a href="functions and graphing.html">functions and graphing</a>. The most notable thing to remember about graphing inequalities is that <mark class="blue">the graph will be shaded</mark>. For 
+less than and less than equal to, the graph is shaded below the line. For greater than and greater than equal to, the graph is shaded above the line. For inequalities that include "equal to", the line will be solid, whereas for inequalities that do not, the line is dotted. This is to represent including the values that would make the expressions equal, which in an equation is the line itself. The solution to a system of inequalities is <mark class="blue">the overlapping
+    shaded area
+</mark></p>
+<p class="par">All of this is pretty self explanatory and trivial information. However, the biggest use I have found for inequalities is in the context of merging algebraic functions and graphing. The area bounded by an inequality and a line, or by an inequality and the x-axis for a certain range can be calculated and is a common ask for the AMC 10.
+    Notice that this is different than integrals, for those of you who know Calculus. The AMC 10 will never require you to know calculus (although it may include questions facilitated by calculus). The key difference is that on the AMC 10, <mark class="blue">when you need an inequality to find the area bounded, it will most likely be linear and geometric figures</mark>
+    Most likely, if you are solving for area in relation to inequalities <mark class="blue">it will relate more to absolute value.</mark> Becaues of the nature of the absolute value function, it allows you to reflect the same equation across an axis. When this is done to say, a linear equation of negative slope with a \(y-\)intercept above the \(x\) axis, taking the absolute value of both \(f(x)\) and \(x\) gives a diamond shape.
+    Now, if you were to add an inequality onto that, particularly less than, the diamond is shaded and you get a shape you can fully find the area of. Notice how it also includes the area above the line for both of the lines below the \(y-\)axis, this is, of course, the same principle of switching the inequality when using a negative
+</p>
+<p class="par">Whenever you are graphing an equation with absolute value, it is important to split into cases based on the sign of everything inside the absolute value.</p>
+<div class="howworkcard">
+    <h3 class="amc10subtitle ittyBitty">Live Inequality Grapher</h3>
+    <div class="controls">
+                Slope (m): <input type="number" id="slopeInput" value="1" step="0.5">
+                      <span style="display: flex; flex-direction: row"></span>
+        Intercept (b): <input type="number" id="interceptInput" value="0" step="0.5">
+                        </span>
+        <select id="signInput" class="problemBtn">
+            <option value="true">Greater Than (>)</option>
+            <option value="false">Less Than (<)</option>
+        </select>
+    </div>
+    <canvas id="inequalityCanvas"></canvas>
+    
+    <div id="logicWarning" style="display:none; color: red; margin-top: 10px;">
+        <span class="material-symbols-outlined">warning</span> 
+        Careful! Multiplying by a negative? Don't forget to flip the sign!
+    </div>
+    <button id="graphButton" class="problemBtn">Graph This Inequality</button>
+</div>
+<h2 class="amc10subtitle" id="theorems">Theorems</h2>
+<div class="subsubtopic">
+  <h3 class="amc10subtitle ittyBitty">AM-GM Inequality</h3>
+  <p class="par">The AM-GM Inequality (Arithmetic Mean - Geometric Mean Inequality) states that <mark class="blue">the arithmetic mean of two numbers will always be greater than the geometric mean.</mark> It can be expressed algebraicly as \(\frac{a+b}{2} > \sqrt{ab}\). This often comes in handy on the AMC 
+  10 when you need to find <mark class="blue">the minimum value of a sum or product of two numbers</mark></p>
+  <h3 class="amc10subtitle ittyBitty">Triangle Inequality</h3>
+  <p class="par">Another emphasis that inequalities are closely tied to geometry, it is a well-known inequality that <mark class="blue">the sum of two side lengths of a triangle must be greater than the remaining side length.</mark> This, along with other rules about relationships in triangles, allows you to 
+  solve a lot of the similar triangle and complex geometry problems you will find on the AMC 10. It allows you to bind the possible values of a triangle, both in side lengths and area, perimeter, or anything that can be derived from the side lengths</p>
+  <h3 class="amc10subtitle ittyBitty">Cauchy Schwarz Inequality</h3>
+  <p class="par">I doubt this will come up on the AMC 10, but if you're interested in theory and want to advance your knowledge, I would look into the Cauchy Schwarz Inequality, which dictates <mark class="blue">for vectors \(u,v\), the dot product of \(u, v\) will always be \(\leq\) the product of the magnitudes (lengths) of \(u,v\)</mark>. This
+  very well may never come up on the AMC 10, but it is an important tool in hgiher mathematics for binding the relationship between two vectors and ensuring that their length does not grow past a certain impossible point.</p>
+  <p class="par"></p>
+</div>
+<h2 id="conclusion" class="amc10subtitle">Conclusion</h2>
+<p class="par">Inequalities are operations that can be applied to functions and other such expressions in order to bind the range and limit solutions. They are exceedingly helpful for word problems but come with a different set of rules than typical equations and expressions.</a>.
+</p>
+<div class="problem problemWrapper">
+<h3 id="question-title" class="amc10title small">Question 1:</h3>
+    <div id="accuracyContainer" style="display: flex; flex-direction: row; gap: 7px">
+  <div class="accuracyCircle"></div>
+  <div class="accuracyCircle"></div>
+  <div class="accuracyCircle"></div>
+  <div class="accuracyCircle"></div>
+  <div class="accuracyCircle"></div>
+</div>
+    <p id="question-text">Loading question...</p>
+    <input type="text" id="answer-input" placeholder="Your answer">
+<div id="mc-container" class="hidden">
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+  <button class="mc-choice problemBtn"></button>
+</div>
+
+    <button id="check-btn" class="problemBtn">Check Answer</button>
+
+    <div class="solution" id="solution" style="display:none;">
+      <h2>Solution</h2>
+      <p id="solution-text"></p>
+      <button id="next-btn" class="problemBtn" style="display:none;">Next Question</button>
+      </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+ <div class="helpPannel"  id="accountPannel">
+  <div id="login">
+    <h2 class="amc10subtitle ittyBitty">Welcome Back!</h2>
+      <p class="par">Access your progress across all your devices</p>
+    <p id="login-error" style="color: red"></p>
+    <input type="email" id="login-email" placeholder="Email"/>
+    <input type="password" id="login-password" placeholder = "Password"/>
+  <span style="display: flex; flex-direction: row; justify-content: flex-start; gap: 16px">
+
+  </span>
+        <button id="btn-login" class="start-practice">Log In</button>
+    <button class="start-practice" id="btn-request-reset">Forgot Your Password? Send a Reset Email</button>
+
+
+  </div>
+  <div id="signup" style="display: none">
+    <p id="signup-error" style="color: red"></p>
+  <h2 class="amc10subtitle ittyBitty">Make an Account</h2>
+  <p class="par">Want to store your progress, see how you stand in comparison to other students, and climb the leaderboard? Create a free account today!</p>
+  <div id="auth-container">
+  <input type="email" id="auth-email" placeholder="Email" />
+  <input type="password" id="auth-password" placeholder="Password" />
+  
+        <input type="password" id="auth-password-check" placeholder = "Confirm Password"/>
+  <input type="text" id="auth-username" placeholder="Display Name" />
+  </div>
+      <button id="btn-signup" class="start-practice">Sign Up</button>
+</div>
+<a class="amc10subtitle ittyBitty pset-link" href="your dashboard.html" id="btn-dashboard">Username</a>
+        <button id="btn-logout" class="start-practice"style="display: none; cursor: pointer;">Log Out</button>
+  <button id="no-account" class="start-practice">Don't have an account? Sign Up!</button>
+  <button id="btn-delete-account" class="start-practice" style="display: none">
+  Delete Account & Wipe Progress
+</button>
+</div>
+
+<div id = "helpPannel" class = "helpPannel">
+  <h2>Need Some Help?</h2>
+  <p class="par">Contact us through our form</p>
+<div data-fs-success></div>
+<div data-fs-error></div>
+
+<form
+  action="https://formspree.io/f/mwvwgrwr"
+  method="POST"
+>
+<label class="formsubmission">
+  Name:
+  <input type="text" name="name" placeholder="First Last">
+</label>
+  <label class="formsubmission">
+    Email:
+    <input type="email" name="email" placeholder="youremail@gmail.com">
+  </label>
+  <label class="formsubmission">
+    Message:
+    <input type="text"name="message" required></input>
+  </label>
+  <!-- your other form fields go here -->
+<label class="formsubmission">
+  <p>What type of message is this?</p>
+  <div class="mcqwrapper" style="display: flex; flex-wrap: wrap; gap: 8px 16px;">
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Reporting an Error
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Suggesting an addition
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Feedback or Review
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Other
+    </label>
+  </div>
+</label></form></div>
+    </main>
+<footer class="saintly-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img class="footer-logo" src="fullLogo.png" height="35px"></img>
+            <p>Making competition math accessible for everyone.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="am10.html">AMC 10</a></li>
+                <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+                <li><a href="amc10algebra.html">Algebra</a></li>
+                <li><a href="algebra.html">Topics Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <div class="social-icons">
+      <a>saintly.math@gmail.com</a>
+              <span style="display: flex; flex-direction: row">
+<a href="https://instagram.com/saintly.math" class="fa fa-instagram" style="display: inline-block"><p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>@saintly.math</p></a>
+</span>
+                            <span style="display: flex; flex-direction: row">
+<a href="https://pinterest.com/saintlymath" class="fa fa-pinterest" style="display: inline-block"><p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>Saintly</p></a>
+
+</span>
+                </div>
+        </div>
+        <div class="footer-section">
+          <h4>Privacy</h4>
+          <ul><li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Saintly Math. Built with drive.
+    </div>
+</footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script type="module">
+
+    </script>
+<script src="inequalities learning pathjs.js" type="module"></script>
+</html>

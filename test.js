@@ -13797,3 +13797,50 @@ if (scratchPopup && scratchHeader && scratchCanvas) {
   document.addEventListener("touchmove", dragWindow, { passive: false });
   document.addEventListener("touchend", stopWindowDrag);
 }
+function updateCountdown() {
+    const now = new Date();
+    
+    // Create a target date object in UTC
+    let targetMonday = new Date();
+    
+    // Find how many days to add to get to the next Monday
+    // now.getUTCDay() returns 0 for Sunday, 1 for Monday, etc.
+    let daysUntilMonday = (1 - now.getUTCDay() + 7) % 7;
+    
+    // If it is currently Monday, check if 5:00 AM UTC has already passed
+    if (daysUntilMonday === 0) {
+        const currentUTCHours = now.getUTCHours();
+        // Change 5 to 4 if tracking EDT (Daylight Saving Time)
+        if (currentUTCHours >= 5) {
+            daysUntilMonday = 7; // Target next week's Monday instead
+        }
+    }
+    
+    // Set the target date matching next Monday at 5:00 AM UTC (12:00 AM EST)
+    targetMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
+    targetMonday.setUTCHours(5, 0, 0, 0); // 5 AM UTC = 12 AM EST
+
+    const timeDifference = targetMonday - now;
+
+    // If the countdown is finished
+    if (timeDifference <= 0) {
+        document.getElementById("countdown-timer").innerHTML = "🎉 New Content Unlocked!";
+        return;
+    }
+
+    // Time calculations for days, hours, minutes, and seconds
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    // Display the results with leading zeros for clean formatting
+    document.getElementById("days").innerText = String(days).padStart(2, '0');
+    document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+    document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+}
+
+// Run the timer immediately on page load, then refresh every 1 second
+updateCountdown();
+setInterval(updateCountdown, 1000);
