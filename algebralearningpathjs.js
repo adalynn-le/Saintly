@@ -4045,7 +4045,6 @@ loadQuestion(currentQuestion)
 progressBarFunction()
 
 async function saveUserStatsToCloud() {
-    console.log(algebraLevel)
   // 1. Get the currently logged-in user session
   const { data: { session }, error: sessionError } = await supabase.auth.getSession();
   if (sessionError || !session) {
@@ -6114,7 +6113,6 @@ function checkingForDiagnostic(){
 if (algebraLevel === "not started" || algebraLevel == ""){
     document.getElementById("diagnosticHide").style.display = "none"
     document.getElementById("diagnosticShow").style.display = "inline"
-    console.log(algebraLevel)
 } else {
     document.getElementById("diagnosticHide").style.display = "inline"
     document.getElementById("diagnosticShow").style.display = "none"
@@ -6217,3 +6215,10 @@ document.getElementById("next-btnDiagnostic").addEventListener("click", function
         loadNodes()
     }
 })
+const topicQ
+allQ.forEach(i =>{
+    if (i.topic == "trigonometry"){
+        topicQ.push(i)
+    }
+})
+console.log(topicQ.length)
