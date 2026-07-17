@@ -6215,10 +6215,3 @@ document.getElementById("next-btnDiagnostic").addEventListener("click", function
         loadNodes()
     }
 })
-const topicQ
-allQ.forEach(i =>{
-    if (i.topic == "trigonometry"){
-        topicQ.push(i)
-    }
-})
-console.log(topicQ.length)
