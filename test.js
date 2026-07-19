@@ -4522,7 +4522,10 @@ rating: 1200,
         choices: ["\\(A) 1:1\\)", "\\(B) 47:43\\)", "\\(C) 2:1\\)", "\\(D) 40:13\\)", "\\(E) 4:1\\)"],
         solution: `<b>4</b><p>The following solution is what we would call a fakesolve or 'cheese' where you get the right answer through somewhat shady logic. That being said, it works, and it was the first thing I thought of, so I suppose it's ok for me:</p>
         <p>The radius of the wider cone is 2x the other. We know that the area of a circle is \\(r^2 pi\\) and we multiply that by height and \\(\\frac{1}{3}\\) for a cone. We don't nescessarily need to do much but find how much of an effect the radius has. We simply input \\(3^2\\) and \\(6^2\\) to find that \\(9 \\cdot 4 = 36\\) for a ratio of 
-        \\(4:1\\)</p>`,
+        \\(4:1\\)</p>
+        <p><b>Community Solution</b><p>
+        <p>
+        we know that the area of a cone is \\(\\pi\\) times the \\(\\textup{radius}^{2}\\) times the \\(\\textup{height}\\) all over \\(3\\). Then, since the problem states that the cones contain the same amount of liquid, we can assume that they have the same height, because the area of the little cone (amount of water in the cone) is the same. This allows us to get the ratio \\(12\\pi : 3\\pi \\) which simplifies to \\(4:1\\)`,
         answer: `\\(E) 4:1\\)`,
         topic: 'volume relationships',
         hint: "What is the relationship between the volumes of cylinders with double or half the radius?",
