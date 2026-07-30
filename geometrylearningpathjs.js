@@ -2610,7 +2610,6 @@ checkBtn.addEventListener("click", function () {
             progressBarFunction();
             streakCount++;
             correctCount++;
-        document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + geometryQ[currentQuestion].solution;
@@ -2631,7 +2630,6 @@ check
             progressBarFunction();
         streakCount = 0;
         wrongCount++;
-        document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect. ` + geometryQ[currentQuestion].solution;
@@ -2852,7 +2850,6 @@ document.getElementById("restart-btn").addEventListener("click", function() {
     wrongCount = 0;
     streakCount = 0;
     longestStreak = 0;
-    document.getElementById("streak-count").innerHTML = streakCount;
 
     // Hide dashboard
     document.getElementById("stats-dashboard").classList.add("hidden");
@@ -3394,7 +3391,7 @@ document.getElementById("startButton").addEventListener("click", function() {
     geometryLevel = "trigonometry"
 })
 const geometryTopics = ["pythagorean theorem", "similar triangles", "triangle lines", "trigonometry"]
-let algebraLowestindex = 4
+let geometryLowestIndex = 4
 let diagnosticIndex = 0
 let currentQuestionDiagnostic = allQ[0]
 function diagnosticCheck(answerInput){
@@ -3452,6 +3449,7 @@ document.getElementById("next-btnDiagnostic").addEventListener("click", function
 })
 
 function lock() {
+    document.getElementById("diagnosticShow").style.display = "none"
   accountBtn.click()
   document.getElementById("pythagoreanTheoremNode").querySelector(".lessonNode").classList.remove("currentNode")
   document.getElementById("pythagoreanTheoremNode").querySelector(".lessonNode").classList.add("locked")

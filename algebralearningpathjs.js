@@ -523,6 +523,7 @@ function loadProgressBar() {
   
 }
 function lock() {
+    document.getElementById("diagnosticShow").style.display = "none"
   accountBtn.click()
   document.getElementById("arithmeticNode").querySelector(".lessonNode").classList.remove("currentNode")
   document.getElementById("arithmeticNode").querySelector(".lessonNode").classList.add("locked")

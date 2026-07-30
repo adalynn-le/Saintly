@@ -8999,7 +8999,7 @@ document.getElementById("next-btn").addEventListener("click", async function() {
   const { data, error } = await supabase
     .from('profiles')
     .update({
-        numberSenseLevel: 'completed'
+        probabilityLevel: 'completed'
     })
     .eq('id', userId)
 
@@ -9007,7 +9007,7 @@ document.getElementById("next-btn").addEventListener("click", async function() {
     console.error("Failed to sync stats to cloud database:", error.message);
   }
   document.getElementById('question-title').innerHTML = "Leveled Up!"
-  document.getElementById("question-text").innerHTML = "Finished this pathway!"
+  document.getElementById("question-text").innerHTML = "Finished this pathway!>"
   mcChoices.forEach(i => {
     i.style.display = "none"
   })

@@ -482,6 +482,7 @@ function loadProgressBar() {
 }
 function lock() {
   accountBtn.click()
+  document.getElementById("diagnosticShow").style.display = "none"
   document.getElementById("chooseYourPath").querySelector(".lessonNode").classList.remove("currentNode")
   document.getElementById("chooseYourPath").querySelector(".lessonNode").classList.add("locked")
   document.getElementById("chooseYourPath").querySelector(".material-symbols-rounded").innerHTML = "lock"
