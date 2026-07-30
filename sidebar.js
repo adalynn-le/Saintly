@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <ul class="sub-menu">
               <li><a href="algebralearningpath.html">Algebra</a></li>
               <li><a href="geometrylearningpath.html">Geometry</a></li>
-              <li><a href="amc10numbertheory.html">Number Theory</a></li>
+              <li><a href="numtheorylearningpath.html">Number Theory</a></li>
               <li><a href="amc10combinatorics.html">Probability</a></li>
             </ul>
           </li>
