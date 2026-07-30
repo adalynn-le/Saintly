@@ -28,16 +28,13 @@ if  (colorModeTrue !== false){
 function toggleSystemTheme() {
   const root = document.documentElement;
   
-  // 1. Check what the system preference is, or if it's already set
   if (!root.style.colorScheme) {
-    // If it's not set yet, match the user's system preferences
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     root.style.colorScheme = prefersDark ? 'dark' : 'light';
   }
   
   colorMode = root.style.colorScheme;
 
-  // 2. Add the correct matching class right away so the logos render correctly!
   if (colorMode === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
@@ -75,7 +72,6 @@ function toggleSubMenu(button){
 }
 
 
-// ---------- Shuffle Function ----------
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -91,23 +87,19 @@ let streakEnabled = true;
 function showHighlight() {
 
 
-    // reset
     highlight.style.transition = 'none';
     highlight.style.transform = 'scaleX(0)';
     highlight.style.left = '0';
-    highlight.offsetHeight; // force reflow
-            // Step 1: expand from left to right
+    highlight.offsetHeight; 
     highlight.style.transition = 'transform 0.3s ease-out';
     highlight.style.transform = 'scaleX(1)';
 
-    // Step 2: slide left edge in to close
     setTimeout(() => {
         highlight.style.transition = 'transform 0.3s ease-in, left 0.3s ease-in';
         highlight.style.transform = 'scaleX(0)';
         highlight.style.left = '100%';
     }, 300);
 
-    // Reset after animation
     setTimeout(() => {
         highlight.style.transition = 'none';
         highlight.style.left = '0';

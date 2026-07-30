@@ -7194,7 +7194,9 @@ rating: 1000,
         text: `How many of the first ten numbers of the sequence \\(121, 11211, 1112111,...\\) are prime numbers?`,
         type: 'mc',
         choices: ['\\(A) 0\\)', '\\(B) 1\\)', '\\(C) 2\\)', '\\(D) 3\\)', '\\(E) 4\\)'],
-        solution: `<b>0</b><p>We can write each number as \\(110+11, 11100+111, 1111000+1111\\), respectively. We can factor all of these into \\(10^{n\\textup{th power}}+1 \\cdot\\)a number comprised of as many \\(1\\)s as \\(n\\). Since this holds true for all, there are always at least \\(2\\) factors and thus \\(0\\) primes`,
+        solution: `<b>0</b><p>We can write each number as \\(110+11, 11100+111, 1111000+1111\\), respectively. We can factor all of these into \\(10^{n\\textup{th power}}+1 \\cdot\\)a number comprised of as many \\(1\\)s as \\(n\\). Since this holds true for all, there are always at least \\(2\\) factors and thus \\(0\\) primes</p>
+        <p><b>Solution by Findingflea</b></p>
+        <p>If we realize that \\(121\\) is just \\(11^2\\), we can also test the next number in the sequence, allowing us to find all of these numbers are multiples of \\(11\\). The second number is \\(1010 \\times 11), the third \\(101010 \\times 11\\) and so on forth. Thus, our answer is \\(A) 0\\) numbers are prime`,
         answer: '\\(A) 0\\)',
         topic: 'factoring',
         hint: "How can you rewrite this and factor it?",
@@ -7272,8 +7274,11 @@ rating: 1200,
         choices: ['\\(A)\\) All schools smaller than Euclid HS sold fewer T-shirt than Euclid HS', '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS', '\\(C)\\) All schools bigger than Euclid HS sold fewer shirts T-shirts than Euclid HS', '\\(D)\\) All schools that sold fewer T-shirts than Euclid HS are smaller than Euclid HS.', '\\(E)\\) All schools smaller than Euclid HS sold more T-shirts than Euclid HS'],
         solution: `<b>No school that sold more T-shirts than Euclid HS is bigger than Euclid HS</b><p>This isn't really the sort of question I can explain. Effectively, go through each answe rand see whether or not they match</p>
         <p>The first one can't be right because the given info doesn't say anything about smaller schools</p>
-        <p>The second hsa to be right because it's rephrasing it. If no school bigger than Euclid sold more than Euclid, that means any school that did sell more was smaller</p>`,
-        answer: '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS',
+        <p>The second hsa to be right because it's rephrasing it. If no school bigger than Euclid sold more than Euclid, that means any school that did sell more was smaller</p>
+        <p><b>Solution by Findingflea</b></p>
+        <p>This an easy problem, it is just hard to represent mathematically. However, we still can. We can draw a coordinate plane that shows that a school's size is bigger when it is further right along the x axis, and that it has more T-shirts sold depending on how high it is placed on the Y axis. Then, we can represent all the information in the sentence of the question in the graph.
+possible smaller school. This leads us to our answer B, that no school that sold more T-shirts than Euclid is bigger than Euclid.</p>`,
+        answer: '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS</p>',
         topic: 'logic',
         hint: "Use logic =P",
         step: "Look through each answer choice and see if it makes sense"
@@ -13844,6 +13849,5 @@ function updateCountdown() {
     document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
 }
 
-// Run the timer immediately on page load, then refresh every 1 second
 updateCountdown();
 setInterval(updateCountdown, 1000);

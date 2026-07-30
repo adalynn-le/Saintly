@@ -1,3 +1,7 @@
+const { createClient } = window.supabase;
+const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
+const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
+const supabase = createClient(supabaseURL, supabaseKey);
 const toggleBrightness = document.getElementById("brightness")
 const carouselLight = document.querySelectorAll("carousel-logo-light")
 const carouselDark = document.querySelectorAll("carousel-logo-dark")
@@ -245,10 +249,7 @@ subs.forEach(sub => {
 
 
  const helpPannel = document.getElementById("helpPannel")
-const { createClient } = window.supabase;
-const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
-const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
-const supabase = createClient(supabaseURL, supabaseKey);
+
       let helpOn = false;
   let helpBtn = document.getElementById('helpButton')
 let accountTrue = false
