@@ -475,7 +475,7 @@ let progressBarLoaded = false
 function loadProgressBar() {
   if (progressBarLoaded == false) {
     document.getElementById("progress-bar-learning").style.width = (completedLessons / 7).toLocaleString('en-US', { style: 'percent' })
-    document.getElementById("lessonsCompletedLabel").innerHTML = `Lessons Completed ${completedLessons}/12`
+    document.getElementById("lessonsCompletedLabel").innerHTML = `Lessons Completed ${completedLessons}/7`
     progressBarLoaded = true
   } 
   
