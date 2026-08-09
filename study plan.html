@@ -1,0 +1,321 @@
+<head>
+    <title>Saintly | Study Planner</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3X50VWZM2"></script>
+    <script src="https://t.contentsquare.net/uxa/cb77e0fd80dbf.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-N3X50VWZM2');
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly">
+    <meta name="keywords" content="AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+    <title>Saintly | Accessible Competition Math Prep by Students for Students</title>
+    <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+    <meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=star,stars" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=ads_click,book,check,close_small,handshake,lab_profile,local_fire_department,playlist_add_check,send,star,sunny,update,volunteer_activism" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Saintly Math",
+  "url": "saintlymath.com",
+  "description": "Free AMC 10 and AMC 12 prep",
+  "sameAs": []
+}
+</script>
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+<script>
+  window.formspree =
+    window.formspree ||
+    function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+  formspree(
+    'initForm', 
+    { formElement: '#contact-form', formId: 'contact-form' }
+  );
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+<body>
+    <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<nav id="sidebarPlaceholder"></nav>
+<script type="module" src="sidebar.js"></script>
+<div id = "top-bar">
+    <div class="aContainer">
+        <a href="index.html" class = "top-text">Home</a>
+    </div>
+    <div class="center-align">
+        <button class='topBtn' onclick="window.location.href='index.html'">
+            <img alt="full Saintly Logo" class="fullLogo" src="images/fullLogo.png">
+        </button>
+    </div>
+    <div class="right-align">
+        <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+            send
+        </span>
+        <span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton" >
+            volunteer_activism
+        </span>
+        <span class="material-symbols-outlined volunteerButton brightness" id="brightness">
+            sunny
+        </span>
+        <a href="https://discord.gg/SuAvtn7595" style="justify-self: flex-end;" class="start-practice hover" id="joindiscord">Join Our Discord!</a>
+        <button id="accountBtn" style=" height: 34px; display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 6px; color: #88b0ff; font-family: 'National Park', sans-serif; padding: 0 12px; margin: 0 5px; cursor: pointer;  width: auto !important; max-width: fit-content !important;" class="start-practice hover">
+            <span class="material-symbols-outlined" style="margin: 0; font-size: 20px; display: inline-flex; align-items: center; justify-content: center; color: #88b0ff;">
+                account_circle
+            </span>
+            <span style="white-space: nowrap;" id="username-display">Log In</span>
+        </button>
+    </div>
+</div>
+<main style="padding: 50px">
+    <h1 class="amc10title">Study Planner</h1>
+    <p>Block out your time until the AMC 10 to prepare efficiently and cover the entire learning path!</p>
+    <div class="howworkcard" style="width: 75%; position: absolute; left: 12.5%;" id="diagnosticPlannerContainer">
+        <p id="errorMsg" style="color: red"></p>
+        <div id="diagnosticPlannerP1">
+            <h2 class="amc10subtitle ittyBitty">Answer a Few Questions to Get Started</h2>
+            <button class="start-practice" id="startDiagnosticPlanner">Start</button>
+        </div>
+        <div id="diagnosticPlannerP2" style="display: none">
+            <h2 class="amc10subtitle ittyBitty">Which test are you taking?</h2>
+            <label for="testId">Choose your test:</label>
+            <select id="testId" name="testId">
+                <option value="AMC 10A">AMC 10A</option>
+                <option value="AMC 10B">AMC 10B</option>
+                <option value="AMC 12A">AMC 12A</option>
+                <option value="AMC 12B">AMC 12B</option>
+            </select>
+            <button class="start-practice" id="nextDiagnosticPlannerP2">Next</button>
+        </div>
+        <div id="diagnosticPlannerP3" style="display: none">
+            <h2 class="amc10subtitle ittyBitty">Which Days do You Want to Study?</h2>
+            <p style="display: inline; flex: 0.5; margin-bottom: -15px;" id="mondayLabel">Monday: 0 Minutes</p>
+            <input style = "display: inline; flex: 1" name="monday"id="monday" type="range" min="0" max="180" step="5" value="0">
+            <p style="display: inline; flex: 0.5; margin-bottom: -15px;" id="tuesdayLabel">Tuesday: 0 Minutes</p>
+            <input style = "display: inline; flex: 1" name="tuesday"id="tuesday" type="range" min="0" max="180" step="5" value="0">
+            <p style="display: inline; flex: 0.5; margin-bottom: -15px;" id="wednesdayLabel">Wednesday: 0 Minutes</p>
+            <input style = "display: inline; flex: 1" name="wednesday"id="wednesday" type="range" min="0" max="180" step="5" value="0">
+            <p style="display: inline; flex: 0.5; margin-bottom: -15px;" id="thursdayLabel">Thursday: 0 Minutes</p>
+            <input style = "display: inline; flex: 1" name="thursday"id="thursday" type="range" min="0" max="180" step="5" value="0">
+            <p style="display: inline; flex: 0.5; margin-bottom: -15px;" id="fridayLabel">Friday: 0 Minutes</p>
+            <input style = "display: inline; flex: 1" name="friday"id="friday" type="range" min="0" max="180" step="5" value="0">
+            <p style="display: inline; flex: 0.5; margin-bottom: -15px;" id="saturdayLabel">Saturday: 0 Minutes</p>
+            <input style = "display: inline; flex: 1" name="saturday"id="saturday" type="range" min="0" max="180" step="5" value="0">
+            <p style="display: inline; flex: 0.5; margin-bottom: -15px;" id="sundayLabel">Sunday: 0 Minutes</p>
+            <input style = "display: inline; flex: 1" name="sunday"id="sunday" type="range" min="0" max="180" step="5" value="0">
+            <button class="start-practice" id="nextDiagnosticPlannerP3">Next</button>
+        </div>
+        <div id="diagnosticPlannerP4" style="display: none">
+            <h2 class="amc10subtitle ittyBitty">What is Your Goal?</h2>
+            <div class="intensityOption" id="intensityOne">I want to try the test for fun to see where I stand</div>
+            <div class="intensityOption" id="intensityTwo">I want to do well and get school honor roll/a decent score</div>
+            <div class="intensityOption" id="intensityThree">I want to do very well and qualify for AIME</div>
+            <div class="intensityOption" id="intensityFour">I want to do excellently and qualify for USAMO/USAJMO</div>
+            <div class="intensityOption" id="intensityFive">I want to do outstandingly, try for a near perfect score, and make the USA Math Team</div>
+            <button class="start-practice" id="nextDiagnosticPlannerP4">Next</button>
+        </div>
+        <div id="diagnosticPlannerP5" style="display: none">
+            <h2 class="amc10subtitle">Study Priorities:</h2>
+            <button class="start-practice" id="diagnosticPriorities">Take a Diagnostic</button>
+            <button class="start-practice" id="manualPriorites">Manually Pick Your Priorities</button>
+        </div>
+        <div id="diagnosticPrioritiesPannel" style="display: none">
+        </div>
+        <div id="manualPrioritiesPannel" style="display: none">
+            <h2 class="amc10subtitle ittyBitty">Sort Your Priorities</h2>
+            <p class="par">What priorities do you want to focus on most? (drag and drop to the approrpiate spot)</p>
+            <span style="display: flex; flex-direction: row; gap: 10px;">
+                <div style = "display: inline-flex; flex-direction: column; justify-content: space-between">
+                    <div style="display: inline; color: #ffb192; font-weight: 400">Highest Priority</div>
+                    <div style="display: inline; color: #ffb192; font-weight: 400">Lowest Priority</div>
+                </div>
+                <div style="display: inline-flex; flex-direction: column; justify-content: center; gap: 10px;">
+                    <span style="display: inline-block" class="dropzone long" id="target1"></span>
+                    <span style="display: inline-block" class="dropzone long" id="target2"></span>
+                    <span style="display: inline-block" class="dropzone long" id="target3"></span>
+                    <span style="display: inline-block" class="dropzone long" id="target4"></span>
+                </div>
+            </span>
+            <div id="drag-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <div class="draggable" id="drag4" draggable="true" data-match="target1 target2 target3 target4">Algebra</div>
+                <div class="draggable" id="drag1" draggable="true" data-match="target1 target2 target3 target4">Geometry</div>
+                <div class="draggable" id="drag3" draggable="true" data-match="target1 target2 target3 target4">Number Theory</div>
+                <div class="draggable" id="drag2" draggable="true" data-match="target1 target2 target3 target4">Combinatorics</div>
+            </div>
+            <button class="start-practice" id="nextManualPrioritiesP1">Next</button>
+        </div>
+        <div id="manualPrioritiesPannelP2" style="display: none">
+            <h2 class="amc10subtitle ittyBitty">How Much Experience Do You Have?</h2>
+            <span style="display: flex; flex-direction: row; gap: 5px">
+                <p>Complete Beginner</p>
+                <span class="material-symbols-rounded experienceStar starSelected" id="experience1">star</span>
+                <span class="material-symbols-rounded experienceStar" id="experience2">star</span>
+                <span class="material-symbols-rounded experienceStar" id="experience3">star</span>
+                <span class="material-symbols-rounded experienceStar" id="experience4">star</span>
+                <span class="material-symbols-rounded experienceStar" id="experience5">star</span>
+                <p>USAMO/Perfect Scorer</p>
+            </span>
+        </div>
+    </div>
+    <div id = "helpPannel" class = "helpPannel">
+  <h3>Need Some Help?</h3>
+  <p class="par">Contact us through our form</p>
+<div data-fs-success></div>
+<div data-fs-error></div>
+
+<form id="contact-form"
+  action="https://formspree.io/f/mwvwgrwr"
+  method="POST"
+>
+<label class="formsubmission">
+  Name:
+  <input type="text" name="name" placeholder="First Last">
+</label>
+  <label class="formsubmission">
+    Email:
+    <input type="email" name="email" placeholder="youremail@gmail.com">
+  </label>
+  <label class="formsubmission">
+    Message:
+    <input type="text"name="message" required></input>
+  </label>
+  <!-- your other form fields go here -->
+<label class="formsubmission">
+  <p>What type of message is this?</p>
+  <div class="mcqwrapper" style="display: flex; flex-wrap: wrap; gap: 8px 16px;">
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Reporting an Error
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Suggesting an addition
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Feedback or Review
+    </label>
+    <label class="checkbox-option">
+      <input type="checkbox" name="messageType"> Other
+    </label>
+  </div>
+</label>
+
+<label class="formsubmission">
+  <p>Do you want to be contacted back?</p>
+  <div class="mcqwrapper" style="display: flex; gap: 16px;">
+    <label class="radio-option">
+      <input type="radio" name="contact"> Yes
+    </label>
+    <label class="radio-option">
+      <input type="radio" name="contact"> No
+    </label>
+  </div>
+</label>
+  <button type="submit">Send</button>
+</form>
+  <p>Or email us at <a href="mailto:saintly.math@gmail.com">saintly.math@gmail.com</a></p>
+</div>
+<div class="helpPannel" id="privacyPolicy" display="none">
+  <h4>Privacy Policy</h4>
+  <h5>Data Collection</h5>
+  <li>We use local storage to track and save your ELO on your device</li>
+  <li>We use Supabase backend to track overall acuracy on questions</li>
+  <li>We trackk individual user usage on our website, pages, etc. by tracking time spent and interaction</li>
+  <h5>How we use your data</h5>
+  <li>To personalize your learning experience</li>
+  <li>We never sell your data to third parties</li>
+  <h5>Children's Privacy</h5>
+  <li>Saintly is intended for students. We encourage parents to monitor their children's internet usage. We do not knowingly collect personal information from children under 13 without parental consent (per COPPA guidelines).</li>
+</div>
+<div class="helpPannel" id="termsAndConditions" display="none">
+  <h4>Terms and Conditions</h4>
+  <li>By using Saintly you agree to the terms and conditions</li>
+  <li>You may not scrape the site or re-distribute our unique interactive code without permission.</li>
+  <li>Be "Saintly." No harassment, no attempts to hack the site, and no using the platform to cheat on active competitions.</li>
+  <li>Math is hard! While we strive for 100% accuracy, Saintly is provided "as is." We aren't responsible if a specific formula explanation doesn't lead to a perfect AMC score (though we hope it does!).</li>
+  <li>Saintly and its volunteers are not liable for any damages arising from your use of the site.</li>
+</div>
+</main><footer class="saintly-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img class="footer-logo" src="images/fullLogo.png" height="35px"></img>
+            <p>Making competition math accessible for everyone.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="am10.html">AMC 10</a></li>
+                <li><a href="amc10adaptivepractice.html">Adaptive Practice</a></li>
+                <li><a href="amc10algebra.html">Algebra</a></li>
+                <li><a href="algebra.html">Topics Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <div class="social-icons">
+      <a>saintly.math@gmail.com</a>
+              <span style="display: flex; flex-direction: row">
+<a href="https://instagram.com/saintly.math" class="fa fa-instagram" style="display: inline-block"><p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>@saintly.math</p></a>
+</span>
+                            <span style="display: flex; flex-direction: row">
+<a href="https://pinterest.com/saintlymath" class="fa fa-pinterest" style="display: inline-block"><p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>Saintly</p></a>
+
+</span>
+                </div>
+        </div>
+        <div class="footer-section">
+          <h4>Privacy</h4>
+          <ul><li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Saintly Math. Built with drive.
+    </div>
+</footer>
+<div id="overlay"></div>
+<canvas id="confetti-canvas"></canvas>
+    <script src="studyplanjs.js"></script>
+</body>

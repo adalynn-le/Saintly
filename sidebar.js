@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li>
             <div id="sidebar-header" class='sidebar-header'>
               <button id="side-bar-toggle">
-               <img src="smallLogo.png" alt="Logo" class="logo">
+               <img src="images/smallLogo.png" alt="Logo" class="logo">
               </button>
             </div>
           </li>

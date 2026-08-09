@@ -3,7 +3,7 @@ const navBar = `<nav id = "top-bar">
   <a class="aContainer" href="index.html">Home</a>
   <div class="center-align">
   <button class='topBtn' onclick="window.location.href='index.html'">
-  <img class="fullLogo" src="fullLogo.png">
+  <img class="fullLogo" src="images/fullLogo.png">
   </button>
   </div>
   <div class="right-align">

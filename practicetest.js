@@ -4126,8 +4126,8 @@ const problem15 = [
         `,
         image: "AMC10A202515.png",
         difficulty: 3,
-        solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src='AMC10A13S1.png' style='max-width:100%; height:auto;' />
-        <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src='AMC10A13S2.png' style='max-width:100%; height:auto;' />
+        solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src="images/AMC10A13S1.png" style='max-width:100%; height:auto;' />
+        <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src="images/AMC10A13S2.png" style='max-width:100%; height:auto;' />
         <p>From here, we can use the fact that two triangles are similar to set up two ratios. We know that \\(AC\\) and \\(CE\\) are both hypotenuses to their respective triangles, and that the same is true for \\(CD\\) and \\(BC\\). Using this we can set up a ratio. Also notice that \\(CD\\) is equal to \\(5-sqrt{x^2-1}\\)</p>
         $$
         \\frac{CD}{EC} = \\frac{BC}{CA}
@@ -7356,151 +7356,151 @@ function loadMultipleChoice() {
 }
 function handleImages(){
     if (problem1[0].image){
-        image1.src=problem1[0].image;
+        image1.src="images/" + problem1[0].image;
         image1.style.display="block";
     } else {
         image1.style.display="none";
     }
         if (problem2[0].image){
-        image2.src=problem2[0].image;
+        image2.src="images/" +  problem2[0].image;
         image2.style.display="block";
     } else {
         image2.style.display="none";
     }
         if (problem3[0].image){
-        image3.src=problem3[0].image;
+        image3.src="images/" +  problem3[0].image;
         image3.style.display="block";
     } else {
         image3.style.display="none";
     }
         if (problem4[0].image){
-        image4.src=problem4[0].image;
+        image4.src="images/" +  problem4[0].image;
         image4.style.display="block";
     } else {
         image4.style.display="none";
     }
         if (problem5[0].image){
-        image5.src=problem5[0].image;
+        image5.src="images/" +  problem5[0].image;
         image5.style.display="block";
     } else {
         image5.style.display="none";
     }
         if (problem6[0].image){
-        image6.src=problem6[0].image;
+        image6.src="images/" +  problem6[0].image;
         image6.style.display="block";
     } else {
         image6.style.display="none";
     }
         if (problem7[0].image){
-        image7.src=problem7[0].image;
+        image7.src="images/" +  problem7[0].image;
         image7.style.display="block";
     } else {
         image7.style.display="none";
     }
         if (problem8[0].image){
-        image8.src=problem8[0].image;
+        image8.src="images/" + problem8[0].image;
         image8.style.display="block";
     } else {
         image8.style.display="none";
     }
     if (problem9[0].image){
-        image9.src=problem9[0].image;
+        image9.src="images/" + problem9[0].image;
         image9.style.display="block";
     } else {
         image9.style.display="none";
     }
     if (problem10[0].image){
-        image10.src=problem10[0].image;
+        image10.src="images/" + problem10[0].image;
         image10.style.display="block";
     } else {
         image10.style.display="none";
     }
         if (problem11[0].image){
-        image11.src=problem11[0].image;
+        image11.src="images/" + problem11[0].image;
         image11.style.display="block";
     } else {
         image11.style.display="none";
     }
     if (problem12[0].image){
-        image12.src=problem12[0].image;
+        image12.src="images/" + problem12[0].image;
         image12.style.display="block";
     } else {
         image12.style.display="none";
     }
     if (problem13[0].image){
-        image13.src=problem13[0].image;
+        image13.src="images/" + problem13[0].image;
         image13.style.display="block";
     } else {
         image13.style.display="none";
     }
     if (problem14[0].image){
-        image14.src=problem14[0].image;
+        image14.src="images/" + problem14[0].image;
         image14.style.display="block";
     } else {
         image14.style.display="none";
     }
     if (problem15[0].image){
-        image15.src=problem15[0].image;
+        image15.src="images/" + problem15[0].image;
         image15.style.display="block";
     } else {
         image15.style.display="none";
     }
     if (problem16[0].image){
-        image16.src=problem16[0].image;
+        image16.src="images/" + problem16[0].image;
         image16.style.display="block";
     } else {
         image16.style.display="none";
     }
     if (problem17[0].image){
-        image17.src=problem17[0].image;
+        image17.src="images/" + problem17[0].image;
         image17.style.display="block";
     } else {
         image17.style.display="none";
     }
     if (problem18[0].image){
-        image18.src=problem18[0].image;
+        image18.src="images/" + problem18[0].image;
         image18.style.display="block";
     } else {
         image18.style.display="none";
     }
     if (problem19[0].image){
-        image19.src=problem19[0].image;
+        image19.src="images/" + problem19[0].image;
         image19.style.display="block";
     } else {
         image19.style.display="none";
     }
     if (problem20[0].image){
-        image20.src=problem20[0].image;
+        image20.src="images/" + problem20[0].image;
         image20.style.display="block";
     } else {
         image20.style.display="none";
     }
     if (problem21[0].image){
-        image21.src=problem21[0].image;
+        image21.src="images/" + problem21[0].image;
         image21.style.display="block";
     } else {
         image21.style.display="none";
     }
     if (problem22[0].image){
-        image22.src=problem22[0].image;
+        image22.src="images/" + problem22[0].image;
         image22.style.display="block";
     } else {
         image22.style.display="none";
     }
     if (problem23[0].image){
-        image23.src=problem23[0].image;
+        image23.src="images/" + problem23[0].image;
         image23.style.display="block";
     } else {
         image23.style.display="none";
     }
     if (problem24[0].image){
-        image24.src=problem24[0].image;
+        image24.src="images/" + problem24[0].image;
         image24.style.display="block";
     } else {
         image24.style.display="none";
     }
     if (problem25[0].image){
-        image25.src=problem25[0].image;
+        image25.src="images/" + problem25[0].image;
         image25.style.display="block";
     } else {
         image25.style.display="none";
@@ -7778,6 +7778,8 @@ function assignTitle(array){
         }
     })
 }
+
+
 assignTitle(problem1)
 assignTitle(problem2)
 assignTitle(problem3)

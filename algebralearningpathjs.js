@@ -6087,6 +6087,12 @@ wordProblems.forEach(i => {
     i.topic = "word problems"
 })
 const allQ = []
+questions.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
+
 shuffleArray(absoluteValue)
 shuffleArray(algebraicManipulation)
 shuffleArray(exponents)
@@ -6107,6 +6113,11 @@ allQ.push(speedDistanceTime[0])
 allQ.push(systemsOfEquations[0])
 allQ.push(transformations[0])
 allQ.push(wordProblems[0])
+allQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
 let currentQuestionDiagnosticIndex = 0
 let currentQuestionDiagnostic = allQ[currentQuestionDiagnosticIndex]
 shuffleArray(allQ)

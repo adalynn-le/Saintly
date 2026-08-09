@@ -1038,7 +1038,11 @@ star
         
     }
 ]
-
+questions.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
 // ---------- DOM Elements ----------
 const questionTitle = document.getElementById("question-title");
 const questionText = document.getElementById("question-text");
@@ -2065,6 +2069,11 @@ countingQuestions.forEach(i => {
     i.topic = 'counting'
 })
 allQ.push(countingQuestions[0])
+allQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
 const probabilityTopics = ["logic", "counting"]
 let probabilityLowestIndex = 2
 let diagnosticIndex = 0

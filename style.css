@@ -996,13 +996,12 @@ margin-bottom: 0px;
 
 }
 
-/* 6. Define the keyframe animation */
 @keyframes textShine {
   0% {
-    background-position: 0% 50%; /* Start position */
+    background-position: 0% 50%; 
   }
   100% {
-    background-position: 100% 50%; /* End position */
+    background-position: 100% 50%; 
   }
 }
 
@@ -1041,15 +1040,13 @@ margin-bottom: 0px;
   line-height: 1.1;
   font-size: medium;
 }
-/* The Canvas/Grid Area */
 #squareCanvas, #sfftGrid {
     background: #fcfcfc;
     border: 2px solid #eee;
     border-radius: 8px;
-    overflow: hidden; /* Keeps the blocks inside the rounded corners */
+    overflow: hidden;
 }
 
-/* Algebraic Blocks */
 #x2-block {
     display: flex;
     align-items: center;
@@ -1068,9 +1065,7 @@ margin-bottom: 0px;
     transition: width 0.1s ease, height 0.1s ease;
 }
 
-/* The "Hero" piece: The Missing Corner */
 #missing-corner {
-    background: var(--highlight-color) !important; /* Gold */
     border-color: var(--primary-color) !important;
     animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -1083,12 +1078,12 @@ body:has(.substitute:hover) .substitute{
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* Sliders */
 input[type="range"] {
     -webkit-appearance: none;
     height: 6px;
     background: #ddd;
     border-radius: 5px;
+    border: none !important;
     outline: none;
     margin: 20px 0;
 }
@@ -1140,7 +1135,6 @@ input[type="range"]::-webkit-slider-thumb {
     transform: translateY(0);
 }
 
-/* Math Labels */
 #bVal {
     color: var(--primary-color);
 }
@@ -1161,13 +1155,13 @@ input[type="range"]::-webkit-slider-thumb {
   text-align: left !important;
 }
 #overlay {
-  position: fixed;        /* Stays in place while scrolling */
+  position: fixed;       
   top: 0;
   left: 0;
-  width: 100vw;           /* full width */
-  height: 100vh;          /* full height */
-  background: rgba(0,0,0,0.1); /* semi-transparent black */
-  z-index: 15;            /* behind help panel */
+  width: 100vw;       
+  height: 100vh;         
+  background: rgba(0,0,0,0.1); 
+  z-index: 15;       
   display: none;
 }
 #answer-input{
@@ -1264,21 +1258,21 @@ input, textarea{
 }
 .dot-background {
   background-image: radial-gradient(#b4aeae 1px, transparent 1px);
-  background-size: 20px 20px; /* Controls spacing between dots */
-  background-color: #f0f0f0; /* Optional: Sets the base background color */
+  background-size: 20px 20px; 
+  background-color: #f0f0f0;
 }
 #mainTitle {
     flex: 1;
     margin-left: auto;
-    width: 75%;        /* was 50%, which cut off the heading */
+    width: 75%;        
     margin-right: auto;
-    text-align: center; /* ensures block-level centering */
+    text-align: center;
     margin-bottom: -150px;
     overflow: visible;
 }
 
 .rounded-text, .cursive-text {
-    display: block;     /* was inline — inline elements ignore text-align from parent */
+    display: block;    
 }
 .tags{
   display: flex;
@@ -1338,9 +1332,9 @@ hr {
   width: calc(100vw-200px);
 }
 .vertical-hr {
-  width: 100px;           /* Becomes the height after rotation */
-  height: auto;            /* Becomes the width after rotation */
-  transform: rotate(90deg); /* Rotates the element */
+  width: 100px;        
+  height: auto;         
+  transform: rotate(90deg); 
 }
 .dataNum{
   margin-bottom: -20px;
@@ -1461,23 +1455,13 @@ gap: 30px;
   var(--accent-color) 60%,
   var(--primary-color) 80%
   );
-  
-  /* 2. Clip the background to the text shape */
   -webkit-background-clip: text;
   background-clip: text;
-  
-  /* 3. Make the text transparent so the background shows */
   -webkit-text-fill-color: transparent;
   color: transparent;
-  
-  /* 4. Increase the background size to allow for movement */
-  background-size: 500% auto; /* 500% width, auto height */
-  
-  /* 5. Apply the animation */
+  background-size: 500% auto; 
   animation: textShine 3s ease-in-out forwards;
   animation-iteration-count: infinite;
-  
-  /* Optional: Font styling */
 }
 #whatispar{
   margin-right: 20px;
@@ -2288,13 +2272,13 @@ input[type=range] {
 /* The Track (The horizontal line) */
 input[type=range]::-webkit-slider-runnable-track {
   background: var(--highlight-color); /* Your light blue/grey background */
-  height: 6px;
+  height: 10px;
   border-radius: 10px;
 }
 
 input[type=range]::-moz-range-track {
   background: var(--highlight-color);
-  height: 6px;
+  height: 10px;
   border-radius: 10px;
 }
 
@@ -3784,4 +3768,66 @@ html.light .carousel-logo-dark {
   margin-left: calc(50% - 150px);
   width: 300px;
   font-size: 20px
+}
+#testId{
+  font-family:"National Park", sans-serif;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  font-size: 20px !important;
+  border-radius: 10px !important;
+  padding: 7px;
+}
+#testId:focus{
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+  border-radius: 10px !important;
+}
+input[type="range"]:focus{
+  border: none !important
+}
+.intensityOption{
+  height: 75x;
+  width: 400px;
+  background-color: white !important;
+  border: 2px solid var(--border-color) !important;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px;
+}
+.intensityOption:hover{
+  background-color: var(--highlight-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color) !important;
+
+}
+.intensityOptionSelected{
+  background-color: var(--highlight-color-orange) !important;
+  color: var(--accent-color);
+  border-color: var(--accent-color) !important;
+}
+.long{
+  display: flex;
+    align-items: stretch;
+    justify-content: center;  
+    flex-direction: column
+}
+.dropzone.has-item {
+  border: none !important
+}
+.experienceStar{
+  font-size: 50px !important;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 24;
+  color: var(--border-color)
+}
+.starSelected{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 24;
+  color: var(--primary-color)
 }

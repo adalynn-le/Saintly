@@ -1,12 +1,304 @@
-
-// Main Functions
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+let colorMode = 'light'
+let colorModeTrue = localStorage.getItem("colorMode")
+let color = 'rgb(239, 237, 247)'
+console.log(colorModeTrue)
+const toggleBrightness = document.getElementById("brightness")
+const helpBtn = document.getElementById("helpButton")
+if  (colorModeTrue !== false){
+        console.log("setting color mode")
+       colorMode =  colorModeTrue
+       console.log(colorModeTrue)
+ if (colorMode === 'dark'){
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark'; 
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", "dark")
+                color = '#48485a'
+        } else {
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light';
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", "light")
+                color = 'rgb(239, 237, 247)'
+        }
+} else {
+function toggleSystemTheme() {
+  const root = document.documentElement;
+  if (!root.style.colorScheme) {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.style.colorScheme = prefersDark ? 'dark' : 'light';
+  }
+  colorMode = root.style.colorScheme;
+  if (colorMode === 'dark') {
+      root.classList.add('dark');
+      root.classList.remove('light');
+  } else {
+      root.classList.add('light');
+      root.classList.remove('dark');
+  }
 }
-import Chart from 'https://esm.sh/chart.js/auto';
+toggleSystemTheme();
+}
+toggleBrightness.addEventListener("click", function(){
+        if (colorMode === 'dark'){
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light'; 
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", colorMode)
+        } else {
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark';
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", colorMode)
+        }
+        console.log(localStorage.getItem("colorMode"));
+});
+accountBtn.addEventListener("click", function () {
+        let account = true
+
+    document.getElementById("no-account").addEventListener("click", function() {
+    if (account === false){
+        account = true
+        document.getElementById("login").style.display = "block"
+        document.getElementById("signup").style.display = "none"
+                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+    } else {
+        document.getElementById('login').style.display = "none"
+        account = false
+        document.getElementById("signup").style.display = "block"
+        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+    }
+    })
+    helpPannel.style.display  = "none"
+    if (accountTrue === false){
+        accountPannel.style.display = "block"
+        overlay.style.display = "block"
+        accountTrue = true
+    } else {
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+overlay.addEventListener("click", function(){
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } 
+    if (accountTrue === true){
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+helpBtn.addEventListener("click", function () {
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
+})
+//------------------------------Diagnostic------------------------
+let testDate = ""
+let testVersion = ""
+let today = new Date()
+today = today.toISOString().split('T')[0]
+function findDaysBetween(date1, date2){
+    const msPerDay = 1000 * 60 * 60 * 24
+    const start = new Date(date1)
+    const end = new Date(date2)
+    const diffInMs = end - start
+    return Math.round(diffInMs / msPerDay)
+}
+let monMinutes = 0
+let tueMinutes = 0
+let wedMinutes = 0
+let thuMinutes = 0
+let friMinutes = 0
+let satMinutes = 0
+let sunMinutes = 0
+let intensity = 0
+function updateSliderMon() {
+    monMinutesElement = document.getElementById("monday").value
+    document.getElementById("mondayLabel").innerHTML = "Monday: " + monMinutesElement + " Minutes"
+    monMinutes = parseInt(monMinutesElement)
+}
+function updateSliderTue() {
+    tueMinutesElement = document.getElementById("tuesday").value
+    document.getElementById("tuesdayLabel").innerHTML = "Tuesday: " + tueMinutesElement + " Minutes"
+    tueMinutes= parseInt(tueMinutesElement)
+}
+function updateSliderWed() {
+    wedMinutesElement = document.getElementById("wednesday").value
+    document.getElementById("wednesdayLabel").innerHTML = "Wednesday: " + wedMinutesElement + " Minutes"
+    wedMinutes = parseInt(wedMinutesElement)
+}
+function updateSliderThu() {
+    thuMinutesElement = document.getElementById("thursday").value
+    document.getElementById("thursdayLabel").innerHTML = "Thursday: " + thuMinutesElement + " Minutes"
+    thuMinutes = parseInt(thuMinutesElement)
+}
+function updateSliderFri() {
+    friMinutesElement = document.getElementById("friday").value
+    document.getElementById("fridayLabel").innerHTML = "Friday: " + friMinutesElement + " Minutes"
+    friMinutes = parseInt(friMinutesElement)    
+}
+function updateSliderSat() {
+    satMinutesElement = document.getElementById("saturday").value
+    document.getElementById("saturdayLabel").innerHTML = "Saturday: " + satMinutesElement + " Minutes"
+    satMinutes = parseInt(satMinutesElement)
+}
+function updateSliderSun() {
+    sunMinutesElement = document.getElementById("sunday").value
+    document.getElementById("sundayLabel").innerHTML = "Sunday: " + sunMinutesElement + " Minutes"
+    sunMinutes = parseInt(sunMinutesElement)
+}
+document.getElementById("startDiagnosticPlanner").addEventListener("click", function() {
+    document.getElementById("diagnosticPlannerP1").style.display = "none"
+    document.getElementById("diagnosticPlannerP2").style.display = "inline"
+})
+document.getElementById("nextDiagnosticPlannerP2").addEventListener("click", function() {
+    document.getElementById("diagnosticPlannerP2").style.display = "none"
+    document.getElementById("diagnosticPlannerP3").style.display = "inline-flex"
+    document.getElementById("diagnosticPlannerP3").style.flexDirection = "column"
+    if (document.getElementById("testId").value == "AMC 10A"){
+        testVersion = "AMC 10"
+        testDate = "2026-11-05"
+    } else if (document.getElementById("testId").value == "AMC 10B"){
+        testVersion = "AMC 10"
+        testDate = "2026-11-13"
+    } else if (document.getElementById("testId").value == "AMC 12A"){
+        testVersion = "AMC 12"
+        testDate = "2026-11-05"
+    } else if (document.getElementById("testId").value == "AMC 12B"){
+        testVersion = "AMC 12"
+        testDate = "2026-11-13"
+    }
+    let days = findDaysBetween(today, testDate)
+    let weeks = Math.floor(days / 7)
+    document.getElementById("monday").addEventListener("input", updateSliderMon)
+    document.getElementById("tuesday").addEventListener("input", updateSliderTue)
+    document.getElementById("wednesday").addEventListener("input", updateSliderWed)
+    document.getElementById("thursday").addEventListener("input", updateSliderThu)
+    document.getElementById("friday").addEventListener("input", updateSliderFri)
+    document.getElementById("saturday").addEventListener("input", updateSliderSat)
+    document.getElementById("sunday").addEventListener("input", updateSliderSun)
+})
+document.getElementById("nextDiagnosticPlannerP3").addEventListener("click", function() {
+    if ((monMinutes + tueMinutes + wedMinutes + thuMinutes + friMinutes + satMinutes + sunMinutes) < 30){
+        document.getElementById("errorMsg").innerHTML = "Please select at least 30 minutes of study time per week!"
+    } else {
+    document.getElementById("errorMsg").innerHTML = ""
+    document.getElementById("diagnosticPlannerP3").style.display = "none"
+    document.getElementById("diagnosticPlannerP4").style.display = "block"
+    const intensityButtons = document.querySelectorAll(".intensityOption")
+    intensityButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            intensityButtons.forEach(btn => btn.classList.remove("intensityOptionSelected"))
+            this.classList.add("intensityOptionSelected")
+        })
+    })
+    document.getElementById("intensityOne").addEventListener("click", function(){
+        intensity = 1
+    })
+    document.getElementById("intensityTwo").addEventListener("click", function() {
+        intensity = 2
+    })
+    document.getElementById("intensityThree").addEventListener("click", function() {
+        intensity = 3
+    })
+    document.getElementById("intensityFour").addEventListener("click", function() {
+        intensity = 4
+    })
+    document.getElementById("intensityFive").addEventListener("click", function() {
+        intensity = 5
+    })
+    }
+})
+document.getElementById("nextDiagnosticPlannerP4").addEventListener("click", function() {
+    if (intensity == 0){
+        document.getElementById("errorMsg").innerHTML = "Please select an intensity level!"
+    } else {
+        document.getElementById("errorMsg").innerHTML = ""
+        document.getElementById("diagnosticPlannerP4").style.display = "none"
+        document.getElementById("diagnosticPlannerP5").style.display = "block"
+    }
+})
+document.getElementById("manualPriorites").addEventListener("click", function() {
+    document.getElementById("diagnosticPlannerP5").style.display = "none"
+    document.getElementById("manualPrioritiesPannel").style.display = "block"
+})
+const draggables = document.querySelectorAll('.draggable');
+const dropzones = document.querySelectorAll('.dropzone');
+
+draggables.forEach(drag => {
+    drag.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', e.target.id);
+    });
+});
+dropzones.forEach(zone => {
+    zone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        zone.classList.add('hovered');
+    });
+    zone.addEventListener('dragleave', () => {
+        zone.classList.remove('hovered');
+    });
+    zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.classList.remove('hovered');
+        const dragId = e.dataTransfer.getData('text/plain');
+        const dragElement = document.getElementById(dragId);
+        zone.appendChild(dragElement);
+        zone.classList.add("correct")
+        dragElement.classList.add("correct")
+    });
+});
+let experience  = 1
+let priority1 = ""
+let priority2 = ""
+let priority3 = ""
+let priority4 = ""
+let allQ = []
+document.getElementById("nextManualPrioritiesP1").addEventListener("click", function() {
+    if (document.getElementById('target1').children.length == 0 || document.getElementById('target2').children.length == 0 || document.getElementById('target3').children.length == 0 || document.getElementById('target4').children.length == 0){
+        document.getElementById("errorMsg").innerHTML = "Please place an item in each priority spot!"
+    } else {
+        priority1 = document.getElementById("target1").children[0].innerHTML
+        priority2 = document.getElementById("target2").children[0].innerHTML
+        priority3 = document.getElementById("target3").children[0].innerHTML
+        priority4 = document.getElementById("target4").children[0].innerHTML
+        document.getElementById("errorMsg").innerHTML = ""
+        document.getElementById("manualPrioritiesPannel").style.display = "none"
+        document.getElementById("manualPrioritiesPannelP2").style.display = "block"
+        const experienceStars = document.querySelectorAll(".experienceStar")
+        experienceStars.forEach((star, index) => {
+            star.addEventListener("click", function() {
+                experienceStars.forEach((s, i) => {
+                    if (i <= index){
+                        s.classList.add("starSelected")
+                    } else {
+                        s.classList.remove("starSelected")
+                    }
+                    experience = index + 1
+               })
+            })
+        })
+    }
+})
 const questions = [
     {
 title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
@@ -83,12 +375,12 @@ star
     used: false, 
     difficulty: 2,
 rating: 1000, 
+type: 'mc',
     text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`, 
     solution: `<b>18</b><p>We do synthetic division, effectively treating \\(a\\) and \\(b\\) like numbers. We end up with \\(a+b+2=4\\) and \\(2a+b+12=6\\). We solve for \\(a=-8\\), \\(b=10\\), so \\(10-(-8)=18\\)`, 
     choices: ['\\(A) 14\\)','\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'], 
     answer: '\\(E) 18\\)', 
     topic: 'division',
-    type: "mc",
     hint: `Try using synthetic division`,
     step: "Do synthetic division and treat \\(a\\) and \\(b\\) as constants to get algebraic equations that you can solve to find the variables"
 },
@@ -250,9 +542,11 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         h=2
         $$
         <p> Two hours after Betsy's starting time is <b> 4:30 <b> </p>
-
+        <p><b>Solution by Fluffy1234</b><p>
+        <p>First, use \\(d=rt\\) to find the time it took to reach another. With the distance as \\(45\\) miles and the rate as \\(30\\), (The math: \\(18+12=30\\)) we get time as \\(1 \\frac{1}{2}\\) hours. At this point Beth has traveled \\(18\\) miles (\\(12 \\cdot 1.5 = 18\\)) and Alicia has biked \\(27\\) (\\(18 \\cdot 1.5)\\). Checking we get \\(27+18=45\\). Ergo, our answer is twenty-seven.</p>
+        <b>Solution by Toulouse 100</b>
+        <p>Andy travels \\(8\\) miles before Betsy starts, subtracting his distance from hers, she travels \\(4\\)mph faster, therefore it would take \\(2\\) hours
         `,
-        video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         topic: "systems of equations",
         hint: "Set up an algebraic equation relating the two",
         step: "Use the expressions \\(8(h+1)\\) and \\(12h\\) to model the distance that each person travels"
@@ -313,34 +607,14 @@ star
         text: "What is \\(10! - 7! \\cdot 6!\\)",
         type: "mc",
         choices: ["\\(A) -120\\)", "\\(B) 0\\)", "\\(C) 120\\)", "\\(D) 600\\)", "\\(E) 720\\)"],
-        answer: "\\(A) -120\\)",
-        solution: `<b> -120 </b> <p>Pure intuition tells is that \\(10!\\) is going to be less than \\(7! \\cdot 6!\\), but let's expand that further.</p>
-        <p> First let's consider the definition of a factorial, and expand it all out: </p>
-        $$
-        10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        $$
-        7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        $$
-        6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1
-        $$
-        <p>Note that the majority of \\(10!\\) overlaps with \\(7!\\). If we can account for the other numbers, \\(10\\), \\(9\\), and \\(8\\), we can prove that the second term is larger.</p> 
-        <p>\\(10\\) is \\(5 \\cdot 2 \\), which we can find in \\(6!\\) </p>
-        <p> With the numbers we have left, we can't get \\(9\\) or \\(8\\), but we can we can confidently say that the remaining product is greater than \\(6!\\). This means that \\(10!\\) is less than \\(7! \\cdot 6!\\), meaning that the answer would be negative. Since there is only one negative answer, the answer must be -120. </p>
-        <p> On the AMC 10, it is not always the best option to compute everything. Due to the time constraint, if you see an answer that is different, or if you have a strong intuition, it could be strategic to go with that. </p> 
-        
-        <h3>Common Mistake<span class="material-symbols-outlined">
-exclamation
-</span><span class="material-symbols-outlined">
-exclamation
-</span><span class="material-symbols-outlined">
-exclamation
-</span></h3>
-        <p>Don't overcomplicate! Be sure to read the whole question, with all answers first. If one sticks out, ask yourself why. No need to solve a whole factorial when you can ues logic.</p>`,
-        topic: "logic",
-        hint:"Which answer sticks out?",
-        step: "Expand the factorial",
+        answer: "\\(B) 0\\)",
+        solution: `<b>0</b>
+        <p><b>Solution by Mason</b></p>
+        <p>We can factor out \\(7!\\) and get \\(7!(8 \\cdot 9 - 6!)\\). Expand this to find \\(7!(720-720)=0\\)
+        `,
+        topic: "factoring",
+        hint:"What can you factor out?",
+        step: "Factor out \\(7!\\)",
     },
     {
         used: false,
@@ -351,8 +625,8 @@ star
 </span>`,
         text: "For how many integer values \\(x\\) is \\(|2x| \\le 7\\pi \\)",
         type: "fr",
-        answer: "19",
-        solution: `<b> 19 </b> <p> First, let's get an approximation for \\(7\\pi\\). Assuming \\(\\pi = 3.14\\) we can just multiply them and find the nearest integer that is less than or equal to the product. Since 0.14 is a relatively small decimal, it's pretty intuitive that this integer is \\(21\\). Knowing this, we can rewrite our question to </p>
+        answer: "21",
+        solution: `<b>21</b> <p> First, let's get an approximation for \\(7\\pi\\). Assuming \\(\\pi = 3.14\\) we can just multiply them and find the nearest integer that is less than or equal to the product. Since 0.14 is a relatively small decimal, it's pretty intuitive that this integer is \\(21\\). Knowing this, we can rewrite our question to </p>
         $$
         |2x| \\le 21
         $$
@@ -366,7 +640,7 @@ star
         $$
         2x \\ge -21
         $$
-        <p>From here, we know that the bounds are \\(x = 10\\) and \\(x = -10\\). Counting all integers between these two numbers yields 19, because 0 can only be counted once. </p>
+        <p>From here, we know that the bounds are \\(x = 10\\) and \\(x = -10\\). Counting all integers between these two numbers yields 21, because 0 can only be counted once. </p>
         <h3>Common Mistake<span class="material-symbols-outlined">
 exclamation
 </span><span class="material-symbols-outlined">
@@ -374,7 +648,7 @@ exclamation
 </span><span class="material-symbols-outlined">
 exclamation
 </span></h3>
-        <p>Don't double-count 0. An easy mistake to make is thinking the answer is 10+10, but remember that 0 can only be counted once. You can also just check that the answer is 19 by counting on your fingers(yes you'd have to reset, but it is a decent way to assure youreslf of your answer.)</p>
+        <p>Don't double-count 0. An easy mistake to make is thinking the answer is 10+10, but remember that 0 can only be counted once. You can also just check that the answer is 21 by counting on your fingers(yes you'd have to reset, but it is a decent way to assure youreslf of your answer.)</p>
         `,
         topic: "inequalities",
         hint: "What is \\(7\\pi\\) equal to? Can we do casework in this situation?",
@@ -877,7 +1151,7 @@ rating: 800,
         $$
         x=50
         $$`,
-        topic: "percents",
+        topic: "algebraic manipulation",
         hint: "Try to set up an algebraic equation using the decimal form of percents.",
         step: "Use the equation \\(1.085(0.8x)=43\\)"
     },
@@ -1017,7 +1291,7 @@ rating: 1600,
         <p>We rewrite the equation as \\(\\lfloor{x}^2\\rfloor=3x-2\\). This tells us that a linear graph is equal to the exponential progression of another graph. Since we have a square on one side, and a square of an integer, we know that the LHS must be \\(geq 0\\). If it is \\(0\\), that gives \\(\\frac{2}{3}\\). We can test a few other values within 
         reason for \\(\\lfloor{x}^2\\rfloor\\), \\(1\\) gives us \\(x=1\\), we knew that. \\(4\\) gives us \\(2\\), once again,we knew that. \\(9\\) gives us \\(\\frac{11}{3}\\)). \\(16\\) gives us \\(\\frac{18}{3}\\) which is greater than \\(5\\). From here on out, we can make the
         conjecture that the values of \\(x\\) won't fit the floor function, giving us \\(4\\) solutions`,
-        topic: "floor functions",
+        topic: "functions and graphing",
         hint: "Imagine the behavior in a normal graph, and then consider the floor",
         step: "Rewrite has \\(\\lfloor{x}^2\\rfloor=3x-2\\)"
     },
@@ -1213,7 +1487,7 @@ rating: 800,
         step: "Substitute everything in and solve the equation \\(|1-|2-3||-||1-2|-3|\\)"
     },
     {
-        title: `<span class="material-symbols-outlined">
+        title: `AMC 10B 2022 Problem 5 <span class="material-symbols-outlined">
 star
 </span>`,
         difficulty: 1,
@@ -1646,7 +1920,7 @@ rating: 1000,
         choices: ["\\(A) 3-2a\\)", "\\(B) 1-a\\)", "\\(C) 1\\)", "\\(D) a+1\\)", "\\(E) 3\\)"],
         solution: `<b>\\(3-2a\\)</b><p>Recognize that \\(-\\sqrt{(a-1)^2}\\) is equal to \\(a-1\\). Add this to \\(a-2\\) and get \\(2a-3\\). The absolute value of this becomes \\(3-2a\\).</p>`,
         answer: "\\(A) 3-2a\\)",
-        topic: "absolute value",
+        topic: "functions and graphing",
         hint: "How does squaring and absolute value affect the equation?",
         step: "Go operation by operation with \\(-a\\)"
 
@@ -1787,6 +2061,8 @@ star
 rating: 800,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
         solution: `<b>11110</b><p>With something like this, it's simply easier to just brute force your way through. Add the values and find that it is \\(11110\\).</p>
+        <p><b>Solution by Fluffy1234</b><p>
+        <p>If you add all the ones digits you will get \\(10\\). (The math: \\(1+2+3+4=10\\)) Notice that the tens digit, the hundreds digit and thousands digit all have the same value, ten. So the ones digit is \\(0\\) and since they are tens there is a one for each digit after that and with a total of \\(4\\) numbers get \\(11110\\) as our answer.
         <h3>Common Mistake <span class="material-symbols-outlined">
 exclamation
 </span><span class="material-symbols-outlined">
@@ -2161,7 +2437,7 @@ rating: 1400,
         Taking the absolute value of this, however, has the same effect it did on \\(\\lfloor x \\rfloor \\). We end up with a graph that looks almost exactly the same. That being said, what changes is the values that are included. If we were to graph this, the lines would be of the same length, and at the same places. However,
         when we actually think about it, the endpoints, (circles that are filled or unfilled) are reversed. When we subtract the two equations, we don't end up with \\(0\\), but a set of values that are above and below the y intercept, centered around point \\(\\frac{1}{2}\\).`,
         answer: "\\(D)\\) the point \\((\\frac{1}{2}, 0)\\)",
-        topic: "floor function",
+        topic: "functions and graphing",
         hint: "Calculate the symetry of each operation independently and the effect they have on each other",
         step: "Start by calculating the symetry of \\(|\\lfloor x \\rfloor|\\)"
     },
@@ -2193,7 +2469,7 @@ rating: 1400,
         <p>From here on out, there's a lot of ways you can solve it. You can either graph and see what matches, or do casework to find different possibilities. Since all you're doing is solving for integers that solve the inequality, I figure it's easy enough and there's enough
         ways to do it to not go too far into depth. Effectively, however, you can just test out a few basic values for \\(n\\) and \\(m\\) and get the solutions: \\((1,1), (1,2), (2,1), (2,2), (3,3), (4,4)\\), which is 6 possible ordered pairs. `,
         answer: "6",
-        topic: "discriminant",
+        topic: "functions and graphing",
         hint: "What equation gives us the number of solutions for a quadratic equation?",
         step: "Use the discriminant \\(b^2 -4ac\\) and find the values of \\(b\\) and \\(c\\) that let the discriminant be greater than \\(0\\)"
     },
@@ -2654,7 +2930,11 @@ rating: 1400,
         <p>By Vieta's rules, we know that the the factors of the equation, when factoring, must multiply to \\(-20100\\) and sum to \\(1\\). We're looking for something 
         close to the square root. We don't have the luxury of a calculator, but what we can do is use the answer choices to approximate.</p>
         <p>Right off the bat, we know that \\(100.5\\) would be too low because \\(100^2=10000\\). \\(134^2=17956\\), still too low, \\(142^2=20164\\), which is as close as we can get.</p>
-        <p>It's not exact because we know that there are multiple items valued at \\(142\\), but we can still count that as our answer.</p>`,
+        <p>It's not exact because we know that there are multiple items valued at \\(142\\), but we can still count that as our answer.</p>
+        <p><b>Solution by Khang Pham</b></p>
+        <p>We can see \\(n\\) repeat \\(n\\) times from \\(1\\) to \\(200\\), which means the number of numbers is the sum of the integers from \\(1\\) to \\(200\\). We use \\(S_{200}=200 \\frac{1+200}{2}=100 \\cdot 201 = 20100\\).</p>
+        <p>With this knowledge, we can find that the median is going to be the average of the \\(10500\\)th and \\(10501\\)th numbers. Now, we look for a number such that \\(S_{n}\\) is close to \\(10500\\). We solve for \\(10500 = n \\frac{n+1}{2}\\). Solving gives \\(n=141.27\\). We round up though, because the sum needs to be at least \\(10500\\). Thus we have 
+        \\(142\\) in position \\(10500\\). We realize that the next value also cannot be \\(143\\) because it's not close enough, so both values are \\(142\\) for a median of \\(142\\)`,
         answer: "\\(C) 142\\)",
         solution: "word problems",
         topic: `series`,
@@ -2800,7 +3080,7 @@ rating: 1400,
         <p>graphing these results in a square of side length \\(6\\) with a semicircle of radius \\(r\\) on each edge.</p>
         <p>The \\(m\\) represents the area of the square, \\(6 \\cdot 6 = 36\\) whereas \\(n\\) represents the area of the combined semicircles \\(2(3^2)=18 \\). Add
         these to get an answer of \\(54\\)`,
-        topic: "absolute value",
+        topic: "functions and graphing",
         hint: "What is the LHS and what is the RHS an equation for?",
         step: "Identify that the LHS is a circle and the RHS is its radius. Solve with casework"
 
@@ -2843,7 +3123,7 @@ star
 rating: 800,
         used: false,
         type: 'fr',
-        text: `<p>What is the value of \\(1-(-2)-3-(-4)-5(-(-6)\\)?</p>`,
+        text: `<p>What is the value of \\(1-(-2)-3-(-4)-5-(-6)\\)?</p>`,
         solution: `<b>5</b><p>Solve</p>
         $$
         1+2-3+4-5+6
@@ -2888,7 +3168,7 @@ rating: 1000,
         type: 'fr',
         solution: `<b>4</b>Rearrange all the terms onto one side</p>
         $$
-        x^2020+y^2-2y=0
+        x^{2020}+y^2-2y=0
         $$
         $$
         x^2020+(y-1)^2-1=0
@@ -3047,7 +3327,7 @@ rating: 1000,
         $$
         1+2+3-4+5+6+7-8+...+197+198+199-200?
         $$`,
-        solution: `<b>9900</b><p>The patern,as we can tell, is that you add \\(3\\) integers, and then subtrac the next one. This 
+        solution: `<b>9900</b><p>The patern,as we can tell, is that you add \\(3\\) integers, and then subtract the next one. This 
         repeats until you reach \\(200\\). We can thus group the equation into sets of \\(4\\). We can start evaluating these:</p>
         $$
         1+2+3-4=2
@@ -3073,7 +3353,11 @@ exclamation
 </span></h3>
         <p>Even though this never explicity states to use an arithmetic series, we can always try to find a sequence/series  whenever we see a pattern in numbers.
         A lot of what we know about sequences and series has already been proven, so we can use that to our advantage and save time.</p>
-        `,
+        <p><b>Solution by Luz C.</b></p>
+        <p>We know that the sum of the \\(200\\) numbers is \\(\\frac{200 \\times 201}{2}\\) (by sum of all integers less than \\(n=\\frac{n(n-1)}{2}\\)). Now, we need to know the sum of the multiples of four, since 
+        all the multiples of four are being subtracted. In the first \\(200\\) numbers, there are \\(50\\) multiples of \\(4\\) (\\(\\frac{200}{4}=50\\)). However, that's not all, we need to find the sum. To do this, we find the sum of
+        all numbers \\(leq 50\\) and multiply them by \\(4\\) to "scale them up" to being multiples of \\(4\\) (\\frac{4 \\times 50 \\times 51}{2}\\). We then multiply that by two, because not only is it subtracted from the total sum of the numbers less than \\(200\\), is is subtracted and not included to begin with. 
+        We thus have the equation \\(\\frac{200 \\times 201}{2}-2(\\frac{4 \\times 50 \\times 51}{2})\\). We have that \\(\\frac{200 \\times 201}{2}=20100\\) and \\(-2(\\frac{4 \\times 50 \\times 51}{2})=-10200\\). We solve this and get \\(9900\\)`,
         answer: '9900',
         topic: 'series',
         hint: "What is the pattern, and what is the sum of each group? Is there a pattern to that?",
@@ -3101,7 +3385,8 @@ rating: 1200,
         that some of these are duplicates. We are looking for the \\(2020\\)th and \\(2021\\)th numbers, since the median would be between those two numbers. </p>
         <p>\\(44^2=1936\\) which is \\(2064-1936=84\\) less than \\(2020\\). We're trying to find the term\\(44\\) and \\(43\\) terms less than that, so we don't have to worry about duplicate squares.</p>
         <p>We subtract 44 and 43 from \\(2020\\) and find the average to be \\(1976.5\\)</p>`,
-        answer: "1976.5",
+        answer: "\\(B) 1976.5\\)",
+        choices: ['\\(A) 1976\\)', '\\(B) 1976.5\\)', '\\(C) 1977\\)', '\\(D) 1977.5\\)', '\\(E) 1978\\)'],
         topic: 'medians',
         hint: "Don't forget that some numbers might be duplicates, and calculate the total number of values",
         step: "Find the number of squares below and above \\(2020\\)"
@@ -3216,7 +3501,7 @@ rating: 1600,
         hint: "How does this relate to the sum of powers?",
         step: "Rewrite \\(2^289\\) as \\((2^17)^2\\) and \\(2^17\\) as \\(x\\)"
     },
-];
+]
 const geometryQ = [
     {
         title: `AMC 10B 2020 Problem 8 <span class="material-symbols-outlined">
@@ -3443,7 +3728,7 @@ rating: 1000,
         560+49+49=658
         `,
         answer: '658',
-        topic: 'surface area',
+        topic: 'composite shapes',
         hint: "Find the surface area of each `side` independently",
         step: "The non-top and bottom all have surface areas of \\(1^2+2^2+[...]+7^2\\). The top and bottom have surface areas of \\(7^2\\)"
     },
@@ -3799,7 +4084,10 @@ rating: 1200,
         choices: ["\\(A) 1:1\\)", "\\(B) 47:43\\)", "\\(C) 2:1\\)", "\\(D) 40:13\\)", "\\(E) 4:1\\)"],
         solution: `<b>4</b><p>The following solution is what we would call a fakesolve or 'cheese' where you get the right answer through somewhat shady logic. That being said, it works, and it was the first thing I thought of, so I suppose it's ok for me:</p>
         <p>The radius of the wider cone is 2x the other. We know that the area of a circle is \\(r^2 pi\\) and we multiply that by height and \\(\\frac{1}{3}\\) for a cone. We don't nescessarily need to do much but find how much of an effect the radius has. We simply input \\(3^2\\) and \\(6^2\\) to find that \\(9 \\cdot 4 = 36\\) for a ratio of 
-        \\(4:1\\)</p>`,
+        \\(4:1\\)</p>
+        <p><b>Community Solution</b><p>
+        <p>
+        we know that the area of a cone is \\(\\pi\\) times the \\(\\textup{radius}^{2}\\) times the \\(\\textup{height}\\) all over \\(3\\). Then, since the problem states that the cones contain the same amount of liquid, we can assume that they have the same height, because the area of the little cone (amount of water in the cone) is the same. This allows us to get the ratio \\(12\\pi : 3\\pi \\) which simplifies to \\(4:1\\)`,
         answer: `\\(E) 4:1\\)`,
         topic: 'volume relationships',
         hint: "What is the relationship between the volumes of cylinders with double or half the radius?",
@@ -3877,7 +4165,7 @@ rating: 1600,
         step: "Use the formula for the area of a equilateral triangle to find the side length"
     },
     {
-        title: `AMC 10B 2021 Spring  Problem 7 <span class="material-symbols-outlined">
+        title: `AMC 10B 2021 Spring Problem 7 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -4262,7 +4550,10 @@ rating: 800,
         type: 'fr',
         solution: `<b>6</b><p>Find the area of the whole rectangle that encloses everything, than subtract some parts out:</p>
         $$
-        4 \\cdot 5 - (\\frac{1}{2}(4 \\cdot 2) + 2(\\frac{1}{2}(2 \\cdot 5))) = 20-4-10=6`,
+        4 \\cdot 5 - (\\frac{1}{2}(4 \\cdot 2) + 2(\\frac{1}{2}(2 \\cdot 5))) = 20-4-10=6</p>
+        <p>Solution by Toulouse 100</p>
+        <p>The shaded area at the bottom has a triangle taken out of it. The triangle's area is \\(4\\) (the formula for the area of triangles \\(\\frac{1}{2} \\textup{base} \\times \\textup{height}\\) so we find \\(\\frac{1}{2} \\times 4 \\times 2 = 2\\)). If you get
+        rid of the small triangle the shaded area becaomse a triangle with \\(4\\) by \\(5\\) for an area of \\(10\\) and \\(10-4=6\\)`,
         answer: '6',
         topic: 'area',
         hint : "Find the whole thing, then remove",
@@ -4396,6 +4687,7 @@ rating: 1400,
     square, the ones that we created by creating the square, are \\(30-60-90\\), because we rotated each sheet by \\(30^\\circ\\). Thus, to find the top edge of the right triangle, we just find \\(3\\cdot \\tan(30)=\\sqrt{3}\\). That means that the edge of the original triangles we had, those opposite the center, have a dimension of \\(3-\\sqrt{3}\\) and the altitude is just \\(3\\), so the total
     area is \\(\\frac{9-3\\sqrt{3}}{2}\\). There are \\(24\\) of these for a total of \\(108-36\\sqrt{3}\\) and \\(108+36+3=147\\)`,
     answer: '147',
+    type: 'fr',
     topic: 'trigonometry',
     hint: "You need to use trigonometry for this problem",
     step: "Divide one of th esquares into 4 smaller squares of equal size (so like corners), and inside each of those, two congruent triangles that make a kite (modeling the corner)"
@@ -4892,6 +5184,7 @@ rating: 1400,
         <p>Back to our second side, the remaining part is \\(30-21=9\\) so we know the side length is \\(15\\) and thus the perimeer is \\(34+35+15=84\\)`,
         type: 'mc',
         choices: ['\\(A) 84\\)', '\\(B) 86\\)', '\\(C) 88\\)', '\\(D) 90\\)', '\\(E) 92\\)'],
+        answer: '\\(A) 84\\)',
         topic: 'pythagorean theorem',
         hint: "Do you recognize any pythagorean triples",
         step: "Test out values to find pythagorean triples. Identify the pythagorean triples that you know "
@@ -5212,7 +5505,8 @@ type: 'mc',
 choices: ['\\(A) 4+4\\sqrt{5}\\)', '\\(B) 10\\sqrt{2}\\)', '\\(C) 5+5\\sqrt{5}\\)', '\\(D) 10 \\sqrt[4]{8}\\)', '\\(E) 20\\)'],
 topic: 'similarity',
 hint: "Label as many values as possible",
-step: "Draw the diagram and label everything you can with variables"
+step: "Draw the diagram and label everything you can with variables",
+answer: '\\(D) 10 \\sqrt[4]{8}\\)'
     },
     {
         title: `AMC 10B 2024 Problem 6 <span class="material-symbols-outlined">
@@ -5434,7 +5728,7 @@ rating: 1000,
         step: "Just draw and keep labeling everything you know =P"
     }
 
-];
+]
 const numTheoryQ = [
     {
 title: `AMC 10A 2025 Problem 11 <span class="material-symbols-outlined">
@@ -6461,7 +6755,9 @@ rating: 1000,
         text: `How many of the first ten numbers of the sequence \\(121, 11211, 1112111,...\\) are prime numbers?`,
         type: 'mc',
         choices: ['\\(A) 0\\)', '\\(B) 1\\)', '\\(C) 2\\)', '\\(D) 3\\)', '\\(E) 4\\)'],
-        solution: `<b>0</b><p>We can write each number as \\(110+11, 11100+111, 1111000+1111\\), respectively. We can factor all of these into \\(10^{n\\textup{th power}}+1 \\cdot\\)a number comprised of as many \\(1\\)s as \\(n\\). Since this holds true for all, there are always at least \\(2\\) factors and thus \\(0\\) primes`,
+        solution: `<b>0</b><p>We can write each number as \\(110+11, 11100+111, 1111000+1111\\), respectively. We can factor all of these into \\(10^{n\\textup{th power}}+1 \\cdot\\)a number comprised of as many \\(1\\)s as \\(n\\). Since this holds true for all, there are always at least \\(2\\) factors and thus \\(0\\) primes</p>
+        <p><b>Solution by Findingflea</b></p>
+        <p>If we realize that \\(121\\) is just \\(11^2\\), we can also test the next number in the sequence, allowing us to find all of these numbers are multiples of \\(11\\). The second number is \\(1010 \\times 11), the third \\(101010 \\times 11\\) and so on forth. Thus, our answer is \\(A) 0\\) numbers are prime`,
         answer: '\\(A) 0\\)',
         topic: 'factoring',
         hint: "How can you rewrite this and factor it?",
@@ -6539,8 +6835,11 @@ rating: 1200,
         choices: ['\\(A)\\) All schools smaller than Euclid HS sold fewer T-shirt than Euclid HS', '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS', '\\(C)\\) All schools bigger than Euclid HS sold fewer shirts T-shirts than Euclid HS', '\\(D)\\) All schools that sold fewer T-shirts than Euclid HS are smaller than Euclid HS.', '\\(E)\\) All schools smaller than Euclid HS sold more T-shirts than Euclid HS'],
         solution: `<b>No school that sold more T-shirts than Euclid HS is bigger than Euclid HS</b><p>This isn't really the sort of question I can explain. Effectively, go through each answe rand see whether or not they match</p>
         <p>The first one can't be right because the given info doesn't say anything about smaller schools</p>
-        <p>The second hsa to be right because it's rephrasing it. If no school bigger than Euclid sold more than Euclid, that means any school that did sell more was smaller</p>`,
-        answer: '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS',
+        <p>The second hsa to be right because it's rephrasing it. If no school bigger than Euclid sold more than Euclid, that means any school that did sell more was smaller</p>
+        <p><b>Solution by Findingflea</b></p>
+        <p>This an easy problem, it is just hard to represent mathematically. However, we still can. We can draw a coordinate plane that shows that a school's size is bigger when it is further right along the x axis, and that it has more T-shirts sold depending on how high it is placed on the Y axis. Then, we can represent all the information in the sentence of the question in the graph.
+possible smaller school. This leads us to our answer B, that no school that sold more T-shirts than Euclid is bigger than Euclid.</p>`,
+        answer: '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS</p>',
         topic: 'logic',
         hint: "Use logic =P",
         step: "Look through each answer choice and see if it makes sense"
@@ -7126,7 +7425,7 @@ exclamation
         topic: 'logic',
         type: 'mc',
         choices: ['\\(A) 2021\\)', '\\(B) 2022\\)', '\\(C) 2023\\)', '\\(D) 2024\\)', '\\(E) 2025\\)'],
-        answer: '\\(D) 2024\\)',
+        answer: '\\(B) 2022\\)',
         hint: "What is overcounted?",
         step: "Add and then account for overcounting"
     },
@@ -7204,6 +7503,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
+        answer: "\\(A) 9\\)",
 rating: 1200,
         text: `A group of \\(100\\) students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students \\(A\\) and \\(B\\), student \\(A\\)
         and \\(B\\), student \\(A\\) speaks some language that student \\(B\\) does not speak, and student \\(B\\) speaks some language that student \\(A\\) does not speak. What is the least possible total 
@@ -7591,6 +7891,7 @@ rating: 1600,
         his chances of winning. What is the probability that he chooses to reroll exactly two of the dice? ,       `,
         type: 'mc',
         choices:['\\(A) \\frac{7}{36}\\)', '\\(B) \\frac{5}{24}\\)', '\\(C) \\frac{2}{9}\\)', '\\(D) \\frac{17}{72}\\)', '\\(E) \\frac{1}{4}\\)'],
+        answer: '\\(A) \\frac{7}{36}\\)',
         solution: `<b>\\(\\frac{7}{36}\\)</b><p>Jason rerolls \\(0\\) dice when he already has a \\(7\\) and rerolls \\(3\\) dice when he has a \\(6\\) or \\(5\\), assuming he hasn't already won. This is sort of just intuitive</p>
         <p>For Jason to roll \\(2\\) die, the probability of winning MUST be above that of completely rerolling and that of rerolling one.</p>>
         <p>Jason can win by rerolling \\(3\\) dice (or rolling \\(3\\) dice off the bat) in \\(15\\) ways:</p>
@@ -7972,7 +8273,7 @@ star
         difficulty: 3,
 rating: 1200,
         text: `Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4\\)?`,
-        solution: `<b>'\\(\\frac{59}{64}\\)'</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
+        solution: `<b>\\(\\frac{59}{64}\\)</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
         <p>For it to be odd, we need all the factors to be odd. There's a \\(\\frac{1}{2}^6=\\frac{1}{64}\\) chance of this</p>
         <p>If it's divisble by \\(2\\) but not \\(4\\), we need \\(5\\) odds and then either a \\(2\\) or a \\(6\\). That's \\(\\frac{1}{2}^5 \\cdot \\frac{1}{3}=\\frac{1}{192}\\). However, since there are \\(6\\) positions that the \\(2\\) or \\(6\\) can be in, we multiply by \\(6\\) for \\(\\frac{1}{16}\\). We add these and subtract from \\(1\\) for \\(\\frac{59}{64}\\)</p>
         <h3> Common Mistake <span class="material-symbols-outlined">
@@ -8429,7 +8730,27 @@ rating: 1600,
     
 
 ]
-const allQ = []
+//----------------------Curriculum------------------------
+const curriculum = [
+    {
+        id: "word problems",
+        title: "Word Problems",
+        article: "study plan/word problems study plan.html",
+        additionalResources: [
+            {
+                title: "SAT Math Word Problems: Examples and Strategies to Conquer Tricky Questions - Schoolhouse World",
+                link: "https://schoolhouse.world/blog/sat-math-word-problems?utm_source=adwords&utm_medium=cpc&utm_campaign=Schoolhouse_Google_Search_NB_DSA_Acquisition_US&ref=Schoolhouse_Google_Search_NB_DSA_All_Site_Acquisition_US&gad_source=1&gad_campaignid=14474849160&gbraid=0AAAAABOGcl2OjyK9TUuYyFGWzxpSwnwfF&gclid=Cj0KCQjwp9vTBhCWARIsANaUrjtR6uJvsiCtWIIatu6F78-ZSWGLsFu-oG-jHO7-UqZuup23FtkxqdAaAo6ZEALw_wcB"
+            }
+        ],
+        estimatedTime: 20,
+        subject: "algebra"
+    },
+    {
+        id: "algebraic manipulation",
+        title: "Algebraic Manipulation",
+        article: "study plan/algebraic manipulation study plan.html"
+    }
+]
 questions.forEach(i => {
     if (i.image) {
         i.image = "images/" + i.image
@@ -8454,149 +8775,14 @@ allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
-
-const toggleBrightness = document.getElementById("brightness")
-const carouselLight = document.querySelectorAll("carousel-logo-light")
-const carouselDark = document.querySelectorAll("carousel-logo-dark")
-let colorMode = 'light'
-let colorModeTrue = localStorage.getItem("colorMode")
-console.log(colorModeTrue)
-if  (colorModeTrue !== false){
-        console.log("setting color mode")
-       colorMode =  colorModeTrue
-       console.log(colorModeTrue)
- if (colorMode === 'dark'){
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark'; 
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", "dark")
-        } else {
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light';
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", "light")
+curriculum.forEach(i => {
+    let topicArray = []
+    allQ.forEach(q => {
+        if (q.topic == i.id){
+            topicArray.push(i)
         }
-} else {
-function toggleSystemTheme() {
-  const root = document.documentElement;
-  
-  // 1. Check what the system preference is, or if it's already set
-  if (!root.style.colorScheme) {
-    // If it's not set yet, match the user's system preferences
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.style.colorScheme = prefersDark ? 'dark' : 'light';
-  }
-  
-  colorMode = root.style.colorScheme;
-
-  // 2. Add the correct matching class right away so the logos render correctly!
-  if (colorMode === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-  } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-  }
-}
-toggleSystemTheme();
-}
-toggleBrightness.addEventListener("click", function(){
-        if (colorMode === 'dark'){
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light'; 
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", colorMode)
-        } else {
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark';
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", colorMode)
-        }
-        console.log(localStorage.getItem("colorMode"));
-});
-//--------------Final Question---------------
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
-const mcContainer = document.getElementById("mc-container");
-const questionChoices = document.getElementById("mc-container")
-const topicQ = []
-let currentQuestion = 0
-allQ.forEach(i => {
-        if (i.topic == 'trigonometry'){
-                topicQ.push(i)
-        }
+    })
+    i.questions = topicArray;
+    i.questions.sort((a, b) => a.difficulty - b.difficulty)
+    console.log(curriculum)
 })
-shuffleArray(topicQ)
-function loadQuestion(){
-        let topicQuestion = topicQ[currentQuestion]
-        document.getElementById("question-title").innerHTML = topicQuestion.title
-        document.getElementById("question-text").innerHTML = topicQuestion.text
-        mcChoices.forEach(btn => btn.disabled = false)
-            document.getElementById("solution-text").innerHTML = ""
-    document.getElementById("solution").style.display = "none"
-    document.getElementById("next-btn").style.display = "none"
-    
-    document.getElementById("answer-input").value = ""
-            document.getElementById("answer-input").style.display = "none"
-    document.getElementById("check-btn").style.display = "none"
-    mcContainer.classList.add("hidden")
-
-    if (!topicQuestion.type || topicQuestion.type === "fr") {
-        document.getElementById("answer-input").style.display = "inline-block"
-        document.getElementById("check-btn").style.display = "inline-block"
-    }
-    if (topicQuestion.type === "mc") {
-        mcContainer.classList.remove("hidden")
-
-        mcChoices.forEach((btn, i) => {
-            btn.textContent = topicQuestion.choices[i];
-            btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
-        });
-    }
-    if (window.MathJax) {
-        MathJax.typesetPromise([document.getElementById("question-text")]).catch(()=>{})
-        MathJax.typesetPromise([questionChoices]).catch(()=>{})
-    }
-}
-function handleMCAnswer(choice) {
-    document.getElementById("answer-input").value = choice; // reuse existing checker
-    document.getElementById("check-btn").click();
-mcChoices.forEach(btn => btn.disabled = true);
-}
-document.getElementById("check-btn").addEventListener("click", function(){
-        const userAnswer = document.getElementById("answer-input").value
-        const correctAnswer = topicQ[currentQuestion].answer
-        const solutionText = document.getElementById("solution-text")
-        const nextBtn = document.getElementById("next-btn")
-        const solution = document.getElementById("solution")
-        if (userAnswer === correctAnswer){
-                solutionText.innerHTML = "Correct!" + topicQ[currentQuestion].solution
-        } else {
-            solutionText.innerHTML = "Incorrect" + topicQ[currentQuestion].solution    
-        }
-        solution.style.display = "block"
-        nextBtn.style.display = "block"
-        solutionText.style.display = "block"
-        MathJax.typesetPromise([solution]).catch(()=>{})
-})
-document.getElementById("next-btn").addEventListener("click", function() {
-        let subtract = (topicQ.length - 1)
-        const correct = (currentQuestion === subtract)
-        if (correct === true){
-                currentQuestion = 0
-                shuffleArray(topicQ)
-                loadQuestion()
-        } else if (currentQuestion < topicQ.length){
-                currentQuestion += 1
-                loadQuestion()
-        } 
-        
-})
-loadQuestion()

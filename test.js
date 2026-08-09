@@ -43,16 +43,13 @@ if  (colorModeTrue !== false){
 function toggleSystemTheme() {
   const root = document.documentElement;
   
-  // 1. Check what the system preference is, or if it's already set
   if (!root.style.colorScheme) {
-    // If it's not set yet, match the user's system preferences
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     root.style.colorScheme = prefersDark ? 'dark' : 'light';
   }
   
   colorMode = root.style.colorScheme;
 
-  // 2. Add the correct matching class right away so the logos render correctly!
   if (colorMode === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
@@ -3893,21 +3890,19 @@ rating: 1600,
         hint: "How does this relate to the sum of powers?",
         step: "Rewrite \\(2^289\\) as \\((2^17)^2\\) and \\(2^17\\) as \\(x\\)"
     },
-];
+]
 
 
 function getNextQuestion(questions, userRating) {
-  // 1. STRICT: only unused questions
+
   let available = questions.filter(
     q => !q.used && Math.abs(q.rating - userRating) < 100
   );
 
-  // 2. If none match rating, widen criteria (still unused only)
   if (available.length === 0) {
     available = questions.filter(q => !q.used);
   }
 
-  // 3. If STILL none, NOW reset (last resort)
   if (available.length === 0) {
     questions.forEach(q => q.used = false);
 
@@ -3915,7 +3910,6 @@ function getNextQuestion(questions, userRating) {
       q => Math.abs(q.rating - userRating) < 100
     );
 
-    // if still empty, just use all questions
     if (available.length === 0) {
       available = questions;
     }
@@ -4062,8 +4056,8 @@ star
         answer: "0.375",
         difficulty: 3,
 rating: 1200,
-        solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src='AMC10A13S1.png' style='max-width:100%; height:auto;' />
-        <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src='AMC10A13S2.png' style='max-width:100%; height:auto;' />
+        solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src="images/AMC10A13S1.png" style='max-width:100%; height:auto;' />
+        <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src="images/AMC10A13S2.png" style='max-width:100%; height:auto;' />
         <p>From here, we can use the fact that two triangles are similar to set up two ratios. We know that \\(AC\\) and \\(CE\\) are both hypotenuses to their respective triangles, and that the same is true for \\(CD\\) and \\(BC\\). Using this we can set up a ratio. Also notice that \\(CD\\) is equal to \\(5-sqrt{x^2-1}\\)</p>
         $$
         \\frac{CD}{EC} = \\frac{BC}{CA}
@@ -9171,6 +9165,27 @@ rating: 1600,
 
 ]
 const allQ = []
+questions.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
+geometryQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
+numTheoryQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
+probabilityQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
+
 allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
@@ -11573,11 +11588,11 @@ window.loadQuestion = loadQuestion;
 // etc. for any function called from HTML onclick attributes
 const array = []
 allQ.forEach(i => {
-    if (i.topic == "pythagorean theorem"){
+    if (i.topic == "word problems"){
         array.push(i)
     }
 })
-console.log(array.length)
+console.log(array)
 
 function runDiagnostic() {
     document.getElementById("actualStuff").style.display = "none"

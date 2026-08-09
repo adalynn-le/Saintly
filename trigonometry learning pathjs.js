@@ -3604,8 +3604,8 @@ star
         answer: "0.375",
         difficulty: 3,
 rating: 1200,
-        solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src='AMC10A13S1.png' style='max-width:100%; height:auto;' />
-        <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src='AMC10A13S2.png' style='max-width:100%; height:auto;' />
+        solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src="images/AMC10A13S1.png" style='max-width:100%; height:auto;' />
+        <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src="images/AMC10A13S2.png" style='max-width:100%; height:auto;' />
         <p>From here, we can use the fact that two triangles are similar to set up two ratios. We know that \\(AC\\) and \\(CE\\) are both hypotenuses to their respective triangles, and that the same is true for \\(CD\\) and \\(BC\\). Using this we can set up a ratio. Also notice that \\(CD\\) is equal to \\(5-sqrt{x^2-1}\\)</p>
         $$
         \\frac{CD}{EC} = \\frac{BC}{CA}
@@ -8695,6 +8695,26 @@ rating: 1600,
 
 ]
 const allQ = []
+questions.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
+geometryQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
+numTheoryQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
+probabilityQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
 allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
