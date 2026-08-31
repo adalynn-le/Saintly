@@ -1,338 +1,9 @@
- const helpPannel = document.getElementById("helpPannel")
-const { createClient } = window.supabase;
 const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
 const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
-const supabase = createClient(supabaseURL, supabaseKey);
-      let helpOn = false;
-  let helpBtn = document.getElementById('helpButton')
-let accountTrue = false
-let accountBtn = document.getElementById("accountBtn")
-let accountPannel = document.getElementById("accountPannel")
-let overlay = document.getElementById("overlay")
-accountBtn.addEventListener("click", function () {
-        let account = true
-
-    document.getElementById("no-account").addEventListener("click", function() {
-    if (account === false){
-        account = true
-        document.getElementById("login").style.display = "block"
-        document.getElementById("signup").style.display = "none"
-                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
-    } else {
-        document.getElementById('login').style.display = "none"
-        account = false
-        document.getElementById("signup").style.display = "block"
-        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
-    }
-    })
-    helpPannel.style.display  = "none"
-    if (accountTrue === false){
-        accountPannel.style.display = "block"
-        overlay.style.display = "block"
-        accountTrue = true
-    } else {
-        accountPannel.style.display = "none"
-        overlay.style.display = "none"
-        accountTrue = false
-    }
-})
-overlay.addEventListener("click", function(){
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } 
-    if (accountTrue === true){
-        accountPannel.style.display = "none"
-        overlay.style.display = "none"
-        accountTrue = false
-    }
-})
-helpBtn.addEventListener("click", function () {
-    if (helpOn === true){
-        helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
-        helpOn = false;
-    } else {
-        helpPannel.style.display = "block";
-        overlay.style.display = "block";
-        helpOn = true
-    }
-});
-//-----------------------Authentication--------------------------
-async function loadUserStats(userId) {
-  const { data: profile, error } = await supabase
-    .from('profiles')
-   .select('id, username')
-   .eq('id', userId)
-
-  if (error) {
-    console.error("Error downloading profile data:");
-    return;
-  }
-
-  if (profile) {
-    console.log(profile)
-    let userProfile = profile[0]
-    console.log(userProfile.username)
-    document.getElementById("username-display").innerHTML = userProfile.username
-    document.getElementById("btn-dashboard").innerHTML = userProfile.username
-  } 
-}
-const loginBtn = document.getElementById("btn-login");
-loginBtn.addEventListener("click", async () => {
-  console.log("clicked")
-    const email = document.getElementById("login-email").value.trim()
-    const password = document.getElementById("login-password").value
-    if (!email || !password) {
-        
-document.getElementById("login-error").innerHTML = "Please Input Both Fields"
-    return;
-  }
-  loginBtn.disabled = true;
-const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
-  });
-
-  if (error) {
-    alert("Login Error: " + error.message);
-    loginBtn.disabled = false;
-    loginBtn.innerText = "Login";
-    return;
-  }
-  document.getElementById('accountPannel').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-  accountTrue = false
-  // 3. Pull their ELO data out of the database (Step 2 below)
-  await loadUserStats(data.user.id);
-  
-  // Reset button state
-  loginBtn.disabled = false;
-
-})
-const logoutBtn = document.getElementById('btn-logout');
-
-logoutBtn.addEventListener('click', async () => {
-            document.getElementById("login").style.display = "block"
-  // 1. Call Supabase to clear the secure cloud session
-  console.log('logging out')
-  const { error } = await supabase.auth.signOut();
-
-  if (error) {
-    alert("Error logging out: " + error.message);
-    return;
-  }
-
-
-  alert("You have been logged out successfully!");
-  window.location.reload();
-});
-
-const deleteAccountBtn = document.getElementById('btn-delete-account');
-
-if (deleteAccountBtn) {
-  deleteAccountBtn.addEventListener('click', async () => {
-    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
-    
-    if (!confirmed) return;
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
-
-    const userId = session.user.id;
-
-    // 3. Clear their specific user row from your public profiles table
-    const { error: dbError } = await supabase
-      .from('profiles')
-      .delete()
-      .eq('id', userId);
-
-    if (dbError) {
-      alert("Error erasing profile data: " + dbError.message);
-      return;
-    }
-
-    await supabase.auth.signOut();
-    alert("Your account records and progress have been completely erased.");
-    window.location.reload();
-  });
-}
-
-document.getElementById("btn-signup").addEventListener("click", async () => {
-    
-  const email = document.getElementById("auth-email").value;
-  const password = document.getElementById("auth-password").value;
-  const username = document.getElementById("auth-username").value;
-  const passwordCheck = document.getElementById("auth-password-check").value
-  if (!email || !password || !username) {
-    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
-    return;
-  }
-
-
-
-  // 2. Insert their CURRENT ELO ratings into your 'profiles' table
-  if (password === passwordCheck){
-
-      // 1. Create the user credentials using your existing supabase client
-  const { data, error } = await supabase.auth.signUp({ email, password });
-
-  if (error) return alert(error.message);
-  if (data.user) {
-    
-    await supabase.from('profiles').insert([
-      { 
-        id: data.user.id, 
-        username: username, 
-      }
-    ]);
-    
-    alert("Account created!");
-    
-    document.getElementById('accountPannel').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';
-    document.getElementById("username-display").innerHTML = username
-  }
-  } else {
-    document.getElementById("signup-error").innerHTML = "Passwords do not match"
-    return
-  }
-});
-console.log(supabase)
-
-
-
-supabase.auth.onAuthStateChange(async (event, session) => {
-  const accountBtn = document.getElementById('accountBtn');
-  const logoutBtn = document.getElementById('btn-logout');
-  const loginBtn = document.getElementById('btn-login');
-  const signup = document.getElementById('no-account');
-  const login = document.getElementById('login');
-  const usernameDisplay = document.getElementById("username-display");
-  const createAccount = document.getElementById("no-account")
-  const deleteAccount = document.getElementById("btn-delete-account")
-  const usernameDisplayModal = document.getElementById("btn-dashboard")
-
-  // A. Check if a secure user session actually exists
-  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
-    console.log("Secure adaptive practice session discovered for:", session.user.email);
-
-    // Toggle UI display blocks safely
-    if (logoutBtn) logoutBtn.style.display = 'block';
-    if (login) login.style.display = "none";
-    console.log("login goes invisible")
-    if (createAccount) createAccount.style.display = "none"
-    if (deleteAccount) deleteAccount.style.display = "block"
-    if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
-    // 1. Fetch cloud records safely using correct lowercase columns
-  const { data: profile, error } = await supabase
-loadUserStats(session.user.id)
-  } else  {
-    console.log("No user session found. Reverting adaptive practice to Guest defaults.");
-    if (typeof runDiagnostic === "function")
-    
-    if (logoutBtn) logoutBtn.style.display = 'none';
-    if (login) login.style.display = "block";
-    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
-    if (createAccount) createAccount.style.display = "block"
-    if (deleteAccount) deleteAccount.style.display = "none"
-    if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
-  }
-});
-const resetBtn = document.getElementById("btn-request-reset");
-
-if (resetBtn) {
-  resetBtn.addEventListener("click", async () => {
-    const email = document.getElementById("login-email").value;
-
-    if (!email) {
-      alert("Please enter your email address first.");
-      return;
-    }
-
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/update-password.html',
-    });
-
-    if (error) {
-      console.error("Reset request failed:", error.message);
-      alert("Error: " + error.message);
-    } else {
-      alert("Check your inbox! A secure password reset link has been sent.");
-    }
-  });
-}
-const toggleBrightness = document.getElementById("brightness")
-const carouselLight = document.querySelectorAll("carousel-logo-light")
-const carouselDark = document.querySelectorAll("carousel-logo-dark")
-let colorModeTrue = localStorage.getItem("colorMode")
-let colorMode = 'light'
-let color = 'rgb(239, 237, 247)'
-console.log(colorModeTrue)
-if  (colorModeTrue !== false){
-        console.log("setting color mode")
-       colorMode =  colorModeTrue
-       console.log(colorModeTrue)
- if (colorMode === 'dark'){
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark'; 
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", "dark")
-                color = '#48485a'
-        } else {
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light';
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", "light")
-                color = 'rgb(239, 237, 247)'
-        }
-} else {
-function toggleSystemTheme() {
-  const root = document.documentElement;
-  
-  // 1. Check what the system preference is, or if it's already set
-  if (!root.style.colorScheme) {
-    // If it's not set yet, match the user's system preferences
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.style.colorScheme = prefersDark ? 'dark' : 'light';
-  }
-  
-  colorMode = root.style.colorScheme;
-
-  // 2. Add the correct matching class right away so the logos render correctly!
-  if (colorMode === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-  } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-  }
-}
-toggleSystemTheme();
-}
-toggleBrightness.addEventListener("click", function(){
-        if (colorMode === 'dark'){
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light'; 
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", colorMode)
-        } else {
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark';
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", colorMode)
-        }
-        console.log(localStorage.getItem("colorMode"));
-});
+const supabase = window.supabase.createClient(supabaseURL, supabaseKey);
 // Main Functions
+
+
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -1295,7 +966,7 @@ rating: 1200,
         solution: `<b>8</b><p>If you have graph paper or just scratch paper you can easily draw this out and see that it is 4 diamonds around the origin. However, let's explain why that is.</p>
         <p>I always like to think of absolute value graphs as "cases" because it combines a bunch of different linear graphs. In this case, we see that the different "cases" in which the slope and \\(y\\) intercept and \\(x\\) intercept are positive, negative etc. A general rule when you see equations that look like \\(|x|+|y| < z\\) is that it will include squares of some sort.</p>
         <p>Returning to the question, we know that the intercepts are at \\(\\pm 1\\). We use the pythagorean theorem to find that the side lengths of the squares are \\(\\sqrt{2}\\), and square that to find that they all have areas of \\(2\\). Since there are four squares, we multiply that by four and find a final solution of \\(8\\)`,
-        topic: "functions and graphing",
+        topic: "graphing",
         hint: "Try to graph this. It doesn't have to be accurate, but it helps to visualize the shape.",
         step: "Graph by using casework for \\(x\\) is positive or negative and \\(y\\) is positive or negative"
     },
@@ -1824,7 +1495,7 @@ rating: 1600,
         exactly \\(100\\) away from the input for \\(a\\). Since we want the greatest difference, we want one to be greater than \\(a\\) and one to be smaller. We also want the change from \\(a\\) to \\(f(800/400)\\) to be as large as possible, so we use the largest possible slope, which we know is \\(\\pm \\frac{1}{2}\\). Since the difference is \\(100\\) between \\(300\\) and \\(400\\), we can say the output goes down by
         \\(50\\) and the same for the other two, making the maximum distance \\(100\\). Now, we input that into our equation \\(|f(f(800))-f(f(400))| \\le \\frac{1}{2}|f(800)-f(400)|\\) so we know that the final answer is \\(50\\).</p>
         `,
-        topic: "functions and graphing", 
+        topic: "functions", 
         hint: "How can you relate this to the slope formula to predict the value of \\(f(x)\\)?",
         step: "Input \\(f(800)\\) and \\(f(400\\) as the inputs for \\(x\\) and \\(y\\), then find the maximum value of \\(f(800)-f(400)\\)"
     }, 
@@ -2463,7 +2134,7 @@ exclamation
 exclamation
 </span></h3>
         <p>If you do chose to graph, be as careful as you can with graphing things, because, especially when looking for solutions, you need as much to be accurate as possible</p>`,
-        topic: "functions and graphing",
+        topic: "graphing",
         hint: "What is the shape of the second graph? What happens when you square an absolute value graph (use casework, if you don't know)?",
         step: "Graph a parabola and two diamonds. Where do they intersect?"
     },
@@ -8787,387 +8458,865 @@ allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
 
-
-//--------------------------Actual Functions fr fr-------------------------
-// Data Presets
-const PRESET_ODD = [12, 3, 7, 19, 5, 8, 14];
-const PRESET_EVEN = [8, 2, 15, 11, 4, 9];
-
-// State Machine Variables
-let inputMode = 'odd'; // 'odd' | 'even' | 'custom'
-let phase = 0;         // 0: Unsorted, 1: Sorted, 2: Crossing, 3: Done
-let rawData = [];
-let sortedData = [];
-let leftPointer = -1;
-let rightPointer = -1;
-let medianIndices = [];
-
-// DOM Elements
-const numRow = document.getElementById('number-row');
-const boardLabel = document.getElementById('board-label');
-const expText = document.getElementById('explanation-text');
-const btnNext = document.getElementById('btn-next');
-const btnReset = document.getElementById('btn-reset');
-const customArea = document.getElementById('custom-input-area');
-const customInput = document.getElementById('custom-input');
-
-// Initialize Application
-function init() {
-  setupEventListeners();
-  resetDemo();
-}
-
-function setupEventListeners() {
-  document.getElementById('btn-odd').addEventListener('click', (e) => switchMode('odd', e.target));
-  document.getElementById('btn-even').addEventListener('click', (e) => switchMode('even', e.target));
-  document.getElementById('btn-custom').addEventListener('click', (e) => switchMode('custom', e.target));
-  document.getElementById('btn-apply').addEventListener('click', resetDemo);
-  btnNext.addEventListener('click', handleNextStep);
-  btnReset.addEventListener('click', resetDemo);
-}
-
-function switchMode(mode, targetBtn) {
-  inputMode = mode;
-  document.querySelectorAll('.radio-btn').forEach(btn => btn.classList.remove('active'));
-  targetBtn.classList.add('active');
-  
-  if (mode === 'custom') {
-    customArea.classList.remove('hidden');
-  } else {
-    customArea.classList.add('hidden');
-  }
-  resetDemo();
-}
-
-function resetDemo() {
-  phase = 0;
-  leftPointer = -1;
-  rightPointer = -1;
-  medianIndices = [];
-  
-  if (inputMode === 'odd') {
-    rawData = [...PRESET_ODD];
-  } else if (inputMode === 'even') {
-    rawData = [...PRESET_EVEN];
-  } else {
-    rawData = customInput.value
-      .split(',')
-      .map(num => parseInt(num.trim(), 10))
-      .filter(num => !isNaN(num));
-  }
-  
-  sortedData = [...rawData].sort((a, b) => a - b);
-  btnNext.style.display = 'inline-block';
-  render();
-}
-
-
-function handleNextStep() {
-  // Phase 0 -> Phase 1: Sort items
-  if (phase === 0) {
-    phase = 1;
-    render();
-    return;
-  }
-
-  // Phase 1 -> Phase 2: Initialize Pointers
-  if (phase === 1) {
-    phase = 2;
-    leftPointer = 0;
-    rightPointer = sortedData.length - 1;
-    render();
-    return;
-  }
-
-  // Phase 2: Run through inward step execution
-  if (phase === 2) {
-    const nextLeft = leftPointer + 1;
-    const nextRight = rightPointer - 1;
-
-    if (nextLeft > nextRight) {
-      medianIndices = [leftPointer];
-      phase = 3;
-    } else if (nextLeft === nextRight) {
-      medianIndices = [nextLeft];
-      phase = 3;
-    } else if (nextRight - nextLeft === 1) {
-      leftPointer = nextLeft;
-      rightPointer = nextRight;
-      medianIndices = [nextLeft, nextRight];
-      phase = 3;
-    } else {
-      leftPointer = nextLeft;
-      rightPointer = nextRight;
+//Understanding The Question =====================================================================================================
+// Understanding What Its Asking For Question
+let prereqOne = false
+  const problemOneA = document.getElementById("problemOneA")
+  const problemOneB = document.getElementById("problemOneB")
+  const problemOneC = document.getElementById("problemOneC")
+  const problemOneD = document.getElementById("problemOneD")
+  const problemOneE = document.getElementById("problemOneE")
+  const solutionOne = document.getElementById("solutionOne")
+  const exampleOne = document.getElementById("exampleOne")
+  const exampleTwo = document.getElementById("exampleTwo")
+  problemOneA.innerHTML = "\\(A) 25\\)"
+  problemOneB.innerHTML = "\\(B) 20\\)"
+  problemOneC.innerHTML = "\\(C) 15\\)"
+  problemOneD.innerHTML = "\\(D) 10\\)"
+  problemOneE.innerHTML = "\\(E) 1.10\\)"
+  exampleOne.innerHTML = `A cart rolls down a hill, traveling \\(5\\) inches the first second and accelerating so that during each successive \\(1\\) second time interval, it travels \\(7\\) inches more than during the previous \\(1\\) second interval.
+        The card takes \\(30\\) seconds to reach the bottom of the hill. How far, in inches, does it travel?`
+exampleTwo.innerHTML = `The number of bacteria in a colony doubles every \\(21\\) hours. If there are \\(1,000,000\\) bacteria at \\(12:00 \\textup{PM}\\) on Monday, on what day will the colony first have at least \\(2,000,000,000\\) bacteria?`
+  let alreadyCorrectOne = false
+  problemOneA.addEventListener("click", function() {
+        
+    if (alreadyCorrectOne === true){
+        prereqOne = true
+        updateLesson()
+       solutionOne.innerHTML = "<b>Correct!</b><p>The question specifically mentions that he must have at least of each time. 25 dimes ensures $2.50 right off the bat, meaning it doesn't leave any options for anything else. "
+        problemOneA.style.backgroundColor = "var(--accent-color)"
+        problemOneA.disabled = true;
+        problemOneB.disabled = true;
+        problemOneC.disabled = true;
+        problemOneD.disabled = true;
+        problemOneE.disabled = true;
+    } else  {
+           solutionOne.innerHTML = "<b>Correct!</b><p>The question specifically mentions that he must have at least of each time. 25 dimes ensures $2.50 right off the bat, meaning it doesn't leave any options for anything else.</p><p>Can you cross out one more answer? "
+        problemOneA.style.backgroundColor = "var(--accent-color)"
+        problemOneA.disabled = true;
+        problemOneB.disabled = false;
+        problemOneC.disabled = false;
+        problemOneD.disabled = false;
+        problemOneE.disabled = false; 
     }
-    render();
+        alreadyCorrectOne = true
+    solutionOne.style.display = "block";
+   
+  });
+  problemOneE.addEventListener("click", function(){
+    if (alreadyCorrectOne === true){
+        prereqOne = true
+        updateLesson()
+       solutionOne.innerHTML = "<b>Correct!</b><p>You can't have a non-integer number of dimes "
+        problemOneE.style.backgroundColor = "var(--accent-color)"
+        problemOneA.disabled = true;
+        problemOneB.disabled = true;
+        problemOneC.disabled = true;
+        problemOneD.disabled = true;
+        problemOneA.disabled = true;
+    } else  {
+           solutionOne.innerHTML = "<b>Correct!</b><p>You can't have a non-integer number of dimes</p><p>Can you cross out one more answer? "
+        problemOneE.style.backgroundColor = "var(--accent-color)"
+        problemOneE.disabled = true;
+        problemOneA.disabled = false;
+        problemOneB.disabled = false;
+        problemOneC.disabled = false;
+        problemOneD.disabled = false;
+        problemOneE.disabled = false; 
+    }
+        alreadyCorrectOne = true
+    solutionOne.style.display = "block";
+  })
+  problemOneB.addEventListener("click", function(){
+    incorrectAnswerOne()
+  })
+  problemOneC.addEventListener("click", function(){
+    incorrectAnswerOne()
+  })
+  problemOneD.addEventListener("click", function(){
+    incorrectAnswerOne()
+  })
+  function incorrectAnswerOne(){
+    solutionOne.innerHTML = "<b>Incorrect</b><p>Try again! Look back at the question and make sure you understand what it's asking for.</p>"
+    solutionOne.style.display = "block";
   }
-}
-
-function render() {
-  numRow.innerHTML = '';
-  
-  if (phase === 0) {
-    boardLabel.textContent = 'Current Raw Dataset (Unsorted):';
-    btnNext.textContent = 'Sort Dataset';
-    
-    rawData.forEach(num => {
-      const box = document.createElement('div');
-      box.className = 'number-box';
-      box.textContent = num;
-      numRow.appendChild(box);
-    });
-  } else {
-    if (phase === 1) {
-      boardLabel.textContent = 'Step 1: Sort the data from least to greatest';
-      btnNext.textContent = 'Start Crossing Out';
-    } else if (phase === 2) {
-      boardLabel.textContent = 'Step 2: Cross out values from the outside edges';
-      btnNext.textContent = 'Cross Out Next Pair';
+      if (window.MathJax) {
+        MathJax.typesetPromise([problemOneA]).catch(()=>{});
+        MathJax.typesetPromise([problemOneB]).catch(()=>{});
+        MathJax.typesetPromise([problemOneC]).catch(()=>{});
+        MathJax.typesetPromise([problemOneD]).catch(()=>{});
+        MathJax.typesetPromise([problemOneE]).catch(()=>{});
     }
 
-    sortedData.forEach((num, idx) => {
-      const box = document.createElement('div');
-      box.className = 'number-box';
-      
-      const span = document.createElement('span');
-      span.textContent = num;
-      box.appendChild(span);
 
-      // Evaluate visual states based on pointer calculations
-      if (phase >= 2 && idx < leftPointer) {
-        box.classList.add('crossed');
-      } else if (phase >= 2 && idx > rightPointer) {
-        box.classList.add('crossed');
-      } else if (phase === 2 && idx === leftPointer) {
-        box.classList.add('current');
-        box.insertAdjacentHTML('beforeend', '<div class="sub-label">Min</div>');
-      } else if (phase === 2 && idx === rightPointer) {
-        box.classList.add('current');
-        box.insertAdjacentHTML('beforeend', '<div class="sub-label">Max</div>');
-      } else if (phase === 3 && medianIndices.includes(idx)) {
-        box.classList.add('median-active');
-        box.insertAdjacentHTML('beforeend', '<div class="sub-label">Median</div>');
-      }
-      
-      numRow.appendChild(box);
-    });
 
-    if (phase === 3) {
-      btnNext.style.display = 'none';
-      const isOdd = sortedData.length % 2 !== 0;
-      let medianVal;
-      let innerHTML = `<strong>Process Complete!</strong><br>`;
-      
-      if (isOdd) {
-        medianVal = sortedData[medianIndices[0]];
-        innerHTML += `Since the dataset size is odd, exactly one middle number remains. The median is <strong>${medianVal}</strong>.`;
-      } else {
-        const n1 = sortedData[medianIndices[0]];
-        const n2 = sortedData[medianIndices[1]];
-        medianVal = ((n1 + n2) / 2).toFixed(1);
-        innerHTML += `Since the dataset size is even, two middle numbers remain (<strong>${n1}</strong> and <strong>${n2}</strong>). We find their average:<br><span class="math-text">(${n1} + ${n2}) / 2 = ${medianVal}</span>`;
-      }
-      
-      expText.innerHTML = `<div class="result-box">${innerHTML}</div>`;
-    }
-  }
-}
-
-// Run component on load
-init();
-
-//--------------Final Question---------------
-const topicQ = [
+//Sorting Arithmetic vs Geometric Series Keywords
+const subjectToSort = document.getElementById("subjectToSort")
+const sortArithmetic = document.getElementById("sortArithmetic")
+const sortGeometric = document.getElementById("sortGeometric")
+const sortExplanation = document.getElementById("sortExplanation")
+const nextSort = document.getElementById("nextSort")
+const seriesTable = document.getElementById("seriesTable")
+const subjectsToSort = [
     {
-        title: "Review Question",
-        text: `How is a median different than the average of a dataset?`,
-        choices: ['\\(A) \\textup{ it includes outliers}\\)', '\\(B) \\textup{ it does not include outliers}\\)', '\\(C) \\textup{ it accounts for the entire range}\\)', '\\(D) \\textup{ it indicates how spread out a dataset is}\\)'],
-        answer: '\\(B) \\textup{ it does not include outliers}\\)',
-        solution: `<b>\\(B) \\textup{ it does not include outliers}\\)</b><p>A median only considers the numerical value of the middle element, rather than including each value. Thus, outliers have minimal importance.`,
+        item: "Common Difference",
+        type: "Arithmetic",
+        explanation: "In Arihmetic Series, the common difference is the constant amount that each term increases by"
     },
     {
-        title: 'Review Question',
-        text: `What should you do first when finding the median of a dataset?`,
-        choices: ['\\(A) \\textup{ cross out the first 2 values}\\)', '\\(B) \\textup{ cross out the first and last values}\\)', '\\(C) \\textup{ order the dataset in ascending order}\\)', '\\(D) \\textup{ Find the average of the dataset}\\)', '\\(E) \\textup{ Find the average of the middle two values}\\)'],
-        answer: '\\(C) \\textup{ order the dataset in ascending order}\\)',
-        solution: '\\(C) \\textup{ order the dataset in ascending order}\\)',
+        item: "Common Ratio",
+        type: "Geometric",
+        explanation: "In Geometric Series, the common ratio is the constant factor by which each term is multiplied to get the next term"
     },
     {
-        title: 'Review Question',
-        text: `What is the median of \\(2, 6, 4, 3\\)?`,
-        choices: ['\\(A) 2\\)', '\\(B) 3\\)', '\\(C) 3 \\frac{1}{2}\\)', '\\(D) 3 \\frac{3}{4}\\)', '\\(E) 5\\)'],
-        answer: '\\(E) 5\\)',
-        solution: `<b>\\(E) 5\\)</b>
-        $$
-        2, 3, 4, 6
-        $$
-        $$
-        3, 4
-        $$
-        \\frac{3+4}{2}=3.5
-        $$
-        `,
+        item: "Linear Growth",
+        type: "Arithmetic",
+        explanation: "If you see a question mention linear growth, it means a constant value is added each time, which is a characteristic of an arithmetic sequence."
     },
     {
-        title: "Review Question",
-        text: 'What is the median of \\(2, 8, 5, 4, 3\\)?',
-        choices: ['\\(A) 2\\)', '\\(B) 3\\)', '\\(C) 4\\)', '\\(D) 5\\)', '\\(E) 8\\)'],
-        answer: '\\(C) 4\\)',
-        solution: `<b>\\(C) 4\\)</b>
-        $$
-        2, 3, 4, 5, 8
-        $$
-        $$
-        3, 4, 5
-        $$
-        $$
-        4
-        $$`,
+        item: "Exponential Growth",
+        type: "Geometric",
+        explanation: "If you see a question mention exponential growth, it means the value is multiplied by a constant factor each time, which is a characteristic of a geometric sequence."
     },
     {
-        title: "Review Question",
-        text: `Is the mean or median of a data set larger?`,
-        choices: ['\\(A) \\textup{ always the mean}\\)', '\\(B) \\textup{ always the median}\\)', '\\(C) \\textup{ there is no consistent relationship}\\)'],
-        answer: '\\(C) \\textup{ there is no consistent relationship}\\)',
-        solution: `<b>\\(C) \\textup{ there is no consistent relationship}\\)</b><p>The median is simply reliant on the visual center whereas the mean accounts for all values, and is susceptible to outliers.`
-    }
+        item: "Addition",
+        type: "Arithmetic",
+        explanation: "In a situation where addition is repeated, it is an arithmetic series"
+    },
+    {
+        item: "Multiplication",
+        type: "Geometric",
+        explanation: "In a situation where multiplication is repeated, it is a geometric series"
+    },
+    {
+        item: "Double",
+        type: "Geometric",
+        explanation: "If you see a question mention doubling, it is a geometric series with a common ratio of 2"
+    },
+    {
+        item: "Triple",
+        type: "Geometric",
+        explanation: "If you see a question mention tripling, it is a geometric series with a common ratio of 3"
+    },
+    {
+        item: "Half",
+        type: "Geometric",
+        explanation: "If you see a question mention halving, it is a geometric series with a common ratio of 0.5"
+    },
+    {
+        item: "Constant Acceleration affecting DISTANCE",
+        type: "Geometric",
+        explanation: "If you see a question mention constant acceleration affecting distance, it is a geometric series because the velocity, or difference, is constantly growing"
+    },
+    {
+        item: "Constant Acceleration affecting DISTANCE",
+        type: "Geometric",
+        explanation: "If you see a question mention constant acceleration affecting distance, it is a geometric series because the velocity, or difference, is constantly growing"
+    },
+    {
+        item: "Constant Acceleration affecting VELOCITY",
+        type: "Arithmetic",
+        explanation: "Acceleration is the velocity of velocity. If the acceleration is constant, we know the velocity grows by a set value each time, which is a characteristic of an arithmetic sequence."
+    },
+    {
+        item: "Constant Velocity",
+        type: "Arithmetic",
+        explanation: "If you see a question mention constant velocity affecting distance, it is an arithmetic series because the distance is increasing by a constant factor each time"
+    },
+
 ]
-topicQ.forEach(i => {
-    i.type = 'mc'
-})
-let currentQuestion = 0
-let accuracy = 0
-console.log(topicQ.length)
-let correctCount = 0
-shuffleArray(topicQ)
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
-const mcContainer = document.getElementById("mc-container");
-const questionChoices = document.getElementById("mc-container")
-function loadQuestion(){
-        let topicQuestion = topicQ[currentQuestion]
-        document.getElementById("question-title").innerHTML = topicQuestion.title
-        document.getElementById("question-text").innerHTML = topicQuestion.text
-        mcChoices.forEach(btn => btn.disabled = false)
-            document.getElementById("solution-text").innerHTML = ""
-    document.getElementById("solution").style.display = "none"
-    document.getElementById("next-btn").style.display = "none"
-    
-    document.getElementById("answer-input").value = ""
-            document.getElementById("answer-input").style.display = "none"
-    document.getElementById("check-btn").style.display = "none"
-    mcContainer.classList.add("hidden")
+shuffleArray(subjectsToSort)
+let index = 0
+let prereqTwo = false
+subjectToSort.innerHTML = subjectsToSort[index].item
+sortArithmetic.addEventListener("click", function(){
+            sortExplanation.style.display = "block";
+        if (subjectsToSort[index].type === "Arithmetic"){
+            updateTable("Arithmetic", subjectsToSort[index].item)
+            sortExplanation.innerHTML = "<b>Correct!</b><p>" + subjectsToSort[index].explanation + "</p>"
+            nextSort.style.display = "block";
+            sortGeometric.disabled = true
+        } else {
+            sortExplanation.innerHTML = `<b>Incorrect</b><p>Try again, which type of series does ${subjectsToSort[index].item} indicate?</p>`
+                nextSort.style.display = "none";
+        }
+    })
+    sortGeometric.addEventListener("click", function(){
+                sortExplanation.style.display = "block";
+        if (subjectsToSort[index].type === "Geometric"){
+                    updateTable("Geometric", subjectsToSort[index].item)
+            sortExplanation.innerHTML = "<b>Correct!</b><p>" + subjectsToSort[index].explanation + "</p>"
+            sortArithmetic.disabled = true
+            nextSort.style.display = "block";
 
-    if (!topicQuestion.type || topicQuestion.type === "fr") {
-        document.getElementById("answer-input").style.display = "inline-block"
-        document.getElementById("check-btn").style.display = "inline-block"
+        } else {
+            sortExplanation.innerHTML = `<b>Incorrect</b><p>Try again, which type of series does ${subjectsToSort[index].item} indicate?</p>`
+                nextSort.style.display = "none";
+        }
+    })
+    nextSort.addEventListener("click", function(){
+        if (index < subjectsToSort.length - 1){
+            index += 1
+            subjectToSort.innerHTML = subjectsToSort[index].item
+        sortExplanation.style.display = "none";
+    nextSort.style.display = "none"
+    sortArithmetic.disabled = false
+    sortGeometric.disabled = false
+        } else {
+            prereqTwo = true
+        updateLesson()
+            subjectToSort.innerHTML = "Great Job! You have finished this activity"
+            sortArithmetic.style.display = "none"
+            sortGeometric.style.display = "none"
+            nextSort.style.display = "none"
+            sortExplanation.style.display = "none"
+        }
+    })
+function updateTable(type, text) {
+const table = document.getElementById("seriesTable")
+let lastRow = table.rows.length - 1;
+const rows = Array.from(table.rows)
+let found = false
+if (type === "Arithmetic"){
+    if (table.rows[lastRow].cells[0].innerHTML !== ""){
+        console.log("adding row")
+        const newRow = table.insertRow();
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        cell1.innerHTML = text
     }
-    if (topicQuestion.type === "mc") {
-        mcContainer.classList.remove("hidden")
+    rows.forEach(row => {
+        if (found === false){
+        if (row.cells[0].innerHTML === ""){
+            row.cells[0].innerHTML = text
+            found = true
+        }
+        }
+    })
+} else if (type === "Geometric"){
+if (type === "Geometric"){
+    if (table.rows[lastRow].cells[1].innerHTML !== ""){
+        console.log("adding row")
+        const newRow = table.insertRow();
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        cell2.innerHTML = text
+    }
+    rows.forEach(row => {
+        if (found === false){
+        if (row.cells[1].innerHTML === ""){
+            row.cells[1].innerHTML = text
+            found = true
+        }
+    }
+    })
+}
+}
+}
 
-mcChoices.forEach((btn, i) => {
-            btn.style.display = "block"
-            if (topicQuestion.choices[i] == null) {
-                btn.style.display = "none"
-            } else {
-                          btn.textContent = topicQuestion.choices[i];
-            btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
-            }
 
+
+//Modeling The Question =====================================================================================================
+let prereqThree = false
+const nonDiophantineEquation = document.getElementById("nonDiophantineEquation")
+nonDiophantineEquation.innerHTML = '\\(x+y=10\\)'
+MathJax.typesetPromise([nonDiophantineEquation]).catch(()=>{})
+let nonDiophantineAnswer = 10;
+const nonDiophantineInput = document.getElementById("nonDiophantineSlider")
+const nonDiophantineOutput = document.getElementById("nonDiophantineOutput")
+const nonDiophantineLabel = document.getElementById("nonDiophantineExampleLabel")
+nonDiophantineLabel.innerHTML = '\\(x=\\)'
+function updateSliders(){
+        prereqThree = true
+        updateLesson()
+    console.log("running")
+    let xCont= parseFloat(nonDiophantineInput.value)
+    nonDiophantineAnswer = 10 - xCont 
+    nonDiophantineLabel.innerHTML = `\\(x=${xCont}\\)`
+    nonDiophantineOutput.innerHTML = `\\(y=${nonDiophantineAnswer}\\)`
+    MathJax.typesetPromise([nonDiophantineLabel]).catch(()=>{})
+    MathJax.typesetPromise([nonDiophantineOutput]).catch(()=>{})
+}
+updateSliders()
+nonDiophantineInput.addEventListener("input", updateSliders)
+let prereqFour = false
+const diophantineEquation = document.getElementById("diophantineEquation")
+diophantineEquation.innerHTML = '\\(x+y=10\\)'
+MathJax.typesetPromise([diophantineEquation]).catch(()=>{})
+let diophantineAnswer = 10;
+const diophantineInput = document.getElementById("diophantineSlider")
+const diophantineOutput = document.getElementById("diophantineOutput")
+diophantineOutput.innerHTML = '\\(y=5\\)'
+MathJax.typesetPromise([diophantineOutput]).catch(()=>{})
+const diophantineLabel = document.getElementById("diophantineExampleLabel")
+diophantineLabel.innerHTML = '\\(x=5\\)'
+MathJax.typesetPromise([diophantineLabel]).catch(()=>{})
+function updateStepSlider(){
+        prereqFour = true
+        updateLesson()
+    console.log("running")
+    let xCont= parseFloat(diophantineInput.value)
+    diophantineAnswer = 10 - xCont 
+    diophantineLabel.innerHTML = `\\(x=${xCont}\\)`
+    diophantineOutput.innerHTML = `\\(y=${diophantineAnswer}\\)`
+    MathJax.typesetPromise([diophantineLabel]).catch(()=>{})
+    MathJax.typesetPromise([diophantineOutput]).catch(()=>{})
+}
+updateSliders()
+diophantineInput.addEventListener("input", updateStepSlider)
+
+//----------Special Cases
+const SDTArray = allQ.filter(q => q.topic === "speed-distance-time")
+const SDTTitle = document.getElementById("question-title-SDT")
+const SDTtext = document.getElementById("question-text-SDT")
+const mcContainerSDT = document.getElementById("mc-container-SDT")
+const checkAnswerSDT = document.getElementById("check-btn-SDT")
+const answerInputSDT = document.getElementById("answer-input-SDT")
+const solutionTextSDT = document.getElementById("solution-text-SDT")
+const solutionSDT = document.getElementById("solution-SDT")
+const mcChoicesSDT = Array.from(document.querySelectorAll(".mc-choiceSDT"));
+const nextBtnSDT = document.getElementById("next-btn-SDT")
+shuffleArray(SDTArray)
+console.log(SDTArray)
+let SDTindex = 0
+let currentQuestionSDT = SDTArray[0]
+function loadSDT(index){
+    solutionSDT.style.display = "none"
+    nextBtnSDT.style.display = "none"
+    checkAnswerSDT.style.display = "inline-block"
+    mcContainerSDT.classList.add("hidden")
+    answerInputSDT.style.display = "inline-block"
+    answerInputSDT.value = ""
+    currentQuestionSDT = SDTArray[index]
+    SDTTitle.innerHTML = currentQuestionSDT.title
+    SDTtext.innerHTML = currentQuestionSDT.text
+    if (currentQuestionSDT.type === "mc") {
+        mcContainerSDT.classList.remove("hidden");
+        answerInputSDT.style.display = "none"
+        checkAnswerSDT.style.display = "none"
+        mcChoicesSDT.forEach((btn, i) => {
+            console.log("mc")
+            btn.disabled = false
+            btn.textContent = currentQuestionSDT.choices[i];
+            btn.onclick = () => handleMCAnswerSDT(currentQuestionSDT.choices[i])
+            MathJax.typesetPromise([btn]).catch(()=>{})
         });
     }
-    if (window.MathJax) {
-        MathJax.typesetPromise([document.getElementById("question-text")]).catch(()=>{})
-        MathJax.typesetPromise([questionChoices]).catch(()=>{})
+            MathJax.typesetPromise([SDTtext]).catch(()=>{});
+}
+let prereqFive = false
+checkAnswerSDT.addEventListener("click", function(){
+    const userAnswer = answerInputSDT.value.trim()
+    const correctAnswer = currentQuestionSDT.answer
+    if (userAnswer === correctAnswer){
+        prereqFive = true
+        updateLesson()
+        solutionTextSDT.innerHTML = `Correct!` + currentQuestionSDT.solution
+    } else {
+        solutionTextSDT.innerHTML = 'Incorect' + currentQuestionSDT.solution
+    }
+    solutionSDT.style.display = "block"
+            MathJax.typesetPromise([solutionTextSDT]).catch(()=>{});
+    nextBtnSDT.style.display = "inline-block"
+})
+nextBtnSDT.addEventListener("click", function(){
+    SDTindex += 1
+    if (SDTindex === (SDTArray.length - 1)){
+        SDTindex = 0
+        shuffleArray(SDTArray)
+    }
+    loadSDT(SDTindex)
+})
+loadSDT(SDTindex)
+function handleMCAnswerSDT(choice) {
+    console.log("clicked")
+    answerInputSDT.value = choice; // reuse existing checker
+    checkAnswerSDT.click();
+    if (nextBtnSDT.style.display !== "none"){
+mcChoicesSDT.forEach(btn => btn.disabled = true);
     }
 }
-function handleMCAnswer(choice) {
-    document.getElementById("answer-input").value = choice; // reuse existing checker
-    document.getElementById("check-btn").click();
-mcChoices.forEach(btn => btn.disabled = true);
+let prereqSix = false
+document.addEventListener("DOMContentLoaded", function() {
+    const r1 = document.getElementById("runner1");
+    const r2 = document.getElementById("runner2");
+    const headStartSlider = document.getElementById("headStartSlider");
+    const leaderSpeedSlider = document.getElementById("leaderSpeedSlider");
+    const chaserSpeedSlider = document.getElementById("chaserSpeedSlider");
+    
+    const eqLeader = document.getElementById("eqLeader");
+    const eqChaser = document.getElementById("eqChaser");
+    const explanation = document.getElementById("sdtExplanation");
+    const catchLine = document.getElementById("catchUpLine");
+
+    function updateRace() {
+        prereqSix = true
+        updateLesson()
+        const d1_start = parseFloat(headStartSlider.value); 
+        const s1 = parseFloat(leaderSpeedSlider.value); 
+        const s2 = parseFloat(chaserSpeedSlider.value); 
+        
+        // Update Equation Text
+        eqLeader.innerHTML = `\\(d = ${s1}t + ${d1_start}\\)`;
+        eqChaser.innerHTML = `\\(d = ${s2}t\\)`;
+
+        // Visual Start Positions
+        r1.style.left = `${d1_start}%`;
+        r2.style.left = `0%`;
+
+        // Logic: s1*t + headstart = s2*t  =>  headstart = (s2 - s1)*t
+        if (s2 <= s1) {
+            catchLine.style.display = "none";
+            explanation.innerHTML = "If the Chaser isn't faster than the Leader, they will <span style='color:red'>never catch up!</span>";
+        } else {
+            const relativeSpeed = s2 - s1;
+            const timeToCatch = d1_start / relativeSpeed;
+            const catchPoint = s2 * timeToCatch;
+
+            if (catchPoint <= 100) {
+                catchLine.style.display = "block";
+                catchLine.style.left = `${catchPoint}%`;
+                explanation.innerHTML = `They meet at \\(t = ${timeToCatch.toFixed(2)}\\) hours, which is \\(d = ${catchPoint.toFixed(1)}\\) miles out.`;
+            } else {
+                catchLine.style.display = "none";
+                explanation.innerHTML = "They eventually meet, but it's off the edge of this track!";
+            }
+        }
+        
+        MathJax.typesetPromise([eqLeader, eqChaser, explanation]).catch(()=>{});
+    }
+
+    [headStartSlider, leaderSpeedSlider, chaserSpeedSlider].forEach(s => s.addEventListener("input", updateRace));
+    updateRace();
+});
+let prereqSeven  = false
+const avgSpeed = document.getElementById("avgSpeed")
+const avgOneLabel = document.getElementById('avgOneLabel')
+const avgOne = document.getElementById("avgOne")
+const avgOneTime = document.getElementById("avgOneTime")
+let oneTime = 5.5
+let twoTime = 5.5
+let oneSpeed = 55
+let twoSpeed = 55
+avgOne.addEventListener("input", updateLabelOne)
+avgOne.addEventListener("input", updateAvgSpeed)
+function updateLabelOne(){
+        prereqSeven = true
+        updateLesson()
+    avgOneLabel.innerHTML = `Speed: ${avgOne.value} mph`
+    let time = (avgOne.value / 10)
+    oneTime = time
+    oneSpeed = avgOne.value
+    avgOneTime.innerHTML = `Time \\(\\frac{${avgOne.value}}{10}=${time}\\) hrs`
+    MathJax.typesetPromise([avgOneTime]).catch(()=>{});
+    MathJax.typesetPromise([avgOneLabel]).catch(()=>{});
+}
+const avgTwoLabel = document.getElementById("avgTwoLabel")
+const avgTwo = document.getElementById("avgTwo")
+const avgTwoTime = document.getElementById("avgTwoTime")
+avgTwo.addEventListener("input", updateLabelTwo)
+avgTwo.addEventListener("input", updateAvgSpeed)
+function updateLabelTwo(){
+    avgTwoLabel.innerHTML = `Speed: ${avgTwo.value} mph`
+    let time = (avgTwo.value / 10)
+    twoTime = time
+    twoSpeed = avgTwo.value
+    avgTwoTime.innerHTML = `Time: \\(\\frac{${avgTwo.value}}{10}=${time}\\) hrs`
+    MathJax.typesetPromise([avgTwoTime]).catch(()=>{});
+    MathJax.typesetPromise([avgTwoLabel]).catch(()=>{});
+}
+function updateAvgSpeed(){
+    let avgSpeedVar = Math.round((((oneTime * oneSpeed) + (twoTime * twoSpeed)) / (oneTime + twoTime)), 5)
+    avgSpeed.innerHTML = `Average Speed: \\(\\frac{${oneSpeed} \\times ${oneTime} + ${twoSpeed} \\times ${twoSpeed}}{${oneTime}+${twoTime}}=${avgSpeedVar}\\)`
+    MathJax.typesetPromise([avgSpeed]).catch(()=>{});
+}
+updateAvgSpeed
+let prereqEight = false
+function updateVectors() {
+        prereqEight = true
+        updateLesson()
+    const boatMag = parseFloat(document.getElementById("magBoat").value);
+    const currMag = parseFloat(document.getElementById("magCurrent").value);
+    const currAngleDeg = parseFloat(document.getElementById("angleCurrent").value);
+    document.getElementById("angleVal").innerText = currAngleDeg;
+
+    // 1. Convert to Radians (Boat is always pointing 0 deg / North for simplicity)
+    const boatRad = -90 * (Math.PI / 180); // Pointing UP
+    const currRad = (currAngleDeg - 90) * (Math.PI / 180); 
+
+    // 2. Component Math (v_total_x = v1_x + v2_x)
+    const bx = boatMag * Math.cos(boatRad);
+    const by = boatMag * Math.sin(boatRad);
+    const cx = currMag * Math.cos(currRad);
+    const cy = currMag * Math.sin(currRad);
+
+    const rx = bx + cx;
+    const ry = by + cy;
+    const rMag = Math.sqrt(rx*rx + ry*ry);
+    const rAngle = Math.atan2(ry, rx) * (180 / Math.PI);
+
+    // 3. Update Visuals
+    document.getElementById("boatVector").style.width = boatMag + "px";
+    document.getElementById("boatVector").style.transform = `rotate(${-90}deg)`;
+
+    document.getElementById("currentVector").style.width = currMag + "px";
+    document.getElementById("currentVector").style.transform = `rotate(${currAngleDeg - 90}deg)`;
+
+    document.getElementById("resultantVector").style.width = rMag + "px";
+    document.getElementById("resultantVector").style.transform = `rotate(${rAngle}deg)`;
+
+    const explanation = document.getElementById("vectorExplanation");
+    explanation.innerHTML = `
+        Object Movement: \\(${boatMag}\\) units North <br>
+        Current/Wind: \\(${currMag}\\) units at \\(${currAngleDeg}^\\circ\\) <br>
+        <b>Resultant Speed: \\(${rMag.toFixed(1)}\\) units</b>
+        <p>You calculate your movement b finding the sin of the angle times the magnitude and adding it to the object movement. Notice, we do not need cosine
+        because we are going directly verticaly.</p>
+    `;
+    MathJax.typesetPromise([explanation]).catch(()=>{});
 }
 
-document.getElementById("next-btn").addEventListener("click", async function() {
-        if (currentQuestion === 4){
-               if (correctCount > 3){
+["magBoat", "magCurrent", "angleCurrent"].forEach(id => {
+    document.getElementById(id).addEventListener("input", updateVectors);
+});
+updateVectors();
+
+
+const toggleBrightness = document.getElementById("brightness")
+const carouselLight = document.querySelectorAll("carousel-logo-light")
+const carouselDark = document.querySelectorAll("carousel-logo-dark")
+let colorMode = 'light'
+let colorModeTrue = localStorage.getItem("colorMode")
+console.log(colorModeTrue)
+if  (colorModeTrue !== false){
+        console.log("setting color mode")
+       colorMode =  colorModeTrue
+       console.log(colorModeTrue)
+ if (colorMode === 'dark'){
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark'; 
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", "dark")
+        } else {
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light';
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", "light")
+        }
+} else {
+function toggleSystemTheme() {
+  const root = document.documentElement;
+  
+  // 1. Check what the system preference is, or if it's already set
+  if (!root.style.colorScheme) {
+    // If it's not set yet, match the user's system preferences
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.style.colorScheme = prefersDark ? 'dark' : 'light';
+  }
+  
+  colorMode = root.style.colorScheme;
+
+  // 2. Add the correct matching class right away so the logos render correctly!
+  if (colorMode === 'dark') {
+      root.classList.add('dark');
+      root.classList.remove('light');
+  } else {
+      root.classList.add('light');
+      root.classList.remove('dark');
+  }
+}
+toggleSystemTheme();
+}
+let color = 'rgb(239, 237, 247)'
+toggleBrightness.addEventListener("click", function(){
+        if (colorMode === 'dark'){
+                colorMode = 'light';
+                document.documentElement.style.colorScheme = 'light'; 
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+                toggleBrightness.textContent = "bedtime"
+                localStorage.setItem("colorMode", colorMode)
+                color = '#48485a'
+        } else {
+                colorMode = 'dark';
+                document.documentElement.style.colorScheme = 'dark';
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                toggleBrightness.textContent = "sunny"
+                localStorage.setItem("colorMode", colorMode)
+                color = 'rgb(239, 237, 247)'
+        }
+        console.log(localStorage.getItem("colorMode"));
+});
+  const helpPannel = document.getElementById("helpPannel")
+const { createClient } = window.supabase;
+
+      let helpOn = false;
+  let helpBtn = document.getElementById('helpButton')
+let accountTrue = false
+let accountBtn = document.getElementById("accountBtn")
+let accountPannel = document.getElementById("accountPannel")
+let overlay = document.getElementById("overlay")
+accountBtn.addEventListener("click", function () {
+        let account = true
+
+    document.getElementById("no-account").addEventListener("click", function() {
+    if (account === false){
+        account = true
+        document.getElementById("login").style.display = "block"
+        document.getElementById("signup").style.display = "none"
+                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+    } else {
+        document.getElementById('login').style.display = "none"
+        account = false
+        document.getElementById("signup").style.display = "block"
+        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+    }
+    })
+    helpPannel.style.display  = "none"
+    if (accountTrue === false){
+        accountPannel.style.display = "block"
+        overlay.style.display = "block"
+        accountTrue = true
+    } else {
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+overlay.addEventListener("click", function(){
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } 
+    if (accountTrue === true){
+        accountPannel.style.display = "none"
+        overlay.style.display = "none"
+        accountTrue = false
+    }
+})
+helpBtn.addEventListener("click", function () {
+    if (helpOn === true){
+        helpPannel.style.display = "none";
+        overlay.style.display = "none"; 
+        helpOn = false;
+    } else {
+        helpPannel.style.display = "block";
+        overlay.style.display = "block";
+        helpOn = true
+    }
+});
+//-----------------------Authentication--------------------------
+async function loadUserStats(userId) {
+  const { data: profile, error } = await supabase
+    .from('profiles')
+   .select('id, username')
+   .eq('id', userId)
+
+  if (error) {
+    console.error("Error downloading profile data:");
+    return;
+  }
+
+  if (profile) {
+    console.log(profile)
+    let userProfile = profile[0]
+    console.log(userProfile.username)
+    document.getElementById("username-display").innerHTML = userProfile.username
+    document.getElementById("btn-dashboard").innerHTML = userProfile.username
+  } 
+}
+const loginBtn = document.getElementById("btn-login");
+loginBtn.addEventListener("click", async () => {
+  console.log("clicked")
+    const email = document.getElementById("login-email").value.trim()
+    const password = document.getElementById("login-password").value
+    if (!email || !password) {
+        
+document.getElementById("login-error").innerHTML = "Please Input Both Fields"
+    return;
+  }
+  loginBtn.disabled = true;
+const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password,
+  });
+
+  if (error) {
+    alert("Login Error: " + error.message);
+    loginBtn.disabled = false;
+    loginBtn.innerText = "Login";
+    return;
+  }
+  document.getElementById('accountPannel').style.display = 'none';
+  document.getElementById('overlay').style.display = 'none';
+  accountTrue = false
+  // 3. Pull their ELO data out of the database (Step 2 below)
+  await loadUserStats(data.user.id);
+  
+  // Reset button state
+  loginBtn.disabled = false;
+
+})
+const logoutBtn = document.getElementById('btn-logout');
+
+logoutBtn.addEventListener('click', async () => {
+            document.getElementById("login").style.display = "block"
+  // 1. Call Supabase to clear the secure cloud session
+  console.log('logging out')
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    alert("Error logging out: " + error.message);
+    return;
+  }
+
+
+  alert("You have been logged out successfully!");
+  window.location.reload();
+});
+
+const deleteAccountBtn = document.getElementById('btn-delete-account');
+
+if (deleteAccountBtn) {
+  deleteAccountBtn.addEventListener('click', async () => {
+    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
+    
+    if (!confirmed) return;
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+
+    const userId = session.user.id;
+    const { error: dbError } = await supabase
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+
+    if (dbError) {
+      alert("Error erasing profile data: " + dbError.message);
+      return;
+    }
+
+    await supabase.auth.signOut();
+    alert("Your account records and progress have been completely erased.");
+    window.location.reload();
+  });
+}
+
+document.getElementById("btn-signup").addEventListener("click", async () => {
+    
+  const email = document.getElementById("auth-email").value;
+  const password = document.getElementById("auth-password").value;
+  const username = document.getElementById("auth-username").value;
+  const passwordCheck = document.getElementById("auth-password-check").value
+  if (!email || !password || !username) {
+    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+    return;
+  }
+
+
+  if (password === passwordCheck){
+
+  const { data, error } = await supabase.auth.signUp({ email, password });
+
+  if (error) return alert(error.message);
+  if (data.user) {
+    
+    await supabase.from('profiles').insert([
+      { 
+        id: data.user.id, 
+        username: username, 
+      }
+    ]);
+    
+    alert("Account created!");
+    
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById("username-display").innerHTML = username
+  }
+  } else {
+    document.getElementById("signup-error").innerHTML = "Passwords do not match"
+    return
+  }
+});
+console.log(supabase)
+
+
+
+supabase.auth.onAuthStateChange(async (event, session) => {
+  const accountBtn = document.getElementById('accountBtn');
+  const logoutBtn = document.getElementById('btn-logout');
+  const loginBtn = document.getElementById('btn-login');
+  const signup = document.getElementById('no-account');
+  const login = document.getElementById('login');
+  const usernameDisplay = document.getElementById("username-display");
+  const createAccount = document.getElementById("no-account")
+  const deleteAccount = document.getElementById("btn-delete-account")
+  const usernameDisplayModal = document.getElementById("btn-dashboard")
+  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
+    console.log("Secure adaptive practice session discovered for:", session.user.email);
+    if (logoutBtn) logoutBtn.style.display = 'block';
+    if (login) login.style.display = "none";
+    console.log("login goes invisible")
+    if (createAccount) createAccount.style.display = "none"
+    if (deleteAccount) deleteAccount.style.display = "block"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
+  const { data: profile, error } = await supabase
+loadUserStats(session.user.id)
+  } else  {
+    console.log("No user session found. Reverting adaptive practice to Guest defaults.");
+    if (typeof runDiagnostic === "function")
+    
+    if (logoutBtn) logoutBtn.style.display = 'none';
+    if (login) login.style.display = "block";
+    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
+    if (createAccount) createAccount.style.display = "block"
+    if (deleteAccount) deleteAccount.style.display = "none"
+    if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
+  }
+})
+const resetBtn = document.getElementById("btn-request-reset");
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", async () => {
+    const email = document.getElementById("login-email").value;
+
+    if (!email) {
+      alert("Please enter your email address first.");
+      return;
+    }
+
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/update-password.html',
+    });
+
+    if (error) {
+      console.error("Reset request failed:", error.message);
+      alert("Error: " + error.message);
+    } else {
+      alert("Check your inbox! A secure password reset link has been sent.");
+    }
+  });
+}
+async function updateLesson() {
                         const { data: { session }, error: sessionError } = await supabase.auth.getSession();
   if (sessionError || !session) {
     return
   }
 
   const userId = session.user.id;
-  const { data, error } = await supabase
+        if ((prereqOne == true) && (prereqTwo == true) && (prereqThree == true) && (prereqFour == true) && (prereqFive == true) && (prereqSix == true) && (prereqSeven == true) && (prereqEight == true)){
+    const { data, error } = await supabase
     .from('profiles')
     .update({
-        statisticsLevel: 'completed'
+        wordProblemsLessonCompleted: true
     })
-    .eq('id', userId)
-
-  if (error) {
-    console.error("Failed to sync stats to cloud database:", error.message);
-  }
-  document.getElementById('question-title').innerHTML = "Leveled Up!"
-  document.getElementById("question-text").innerHTML = "Completed this pathway!"
-  mcChoices.forEach(i => {
-    i.style.display = "none"
-  })
-    document.getElementById('solution').style.display = "none";
-  
-                } else {
-                    document.getElementById("question-title").innerHTML = "Oops! Looks Like Your Accuracy Wasn't Great. Wanna Try Again?"
-document.getElementById("question-text").innerHTML = "Get at least four questions right in order to progress to the next level."
-document.getElementById("answer-input").style.display = "none"
-document.getElementById("check-btn").innerHTML = "Start Mastery Check"
-  mcChoices.forEach(i => {
-    i.style.display = "none"
-  })
-  document.querySelectorAll(".accuracyCircle").forEach(i => {
-    i.style.backgroundColor = color
-  })
-  document.getElementById("solution").style.display = "none"
-  document.getElementById("check-btn").style.display = "block"
-document.getElementById("check-btn").addEventListener("click", work)
-currentQuestion = 0
-shuffleArray(topicQ)
-correctCount = 0
-                }
-    } else if (currentQuestion < topicQ.length){
-                currentQuestion += 1
-                loadQuestion()
-        } 
-        
-})
-
-document.getElementById("question-title").innerHTML = "Let's Check Your Understanding!"
-document.getElementById("question-text").innerHTML = "Get at least four questions right in order to progress to the next level."
-document.getElementById("answer-input").style.display = "none"
-document.getElementById("check-btn").innerHTML = "Start Mastery Check"
-document.getElementById("check-btn").addEventListener("click", work)
-function work() {
-    document.querySelectorAll(".mc-choice").forEach(i => {
-        i.style.display = "block"
-    })
-    loadQuestion()
-    document.getElementById("check-btn").innerHTML = "Check Answer"
-    document.getElementById("check-btn").removeEventListener("click", work)
-    document.getElementById("check-btn").addEventListener("click", function(){
-        const userAnswer = document.getElementById("answer-input").value
-        const correctAnswer = topicQ[currentQuestion].answer
-        const solutionText = document.getElementById("solution-text")
-        const nextBtn = document.getElementById("next-btn")
-        const solution = document.getElementById("solution")
-        if (userAnswer === correctAnswer){
-                solutionText.innerHTML = "Correct!" + topicQ[currentQuestion].solution
-                document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor = "#88B0FF"
-                console.log(document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor)
-                correctCount += 1
-        } else {
-            solutionText.innerHTML = "Incorrect" + topicQ[currentQuestion].solution 
-            document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor = "#FFB192"   
-        }
-        solution.style.display = "block"
-        nextBtn.style.display = "block"
-        solutionText.style.display = "block"
-        MathJax.typesetPromise([solution]).catch(()=>{})
-})
-document.querySelectorAll(".accuracyCircle")[0].style.backgroundColor = color   
+    .eq('id', userId)  
+    }  
 }

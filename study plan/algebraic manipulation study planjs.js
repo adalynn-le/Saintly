@@ -101,9 +101,27 @@ dropzones.forEach(zone => {
             zone.appendChild(dragElement); // Snap item into the box
             dragElement.style.cursor = 'default';
             dragElement.setAttribute('draggable', 'false');
+            checkPrereqDropzones()
         }
-    });
-});
+    })
+})
+let prereqOne = false
+function checkPrereqDropzones() {
+  prereqOne = true;
+  const dropzones = document.querySelectorAll(".dropzone");
+
+  for (const zone of dropzones) {
+    if (zone.children.length === 0) {
+      prereqOne = false;
+      break;
+    }
+  }
+
+  console.log("Are all dropzones filled?", prereqOne);
+  updateLesson()
+
+}
+
 
 
 // ======================== Reverse PEMDAS =====================================
@@ -118,7 +136,6 @@ const reversePemdasArray = [
     { equation: `\\(\\frac{x}{-2} = 10\\)`, answer: `\\times`, explanation: "Multiply by -2." },
     { equation: `\\(12 = 4x\\)`, answer: `\\div`, explanation: "Divide by 4." },
     { equation: `\\(x - \\frac{1}{2} = \\frac{3}{2}\\)`, answer: `+`, explanation: "Add 1/2 to both sides." },
-    // Introducing 2-step (Focusing on what to do FIRST)
     { equation: `\\(2x + 3 = 11\\)`, answer: `-`, explanation: "Undo addition/subtraction FIRST (SADMEP)." },
     { equation: `\\(\\frac{x}{4} - 1 = 5\\)`, answer: `+`, explanation: "Add 1 first before dealing with the fraction." },
     { equation: `\\(5x - 7 = 13\\)`, answer: `+`, explanation: "Add 7 first." },
@@ -201,11 +218,14 @@ division.addEventListener("click", function(){
     reversePemdasNext.style.display = "block"
     reversePemdasSolutionText.style.display = "block"
 })
+let prereqTwo = false
 reversePemdasNext.addEventListener("click", function(){
     reversePemdasIndex += 1
     if (reversePemdasIndex < reversePemdasArray.length) {
         loadReversePemdas()
     } else {
+      prereqTwo = true
+      updateLesson()
       console.log("finished!")
     reversePemdasSolution.style.display = "none"
     reversePemdasSolutionText.style.display = "none"
@@ -220,8 +240,10 @@ reversePemdasNext.addEventListener("click", function(){
 })
 let sum
 loadReversePemdas()
+let prereqThree = false
 const slider = document.getElementById('bSlider');
-slider.oninput = function() {
+slider.oninput = function() {prereqThree = true
+    updateLesson()
     const bHalf = this.value / 2;
     document.getElementById('b-side').style.width = bHalf + "px";
     document.getElementById('b-bottom').style.height = bHalf + "px";
@@ -245,6 +267,7 @@ console.log(sum)
         document.getElementById('missing-corner').innerHTML = ""
     }
     MathJax.typesetPromise([shutup]).catch(()=>{})
+    
 }
 slider.oninput()
 
@@ -533,369 +556,20 @@ if (resetBtn) {
     }
   });
 }
-
-
-//--------------Final Question---------------
-const topicQ = [
-  {
-    title: "Review Question",
-    text: `What factoring trick can you use on this expression?
-    $$
-    x^2-9
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{completing the square}\\)', `\\(B) \\textup{Simon's Favorite Factoring Trick}\\)`, '\\(C) \\textup{Difference of Squares}\\)', '\\(D) \\textup{Sophie Germain Identity}\\)', '\\(E) \\textup{Factoring By Grouping}\\)'],
-    answer: '\\(C) \\textup{Difference of Squares}\\)',
-    solution: `<b>\\(C) \\textup{Difference of Squares}\\)</b><p>We see two squares in this expression. \\(x^2=(x)^2\\) and \\(9=3^2\\). We are finding the difference between them, so we use the difference of squares identity: \\(a^2-b^2=(a+b)(a-b)\\)`,
-  },
-  {
-    title: "Review Question",
-    text: `Factor the following expression:
-    $$
-    x^2-9
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) (x+3)(x+3)\\)', '\\(B) (x+3)(x-3)\\)', '\\(C) (x-3)(x-3)\\)', '\\(D) (x+9)(x-9)\\)', '\\(C) (x-3)^2\\)'],
-    answer: '\\(B) (x+3)(x-3)\\)',
-    solution: `<b>\\(B) (x+3)(x-3)\\)</b><p>We see two squares in this expression. \\(x^2=(x)^2\\) and \\(9=3^2\\). We are finding the difference between them, so we use the difference of squares identity: \\(a^2-b^2=(a+b)(a-b)\\)`
-  },
-  {
-    title: "Review Question",
-    text: `Which factoring trick can you use on this expression?
-    $$
-    x^2+5x+6
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{completing the square}\\)', `\\(B) \\textup{Simon's Favorite Factoring Trick}\\)`, '\\(C) \\textup{Difference of Squares}\\)', '\\(D) \\textup{Sophie Germain Identity}\\)', '\\(E) \\textup{Factoring By Grouping}\\)'],
-    answer: '\\(E) \\textup{Factoring by Grouping}\\)',
-    solution: `<b>\\(E) \\textup{Factoring by Grouping}\\)</b><p>We can factor this by grouping because two of the factors of \\(6\\) sum to \\(5\\) (\\(2\\) and \\(3\\)). This gives us \\((x+2)(x+3)\\)`,
-  },
-  {
-    title: "Review Question",
-    text: `Factor the following expression:
-    $$
-    x^2+5x+6
-    $$
-    `,
-    type: 'mc',
-    choices: ['\\(A) (x+2)^2\\)', '\\(B) (x+3)^2\\)', '\\(C) (x+3)(x-2)\\)', '\\(D) (x+2)(x+3)\\)', '\\(E) (x+6)(x-1)\\)'],
-    answer: '\\(D) (x+2)(x+3)\\)',
-    solution: '<b>\\(D) (x+2)(x+3)\\)</b><p>We can factor this by grouping because two of the factors of \\(6\\) sum to \\(5\\) (\\(2\\) and \\(3\\)). This gives us \\((x+2)(x+3)\\)</p>',    
-  },
-  {
-    title: "Review Question",
-    text: `Which factoring trick can you use on this expression?
-    $$
-    xy+2x+6y+12
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{completing the square}\\)', `\\(B) \\textup{Simon's Favorite Factoring Trick}\\)`, '\\(C) \\textup{Difference of Squares}\\)', '\\(D) \\textup{Sophie Germain Identity}\\)', '\\(E) \\textup{Factoring By Grouping}\\)'],
-    answer: `\\(B) \\textup{Simon's Favorite Factoring Trick}\\)`,
-    solution: `<b>\\(B) \\textup{Simon's Favorite Factoring Trick}\\)</b><p>When we see \\(xy\\) as a term, we immediately assume SFFT. We know that \\(j=2\\) and \\(k=6\\). We factor out \\(x\\) first for \\(x(y+2)+6y+12\\) and then \\(6\\) for \\((x+6)(y+2)\\)`,
-  },
-  {
-    title: "Review Question",
-    text: `Factor the following expression:
-    $$
-    xy+2x+6y+12
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) 6x+2y\\)', '\\(B) (x+2)(y+6)\\)', '\\(C) (x+6)(x+2)\\)', '\\(D) (x+3)(y+4)\\)', '\\(E) 12x+12y\\)'],
-    answer: `\\(C) (x+6)(x+2)\\)`,
-    solution: `<b>\\(C) (x+6)(x+2)\\)</b><p>When we see \\(xy\\) as a term, we immediately assume SFFT. We know that \\(j=2\\) and \\(k=6\\). We factor out \\(x\\) first for \\(x(y+2)+6y+12\\) and then \\(6\\) for \\((x+6)(y+2)\\)`,
-  },
-  {
-    title: "Review Question",
-    text: `Is this an equation or an expression?
-    $$
-    x^2+5x
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{equation}\\)', '\\(B) \\textup{expression}\\)'],
-    answer: '\\(B) \\textup{expression}\\)',
-    solution: `<b>\\(B) \\textup{expression}\\)</b><p>There is no equal sign and no indication to the value of \\(x^2+5x\\). This means it is an expression not a complete equation`
-  },
-  {
-    title: "Review Question",
-    text: `Is this an equation or an expression?
-    $$
-    x^2+5x=10
-    $$
-    `,
-    type: 'mc',
-    choices: ['\\(A) \\textup{equation}\\)', '\\(B) \\textup{expression}\\)'],
-    answer: `\\(A) \\textup{equation}\\)`,
-    solution: `<b>\\(A) \\textup{equation}\\)</b><p>We do see an equal sign that relates two expressions through a confined relationship. Thus, this is an equation</p>`
-  },
-  {
-    title: "Review Question",
-    text: `Is this an equation or an expression?
-    $$
-    x+4
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{equation}\\)', '\\(B) \\textup{expression}\\)'],
-    answer: `\\(B) \\textup{expression}\\)`,
-    solution: `<b>\\(B) \\textup{expression}\\)</b><p>There is no equal sign and relation, thus this is an expression.`
-  },
-  {
-    title: "Review Question",
-    text: `Is this an equation or an expression?
-    $$
-    x+4=y+3
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{equation}\\)', '\\(B) \\textup{expression}\\)'],
-    answer: '\\(A) \\textup{equation}\\)',
-    solution: '<b>\\(A) \\textup{equation}\\)</b><p>We do see an equal sign, which ensures that this is indeed an equation instead of an expression.'
-  },
-  {
-    title: "Review Question",
-    text: `Is this an equation or an expression?
-    $$
-    2^x+6
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{equation}\\)', '\\(B) \\textup{expression}\\)'],
-    answer: `\\(B) \\textup{expression}`,
-    solution: `<b>\\(B) \\textup{expression}\\)</b><p>There is no equal sign, so the given value is an expression</p>`,
-  },
-  {
-    title: "Review Question",
-    text: `Is this an equation or an expression?
-    $$
-    2^x+6=43
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{equation}\\)', '\\(B) \\textup{expression}\\)'],
-    answer: '\\(A) \\textup{equation}\\)',
-    solution: `<b>\\(A) \\textup{equation}\\)</b><p>There is an equal sign, thus, we know that this must be an equation</p>`
-  },
-  {
-    title: "Review Question",
-    text: `Is this an equation or an expression?
-    $$
-    6x+54-36
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{equation}\\)', '\\(B) \\textup{expression}\\)'],
-    answer: '\\(B) \\textup{expression}\\)',
-    solution: `<b>\\(B) \\textup{expression}\\)</b><p>There is no equal sign so this is an expression</p>`,
-  },
-  {
-    title: "Review Question",
-    text: `Is this an equation or an expression?
-    $$
-    6x+54-36=70534
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{equation}\\)', '\\(B) \\textup{expression}\\)'],
-    answer: `\\(A) \\textup{equation}\\)`,
-    solution: `<b>\\(A) \\textup{equation}\\)</b><p>There is an equal sign which indicates this is an expression</p>`,
-  },
-  {
-    title: "Review Question",
-    text: `What should you do first to isolate the variable?
-    $$
-    x^2-25=0
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{add}\\)', '\\(B) \\textup{subtract}\\)', '\\(C) \\textup{multiply}\\)', '\\(D) \\textup{divide}\\)', '\\(E) \\textup{take the square root}\\)'],
-    answer: '\\(A) \\textup{add}\\)',
-    solution: `<b>\\(A) \\textup{add}\\)</b><p>We first want to get all the constant values to one side, so we would add \\(25\\) on both sides to cancel out the \\(-25\\)`
-  },
-  {
-    title: "Review Question",
-    text: `What should you do first to isolate the variable?
-    $$
-    2x^2=30
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{add}\\)', '\\(B) \\textup{subtract}\\)', '\\(C) \\textup{multiply}\\)', '\\(D) \\textup{divide}\\)', '\\(E) \\textup{take the square root}\\)'],
-    answer: `\\(D) \\textup{divide}\\)`,
-    solution: `<b>\\(D) \\textup{divide}\\)</b><p>We need to divide by \\(2\\) so that we can isolate \\(x\\) by removing its coefficient`,
-  },
-  {
-    title: 'Review Question',
-    text: `What should you do first to isolate the variable?
-    $$
-    14x+27=35
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) \\textup{add}\\)', '\\(B) \\textup{subtract}\\)', '\\(C) \\textup{multiply}\\)', '\\(D) \\textup{divide}\\)', '\\(E) \\textup{take the square root}\\)'],
-    answer: '\\(B) \\textup{subtract}\\)',
-    solution: `<b>\\(B) \\textup{subtract}\\)</b><p>We need to subtract \\(27\\) on both sides in order to cancel out the \\(27\\) and isolate \\(x\\)`
-  },
-  {
-    title: "Review Question",
-    text: `What do you need to add to complete the square?
-    $$
-    x^2+4x
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) 1\\)', '\\(B) 2\\)', '\\(C) 3\\)', '\\(D) 4\\)', '\\(E) 5\\)'],
-    answer: '\\(D) 4\\)',
-    solution: `<b>\\(D) 4\\)</b><p>We first divide the coefficient of \\(x\\), which is \\(4\\) by \\(2\\). This gives us \\(\\frac{4}{2}=2\\). We then square this to get \\(4\\). The new expression, \\(x^2+4x+4\\) can be factored into \\((x+2)(x+2)\)`,
-  },
-  {
-    title: "Review Question",
-    text: `What do you need to add to complete the square?
-    $$
-    x^2+6x
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) 1\\)', '\\(B) 3\\)', '\\(C) 5\\)', '\\(D) 7\\)', '\\(E) 9\\)'],
-    answer: '\\(E) 9\\)',
-    solution: `<b>\\(E) 9\\)</b><p>We divide \\(\\frac{6]{2}=3\\) and square that to get \\(9\\). The resulting expression \\(x^2+6x+3\\) can be factored as \\((x+3)^2\\)`,
-  },
-  {
-    title: "Review Question",
-    text: `What do you need to add to complete the square?
-    $$
-    x^2+2x
-    $$`,
-    type: 'mc',
-    choices: ['\\(A) 0\\)', '\\(B) 1\\)', '\\(C) 2\\)', '\\(D) 3\\)', '\\(E) 4\\)'],
-    answer: '\\(B) 1\\)',
-    solution: `<b>\\(B) 1\\)</b><p>We divide \\(\\frac{2}{2}=1\\). We then square this to get \\(1\\). The new expression \\(x^2+2x+1\\) can be factored as \\((x+1)^2\\)`
-  }
-]
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
-const mcContainer = document.getElementById("mc-container");
-const questionChoices = document.getElementById("mc-container")
-let currentQuestion = 0
-topicQ.forEach(i => {
-    i.type = 'mc'
-})
-let accuracy = 0
-console.log(topicQ.length)
-let correctCount = 0
-shuffleArray(topicQ)
-function loadQuestion(){
-        let topicQuestion = topicQ[currentQuestion]
-        document.getElementById("question-title").innerHTML = topicQuestion.title
-        document.getElementById("question-text").innerHTML = topicQuestion.text
-        mcChoices.forEach(btn => btn.disabled = false)
-            document.getElementById("solution-text").innerHTML = ""
-    document.getElementById("solution").style.display = "none"
-    document.getElementById("next-btn").style.display = "none"
-    
-    document.getElementById("answer-input").value = ""
-            document.getElementById("answer-input").style.display = "none"
-    document.getElementById("check-btn").style.display = "none"
-    mcContainer.classList.add("hidden")
-
-    if (!topicQuestion.type || topicQuestion.type === "fr") {
-        document.getElementById("answer-input").style.display = "inline-block"
-        document.getElementById("check-btn").style.display = "inline-block"
-    }
-    if (topicQuestion.type === "mc") {
-        mcContainer.classList.remove("hidden")
-
-mcChoices.forEach((btn, i) => {
-            btn.style.display = "block"
-            if (topicQuestion.choices[i] == null) {
-                btn.style.display = "none"
-            } else {
-                          btn.textContent = topicQuestion.choices[i];
-            btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
-            }
-
-        });
-    }
-    if (window.MathJax) {
-        MathJax.typesetPromise([document.getElementById("question-text")]).catch(()=>{})
-        MathJax.typesetPromise([questionChoices]).catch(()=>{})
-    }
-}
-function handleMCAnswer(choice) {
-    document.getElementById("answer-input").value = choice; // reuse existing checker
-    document.getElementById("check-btn").click();
-mcChoices.forEach(btn => btn.disabled = true);
-}
-
-document.getElementById("next-btn").addEventListener("click", async function() {
-        if (currentQuestion === 4){
-               if (correctCount > 3){
+async function updateLesson() {
                         const { data: { session }, error: sessionError } = await supabase.auth.getSession();
   if (sessionError || !session) {
     return
   }
 
   const userId = session.user.id;
-  const { data, error } = await supabase
+  console.log(prereqOne, prereqTwo, prereqThree)
+        if ((prereqOne == true) && (prereqTwo == true) && (prereqThree == true)){
+    const { data, error } = await supabase
     .from('profiles')
     .update({
-        equationsLevel: 'word problems'
+        algebraicManipulationLessonCompleted: true
     })
-    .eq('id', userId)
-
-  if (error) {
-    console.error("Failed to sync stats to cloud database:", error.message);
-  }
-  document.getElementById('question-title').innerHTML = "Leveled Up!"
-  document.getElementById("question-text").innerHTML = "Go to the next lesson: <a href='word problems learning path.html'>Word Problems</a>"
-  mcChoices.forEach(i => {
-    i.style.display = "none"
-  })
-    document.getElementById('solution').style.display = "none";
-  
-                } else {
-                    document.getElementById("question-title").innerHTML = "Oops! Looks Like Your Accuracy Wasn't Great. Wanna Try Again?"
-document.getElementById("question-text").innerHTML = "Get at least four questions right in order to progress to the next level."
-document.getElementById("answer-input").style.display = "none"
-document.getElementById("check-btn").innerHTML = "Start Mastery Check"
-  mcChoices.forEach(i => {
-    i.style.display = "none"
-  })
-  document.querySelectorAll(".accuracyCircle").forEach(i => {
-    i.style.backgroundColor = color
-  })
-  document.getElementById("solution").style.display = "none"
-  document.getElementById("check-btn").style.display = "block"
-document.getElementById("check-btn").addEventListener("click", work)
-currentQuestion = 0
-shuffleArray(topicQ)
-correctCount = 0
-                }
-    } else if (currentQuestion < topicQ.length){
-                currentQuestion += 1
-                loadQuestion()
-        } 
-        
-})
-
-document.getElementById("question-title").innerHTML = "Let's Check Your Understanding!"
-document.getElementById("question-text").innerHTML = "Get at least four questions right in order to progress to the next level."
-document.getElementById("answer-input").style.display = "none"
-document.getElementById("check-btn").innerHTML = "Start Mastery Check"
-document.getElementById("check-btn").addEventListener("click", work)
-function work() {
-    document.querySelectorAll(".mc-choice").forEach(i => {
-        i.style.display = "block"
-    })
-    loadQuestion()
-    document.getElementById("check-btn").innerHTML = "Check Answer"
-    document.getElementById("check-btn").removeEventListener("click", work)
-    document.getElementById("check-btn").addEventListener("click", function(){
-        const userAnswer = document.getElementById("answer-input").value
-        const correctAnswer = topicQ[currentQuestion].answer
-        const solutionText = document.getElementById("solution-text")
-        const nextBtn = document.getElementById("next-btn")
-        const solution = document.getElementById("solution")
-        if (userAnswer === correctAnswer){
-                solutionText.innerHTML = "Correct!" + topicQ[currentQuestion].solution
-                document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor = "#88B0FF"
-                console.log(document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor)
-                correctCount += 1
-        } else {
-            solutionText.innerHTML = "Incorrect" + topicQ[currentQuestion].solution 
-            document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor = "#FFB192"   
-        }
-        solution.style.display = "block"
-        nextBtn.style.display = "block"
-        solutionText.style.display = "block"
-        MathJax.typesetPromise([solution]).catch(()=>{})
-})
-document.querySelectorAll(".accuracyCircle")[0].style.backgroundColor = color   
+    .eq('id', userId)  
+    }  
 }

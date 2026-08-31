@@ -2449,7 +2449,11 @@ star
     },
 ]
 
-
+questions.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
 // ---------- DOM Elements ----------
 const questionTitle = document.getElementById("question-title");
 const questionText = document.getElementById("question-text");
@@ -3413,6 +3417,11 @@ mediansQuestions.forEach(i => {
 })
 allQ.push(mediansQuestions[0])
 allQ.forEach(i => i.title = "Review Question")
+allQ.forEach(i => {
+    if (i.image) {
+        i.image = "images/" + i.image
+    }
+})
 // ---------- Shuffle Questions ----------
 shuffleArray(questions);
 currentQuestion = 0;

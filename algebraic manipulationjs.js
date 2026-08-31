@@ -8621,7 +8621,7 @@ addition.addEventListener("click", function(){
     reversePemdasSolutionText.style.display = "block"
 })
 subtraction.addEventListener("click", function(){
-    if (currentQuestionReversePEMDAS.answer = '+'){
+    if (currentQuestionReversePEMDAS.answer = '-'){
         reversePemdasSolution.style.display = "block"
         reversePemdasSolutionText.innerHTML = "Correct!" + " " + currentQuestionReversePEMDAS.explanation
     } else {
@@ -8632,7 +8632,7 @@ subtraction.addEventListener("click", function(){
     reversePemdasSolutionText.style.display = "block"
 })
 multiplication.addEventListener("click", function(){
-    if (currentQuestionReversePEMDAS.answer === '+'){
+    if (currentQuestionReversePEMDAS.answer === '\\times'){
         reversePemdasSolution.style.display = "block"
         reversePemdasSolutionText.innerHTML = "Correct! " + " " + currentQuestionReversePEMDAS.explanation
     } else {
@@ -8643,7 +8643,7 @@ multiplication.addEventListener("click", function(){
     reversePemdasSolutionText.style.display = "block"
 })
 division.addEventListener("click", function(){
-    if (currentQuestionReversePEMDAS.answer === '+'){
+    if (currentQuestionReversePEMDAS.answer === '\\div'){
         reversePemdasSolution.style.display = "block"
         reversePemdasSolutionText.innerHTML = "Correct!" + " " + currentQuestionReversePEMDAS.explanation
     } else {

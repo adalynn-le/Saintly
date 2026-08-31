@@ -8860,9 +8860,10 @@ function resetDemo() {
   btnNext.style.display = 'inline-block';
   render();
 }
-
-
+let prereqOne = false
 function handleNextStep() {
+   prereqOne = true
+   updateLesson()
   // Phase 0 -> Phase 1: Sort items
   if (phase === 0) {
     phase = 1;
@@ -8967,207 +8968,23 @@ function render() {
         medianVal = ((n1 + n2) / 2).toFixed(1);
         innerHTML += `Since the dataset size is even, two middle numbers remain (<strong>${n1}</strong> and <strong>${n2}</strong>). We find their average:<br><span class="math-text">(${n1} + ${n2}) / 2 = ${medianVal}</span>`;
       }
-      
-      expText.innerHTML = `<div class="result-box">${innerHTML}</div>`;
+
     }
   }
 }
-
-// Run component on load
 init();
-
-//--------------Final Question---------------
-const topicQ = [
-    {
-        title: "Review Question",
-        text: `How is a median different than the average of a dataset?`,
-        choices: ['\\(A) \\textup{ it includes outliers}\\)', '\\(B) \\textup{ it does not include outliers}\\)', '\\(C) \\textup{ it accounts for the entire range}\\)', '\\(D) \\textup{ it indicates how spread out a dataset is}\\)'],
-        answer: '\\(B) \\textup{ it does not include outliers}\\)',
-        solution: `<b>\\(B) \\textup{ it does not include outliers}\\)</b><p>A median only considers the numerical value of the middle element, rather than including each value. Thus, outliers have minimal importance.`,
-    },
-    {
-        title: 'Review Question',
-        text: `What should you do first when finding the median of a dataset?`,
-        choices: ['\\(A) \\textup{ cross out the first 2 values}\\)', '\\(B) \\textup{ cross out the first and last values}\\)', '\\(C) \\textup{ order the dataset in ascending order}\\)', '\\(D) \\textup{ Find the average of the dataset}\\)', '\\(E) \\textup{ Find the average of the middle two values}\\)'],
-        answer: '\\(C) \\textup{ order the dataset in ascending order}\\)',
-        solution: '\\(C) \\textup{ order the dataset in ascending order}\\)',
-    },
-    {
-        title: 'Review Question',
-        text: `What is the median of \\(2, 6, 4, 3\\)?`,
-        choices: ['\\(A) 2\\)', '\\(B) 3\\)', '\\(C) 3 \\frac{1}{2}\\)', '\\(D) 3 \\frac{3}{4}\\)', '\\(E) 5\\)'],
-        answer: '\\(E) 5\\)',
-        solution: `<b>\\(E) 5\\)</b>
-        $$
-        2, 3, 4, 6
-        $$
-        $$
-        3, 4
-        $$
-        \\frac{3+4}{2}=3.5
-        $$
-        `,
-    },
-    {
-        title: "Review Question",
-        text: 'What is the median of \\(2, 8, 5, 4, 3\\)?',
-        choices: ['\\(A) 2\\)', '\\(B) 3\\)', '\\(C) 4\\)', '\\(D) 5\\)', '\\(E) 8\\)'],
-        answer: '\\(C) 4\\)',
-        solution: `<b>\\(C) 4\\)</b>
-        $$
-        2, 3, 4, 5, 8
-        $$
-        $$
-        3, 4, 5
-        $$
-        $$
-        4
-        $$`,
-    },
-    {
-        title: "Review Question",
-        text: `Is the mean or median of a data set larger?`,
-        choices: ['\\(A) \\textup{ always the mean}\\)', '\\(B) \\textup{ always the median}\\)', '\\(C) \\textup{ there is no consistent relationship}\\)'],
-        answer: '\\(C) \\textup{ there is no consistent relationship}\\)',
-        solution: `<b>\\(C) \\textup{ there is no consistent relationship}\\)</b><p>The median is simply reliant on the visual center whereas the mean accounts for all values, and is susceptible to outliers.`
-    }
-]
-topicQ.forEach(i => {
-    i.type = 'mc'
-})
-let currentQuestion = 0
-let accuracy = 0
-console.log(topicQ.length)
-let correctCount = 0
-shuffleArray(topicQ)
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
-const mcContainer = document.getElementById("mc-container");
-const questionChoices = document.getElementById("mc-container")
-function loadQuestion(){
-        let topicQuestion = topicQ[currentQuestion]
-        document.getElementById("question-title").innerHTML = topicQuestion.title
-        document.getElementById("question-text").innerHTML = topicQuestion.text
-        mcChoices.forEach(btn => btn.disabled = false)
-            document.getElementById("solution-text").innerHTML = ""
-    document.getElementById("solution").style.display = "none"
-    document.getElementById("next-btn").style.display = "none"
-    
-    document.getElementById("answer-input").value = ""
-            document.getElementById("answer-input").style.display = "none"
-    document.getElementById("check-btn").style.display = "none"
-    mcContainer.classList.add("hidden")
-
-    if (!topicQuestion.type || topicQuestion.type === "fr") {
-        document.getElementById("answer-input").style.display = "inline-block"
-        document.getElementById("check-btn").style.display = "inline-block"
-    }
-    if (topicQuestion.type === "mc") {
-        mcContainer.classList.remove("hidden")
-
-mcChoices.forEach((btn, i) => {
-            btn.style.display = "block"
-            if (topicQuestion.choices[i] == null) {
-                btn.style.display = "none"
-            } else {
-                          btn.textContent = topicQuestion.choices[i];
-            btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
-            }
-
-        });
-    }
-    if (window.MathJax) {
-        MathJax.typesetPromise([document.getElementById("question-text")]).catch(()=>{})
-        MathJax.typesetPromise([questionChoices]).catch(()=>{})
-    }
-}
-function handleMCAnswer(choice) {
-    document.getElementById("answer-input").value = choice; // reuse existing checker
-    document.getElementById("check-btn").click();
-mcChoices.forEach(btn => btn.disabled = true);
-}
-
-document.getElementById("next-btn").addEventListener("click", async function() {
-        if (currentQuestion === 4){
-               if (correctCount > 3){
+async function updateLesson() {
                         const { data: { session }, error: sessionError } = await supabase.auth.getSession();
   if (sessionError || !session) {
     return
   }
-
+  if ((prereqOne == true)){
   const userId = session.user.id;
-  const { data, error } = await supabase
+    const { data, error } = await supabase
     .from('profiles')
     .update({
-        statisticsLevel: 'completed'
+        mediansLessonCompleted: true
     })
-    .eq('id', userId)
-
-  if (error) {
-    console.error("Failed to sync stats to cloud database:", error.message);
-  }
-  document.getElementById('question-title').innerHTML = "Leveled Up!"
-  document.getElementById("question-text").innerHTML = "Completed this pathway!"
-  mcChoices.forEach(i => {
-    i.style.display = "none"
-  })
-    document.getElementById('solution').style.display = "none";
-  
-                } else {
-                    document.getElementById("question-title").innerHTML = "Oops! Looks Like Your Accuracy Wasn't Great. Wanna Try Again?"
-document.getElementById("question-text").innerHTML = "Get at least four questions right in order to progress to the next level."
-document.getElementById("answer-input").style.display = "none"
-document.getElementById("check-btn").innerHTML = "Start Mastery Check"
-  mcChoices.forEach(i => {
-    i.style.display = "none"
-  })
-  document.querySelectorAll(".accuracyCircle").forEach(i => {
-    i.style.backgroundColor = color
-  })
-  document.getElementById("solution").style.display = "none"
-  document.getElementById("check-btn").style.display = "block"
-document.getElementById("check-btn").addEventListener("click", work)
-currentQuestion = 0
-shuffleArray(topicQ)
-correctCount = 0
-                }
-    } else if (currentQuestion < topicQ.length){
-                currentQuestion += 1
-                loadQuestion()
-        } 
-        
-})
-
-document.getElementById("question-title").innerHTML = "Let's Check Your Understanding!"
-document.getElementById("question-text").innerHTML = "Get at least four questions right in order to progress to the next level."
-document.getElementById("answer-input").style.display = "none"
-document.getElementById("check-btn").innerHTML = "Start Mastery Check"
-document.getElementById("check-btn").addEventListener("click", work)
-function work() {
-    document.querySelectorAll(".mc-choice").forEach(i => {
-        i.style.display = "block"
-    })
-    loadQuestion()
-    document.getElementById("check-btn").innerHTML = "Check Answer"
-    document.getElementById("check-btn").removeEventListener("click", work)
-    document.getElementById("check-btn").addEventListener("click", function(){
-        const userAnswer = document.getElementById("answer-input").value
-        const correctAnswer = topicQ[currentQuestion].answer
-        const solutionText = document.getElementById("solution-text")
-        const nextBtn = document.getElementById("next-btn")
-        const solution = document.getElementById("solution")
-        if (userAnswer === correctAnswer){
-                solutionText.innerHTML = "Correct!" + topicQ[currentQuestion].solution
-                document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor = "#88B0FF"
-                console.log(document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor)
-                correctCount += 1
-        } else {
-            solutionText.innerHTML = "Incorrect" + topicQ[currentQuestion].solution 
-            document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor = "#FFB192"   
-        }
-        solution.style.display = "block"
-        nextBtn.style.display = "block"
-        solutionText.style.display = "block"
-        MathJax.typesetPromise([solution]).catch(()=>{})
-})
-document.querySelectorAll(".accuracyCircle")[0].style.backgroundColor = color   
+    .eq('id', userId) 
+    } 
 }

@@ -1,4 +1,5 @@
- const helpPannel = document.getElementById("helpPannel")
+
+  const helpPannel = document.getElementById("helpPannel")
 const { createClient } = window.supabase;
 const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
 const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
@@ -265,8 +266,9 @@ if (resetBtn) {
 const toggleBrightness = document.getElementById("brightness")
 const carouselLight = document.querySelectorAll("carousel-logo-light")
 const carouselDark = document.querySelectorAll("carousel-logo-dark")
-let colorModeTrue = localStorage.getItem("colorMode")
 let colorMode = 'light'
+let colorModeTrue = localStorage.getItem("colorMode")
+
 let color = 'rgb(239, 237, 247)'
 console.log(colorModeTrue)
 if  (colorModeTrue !== false){
@@ -339,6 +341,7 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+import Chart from 'https://esm.sh/chart.js/auto';
 const questions = [
     {
 title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
@@ -8788,386 +8791,118 @@ allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
 
 
-//--------------------------Actual Functions fr fr-------------------------
-// Data Presets
-const PRESET_ODD = [12, 3, 7, 19, 5, 8, 14];
-const PRESET_EVEN = [8, 2, 15, 11, 4, 9];
 
-// State Machine Variables
-let inputMode = 'odd'; // 'odd' | 'even' | 'custom'
-let phase = 0;         // 0: Unsorted, 1: Sorted, 2: Crossing, 3: Done
-let rawData = [];
-let sortedData = [];
-let leftPointer = -1;
-let rightPointer = -1;
-let medianIndices = [];
-
-// DOM Elements
-const numRow = document.getElementById('number-row');
-const boardLabel = document.getElementById('board-label');
-const expText = document.getElementById('explanation-text');
-const btnNext = document.getElementById('btn-next');
-const btnReset = document.getElementById('btn-reset');
-const customArea = document.getElementById('custom-input-area');
-const customInput = document.getElementById('custom-input');
-
-// Initialize Application
-function init() {
-  setupEventListeners();
-  resetDemo();
-}
-
-function setupEventListeners() {
-  document.getElementById('btn-odd').addEventListener('click', (e) => switchMode('odd', e.target));
-  document.getElementById('btn-even').addEventListener('click', (e) => switchMode('even', e.target));
-  document.getElementById('btn-custom').addEventListener('click', (e) => switchMode('custom', e.target));
-  document.getElementById('btn-apply').addEventListener('click', resetDemo);
-  btnNext.addEventListener('click', handleNextStep);
-  btnReset.addEventListener('click', resetDemo);
-}
-
-function switchMode(mode, targetBtn) {
-  inputMode = mode;
-  document.querySelectorAll('.radio-btn').forEach(btn => btn.classList.remove('active'));
-  targetBtn.classList.add('active');
-  
-  if (mode === 'custom') {
-    customArea.classList.remove('hidden');
-  } else {
-    customArea.classList.add('hidden');
-  }
-  resetDemo();
-}
-
-function resetDemo() {
-  phase = 0;
-  leftPointer = -1;
-  rightPointer = -1;
-  medianIndices = [];
-  
-  if (inputMode === 'odd') {
-    rawData = [...PRESET_ODD];
-  } else if (inputMode === 'even') {
-    rawData = [...PRESET_EVEN];
-  } else {
-    rawData = customInput.value
-      .split(',')
-      .map(num => parseInt(num.trim(), 10))
-      .filter(num => !isNaN(num));
-  }
-  
-  sortedData = [...rawData].sort((a, b) => a - b);
-  btnNext.style.display = 'inline-block';
-  render();
-}
-
-
-function handleNextStep() {
-  // Phase 0 -> Phase 1: Sort items
-  if (phase === 0) {
-    phase = 1;
-    render();
-    return;
-  }
-
-  // Phase 1 -> Phase 2: Initialize Pointers
-  if (phase === 1) {
-    phase = 2;
-    leftPointer = 0;
-    rightPointer = sortedData.length - 1;
-    render();
-    return;
-  }
-
-  // Phase 2: Run through inward step execution
-  if (phase === 2) {
-    const nextLeft = leftPointer + 1;
-    const nextRight = rightPointer - 1;
-
-    if (nextLeft > nextRight) {
-      medianIndices = [leftPointer];
-      phase = 3;
-    } else if (nextLeft === nextRight) {
-      medianIndices = [nextLeft];
-      phase = 3;
-    } else if (nextRight - nextLeft === 1) {
-      leftPointer = nextLeft;
-      rightPointer = nextRight;
-      medianIndices = [nextLeft, nextRight];
-      phase = 3;
-    } else {
-      leftPointer = nextLeft;
-      rightPointer = nextRight;
+//----------------------Factor Tree----------------------------------
+function getPrimeFactors(n) {
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return [i, n / i];
     }
-    render();
-  }
+    return null; // It's prime
 }
 
-function render() {
-  numRow.innerHTML = '';
-  
-  if (phase === 0) {
-    boardLabel.textContent = 'Current Raw Dataset (Unsorted):';
-    btnNext.textContent = 'Sort Dataset';
+function createNode(value, isPrime = false) {
+    const div = document.createElement('div');
+    div.className = isPrime ? 'node prime' : 'node';
+    div.innerHTML = `<span>${value}</span>`;
+    return div;
+}
+
+function buildTree(n, container) {
+    const factors = getPrimeFactors(n);
     
-    rawData.forEach(num => {
-      const box = document.createElement('div');
-      box.className = 'number-box';
-      box.textContent = num;
-      numRow.appendChild(box);
-    });
-  } else {
-    if (phase === 1) {
-      boardLabel.textContent = 'Step 1: Sort the data from least to greatest';
-      btnNext.textContent = 'Start Crossing Out';
-    } else if (phase === 2) {
-      boardLabel.textContent = 'Step 2: Cross out values from the outside edges';
-      btnNext.textContent = 'Cross Out Next Pair';
+    if (!factors) {
+        // Prime leaf node
+        container.appendChild(createNode(n, true));
+        return;
     }
 
-    sortedData.forEach((num, idx) => {
-      const box = document.createElement('div');
-      box.className = 'number-box';
-      
-      const span = document.createElement('span');
-      span.textContent = num;
-      box.appendChild(span);
+    const parent = createNode(n);
+    const branchContainer = document.createElement('div');
+    branchContainer.className = 'branches';
 
-      // Evaluate visual states based on pointer calculations
-      if (phase >= 2 && idx < leftPointer) {
-        box.classList.add('crossed');
-      } else if (phase >= 2 && idx > rightPointer) {
-        box.classList.add('crossed');
-      } else if (phase === 2 && idx === leftPointer) {
-        box.classList.add('current');
-        box.insertAdjacentHTML('beforeend', '<div class="sub-label">Min</div>');
-      } else if (phase === 2 && idx === rightPointer) {
-        box.classList.add('current');
-        box.insertAdjacentHTML('beforeend', '<div class="sub-label">Max</div>');
-      } else if (phase === 3 && medianIndices.includes(idx)) {
-        box.classList.add('median-active');
-        box.insertAdjacentHTML('beforeend', '<div class="sub-label">Median</div>');
-      }
-      
-      numRow.appendChild(box);
-    });
+    const left = document.createElement('div');
+    const right = document.createElement('div');
 
-    if (phase === 3) {
-      btnNext.style.display = 'none';
-      const isOdd = sortedData.length % 2 !== 0;
-      let medianVal;
-      let innerHTML = `<strong>Process Complete!</strong><br>`;
-      
-      if (isOdd) {
-        medianVal = sortedData[medianIndices[0]];
-        innerHTML += `Since the dataset size is odd, exactly one middle number remains. The median is <strong>${medianVal}</strong>.`;
-      } else {
-        const n1 = sortedData[medianIndices[0]];
-        const n2 = sortedData[medianIndices[1]];
-        medianVal = ((n1 + n2) / 2).toFixed(1);
-        innerHTML += `Since the dataset size is even, two middle numbers remain (<strong>${n1}</strong> and <strong>${n2}</strong>). We find their average:<br><span class="math-text">(${n1} + ${n2}) / 2 = ${medianVal}</span>`;
-      }
-      
-      expText.innerHTML = `<div class="result-box">${innerHTML}</div>`;
-    }
-  }
+    buildTree(factors[0], left);
+    buildTree(factors[1], right);
+
+    branchContainer.appendChild(left);
+    branchContainer.appendChild(right);
+    
+    container.appendChild(parent);
+    container.appendChild(branchContainer);
 }
-
-// Run component on load
-init();
-
-//--------------Final Question---------------
-const topicQ = [
-    {
-        title: "Review Question",
-        text: `How is a median different than the average of a dataset?`,
-        choices: ['\\(A) \\textup{ it includes outliers}\\)', '\\(B) \\textup{ it does not include outliers}\\)', '\\(C) \\textup{ it accounts for the entire range}\\)', '\\(D) \\textup{ it indicates how spread out a dataset is}\\)'],
-        answer: '\\(B) \\textup{ it does not include outliers}\\)',
-        solution: `<b>\\(B) \\textup{ it does not include outliers}\\)</b><p>A median only considers the numerical value of the middle element, rather than including each value. Thus, outliers have minimal importance.`,
-    },
-    {
-        title: 'Review Question',
-        text: `What should you do first when finding the median of a dataset?`,
-        choices: ['\\(A) \\textup{ cross out the first 2 values}\\)', '\\(B) \\textup{ cross out the first and last values}\\)', '\\(C) \\textup{ order the dataset in ascending order}\\)', '\\(D) \\textup{ Find the average of the dataset}\\)', '\\(E) \\textup{ Find the average of the middle two values}\\)'],
-        answer: '\\(C) \\textup{ order the dataset in ascending order}\\)',
-        solution: '\\(C) \\textup{ order the dataset in ascending order}\\)',
-    },
-    {
-        title: 'Review Question',
-        text: `What is the median of \\(2, 6, 4, 3\\)?`,
-        choices: ['\\(A) 2\\)', '\\(B) 3\\)', '\\(C) 3 \\frac{1}{2}\\)', '\\(D) 3 \\frac{3}{4}\\)', '\\(E) 5\\)'],
-        answer: '\\(E) 5\\)',
-        solution: `<b>\\(E) 5\\)</b>
-        $$
-        2, 3, 4, 6
-        $$
-        $$
-        3, 4
-        $$
-        \\frac{3+4}{2}=3.5
-        $$
-        `,
-    },
-    {
-        title: "Review Question",
-        text: 'What is the median of \\(2, 8, 5, 4, 3\\)?',
-        choices: ['\\(A) 2\\)', '\\(B) 3\\)', '\\(C) 4\\)', '\\(D) 5\\)', '\\(E) 8\\)'],
-        answer: '\\(C) 4\\)',
-        solution: `<b>\\(C) 4\\)</b>
-        $$
-        2, 3, 4, 5, 8
-        $$
-        $$
-        3, 4, 5
-        $$
-        $$
-        4
-        $$`,
-    },
-    {
-        title: "Review Question",
-        text: `Is the mean or median of a data set larger?`,
-        choices: ['\\(A) \\textup{ always the mean}\\)', '\\(B) \\textup{ always the median}\\)', '\\(C) \\textup{ there is no consistent relationship}\\)'],
-        answer: '\\(C) \\textup{ there is no consistent relationship}\\)',
-        solution: `<b>\\(C) \\textup{ there is no consistent relationship}\\)</b><p>The median is simply reliant on the visual center whereas the mean accounts for all values, and is susceptible to outliers.`
+function generateTree() {
+    const val = parseInt(document.getElementById('factorInput').value);
+    const output = document.getElementById('treeOutput');
+    output.innerHTML = ''; 
+    if (val > 1) {
+        buildTree(val, output);
+        // Small timeout ensures the browser has painted the nodes before we measure them
+        setTimeout(drawLines, 50); 
     }
-]
-topicQ.forEach(i => {
-    i.type = 'mc'
+}
+let prereqOne = false
+document.getElementById("factorize").addEventListener("click", function() {
+    generateTree()
+    prereqOne = true
+    updateLesson()
 })
-let currentQuestion = 0
-let accuracy = 0
-console.log(topicQ.length)
-let correctCount = 0
-shuffleArray(topicQ)
-const mcChoices = Array.from(document.querySelectorAll(".mc-choice"))
-const mcContainer = document.getElementById("mc-container");
-const questionChoices = document.getElementById("mc-container")
-function loadQuestion(){
-        let topicQuestion = topicQ[currentQuestion]
-        document.getElementById("question-title").innerHTML = topicQuestion.title
-        document.getElementById("question-text").innerHTML = topicQuestion.text
-        mcChoices.forEach(btn => btn.disabled = false)
-            document.getElementById("solution-text").innerHTML = ""
-    document.getElementById("solution").style.display = "none"
-    document.getElementById("next-btn").style.display = "none"
+function drawLines() {
+    const treeContainer = document.getElementById('treeOutput');
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     
-    document.getElementById("answer-input").value = ""
-            document.getElementById("answer-input").style.display = "none"
-    document.getElementById("check-btn").style.display = "none"
-    mcContainer.classList.add("hidden")
+    // Make the SVG cover the entire tree area
+    svg.style.position = 'absolute';
+    svg.style.top = '0';
+    svg.style.left = '0';
+    svg.style.width = '100%';
+    svg.style.height = '100%';
+    svg.style.pointerEvents = 'none'; // So you can still click nodes
+    treeContainer.style.position = 'relative'; 
+    treeContainer.appendChild(svg);
 
-    if (!topicQuestion.type || topicQuestion.type === "fr") {
-        document.getElementById("answer-input").style.display = "inline-block"
-        document.getElementById("check-btn").style.display = "inline-block"
-    }
-    if (topicQuestion.type === "mc") {
-        mcContainer.classList.remove("hidden")
+    const nodes = treeContainer.querySelectorAll('.node');
+    
+    nodes.forEach(node => {
+        const branches = node.nextElementSibling;
+        if (branches && branches.classList.contains('branches')) {
+            const children = branches.querySelectorAll(':scope > div > .node');
+            
+            children.forEach(child => {
+                const parentRect = node.getBoundingClientRect();
+                const childRect = child.getBoundingClientRect();
+                const containerRect = treeContainer.getBoundingClientRect();
 
-mcChoices.forEach((btn, i) => {
-            btn.style.display = "block"
-            if (topicQuestion.choices[i] == null) {
-                btn.style.display = "none"
-            } else {
-                          btn.textContent = topicQuestion.choices[i];
-            btn.onclick = () => handleMCAnswer(topicQuestion.choices[i])
-            }
-
-        });
-    }
-    if (window.MathJax) {
-        MathJax.typesetPromise([document.getElementById("question-text")]).catch(()=>{})
-        MathJax.typesetPromise([questionChoices]).catch(()=>{})
-    }
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                
+                // Calculate coordinates relative to the container
+                line.setAttribute("x1", parentRect.left + parentRect.width / 2 - containerRect.left);
+                line.setAttribute("y1", parentRect.bottom - containerRect.top);
+                line.setAttribute("x2", childRect.left + childRect.width / 2 - containerRect.left);
+                line.setAttribute("y2", childRect.top - containerRect.top);
+                
+                line.setAttribute("stroke", "#88B0FF");
+                line.setAttribute("stroke-width", "2");
+                svg.appendChild(line);
+            });
+        }
+    });
 }
-function handleMCAnswer(choice) {
-    document.getElementById("answer-input").value = choice; // reuse existing checker
-    document.getElementById("check-btn").click();
-mcChoices.forEach(btn => btn.disabled = true);
-}
 
-document.getElementById("next-btn").addEventListener("click", async function() {
-        if (currentQuestion === 4){
-               if (correctCount > 3){
+async function updateLesson() {
                         const { data: { session }, error: sessionError } = await supabase.auth.getSession();
   if (sessionError || !session) {
     return
   }
 
   const userId = session.user.id;
-  const { data, error } = await supabase
+        if ((prereqOne == true)){
+    const { data, error } = await supabase
     .from('profiles')
     .update({
-        statisticsLevel: 'completed'
+        modularArithmeticLessonCompleted: true
     })
-    .eq('id', userId)
-
-  if (error) {
-    console.error("Failed to sync stats to cloud database:", error.message);
-  }
-  document.getElementById('question-title').innerHTML = "Leveled Up!"
-  document.getElementById("question-text").innerHTML = "Completed this pathway!"
-  mcChoices.forEach(i => {
-    i.style.display = "none"
-  })
-    document.getElementById('solution').style.display = "none";
-  
-                } else {
-                    document.getElementById("question-title").innerHTML = "Oops! Looks Like Your Accuracy Wasn't Great. Wanna Try Again?"
-document.getElementById("question-text").innerHTML = "Get at least four questions right in order to progress to the next level."
-document.getElementById("answer-input").style.display = "none"
-document.getElementById("check-btn").innerHTML = "Start Mastery Check"
-  mcChoices.forEach(i => {
-    i.style.display = "none"
-  })
-  document.querySelectorAll(".accuracyCircle").forEach(i => {
-    i.style.backgroundColor = color
-  })
-  document.getElementById("solution").style.display = "none"
-  document.getElementById("check-btn").style.display = "block"
-document.getElementById("check-btn").addEventListener("click", work)
-currentQuestion = 0
-shuffleArray(topicQ)
-correctCount = 0
-                }
-    } else if (currentQuestion < topicQ.length){
-                currentQuestion += 1
-                loadQuestion()
-        } 
-        
-})
-
-document.getElementById("question-title").innerHTML = "Let's Check Your Understanding!"
-document.getElementById("question-text").innerHTML = "Get at least four questions right in order to progress to the next level."
-document.getElementById("answer-input").style.display = "none"
-document.getElementById("check-btn").innerHTML = "Start Mastery Check"
-document.getElementById("check-btn").addEventListener("click", work)
-function work() {
-    document.querySelectorAll(".mc-choice").forEach(i => {
-        i.style.display = "block"
-    })
-    loadQuestion()
-    document.getElementById("check-btn").innerHTML = "Check Answer"
-    document.getElementById("check-btn").removeEventListener("click", work)
-    document.getElementById("check-btn").addEventListener("click", function(){
-        const userAnswer = document.getElementById("answer-input").value
-        const correctAnswer = topicQ[currentQuestion].answer
-        const solutionText = document.getElementById("solution-text")
-        const nextBtn = document.getElementById("next-btn")
-        const solution = document.getElementById("solution")
-        if (userAnswer === correctAnswer){
-                solutionText.innerHTML = "Correct!" + topicQ[currentQuestion].solution
-                document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor = "#88B0FF"
-                console.log(document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor)
-                correctCount += 1
-        } else {
-            solutionText.innerHTML = "Incorrect" + topicQ[currentQuestion].solution 
-            document.querySelectorAll(".accuracyCircle")[currentQuestion].style.backgroundColor = "#FFB192"   
-        }
-        solution.style.display = "block"
-        nextBtn.style.display = "block"
-        solutionText.style.display = "block"
-        MathJax.typesetPromise([solution]).catch(()=>{})
-})
-document.querySelectorAll(".accuracyCircle")[0].style.backgroundColor = color   
+    .eq('id', userId)  
+    }  
 }

@@ -8,7 +8,6 @@ let sidebar;
 let width;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Capture layout sizes precisely when the DOM structure is fully loaded
   width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   
   const sidebarPlaceholder = document.getElementById('sidebarPlaceholder');
@@ -97,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 2. Safely grab references AFTER innerHTML layout injection completes
   sidebar = document.getElementById('sidebar');
   
   document.getElementById('side-bar-toggle')?.addEventListener('click', toggleSidebar);
@@ -108,18 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMainMargin();
   updateTopBar();
 
-  // 3. MOVED INSIDE DOMCONTENTLOADED: Run the auth state stream now that the DOM guarantees elements exist
-// Run the auth state stream now that the DOM guarantees elements exist
   supabase.auth.onAuthStateChange(async (event, session) => {
     const link = document.getElementById("yourDashLink");
 
-    if (!link) return; // Prevent console runtime errors if missing
+    if (!link) return; 
 
     if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
-      // Switch from 'block' to 'flex' to unlock alignment properties
       link.style.setProperty('display', 'flex', 'important');
-      link.style.setProperty('align-items', 'center', 'important');
-      // If the icon and text are glued together, add a gap matching your other links
+      link.style.setProperty('align-items', 'center', 'important')
       link.style.setProperty('gap', '5px', 'important'); 
       
       console.log("Sidebar Auth: User Session Found -> Displaying Dashboard Link");

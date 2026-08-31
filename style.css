@@ -3831,3 +3831,85 @@ input[type="range"]:focus{
   'opsz' 24;
   color: var(--primary-color)
 }
+#monthRight, #monthLeft{
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24;
+  color: var(--border-color)
+}
+#month, .calendarDayNumber{
+  color: light-dark(#c4c0ce, #7e7d8a)  !important;
+}
+.calendarDayBox{
+  border: 1px solid light-dark(#c4c0ce, #7e7d8a) !important;
+  flex: 1;
+  width: 600px;
+  padding: 10px;
+  z-index: 10000 !important;
+}
+.calendarLessonClosed{
+  background-color: var(--highlight-color);
+  border-radius: 5px;
+  height: fit-content;
+  width: 210px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  display: "none";
+}
+.colorAccentClosed{
+  background-color: var(--primary-color);
+  border-radius: 1px;
+  width: 1.5px;
+  height: 15px;
+  margin-left: 5px;
+}
+.lessonTitle{
+  color: var(--primary-color);
+  font-size: 15px !important;
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
+  margin:0;
+}
+
+.calendarPracticeClosed{
+  background-color: var(--highlight-color-orange);
+  border-radius: 5px;
+  height: fit-content;
+  width: 210px;
+}
+.colorPracticeClosed{
+  background-color: var(--accent-color);
+  border-radius: 1px;
+  width: 1.5px;
+  height: 15px;
+  margin-left: 5px;
+}
+.practiceTitle{
+  color: var(--accent-color);
+  font-size: 15px !important;
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
+  margin:0;
+}
+.notInMonth{
+  color: var(--border-color) !important;
+  border-color: var(--border-color) !important
+}
+.notInMonth .calendarDayNumber{
+  color: var(--border-color) !important
+}
+.calendarLessonTextDesc{
+  color: var(--primary-color);
+  font-size: 12px;
+  line-height: 0.2;
+    margin-left: 17.5px !important;
+  
+}
+.calendarLessonTextDesc a{
+  text-decoration: underline !important;
+
+}
