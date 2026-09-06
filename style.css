@@ -3847,22 +3847,25 @@ input[type="range"]:focus{
   flex: 1;
   width: 600px;
   padding: 10px;
-  z-index: 10000 !important;
+  z-index: 5 !important;
+  min-height: 175px !important;
 }
 .calendarLessonClosed{
   background-color: var(--highlight-color);
   border-radius: 5px;
-  height: fit-content;
   width: 210px;
   margin-top: 10px;
   margin-bottom: 4px;
   display: "none";
+  height: fit-content;
+  padding-top: -30px !important;
+  padding-bottom: -30px !important;
 }
 .colorAccentClosed{
   background-color: var(--primary-color);
   border-radius: 1px;
-  width: 1.5px;
-  height: 15px;
+  width: 2px;
+  height: 27px;
   margin-left: 5px;
 }
 .lessonTitle{
@@ -3877,14 +3880,15 @@ input[type="range"]:focus{
 .calendarPracticeClosed{
   background-color: var(--highlight-color-orange);
   border-radius: 5px;
-  height: fit-content;
+  height: 50px;
+  padding-top: 10px;
   width: 210px;
 }
 .colorPracticeClosed{
   background-color: var(--accent-color);
   border-radius: 1px;
-  width: 1.5px;
-  height: 15px;
+  width: 2px;
+  height: 27px;
   margin-left: 5px;
 }
 .practiceTitle{
@@ -3912,4 +3916,7 @@ input[type="range"]:focus{
 .calendarLessonTextDesc a{
   text-decoration: underline !important;
 
+}
+.accountPannel{
+  z-index: 1000000000000000 !important
 }

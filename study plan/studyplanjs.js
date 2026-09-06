@@ -1,4 +1,5 @@
 const helpPannel = document.getElementById("helpPannel")
+let practiceDates = [{}]
 const { createClient } = window.supabase;
 const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
 const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
@@ -8,33 +9,7 @@ let accountTrue = false
 let accountBtn = document.getElementById("accountBtn")
 let accountPannel = document.getElementById("accountPannel")
 let overlay = document.getElementById("overlay")
-accountBtn.addEventListener("click", function () {
-        let account = true
-
-    document.getElementById("no-account").addEventListener("click", function() {
-    if (account === false){
-        account = true
-        document.getElementById("login").style.display = "block"
-        document.getElementById("signup").style.display = "none"
-                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
-    } else {
-        document.getElementById('login').style.display = "none"
-        account = false
-        document.getElementById("signup").style.display = "block"
-        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
-    }
-    })
-    helpPannel.style.display  = "none"
-    if (accountTrue === false){
-        accountPannel.style.display = "block"
-        overlay.style.display = "block"
-        accountTrue = true
-    } else {
-        accountPannel.style.display = "none"
-        overlay.style.display = "none"
-        accountTrue = false
-    }
-})
+let account = true
 overlay.addEventListener("click", function(){
     if (helpOn === true){
         helpPannel.style.display = "none";
@@ -52,7 +27,7 @@ overlay.addEventListener("click", function(){
 async function loadUserStats(userId) {
   const { data: profile, error } = await supabase
     .from('profiles')
-   .select('id, username')
+   .select()
    .eq('id', userId)
 
   if (error) {
@@ -61,16 +36,25 @@ async function loadUserStats(userId) {
   }
 
   if (profile) {
-    console.log(profile)
     let userProfile = profile[0]
-    console.log(userProfile.username)
     document.getElementById("username-display").innerHTML = userProfile.username
     document.getElementById("btn-dashboard").innerHTML = userProfile.username
-  } 
+        if (userProfile.curriculum !== null){
+    practiceDates = userProfile.curriculum || [{}]
+    practiceDates.forEach(i => {
+         if (i.lesson && typeof i.lesson === "object") {
+        i.lesson.completed = userProfile[`${i.lesson.supabaseCallStr}LessonCompleted`];
+         }
+    })
+    loadCalendar(8)
+        document.getElementById("diagnosticPlannerContainer").style.display = "none"
+    } else {
+    }
+}
+loadTopModal()
 }
 const loginBtn = document.getElementById("btn-login");
 loginBtn.addEventListener("click", async () => {
-  console.log("clicked")
     const email = document.getElementById("login-email").value.trim()
     const password = document.getElementById("login-password").value
     if (!email || !password) {
@@ -102,7 +86,6 @@ const logoutBtn = document.getElementById('btn-logout');
 
 logoutBtn.addEventListener('click', async () => {
             document.getElementById("login").style.display = "block"
-  console.log('logging out')
   const { error } = await supabase.auth.signOut();
 
   if (error) {
@@ -162,6 +145,7 @@ document.getElementById("btn-signup").addEventListener("click", async () => {
       { 
         id: data.user.id, 
         username: username, 
+        curriculum: null
       }
     ]);
     
@@ -176,7 +160,6 @@ document.getElementById("btn-signup").addEventListener("click", async () => {
     return
   }
 });
-console.log(supabase)
 
 
 
@@ -191,17 +174,14 @@ supabase.auth.onAuthStateChange(async (event, session) => {
   const deleteAccount = document.getElementById("btn-delete-account")
   const usernameDisplayModal = document.getElementById("btn-dashboard")
   if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
-    console.log("Secure adaptive practice session discovered for:", session.user.email);
     if (logoutBtn) logoutBtn.style.display = 'block';
     if (login) login.style.display = "none";
-    console.log("login goes invisible")
     if (createAccount) createAccount.style.display = "none"
     if (deleteAccount) deleteAccount.style.display = "block"
     if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
   const { data: profile, error } = await supabase
 loadUserStats(session.user.id)
   } else  {
-    console.log("No user session found. Reverting adaptive practice to Guest defaults.");
     if (typeof runDiagnostic === "function")
     
     if (logoutBtn) logoutBtn.style.display = 'none';
@@ -366,37 +346,37 @@ let satMinutes = 0
 let sunMinutes = 0
 let intensity = 0
 function updateSliderMon() {
-    monMinutesElement = document.getElementById("monday").value
+    const monMinutesElement = document.getElementById("monday").value
     document.getElementById("mondayLabel").innerHTML = "Monday: " + monMinutesElement + " Minutes"
     monMinutes = parseInt(monMinutesElement)
 }
 function updateSliderTue() {
-    tueMinutesElement = document.getElementById("tuesday").value
+    const tueMinutesElement = document.getElementById("tuesday").value
     document.getElementById("tuesdayLabel").innerHTML = "Tuesday: " + tueMinutesElement + " Minutes"
     tueMinutes= parseInt(tueMinutesElement)
 }
 function updateSliderWed() {
-    wedMinutesElement = document.getElementById("wednesday").value
+    const wedMinutesElement = document.getElementById("wednesday").value
     document.getElementById("wednesdayLabel").innerHTML = "Wednesday: " + wedMinutesElement + " Minutes"
     wedMinutes = parseInt(wedMinutesElement)
 }
 function updateSliderThu() {
-    thuMinutesElement = document.getElementById("thursday").value
+    const thuMinutesElement = document.getElementById("thursday").value
     document.getElementById("thursdayLabel").innerHTML = "Thursday: " + thuMinutesElement + " Minutes"
     thuMinutes = parseInt(thuMinutesElement)
 }
 function updateSliderFri() {
-    friMinutesElement = document.getElementById("friday").value
+    const friMinutesElement = document.getElementById("friday").value
     document.getElementById("fridayLabel").innerHTML = "Friday: " + friMinutesElement + " Minutes"
     friMinutes = parseInt(friMinutesElement)    
 }
 function updateSliderSat() {
-    satMinutesElement = document.getElementById("saturday").value
+    const satMinutesElement = document.getElementById("saturday").value
     document.getElementById("saturdayLabel").innerHTML = "Saturday: " + satMinutesElement + " Minutes"
     satMinutes = parseInt(satMinutesElement)
 }
 function updateSliderSun() {
-    sunMinutesElement = document.getElementById("sunday").value
+    const sunMinutesElement = document.getElementById("sunday").value
     document.getElementById("sundayLabel").innerHTML = "Sunday: " + sunMinutesElement + " Minutes"
     sunMinutes = parseInt(sunMinutesElement)
 }
@@ -9295,6 +9275,15 @@ probabilityQ.forEach(i => {
         i.image = "images/" + i.image
     }
 })
+curriculum.forEach(i => {
+        i.completed = false
+        i.supabaseCallStr = toCamelCase(i.id)
+})
+function toCamelCase(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]+(.)/g, (match, char) => char.toUpperCase());
+}
 allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
@@ -9303,13 +9292,13 @@ curriculum.forEach(i => {
     let topicArray = []
     allQ.forEach(q => {
         if (q.topic == i.id){
-            topicArray.push(i)
+            topicArray.push(q)
         }
     })
     i.questions = topicArray;
     i.questions.sort((a, b) => a.difficulty - b.difficulty)
 })
-const practiceDates = [{}]
+
 function getPracticeDates(){
 if (monMinutes > 0){
         getAllDaysBeforeTest('Monday', monMinutes)
@@ -9362,9 +9351,14 @@ function assignCurriculum(){
                 let id = ""
                 const subject = curriculumOrderedIndex[i % curriculumOrderedIndex.length];
                 practiceDates[i].lesson = getNextLesson(subject, i)
+                console.log(practiceDates[i].lesson)
         }
         practiceDates.forEach(i => {
-                i.drillTime = (i.time - (i.lesson.estimatedTime || 0))
+                let lessonTime = 0
+                i.lesson.forEach(i =>{
+                        lessonTime += i.estimatedTime
+                })
+                i.drillTime = (i.time - lessonTime || 0)
         })
         loadCalendar(8)
 
@@ -9372,35 +9366,49 @@ function assignCurriculum(){
 function getNextLesson(subject, i) {
     let subjectLower = subject.toLowerCase();
     let id = "";
-
+    let remainingTIme = practiceDates[i].time
+    let lessons = []
+    let iteration = 0
     for (let x of curriculum) {
-        if (x.subject === subjectLower && x.used === false && x.estimatedTime <= practiceDates[i].time) {
+        if (x.subject === subjectLower && x.used === false && x.estimatedTime <= remainingTIme && iteration <= intensity) {
+                iteration += 1
+                remainingTIme -= x.estimatedTime
             x.used = true; 
-            id = x;   
-            break;        
-        }
+            lessons.push(x)
+     }
     }
-    return id;
+    console.log(lessons)
+    return lessons;
 }
 document.querySelectorAll(".calendarLessonTextDesc").forEach(i => i.style.display = "none")
 let datesOrdered =[]
-function loadCalendar(month){
-        
+async function loadCalendar(month){
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session){
+        const { data, error } = await supabase
+    .from('profiles')
+    .update({
+        curriculum: practiceDates
+    })
+    .eq('id', session.user.id)
+    .select()
+    }
+
         document.getElementById("calendar").style.display = "block"
         document.querySelectorAll(".calendarLessonBox").forEach(i=> i.style.display = "none")
         document.querySelectorAll(".calendarPracticeBox").forEach(i=> i.style.display = "none")
         let daysInMonth = (getDaysInMonth(month, 2026))
         if (daysInMonth[0].getDay() == 1){
                 let day = 1
-                let nextMonthDay = 0
+                let nextMonthDay = 1
                 document.querySelectorAll(".calendarDayBox").forEach(i => {
                         if (day <= daysInMonth.length){
                                 i.querySelector(".calendarDayNumber").innerHTML = `${day}`
                                 day += 1
                                 datesOrdered.push((new Date(2026, month, day)).toISOString().split('T')[0])
                         } else {
-                                element.classList.add("notInMonth")
-                                element.querySelector(".calendarDayNumber").innerHTML = `${nextMonthDay}`
+                                i.classList.add("notInMonth")
+                                i.querySelector(".calendarDayNumber").innerHTML = `${nextMonthDay}`
                                 nextMonthDay += 1
                                 if (month !== 11){
                                         datesOrdered.push((new Date(2026, month + 1, nextMonthDay)).toISOString().split('T')[0])
@@ -9414,7 +9422,7 @@ function loadCalendar(month){
                 if (daysInMonth[0].getDay() == 2){
                         let day = 1
                         const skipIndex = 0
-                        let nextMonthDay = 0
+                        let nextMonthDay = 1
                         document.querySelectorAll(".calendarDayBox").forEach((element, index)=> {
                                 let lastMonthDays = 31
                                 if (index <= skipIndex){
@@ -9447,7 +9455,7 @@ function loadCalendar(month){
                         document.querySelectorAll(".calendarDayBox")[1].classList.add("notInMonth")
                          if (daysInMonth[0].getDay() == 3){
                         let day = 1
-                        let nextMonthDay = 0
+                        let nextMonthDay = 1
                         const skipIndex = 1
                         document.querySelectorAll(".calendarDayBox").forEach((element, index)=> {
                                 let lastMonthDays = 31
@@ -9481,7 +9489,7 @@ function loadCalendar(month){
                          if (daysInMonth[0].getDay() == 4){
                         let day = 1
                         const skipIndex = 2
-                        let nextMonthDay = 0
+                        let nextMonthDay = 1
                         document.querySelectorAll(".calendarDayBox").forEach((element, index)=> {
                                 let lastMonthDays = 31
                                 if (index <= skipIndex){
@@ -9515,7 +9523,7 @@ function loadCalendar(month){
                          if (daysInMonth[0].getDay() == 5){
                         let day = 1
                         const skipIndex = 3
-                        let nextMonthDay = 0
+                        let nextMonthDay = 1
                         document.querySelectorAll(".calendarDayBox").forEach((element, index)=> {
                                 let lastMonthDays = 31
                                 if (index <= skipIndex){
@@ -9548,7 +9556,7 @@ function loadCalendar(month){
                           document.querySelectorAll(".calendarDayBox")[1].classList.add("notInMonth")
                          if (daysInMonth[0].getDay() == 6){
                         let day = 1
-                        let nextMonthDay = 0
+                        let nextMonthDay = 1
                         const skipIndex = 4
                         document.querySelectorAll(".calendarDayBox").forEach((element, index)=> {
                                 let lastMonthDays = 31
@@ -9583,7 +9591,7 @@ function loadCalendar(month){
                          if (daysInMonth[0].getDay() == 7){
                         let day = 1
                         const skipIndex = 5
-                        let nextMonthDay = 0
+                        let nextMonthDay = 1
                         document.querySelectorAll(".calendarDayBox").forEach((element, index)=> {
                                 let lastMonthDays = 31
                                 if (index <= skipIndex){
@@ -9613,7 +9621,9 @@ function loadCalendar(month){
                 })
                 } else {
                         document.querySelectorAll(".calendarDayBox")[6].classList.add("notInMonth")
-                        let nextMonthDay = 0
+                        let day = 1
+                        let nextMonthDay = 1
+                        document.querySelectorAll(".calendarDayBox").forEach((element, index)=> {
                          if (day <= daysInMonth.length){
                                         element.querySelector(".calendarDayNumber").innerHTML = `${day}`
                                         datesOrdered.push((new Date(2026, month, day)).toISOString().split('T')[0])
@@ -9628,6 +9638,7 @@ function loadCalendar(month){
                                         datesOrdered.push((new Date(2027, 0, nextMonthDay)).toISOString().split('T')[0])
                                 }
                         }
+                })
                 }
                 }
                 }
@@ -9662,26 +9673,31 @@ function capitalizeFirstLetter(val) {
 }
 
 function loadCurriculumBoxes(daysInMonth){
-        console.log(daysInMonth)
-        console.log(practiceDates)
   daysInMonth.forEach(day => {
     const index = practiceDates.findIndex(practice => practice.date === day);
     if (index > -1) {
         let dayIndex = daysInMonth.findIndex(day => day === practiceDates[index].date)
         let box = document.querySelectorAll(".calendarDayBox")[dayIndex]
-        console.log(practiceDates[index].lesson)
-        if (practiceDates[index].lesson === ""){
+        if (practiceDates[index].lesson.length = 0){
         box.querySelector(".calendarLessonBox").style.display = "none"
         } else {
+        practiceDates[index].lesson.forEach(i => {
+                const lessonBox = createElement("div")
+                lessonBox.innerHTML = ""
+        })
         box.querySelector(".calendarLessonBox").style.display = "block"
-        box.querySelector(".lessonTitle").innerHTML = practiceDates[index].lesson.title    
+        if (practiceDates[index].lesson.completed === false){
+        box.querySelector(".lessonTitle").innerHTML = `<p style="margin-bottom: 0px;">${practiceDates[index].lesson.title } <span class="material-symbols-outlined" style="font-size: 12px">close</span>   </p>`
+        } else {
+        box.querySelector(".lessonTitle").innerHTML = `<p style="margin-bottom: 0px;">${practiceDates[index].lesson.title } <span class="material-symbols-outlined" style="font-size: 12px">check_small</span>   </p>`
+        }
+
         box.querySelector(".calendarLessonBox").addEventListener("click", function() {
                 if (box.querySelector(".calendarLessonTextDesc").style.display === "none"){
                 box.querySelector(".calendarLessonTextDesc").style.display = "block"
                 box.querySelector(".calendarLessonTextDesc").innerHTML = `
                 <p>Link: <a href="${practiceDates[index].lesson.article}"> ${practiceDates[index].lesson.title}</a></p>
                 <p>Estimated Time: ${practiceDates[index].lesson.estimatedTime} minutes`
-                console.log(practiceDates[index].lesson)
                 if (practiceDates[index].lesson.additionalResources !== ""){
                 practiceDates[index].lesson.additionalResources.forEach(i => {
                         let resourceBox = document.createElement("div")
@@ -9713,3 +9729,44 @@ helpBtn.addEventListener("click", function () {
         helpOn = true
     }
 });
+
+function loadTopModal() {
+        let todayIso = (new Date()).toISOString().split('T')[0]
+        let index = practiceDates.findIndex(i => i.date == todayIso)
+        index = 4
+        let indexBox = 0
+        if (index !== -1){
+                document.getElementById("resourcesContainer").replaceChildren()
+                document.getElementById("resourcesContainer2").replaceChildren()
+                document.getElementById("resourcesContainer3").replaceChildren()
+                document.getElementById("topModalLessonTitle").innerHTML = practiceDates[index].lesson.title
+                document.getElementById("topModalLessonTitle").href = `${practiceDates[index].lesson.article}`
+                document.getElementById("estimatedTimeTopModal").innerHTML = `${practiceDates[index].lesson.estimatedTime}  min`
+                document.getElementById("topModalPracticeTime").innerHTML = `Practice - ${practiceDates[index].drillTime} min`
+                practiceDates[index].lesson.additionalResources.forEach(i => {
+                        
+                        const resourceBox = document.createElement("div")
+                        resourceBox.innerHTML = `            <a href=${i.link} target="_blank" rel="noopener noreferrer" class="howworkcard"  margin-left: -7px;" style="display: inline-block; flex: 1 1 0">
+              <h3 class="par">${i.title}</h3>
+              <span style="background-color: #ebf3ff ; padding-left: 7px; border-radius: 15px; font-size: 12px; color: #88b0ff; height: 20px; width: 50px; " id="topModalTag">Article</span>
+            </a>`
+                        if (indexBox < 5){
+                document.getElementById("resourcesContainer").append(resourceBox)
+                } else if (indexBox < 10){
+                document.getElementById("resourcesContainer2").append(resourceBox)
+                } else {
+                document.getElementById("resourcesContainer3").append(resourceBox)
+                }
+                indexBox += 1
+                        })
+                }
+}
+function loadOverdueAssignments(){
+        practiceDates.forEach(i => {
+                if (i.lesson.completed == false){
+                        let overdueObj = createElement("div")
+                        overdueObj.innerHTML = `<p style="margin-bottom: 0px; font-size: 14px;">${i.date} - ${i.lesson.title}</p>`
+                        document.getElementById("overdueAssignmentsContainer").append(overdueObj)
+                }
+        })
+}

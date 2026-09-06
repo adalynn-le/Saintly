@@ -52,17 +52,6 @@ window.addEventListener("load", function () {
   }, 300); // slightly shorter
 });
 </script>
-<script>
-  window.formspree =
-    window.formspree ||
-    function () {
-      (formspree.q = formspree.q || []).push(arguments);
-    };
-  formspree(
-    'initForm', 
-    { formElement: '#contact-form', formId: 'contact-form' }
-  );
-</script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <body>
     <div id="loader" style="
@@ -109,6 +98,41 @@ window.addEventListener("load", function () {
 </div>
 <main style="padding: 50px">
     <h1 class="amc10title">Study Planner</h1>
+    <div class="helpPannel"  id="accountPannel">
+  <div id="login">
+    <h2 class="amc10subtitle ittyBitty">Welcome Back!</h2>
+      <p class="par">Access your progress across all your devices</p>
+    <p id="login-error" style="color: red"></p>
+    <input type="email" id="login-email" placeholder="Email"/>
+    <input type="password" id="login-password" placeholder = "Password"/>
+  <span style="display: flex; flex-direction: row; justify-content: flex-start; gap: 16px">
+
+  </span>
+        <button id="btn-login" class="start-practice">Log In</button>
+        <button class="start-practice" id="btn-request-reset">Forgot Your Password? Send a Reset Email</button>
+
+
+  </div>
+  <div id="signup" style="display: none">
+    <p id="signup-error" style="color: red"></p>
+  <h2 class="amc10subtitle ittyBitty">Make an Account</h2>
+  <p class="par">Want to store your progress, see how you stand in comparison to other students, and climb the leaderboard? Create a free account today!</p>
+  <div id="auth-container">
+  <input type="email" id="auth-email" placeholder="Email" />
+  <input type="password" id="auth-password" placeholder="Password" />
+        <input type="password" id="auth-password-check" placeholder = "Confirm Password"/>
+  <input type="text" id="auth-username" placeholder="Display Name" />
+  </div>
+      <button id="btn-signup" class="start-practice">Sign Up</button>
+</div>
+<a class="amc10subtitle ittyBitty pset-link" href="your dashboard.html" id="btn-dashboard">Username</a>
+        <button id="btn-logout" class="start-practice"style="display: none; cursor: pointer;">Log Out</button>
+  <button id="no-account" class="start-practice">Don't have an account? Sign Up!</button>
+  <button id="btn-delete-account" class="start-practice" style="display: none">
+  Delete Account & Wipe Progress
+</button>
+</div>
+
     <p>Block out your time until the AMC 10 to prepare efficiently and cover the entire learning path!</p>
     <div class="howworkcard" style="width: 75%; position: relative; left: 12.5%; display: block;" id="diagnosticPlannerContainer">
         <p id="errorMsg" style="color: red"></p>
@@ -198,6 +222,25 @@ window.addEventListener("load", function () {
         </div>
     </div>
         <div id="calendar" style="display: none">
+          <div style="display: flex; flex-direction: row">
+          <span class="howworkcard">
+            <h3 class="amc10subtitle ittyBitty">Today's Plan</h3>
+            <span class="howworkcard">
+            <a class="amc10subtitle ittyBitty" style="font-size: 7px; margin-bottom:-20px; text-decoration: underline" id="topModalLessonTitle">Lesson Title</a>
+            <h4 id="estimatedTimeTopModal" style="font-weight: 400; margin-bottom: -5px;">15 min</h4>
+            <span id="resourcesContainer" style="display: flex; flex-direction: row; gap: 5px;"></span>
+            <span id="resourcesContainer2" style="display: flex; flex-direction: row; gap: 5px;"></span>
+            <span id="resourcesContainer3" style="display: flex; flex-direction: row; gap: 5px;"></span>
+            </span>
+            <span class="howworkcard">
+            <a class="amc10subtitle ittyBitty" style="font-size: 7px;" id="topModalPracticeTime">Practice - XX min</a>
+            </span>
+          </span>
+          <span class="howworkcard" id="overdueAssignmentsContainer">
+            <h3 class="amc10subtitle ittyBitty">Overdue Assignments</h3>
+            <p class="par">Good job staying on top of your work!</p>
+          </span>
+          </div>
               <span style="display: flex; flex-direction: row">
           <span  class="material-symbols-rounded" id="monthLeft">
             chevron_left
@@ -937,40 +980,6 @@ window.addEventListener("load", function () {
         </span>
     </div>
   
-<div class="helpPannel"  id="accountPannel">
-  <div id="login">
-    <h2 class="amc10subtitle ittyBitty">Welcome Back!</h2>
-      <p class="par">Access your progress across all your devices</p>
-    <p id="login-error" style="color: red"></p>
-    <input type="email" id="login-email" placeholder="Email"/>
-    <input type="password" id="login-password" placeholder = "Password"/>
-  <span style="display: flex; flex-direction: row; justify-content: flex-start; gap: 16px">
-
-  </span>
-        <button id="btn-login" class="start-practice">Log In</button>
-        <button class="start-practice" id="btn-request-reset">Forgot Your Password? Send a Reset Email</button>
-
-
-  </div>
-  <div id="signup" style="display: none">
-    <p id="signup-error" style="color: red"></p>
-  <h2 class="amc10subtitle ittyBitty">Make an Account</h2>
-  <p class="par">Want to store your progress, see how you stand in comparison to other students, and climb the leaderboard? Create a free account today!</p>
-  <div id="auth-container">
-  <input type="email" id="auth-email" placeholder="Email" />
-  <input type="password" id="auth-password" placeholder="Password" />
-        <input type="password" id="auth-password-check" placeholder = "Confirm Password"/>
-  <input type="text" id="auth-username" placeholder="Display Name" />
-  </div>
-      <button id="btn-signup" class="start-practice">Sign Up</button>
-</div>
-<a class="amc10subtitle ittyBitty pset-link" href="your dashboard.html" id="btn-dashboard">Username</a>
-        <button id="btn-logout" class="start-practice"style="display: none; cursor: pointer;">Log Out</button>
-  <button id="no-account" class="start-practice">Don't have an account? Sign Up!</button>
-  <button id="btn-delete-account" class="start-practice" style="display: none">
-  Delete Account & Wipe Progress
-</button>
-</div>
 
 <div id = "helpPannel" class = "helpPannel">
   <h2>Need Some Help?</h2>
@@ -1012,6 +1021,7 @@ window.addEventListener("load", function () {
     </label>
   </div>
 </label></form></div>
+<div id="overlay"></div>
 </main><footer class="saintly-footer">
     <div class="footer-content">
         <div class="footer-section">
