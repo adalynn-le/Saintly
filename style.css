@@ -1299,7 +1299,7 @@ input, textarea{
   'FILL' 1,
   'wght' 400,
   'GRAD' 0,
-  'opsz' 24;
+  'opsz' 24 !important;
   vertical-align: middle;
   padding-right: 5px;
   color: #a5c9ff
@@ -2333,6 +2333,7 @@ font-size: 20px !important
   border-bottom-right-radius: 0 !important;
   margin-bottom: 0 !important;
   width: 95% !important;
+  border-bottom: 2px solid var(--border-color)
 }
 #header{
     margin-bottom: 0 !important;
@@ -3642,11 +3643,12 @@ html.light .carousel-logo-dark {
   margin-left: 14.5px !important;
   margin-top: 12.5px !important
 }
+
 .lessonTitle{
   font-size: 20px !important;
   font-weight: 350 !important;
   color: var(--text-color);
-  margin-top: 20px
+  margin-top: 15px !important;
 }
 .nodeContainer{
   display: flex;
@@ -3837,9 +3839,20 @@ input[type="range"]:focus{
   'wght' 300,
   'GRAD' 0,
   'opsz' 24;
-  color: var(--border-color)
+  color: var(--primary-color);
+  font-size: 50px !important;
 }
-#month, .calendarDayNumber{
+#month{
+  font-size: 30px;
+  color: var(--primary-color)
+}
+#monthContainer{
+  background-color: var(--highlight-color);
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  border-bottom: 1px solid light-dark(#c4c0ce, #7e7d8a) !important;
+}
+.calendarDayNumber{
   color: light-dark(#c4c0ce, #7e7d8a)  !important;
 }
 .calendarDayBox{
@@ -3849,6 +3862,8 @@ input[type="range"]:focus{
   padding: 10px;
   z-index: 5 !important;
   min-height: 175px !important;
+
+
 }
 .calendarLessonClosed{
   background-color: var(--highlight-color);
@@ -3858,8 +3873,9 @@ input[type="range"]:focus{
   margin-bottom: 4px;
   display: "none";
   height: fit-content;
-  padding-top: -30px !important;
-  padding-bottom: -30px !important;
+  padding-bottom: -50px !important;
+  text-align: top !important;
+  padding: 0px !important;
 }
 .colorAccentClosed{
   background-color: var(--primary-color);
@@ -3920,3 +3936,82 @@ input[type="range"]:focus{
 .accountPannel{
   z-index: 1000000000000000 !important
 }
+.article{
+  background-color: var(--highlight-color);
+  color: var(--primary-color);
+  height: 25px;
+  width: 75px;
+  border-radius: 12.5px;
+  text-align: center;
+  text-justify: bottom;
+}
+.video{
+  background-color: var(--highlight-color-orange);
+  color: var(--accent-color);
+  height: 25px;
+  width: 75px;
+  border-radius: 12.5px;
+  text-align: center;
+  text-justify: bottom;
+}
+.coursework{
+  background-color: light-dark(#ebfcee, #323a34);
+  color: #70b399;
+  height: 25px;
+  width: 100px;
+  border-radius: 12.5px;
+  text-align: center;
+  text-justify: bottom;
+}
+.calendarLessonBoxOverdue {
+  background-color: light-dark(#ffe9e9, #332828) !important;
+}
+.lessonTitleOverdue{
+    color: rgb(212, 118, 118) !important
+}
+.calendarLessonTextDescOverdue{
+    color: rgb(212, 118, 118) !important
+}
+.calendarLessonTextDescOverdue a{
+    color: rgb(212, 118, 118) !important
+}
+.colorAccentClosedOverdue{
+  background-color: rgb(212, 118, 118) !important
+}
+
+
+.calendarLessonBoxCompleted {
+  background-color: light-dark(#ebfcee, #323a34) !important;
+}
+.lessonTitleCompleted{
+    color: #70b399 !important
+}
+.calendarLessonTextDescCompleted{
+    color: #70b399 !important
+}
+.calendarLessonTextDescCompleted a{
+    color: #70b399 !important
+}
+.colorAccentClosedCompleted{
+  background-color: #70b399 !important
+}
+.todayDayNumber{
+  background-color: var(--primary-color);
+  color: white !important;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  padding-left: 7px;
+  padding-top: 3px;
+}
+#pause{
+  color: var(--accent-color) !important;
+  font-size: 100px !important;
+  margin-left: 125px !important;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+

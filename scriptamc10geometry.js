@@ -2217,6 +2217,9 @@ function showPopup(message, isCorrect) {
 
 // ---------- Check Answer ----------
 checkBtn.addEventListener("click", function () {
+    updatePracticeDailyCountdown()
+    setupRestTimer()
+    restIdle()
     const userAnswer = answerInput.value.trim();
     const correctAnswer = geometryQ[currentQuestion].answer.trim();
 
@@ -2916,4 +2919,61 @@ if (scratchPopup && scratchHeader && scratchCanvas) {
   scratchHeader.addEventListener("touchstart", startWindowDrag);
   document.addEventListener("touchmove", dragWindow, { passive: false });
   document.addEventListener("touchend", stopWindowDrag);
+}
+
+let countdownScriptRun = false;
+setInterval(updateCountdown, 1000);
+let timeLeft = parseInt(localStorage.getItem("secondsLeftInPractice"))
+
+function updateDailyPracticeCountdown() {
+    let todayIso = (new Date()).toISOString().split('T')[0]
+    if (countdownScriptRun === false){
+        countdownScriptRun = true
+        if (localStorage.getItem("secondsLeftInPractice")){
+            if (localStorage.getItem("lastPracticeCountdownSet") === todayIso){
+    const timer = setInterval(() =>{
+        if (isPaused){
+            if (isPaused == true){
+            return
+            }
+        }
+        timeLeft--
+        document.getElementById("time-left").innerHTML = `${Math.round(timeLeft / 60)}:${timeLeft % 60}`
+        localStorage.setItem("secondsLeftInPractice", timeLeft)
+        if (timeLeft <=0){
+            clearInterval(timer)
+            showTimeComplete()
+        }
+    }, 1000)
+            }
+}
+}
+    }
+
+function showTimeComplete() {
+    document.getElementById("practiceFinishedModal").style.display = "block";
+    overlay.style.display = "block"
+}
+const INACTIVITY_LIMIT = 3 * 60 * 1000
+let idleTimer = null
+let restIdle = null
+let isPaused = false
+document.getElementById("time-left").innerHTML = `${Math.round(localStorage.getItem("secondsLeftInPractice") / 60)}:${localStorage.getItem("secondsLeftInPractice") % 60}`
+function setupRestTimer() {
+    restIdle = () => {
+        isPaused = false
+        clearTimeout(idleTimer)
+        idleTimer = setTimeout(() => {
+            isPaused = true
+            document.getElementById("pausePannel").style.display = "block"
+            overlay.style.display = "block"
+        }, INACTIVITY_LIMIT)
+    }
+}
+if (timeLeft){
+if (timeLeft > 0){
+    document.getElementById("time-left").innerHTML = `${Math.round(localStorage.getItem("secondsLeftInPractice") / 60)}:${localStorage.getItem("secondsLeftInPractice") % 60}`
+} else {
+    document.getElementById("timer-container").style.display = "none"
+}
 }

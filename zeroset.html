@@ -29,7 +29,7 @@ src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">   
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=account_circle,ads_click,bedtime,book,check,close_small,exclamation,function,handshake,lab_profile,leaderboard,lightbulb_2,local_fire_department,playlist_add_check,question_mark,send,star,sunny,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=account_circle,ads_click,bedtime,book,calendar_today,check,close_small,exclamation,function,handshake,lab_profile,leaderboard,lightbulb_2,local_fire_department,playlist_add_check,question_mark,send,star,sunny,volunteer_activism,warning" />
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <script>
@@ -112,6 +112,7 @@ sunny
         </span>
     </div>
 </div>
+  <div class="timer-container" id="timer-container">Scheduled Practice Time Remaining: <span id="time-left">0:00</span></div>
 <div id = "score-wrapper" class = "score-wrapper" style="display: none">
   <p><b>ELO Ranking:   </b><p id = "score-count" class = "score-count"></p></p>
   
@@ -288,6 +289,17 @@ function
         <span id="seconds">00</span>s
     </div>
     </div>
+</div>
+<div id="practiceFinishedModal" class="helpPannel" style="display: none">
+  <h3 class="amc10subtitle ittyBitty">Congratulations! You have finished your study time for today!</h3>
+  <button class="start-practice" id="returnToPractice">Return to Practice</button>
+  <a class="start-practice" href="/study-plan.html">Go Back to Your Study Planner</a>
+</div>
+<div class="helpPannel" id="pausePannel" style="display: none">
+  <span class="material-symbols-outlined" id="pause">
+pause
+</span>
+  <h3 class="amc10subtitle ittyBitty">Session Paused due to Inactivity</h3>
 </div>
 <div class="helpPannel"  id="accountPannel">
   <div id="login">

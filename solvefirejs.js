@@ -8,80 +8,80 @@ let colorMode = 'light'
 let colorModeTrue = localStorage.getItem("colorMode")
 let textColor = "#e3e2f0"
 let backgroundColor = "rgb(253, 253, 255)"
-if  (colorModeTrue !== null){
-       colorMode =  colorModeTrue
- if (colorMode === 'dark'){
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark'; 
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", "dark")
-                textColor = "#e3e2f0"
-                backgroundColor = "#222329"
+if (colorModeTrue !== null) {
+    colorMode = colorModeTrue
+    if (colorMode === 'dark') {
+        colorMode = 'dark';
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        toggleBrightness.textContent = "sunny"
+        localStorage.setItem("colorMode", "dark")
+        textColor = "#e3e2f0"
+        backgroundColor = "#222329"
 
-        } else {
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light';
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", "light")
-                textColor = "#625c6e"
-                backgroundColor = "rgb(253, 253, 255)"
-        }
+    } else {
+        colorMode = 'light';
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        toggleBrightness.textContent = "bedtime"
+        localStorage.setItem("colorMode", "light")
+        textColor = "#625c6e"
+        backgroundColor = "rgb(253, 253, 255)"
+    }
 } else {
-function toggleSystemTheme() {
-  const root = document.documentElement;
-  
-  // 1. Check what the system preference is, or if it's already set
-  if (!root.style.colorScheme) {
-    // If it's not set yet, match the user's system preferences
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.style.colorScheme = prefersDark ? 'dark' : 'light';
-  }
-  
-  colorMode = root.style.colorScheme;
+    function toggleSystemTheme() {
+        const root = document.documentElement;
 
-  // 2. Add the correct matching class right away so the logos render correctly!
-  if (colorMode === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-      textColor = "#e3e2f0"
-  } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-      textColor = "#625c6e"
-  }
-}
-toggleSystemTheme();
-}
-toggleBrightness.addEventListener("click", function(){
-        if (colorMode === 'dark'){
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light'; 
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", colorMode)
-                textColor = "#625c6e"
-                backgroundColor="rgb(253, 253, 255)"
-                updatePieChart()
-                updateRadarChart()
-                updateBarGraph()
-        } else {
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark';
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", colorMode)
-                textColor = "#e3e2f0"
-                backgroundColor = "#222329"
-                updatePieChart()
-                updateRadarChart()
-                updateBarGraph()
+        // 1. Check what the system preference is, or if it's already set
+        if (!root.style.colorScheme) {
+            // If it's not set yet, match the user's system preferences
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            root.style.colorScheme = prefersDark ? 'dark' : 'light';
         }
+
+        colorMode = root.style.colorScheme;
+
+        // 2. Add the correct matching class right away so the logos render correctly!
+        if (colorMode === 'dark') {
+            root.classList.add('dark');
+            root.classList.remove('light');
+            textColor = "#e3e2f0"
+        } else {
+            root.classList.add('light');
+            root.classList.remove('dark');
+            textColor = "#625c6e"
+        }
+    }
+    toggleSystemTheme();
+}
+toggleBrightness.addEventListener("click", function () {
+    if (colorMode === 'dark') {
+        colorMode = 'light';
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        toggleBrightness.textContent = "bedtime"
+        localStorage.setItem("colorMode", colorMode)
+        textColor = "#625c6e"
+        backgroundColor = "rgb(253, 253, 255)"
+        updatePieChart()
+        updateRadarChart()
+        updateBarGraph()
+    } else {
+        colorMode = 'dark';
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        toggleBrightness.textContent = "sunny"
+        localStorage.setItem("colorMode", colorMode)
+        textColor = "#e3e2f0"
+        backgroundColor = "#222329"
+        updatePieChart()
+        updateRadarChart()
+        updateBarGraph()
+    }
 });
 // Gets the live computed color string from your CSS :root
 
@@ -95,7 +95,7 @@ let difficulty = 1;
 let questionType = "algebra";
 let difficultyProgress = 0;
 let algebraQuestion = 0;
-let difficultyG=  1;
+let difficultyG = 1;
 let difficultyProgressG = 0;
 let topicsToWorkOn = [];
 let topicToUpdate = ''
@@ -132,579 +132,579 @@ let unfamiliar = 0
 let stuck = 0
 let algebraTotal = 0
 let algebraWrong = 0
-let geometryTotal = 0 
+let geometryTotal = 0
 let geometryWrong = 0
 let numTotal = 0
 let numWrong = 0
 let probTotal = 0
 let probWrong = 0
 let mistakeSolveTrue = localStorage.getItem("mistakeSolve")
-if (mistakeSolveTrue ===  null){
+if (mistakeSolveTrue === null) {
     mistake = 0
 } else {
     mistake = parseInt(mistakeSolveTrue)
 }
 let unfamiliarSolveTrue = localStorage.getItem("unfamiliarSolve")
-if (unfamiliarSolveTrue === null){
+if (unfamiliarSolveTrue === null) {
     unfamiliar = 0
 } else {
-    unfamiliar  = parseInt(unfamiliarSolveTrue)
+    unfamiliar = parseInt(unfamiliarSolveTrue)
 }
 let stuckSolveTrue = localStorage.getItem("stuckSolve")
-if (stuckSolveTrue === null){
+if (stuckSolveTrue === null) {
     stuck = 0
 } else {
     stuck = parseInt(stuckSolveTrue)
 }
 let algebraTotalTrue = localStorage.getItem("algebraTotalSolve")
-if (algebraTotalTrue === null){
+if (algebraTotalTrue === null) {
     algebraTotal = 0
 } else {
     algebraTotal = parseInt(algebraTotalTrue)
 }
 let algebraWrongTrue = localStorage.getItem("algebraWrongSolve")
-if (algebraWrongTrue === null){
+if (algebraWrongTrue === null) {
     algebraWrong = 0
 } else {
     algebraWrong = parseInt(algebraWrongTrue)
 }
 let geometryTotalTrue = localStorage.getItem("geometryTotalSolve")
-if (geometryTotalTrue === null){
+if (geometryTotalTrue === null) {
     geometryTotal = 0
 } else {
     geometryTotal = parseInt(geometryTotalTrue)
 }
 let geometryWrongTrue = localStorage.getItem("geometryWrongSolve")
-if (geometryWrongTrue === null){
+if (geometryWrongTrue === null) {
     geometryWrong = 0
 } else {
     geometryWrong = parseInt(geometryWrongTrue)
 }
 let numTotalTrue = localStorage.getItem("numTotalSolve")
-if (numTotalTrue === null){
+if (numTotalTrue === null) {
     numTotal = 0
 } else {
     numTotal = parseInt(numTotalTrue)
 }
 let numWrongTrue = localStorage.getItem("numWrongSolve")
-if (numWrongTrue === null){
+if (numWrongTrue === null) {
     numWrong = 0
 } else {
     numWrong = parseInt(numWrongTrue)
 }
 let probTotalTrue = localStorage.getItem("probTotalSolve")
-if (probTotalTrue === null){
+if (probTotalTrue === null) {
     probTotal = 0
 } else {
     probTotal = parseInt(probTotalTrue)
 }
 let probWrongTrue = localStorage.getItem("probWrongSolve")
-if (probWrongTrue === null){
+if (probWrongTrue === null) {
     probWrong = 0
 } else {
     probWrong = parseInt(probWrongTrue)
 }
 let topicsToWorkOnTrue = localStorage.getItem("topicsToWorkOnSolve")
-if (topicsToWorkOnTrue === null){
+if (topicsToWorkOnTrue === null) {
     topicsToWorkOn = []
 } else {
     topicsToWorkOn = JSON.parse(topicsToWorkOnTrue)
 }
 let topicsGlossarySetTrue = localStorage.getItem("topicGlossarySetSolve")
 let TOPIC_GLOSSARY = []
-if (topicsGlossarySetTrue === null){
- TOPIC_GLOSSARY = [
-    {
-        id: "word problems",
-        title: `Word Problems`,
-        description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
-        workOn: [
-            "Identifying keywords",
-            "Setting up equations",
-            "Avoiding misinterpretation"
-        ],
-        errors: 0,
-    },
-    {
-        id: "algebraic manipulation",
-        title: `Algebraic Manipulation`,
-        description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
-        workOn: [
-            "Factoring",
-            "Combining like terms",
-            "Recognizing algebraic patterns"
-        ],
-        errors: 0,
-    },
- {
-    id: "arithmetic"  ,  
-    title: `Arithmetic`,
-        description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
-        workOn: [
-            "Mental/Quick Math",
-            "Identifying keywords",
-            "Shortcuts and factoring (for multiplication and division)"
-        ],
-        errors: 0,
-    },
- {
-    id: "systems of equations",    
-    title: `Systems of Equations`,
-        description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
-        workOn: [
-            "Logic",
-            "Substitution", 
-            "Elimination",
-        ],
-        errors: 0,
-    },
-{
-    id: 'functions and graphing',   
-    title: `Functions and Graphing`,
-        description: "Recognizing and manipulating popular parent functions and being able to identify them",
-        workOn: [
-            "Parent Functions",
-            "Composition of Functions",
-            ""
-        ],
-        errors: 0,
-    },
-     {
-        id: 'logic',
-        title: `Logic`,
-        description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
-        workOn: [
-            "Recognizing Patterns", 
-            "Quick Mental Math",
-        ],
-        errors: 0,
-    },
-{
-    id: 'inequalities',    
-    title: `Inequalities`,
-        description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
-        workOn: [
-            "Graphing Inequalities",
-            "Understanding when a question is asking for inequalities",
-            "Composition of Functions"
-        ],
-        errors: 0,
-    },
-{
-    id: 'modular arithmetic',
-    title: `Modular Arithmetic`,
-        description: "These problems pertain to the remainders (mods) of operations (typically division)",
-        workOn: [
-            "Modular Arithmetic Rules",
-        ],
-        errors: 0,
-    },
- {
-    id: 'factoring' , 
-    title: `Factoring`,
-        description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
-        workOn: [
-            "Sum/difference of squares",
-            "GCF and LCM",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'prime factorization',
-        title: `Prime Factorization`,
-        description: "Reducing a number to its prime factors and using it to solve problems",
-        workOn: [
-            "Factor Trees (or whatever method you like to use)",
-            "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
-        ],
-        errors: 0,
-    },
- {
-    id: 'percents',    
-    title: `Percents`,
-        description: "A different representation of fractions and ratios, make sure you understand what percents are",
-        workOn: [
-            "Decimal Multiplication",
-            "Converting numbers between Percents, Ratios, and Fractions",
-        ],
-        errors: 0,
-    },
- {
-    id: 'graphing'  ,  
-    title: `Graphing`,
-        description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
-        workOn: [
-            "Parent Functions",
-            "Logic + Intuition",
-        ],
-        errors: 0,
-    },
-    {
-       id: 'floor functions',
-        title: `Floor Functions`,
-        description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
-        workOn:[
-            'Graphing',
-            'Logic + Intuition',
-        ],
-        errors: 0,
-    },
-     {
-       id: 'speed-distance-time',
-        title: `Speed Distance Time`,
-        description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
-        workOn: [
-            "Memorizing the speed, distance, time equation",
-            "Understanding conversions and how the different variables relate to each other",
-            "Word problems and conceptualy understanding what is being asked",
-        ],
-        errors: 0,
-    },{
-        id: 'averages',
-        title: `Averages`,
-        description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
-        workOn: [
-            'Deriving equations',
-            'Arithmetic mean',
-            'Statistics',
-        ],
-        errors: 0,
-    },
- {
-        id: 'induction',
-        title: `Induction`,
-        description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
-        workOn: [
-            "Making educated guesses",
-            "Recognizing Patterns",
-            "'Limiting' solutions",
-        ],
-        errors: 0,
-    }, 
- {
-        id: 'series',
-        title: `Series`,
-        description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
-        workOn: [
-            "Memorizing equations for series",
-            "Arithmetic and Geometric Series",
-            "Recognizing patterns",
-        ],
-        errors: 0,
-    },
-{
-    id: 'absolute value',    
-    title: `Absolute Value`,
-        description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
-        workOn:
-        [ 
-            "Graphing",
-            "Intuition"
-        ],
-        errors: 0,
-    },
- {
-        id: 'exponents',
-        title: `Exponents`,
-        description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
-        workOn: 
-        [
-            "Change of base",
-            "Adding, subtracting, multiplying, dividing exponents",
-            "Factoring out squares",
-        ],
-        errors: 0,
+if (topicsGlossarySetTrue === null) {
+    TOPIC_GLOSSARY = [
+        {
+            id: "word problems",
+            title: `Word Problems`,
+            description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
+            workOn: [
+                "Identifying keywords",
+                "Setting up equations",
+                "Avoiding misinterpretation"
+            ],
+            errors: 0,
+        },
+        {
+            id: "algebraic manipulation",
+            title: `Algebraic Manipulation`,
+            description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
+            workOn: [
+                "Factoring",
+                "Combining like terms",
+                "Recognizing algebraic patterns"
+            ],
+            errors: 0,
+        },
+        {
+            id: "arithmetic",
+            title: `Arithmetic`,
+            description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
+            workOn: [
+                "Mental/Quick Math",
+                "Identifying keywords",
+                "Shortcuts and factoring (for multiplication and division)"
+            ],
+            errors: 0,
+        },
+        {
+            id: "systems of equations",
+            title: `Systems of Equations`,
+            description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
+            workOn: [
+                "Logic",
+                "Substitution",
+                "Elimination",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'functions and graphing',
+            title: `Functions and Graphing`,
+            description: "Recognizing and manipulating popular parent functions and being able to identify them",
+            workOn: [
+                "Parent Functions",
+                "Composition of Functions",
+                ""
+            ],
+            errors: 0,
+        },
+        {
+            id: 'logic',
+            title: `Logic`,
+            description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
+            workOn: [
+                "Recognizing Patterns",
+                "Quick Mental Math",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'inequalities',
+            title: `Inequalities`,
+            description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
+            workOn: [
+                "Graphing Inequalities",
+                "Understanding when a question is asking for inequalities",
+                "Composition of Functions"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'modular arithmetic',
+            title: `Modular Arithmetic`,
+            description: "These problems pertain to the remainders (mods) of operations (typically division)",
+            workOn: [
+                "Modular Arithmetic Rules",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'factoring',
+            title: `Factoring`,
+            description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
+            workOn: [
+                "Sum/difference of squares",
+                "GCF and LCM",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'prime factorization',
+            title: `Prime Factorization`,
+            description: "Reducing a number to its prime factors and using it to solve problems",
+            workOn: [
+                "Factor Trees (or whatever method you like to use)",
+                "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'percents',
+            title: `Percents`,
+            description: "A different representation of fractions and ratios, make sure you understand what percents are",
+            workOn: [
+                "Decimal Multiplication",
+                "Converting numbers between Percents, Ratios, and Fractions",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'graphing',
+            title: `Graphing`,
+            description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
+            workOn: [
+                "Parent Functions",
+                "Logic + Intuition",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'floor functions',
+            title: `Floor Functions`,
+            description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
+            workOn: [
+                'Graphing',
+                'Logic + Intuition',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'speed-distance-time',
+            title: `Speed Distance Time`,
+            description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
+            workOn: [
+                "Memorizing the speed, distance, time equation",
+                "Understanding conversions and how the different variables relate to each other",
+                "Word problems and conceptualy understanding what is being asked",
+            ],
+            errors: 0,
+        }, {
+            id: 'averages',
+            title: `Averages`,
+            description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
+            workOn: [
+                'Deriving equations',
+                'Arithmetic mean',
+                'Statistics',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'induction',
+            title: `Induction`,
+            description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
+            workOn: [
+                "Making educated guesses",
+                "Recognizing Patterns",
+                "'Limiting' solutions",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'series',
+            title: `Series`,
+            description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
+            workOn: [
+                "Memorizing equations for series",
+                "Arithmetic and Geometric Series",
+                "Recognizing patterns",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'absolute value',
+            title: `Absolute Value`,
+            description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
+            workOn:
+                [
+                    "Graphing",
+                    "Intuition"
+                ],
+            errors: 0,
+        },
+        {
+            id: 'exponents',
+            title: `Exponents`,
+            description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
+            workOn:
+                [
+                    "Change of base",
+                    "Adding, subtracting, multiplying, dividing exponents",
+                    "Factoring out squares",
+                ],
+            errors: 0,
 
-    },
- {
-    id: 'discriminant' ,   
-    title: `Discriminant`,
-        description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
-        workOn:[
-            "Quadratic Formula"
-        ],
-        errors:0,
-    },
-{
-    id: 'casework',    
-    title: `Casework`,
-        description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
-        workOn: [
-            'Absolute Value Questions',
-            'Quadratics',
-        ],
-        errors: 0,
-    },
- {
-  id: 'medians',
-    title: `Medians`,
-        description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
-        workOn: [
-            'Statistics',
-            'Datasets',
-        ],
-        errors: 0,
-    },
-{
-    id: 'similar triangles'  , 
-    title: `Similar Triangles`,
-        description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
-        workOn: [
-            "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
-            "Ratios",
-        ],
-        errors: 0,
-    },
-{
-        id: 'surface area',
-        title: `Surface Area`,
-        description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
-        workOn: [
-            "Surface Area equations (for spheres and cones in addition to typical polygons)",
-            "3D conceptualization (e.g. imagining how it looks so you can understand it)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'triangle lines'  , 
-    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors`,
-        description: `<p>Remember the following lines that you can add to a triangle</p>
+        },
+        {
+            id: 'discriminant',
+            title: `Discriminant`,
+            description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
+            workOn: [
+                "Quadratic Formula"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'casework',
+            title: `Casework`,
+            description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
+            workOn: [
+                'Absolute Value Questions',
+                'Quadratics',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'medians',
+            title: `Medians`,
+            description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
+            workOn: [
+                'Statistics',
+                'Datasets',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'similar triangles',
+            title: `Similar Triangles`,
+            description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
+            workOn: [
+                "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
+                "Ratios",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'surface area',
+            title: `Surface Area`,
+            description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
+            workOn: [
+                "Surface Area equations (for spheres and cones in addition to typical polygons)",
+                "3D conceptualization (e.g. imagining how it looks so you can understand it)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'triangle lines',
+            title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors`,
+            description: `<p>Remember the following lines that you can add to a triangle</p>
         <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
         <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
         <p>Perpendicular Bisectors: Lines that pass through a side and are perpendicular and bisect it. Intersect at the circumcenter that is the center for the circumscribed circle (touching all vertices)</p>
         <p>Angle Bisectors: Lines that bisect angles, intersect at the incenter, the center of the inscribed circle (tangent to all sides)</p>`,
-        workOn: [
-            "Medians",
-            "Perpendicular Bisectors",
-            "Angle Bisectors",
-        ],
-        errors: 0,
-    },
-{
-    id: 'counting',
-        title: `Counting`,
-        description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
-        workOn: [
-            "Optimization",
-            "Logic",
-            "Casework"
-        ],
-        errors: 0,
-    },
-{
-    id: 'composite shapes',
-        title: `Composite Shapes`,
-        description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
-        workOn: [
-            "Area",
-        ],
-        errors: 0,
-    },
- {
-    id: 'transformations',
-        title: `Transformations`,
-        description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
-        workOn: [
-            "Translations",
-            "Reflections",
-            "Rotations",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'volume',
-        title: `Volume`,
-        description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
-        workOn: [
-            "Volume Formulas",
-        ],
-        errors: 0,
-    },
- {
-    id: 'prime numbers',
-        title: `Prime Numbers`,
-        description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
-        workOn: [
-            "Factoring"
-        ],
-        errors: 0,
-    },
-{
-    id: 'hexagons',
-        title: `Hexagons`,
-        description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
-        workOn: [
-            "Area of a hexagon",
-            "Area of equilateral triangles",
-        ],
-        errors: 0,
-    },
- {
-    id: 'optimization',
-        title: `Optimization`,
-        description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
-        workOn: [
-            "Casework",
-            "Counting"
-        ],
-        errors: 0,
-    },
-{
-    id: 'volume relationships',
-        title: `Volume Relationships`,
-        description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
-        workOn: [
-            "ratios"
-        ],
-        errors: 0,
-    },
- {
-    id: 'pyramids',
-        title: `Pyramids`,
-        description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
-        workOn: [
-            "Pythagorean theorem",
-            "Surface Area"
-        ],
-        errors: 0,
-    },
- {
-    id: 'trigonometry',
-        title: `Trigonometry`,
-        description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
-        workOn: [
-            "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
-            "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
-            "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'coordinate plane',
-        title: `Coordinate Plane`,
-        description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
-        workOn: [
-            "Slope",
-            "Functions",
-            "Graphing",
-        ],
-        errors: 0,
-    },
-{
-    title: "Pythagorean Theorem",
-    id: 'pythagorean theorem',
-        description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
-        workOn: [
-            "Pythagorean Triples",
-            "Theorem",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'forced simplification',
-        title: `Forced Simplification`,
-        description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
-        workOn: [
-            "Logic",
-            "Understanding problems",
-        ],
-        errors: 0,
-    },
- {
-    id: 'power of a point',
-        title: `Power of A Point`,
-        description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
-        workOn: [
-            "Chords",
-            "Tangents",
-            "Secants",
-        ],
-        errors: 0,
- },
- {
-    id: 'bases',
-        title: `Bases`,
-        description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
-        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
-        workOn: [
-            "Changing from base \\(10\\)",
-            "Changing to base \\(10\\)",
-            "Modular Arithmetic",
-        ],
-        errors: 0,
-    },
- {
-    id: 'combinations',
-        title: `Combinations`,
-        description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
-        workOn:
-            [
-                "Recognizing combinations vs permutations",
-                "Combinations equation",
+            workOn: [
+                "Medians",
+                "Perpendicular Bisectors",
+                "Angle Bisectors",
             ],
             errors: 0,
-    },
-    {
-        id: 'counting',
-        title: `Counting`,
-        description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
-        workOn:
-        [
-            `Permutations Formula \\(n!\\)`,
-            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
-            'Factorials',
-        ],
-        errors: 0,
-    },
-    {
-        id: 'expected outcome',
-        title: `Expected Outcome`,
-        description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
-        workOn:
-        [
-            'Expected Outcome Formula'
-        ],
-        errors: 0,
-    },
-    {
-        id: 'complementary counting',
-        title: `Complementary Counting`,
-        description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
-        workOn: [
-            "Saving time"
-        ],
-        errors: 0,
-    }
+        },
+        {
+            id: 'counting',
+            title: `Counting`,
+            description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
+            workOn: [
+                "Optimization",
+                "Logic",
+                "Casework"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'composite shapes',
+            title: `Composite Shapes`,
+            description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
+            workOn: [
+                "Area",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'transformations',
+            title: `Transformations`,
+            description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
+            workOn: [
+                "Translations",
+                "Reflections",
+                "Rotations",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'volume',
+            title: `Volume`,
+            description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
+            workOn: [
+                "Volume Formulas",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'prime numbers',
+            title: `Prime Numbers`,
+            description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
+            workOn: [
+                "Factoring"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'hexagons',
+            title: `Hexagons`,
+            description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
+            workOn: [
+                "Area of a hexagon",
+                "Area of equilateral triangles",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'optimization',
+            title: `Optimization`,
+            description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
+            workOn: [
+                "Casework",
+                "Counting"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'volume relationships',
+            title: `Volume Relationships`,
+            description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
+            workOn: [
+                "ratios"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'pyramids',
+            title: `Pyramids`,
+            description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
+            workOn: [
+                "Pythagorean theorem",
+                "Surface Area"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'trigonometry',
+            title: `Trigonometry`,
+            description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
+            workOn: [
+                "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
+                "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
+                "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'coordinate plane',
+            title: `Coordinate Plane`,
+            description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
+            workOn: [
+                "Slope",
+                "Functions",
+                "Graphing",
+            ],
+            errors: 0,
+        },
+        {
+            title: "Pythagorean Theorem",
+            id: 'pythagorean theorem',
+            description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
+            workOn: [
+                "Pythagorean Triples",
+                "Theorem",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'forced simplification',
+            title: `Forced Simplification`,
+            description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
+            workOn: [
+                "Logic",
+                "Understanding problems",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'power of a point',
+            title: `Power of A Point`,
+            description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
+            workOn: [
+                "Chords",
+                "Tangents",
+                "Secants",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'bases',
+            title: `Bases`,
+            description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
+        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
+            workOn: [
+                "Changing from base \\(10\\)",
+                "Changing to base \\(10\\)",
+                "Modular Arithmetic",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'combinations',
+            title: `Combinations`,
+            description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
+            workOn:
+                [
+                    "Recognizing combinations vs permutations",
+                    "Combinations equation",
+                ],
+            errors: 0,
+        },
+        {
+            id: 'counting',
+            title: `Counting`,
+            description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
+            workOn:
+                [
+                    `Permutations Formula \\(n!\\)`,
+                    'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
+                    'Factorials',
+                ],
+            errors: 0,
+        },
+        {
+            id: 'expected outcome',
+            title: `Expected Outcome`,
+            description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
+            workOn:
+                [
+                    'Expected Outcome Formula'
+                ],
+            errors: 0,
+        },
+        {
+            id: 'complementary counting',
+            title: `Complementary Counting`,
+            description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
+            workOn: [
+                "Saving time"
+            ],
+            errors: 0,
+        }
 
-];
-TOPIC_GLOSSARY.forEach(q =>{
+    ];
+    TOPIC_GLOSSARY.forEach(q => {
         q.attempts = 0;
-})
+    })
 } else {
-     TOPIC_GLOSSARY = JSON.parse(localStorage.getItem("topicGlossarySolve"))
+    TOPIC_GLOSSARY = JSON.parse(localStorage.getItem("topicGlossarySolve"))
 }
-function save(){
-        localStorage.setItem("ELO", userRatingAll);
+function save() {
+    localStorage.setItem("ELO", userRatingAll);
 }
-function get(){
-        return localStorage.getItem("ELO")
+function get() {
+    return localStorage.getItem("ELO")
 }
-if (get() === null){
-        userRatingAll = 1200;
+if (get() === null) {
+    userRatingAll = 1200;
 } else {
-        userRatingAll = get()
+    userRatingAll = get()
 }
 let strikes = 2;
 function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 let score = 0;
-function toggleSubMenu(button){
+function toggleSubMenu(button) {
     button.nextElementSibling.classList.toggle('show');
     button.classList.toggle('rotate');
 }
-function updateAllRating(){
-    userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
+function updateAllRating() {
+    userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory) / 4
 }
 // ---------- Shuffle Function ----------
 const highlight = document.getElementById("highlight");
@@ -718,7 +718,7 @@ function showHighlight() {
     highlight.style.transform = 'scaleX(0)';
     highlight.style.left = '0';
     highlight.offsetHeight; // force reflow
-            // Step 1: expand from left to right
+    // Step 1: expand from left to right
     highlight.style.transition = 'transform 0.3s ease-out';
     highlight.style.transform = 'scaleX(1)';
 
@@ -748,9 +748,9 @@ const myConfetti = confetti.create(confettiCanvas, {
 
 const questions = [
     {
-                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 5</a>`,
-                text: `Let \\(p(x)=x^2-10x+k\\) for some positive integer \\(k\\). Suppose that both roots of \\(p(x)\\) are real and that \\(\\frac{1}{\\alpha ^2}+\\frac{1}{\\beta ^2}=\\frac{21}{16}\\), where \\(\\alpha\\) and \\(\\beta\\) are the two roots of \\(p(x)\\). Find \\(k\\)`,
-                solution: `<b>8</b><p>We have that \\(\\frac{\\alpha ^2 + \\beta ^2}{(ab)^2}\\). By Vieta's rules, we know that \\(\\alpha + \\beta = - \\frac{-10}{1}=10\\) and \\(\\alpha \\times \\beta = k\\). We know that \\(\\alpha ^2 + \\beta ^2 = (\\alpha + \\beta)^2-2\\alpha \\beta = 100 - 2k\\) and obviously, we have \\(k^2\\) in the denominator. We thus have</p>
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 5</a>`,
+        text: `Let \\(p(x)=x^2-10x+k\\) for some positive integer \\(k\\). Suppose that both roots of \\(p(x)\\) are real and that \\(\\frac{1}{\\alpha ^2}+\\frac{1}{\\beta ^2}=\\frac{21}{16}\\), where \\(\\alpha\\) and \\(\\beta\\) are the two roots of \\(p(x)\\). Find \\(k\\)`,
+        solution: `<b>8</b><p>We have that \\(\\frac{\\alpha ^2 + \\beta ^2}{(ab)^2}\\). By Vieta's rules, we know that \\(\\alpha + \\beta = - \\frac{-10}{1}=10\\) and \\(\\alpha \\times \\beta = k\\). We know that \\(\\alpha ^2 + \\beta ^2 = (\\alpha + \\beta)^2-2\\alpha \\beta = 100 - 2k\\) and obviously, we have \\(k^2\\) in the denominator. We thus have</p>
                 $$
                 \\frac{100-2k}{k^2}=\\frac{21}{16}
                 $$
@@ -762,9 +762,9 @@ const questions = [
                 $$
                 $$
                 k=\\frac{-32 \\pm \\sqrt{32^2+4 \\times 21 \\times 1600}}{42}=8\\)`,
-                answer: '8',
-                hint: "Use Vieta's Formulas",
-                step: "Rewrite the fraction with a common denominator"
+        answer: '8',
+        hint: "Use Vieta's Formulas",
+        step: "Rewrite the fraction with a common denominator"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
@@ -785,7 +785,7 @@ const questions = [
         topic: "induction",
         pNumber: 9,
 
-        
+
     },
     {
         title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
@@ -816,7 +816,7 @@ the value of \\(xy + yz + zx\\).`,
         topic: "logic",
         pNumber: 7
     },
-  
+
     {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 4
@@ -896,7 +896,7 @@ What is the value of \\(a^2+b^2+c^2\\)
                 </a>`,
         text: `The average of five numbers is \\(18\\). If one number \\(x\\) is removed, the average of the
 remaining four numbers is \\(20\\). What is \\(x\\)?`,
-solution: `<b>10</b><p>Write this out algebraicly:</p>
+        solution: `<b>10</b><p>Write this out algebraicly:</p>
 $$
 \\frac{s+x}{5}=18
 $$
@@ -904,13 +904,13 @@ $$
 \\frac{s}{4}=20
 $$
 <p>Where \\(s\\) is the sum of all other numbers. From the other equation, we have that \\(s=80\\). Inputting that into the first equation we have \\(80+x=18(5)=90\\) and \\(x=10\\)`,
-answer: '10',
-hint: "Write it out algebraicly",
-step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \\(s=\\) sum of all other numbers in the set"
+        answer: '10',
+        hint: "Write it out algebraicly",
+        step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \\(s=\\) sum of all other numbers in the set"
     },
     {
-    title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link"> Solvefire Iron Round 6 Problem 2</a>`,
-    text: `<p>A function \\(f\\) is defined on the positive integers by</p>
+        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link"> Solvefire Iron Round 6 Problem 2</a>`,
+        text: `<p>A function \\(f\\) is defined on the positive integers by</p>
     $$
     f(1), f(2)=2
     $$
@@ -919,8 +919,8 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     f(n)=f(n-1)+f(n-2)+1
     $$
     <p>Find \\(f(6)\\)`,
-    answer:'20',
-    solution: `<b>20</b><p>Right off the bat, we see this is similar to the fibbonaci sequence but with a few key differences: We start with \\(2\\) and we add \\(1\\)</p>
+        answer: '20',
+        solution: `<b>20</b><p>Right off the bat, we see this is similar to the fibbonaci sequence but with a few key differences: We start with \\(2\\) and we add \\(1\\)</p>
     <p>This one is easy enough where you can plausibly brute force, so let's just look through the process:</p>
     $$
     f(3)=f(2)+f(1)+1=2+1+1=4
@@ -934,22 +934,22 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     $$
     f(6)=f(5)+f(4)+1=12+7+1=20
     $$`,
-    hint: "Solve for \\(f(n)\\) one by one",
-    step: "Solve for each value independently",
-    topic: "arithmetic"
+        hint: "Solve for \\(f(n)\\) one by one",
+        step: "Solve for each value independently",
+        topic: "arithmetic"
     },
-        {
-                title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+    {
+        title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 6 Problem 4
                 </a>` ,
-                text: `Alice can finish a job in \(6\) hours, and Bob can finish the same job in \\(10\\) hours. They work together for \\(2\\) hours, and then Bob leaves. If Alice needs \\(\\frac{m}{n}\\) more hours to finish the job, 
+        text: `Alice can finish a job in \(6\) hours, and Bob can finish the same job in \\(10\\) hours. They work together for \\(2\\) hours, and then Bob leaves. If Alice needs \\(\\frac{m}{n}\\) more hours to finish the job, 
                 where \\(m\\) and \\(n\\) are relatively prime positive integers, find \\(m+n\\)`,
-                solution: `<b>19</b><p>Let's calculate how much each of them did in the \\(2\\) hours. We know that Alice did \\(\\frac{2}{6}=\\frac{1}{3}\\) of the job and Bob did \\(\\frac{2}{10}=\\frac{1}{5}\\) for a total of \\(\\frac{1}{3}+\\frac{1}{5}=\\frac{8}{15}\\)</p>
+        solution: `<b>19</b><p>Let's calculate how much each of them did in the \\(2\\) hours. We know that Alice did \\(\\frac{2}{6}=\\frac{1}{3}\\) of the job and Bob did \\(\\frac{2}{10}=\\frac{1}{5}\\) for a total of \\(\\frac{1}{3}+\\frac{1}{5}=\\frac{8}{15}\\)</p>
                 <p>Alice needs to complete \\(\\frac{7}{15}\\) of her job, which will take her \\(\\frac{7}{15} \\times 6 = \\frac{14}{5}\\) for \\(m=14, n=5\\) and \\(m+n=19\\)`,
-                answer: '19',
-                hint: "How much did each of them do in the \\(2\\) hours?",
-                step: "Find how much each of them did in \\(2\\) hours by \\(\\frac{2}{\\textup{total time they need to finish a j*b}}\\)",
-                topic: "speed-distance-time"
+        answer: '19',
+        hint: "How much did each of them do in the \\(2\\) hours?",
+        step: "Find how much each of them did in \\(2\\) hours by \\(\\frac{2}{\\textup{total time they need to finish a j*b}}\\)",
+        topic: "speed-distance-time"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
@@ -1038,9 +1038,9 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
         x^2+y^2=10
         $$
         `,
-            hint: "Use algebraic manipulation by squaring and cubing the first equation",
-            step: "Cube the first equation and substitute known values to solve for \\(xy\\)",
-            topic: "algebraic manipulation"
+        hint: "Use algebraic manipulation by squaring and cubing the first equation",
+        step: "Cube the first equation and substitute known values to solve for \\(xy\\)",
+        topic: "algebraic manipulation"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
@@ -1057,7 +1057,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     {
         title: `<a href="https://drive.google.com/file/d/1F0yIO-WMnFQGiOqP57qvAc3lyLcXcLWk/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 4
-                </a>`,   
+                </a>`,
         text: `Find the sum of all real values of \\(x\\) that satisfy \\(|x^2-6x+5| = |x-1|\\)`,
         solution: `<b>11</b><p>First, we factor \\(x^2-6x+5=(x-5)(x-1)\\). Since this is absolute value, we split into cases:</p>
         <p>Case one, they are both positive. We can divide out \\((x-1)\\) for \\(x-5=1\\) which gives \\(6\\)</p>
@@ -1072,7 +1072,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     {
         title: `<a href="https://drive.google.com/file/d/1F0yIO-WMnFQGiOqP57qvAc3lyLcXcLWk/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 7
-                </a>`,     
+                </a>`,
         text: `If \\(a, b,\\) and \\(c\\) are the roots of the polynomial \\(x^3-7x^2+14x-8=0\\), find the value of \\(a^2+b^2+c^2\\)`,
         solution: `<b>21</b><p>With Vieta's formulas, even without knowing \\(a,b,c\\), we can find their sum to be \\(\\frac{a_{n-1}}{a_{n}}=\\frac{-7}{1}=-7\\). Squaring both of these gives \\(a^2+b^2+c^2+2ab+2bc+2ac=49\\). We can find 
         \\(ab+bc+ca=\\frac{a_{n-2}}{a_{n}}=\\frac{14}{1}=14\\). Thus, we have \\(a^2+b^2+c^2+2(14)=49\\) so \\(a^2+b^2+c^2=21\\)`,
@@ -1083,7 +1083,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     {
         title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 1
-                </a>`, 
+                </a>`,
         text: `Let \\(f(x)=x^2-3x+3\\). Determine the number of solutions to \\(f(f(n))=3\\)`,
         solution: `<b>2</b><p>First, we find how many values of \\(x\\) make \\(f(x)=3\\). We solve</p>
         $$
@@ -1117,7 +1117,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     {
         title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 9
-                </a>`,   
+                </a>`,
         text: `Let \\(x,y\\) be real numbers greater than zero which satisfy the equation \\(\\textup{log}_{x}y+\\textup{log}_{y}x=\\frac{10}{3}\\)
         The largest possible value of \\(\\textup{log}_{x}y-\\textup{log}_{y}x\\) can be expressed in the form \\(\\frac{m}{n}\\) , where \\(m\\) and \\(n\\) are
         coprime. Compute \\(m+n\\)`,
@@ -1151,7 +1151,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     {
         title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
                 Solvefire Silver 1 Question 1
-                </a>`,   
+                </a>`,
         text: `<p>Find all real numbers \\(x\\) satisfying</p>
         $$
         \\sqrt{x+\\sqrt{x+\\sqrt{x+...}}}=5
@@ -1169,44 +1169,44 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
         $$
         $$
         x=20`,
-        hint: "Use substitution", 
+        hint: "Use substitution",
         step: "Substitute a value for \\(\\sqrt{x+\\sqrt{x+\\sqrt{x}}}\\)",
         topic: "algebraic manipulation",
         answer: '20'
     },
     {
-    title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
     Solvefire Silver 1 Question 2
-    </a>`,   
-    text: `The roots of \\(x^2-5x+3=0\\) are \\(\\alpha\\) and \\(\\beta\\). Compute \\(\\alpha^3 + \\beta^3\\)`,
-    solution: `<b>80</b><p>We don't actually need to solve for \\(\\alpha\\) and \\(\\beta\\), because we have Vieta's Formulas</p>
+    </a>`,
+        text: `The roots of \\(x^2-5x+3=0\\) are \\(\\alpha\\) and \\(\\beta\\). Compute \\(\\alpha^3 + \\beta^3\\)`,
+        solution: `<b>80</b><p>We don't actually need to solve for \\(\\alpha\\) and \\(\\beta\\), because we have Vieta's Formulas</p>
     <p>We know that \\(a+b=-(\\frac{-5}{1})=5\\) and \\(ab=(-1)^3+\\frac{3}{1}=-3\\). We have \\((a+b)^3=a^3+b^3+3a^2b+3ab^2=125\\)</p>
     <p>We can rewrite \\(3a^2b+3ab^2=3ab(a+b)\\) whcih we know to be equal to \\(-9(5)=-45\\)</p>
     <p>\\(125-45=80\\)</p>`,
-    answer: '80',
-    hint: "Use Vieta's Formulas",
-    step: "Find \\(ab\\) and \\(a+b\\) using Vieta's Formulas",
-    topic: "algebraic manipulation"
+        answer: '80',
+        hint: "Use Vieta's Formulas",
+        step: "Find \\(ab\\) and \\(a+b\\) using Vieta's Formulas",
+        topic: "algebraic manipulation"
     },
     {
-    title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
     Solvefire Silver 1 Question 3
-    </a>`,   
-    text: `The cubic \\(x^3-6x^2+11x-6=0\\) has roots \\(p,q,r\\). Compute \\(p^2+q^2+r^2\\)`,
-    solution: `<b>14</b><p>We use Vieta's Formulas to find \\(p+q+r\\) as \\(-\\frac{a_{n-1}}{a_{n}}=-\\frac{-6}{1}=6\\)</p>
+    </a>`,
+        text: `The cubic \\(x^3-6x^2+11x-6=0\\) has roots \\(p,q,r\\). Compute \\(p^2+q^2+r^2\\)`,
+        solution: `<b>14</b><p>We use Vieta's Formulas to find \\(p+q+r\\) as \\(-\\frac{a_{n-1}}{a_{n}}=-\\frac{-6}{1}=6\\)</p>
     <p>We have that \\((p+q+r)^2=p^2+q^2+r^2+2pq+2pr+2qr=36\\). We also use Vieta's Formulas to find \\(pq+qr+rq=\\frac{a_{n-2}}{a_{n}}=\\frac{11}{1}=11\\)</p>
     <p>Thus, we find \\(36-2(11)=36-22=14\\)</p>`,
-    answer: '14',
-    hint: "Use Vieta's Formulas",
-    step: "Use Viet'as Formulas to find \\(p+q+r\\) and \\(pq+qr+rp\\)",
-    topic: "algebraic manipulation"
+        answer: '14',
+        hint: "Use Vieta's Formulas",
+        step: "Use Viet'as Formulas to find \\(p+q+r\\) and \\(pq+qr+rp\\)",
+        topic: "algebraic manipulation"
     },
     {
-           title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
     Solvefire Bronze 5 Question 3
-    </a>`,  
-    text: `Let \\(P(x)\\) be a polynomial of degree \\(4\\) such that \\(P(1)=1, P(2)=2, P(3)=3, P(4)=4\\) and \\(P(5)=15\\). What is the value of \\(P(6)\\)?`,
-    solution: `<b>56</b><p>Since we know that for integer \\(n\\) where \\(1 \\leq n \\eq 4\\) \\(n=P(n)\\), we set up \\(Q(n)=P(n)-n\\), where the roots are \\(1,2,3,4\\) so we have \\(Q(x)=a(x-1)(x-2)(x-3)(x-4)\\). We already know \\(Q(5)=P(5)-5=10\\) so we solve for \\(A\\)</p>
+    </a>`,
+        text: `Let \\(P(x)\\) be a polynomial of degree \\(4\\) such that \\(P(1)=1, P(2)=2, P(3)=3, P(4)=4\\) and \\(P(5)=15\\). What is the value of \\(P(6)\\)?`,
+        solution: `<b>56</b><p>Since we know that for integer \\(n\\) where \\(1 \\leq n \\eq 4\\) \\(n=P(n)\\), we set up \\(Q(n)=P(n)-n\\), where the roots are \\(1,2,3,4\\) so we have \\(Q(x)=a(x-1)(x-2)(x-3)(x-4)\\). We already know \\(Q(5)=P(5)-5=10\\) so we solve for \\(A\\)</p>
     $$
     10=A(4)(3)(2)(1)
     $$
@@ -1226,10 +1226,10 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     $$
     P(6)=56
     $$`,
-    answer: '56'  ,
-    hint: "Create a different function and solve for that instead",
-    step: "Write an equation with respect to \\(P(x)\\) with roots \\(1, 2, 3, 4\\)",
-    topic: "algebraic manipulation"
+        answer: '56',
+        hint: "Create a different function and solve for that instead",
+        step: "Write an equation with respect to \\(P(x)\\) with roots \\(1, 2, 3, 4\\)",
+        topic: "algebraic manipulation"
 
     },
     {
@@ -1254,7 +1254,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
         hint: "Split into cases",
         step: "Calculate for each value of \\(y\\)",
         topic: "casework"
-        
+
 
     },
     {
@@ -1293,7 +1293,7 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
     {
         title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank class="pset-link">Solvefire Bronze 6 Problem 10</a>`,
         text: `A swimmer travels a distance \\(d\\) downstreak in \\(20\\) minutes and upstream in \\(60\\) minutes. A rower travels the sam
-        edistance upstream in \\(20\\) minutes. How long odes the rower take to travel downstream?`,   
+        edistance upstream in \\(20\\) minutes. How long odes the rower take to travel downstream?`,
         solution: `<b>12</b><p>Since we know that \\(s=\\frac{d}{t}\\), we call the swimmer's speed \\(s\\) and the current speed \\(c\\). We have \\(s+c=\\frac{d}{20}\\) and \\(s-c=\\frac{d}{60}\\). We don't actually 
         care about the individual variables, we just need to know their relationships. For the rower, we have \\(r-c=\\frac{d}{20}\\) and we want \\(t\\) in \\(r+c=\\frac{d}{t}\\)</p>
         $$
@@ -1340,14 +1340,14 @@ step: "Use the equations \\(\\frac{s+x}{5}=18\\) and \\(\\frac{s}{4}=20\\) for \
         $$
 
 `,
-answer: '12',
-hint: "Write equations using \\(s=\\frac{d}{t}\\)",
-step: "You should have \\(s+c=\\frac{d}{20}\\), \\(s-c=\\frac{d}{60}\\), \\(r-c=\\frac{d}{20}\\)",
-topic: "algebraic mainpulation"
+        answer: '12',
+        hint: "Write equations using \\(s=\\frac{d}{t}\\)",
+        step: "You should have \\(s+c=\\frac{d}{20}\\), \\(s-c=\\frac{d}{60}\\), \\(r-c=\\frac{d}{20}\\)",
+        topic: "algebraic mainpulation"
     },
     {
-title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 7</a>`, 
-text: `<p>Let \\(x\\) and \\(y\\) be real numbers greater than \\(1\\) such that </p>
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 7</a>`,
+        text: `<p>Let \\(x\\) and \\(y\\) be real numbers greater than \\(1\\) such that </p>
 $$
 \\textup{log}_{x}y+\\textup{log}_{y}x=\\frac{5}{2}
 $$
@@ -1356,12 +1356,12 @@ $$
 xy=64
 $$
 <p>Find \\(x+y\\)</p>`,
-solution: `<b>20</b><p>By change of base, we have that \\(\\frac{\\textup{log}y}{\\textup{log}x}+\\frac{\\textup{log}x}{\\textup{log}y}=\\frac{5}{2}\\). We rewrite \\(a=\\textup{log}_{x}y) so our equation becomes \\(a+\\frac{1}{a}=\\frac{5}{2}\\), such that \\(a^2-\\frac{5}{2}a+1=2a^2-5a+2=0\\).</p>
+        solution: `<b>20</b><p>By change of base, we have that \\(\\frac{\\textup{log}y}{\\textup{log}x}+\\frac{\\textup{log}x}{\\textup{log}y}=\\frac{5}{2}\\). We rewrite \\(a=\\textup{log}_{x}y) so our equation becomes \\(a+\\frac{1}{a}=\\frac{5}{2}\\), such that \\(a^2-\\frac{5}{2}a+1=2a^2-5a+2=0\\).</p>
 <p>Factoring this gives \\((2a-1)(a-2)=0\\) for \\(a=\\frac{1}{2}\\) or \\(a=2\\). It really doesn't matter what \\(a\\) is, because \\(x\\) and \\(y\\) need to be interchangeable anyways. Thus, we use \\(a=2\\). We have that \\(x^2=y\\) so \\(x^3=64\\) for \\(x=4, y=16\\), and \\(x+y=20\\)`,
-answer: '20',
-hint: "\\(\\textup{log}_{x}y=\\frac{1}{\\textup{log}_{y}x}\\)",
-step: "Substitute a value ofr \\(\\textup{log}_{x}y\\)",
-topic: "algebraic manipulation"
+        answer: '20',
+        hint: "\\(\\textup{log}_{x}y=\\frac{1}{\\textup{log}_{y}x}\\)",
+        step: "Substitute a value ofr \\(\\textup{log}_{x}y\\)",
+        topic: "algebraic manipulation"
     },
     {
         title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 1</a>`,
@@ -1389,10 +1389,10 @@ topic: "algebraic manipulation"
          $$
          xy=2^8
          $$`,
-         answer: '256',
-         topic: "functions and graphing",
-         hint: "Use substitution and change of base",
-         step: "Use change of base to change to base \\(2\\)"
+        answer: '256',
+        topic: "functions and graphing",
+        hint: "Use substitution and change of base",
+        step: "Use change of base to change to base \\(2\\)"
     }
 ]
 const geometryQ = [
@@ -1405,7 +1405,7 @@ const geometryQ = [
         step: "Use the law of cosines \\(c^2=a^2+b^2-2ab\\textup{cos}(c)\\) to find \\(AC\\)",
         topic: "triangle lines"
     },
-      {
+    {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 3
                 </a>`,
@@ -1429,8 +1429,8 @@ const geometryQ = [
 \\(B\\) is \\(2\\), and to vertex \\(C\\) is \\(3\\). The side length of \\(ABCD\\) is in the form \\(\\sqrt{a+b\\sqrt{b}}\\), where \\(a\\)
 
 and \\(b\\) are coprime integers. Compute \\(a+b\\).`,
-answer: `7`,
-solution: `<b>7</b><p>Assume the points \\(ABCD\\) are on a coordinate plane such that \\(A(0,s), B(s,s), C(s,0), D(0,0)\\) (with the side length of the square being \\(s\\)).</p>
+        answer: `7`,
+        solution: `<b>7</b><p>Assume the points \\(ABCD\\) are on a coordinate plane such that \\(A(0,s), B(s,s), C(s,0), D(0,0)\\) (with the side length of the square being \\(s\\)).</p>
 <p>From here, we use the distance formula \\(\\sqrt{x^2+y^2}\\) (derivated from the pythagorean theorem) to represent the location of Point \\(P(x,y)\\). We have that \\(x^2+(s-y)^2=1, (s-x)^2+(s-y)^2=4, (s-x)^2+y^2=9\\). We want to solve for \\(x\\), but that's not possible because it exists at different powers in this equation. Thus, we solve for \\(x\\) and \\(y\\).</p>
 Subtracting the second equation from the first gives us \\(x^2-(s-x)^2=-3\\). We expand this into \\(x^2-s^2+2xs-x^2=-3\\) which of course becomes \\(2xs-s^2=-3\\) and then \\(x=\\frac{-3+s^2}{2s}\\). We do the same thing by subtracting the second equation from the third and finding \\(y=\\frac{5-y}{2s}\\).</p>
 <p>With these, we substitute them back into our original equations. For the first we have that \\(\\frac{(-3+s^2)^2}{4s^2}+(s-\\frac{(5+s^2)^2}{4s^2})^2=1\\)</p>
@@ -1474,24 +1474,24 @@ $$
 a+b=7
 $$
 `,
-hint: "How can you represent the square on the coordinate grid?",
-step: "Write square \\(ABCD\\) on the coordinate grid with points \\(A(0,s), B(s,s), C(s,0), D(0,0)\\) and use the distance formula to find the coordinates of \\(P\\) in relation to sidelength \\(s\\)",
-topic: "algebraic manipulation"
+        hint: "How can you represent the square on the coordinate grid?",
+        step: "Write square \\(ABCD\\) on the coordinate grid with points \\(A(0,s), B(s,s), C(s,0), D(0,0)\\) and use the distance formula to find the coordinates of \\(P\\) in relation to sidelength \\(s\\)",
+        topic: "algebraic manipulation"
     },
     {
-title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 3 Problem 6
                 </a>`,
         text: `A right circular cylinder with radius \\(2\\) and height \\(6\\) is filled with water to a depth of \\(4\\) inches.
 A solid metal sphere with a radius of  \\(1.5\\) inches is gently lowered into the cylinder, sinking to
 the bottom. By how many inches does the water level rise? If the answer is a fraction, find
 the sum of the numerator and the denominator.`,
-answer: `17`,
-solution: `<b>17</b><p>We need to find the total volume of water that the sphere diplaces, so we use \\(\\frac{4}{3}(1.5)^3=4.5\\). We're going to negate pi because we're going to divide it again anyways. That's how much water rises, but we need to translate that into height. We find the height of a cylinder with volume \\(4.5\\) and radius \\(2\\). We thus use \\(4.5=2^4h\\)
+        answer: `17`,
+        solution: `<b>17</b><p>We need to find the total volume of water that the sphere diplaces, so we use \\(\\frac{4}{3}(1.5)^3=4.5\\). We're going to negate pi because we're going to divide it again anyways. That's how much water rises, but we need to translate that into height. We find the height of a cylinder with volume \\(4.5\\) and radius \\(2\\). We thus use \\(4.5=2^4h\\)
  so \\(h=1.125\\) which is a fraction of \\(\\frac{9}{8}\\) for \\(9+8=17\\). Notice that the original height was extraneous`,
-hint: "What information is extraneous?",
-step: "Find the area displaced by the sphere",
-topic: "logic"
+        hint: "What information is extraneous?",
+        step: "Find the area displaced by the sphere",
+        topic: "logic"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
@@ -1507,7 +1507,7 @@ The area of intersection between \\(ABC\\) and \\(Y\\) is in the form \\(\\frac{
 , where
 
 \\(x\\) is a positive integer. Compute \\(x\\).`,
-image: "iron45.png",
+        image: "iron45.png",
         solution: `<b>16</b><p></p>We cut the area inside both circle \\(Y\\) and \\(ABC\\) by drawing a vertical line perpendicular to the diameter of \\(Y\\) and with endpoints on the circle and on the cneter. What this does is divide the overlap into a quarter circle and a triangle</p>
         <p>Starting with the quarter circle, we simply have to find \\(\\frac{1}{2}^2 \\cdot \\pi \\cdot \\frac{1}{4}= \\frac{pi}{16}\\). We now find the triangle which is isoceles right with legs of \\(\\frac{1}{2}\\) (the radius). Thus, the area is \\(\\frac{1}{2}^2 \\cdot \\frac{1}{2}= \\frac{1}{8}\\). Surely enough, when we add these, it becomes \\(\\frac{pi+2}{16}\\) for \\(x=16\\)`,
         answer: '16',
@@ -1558,7 +1558,7 @@ area of \\(\\triangle EBF\\)?`,
         step: "Use coordinate values to find the area of \\(\\triangle ABF\\) first",
         topic: "composite shapes"
     },
-        {
+    {
         title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 6 Problem 1
                 </a>`,
@@ -1585,12 +1585,12 @@ to chord AB is \\(\\sqrt{k}\\), find \\(k\\).`,
         topic: "triangle lines"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 7 Problem 10
                 </a>`,
-                text: `In \\(\\triangle ABC,\\) the side lengths are \\(AB=13, BC=14,\\) and \\(AC=15\\). A square \\(PQRS\\) is inscribed in the triangle such that \\(P\\) and \\(Q\\) lie on side \\(BC\\), \\(R\\) lies on \\(AC,\\) and \\(S\\) lies on \\(AB\\). The 
+        text: `In \\(\\triangle ABC,\\) the side lengths are \\(AB=13, BC=14,\\) and \\(AC=15\\). A square \\(PQRS\\) is inscribed in the triangle such that \\(P\\) and \\(Q\\) lie on side \\(BC\\), \\(R\\) lies on \\(AC,\\) and \\(S\\) lies on \\(AB\\). The 
                 side length of the square can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
-                solution: `<b>97</b><p>This solution is very theorem heavy. All of these can be derived, of course, but there is quite a bit of preexisting knowledge nescessary.</p>
+        solution: `<b>97</b><p>This solution is very theorem heavy. All of these can be derived, of course, but there is quite a bit of preexisting knowledge nescessary.</p>
                 <p>First, we need to know that the side length \\(s\\) of a square inscribed on base \\(b\\) with altitude \\(h\\) has a length of \\(\\frac{bh}{b+h}\\). We thus need the altitude, which is \\(\\frac{2 \\cdot \\textup{area}}{\\textup{base}}\\). We use heron's law \\(a = \\sqrt{s(s-a)(s-b)(s-c)}\\) where \\(s=\\textup{semiperimeter}=\\frac{a+b+c}{2}\\).</p>
                 $$
                 \\frac{13+14+15}{2}=\\frac{42}{2}=21
@@ -1607,21 +1607,21 @@ to chord AB is \\(\\sqrt{k}\\), find \\(k\\).`,
                 $$
                 p=84, q=13, p+q=97
                 $$`,
-                answer: '97',
-                hint: "Use the theorems for semiperimeter (s=\\frac{a+b+c}{2}\\), heron's law (a=\\sqrt{s(s-a)(s-b)(s-c)}\\), the height of an altitude \\(\\frac{2 \\times a}{s}\\), and side length of an inscribed square \\(s=\\frac{bh}{b+h}\\)",
-                step: "Use the theorems above and start with the semiperimeter",
-                topic: "composite shapes"
+        answer: '97',
+        hint: "Use the theorems for semiperimeter (s=\\frac{a+b+c}{2}\\), heron's law (a=\\sqrt{s(s-a)(s-b)(s-c)}\\), the height of an altitude \\(\\frac{2 \\times a}{s}\\), and side length of an inscribed square \\(s=\\frac{bh}{b+h}\\)",
+        step: "Use the theorems above and start with the semiperimeter",
+        topic: "composite shapes"
     },
     {
-                        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 3
-                </a>`,   
-                text: `In a square of side length \\(12\\), a semicircle is drawn inside the square with its diameter lying
+                </a>`,
+        text: `In a square of side length \\(12\\), a semicircle is drawn inside the square with its diameter lying
 along one side of the square. A circle is then drawn inside the square so that it is externally
 tangent to the semicircle and also tangent to the two sides of the square perpendicular to
 that side. The radius of this circle can be written in the form \\(a-b\\sqrt{c}) where \\(a, b\\), and \\(c\\) are
 positive integers and \\(c\\) is squarefree. Find \\(a+b+c\\).`,
-solution: `<b>39</b><p>We know the distance between the centers of the two circles is \\(6+r\\) because it's the distance between the two radii.</p>
+        solution: `<b>39</b><p>We know the distance between the centers of the two circles is \\(6+r\\) because it's the distance between the two radii.</p>
 <p>We can use the pythagorean theorem to find this value if we find the horizontal and vertical distances</p>
 <p>We know that the circle is horizontally displaced \\(r\\) from the left edge of the square, because we can draw a radius \\(r\\) from the edge to the center of the circle that is horizontal. The distance for the 
 largest circle is \\(6\\) by the same logic, so the distance between the centers of the two circles horizontally is \\(6-r\\)</p>
@@ -1644,15 +1644,15 @@ $$
 24+12+3=39
 $$
 `,
-hint: "Use the pythagorean theorem and express all of the distances with respect to \\(r\\)",
-step: "Use the pythagorean theorem with hypotenuse \\(6+r\\) Find the remaining sides and use the quadratic equation",
-topic: "pythagorean theorem",
-answer: '39'
+        hint: "Use the pythagorean theorem and express all of the distances with respect to \\(r\\)",
+        step: "Use the pythagorean theorem with hypotenuse \\(6+r\\) Find the remaining sides and use the quadratic equation",
+        topic: "pythagorean theorem",
+        answer: '39'
     },
     {
-       title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 5
-                </a>`,   
+                </a>`,
         text: `In right triangle \\(ABC\\) with \\(\\angle C=90^\\circ\\), let \\(M\\) be the midpoint of hypotenuse \\(\\overline{AB}\\). If \\(CM=5\\) and \\(BC=6\\), find the area of triangle \\(ABC\\)`,
         solution: `<b>24</b><p>The median forms  is half the length of the hypotenuse so the hypotenuse is \\(10\\) which, by the pythagorean theorem, means \\(AC=8\\) for an area of \\(\\frac{6 \\times 8}{2}=24\\)`,
         answer: '24',
@@ -1661,7 +1661,7 @@ answer: '39'
         topic: "triangle lines"
     },
     {
-        title:  `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 5
                 </a>`,
         text: `A regular hexagon \\(H_{1}\\) has an area \\(24\\). A second hexagon \\(H_{2}\\) is formed by cnnecting the midpoints of the sides of \\(H_{1}\\). Find the area of \\(H_{2}\\)`,
@@ -1706,7 +1706,7 @@ answer: '39'
     {
         title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 3
-                </a>`, 
+                </a>`,
         text: `\\(\\triangle ABC\\) has side lengths \\(AB=13, BC=14, AC=15\\). A circle inscribed in \\(\\triangle ABC\\) and a square is inscribed within the circle. Calculate the area
         of the square`,
         solution: `<b>32</b><p>We need to find the area of \\(\\triangle ABC\\), which is \\(\\sqrt{s(s-a)(s-b)(s-c)}\\) where \\(s=\\textup{semiperimeter}\\), according to Heron's Law. The semiperimeter is \\(\\frac{a+b+c}{2}=\\frac{13+14+15}{2}=21\\). We thus 
@@ -1720,12 +1720,12 @@ answer: '39'
 
     },
     {
-                title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 6
-                </a>`, 
-                text: `Square \\(ABCD\\) has side length \\(4\\). Point \\(P\\) is inside the square such that \\(PA=\\sqrt{2}, PB=\\sqrt{10},\\) and \\(PC=3\\sqrt{2}\\).
+                </a>`,
+        text: `Square \\(ABCD\\) has side length \\(4\\). Point \\(P\\) is inside the square such that \\(PA=\\sqrt{2}, PB=\\sqrt{10},\\) and \\(PC=3\\sqrt{2}\\).
                 \\(PD=\\sqrt{a}\\) where \\(a\\) is a positive integer. Compute \\(a\\)`,
-                solution: `<b>10</b><p>We can express all the values as coordinates such that \\(A(0,0), B(0,4), C(4,4), D(4,0)\\). We don't actually need to know all \\(3\\) distances, just two to solve the system. I'm going
+        solution: `<b>10</b><p>We can express all the values as coordinates such that \\(A(0,0), B(0,4), C(4,4), D(4,0)\\). We don't actually need to know all \\(3\\) distances, just two to solve the system. I'm going
                 to use \\(PA\\) and \\(PB\\). We use the distance formula and express \\(P\\) as \\(P(x,y)\\)</p>
                 <p>For \\(PA\\)</p>
                 $$
@@ -1754,19 +1754,19 @@ answer: '39'
                 $$
                 <p>\\(x=1\\) (substitution)</p>
                 <p>The horizontal distance between \\(PD\\) is \\(3\\), and the vertical is \\(1\\). We have \\(\\sqrt{3^2+1^2}=10\\)`,
-                answer: '10',
-                hint: "Express geometrically and use the distance formula",
-                step: "Using the distance formula, express \\(PA\\) and \\(PB\\) as equations and find \\(PB-PA\\)",
-                topic: "algebraic manipulation"
+        answer: '10',
+        hint: "Express geometrically and use the distance formula",
+        step: "Using the distance formula, express \\(PA\\) and \\(PB\\) as equations and find \\(PB-PA\\)",
+        topic: "algebraic manipulation"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 7
-                </a>`, 
-                text: `\\(\\triangle ABC\\) has sides \\(AB=13, BC=14, AC=15\\). A line parallel to \\(BC\\) divides \\(\\triangle ABC\\) into a smaller triangle \\(\\triangle ADE\\)
+                </a>`,
+        text: `\\(\\triangle ABC\\) has sides \\(AB=13, BC=14, AC=15\\). A line parallel to \\(BC\\) divides \\(\\triangle ABC\\) into a smaller triangle \\(\\triangle ADE\\)
                 (with \\(D\\) on \\(AB\\) and \\(E\\) on \\(AC\\)) and trapezoid \\(BCED\\) such that the area of the trapezoid is twice the area of \\(\\triangle ADE\\). \\(DE\\) is in the form \\(\\frac{m}{\\sqrt{n}}\\),
                 where \\(m\\) and \\(n\\) are coprime integers. Compute \\(m+n\\)`,
-                solution: `<b>17</b><p>We have that \\(\\textup{area of the whole triangle} = \\textup{area of the small triangle} + \\textup{area of the trapezoid}\\) and \\(\\textup{area of the trapezoid} = 2 \\times \\textup{area of the small triangle}\\) so \\(\\textup{area of the whole triangle} =  3 \\times \\textup{area of the small triangle}\\)</p>
+        solution: `<b>17</b><p>We have that \\(\\textup{area of the whole triangle} = \\textup{area of the small triangle} + \\textup{area of the trapezoid}\\) and \\(\\textup{area of the trapezoid} = 2 \\times \\textup{area of the small triangle}\\) so \\(\\textup{area of the whole triangle} =  3 \\times \\textup{area of the small triangle}\\)</p>
                 <p>Using heron's law \\(a=\\sqrt{s(s-a)(s-b)(s-c)}\\) for \\(s=\\frac{a+b+c}{2}\\), we can find \\(s=\\frac{13+14+15}{2}=21\\) and \\(a=\\sqrt{21(21-13)(21-14)(21-15)}=\\sqrt{7056}=84\\)</p>
                 <p>Thus, we have \\(\\textup{area of the small triangle}=\\frac{84}{3}=28\\)</p>
                 <p>The small triangle is proportional to the large triangle. Thus, \\(\\textup{area of the small triangle}{area of the whole triangle}=\\frac{side length of the small triangle}{side length of the whole triangle}^2\\) so \\(\\frac{28}{84}=\\frac{DE}{14}^2\\)</p>
@@ -1783,55 +1783,55 @@ answer: '39'
                 14+3=17
                 $$
                 `,
-                answer: '17',
-                hint: "The ratio of the area of the large triangle to the small triangle is the square of the sie lengths from the large triangle to the small triange",
-                step: "Find the area of the large and small triangles and make a ratio with the side length",
-                topic: "algebraic manipulation",
+        answer: '17',
+        hint: "The ratio of the area of the large triangle to the small triangle is the square of the sie lengths from the large triangle to the small triange",
+        step: "Find the area of the large and small triangles and make a ratio with the side length",
+        topic: "algebraic manipulation",
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
                 Solvefire Silver Contest 1 Question 7
-                </a>`,     
-                text: `A circle has center \\(O\\) and a radius \\(10\\). A chord \\(PQ\\) passes through the midpoint \\(M\\) of a radius \\(OA\\). Given that \\(PM=3\\), compute \\(QM\\)`,
-                solution: `<b>25</b><p>We find the power of a point to be \\(10^2 \\textup{(radius)}-5^2 \\textup{(M's distance from the center)}=75\\)</p>
+                </a>`,
+        text: `A circle has center \\(O\\) and a radius \\(10\\). A chord \\(PQ\\) passes through the midpoint \\(M\\) of a radius \\(OA\\). Given that \\(PM=3\\), compute \\(QM\\)`,
+        solution: `<b>25</b><p>We find the power of a point to be \\(10^2 \\textup{(radius)}-5^2 \\textup{(M's distance from the center)}=75\\)</p>
                 <p>The product of \\(PM \\times QM=75\\) so we have \\(3 \\times x=75\\) for \\(QM=25\\)`,
-                answer: '25',
-                hint: "Use the equations for power of a point \\(\\textup{radius}^2-\\textup{distance}^2=\\textup{power of a point}\\) and that the product of two segments of a chord is equal to the product of the point",
-                step: "Use the equations from the hint to calculate the power of the point",
-                topic: "power of a point"
+        answer: '25',
+        hint: "Use the equations for power of a point \\(\\textup{radius}^2-\\textup{distance}^2=\\textup{power of a point}\\) and that the product of two segments of a chord is equal to the product of the point",
+        step: "Use the equations from the hint to calculate the power of the point",
+        topic: "power of a point"
     },
     {
-                        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 8
-                </a>`, 
-                text: `Let \\(ABCD\\) be a cyclic quadrilateral inscribed in a circle of radius \\(5\\). Given
+                </a>`,
+        text: `Let \\(ABCD\\) be a cyclic quadrilateral inscribed in a circle of radius \\(5\\). Given
                 \\(AB=6, CD=8\\), with \\(AB\\) and \\(CD\\) lying on opposite sides of the centre, and \\(AB \\parallel CD,\\) compute the area of \\(ABCD\\)`,
-                solution: `<b>49</b><p>We have that \\(ABCD\\) is an isoceles trapezoid. The area is \\(\\frac{b_{1}+b_{2}}{2} \\times h\\). We have the two bases so we find \\(\\frac{6+8}{2} \\times h = 7h\\). To find \\(h\\), we draw radii that intersect the circle and
+        solution: `<b>49</b><p>We have that \\(ABCD\\) is an isoceles trapezoid. The area is \\(\\frac{b_{1}+b_{2}}{2} \\times h\\). We have the two bases so we find \\(\\frac{6+8}{2} \\times h = 7h\\). To find \\(h\\), we draw radii that intersect the circle and
                 lines \\(AB\\) and \\(CD\\) at the same point, respectively. We draw another line from the center of the circle perpendicular to each line. This should create two right triangles with hypotenuse \\(5\\) and side lenths of \\(3,4\\) respectively, which 
                 create pythagorean triples with missing sides \\(4,3\\) for a height of \\(4+3=7\\). We find \\(7 \\times 7=49\\)`,
-                answer: '49',
-                hint: "The shape is an isoceles triangle",
-                step: "Draw radii  that itersect the circle and lines, and lines perpendicular to \\(AB\\) and \\(CD\\) to create right triangles",
-                topic: "logic"
+        answer: '49',
+        hint: "The shape is an isoceles triangle",
+        step: "Draw radii  that itersect the circle and lines, and lines perpendicular to \\(AB\\) and \\(CD\\) to create right triangles",
+        topic: "logic"
     },
     {
-                        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 9
-                </a>`, 
-                text: `Two cords \\(AC\\) and \\(BD\\) of a circle intersect at a point \\(P\\) inside the circle.
+                </a>`,
+        text: `Two cords \\(AC\\) and \\(BD\\) of a circle intersect at a point \\(P\\) inside the circle.
                 Given that \\(AP=3, PC=12,\\) and \\(BP=4\\), compute \\(PD)`,
-                solution: '<b>9</b><p>This is pretty simply just power of a point. We have that \\(AP \\times PC = BP \\times PD\\) so \\(3 \\times 12 = 4 \\times PD\\) and thus \\(PD=9\\)',
-                answer: '9',
-                hint: "Use power of a point",
-                step: "Solve \\(AP \\times PC = BP \\times PD\\)",
-                topic: "power of a point"
+        solution: '<b>9</b><p>This is pretty simply just power of a point. We have that \\(AP \\times PC = BP \\times PD\\) so \\(3 \\times 12 = 4 \\times PD\\) and thus \\(PD=9\\)',
+        answer: '9',
+        hint: "Use power of a point",
+        step: "Solve \\(AP \\times PC = BP \\times PD\\)",
+        topic: "power of a point"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 5 Question 2
-                </a>`, 
-                text: `Let \\(\\triangle ABC\\) have side lengths \\(AB=13, BC=14\\) and \\(CA=15\\). Let \\(I\\) be the incenter of \\(\\triangle ABC\\). What is the value of \\(AI^2\\)?`,
-    solution: `<b>65</b><p>We find the inradius using \\(\\frac{\\textup{area}}{\\textup{semiperimeter}}\\). We use Heron's formula and the formula for a semiperimeter to find \\(s=\\frac{13+14+15}{2}=21\\) and \\(a=\\sqrt{21(21-13)(21-14)(21-15)}\\)</p>
+                </a>`,
+        text: `Let \\(\\triangle ABC\\) have side lengths \\(AB=13, BC=14\\) and \\(CA=15\\). Let \\(I\\) be the incenter of \\(\\triangle ABC\\). What is the value of \\(AI^2\\)?`,
+        solution: `<b>65</b><p>We find the inradius using \\(\\frac{\\textup{area}}{\\textup{semiperimeter}}\\). We use Heron's formula and the formula for a semiperimeter to find \\(s=\\frac{13+14+15}{2}=21\\) and \\(a=\\sqrt{21(21-13)(21-14)(21-15)}\\)</p>
     <p>We thus have inradius \\(=\\frac{84}{21}=4\\). That forms the height of a right triangle with hypotenuse \\(AI\\). If we can find the horizontal, thta would let us find the answer</p>
     <p>Since we know that the tangents of a circle intersecting at the same point are always the same, we set \\(x\\) as the length of a tangent touching \\(A\\), \\(y\\) as touching \\(B\\), and \\(Z\\) as touching \\(C\\)</p>
     <p>We have \\(x+y=13\\), \\(y+z=14\\), \\(z+x=15\\).</p>
@@ -1854,41 +1854,41 @@ answer: '39'
     x=7
     $$
     <p>Thus we have \\(AI^2=4^2+7^2=16+49=65\\)`,
-    answer: '65',
-    hint: "Use power of a point",
-    step: "Find the inradius",
-    topic: "power of a point"
+        answer: '65',
+        hint: "Use power of a point",
+        step: "Find the inradius",
+        topic: "power of a point"
 
     },
     {
         title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
     Solvefire Bronze 5 Question 5
-    </a>`,  
-    text: `Let \\(A=(0,7)\\) and \\(B=(10,0)\\). Point \\(P\\) lies on the line defined by \\(y=x\\). What is the minimum possible value of \\((AP+PB)^2\\)?`,
-    solution: `<b>149</b><p>We know that the shortest distance is always a straight line, so the shortest version of \\(PA+PB\\) is just a striaght line, which has to passs through \\(y=x\\) anyways because it has a negative slope</p>
+    </a>`,
+        text: `Let \\(A=(0,7)\\) and \\(B=(10,0)\\). Point \\(P\\) lies on the line defined by \\(y=x\\). What is the minimum possible value of \\((AP+PB)^2\\)?`,
+        solution: `<b>149</b><p>We know that the shortest distance is always a straight line, so the shortest version of \\(PA+PB\\) is just a striaght line, which has to passs through \\(y=x\\) anyways because it has a negative slope</p>
     <p>We use the distance formula, but instead of finding \\(PA+PB\\), we just find the total distance \\(\\sqrt{7^2+10^2}=\\sqrt{149}\\) for \\((PA+PB)^2=149\\)
     `,
-    answer: '194',
-    hint: "The shortest distance is a straight line",
-    step: "Find the distance from \\(A\\) to \\(B\\)",
-    topic: "functions and graphing"
+        answer: '194',
+        hint: "The shortest distance is a straight line",
+        step: "Find the distance from \\(A\\) to \\(B\\)",
+        topic: "functions and graphing"
     },
     {
-            title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
     Solvefire Bronze 5 Question 9
-    </a>`,  
-    text: `Two circles \\(C_{1}\\) and \\(C_{2}\\) intersect at points \\(P\\) and \\(Q\\). The radius of \\(C_{1}\\) is \\(5\\) and the radius of \\(C_{2}\\) is \\(12\\).
+    </a>`,
+        text: `Two circles \\(C_{1}\\) and \\(C_{2}\\) intersect at points \\(P\\) and \\(Q\\). The radius of \\(C_{1}\\) is \\(5\\) and the radius of \\(C_{2}\\) is \\(12\\).
     The distance between the centers of two circles is exactly \\(13\\). If the length of the common chord \\(PQ\\) can be expressed as a fraction in simplest form \\(\\frac{a}{b}\\).
     What is \\(a+b\\)?`,
-    solution: `<b>73</b><p>We know that \\(5, 12, 13\\) is a pythagorean triple, so there is a right triangle formed by the centers of the circles and \\(P\\) (although this could also be \\(Q\\). We have that \\(PQ\\) is the altitude of this triangle</p>
+        solution: `<b>73</b><p>We know that \\(5, 12, 13\\) is a pythagorean triple, so there is a right triangle formed by the centers of the circles and \\(P\\) (although this could also be \\(Q\\). We have that \\(PQ\\) is the altitude of this triangle</p>
     <p>We know the area is \\(\\frac{5 \\times 12}{2}=\\frac{13 \\times \\textup{altitude}}{2}\\) so we solve for \\(\\frac{5\\times 12}{13}=\\textup{altitude}\\) so \\(\\frac{60}{13}\\) for \\(a+b=73\\)`,
-    answer: '73',
-    hint: "The side lengths make a pythagorean triple where \\(PQ\\) is the altitude",
-    step: 'Relate the altitude to the area of a triangle',
-    topic: "logic"
+        answer: '73',
+        hint: "The side lengths make a pythagorean triple where \\(PQ\\) is the altitude",
+        step: 'Relate the altitude to the area of a triangle',
+        topic: "logic"
     },
     {
-        title:`<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 2</a>`,
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 2</a>`,
         text: `Rectangle \\(ABCD\\) has \\(AB=CD=3\\) and \\(AD=BC=1\\). Let \\(P\\) be the midpoint of the diagonal \\(AC\\), and let \\(Q\\) be the intersection of the perpendicular bisector
         of \\(AC\\) with \\(AB\\). The area of quadrilateral \\(PQBC\\) can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
         solution: `<b>25</b><p>Drawing this out shows us that \\(ABCD\\) is split into quadrilateral \\(PQBC\\) and two other right triangles, \\(ADC\\) and \\(APQ\\). We may not know the area of \\(PQBC\\) but we can find the area of the triangles and subtract it from \\(ABCD\\)</p>
@@ -1913,29 +1913,29 @@ answer: '39'
         topic: "algebraic manipulation"
     },
     {
-                title:`<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 3</a>`,
-                text: `A regular octagon is divided into \\(8\\) congruent triangles from its center. Each triangle has base
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 3</a>`,
+        text: `A regular octagon is divided into \\(8\\) congruent triangles from its center. Each triangle has base
                 \\(\\frac{43}{99}\\) and height \\(\\frac{1}{2}\\). The area of the octagon can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
-                solution: `<b>185</b><p>The area of the octagon is the area of an individual triangle times \\(8\\). The area of an individual triangle is \\(\\frac{43}{99} \\times {1}{2} \\times {1}{2} = \\frac{43}{99 \\times 4}\\) (we're not going to simplify that just yet). 
+        solution: `<b>185</b><p>The area of the octagon is the area of an individual triangle times \\(8\\). The area of an individual triangle is \\(\\frac{43}{99} \\times {1}{2} \\times {1}{2} = \\frac{43}{99 \\times 4}\\) (we're not going to simplify that just yet). 
                 We multiply this by \\(8\\) which cancels out the \\(2 \\times 2\\) in the denominator and gives us \\(\\frac{86}{99}\\) for \\(p+q=86+99=185\\)`,
-                hint: "The area of the octagon is \\(\\times 8\\0 the area of one triangle",
-                step: "Find the area of one triangle",
-                topic: "composite shapes",
-                answer: '8'
+        hint: "The area of the octagon is \\(\\times 8\\0 the area of one triangle",
+        step: "Find the area of one triangle",
+        topic: "composite shapes",
+        answer: '8'
 
     },
     {
-                title:`<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 9</a>`,
-                text: `Let \\(ABCD\\) be a square with side lengths \\(6\\). Let \\(E\\) be the midpoint of \\(BC\\). Let \\(F\\) be the 
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Question 9</a>`,
+        text: `Let \\(ABCD\\) be a square with side lengths \\(6\\). Let \\(E\\) be the midpoint of \\(BC\\). Let \\(F\\) be the 
                 intersection of lines \\(AC\\) and \\(DE\\). Find the area of quadrilateral \\(ABEF\\)`,
-                solution: `<b>15</b><p>We draw this on a coordinate grid such that \\(A(0,0), B(0,6), C(6,6), D(6,0)\\). We have \\(E(3,6)\\). \\(F\\) is the solution to the system \\(y=x\\) and \\(y=-2x+12\\) which is \\(x=-2x+12, 3x=12, x=4\\) for \\(F(4,4)\\)</p>
+        solution: `<b>15</b><p>We draw this on a coordinate grid such that \\(A(0,0), B(0,6), C(6,6), D(6,0)\\). We have \\(E(3,6)\\). \\(F\\) is the solution to the system \\(y=x\\) and \\(y=-2x+12\\) which is \\(x=-2x+12, 3x=12, x=4\\) for \\(F(4,4)\\)</p>
                 <p>We cannot dirrectly find the area of \\(ABEF\\), but we know the area of \\(ABCD\\) to be \\(6 \\times 6 =36\\), and we can find the area of triangles easily</p>
                 <p>Triangle \\(ADF\\) has base \\(6\\) and altitude \\(4\\) for area \\(12\\)</p>
                 <p>Triangle \\(DFC\\) can be merged with \\(ECF\\) to make a right triangle with legs \\(6\\) and \\(3\\), for area \\(9\\). We thus have \\(36-12-9=15\\)</p>`  ,
-                answer: '15',
-                hint: "Find the area of the surrounding triangles",
-                step: "Map all the points on the coordinate grid and use systems of equations to find missing coordinates",
-                topic: "functions and graphing"
+        answer: '15',
+        hint: "Find the area of the surrounding triangles",
+        step: "Map all the points on the coordinate grid and use systems of equations to find missing coordinates",
+        topic: "functions and graphing"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 6</a>`,
@@ -1975,36 +1975,36 @@ answer: '39'
 ]
 const numTheoryQ = [
     {
-                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 7</a>`,
-                text: `Find the number of ordered triples \\((a,b,c)\\) of positive integers such that \\(abc=360\\)`,
-                solution: `<b>180</b><p>The prime factorization of \\(360=2^3\\times 3^2 \\times 5\\). For each of these, we can do stars and bars to see how their powers are distributed among \\(3\\). We do \\(\\binom{3+3-1}{3-1} \\binom{2+3-1}{3-1} \\binom{1 + 3-1}{3-1}=180\\)`,
-                answer: '180',
-                topic: "counting",
-                hint: "Use stars and bars",
-                step: 'Find the prime factorization of \\(360\\)'
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 7</a>`,
+        text: `Find the number of ordered triples \\((a,b,c)\\) of positive integers such that \\(abc=360\\)`,
+        solution: `<b>180</b><p>The prime factorization of \\(360=2^3\\times 3^2 \\times 5\\). For each of these, we can do stars and bars to see how their powers are distributed among \\(3\\). We do \\(\\binom{3+3-1}{3-1} \\binom{2+3-1}{3-1} \\binom{1 + 3-1}{3-1}=180\\)`,
+        answer: '180',
+        topic: "counting",
+        hint: "Use stars and bars",
+        step: 'Find the prime factorization of \\(360\\)'
 
     },
     {
-                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 8</a>`,
-                text: `<p>Find the sum of all real numbers \\(x\\) satisfying</p>
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 8</a>`,
+        text: `<p>Find the sum of all real numbers \\(x\\) satisfying</p>
                 $$
                 (x^2-5x+5)^{x^2-7x+12}=1
                 $$`,
-                solution: `<b>10</b><p>We know that \\(x^2-5x+5=1\\) or \\(-1\\) (if \\(x^2-7x+12\\) is even) OR \\(x^2-7x+12=0\\). Solving the latter, we simply factor for \\((x-3)(x-4)\\), which gives \\(3, 4\\)</p>
+        solution: `<b>10</b><p>We know that \\(x^2-5x+5=1\\) or \\(-1\\) (if \\(x^2-7x+12\\) is even) OR \\(x^2-7x+12=0\\). Solving the latter, we simply factor for \\((x-3)(x-4)\\), which gives \\(3, 4\\)</p>
                 <p>For the former, we split into two cases. If equal to \\(1\\), we have \\(x^2-5x+4=(x-4)(x-1)\\), for \\(4\\) and \\(1\\), but we only count \\(1\\), because that's a repeat</p>
                 <p>Finally, for \\(-1\\), we end up with \\(x^2-5x+6=(x-3)(x-2)\\). We have that \\(x=2\\) makes the exponent \\(2^2-7(2)+12=2\\), which is even, and it doesn't matter what \\(3\\) is because the power will be \\(0\\). We thus have \\(1+2+3+4=10\\)`,
-                answer: '10',
-                hint: "What can the power be? What can the base be?",
-                step: "Find the roots of \\(x^2-7x+12\\)",
-                topic: "logic"
+        answer: '10',
+        hint: "What can the power be? What can the base be?",
+        step: "Find the roots of \\(x^2-7x+12\\)",
+        topic: "logic"
     },
     {
-                        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 9</a>`,
-                        text: `<p>How many \\(5-\\) element subsets {a_{1} < a_{2} < a_{3} < a_{4} < a_{5}\\) of {1,2,3...12} satisfy</p>
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 9</a>`,
+        text: `<p>How many \\(5-\\) element subsets {a_{1} < a_{2} < a_{3} < a_{4} < a_{5}\\) of {1,2,3...12} satisfy</p>
                         $$
                         a_1 + a_2 = a_5
                         $$`,
-                        solution: `<b>30</b><p>We have that the lowest possible sum is \\(5\\) whereas the highest is \\(12\\). This is easy enough to break int ocases until we can make an induction</p>
+        solution: `<b>30</b><p>We have that the lowest possible sum is \\(5\\) whereas the highest is \\(12\\). This is easy enough to break int ocases until we can make an induction</p>
                         <p>For \\(5\\), we have \\((1,4)\\) or \\((2,3)\\), for \\((a_{1},b_{1})\\). Neither of these work because they don't give possible values for \\(a_{3}, a_{4}\\)</p>
                         <p>For \\(6\\), we have \\((1,5), (2,4)\\). Still no possibilities</p>
                         <p>\\(7\\) gives \\((1,6), (2,5), (3,4)\\). The first and second give none. The last gives one</p>
@@ -2013,20 +2013,20 @@ const numTheoryQ = [
                         because we need \\(7,8\\), but for \\((4,5)\\), we have \\(\\binom{3}{2}=3\\) ways, so we have \\(4\\0 total</p>
                         <p>\\(10\\), will give the same result</p>
                         <p>For \\(11\\), we find \\((1,10), (2,9), (3,8), (4,7), (6,5)\\). The last \\(3\\) work with \\(1, 3, 6\\) options, total for a total of \\(10\\). We thus find \\(1+1+4+4+10+10\\) (because \\(12\\) has the same as \\(11\\)) which sums to \\(30\\)`,
-                        answer: '30',
-                        hint: "Use induction and casework",
-                        step: "Find the possible values of \\(a_{5}\\)",
-                        topic: "counting"
+        answer: '30',
+        hint: "Use induction and casework",
+        step: "Find the possible values of \\(a_{5}\\)",
+        topic: "counting"
 
     },
-        {
-                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 3</a>`,
-                text: `Find the number of ordered pairs \\((a, b)\\) of positive integers such that \\(\\textup{lcm}(a,b)=360\\)`,
-                solution: `<b>105</b><p>We have the prime factorization of \\(360=2^3 \\cdot 3^2 \\cdot 5^1\\). We need to divide the frimes such that \\(a\\) and \\(b\\) have distinct primes in their prime factorizations. We have \\(2\\) with a power up to \\(3\\). We double this, because it can be in either, or it can not be there are all, so we have \\(7\\). We do this for all and ed up with \\(7 \\times 5 \\times 3 = 105\\)`,
-                answer: '105',
-                hint: "The prime factors must be divided exclusively",
-                step: "Find the prime factorization of \\(360\\)",
-                topic : "prime factorization"
+    {
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 3</a>`,
+        text: `Find the number of ordered pairs \\((a, b)\\) of positive integers such that \\(\\textup{lcm}(a,b)=360\\)`,
+        solution: `<b>105</b><p>We have the prime factorization of \\(360=2^3 \\cdot 3^2 \\cdot 5^1\\). We need to divide the frimes such that \\(a\\) and \\(b\\) have distinct primes in their prime factorizations. We have \\(2\\) with a power up to \\(3\\). We double this, because it can be in either, or it can not be there are all, so we have \\(7\\). We do this for all and ed up with \\(7 \\times 5 \\times 3 = 105\\)`,
+        answer: '105',
+        hint: "The prime factors must be divided exclusively",
+        step: "Find the prime factorization of \\(360\\)",
+        topic: "prime factorization"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
@@ -2040,7 +2040,7 @@ is the total number of positive factors in \\(5N\\)?`,
         solution: `<b>24</b><p>For each factor of \\(N\\), there is another factor that is \\(5\\) times the factor. Since \\(5\\) is not a factor, we do not have to worry about overcounting. Notice that the bit about \\(3^2\\) is extraneous because that just gives us two factors of \\(N\\)`,
         hint: "Which bit of information can you ignore?",
         step: "What should you multiply the number of factors by?",
-        topic:  "prime factorization"
+        topic: "prime factorization"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
@@ -2055,7 +2055,7 @@ factors?`,
         step: "Find what the powers of the prime factorization need to be and what numbers need to be in the prime factorization",
         topic: "prime factorization"
     },
-        {
+    {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 6
                 </a>`,
@@ -2074,77 +2074,77 @@ factors?`,
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 7
                 </a>`,
-                text: `<p>Compute</p>
+        text: `<p>Compute</p>
                 $$
                 \\binom{1224}{0} - \\binom {1224}{1} ... \\binom{1224}{2}
                 $$`,
-                answer: '0',
-                solution: `<b>0</b><p>We recognizing the consecutive sums of binomials "choose" functions to be indicative of binomial theorem:</p>
+        answer: '0',
+        solution: `<b>0</b><p>We recognizing the consecutive sums of binomials "choose" functions to be indicative of binomial theorem:</p>
               $$
               \\[ \\sum_{i=0}^n \\binom{n}{k}x^n-k y^k\\]
               $$
                 <p>This gives a way of finding the expansion of \\((x+y)^n\\), but we notice that it does have \\(\\binom{n}{k}\\) with iterations of \\(k\\) increasing by \\(1\\).</p>
                 <p>In order for this to work, we need \\(x\\) and \\(k\\) to be of alternating signs because the choose functions are of alternating signs. Thus we have \\(x=1\\) and \\(y==1\\) for \\((1+(-1))^{1224}\\) which is, of course, \\(0\\)`,
-                hint: "Use binomial theorem",
-                step: "Write as a binomial theorem sum with \\(n=1224\\). What should \\(x\\) and \\(y\\) be?",
-                topic: "algebraic manipulation",
+        hint: "Use binomial theorem",
+        step: "Write as a binomial theorem sum with \\(n=1224\\). What should \\(x\\) and \\(y\\) be?",
+        topic: "algebraic manipulation",
     },
     {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 8
                 </a>`,
-                text: `What is the last digit of \\(4^7 +7^4\\)?`,
-                answer: '5',
-                solution: `<b>5</b><p>Since we know that the units digits of numbers raised to powers are cyclic, we can just find the patterns for each.</p>
+        text: `What is the last digit of \\(4^7 +7^4\\)?`,
+        answer: '5',
+        solution: `<b>5</b><p>Since we know that the units digits of numbers raised to powers are cyclic, we can just find the patterns for each.</p>
                 <p>For \\(4\\) we have \\(4,6\\) and then it repeats, so with modular arithmetic we find that \\(\\frac{7}{4}\\) has a remainder of \\(1\\) and a units digit of \\(4\\)</p>
                 <p>For \\(7\\) we have \\(7,9,3,1\\) which is just \\(4\\) so a units digit of \\(1\\). We have that \\(4+1=5\\)`,
-                hint: "Units digits of exponents are cyclic",
-                step: "Find the pattern for the units digits",
-                topic: "induction"
+        hint: "Units digits of exponents are cyclic",
+        step: "Find the pattern for the units digits",
+        topic: "induction"
 
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 5 Problem 3
                 </a>`,
-                text: `How many integers from \\(1\\) to \\(1000\\) are divisible by \\(3\\) or \\(5\\) but not both?`,
-                answer: '401',
-                solution: `<b>401</b><p>We find that there are \\(\\frac{1000}{3} \\approx 333\\) divisible by \\(3\\) and \\(\\frac{1000}{5}=200\\) divisible by \\(5\\). There are \\(\\frac{1000}{3\\times5}\\aprox 66\\) divisible by both. We find \\(200+333-(66 \\times 2)=401\\) (we multiply by \\(2\\) because we "subtract from both stacks")`,
-                hint: "Make sure not ot overcount",
-                step: "Find how many are divisible by \\(3\\), and then by \\(5\\), and then by both",
-                topic: "logic"
+        text: `How many integers from \\(1\\) to \\(1000\\) are divisible by \\(3\\) or \\(5\\) but not both?`,
+        answer: '401',
+        solution: `<b>401</b><p>We find that there are \\(\\frac{1000}{3} \\approx 333\\) divisible by \\(3\\) and \\(\\frac{1000}{5}=200\\) divisible by \\(5\\). There are \\(\\frac{1000}{3\\times5}\\aprox 66\\) divisible by both. We find \\(200+333-(66 \\times 2)=401\\) (we multiply by \\(2\\) because we "subtract from both stacks")`,
+        hint: "Make sure not ot overcount",
+        step: "Find how many are divisible by \\(3\\), and then by \\(5\\), and then by both",
+        topic: "logic"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 5 Problem 4
                 </a>`,
-                text: `A positive integer \\(n\\) leaves remainder \\(3\\) when divided by \\(7\\) and remainder \\(5\\) when
+        text: `A positive integer \\(n\\) leaves remainder \\(3\\) when divided by \\(7\\) and remainder \\(5\\) when
 divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
-                answer: '59',
-                solution: `<b>59</b><p>We have that \\(7x+3=9y+5\\). We just have to find the smallest possible values for \\(y\\) and \\(x\\).For \\(y=1\\) we get 14, for \\(y=2\\) we have \\(23\\). The next values are \\(32,41,50, 59\\) which when divided by \\(7\\) give remainderis of \\(4, 6, 1, 3\\) for a final answer \\(59\\)`,
-                hint: "Try out values",
-                step: "Use the equation \\(7x+3=5y+9\\) and solve like a diophantine equation",
-                topic: "logic"
+        answer: '59',
+        solution: `<b>59</b><p>We have that \\(7x+3=9y+5\\). We just have to find the smallest possible values for \\(y\\) and \\(x\\).For \\(y=1\\) we get 14, for \\(y=2\\) we have \\(23\\). The next values are \\(32,41,50, 59\\) which when divided by \\(7\\) give remainderis of \\(4, 6, 1, 3\\) for a final answer \\(59\\)`,
+        hint: "Try out values",
+        step: "Use the equation \\(7x+3=5y+9\\) and solve like a diophantine equation",
+        topic: "logic"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 6 Problem 3
                 </a>`,
-                text: `<p>Three boxes are labeled:</p>
+        text: `<p>Three boxes are labeled:</p>
                 <ul>
                 <li>Box 1: "The prize is not in Box 2"</li>
                 <li>Box 2: "The prize is in Box 3"</li>
                 <li>Box 3: "The prize is not in this box</li>
                 </ul>
                 <p>Exactly one statement is true. Determine which box contains the prize (answer with the number)</p>`,
-                answer: '2',
-                solution: `<b>2</b><p>We're goin to go through each box considering it is telling the truth and see what it tells us about the rest</p>
+        answer: '2',
+        solution: `<b>2</b><p>We're goin to go through each box considering it is telling the truth and see what it tells us about the rest</p>
                 <p>If box 1 is telling the truth, then the box is not in box 2. Then, box 2 must be lying so it is not in box 3 either. Finally, box 3 must be lying so the prize has to be in that box. This causes a contradiction, so box 1 cannot be telling the truth</p>
                 <p>If box 2 is telling the truth, the prize is in box 3. If box 3 is lying, that confirms it. However, box 1 must be lying and that tells us it has to be in box 2. That contradicts. Box 2 must be lying</p>
                 <p>If box 3 is telling the truth, the prize is in box 1 or box 2. If box 1 is lying, the prize is in box 2. And if box 2 is lying, the prize just cant be in box 3, which checks out</p>`,
-                hint: "See how changing the truth value for each one changes the outcome",
-                step: "Test out each value when it is true",
-                topic: "logic"
+        hint: "See how changing the truth value for each one changes the outcome",
+        step: "Test out each value when it is true",
+        topic: "logic"
     },
 
     {
@@ -2162,14 +2162,14 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
         topic: "prime factorization"
     },
     {
-            title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 6 Problem 6
                 </a>`,
-                text: `<p>Find the number of ordered pairs of positive integers \\((x,y)\\) such that</p>
+        text: `<p>Find the number of ordered pairs of positive integers \\((x,y)\\) such that</p>
                 $$
                 \\frac{1}{x}+\\frac{1}{y}=\\frac{1}{4}
                 $$`,
-                solution: `<b>5</b><p>Follow the following algebraic manipulation</p>
+        solution: `<b>5</b><p>Follow the following algebraic manipulation</p>
                 $$
                 \\frac{1}{x}+\\frac{1}{y}=\\frac{1}{4}
                 $$
@@ -2192,16 +2192,16 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
                 (x-4)(y-4)=16
                 $$
                 <p>Now we are looking for factors of \\(16\\). We have \\(4, 4\\) for \\(x=8, y=8\\). We have \\(8, 2\\) for \\((12, 6), (6, 12)\\) and \\(16, 1\\) for \\((20, 5),(5,20)\\). There are \\(5\\) total`,
-                answer: `5`,
-                hint: "Rewrite in factored form",
-                step: "rewrite as one fraction, then eliminate the fraction and factor by grouping",
-                topic: 'algebraic manipulation'
+        answer: `5`,
+        hint: "Rewrite in factored form",
+        step: "rewrite as one fraction, then eliminate the fraction and factor by grouping",
+        topic: 'algebraic manipulation'
     },
     {
-            title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/12HNZ5bzSkAHDBXr1CBgCExrOfkeXUiFb/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 6 Problem 8
                 </a>`,
-            text: `<p>How many integers \\(n\\) satisfy</p>
+        text: `<p>How many integers \\(n\\) satisfy</p>
             $$
             1 \\leq n \\leq 100
             $$
@@ -2210,76 +2210,76 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
             \\frac{n^2-n}{2}
             $$
             <p>is odd?</p>`,
-            step: `<b>50</b><p>Note that \\(n^2-n\\) will always be even. First of all, the square of any number \\(n\\) has the some polarity (odd or even) as \\(n\\) and the difference between two numbers of the same polarity will always be even.</p>
+        step: `<b>50</b><p>Note that \\(n^2-n\\) will always be even. First of all, the square of any number \\(n\\) has the some polarity (odd or even) as \\(n\\) and the difference between two numbers of the same polarity will always be even.</p>
             <p>The issue then becomes finding how many numbers are divisible by \\(4\\), because they can all be divisible by \\(2\\), but to be even they need to be divisible by \\(2^2=4\\).</p>
             <p>We can factor out the top equation into \\(n(n-1)\\). We need either \\(n\\) or \\(n-1\\) to be divisible by \\(4\\). There are \\(25\\) numbers \\(n\\) such that \\(1 \\leq n \\leq 100\\) that are divisible by \\(4\\), and another \\(25\\) such that \\(n-1\\) is divisible by \\(4\\) for a total of \\(50\\)`,
-            answer: '50',
-            hint: "What does \\(n^2-n\\) need to be divisible by?",
-            step: "Rewrite the numerator as \\(n(n-1)\\)",
-            topic: "logic"  
+        answer: '50',
+        hint: "What does \\(n^2-n\\) need to be divisible by?",
+        step: "Rewrite the numerator as \\(n(n-1)\\)",
+        topic: "logic"
     },
     {
-            title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 7 Problem 1
                 </a>`,
-            text: `The five digit number \\(20A26\\) is a multiple of \\(9\\), where \\(A\\) is a digit. Find the remainder when the six digit number \\(A1A1A1\\) is divided by \\(7\\)`,
-            solution: `<b>0</b><p>We start by trying to find \\(20A26\\) divided by \\(9\\) by working backwards</p>
+        text: `The five digit number \\(20A26\\) is a multiple of \\(9\\), where \\(A\\) is a digit. Find the remainder when the six digit number \\(A1A1A1\\) is divided by \\(7\\)`,
+        solution: `<b>0</b><p>We start by trying to find \\(20A26\\) divided by \\(9\\) by working backwards</p>
             <p>There is only one multiple of \\(9\\) that has a ones digit of \\(6\\), being \\(36\\). If you imagine long division, the last value will be \\(36\\). That means \\(B2-9x=3\\) where \\(B\\) is a digit and \\(x\\) is some integer. </p>
             <p>\\(B\\) must be equal to \\(1\\) (because with \\(99, x=11\\) and that doesnt fit with long division). Now working from the front and doing normal long idvision, we have that \\(20A26\\) will have a \\(2\\), we subtract \\(20-18\\) and get \\(2\\) again then bring down 
             the \\(A\\) for \\(2A-(18 \\textup{or} 27)=1\\). Thus, we need \\(A\\) to be \\(8\\) and to subtract \\(27\\) from it.</p>
             <p>From here, we just find \\(81818 \\equiv 0 \\textup{ mod }(7)\\)`,
-            answer: "0",
-            hint: "How can you use the process for long division to find \\(A\\)?",
-            step: "To find \\(A\\), do long division working backwards and use logic",
-            topic: "logic"
+        answer: "0",
+        hint: "How can you use the process for long division to find \\(A\\)?",
+        step: "To find \\(A\\), do long division working backwards and use logic",
+        topic: "logic"
 
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 7 Problem 9
                 </a>`,
-                text: `Find the largest three-digit integer \\(n\\) such that the product of its digits is \\(0\\), the sum of its digits is \\(11\\), and \\(n\\) is divisible by \\(8\\)`,
-                answer: '920',
-                solution: "<b>920</b><p>We find the pairs of digits that sum to \\(11\\) (one must be \\(0\\) to make the product \\(0\\)). The first is \\(9, 2\\). Obviously, we want \\(9\\) in the hundredths place. We thus first try \\(920\\) and find that it is divisible by \\(8\\). That's the highest possible value, so that's our answer",
-                hint: "What value in the hundreds place makes the number \\(n\\) highest",
-                step: "Make pairs of digits that sum to \\(11\\)",
-                topic: "logic"
+        text: `Find the largest three-digit integer \\(n\\) such that the product of its digits is \\(0\\), the sum of its digits is \\(11\\), and \\(n\\) is divisible by \\(8\\)`,
+        answer: '920',
+        solution: "<b>920</b><p>We find the pairs of digits that sum to \\(11\\) (one must be \\(0\\) to make the product \\(0\\)). The first is \\(9, 2\\). Obviously, we want \\(9\\) in the hundredths place. We thus first try \\(920\\) and find that it is divisible by \\(8\\). That's the highest possible value, so that's our answer",
+        hint: "What value in the hundreds place makes the number \\(n\\) highest",
+        step: "Make pairs of digits that sum to \\(11\\)",
+        topic: "logic"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 7 Problem 8
                 </a>`,
-                text: 'Find the number of positive integers \\(n \\leq 100\\) such that the sum of divisors of \\(n\\) is odd',
-                solution: `<b>17</b><p>Notice that the only way \\(n\\) can be odd and have an odd sum of divisors is if \\(n\\) is a perfect square. Each factor pair must have two odd numbers, and odd numbers always add to even, so we need a non-pair</p>
+        text: 'Find the number of positive integers \\(n \\leq 100\\) such that the sum of divisors of \\(n\\) is odd',
+        solution: `<b>17</b><p>Notice that the only way \\(n\\) can be odd and have an odd sum of divisors is if \\(n\\) is a perfect square. Each factor pair must have two odd numbers, and odd numbers always add to even, so we need a non-pair</p>
                 <p>There are \\(5\\) examples of this: \\(1, 9, 25, 49, 81\\)</p>
                 <p>For even numbers, it must be twice an odd square, because each factor pair has an even variant where both are even that adds to even and doesn't change the polarity. This gives \\(2,8,18,32,50,72,98\\). That's \\(10+7=17\\)`,
-                answer: '17',
-                topic: 'logic',
-                hint: "There needs to be an odd number of factors",
-                step: "Find all the perfect squares AND another thing related to perfect squares"
+        answer: '17',
+        topic: 'logic',
+        hint: "There needs to be an odd number of factors",
+        step: "Find all the perfect squares AND another thing related to perfect squares"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 1
-                </a>`,       
-                text: `Find the smallest positive integer \\(n\\) such that \\(n\\) is a multiple of \\(11\\) and \\(n\\) has exactly \\(4\\) positive divisors`,
-                solution: `<b>22</b><p>Obviously \\(11\\) has to be one of the factors. The number \\(1\\) and itself must be factors. Since \\(11\\) is prime and only couns as one factor, we need one more. The smallest prime number is \\(2\\) so we have \\(2 \\times 11=22\\)`,
-                answer: '22',
-                hint: "\\(1\\) and the number count as positive factors",
-                step: "Find the smallest prime number",
-                topic: "prime factorization"
+                </a>`,
+        text: `Find the smallest positive integer \\(n\\) such that \\(n\\) is a multiple of \\(11\\) and \\(n\\) has exactly \\(4\\) positive divisors`,
+        solution: `<b>22</b><p>Obviously \\(11\\) has to be one of the factors. The number \\(1\\) and itself must be factors. Since \\(11\\) is prime and only couns as one factor, we need one more. The smallest prime number is \\(2\\) so we have \\(2 \\times 11=22\\)`,
+        answer: '22',
+        hint: "\\(1\\) and the number count as positive factors",
+        step: "Find the smallest prime number",
+        topic: "prime factorization"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 6
-                </a>`,     
-                text: `Find the largest integer \\(n < 567\\) such that \\(\\textup{gcd}(n, 72)=1\\)`,
-                solution: `<b>565</b><p>We start by finding the prime factorization of \\(72=2^3 \\times 3^2\\), meaning \\(n\\) cannot have \\(2\\) or \\(3\\) as factors</p>
+                </a>`,
+        text: `Find the largest integer \\(n < 567\\) such that \\(\\textup{gcd}(n, 72)=1\\)`,
+        solution: `<b>565</b><p>We start by finding the prime factorization of \\(72=2^3 \\times 3^2\\), meaning \\(n\\) cannot have \\(2\\) or \\(3\\) as factors</p>
                 <p>The next smallest prime factor is \\(5\\). Since we cannot do \\(567\\) and obviously not \\(566\\) (because it has \\(2\\) as a factor), so we do \\(565\\). We divide this by \\(5\\) to find
                 that it has a quotient of \\(113\\) which is prime, so \\(565\\) is coprime to \\(72\\)`,
-                hint: "\\(n\\) cannot share prime factors with \\(72\\)",
-                step: "Find the prime factorization of \\(72\\)",
-                topic: "prime factorization"
+        hint: "\\(n\\) cannot share prime factors with \\(72\\)",
+        step: "Find the prime factorization of \\(72\\)",
+        topic: "prime factorization"
     },
     {
         title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
@@ -2333,11 +2333,11 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
 
     },
     {
-              title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 5
-                </a>`,  
-                text: `A positive integer is called \\(downhill\\) if all of its digits (which must be distinct and non-zero) are in descending order. Compute the number of \\(downhill\\) integers which are divisible by \\(15\\)`,
-                solution: `<b>4</b><p>We know that the number must be divisible by \\(3\\) and \\(5\\) in order to be divisible by \\(15\\), and it must be odd</p>
+                </a>`,
+        text: `A positive integer is called \\(downhill\\) if all of its digits (which must be distinct and non-zero) are in descending order. Compute the number of \\(downhill\\) integers which are divisible by \\(15\\)`,
+        solution: `<b>4</b><p>We know that the number must be divisible by \\(3\\) and \\(5\\) in order to be divisible by \\(15\\), and it must be odd</p>
                 <p>To be divisible by \\(5\\) and not be odd, it needs to end in \\(5\\). To be divisible by \\(3\\), it has to have a sum of digits divisible by \\(3\\).</p>
                 <p>Since it is \\(downhill\\), the remaining digits must be \\(6,7,8\\) or \\(9\\). We don't have to worry about order because for any combination of digits, there is only one order</p>
                 <p>\\(5 \\equiv 2 (\\textup{ mod } 3)\\), so we need something is \\(\\equiv 1 (\\textup{ mod }3)\\). Looking at the remaining values we have</p>
@@ -2359,35 +2359,35 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
                 <p>From this, we can deduce that we MUST have \\(7\\) in order to even out the remainder back to \\(0\\). We can't have \\(8\\) because there is no other digit that leaves a remainder of \\(1\\), and we can or can't add \\(9\\) and \\(6\\) without 
                 affecting the divisiblity by \\(15\\). Thus, the only conditions are whether or not \\(6\\) and \\(9\\) are present, so we have \\(2 \\times 2 = 4\\)
                 `,
-                answer: '4',
-                hint: "The number must end in \\(5\\) and have a sum of digits divisible by \\(3\\)",
-                step: "Find the values \\(\\textup{ mod } 3\\) of all of the potential digits",
-                topic: "modular arithmetic"
+        answer: '4',
+        hint: "The number must end in \\(5\\) and have a sum of digits divisible by \\(3\\)",
+        step: "Find the values \\(\\textup{ mod } 3\\) of all of the potential digits",
+        topic: "modular arithmetic"
     },
     {
-                      title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 8</a>`,
-                text: `<p>The \\(3 \\times 3\\) grid satisfies the following conditions:</p>
+        text: `<p>The \\(3 \\times 3\\) grid satisfies the following conditions:</p>
                 <p>The first row from the top is one less than a square</p>
                 <p>The first column from the left is a multiple of \\(67\\)</p>
                 <p>The third row from the top is a multiple of \\(83\\)</p>
                 <p>The third column from the left is one more than a palindrome</p>
                 <p>The second column from the left is a perfect square</p>
                 <p>Compute the sum of all digits within the square</p>`,
-                solution: `<b>39</b><p>The first rule tells us we need a square in the \\(200\\)s, this can be \\(225\\) or \\(256\\) for a value of \\(224\\) or \\(255\\). We'l hold off on this until we have more</p>
+        solution: `<b>39</b><p>The first rule tells us we need a square in the \\(200\\)s, this can be \\(225\\) or \\(256\\) for a value of \\(224\\) or \\(255\\). We'l hold off on this until we have more</p>
                 <p>The second row gives a multiple of \\(67\\) that ends in \\(1\\) and is in the \\(200\\)s. This must be \\(67 \\times 3 = 201\\), so the middle square of the leftmost column is \\(0\\).</p>
                 <p>The third row from the top (the bottom row) must be a multiple of \\(83\\) that is in the \\(100\\)s. This only works for \\(83 \\times 2 = 166\\). We thus have the rest to be \\(6\\) in that row</p>
                 <p>For the fourth rule, we have that it is one more than a palindrome. The palindrome must be \\(575\\), because one more is \\(576\\) and ends in \\(6\\) like what we have</p>
                 <p>Since the top is \\(5\\), we know that the top row is \\(255\\)</p>
                 <p>The second column from the left needs to be a perfect square with in the \\(500\\)s ending in \\(6\\). We try \\(24^2\\),knowing it will end in \\(6\\) and get \\(576\\)</p>
                 <p>Thus, we have \\(2+5+5+0+7+7+1+6+6=39\\)`,
-                answer: '39',
-                hint: "Go rule by rule",
-                step: "Look at each rule and see what it tells you. From the second rule, you sohuld know that the middle box in the leftmost column should have a \\(0\\)",
-                topic: "logic"
+        answer: '39',
+        hint: "Go rule by rule",
+        step: "Look at each rule and see what it tells you. From the second rule, you sohuld know that the middle box in the leftmost column should have a \\(0\\)",
+        topic: "logic"
     },
     {
-  title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 10</a>`,
         text: `Let \\(x, y\\) and \\(z\\) be positive reals satisfying \\(x+2y+3z=6\\). Compute the minimum value of \\(\\frac{1}{x}+\\frac{2}{y}+\\frac{3}{z}\\).`,
         solution: `<b>6</b><p>All of the values need to be \\(1\\). There are no other combinations where they are all integers, and having fractional denominators will just increase the sum</p>`,
@@ -2397,20 +2397,20 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
         topic: 'logic'
     },
     {
-    title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 10
-                </a>`, 
-    text: `Find the number of pairs of positive integers \\((m,n)\\) with \\(m>n\\) such that \\(m^2-n^2=2024\\)`,
-    solution: `<b>4</b><p>We can rewrite \\(m^2-n^2\\) with the difference of squares as \\((m+n)(m-n)=2024\\). In order for both values to be integers, we need the factors of \\(2024\\) to both be even, because then
+                </a>`,
+        text: `Find the number of pairs of positive integers \\((m,n)\\) with \\(m>n\\) such that \\(m^2-n^2=2024\\)`,
+        solution: `<b>4</b><p>We can rewrite \\(m^2-n^2\\) with the difference of squares as \\((m+n)(m-n)=2024\\). In order for both values to be integers, we need the factors of \\(2024\\) to both be even, because then
     we will have an integer mean that is "in the middle". We find the prime factorization of \\(2024=2^3\\times 11 \\times 23\\) and find the \\(4\\) even-even factor pairs to be \\((2,1012), (4,506), (22,92), (44,46)\\). From here,
     we don't need to find all the values of \\((m,n)\\), because we know there will be \\(4\\) `,
-    answer: '4',
-    hint: "Find even-even factor pairs of \\(2024\\)",
-    step: "Use the difference of squares",
-    topic: "prime factorization"
+        answer: '4',
+        hint: "Find even-even factor pairs of \\(2024\\)",
+        step: "Use the difference of squares",
+        topic: "prime factorization"
     },
     {
-          title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 5 Question 1</a>`,
         text: `Let \\(S={1,2,3,...15}\\). How many subjects of \\(S\\) contain no two consecutive integers? (Note: The empty set is considered a valid subset)`,
         solution: `<b></b><p>Denote \\(S_{n}\\) to be the number of subsets up to \\(1,2...n\\). We have \\(S_{1}=2, S_{2}=3, S_{3}=5, S_{4}=8\\). This is similar to a Fibbonacci sequence, which we can 
@@ -2423,119 +2423,119 @@ divided by \\(9\\). What is the smallest possible value of \\(n\\)?`,
         topic: "logic"
     },
     {
-  title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 5 Question 8</a>`,
-    text: `Find the sum of all prime numbers \\(p\\) such that \\(2^p+p^2\\) is also a prime number.`,
-    solution: `<b>3</b><p>All odd numbers \\(p\\) such that \\(p \\geq 3\\) are either \\(p \\equiv 1 \\textup{(mod 3)\\) or \\(p \\equiv 2 \\textup{(mod 3)}\\). Induction (or logic), gives that \\(p^2 \\equiv 1 \\textup{(mod 3)}\\).</p>
+        text: `Find the sum of all prime numbers \\(p\\) such that \\(2^p+p^2\\) is also a prime number.`,
+        solution: `<b>3</b><p>All odd numbers \\(p\\) such that \\(p \\geq 3\\) are either \\(p \\equiv 1 \\textup{(mod 3)\\) or \\(p \\equiv 2 \\textup{(mod 3)}\\). Induction (or logic), gives that \\(p^2 \\equiv 1 \\textup{(mod 3)}\\).</p>
     <p>We know that \\(2 \\equiv 2 \\textup{(mod 3)}\\) and since we know that powers of \\(2\\) will also be \\(equiv 3\\), so the remainder remains \\(2\\). Thus, \\(2^p +p^2 \\equiv 2+1 \\equiv 0 \\textup{(mod 3)}\\) so for all primes greater than \\(3\\) it is invalid.`,
-    answer: '3',
-    hint: "Solve \\(\\textup{mod 3}\\) for all values greater than \\(3\\)",
-    step: "Find \\(2^p \\textup{(mod 3)}\\) and \\(p^2 \\textup{(mod 3)}\\)",
-    topic: "modular arithmetic"
+        answer: '3',
+        hint: "Solve \\(\\textup{mod 3}\\) for all values greater than \\(3\\)",
+        step: "Find \\(2^p \\textup{(mod 3)}\\) and \\(p^2 \\textup{(mod 3)}\\)",
+        topic: "modular arithmetic"
     },
     {
-    title:  `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 5 Question 10</a>`,
-    text: `<p>A sequence is defined by \\(a_{1}=2\\0 and the recursive formula \\(a_{n+1}=a_{n}+2n+2\\) for all integers \\(n \\geq 1\\). If the value of the sum</p>
+        text: `<p>A sequence is defined by \\(a_{1}=2\\0 and the recursive formula \\(a_{n+1}=a_{n}+2n+2\\) for all integers \\(n \\geq 1\\). If the value of the sum</p>
     $$
     \\(\\sum_{k=1}^10\\frac{1}{a_{k}}\\)
     $$
     <p>is expressed as a fraction in simplest form \\(\\frac{p}{q}\\), what is the value of \\(p+q\\)?`,
-    solution: `<b>21</b><p>By induction, we know that \\(a_{n}=n(n+1)\\), which you can rationalize but also just realize with a pattern</p>
+        solution: `<b>21</b><p>By induction, we know that \\(a_{n}=n(n+1)\\), which you can rationalize but also just realize with a pattern</p>
     <p>Thus, we have \\(\\sum{k=1}^10\\frac{1}{k(k+1)}=\\frac{{1}{k}-\\frac{1}{k+1}\\). This creates a telescoping sum, so we know that \\(\\frac{p}{q}=1-\\frac{1}{11}=\\frac{10}{11}\\) for \\(p+q=10+11=21\\)`,
-    answer: '21',
-    hint: "The sum is a telescoping sum",
-    step: "Rewrite \\(a_{n}=n(n+1\\)",
-    topic: "induction"
+        answer: '21',
+        hint: "The sum is a telescoping sum",
+        step: "Rewrite \\(a_{n}=n(n+1\\)",
+        topic: "induction"
 
     },
     {
-            title:  `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 6 Question 5</a>`,
-                text: `Find the smallest positive integer that is not a perfect square and is the product of five primes`,
-                solution: `<b>32</b><p>Notice that the primes do not have to be distinct. If we use
+        text: `Find the smallest positive integer that is not a perfect square and is the product of five primes`,
+        solution: `<b>32</b><p>Notice that the primes do not have to be distinct. If we use
                 only one number raised to the \\(5\\)th power, the power is odd so it will not be a perfect square. Thus, we find the smallest
                 prime number to be \\(2\\) and compute \\(2^5=32\\)`,
-                answer: '32',
-                hint: "The primes do not have to be distinct",
-                step: "Find the smallest prime number",
-                topic: 'logic'
+        answer: '32',
+        hint: "The primes do not have to be distinct",
+        step: "Find the smallest prime number",
+        topic: 'logic'
 
     },
     {
-                  title:  `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 6 Question 7</a>`,
-                text: `How many integers \\(1 \\leq n \\leq 1000\\) satisfy that \\(n^2+1\\) is divisible by \\(5\\)?`,
-                solution: `<b>400</b><p>We know that a number needs to end in \\(0\\) or \\(5\\) to be divisible by \\(5\\) so we are looking for units digits of \\(9, 4\\). We know that units digits of squares remain the same based on the uit digit of the squared number. Thus, we realize that 
+        text: `How many integers \\(1 \\leq n \\leq 1000\\) satisfy that \\(n^2+1\\) is divisible by \\(5\\)?`,
+        solution: `<b>400</b><p>We know that a number needs to end in \\(0\\) or \\(5\\) to be divisible by \\(5\\) so we are looking for units digits of \\(9, 4\\). We know that units digits of squares remain the same based on the uit digit of the squared number. Thus, we realize that 
                 the possible units digits of squared numbers are \\(2, 3, 7, 8\\), so \\(\\frac{4}{10}\\). We find \\(\\frac{4}{10} \\times 1000 = 400\\)`,
-                answer: '400',
-                hint: "The units digit of the square of a number with units digit \\(n\\) is consistent for all numbers with units digit \\(n\\)",
-                step: 'Find the possible units digits of \\(n\\)',
-                topic: "modular arithmetic"  
+        answer: '400',
+        hint: "The units digit of the square of a number with units digit \\(n\\) is consistent for all numbers with units digit \\(n\\)",
+        step: 'Find the possible units digits of \\(n\\)',
+        topic: "modular arithmetic"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 2</a>`, 
-                text: `Find the smallest positive integer \\(n\\) such that \\(96n\\) is a perfect square and \\(540n\\) is a perfect cube`,
-                solution: `<b>1350</b><p>We know that \\(n\\) must make an even number of factors when multipled with \\(96\\) raised to even powers, and factors raised to powers of \\(3\\) for \\(540n\\)</p>
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 2</a>`,
+        text: `Find the smallest positive integer \\(n\\) such that \\(96n\\) is a perfect square and \\(540n\\) is a perfect cube`,
+        solution: `<b>1350</b><p>We know that \\(n\\) must make an even number of factors when multipled with \\(96\\) raised to even powers, and factors raised to powers of \\(3\\) for \\(540n\\)</p>
                 <p>\\(96=2^5 \\times 3\\). We need at least one \\(3\\) and one \\(2\\).</p>
                 <p>We have \\(540=2^2 \\times 3^3 \\times 5\\). We need \\(5^2\\), which would be fine for both. We also added one \\(3\\) already, which makes the power \\(4\\), so we need to add another \\(2\\), so we currently have \\(2 \\times 5^2 \\times 3^3\\). For the two we already added one which fixes both, so we're good where we are</p>
                 <p>We have that \\(2 \\times 3^3 \\times 5^2=1350\\)`,
-                answer:'1350',
-                hint: "Every power needs to be even for perfect squares, and every power needs to be divisible by \\(3\\) for cubes",
-                step: "Find the prime factorization of \\(96\\) and \\(540\\)",
-                topic: "prime factorization"
+        answer: '1350',
+        hint: "Every power needs to be even for perfect squares, and every power needs to be divisible by \\(3\\) for cubes",
+        step: "Find the prime factorization of \\(96\\) and \\(540\\)",
+        topic: "prime factorization"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 3</a>`, 
-                text: "How many \\(6-\\) digit positive integers can be formed using each of the digits \\(0,1,2,3,4,5\\) exactly once so that the resulting integer is divisible by \\(12\\)",
-                solution: `<b>144</b><p>We need a value that is divisible by both \\(3\\) and \\(4\\). Divisibility by \\(3\\) is guranteed because we know that to be divisible by \\(3\\), the sum of digits
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 3</a>`,
+        text: "How many \\(6-\\) digit positive integers can be formed using each of the digits \\(0,1,2,3,4,5\\) exactly once so that the resulting integer is divisible by \\(12\\)",
+        solution: `<b>144</b><p>We need a value that is divisible by both \\(3\\) and \\(4\\). Divisibility by \\(3\\) is guranteed because we know that to be divisible by \\(3\\), the sum of digits
                 has to be divisible by \\(3\\),, and \\(0+1+2+3+4+5=15\\) and \\(15 \\equiv 0 \\textup{ mod }(3)\\).</p>
                 <p>In order to be divisible by \\(4\\), it's last two digits need to be divisible by \\(4\\). With these options, we see \\(04,12,20,24,32,40,52\\). In theory, this should give \\(4!\\) ways to rearrange the rest,
                 but \\(0\\) cannot be in the front. For \\(04, 20, 40\\), we have \\(4!\\). For the rest, however, we have \\(3 \\times 3 \\times 2 \\times 1=18\\). Thus, we have \\((4! \\times 3) + (18 \\times 5) = 144\\)`,
-                answer: '144',
-                hint: "To be divisible by \\(4\\), the last two digits need to be divisible by \\(4\\)",
-                step: "Find the possible last two digits",
-                topic: "counting"
+        answer: '144',
+        hint: "To be divisible by \\(4\\), the last two digits need to be divisible by \\(4\\)",
+        step: "Find the possible last two digits",
+        topic: "counting"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 5</a>`, 
-                text: `<p>How many integers \\(n\\) with \\(1 \\leq n \\leq 1000\\) satisfy</p>
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 5</a>`,
+        text: `<p>How many integers \\(n\\) with \\(1 \\leq n \\leq 1000\\) satisfy</p>
                 $$
                 \\textup{gcd}(n,84)=6
                 $$
                 `,
-                solution: `<b>71</b><p>The prime factorization of \\(84 = 2^2 \\times 3 \\times 7\\). We need multiples of \\(6\\) that are \\(\\leq 1000\\) that are not multiples of \\(4\\) and \\(7\\). There are \\(\\frac{1000}{6} \\aprox 166\\) total 
+        solution: `<b>71</b><p>The prime factorization of \\(84 = 2^2 \\times 3 \\times 7\\). We need multiples of \\(6\\) that are \\(\\leq 1000\\) that are not multiples of \\(4\\) and \\(7\\). There are \\(\\frac{1000}{6} \\aprox 166\\) total 
                 values. We need to erase all of those that are divisible by \\(4\\) or \\(7\\), which we notice is also just not multiples of \\(14\\). Within the \\(166\\) multiples of \\(6\\), we know that \\(\\frac{166}{2}\\) will be divisible by \\(4\\) (by inclusion exclusion), \\(\\frac{166}{7}=23\\) and \\(\\frac{166}{14}=11\\). So we
                 do inclusion exclusion and find \\(166-83-23+11=71\\)`,
-                answer: '71',
-                hint: "Use inclusion exclusion such that for sets \\(M\\) and \\(A\\), the total number of values is \\(M+A-\\textup{both M and A}\\)",
-                step: "Find what values cannot be in the prime factorization of \\(n\\)",
-                topic: "prime factorization"
+        answer: '71',
+        hint: "Use inclusion exclusion such that for sets \\(M\\) and \\(A\\), the total number of values is \\(M+A-\\textup{both M and A}\\)",
+        step: "Find what values cannot be in the prime factorization of \\(n\\)",
+        topic: "prime factorization"
     }
-    
+
 
 ]
 const probabilityQ = [
     {
-                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 4</a>`,
-                text: `How many lattice paths are there from \\((0,0)\\) to \\((5,5)\\) moving only one unit right or one unit up at each step, that pass
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 4</a>`,
+        text: `How many lattice paths are there from \\((0,0)\\) to \\((5,5)\\) moving only one unit right or one unit up at each step, that pass
                 through neither \\((2,3)\\) \\((3,2)\\)`,
-                solution: `<b>52</b><p>There are \\(\\binom{10}{5}=252\\) total paths, because you will always need to take \\(10\\) steps, it just matters which \\(5\\) are up, and you pick \\(5\\) of \\(10\\) for those</p>
+        solution: `<b>52</b><p>There are \\(\\binom{10}{5}=252\\) total paths, because you will always need to take \\(10\\) steps, it just matters which \\(5\\) are up, and you pick \\(5\\) of \\(10\\) for those</p>
                 <p>The paths that reach \\((2,3)\\) are thus \\(\\binom{5}{2} \\times \\binom{5}{3}\\), because you can take two ups and two rights, in any order. We have \\(100\\) for that, and following the same logic, \\(100\\) for \\((3,2)\\). This gives \\(252-100-100=52\\)`,
-                answer: '52',
-                hint: "Use the choose function",
-                step: "Find the total number of paths to \\((5,5)\\)",
-                topic: "counting"
+        answer: '52',
+        hint: "Use the choose function",
+        step: "Find the total number of paths to \\((5,5)\\)",
+        topic: "counting"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 2</a>`,
-                text: `A bag contains \\(4\\) red balls and \\95\\) blue balls. Two balls are drawn simultaneously at random. Given that at
+        title: `<a href="https://drive.google.com/file/d/13JgWp8yZP76xGkW3LAbRZODvHdTVCrBz/view" target="_blank" class="pset-link">Solvefire Bronze 8 Problem 2</a>`,
+        text: `A bag contains \\(4\\) red balls and \\95\\) blue balls. Two balls are drawn simultaneously at random. Given that at
                 least one of the drawn balls is red, the probability that exactly one of them is red can be written as \\(\\frac{m}{n}\\) in lowest terms. Find \\(m+n\\)`,
-                solution: `<b>23</b><p>There are \\(\\binom{4+5}{2}=36\\) ways to pick in total. Of those, there are \\(\\binom{4}{1} \\binom{5}{1}=20\\) ways to pick one red and one blue, and \\(\\binom{5}{2}=10\\) ways to pick two blue, so there are \\(36-10=26\\) ways to pick at least one red. We thus have \\(\\frac{20}{26}=\\frac{10}{13}\\) for \\(10+13=23\\)`,
-                answer: '23',
-                step:  `Find the number of ways to pick at least one red`,
-                hint: "Use complementary counting",
-                topic: "counting"
+        solution: `<b>23</b><p>There are \\(\\binom{4+5}{2}=36\\) ways to pick in total. Of those, there are \\(\\binom{4}{1} \\binom{5}{1}=20\\) ways to pick one red and one blue, and \\(\\binom{5}{2}=10\\) ways to pick two blue, so there are \\(36-10=26\\) ways to pick at least one red. We thus have \\(\\frac{20}{26}=\\frac{10}{13}\\) for \\(10+13=23\\)`,
+        answer: '23',
+        step: `Find the number of ways to pick at least one red`,
+        hint: "Use complementary counting",
+        topic: "counting"
     },
 
     {
@@ -2546,71 +2546,71 @@ const probabilityQ = [
 at random without replacement. The probability that all three marbles are different colours
 is in the form \\(\\frac{a}{b}\\)
 , where \\(a\\) and \\(b\\) are coprime integers. Compute \\(a+b\\)`,
-answer: '115',
-solution: `<b>115</b><p>There are \\(6\\) total "paths" or orders that you can draw the marbles in, but notice that it doesn't really matter. Let's say you pull red, blue, and then green. The probability of red first is \\(\\frac{4}{15}\\) and then blue is \\(\\frac{5}{14}\\) and green is \\(\\frac{6}{13}\\). If you switch the order around, the order of the numerators changes, but the numbers in the numerator do not, and neither do the denominators.
+        answer: '115',
+        solution: `<b>115</b><p>There are \\(6\\) total "paths" or orders that you can draw the marbles in, but notice that it doesn't really matter. Let's say you pull red, blue, and then green. The probability of red first is \\(\\frac{4}{15}\\) and then blue is \\(\\frac{5}{14}\\) and green is \\(\\frac{6}{13}\\). If you switch the order around, the order of the numerators changes, but the numbers in the numerator do not, and neither do the denominators.
 Since they are all being multiplied together and multiplication is reagrdless of order, the chance is the same no matter what. Thus, we find the probability of \\(\\frac{4}{15} \\times \\frac{5}{14}\\frac{6}{13}=\\frac{4}{91}\\) which we multiply by \\(4\\) for \\(\\frac{24}{91}\\) and \\(a=24\\) and \\(b=91\\) for \\(a+b=115\\)`,
-hint: "What stays the same regardless of order?",
-step: "Find the probability for one 'order' of picking marbles and see how it relates to the rest",
-topic: "counting"
+        hint: "What stays the same regardless of order?",
+        step: "Find the probability for one 'order' of picking marbles and see how it relates to the rest",
+        topic: "counting"
     },
     {
-        title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 3 Problem 4
                 </a>`,
         text: `For a positive integer \\(n\\), let \\(f(n)\\) be the sum of the digits of \\(n\\). For how many integers \\(n\\)
 between \\(1\\) and \\(999\\) inclusive does \\(f(f(n))=8\\)?`,
-solution: `<b>111</b><p>First start by finding what \\(f(n)\\) must be. We know that the highest sum \\(f(n)\\) is \\(9+9+9=27\\), so we're looking for numbers whose sum of digits is \\(8\\) that are \\(leq 27\\). This gives us \\(26, 17, 8\\).</p>
+        solution: `<b>111</b><p>First start by finding what \\(f(n)\\) must be. We know that the highest sum \\(f(n)\\) is \\(9+9+9=27\\), so we're looking for numbers whose sum of digits is \\(8\\) that are \\(leq 27\\). This gives us \\(26, 17, 8\\).</p>
 <p>Let's calculate all of these individually. For \\(26\\), we need two \\(9\\)s and one \\(8\\). There is no other way to do it because it is a large number. We can put the \\(3\\) in \\(3\\) places, so there are \\(3\\) options.</p>
 <p>Next is \\(17\\). For the following two, I want to use a method called stars and bars, which is a systematic equation that discounts overcounting. The full proof can be found online, but all you need to know is that when dividing "stars" into bins separated by "bars". The formula is \\(\\binom{n+k-1}{k-1}\\) where \\(n\\) is the number of stars and \\(k\\) is the number of 
 bins (\\(k-1\\) would be the number of bars). When dividing \\(17\\), we can imagine we have literally \\(17\\) stars divided into \\(3\\) sections, the digits. For this we do \\(\\binom{17+2}{2}=\\frac{19!}{2!(17!)=\\frac{19 \\cdot 18}{2}=19 \\cdot 9 = 171\\). We do need to be careful though, because there are chances that we put more than \\(9\\) in one "bin" which we cannot do because no digits place can have more than \\(9\\). To account for this overcounting, 
 we find the number of ways where we overcount. This happens when one value is at least \\(10\\) so the remaining \\(7\\) are distributed among \\(3\\) bins (because it can also go in the bin where the \\(10\\) is) so we have \\(\\binom{7+2}{2}=\\frac{9!}{7!(2!)}=36\\). Since the one that is over can be in \\(3\\) places, we multiply that by \\(13\\). Thus, for \\(17\\) there are \\(171-36(3)=63\\)</p>
 <p>The last one is \\(8\\). We do stars and bars for \\(8\\) across \\(3\\) which is \\(\\binom{8+2}{2}=\\frac{10!}{8!(2!)}=45\\).</p>
 <p>Thus, we have \\(3+63+45=111\\)`,
-topic: "casework",
-hint: 'What are the values of \\(f(n)\\)?',
-step: "Find the values of \\(f(n)\\) to be \\(27, 17,\\) and \\(8\\) and use stars and bars to calculate the total posibilities for each",
-answer: '111'
+        topic: "casework",
+        hint: 'What are the values of \\(f(n)\\)?',
+        step: "Find the values of \\(f(n)\\) to be \\(27, 17,\\) and \\(8\\) and use stars and bars to calculate the total posibilities for each",
+        answer: '111'
     },
     {
-                title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 3 Problem 5
                 </a>`,
         text: `A frog starts at the point \\((0,0)\\). It can make jumps of two types: a red jump of vector \\((1,2)\\)
 and a blue jump of vector \\((2,1)\\). How many distinct points in the coordinate plane can the
 frog reach after exactly \\(10\\) jumps?`,
-solution: `<b>11</b>Notice that the order he makes the jumps does not matter because his final position is just \\((2r+b,r+2b)\\). Furthermore, notice that each combination is independent and produces its own location. We can test this by induction, because as \\(x\\) goes up, \\(y\\)  must go down. There are \\(11\\) values for \\(r\\) because he can go up to ten times and not \\(0\\) times. Thus he can reach \\(11\\) points`,
-topic: "logic",
-hint: 'Does the order matter?',
-step: "Find the total number of possible red vector jumps he can make",
-answer: '11',
+        solution: `<b>11</b>Notice that the order he makes the jumps does not matter because his final position is just \\((2r+b,r+2b)\\). Furthermore, notice that each combination is independent and produces its own location. We can test this by induction, because as \\(x\\) goes up, \\(y\\)  must go down. There are \\(11\\) values for \\(r\\) because he can go up to ten times and not \\(0\\) times. Thus he can reach \\(11\\) points`,
+        topic: "logic",
+        hint: 'Does the order matter?',
+        step: "Find the total number of possible red vector jumps he can make",
+        answer: '11',
     },
-        {
-                title:  `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
+    {
+        title: `<a href="https://drive.google.com/file/d/1EjCHgPOzYYWH1kCgLqgop16tBamtvb2g/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 3 Problem 8
                 </a>`,
         text: `In how many ways can the numbers \\(1,2,3,4,5,6,7,8\\) be placed in the vertices of a cube such
 that the sum of the four numbers on every face is 18? (Rotations of the cube are considered
 the same.)`,
-solution: `<b>6</b>We count the total combinations we can have \\([1,8,2,7], [1,8,3,6], [1,8,4,5], [1,7,6,4]\\) and the remaining sets. There are \\(4\\) of these. Plant "1" on one vertice and draw out the rest(this one you just have to brute force with logic). That should give you \\(6\\) options`,
-hint: 'How many arrangements are possible?',
-step: "Put '1' or another number in the same corner every time and do casework",
-answer: '6',
-topic: "logic"
+        solution: `<b>6</b>We count the total combinations we can have \\([1,8,2,7], [1,8,3,6], [1,8,4,5], [1,7,6,4]\\) and the remaining sets. There are \\(4\\) of these. Plant "1" on one vertice and draw out the rest(this one you just have to brute force with logic). That should give you \\(6\\) options`,
+        hint: 'How many arrangements are possible?',
+        step: "Put '1' or another number in the same corner every time and do casework",
+        answer: '6',
+        topic: "logic"
     },
     {
-        title:  `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 2
                 </a>`,
         text: `Bartholomew is listening to his favourite Spotify playlist. He wishes to
 listen to all \\(7\\) songs, but does not wish to listen to Song \\(A\\) and Song \\(B\\)
 consecutively. How many different ways can Bartholomew listen to his
 playlist, with each song being played exactly once?`,
-solution: `<b>3600</b>We start by seeing how many total arrangements are possible. We use \\(7! = 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1=5040\\). However, we need to take into account the fact that he doesn't want \\(AB\\) consecutively. Imagine that \\(AB\\) is one song. There are now \\(6!\\) ways to order it, and we multiply that by \\(2\\) because the order of \\(AB\\) is interchangeable. We have \\(1440\\).</p>
+        solution: `<b>3600</b>We start by seeing how many total arrangements are possible. We use \\(7! = 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1=5040\\). However, we need to take into account the fact that he doesn't want \\(AB\\) consecutively. Imagine that \\(AB\\) is one song. There are now \\(6!\\) ways to order it, and we multiply that by \\(2\\) because the order of \\(AB\\) is interchangeable. We have \\(1440\\).</p>
 <p>We find \\(5040-1440=3600\\)`,
-hint: "Don't overcount",
-step: "Find the total solutions and then account for overcounting by treating \\(AB\\) as one song.",
-answer: '3600',
-topic: "counting",
+        hint: "Don't overcount",
+        step: "Find the total solutions and then account for overcounting by treating \\(AB\\) as one song.",
+        answer: '3600',
+        topic: "counting",
     },
     {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
@@ -2619,22 +2619,22 @@ topic: "counting",
         text: `A rook is placed at the origin and can only move one unit up or right each
 move. How many ways are there to reach \\((4,4)\\) without passing through
 \\((3,2)\\)?`,
-solution: `<b>40</b><p>Notice that whatever the case, we need to take \\(8\\) moves with \\(4\\) up and \\(4\\) right. We're going to start by finding the total number of ways he can get there. Let's focus on just the upwards movements. Of the \\(8\\) total movements, there are \\(4\\) up that can be in \\(\\binom{8}{4}=\\frac{8!}{4!(4!)}=70\\) places for a total of \\(70\\) paths</p>
+        solution: `<b>40</b><p>Notice that whatever the case, we need to take \\(8\\) moves with \\(4\\) up and \\(4\\) right. We're going to start by finding the total number of ways he can get there. Let's focus on just the upwards movements. Of the \\(8\\) total movements, there are \\(4\\) up that can be in \\(\\binom{8}{4}=\\frac{8!}{4!(4!)}=70\\) places for a total of \\(70\\) paths</p>
 <p>To account for overcounting, we need to see how the rook gets to \\((3,2)\\) and then see what happens after there. Getting to \\((3,2)\\) takes \\(5\\) movements so we find \\(\\binom{5}{3}=\\frac{5!}{2!(3!)}=10\\). After, there are \\(3\\) moves so we find \\(\\binom{3}{1}=3\\). Thus, we have \\(3 \\times 10 = 30\\) that we subtract from \\(70\\) which gives \\(70-30=40\\)`,
-hint: "You can use \\(\\frac{n!}{k!(n-k!}\\) to find the total number of ways to get to a certain point from a certain point",
-step: "Find the total number of ways to get to \\((4,4)\\) by using \\(\\frac{8!}{4!(4!}\\) and then find the number of ways to get to and continue from \\((3,2)\\)",
-topic: "counting"
+        hint: "You can use \\(\\frac{n!}{k!(n-k!}\\) to find the total number of ways to get to a certain point from a certain point",
+        step: "Find the total number of ways to get to \\((4,4)\\) by using \\(\\frac{8!}{4!(4!}\\) and then find the number of ways to get to and continue from \\((3,2)\\)",
+        topic: "counting"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1CIKCEKMEMcsyl42nlQWEBDCnqhCYlkUU/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 4 Problem 10
                 </a>`,
         text: `How many diagonals can be drawn in a \\(5000\\)-sided polygon?`,
-solution: `<b></b><p>We use the equation \\(\\frac{n(n-3)}{2}\\) because for each point, there can be a diagonal drawn to all but \\(3\\) points, and if you do this for each point, each diagonal will be repeated twice. Inputting \\(5000\\) gives an answer of \\(12492500\\)`,
-topic: "counting",
-answer: '12492500',
-hint: "What is the equation for the number of diagonals in an \\(n\\)-sided polygon?",
-step: "Use the formula \\(\\frac{n(n-3)}{2}\\)"
+        solution: `<b></b><p>We use the equation \\(\\frac{n(n-3)}{2}\\) because for each point, there can be a diagonal drawn to all but \\(3\\) points, and if you do this for each point, each diagonal will be repeated twice. Inputting \\(5000\\) gives an answer of \\(12492500\\)`,
+        topic: "counting",
+        answer: '12492500',
+        hint: "What is the equation for the number of diagonals in an \\(n\\)-sided polygon?",
+        step: "Use the formula \\(\\frac{n(n-3)}{2}\\)"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
@@ -2643,11 +2643,11 @@ step: "Use the formula \\(\\frac{n(n-3)}{2}\\)"
         text: `Tyler chooses a meal consisting of one meat (beef, chicken, or pork), two different
 vegetables (beans, corn, potatoes, tomatoes), and one dessert (brownies, cake, pudding,
 or ice cream). How many different meals are possible?`,
-solution: `<b>72</b><p>The meat has \\(\\binom{3}{1}=3\\) possibilities, the vegetables have \\(\\binom{4}{2}=6\\), and the dessert has \\(\\binom{4}{1}=4\\). Multiplying this gives a total of \\(3 \\times 6 \\times 4=72\\)`,
-answer: '72',
-hint: "The total number of combinations is the product of all the individual combinatioins",
-step: "Find the number of ways to pick each item",
-topic: "counting"
+        solution: `<b>72</b><p>The meat has \\(\\binom{3}{1}=3\\) possibilities, the vegetables have \\(\\binom{4}{2}=6\\), and the dessert has \\(\\binom{4}{1}=4\\). Multiplying this gives a total of \\(3 \\times 6 \\times 4=72\\)`,
+        answer: '72',
+        hint: "The total number of combinations is the product of all the individual combinatioins",
+        step: "Find the number of ways to pick each item",
+        topic: "counting"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
@@ -2660,7 +2660,7 @@ topic: "counting"
         step: "Calculate \\(\\binom{9}{5}\\)",
         topic: "counting"
     },
-{
+    {
         title: `<a href="https://drive.google.com/file/d/1jL6YhoTo0eZbjgGHB8K4wvN9-gUxUs55/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 5 Problem 7
                 </a>`,
@@ -2672,7 +2672,7 @@ colorings have exactly two red squares in each row?`,
         step: "Calculate \\(\\binom{4}{2}\\)",
         topic: "counting"
     },
-{
+    {
         title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 6 Problem 7
                 </a>`,
@@ -2685,11 +2685,11 @@ colorings have exactly two red squares in each row?`,
         topic: "logic"
     },
     {
-        title:  `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1Fx5je-2M02iqRk8TYz6Luzz3C3uxQfyJ/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 6 Problem 9
                 </a>`,
         text: `How many three-digit positive integers have digits that increase from left to right and whose digits sum to \\(15\\)?`,
-        solution:  `<b>8</b><p>We can just do casework by the first digit</p>
+        solution: `<b>8</b><p>We can just do casework by the first digit</p>
         <p>For \\(1\\) we need the remaining digits to sum to \\(14\\) so we have \\(159, 168\\). We can't do \\(177\\) because it's not ascending</p>
         <p>For \\(2\\) we have \\\(249, 258, 267\\)</p>
         <p>For \\(3\\) we ave \\(357, 348\\)</p>
@@ -2730,7 +2730,7 @@ colorings have exactly two red squares in each row?`,
     {
         title: `<a href="https://drive.google.com/file/d/1sQSdmSm6AJEFRR0cJ2EczPL4GYORvjU6/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 7 Problem 2
-                </a>`,  
+                </a>`,
         text: `An ant stands at the bottom of a staricase with \\(8\\) steps. The ant can climb the stairs by taking either \\(1\\) step or \\(2\\) steps at a time. However, the \\(5\\)th step is sticky, and the ant cannot step on it. 
         In how many distinct ways can the ant reach the top ((8\\textup{th}\\)) step?`,
         solution: `<b>10</b><p>We know that the ant must land on the fourth step and climb two steps to reach the sixth step. We thus find how many ways there are to get to and from those places</p>
@@ -2745,7 +2745,7 @@ colorings have exactly two red squares in each row?`,
     {
         title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 8
-                </a>`, 
+                </a>`,
         text: `How many distinct rearrangements of the letters in the word \\(LEVEL\\) are there such that no two \\(L\\)'s are adjacent?`,
         solution: `<b>18</b><p>We have \\(5!=120\\) ways to rearrange in general. However, we divide this by \\(4\\) because the \\(E\\)s and \\(L\\)s can both be arranged in 
         \\(2\\) ways. Thus, we have \\(30\\) independent combinations</p>
@@ -2759,7 +2759,7 @@ colorings have exactly two red squares in each row?`,
     {
         title: `<a href="https://drive.google.com/file/d/1yUNjUWogsneSLl_p9KpJimbOHVLgX3J-/view" target="_blank" class="pset-link">
                 Solvefire Iron Round 8 Problem 9
-                </a>`, 
+                </a>`,
         text: `A fair coin is flipped \\(6\\) times. The proability that the number of heads is strictly greater than the number of tails can be written as \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
         solution: `<b>43</b><p>The probability that the outcome is all heads is \\(\\frac{1}{2^6=\\frac{1}{64}\\). The probability of there being one tails is \\(\\frac{1}{2^6} \\times \\binom{6}{5}\\) (because they still all need to "flip the right valuee", but we need to pick \\(5\\) places for the heads to be in). Finally, 
         \\(4\\) heads is \\(\\frac{1}{2^6} \\times \\binom{6}{4}\\). We have \\(\\frac{1}{64}+\\frac{5}{64}+\\frac{16}{64}=\\frac{22}{64}=\\frac{11}{32}\\) for \\(p=11, q=32, p+q=43\\))`,
@@ -2769,38 +2769,38 @@ colorings have exactly two red squares in each row?`,
         topic: "casework"
     },
     {
-                title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 2
                 </a>`,
-                text: `Compute the number of non-negative integer solutions to \\((x_{1}+x_{2}+x_{3})(y_{1}+y_{2}+y_{3})=2026\\)`,
-                solution: `<b>18507528</b><p>First, start by finding the prime factorization of \\(2026=2 \\times 1013\\). Thus, the factors are \\(1,2,1013,2026\\) and thus \\(4\\) combintations because order does matter</p>
+        text: `Compute the number of non-negative integer solutions to \\((x_{1}+x_{2}+x_{3})(y_{1}+y_{2}+y_{3})=2026\\)`,
+        solution: `<b>18507528</b><p>First, start by finding the prime factorization of \\(2026=2 \\times 1013\\). Thus, the factors are \\(1,2,1013,2026\\) and thus \\(4\\) combintations because order does matter</p>
                 <p>Starting with \\((1,2026)\\) and \\((2026,1)\\). For the \\(1\\) there are \\(\\binom{3}{1}\\) ways to arrange it (because the one can be in \\(3\\) places). For the 
                 2026, we use "stars and bars", a technique where you sort \\(n\\) "stars", or elements, into \\(k\\) bins using \\(k-1\\) bars. The formula is \\(\\binom{n+k-1}{k-1}\\). With \\(3\\)
                 positions and \\(2\\) bars, we have \\(\\binom{2028}{2}=\\frac{2028 \\times 2027}{2}=2055378\\) We in turn multiply this by \\(3\\) for all the places \\(1\\) can be in, and then again by \\(2\\) because, like I sad, the order of the factors matters. For
                 factors \\(1\\) and \\(2026\\), there are \\(12332268\\) ways to solve</p>
                 <p>We do the same thing with stars and bars for \\((2,1013)\\) and \\((1013,2)\\). For \\(2\\) there is \\(\\frac{4 \\times 3}{2}=6\\). For \\(1013\\) there is \\(\\frac{1015 \\times 1014}{2}=514605\\). We multiply \\(514605 \\times 2 \\times 6 = 6175260\\)</p>
                 <p>Adding these gives \\(18507528\\)`,
-                answer: '18507528',
-                hint: "Use stars and bars",
-                step: `Find the prime factorization of \\(2026\\) and see how to divide each factor among \\(3\\) "bins" with "bars"`,
-                topic: "prime factorization"
+        answer: '18507528',
+        hint: "Use stars and bars",
+        step: `Find the prime factorization of \\(2026\\) and see how to divide each factor among \\(3\\) "bins" with "bars"`,
+        topic: "prime factorization"
     },
     {
-    title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/1sOEXpXM_ckqIZpDTJOlbCsT30BHPEJ3w/view" target="_blank" class="pset-link">
     Solvefire Silver 1 Question 4
-    </a>`,   
-    text: `A \\(1 \\times 8\\) strip of squares is tiled using \\(1\\times 1\\) red tiles, \\(1 \\times 1\\) blue tiles, and \\(1 \\times 2\\) green tiles. Find the number of distinct tiliings`,
-    solution: `<b>985</b><p>We can break this into casework by the number of green tiles.</p>
+    </a>`,
+        text: `A \\(1 \\times 8\\) strip of squares is tiled using \\(1\\times 1\\) red tiles, \\(1 \\times 1\\) blue tiles, and \\(1 \\times 2\\) green tiles. Find the number of distinct tiliings`,
+        solution: `<b>985</b><p>We can break this into casework by the number of green tiles.</p>
     <p>When \\(4\\) green tiles, obviously, there's only one way to order it</p>
     <p>For \\(3\\), if we count a green tile as one tile (which it is anyways), we need to find \\(3\\) places for the green tiles to go, and since ther there are only "\\(5\\)" positions (because we imagine that \\(2\\times 1\\) takes one whole tile, we have \\(\\binom{5}{3}=10\\) which we multiply by 
     \\(2^2=4\\) arrangemenets for the remaiing colors which gives \\(40\\)</p>
     <p>If there's \\(2\\), we again treat \\(1 \\times 2\\) as one tile and consider ourselves to only have \\(6\\) tiles. That gives \\(\\binom{6}{2}=15\\) which we multiply by \\(2^4=16\\) for \\(240\\)</p>
     <p>If there's \\(0\\), we have \\(2^8=256\\)</p>
     <p>This gives \\(1+40+240++448256=985\\)`,
-    answer: '985',
-    hint: "Treat \\(1 \\times 2\\) as one slot",
-    step: "Break into cases by the different number of green tiles",
-    topic: "counting"
+        answer: '985',
+        hint: "Treat \\(1 \\times 2\\) as one slot",
+        step: "Break into cases by the different number of green tiles",
+        topic: "counting"
     },
     {
         title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
@@ -2817,40 +2817,40 @@ colorings have exactly two red squares in each row?`,
         topic: "casework"
     },
     {
-               title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
+        title: `<a href="https://drive.google.com/file/d/10BMrr_3ooJXXBZFSpx7_49VCva8rF75m/view" target="_blank" class="pset-link">
                 Solvefire Bronze Contest 2 Question 6
                 </a>`,
-                text: `How many \\(5\\) digit numbers have the property that the sum of their digits is equal to \\(9\\), and each digit is non-zero?`,
-                solution: `<b>70</b><p>We could do this with stars and bars, but we need to make sure we address the rule that no digit is \\(0\\). Thus, we rewrite each digit as \\(x_{i}+1\\), and all of those must sum to \\(9\\). Thus, all the values of \\(x\\) must sum to \\(4\\)/p>
+        text: `How many \\(5\\) digit numbers have the property that the sum of their digits is equal to \\(9\\), and each digit is non-zero?`,
+        solution: `<b>70</b><p>We could do this with stars and bars, but we need to make sure we address the rule that no digit is \\(0\\). Thus, we rewrite each digit as \\(x_{i}+1\\), and all of those must sum to \\(9\\). Thus, all the values of \\(x\\) must sum to \\(4\\)/p>
                 <p>We do stars and bars with \\(\\binom{4+5-1}{5-1}=\\binom{8}{4}=70\\)` ,
-                answer: '70',
-                hint: "Rewrite each digit algebraicly",
-                step: "Rewrite each digit as \\(x_{i}+1\\)",
-                topic: "counting"
+        answer: '70',
+        hint: "Rewrite each digit algebraicly",
+        step: "Rewrite each digit as \\(x_{i}+1\\)",
+        topic: "counting"
     },
     {
         title: `<a href="https://drive.google.com/file/d/1mPBzWkGBDV-demFxXlQEImqYyUuVQWWA/view" target="_blank" class="pset-link">
     Solvefire Bronze 5 Question 7
-    </a>`,  
-    text: `A token is placed at the origin \\(x=0\\) of a number line. Each second, it moves \\(1\\) unit to the right with a probability of \\(\\frac{1}{2}\\), or \\(1\\) unit to the left with a probability of \\(\\frac{1}{2}\\). The probability that the toekn reaches \\(x-2\\)
+    </a>`,
+        text: `A token is placed at the origin \\(x=0\\) of a number line. Each second, it moves \\(1\\) unit to the right with a probability of \\(\\frac{1}{2}\\), or \\(1\\) unit to the left with a probability of \\(\\frac{1}{2}\\). The probability that the toekn reaches \\(x-2\\)
     before it ever reaches \\(x=-3\\) can be expressed as a fraction in simplest form \\(\\frac{m}{n}\\). What is the value of \\(m+n\\)`,
-    solution: `<b>8</b>We use a formula called "The Gambler's Ruin" that dictates for goal \\(a\\) and failiure boundary \\(-b\\) (which we have as \\(2, 3\\), we have \\(P=\\frac{b}{a+b}\\) so for us that's \\(\\frac{3}{5}\\) for \\(3+5=8\\)`,
-    answer: '8',
-    hint: "Use the gambler's ruin formula",
-    step: "Use gambler's ruin \\(\\frac{\\textup{failire location}}{\\textup{goal + failiure location}}\\)",
-    topic: "counting"
-},
-{
-    title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Problem 1</a>`,
-    text: `Seven people arrive at a hotel with three rooms. \\(A\\) and \\(B\\) hold two people ach, and \\(C\\) holds three people. How many ways can seven people be assigned to the rooms?`,
-    solution: `<b>210</b><p>We have \\(\\binom{7}{2}=\\frac{7 \\times 6}{2}=21\\) ways of picking the people for room \\(A\\). From there, we have \\(\\binom{5}[2}=\\frac{5 \\times 4}{2}=10\\) ways of picking 
+        solution: `<b>8</b>We use a formula called "The Gambler's Ruin" that dictates for goal \\(a\\) and failiure boundary \\(-b\\) (which we have as \\(2, 3\\), we have \\(P=\\frac{b}{a+b}\\) so for us that's \\(\\frac{3}{5}\\) for \\(3+5=8\\)`,
+        answer: '8',
+        hint: "Use the gambler's ruin formula",
+        step: "Use gambler's ruin \\(\\frac{\\textup{failire location}}{\\textup{goal + failiure location}}\\)",
+        topic: "counting"
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Problem 1</a>`,
+        text: `Seven people arrive at a hotel with three rooms. \\(A\\) and \\(B\\) hold two people ach, and \\(C\\) holds three people. How many ways can seven people be assigned to the rooms?`,
+        solution: `<b>210</b><p>We have \\(\\binom{7}{2}=\\frac{7 \\times 6}{2}=21\\) ways of picking the people for room \\(A\\). From there, we have \\(\\binom{5}[2}=\\frac{5 \\times 4}{2}=10\\) ways of picking 
     for room \\(B\\). The rest will be in room \\(C\\), so we have \\(21 \\times 10=210\\)`,
-    answer: '210',
-    hint: "Calculate each room independently",
-    step: "Use \\(\\binom{7}{2}\\) to find the people in room \\(A\\)",
-    topic: "counting"
-},
-{
+        answer: '210',
+        hint: "Calculate each room independently",
+        step: "Use \\(\\binom{7}{2}\\) to find the people in room \\(A\\)",
+        topic: "counting"
+    },
+    {
         title: `<a href="https://drive.google.com/file/d/1x546U0RJokTGUIZnFQVoSKE8YJGSOJm2/view" target="_blank" class="pset-link">Solvefire Bronze 6 Problem 4</a>`,
         text: `Two octagonal prisms and five cubes are given. A face is chosen uniformly at random from all faces. The probability that the chosen face comes from a cube is \\(\\frac{p}{q}\\) in lowest terms. Find \\(p+q\\)`,
         solution: `<b>8</b><p>An octagonal prism is just like stacking a bunch of octagons. It has \\(8\\) faces plus a top and bottom for \\(10\\) total. Each cube has \\(6\\) faces, so we have \\(\\frac{5(6)}{2(10)+5(6)}=\\frac{30}{50}=\\frac{3}{5}\\) for \\(3+5=8\\)`,
@@ -2858,9 +2858,9 @@ colorings have exactly two red squares in each row?`,
         hint: "An octagonal prism has \\(10\\) faces",
         step: "Find the total number of faces",
         topic: "logic"
-},
-{
-        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 1</a>`, 
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 1</a>`,
         text: `Two fair six-sided dice are rolled. Given that the product of the two numbers is even, the probability that their sum is prime can be written as \\(\\frac{m}{n}\\) in lowest terms. Find \\(m+n\\)`,
         solution: `<b>41</b><p>We hvae \\(36\\) total outcomes for both dice and \\(3 \\times 3=9\\) where it is odd (because they would both have to be odd). We thus have \\(27\\) even.</p>
         <p>The possible odd sums are \\(3,5,7,11\\). We know that exactly one dice needs to be even in order for it to be even and have an odd sum, so we solve</p>
@@ -2872,17 +2872,17 @@ colorings have exactly two red squares in each row?`,
         hint: "Split into cases",
         step: "Find the possible prime numbers",
         topic: "casework"
-},
-{
-title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 9</a>`,
-text: `How many ways are there to choose \\(4\\) vertices of a regular decagon so that no two chosen vertices are adjacent?`,
-solution: `<b>25</b><p>The way to choose nonadjacent vertices in a row is \\(\\binom{\\textup{total vertices} - \\textup{vertices to find} + 1}{\\textup{vertices to find}}\\). However, we aren't dealing with a row, we are dealing with an almost cylic figure. Thus, we either eliminate or include the first vertex</p>
+    },
+    {
+        title: `<a href="https://drive.google.com/file/d/1FnKSnsci5mpWmfoZauslbFteUI83XPP7/view" target="_blank" class="pset-link">Solvefire Bronze 7 Problem 9</a>`,
+        text: `How many ways are there to choose \\(4\\) vertices of a regular decagon so that no two chosen vertices are adjacent?`,
+        solution: `<b>25</b><p>The way to choose nonadjacent vertices in a row is \\(\\binom{\\textup{total vertices} - \\textup{vertices to find} + 1}{\\textup{vertices to find}}\\). However, we aren't dealing with a row, we are dealing with an almost cylic figure. Thus, we either eliminate or include the first vertex</p>
 <p>If we include it, we can't use the two adjacent, so we have \\(7\\) left to distribute about \\(3\\) for \\(binom{7-3+1}{3}=10\\). If we don't, we just do \\(\\binom{9-4+1}{4}=15\\). We have \\(10 +15=25\\)`,
-answer:'25',
-hint: "Imagine they are in a row",
-step: `Do caework on whether the "first" vertex is used or not`,
-topic: "counting"
-}
+        answer: '25',
+        hint: "Imagine they are in a row",
+        step: `Do caework on whether the "first" vertex is used or not`,
+        topic: "counting"
+    }
 ]
 let algebraIndex = 0
 let geometryIndex = 0
@@ -2948,23 +2948,23 @@ const stuckBtn = document.getElementById("stuck")
 const errorTags = document.getElementById("tagQuestion")
 let accountTrue = false
 accountBtn.addEventListener("click", function () {
-        let account = true
+    let account = true
 
-    document.getElementById("no-account").addEventListener("click", function() {
-    if (account === false){
-        account = true
-        document.getElementById("login").style.display = "block"
-        document.getElementById("signup").style.display = "none"
-                document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
-    } else {
-        document.getElementById('login').style.display = "none"
-        account = false
-        document.getElementById("signup").style.display = "block"
-        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
-    }
+    document.getElementById("no-account").addEventListener("click", function () {
+        if (account === false) {
+            account = true
+            document.getElementById("login").style.display = "block"
+            document.getElementById("signup").style.display = "none"
+            document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+        } else {
+            document.getElementById('login').style.display = "none"
+            account = false
+            document.getElementById("signup").style.display = "block"
+            document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+        }
     })
-    helpPannel.style.display  = "none"
-    if (accountTrue === false){
+    helpPannel.style.display = "none"
+    if (accountTrue === false) {
         accountPannel.style.display = "block"
         overlay.style.display = "block"
         accountTrue = true
@@ -2974,22 +2974,22 @@ accountBtn.addEventListener("click", function () {
         accountTrue = false
     }
 })
-overlay.addEventListener("click", function(){
-    if (helpOn === true){
+overlay.addEventListener("click", function () {
+    if (helpOn === true) {
         helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
+        overlay.style.display = "none";
         helpOn = false;
-    } 
-    if (accountTrue === true){
+    }
+    if (accountTrue === true) {
         accountPannel.style.display = "none"
         overlay.style.display = "none"
         accountTrue = false
     }
 })
 helpBtn.addEventListener("click", function () {
-    if (helpOn === true){
+    if (helpOn === true) {
         helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
+        overlay.style.display = "none";
         helpOn = false;
     } else {
         helpPannel.style.display = "block";
@@ -3017,7 +3017,8 @@ function recordWrongTopic(topic) {
     } else if (questionType === "probability") {
         topicToUpdate = probQuestion.topic;
     } else if (questionType === "all") {
-        topicToUpdate = allQuestion.topic;}
+        topicToUpdate = allQuestion.topic;
+    }
     if (!topicToUpdate) return;
 
     if (!topicsToWorkOn.includes(topicToUpdate)) {
@@ -3028,7 +3029,7 @@ function recordWrongTopic(topic) {
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
     if (topicObj) {
         topicObj.errors += 1;
-        topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
+        topicObj.mastery = ((1 - (topicObj.errors / topicObj.attempts)) * 100) + "%"
         localStorage.setItem("topicGlossarySolve", JSON.stringify(TOPIC_GLOSSARY))
         localStorage.setItem("topicGlossarySetSolve", true)
 
@@ -3036,39 +3037,39 @@ function recordWrongTopic(topic) {
 
     updateTopicsDropdown();
 }
-function buttonsWork(){
-    algButton.addEventListener("click", function() {
+function buttonsWork() {
+    algButton.addEventListener("click", function () {
         questionType = "algebra";
         updateColors();
         prevError.style.display = "none"
         loadQuestion();
     });
-    geometryButton.addEventListener("click", function() {
+    geometryButton.addEventListener("click", function () {
         questionType = "geometry";
         updateColors();
         prevError.style.display = "none"
         loadQuestion();
     });
-    numButton.addEventListener("click", function() {
+    numButton.addEventListener("click", function () {
         questionType = "numTheory"
         updateColors();
         loadQuestion();
     })
-    probButton.addEventListener("click", function() {
+    probButton.addEventListener("click", function () {
         questionType = "probability"
         updateColors();
         prevError.style.display = "none"
         loadQuestion();
     });
-    allButton.addEventListener("click", function() {
+    allButton.addEventListener("click", function () {
         questionType = "all"
         updateColors();
         prevError.style.display = "none"
         loadQuestion();
     });
 }
-function updateColors(){
-    if (questionType === "algebra"){
+function updateColors() {
+    if (questionType === "algebra") {
         algButton.classList.add("topicEnabled")
         geometryButton.classList.remove("topicEnabled")
         probButton.classList.remove("topicEnabled")
@@ -3080,7 +3081,7 @@ function updateColors(){
         probButton.classList.remove("topicEnabled")
         numButton.classList.remove("topicEnabled")
         allButton.classList.remove("topicEnabled")
-    } else if (questionType === "numTheory"){
+    } else if (questionType === "numTheory") {
         numButton.classList.add("topicEnabled")
         geometryButton.classList.remove("topicEnabled")
         probButton.classList.remove("topicEnabled")
@@ -3132,17 +3133,17 @@ function loadAlgebra() {
             btn.onclick = () => handleMCAnswer(algebraQuestion.choices[i]);
         });
     }
-    if (algebraQuestion.image){
-        image.src=algebraQuestion.image;
-        image.style.display="block";
+    if (algebraQuestion.image) {
+        image.src = algebraQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 allQuestion = allQ[allIndex]
@@ -3177,24 +3178,24 @@ function loadAll() {
             btn.onclick = () => handleMCAnswer(allQuestion.choices[i]);
         });
     }
-    if (allQuestion.image){
-        image.src=allQuestion.image;
-        image.style.display="block";
+    if (allQuestion.image) {
+        image.src = allQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 geometryQuestion = geometryQ[geometryIndex]
 
 function loadGeometry() {
     questionType = "geometry",
-    mcChoices.forEach(btn => btn.disabled = false);
+        mcChoices.forEach(btn => btn.disabled = false);
 
     questionTitle.innerHTML = geometryQuestion.title;
     questionText.innerHTML = geometryQuestion.text;
@@ -3224,17 +3225,17 @@ function loadGeometry() {
             btn.onclick = () => handleMCAnswer(geometryQuestion.choices[i]);
         });
     }
-    if (geometryQuestion.image){
-        image.src=geometryQuestion.image;
-        image.style.display="block";
+    if (geometryQuestion.image) {
+        image.src = geometryQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 numQuestion = numTheoryQ[numIndex]
@@ -3269,22 +3270,22 @@ function loadNumTheory() {
             btn.onclick = () => handleMCAnswer(numQuestion.choices[i]);
         });
     }
-    if (numQuestion.image){
-        image.src=numQuestion.image;
-        image.style.display="block";
+    if (numQuestion.image) {
+        image.src = numQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 
 
-    probQuestion = probabilityQ[probIndex]
+probQuestion = probabilityQ[probIndex]
 function loadProb() {
     mcChoices.forEach(btn => btn.disabled = false);
 
@@ -3316,17 +3317,17 @@ function loadProb() {
             btn.onclick = () => handleMCAnswer(probQuestion.choices[i]);
         });
     }
-    if (probQuestion.image){
-        image.src=numQuestion.image;
-        image.style.display="block";
+    if (probQuestion.image) {
+        image.src = numQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 
@@ -3335,8 +3336,8 @@ function loadProb() {
 function handleMCAnswer(choice) {
     answerInput.value = choice; // reuse existing checker
     checkBtn.click();
-    if (nextBtn.style.display !== "none"){
-mcChoices.forEach(btn => btn.disabled = true);
+    if (nextBtn.style.display !== "none") {
+        mcChoices.forEach(btn => btn.disabled = true);
     }
 }
 
@@ -3359,10 +3360,10 @@ const capitalizedString = capitalizeFirstLetter(originalString);
 let correct = 1
 function checkAnswerGeometry() {
 
-    if (strikes == 2){
+    if (strikes == 2) {
         geometryTotal += 1
         localStorage.setItem("geometryTotalSolve", geometryTotal)
-            updateRadarChart()
+        updateRadarChart()
     }
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === geometryQuestion.topic);
     if (topicObj) {
@@ -3371,132 +3372,132 @@ function checkAnswerGeometry() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = geometryQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
         correct = 1;
         getExpectedScore(userRatingGeometry, geometryQuestion.rating)
         score = score + geometryQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
-            streakCount++;
-            correctCount++;
-            difficultyProgressG++;
-            if (difficultyG == 1 && difficultyProgressG == 4){
-                difficultyG++;
-                difficultyProgressG = 0;
-                
-            } else if (difficultyG == 2 && difficultyProgressG  == 3){
-                difficultyG++;
-                difficultyProgressG = 0;
-                
-            } else if (difficultyG == 3 && difficultyProgressG  == 2){
-                difficultyG++;
-                difficultyProgressG = 0;
-                
-            } else if (difficultyG == 4 && difficultyProgressG == 1){
-                difficultyG ++;
-                difficultyProgressG = 0;
-                
-            }
+        streakCount++;
+        correctCount++;
+        difficultyProgressG++;
+        if (difficultyG == 1 && difficultyProgressG == 4) {
+            difficultyG++;
+            difficultyProgressG = 0;
+
+        } else if (difficultyG == 2 && difficultyProgressG == 3) {
+            difficultyG++;
+            difficultyProgressG = 0;
+
+        } else if (difficultyG == 3 && difficultyProgressG == 2) {
+            difficultyG++;
+            difficultyProgressG = 0;
+
+        } else if (difficultyG == 4 && difficultyProgressG == 1) {
+            difficultyG++;
+            difficultyProgressG = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + geometryQuestion.solution;
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
+        solutionDiv.style.display = "block";
+        solutionText.style.display = "block"
+        nextBtn.style.display = "inline-block";
 
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-           if (strikes ==  2){
+        if (strikes == 2) {
             updateRadarChart()
-                hintBtn.innerHTML  = "Show Hint"
-                strikesContainer.style.display = "inline"
-const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
-        strikeOne.style.color = "var(--primary-color) !important"
-        correct = 0;
-        hintBtn.style.display = "inline"
-        getExpectedScore(userRating, geometryQuestion.rating)
-        recordWrongTopic(geometryQuestion.topic);
-        updatePieChart()
-        difficultyG = Math.max(1, difficultyG - 1);
-        difficultyProgressG = 0;
-        score = score - difficultyG;
-        scoreCount.innerHTML = Math.round(userRatingAll);
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(geometryQuestion.topic);
-        wrongCount++;
-        const wrongEntryTrueAlgebra = wrongQuestionsGeometry.some(item => item.title === wrongQuestionsGeometry.title);
-        if (wrongEntryTrueAlgebra === false){
-        wrongQuestionsGeometry.push(geometryQuestion)
-        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].errorCount = 1;
-        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].countdown = 3
-                if (mistakesGeometryTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsGeometry.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
-                    }
+            hintBtn.innerHTML = "Show Hint"
+            strikesContainer.style.display = "inline"
+            const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+            strikeOne.style.color = "var(--primary-color) !important"
+            correct = 0;
+            hintBtn.style.display = "inline"
+            getExpectedScore(userRating, geometryQuestion.rating)
+            recordWrongTopic(geometryQuestion.topic);
+            updatePieChart()
+            difficultyG = Math.max(1, difficultyG - 1);
+            difficultyProgressG = 0;
+            score = score - difficultyG;
+            scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount = 0;
+            topicWrong = capitalizeFirstLetter(geometryQuestion.topic);
+            wrongCount++;
+            const wrongEntryTrueAlgebra = wrongQuestionsGeometry.some(item => item.title === wrongQuestionsGeometry.title);
+            if (wrongEntryTrueAlgebra === false) {
+                wrongQuestionsGeometry.push(geometryQuestion)
+                wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].errorCount = 1;
+                wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].countdown = 3
+                if (mistakesGeometryTrue === true) {
+                    let alreadyDefined = false
+                    wrongQuestionsGeometry.forEach(item => {
+                        if (item.countdown === 0) {
+                            if (alreadyDefined === false) {
+                                item.errorCount += 1
+                                item.countdown = (2 ** item.errorCount)
+                            }
+                        }
+                    })
                 }
-            })
-        }
-        }
-        document.getElementById("streak-count").innerHTML = streakCount;
+            }
+            document.getElementById("streak-count").innerHTML = streakCount;
 
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "geometry"
-        strikes -= 1
-        getExpectedScore(userRating, geometryQuestion.rating)
-                        scoreCount.innerHTML = Math.round(userRatingAll);
-    } else  if (strikes === 1){
-        seeStep.style.display = "inline"
-        strikeTwo.style.color = "var(--primary-color) !important"
-        strikes -= 1
-    } else {
-        geometryWrong += 1
-        localStorage.setItem("geometryWrongSolve", geometryWrong)
-        updateRadarChart()
-        errorTags.style.display = "inline"
-        strikeThree.style.color = "var(--primary-color) !important"
+            problemsWrapper.classList.add("shake");
+            setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+            questionType = "geometry"
+            strikes -= 1
+            getExpectedScore(userRating, geometryQuestion.rating)
+            scoreCount.innerHTML = Math.round(userRatingAll);
+        } else if (strikes === 1) {
+            seeStep.style.display = "inline"
+            strikeTwo.style.color = "var(--primary-color) !important"
+            strikes -= 1
+        } else {
+            geometryWrong += 1
+            localStorage.setItem("geometryWrongSolve", geometryWrong)
+            updateRadarChart()
+            errorTags.style.display = "inline"
+            strikeThree.style.color = "var(--primary-color) !important"
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + geometryQuestion.solution;
-const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
-}
+            const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+            solutionDiv.style.display = "block";
+            solutionText.style.display = "block"
+            nextBtn.style.display = "inline-block";
+            stepOne.style.display = "none"
+            hintBtn.style.display = "none"
+            hintText.style.display = "none"
+            seeStep.style.display = "none"
+        }
 
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
 }
-function checkAnswerAlgebra(){
+function checkAnswerAlgebra() {
 
-    if (strikes == 2){
+    if (strikes == 2) {
         algebraTotal += 1
         localStorage.setItem("algebraTotalSolve", algebraTotal)
-            updateRadarChart()
+        updateRadarChart()
     }
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === algebraQuestion.topic);
     if (topicObj) {
@@ -3506,130 +3507,130 @@ function checkAnswerAlgebra(){
     const userAnswer = answerInput.value.trim();
     const correctAnswer = algebraQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-            nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
+        nextBtn.style.display = "inline-block";
+        stepOne.style.display = "none"
+        hintBtn.style.display = "none"
+        hintText.style.display = "none"
+        seeStep.style.display = "none"
         correct = 1;
         getExpectedScore(userRating, algebraQuestion.rating)
         score = score + algebraQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
-            streakCount++;
-            correctCount++;
-            difficultyProgress++;
-            if (difficulty == 1 && difficultyProgress == 4){
-                difficulty++;
-                difficultyProgress = 0;
-                
-            } else if (difficulty == 2 && difficultyProgress  == 3){
-                difficulty++;
-                difficultyProgress = 0;
-                
-            } else if (difficulty == 3 && difficultyProgress  == 2){
-                difficulty++;
-                difficultyProgress = 0;
-                
-            } else if (difficulty == 4 && difficultyProgress == 1){
-                difficulty ++;
-                difficultyProgress = 0;
-                
-            }
+        streakCount++;
+        correctCount++;
+        difficultyProgress++;
+        if (difficulty == 1 && difficultyProgress == 4) {
+            difficulty++;
+            difficultyProgress = 0;
+
+        } else if (difficulty == 2 && difficultyProgress == 3) {
+            difficulty++;
+            difficultyProgress = 0;
+
+        } else if (difficulty == 3 && difficultyProgress == 2) {
+            difficulty++;
+            difficultyProgress = 0;
+
+        } else if (difficulty == 4 && difficultyProgress == 1) {
+            difficulty++;
+            difficultyProgress = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + algebraQuestion.solution;
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        solutionDiv.style.display = "block";
+        solutionText.style.display = "block"
+        nextBtn.style.display = "inline-block";
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-        if (strikes ==  2){
+        if (strikes == 2) {
 
-                scoreCount.innerHTML = Math.round(userRatingAll);
-                hintBtn.innerHTML  = "Show Hint"
-                strikesContainer.style.display = "inline"
-const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
-        strikeOne.style.color = "var(--primary-color) !important"
-        correct = 0;
-        hintBtn.style.display = "inline"
-        getExpectedScore(userRating, algebraQuestion.rating)
-        recordWrongTopic(algebraQuestion.topic);
-                            updatePieChart()
-        difficulty = Math.max(1, difficulty - 1);
-        difficultyProgress = 0;
-        score = score - difficulty;
-        scoreCount.innerHTML = Math.round(userRatingAll);
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(algebraQuestion.topic);
-        wrongCount++;
-        const wrongEntryTrueAlgebra = wrongQuestionsAlgebra.some(item => item.title === wrongQuestionsAlgebra.title);
-        if (wrongEntryTrueAlgebra === false){
-        wrongQuestionsAlgebra.push(algebraQuestion)
-        wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].errorCount = 1;
-        wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].countdown = 3
-                if (mistakesAlgebraTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsAlgebra.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
-                    }
+            scoreCount.innerHTML = Math.round(userRatingAll);
+            hintBtn.innerHTML = "Show Hint"
+            strikesContainer.style.display = "inline"
+            const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+            strikeOne.style.color = "var(--primary-color) !important"
+            correct = 0;
+            hintBtn.style.display = "inline"
+            getExpectedScore(userRating, algebraQuestion.rating)
+            recordWrongTopic(algebraQuestion.topic);
+            updatePieChart()
+            difficulty = Math.max(1, difficulty - 1);
+            difficultyProgress = 0;
+            score = score - difficulty;
+            scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount = 0;
+            topicWrong = capitalizeFirstLetter(algebraQuestion.topic);
+            wrongCount++;
+            const wrongEntryTrueAlgebra = wrongQuestionsAlgebra.some(item => item.title === wrongQuestionsAlgebra.title);
+            if (wrongEntryTrueAlgebra === false) {
+                wrongQuestionsAlgebra.push(algebraQuestion)
+                wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].errorCount = 1;
+                wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].countdown = 3
+                if (mistakesAlgebraTrue === true) {
+                    let alreadyDefined = false
+                    wrongQuestionsAlgebra.forEach(item => {
+                        if (item.countdown === 0) {
+                            if (alreadyDefined === false) {
+                                item.errorCount += 1
+                                item.countdown = (2 ** item.errorCount)
+                            }
+                        }
+                    })
                 }
-            })
-        }
-        }
-        document.getElementById("streak-count").innerHTML = streakCount;
+            }
+            document.getElementById("streak-count").innerHTML = streakCount;
 
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "algebra"
-        strikes -= 1
-        correct = 0
-        getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML = Math.round(userRatingAll)
-    } else  if (strikes === 1){
-        seeStep.style.display = "inline"
-        strikeTwo.style.color = "var(--primary-color) !important"
-        strikes -= 1
-    } else {
-        algebraWrong += 1
-        localStorage.setItem("algebraWrongSolve", algebraWrong)
-        updateRadarChart()
-        errorTags.style.display = "inline"
-        strikeThree.style.color = "var(--primary-color) !important"
+            problemsWrapper.classList.add("shake");
+            setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+            questionType = "algebra"
+            strikes -= 1
+            correct = 0
+            getExpectedScore(userRating, algebraQuestion.rating)
+            scoreCount.innerHTML = Math.round(userRatingAll)
+        } else if (strikes === 1) {
+            seeStep.style.display = "inline"
+            strikeTwo.style.color = "var(--primary-color) !important"
+            strikes -= 1
+        } else {
+            algebraWrong += 1
+            localStorage.setItem("algebraWrongSolve", algebraWrong)
+            updateRadarChart()
+            errorTags.style.display = "inline"
+            strikeThree.style.color = "var(--primary-color) !important"
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + algebraQuestion.solution;
-const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
-}
+            const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+            solutionDiv.style.display = "block";
+            solutionText.style.display = "block"
+            nextBtn.style.display = "inline-block";
+            stepOne.style.display = "none"
+            hintBtn.style.display = "none"
+            hintText.style.display = "none"
+            seeStep.style.display = "none"
+        }
 
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
 }
 function checkAnswerAll() {
@@ -3640,42 +3641,42 @@ function checkAnswerAll() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = allQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
         score = score + allQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
-            streakCount++;
-            correctCount++;
-            difficultyProgressAll++;
-            if (difficultyAll == 1 && difficultyProgressAll == 4){
-                difficultyAll++;
-                difficultyProgressAll = 0;
-                
-            } else if (difficultyAll == 2 && difficultyProgressAll  == 3){
-                difficultyAll++;
-                difficultyProgressAll = 0;
-                
-            } else if (difficultyAll == 3 && difficultyProgressAll  == 2){
-                difficultyAll++;
-                difficultyProgressAll = 0;
-                
-            } else if (difficultyAll == 4 && difficultyProgressAll == 1){
-                difficultyAll ++;
-                difficultyProgressAll = 0;
-                
-            }
+        streakCount++;
+        correctCount++;
+        difficultyProgressAll++;
+        if (difficultyAll == 1 && difficultyProgressAll == 4) {
+            difficultyAll++;
+            difficultyProgressAll = 0;
+
+        } else if (difficultyAll == 2 && difficultyProgressAll == 3) {
+            difficultyAll++;
+            difficultyProgressAll = 0;
+
+        } else if (difficultyAll == 3 && difficultyProgressAll == 2) {
+            difficultyAll++;
+            difficultyProgressAll = 0;
+
+        } else if (difficultyAll == 4 && difficultyProgressAll == 1) {
+            difficultyAll++;
+            difficultyProgressAll = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + allQuestion.solution;
 
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
@@ -3690,10 +3691,10 @@ check
         topicWrong = capitalizeFirstLetter(allQuestion.topic);
         wrongCount++;
         const wrongEntryTrueAll = wrongQuestionsAll.some(item => item.title === wrongQuestionsAll.title);
-        if (wrongEntryTrueAll === false){
-        wrongQuestionsAll.push(allQuestion)
-        wrongQuestionsAll[wrongQuestionsAll.length - 1].errorCount = 1;
-        wrongQuestionsAll[wrongQuestionsAll.length - 1].countdown = 3
+        if (wrongEntryTrueAll === false) {
+            wrongQuestionsAll.push(allQuestion)
+            wrongQuestionsAll[wrongQuestionsAll.length - 1].errorCount = 1;
+            wrongQuestionsAll[wrongQuestionsAll.length - 1].countdown = 3
         }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
@@ -3706,30 +3707,30 @@ close_small
 
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
-const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
-        if (mistakesAllTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsAll.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
-                    }
+    const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
+    if (mistakesAllTrue === true) {
+        let alreadyDefined = false
+        wrongQuestionsAll.forEach(item => {
+            if (item.countdown === 0) {
+                if (alreadyDefined === false) {
+                    item.errorCount += 1
+                    item.countdown = (2 ** item.errorCount)
                 }
-            })
-        }
+            }
+        })
+    }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
 }
 
 
 function checkAnswerProb() {
 
-    if (strikes == 2){
+    if (strikes == 2) {
         probTotal += 1
         localStorage.setItem("probTotalSolve", probTotal)
-            updateRadarChart()
+        updateRadarChart()
     }
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === probQuestion.topic);
     if (topicObj) {
@@ -3738,131 +3739,131 @@ function checkAnswerProb() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = probQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-            correct = 1;
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
+        correct = 1;
         getExpectedScore(userRatingProbability, probQuestion.rating)
         score = score + probQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
-            streakCount++;
-            correctCount++;
-            difficultyProgressP++;
-            if (difficultyP == 1 && difficultyProgressP == 1){
-                difficultyP++;
-                difficultyProgressP = 0;
-                
-            } else if (difficultyP == 2 && difficultyProgressP  == 3){
-                difficultyN++;
-                difficultyProgressP = 0;
-                
-            } else if (difficultyP == 3 && difficultyProgressP  == 2){
-                difficultyP++;
-                difficultyProgressP = 0;
-                
-            } else if (difficultyP == 4 && difficultyProgressP == 1){
-                difficultyP ++;
-                difficultyProgressP = 0;
-                
-            }
+        streakCount++;
+        correctCount++;
+        difficultyProgressP++;
+        if (difficultyP == 1 && difficultyProgressP == 1) {
+            difficultyP++;
+            difficultyProgressP = 0;
+
+        } else if (difficultyP == 2 && difficultyProgressP == 3) {
+            difficultyN++;
+            difficultyProgressP = 0;
+
+        } else if (difficultyP == 3 && difficultyProgressP == 2) {
+            difficultyP++;
+            difficultyProgressP = 0;
+
+        } else if (difficultyP == 4 && difficultyProgressP == 1) {
+            difficultyP++;
+            difficultyProgressP = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + probQuestion.solution;
 
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-     if (strikes ==  2){
-                scoreCount.innerHTML = Math.round(userRatingAll);
-                hintBtn.innerHTML  = "Show Hint"
-                strikesContainer.style.display = "inline"
-const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
-        strikeOne.style.color = "var(--primary-color) !important"
-        correct = 0;
-        hintBtn.style.display = "inline"
-        getExpectedScore(userRating, probQuestion.rating)
-        recordWrongTopic(probQuestion.topic);
-        updatePieChart()
-        difficultyP = Math.max(1, difficultyP - 1);
-        difficultyProgressP = 0;
-        score = score - difficultyP;
-        scoreCount.innerHTML = Math.round(userRatingAll);
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(probQuestion.topic);
-        wrongCount++;
-        const wrongEntryTrueProb = wrongQuestionsProb.some(item => item.title === wrongQuestionsProb.title);
-        if (wrongEntryTrueProb === false){
-        wrongQuestionsProb.push(algebraQuestion)
-        wrongQuestionsProb[wrongQuestionsProb.length - 1].errorCount = 1;
-        wrongQuestionsProb[wrongQuestionsProb.length - 1].countdown = 3
-                if (mistakesProbTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsProb.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
-                    }
+        if (strikes == 2) {
+            scoreCount.innerHTML = Math.round(userRatingAll);
+            hintBtn.innerHTML = "Show Hint"
+            strikesContainer.style.display = "inline"
+            const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+            strikeOne.style.color = "var(--primary-color) !important"
+            correct = 0;
+            hintBtn.style.display = "inline"
+            getExpectedScore(userRating, probQuestion.rating)
+            recordWrongTopic(probQuestion.topic);
+            updatePieChart()
+            difficultyP = Math.max(1, difficultyP - 1);
+            difficultyProgressP = 0;
+            score = score - difficultyP;
+            scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount = 0;
+            topicWrong = capitalizeFirstLetter(probQuestion.topic);
+            wrongCount++;
+            const wrongEntryTrueProb = wrongQuestionsProb.some(item => item.title === wrongQuestionsProb.title);
+            if (wrongEntryTrueProb === false) {
+                wrongQuestionsProb.push(algebraQuestion)
+                wrongQuestionsProb[wrongQuestionsProb.length - 1].errorCount = 1;
+                wrongQuestionsProb[wrongQuestionsProb.length - 1].countdown = 3
+                if (mistakesProbTrue === true) {
+                    let alreadyDefined = false
+                    wrongQuestionsProb.forEach(item => {
+                        if (item.countdown === 0) {
+                            if (alreadyDefined === false) {
+                                item.errorCount += 1
+                                item.countdown = (2 ** item.errorCount)
+                            }
+                        }
+                    })
                 }
-            })
-        }
-        }
-        document.getElementById("streak-count").innerHTML = streakCount;
+            }
+            document.getElementById("streak-count").innerHTML = streakCount;
 
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "probability"
-        getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML = Math.round(userRatingAll)
-        strikes -= 1
-    } else  if (strikes === 1){
-        seeStep.style.display = "inline"
-        strikeTwo.style.color = "var(--primary-color) !important"
-        strikes -= 1
-    } else {
-        updatePieChart()
-        probWrong += 1
-        localStorage.setItem("probWrongSolve", probWrong)
-        updateRadarChart()
-        errorTags.style.display = "inline"
-        strikeThree.style.color = "var(--primary-color) !important"
+            problemsWrapper.classList.add("shake");
+            setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+            questionType = "probability"
+            getExpectedScore(userRating, algebraQuestion.rating)
+            scoreCount.innerHTML = Math.round(userRatingAll)
+            strikes -= 1
+        } else if (strikes === 1) {
+            seeStep.style.display = "inline"
+            strikeTwo.style.color = "var(--primary-color) !important"
+            strikes -= 1
+        } else {
+            updatePieChart()
+            probWrong += 1
+            localStorage.setItem("probWrongSolve", probWrong)
+            updateRadarChart()
+            errorTags.style.display = "inline"
+            strikeThree.style.color = "var(--primary-color) !important"
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + probQuestion.solution;
-const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
-}
+            const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+            solutionDiv.style.display = "block";
+            solutionText.style.display = "block"
+            nextBtn.style.display = "inline-block";
+            stepOne.style.display = "none"
+            hintBtn.style.display = "none"
+            hintText.style.display = "none"
+            seeStep.style.display = "none"
+        }
 
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     questionType = "probability"
 }
 function checkAnswerNum() {
 
-    if (strikes == 2){
+    if (strikes == 2) {
         numTotal += 1
         localStorage.setItem("numTotalSolve", numTotal)
-            updateRadarChart()
+        updateRadarChart()
     }
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === numQuestion.topic);
     if (topicObj) {
@@ -3871,146 +3872,149 @@ function checkAnswerNum() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = numQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-            correct = 1;
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
+        correct = 1;
         getExpectedScore(userRatingNumTheory, numQuestion.rating)
         score = score + numQuestion.difficulty;
         scoreCount.innerHTML = Math.round(userRatingAll);
-            streakCount++;
-            correctCount++;
-            difficultyProgressN++;
-            if (difficultyN == 1 && difficultyProgressN == 4){
-                difficultyN++;
-                difficultyProgressN = 0;
-                
-            } else if (difficultyN == 2 && difficultyProgressN  == 3){
-                difficultyN++;
-                difficultyProgressN = 0;
-                
-            } else if (difficultyN == 3 && difficultyProgressN  == 2){
-                difficultyN++;
-                difficultyProgressN = 0;
-                
-            } else if (difficultyN == 4 && difficultyProgressN == 1){
-                difficultyN ++;
-                difficultyProgressN = 0;
-                
-            }
+        streakCount++;
+        correctCount++;
+        difficultyProgressN++;
+        if (difficultyN == 1 && difficultyProgressN == 4) {
+            difficultyN++;
+            difficultyProgressN = 0;
+
+        } else if (difficultyN == 2 && difficultyProgressN == 3) {
+            difficultyN++;
+            difficultyProgressN = 0;
+
+        } else if (difficultyN == 3 && difficultyProgressN == 2) {
+            difficultyN++;
+            difficultyProgressN = 0;
+
+        } else if (difficultyN == 4 && difficultyProgressN == 1) {
+            difficultyN++;
+            difficultyProgressN = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + numQuestion.solution;
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
+        solutionDiv.style.display = "block";
+        solutionText.style.display = "block"
+        nextBtn.style.display = "inline-block";
 
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-    if (strikes ==  2){
-                scoreCount.innerHTML = Math.round(userRatingAll);
-                hintBtn.innerHTML  = "Show Hint"
-                strikesContainer.style.display = "inline"
-const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
-        strikeOne.style.color = "var(--primary-color) !important"
-        correct = 0;
-        hintBtn.style.display = "inline"
-        getExpectedScore(userRating, numQuestion.rating)
-        recordWrongTopic(numQuestion.topic);
-        updatePieChart()
-        difficultyN = Math.max(1, difficultyN - 1);
-        difficultyProgressN = 0;
-        score = score - difficultyN;
-        scoreCount.innerHTML = Math.round(userRatingAll);
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(numQuestion.topic);
-        wrongCount++;
-        const wrongEntryTrue = wrongQuestionsNum.some(item => item.title === wrongQuestionsNum.title);
-        if (wrongEntryTrue === false){
-        wrongQuestionsNum.push(numQuestion)
-        wrongQuestionsNum[wrongQuestionsNum.length - 1].errorCount = 1;
-        wrongQuestionsNum[wrongQuestionsNum.length - 1].countdown = 3
-                if (mistakesNumTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsNum.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 ** item.errorCount)
-                    }
+        if (strikes == 2) {
+            scoreCount.innerHTML = Math.round(userRatingAll);
+            hintBtn.innerHTML = "Show Hint"
+            strikesContainer.style.display = "inline"
+            const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+            strikeOne.style.color = "var(--primary-color) !important"
+            correct = 0;
+            hintBtn.style.display = "inline"
+            getExpectedScore(userRating, numQuestion.rating)
+            recordWrongTopic(numQuestion.topic);
+            updatePieChart()
+            difficultyN = Math.max(1, difficultyN - 1);
+            difficultyProgressN = 0;
+            score = score - difficultyN;
+            scoreCount.innerHTML = Math.round(userRatingAll);
+            streakCount = 0;
+            topicWrong = capitalizeFirstLetter(numQuestion.topic);
+            wrongCount++;
+            const wrongEntryTrue = wrongQuestionsNum.some(item => item.title === wrongQuestionsNum.title);
+            if (wrongEntryTrue === false) {
+                wrongQuestionsNum.push(numQuestion)
+                wrongQuestionsNum[wrongQuestionsNum.length - 1].errorCount = 1;
+                wrongQuestionsNum[wrongQuestionsNum.length - 1].countdown = 3
+                if (mistakesNumTrue === true) {
+                    let alreadyDefined = false
+                    wrongQuestionsNum.forEach(item => {
+                        if (item.countdown === 0) {
+                            if (alreadyDefined === false) {
+                                item.errorCount += 1
+                                item.countdown = (2 ** item.errorCount)
+                            }
+                        }
+                    })
                 }
-            })
-        }
-        }
-        document.getElementById("streak-count").innerHTML = streakCount;
+            }
+            document.getElementById("streak-count").innerHTML = streakCount;
 
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "numTheory"
-        strikes -= 1
-        getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML = Math.round(userRatingAll)
-    } else  if (strikes === 1){
-        seeStep.style.display = "inline"
-        strikeTwo.style.color = "var(--primary-color) !important"
-        strikes -= 1
-    } else {
-        updatePieChart()
-        numWrong += 1
-        localStorage.setItem("numWrongSolve", numWrong)
-        updateRadarChart()
-        errorTags.style.display = "inline"
-        strikeThree.style.color = "var(--primary-color) !important"
+            problemsWrapper.classList.add("shake");
+            setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+            questionType = "numTheory"
+            strikes -= 1
+            getExpectedScore(userRating, algebraQuestion.rating)
+            scoreCount.innerHTML = Math.round(userRatingAll)
+        } else if (strikes === 1) {
+            seeStep.style.display = "inline"
+            strikeTwo.style.color = "var(--primary-color) !important"
+            strikes -= 1
+        } else {
+            updatePieChart()
+            numWrong += 1
+            localStorage.setItem("numWrongSolve", numWrong)
+            updateRadarChart()
+            errorTags.style.display = "inline"
+            strikeThree.style.color = "var(--primary-color) !important"
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + numQuestion.solution;
-const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
-}
+            const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+            solutionDiv.style.display = "block";
+            solutionText.style.display = "block"
+            nextBtn.style.display = "inline-block";
+            stepOne.style.display = "none"
+            hintBtn.style.display = "none"
+            hintText.style.display = "none"
+            seeStep.style.display = "none"
+        }
 
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     questionType = "numTheory"
 }
 checkBtn.addEventListener("click", function () {
-    if (questionType === "algebra"){
-            checkAnswerAlgebra();
+    updateDailyPracticeCountdown()
+    setupRestTimer()
+    restIdle()
+    if (questionType === "algebra") {
+        checkAnswerAlgebra();
     }
-    if (questionType ==="geometry"){
+    if (questionType === "geometry") {
         checkAnswerGeometry();
     }
-    if (questionType ==="numTheory"){
+    if (questionType === "numTheory") {
         checkAnswerNum();
     }
-    if (questionType === "probability"){
+    if (questionType === "probability") {
         checkAnswerProb();
-    } 
-    if (questionType === 'all'){
+    }
+    if (questionType === 'all') {
         checkAnswerAll();
     }
 });
-function restart(){
+function restart() {
     currentQuestion = 0;
     document.getElementById("streak-count").innerHTML = streakCount;
     shuffleArray(questions);
@@ -4027,36 +4031,36 @@ function restart(){
 }
 // ---------- Next Question ----------
 nextBtn.addEventListener("click", function () {
-        strikesContainer.style.display = "none"
-    if (questionType === "algebra"){
+    strikesContainer.style.display = "none"
+    if (questionType === "algebra") {
         algebraIndex += 1
         algebraNext();
         wrongQuestionsAlgebra.forEach(item => {
             item.countdown -= 1;
         })
-    } else if (questionType === "geometry"){
+    } else if (questionType === "geometry") {
         geometryIndex += 1
         geometryNext();
-        wrongQuestionsGeometry.forEach(item =>{
+        wrongQuestionsGeometry.forEach(item => {
             item.countdown -= 1;
         })
 
-    } else if (questionType === "numTheory"){
+    } else if (questionType === "numTheory") {
         numIndex += 1
         numNext();
-        wrongQuestionsNum.forEach(item =>{
+        wrongQuestionsNum.forEach(item => {
             item.countdown -= 1;
         })
-    } else if (questionType === "probability"){
+    } else if (questionType === "probability") {
         probIndex += 1
         probNext();
-        wrongQuestionsProb.forEach(item =>{
+        wrongQuestionsProb.forEach(item => {
             item.countdown -= 1;
         })
-    } else if (questionType === 'all'){
+    } else if (questionType === 'all') {
         allIndex += 1
         allNext();
-        wrongQuestionsAll.forEach(item =>{
+        wrongQuestionsAll.forEach(item => {
             item.countdown -= 1;
         })
     }
@@ -4069,11 +4073,11 @@ function algebraNext() {
         problemsWrapper.classList.remove("slide-out");
         geometryCurrent++;
         const mistakeAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
-        if (mistakeAlgebraTrue === true){
+        if (mistakeAlgebraTrue === true) {
             let alreadyDefined = false
             wrongQuestionsAlgebra.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         algebraQuestion = item
                         prevError.style.display = "inline"
                         loadAlgebra();
@@ -4084,20 +4088,20 @@ function algebraNext() {
             })
         } else if (currentQuestion < questions.length) {
             prevError.style.display = 'none'
-    algebraQuestion = questions[algebraIndex]
+            algebraQuestion = questions[algebraIndex]
             loadQuestion();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
-}
+            restart();
+        }
 
     }, 300); // matches slide-out duration
-questionType = "algebra";
+    questionType = "algebra";
 }
-function findTopic(topic){
+function findTopic(topic) {
     return topic.name === topic;
 }
 function allNext() {
@@ -4107,11 +4111,11 @@ function allNext() {
         problemsWrapper.classList.remove("slide-out");
         allCurrent++;
         const mistakeAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
-        if (mistakeAllTrue === true){
+        if (mistakeAllTrue === true) {
             let alreadyDefined = false
             wrongQuestionsAll.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         allQuestion = item
                         prevError.style.display = "inline"
                         loadAll();
@@ -4122,23 +4126,23 @@ function allNext() {
             })
         } else if (currentQuestion < allQ.length) {
             prevError.style.display = 'none'
-    allQuestion = allQ[index]
+            allQuestion = allQ[index]
             loadAll();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
-}
+            restart();
+        }
 
     }, 300); // matches slide-out duration
-questionType = "all";
+    questionType = "all";
 }
 function updateTopicsDropdown() {
 
-TOPIC_GLOSSARY.sort((a,b) => b.errors-a.errors)
-const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
+    TOPIC_GLOSSARY.sort((a, b) => b.errors - a.errors)
+    const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
     const container = document.getElementById("topics-dropdown");
 
     container.innerHTML = ""; // clear old content
@@ -4147,9 +4151,9 @@ const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
         if (!info) return;
         const wrapper = document.createElement("div");
         wrapper.className = "topic-item";
-    let show = info.errors;
-    let mastery = info.mastery;
-wrapper.innerHTML = `
+        let show = info.errors;
+        let mastery = info.mastery;
+        wrapper.innerHTML = `
   <button class="topic-button">
     ${info.title}
     <svg class="dropdown-icon" viewBox="0 0 24 24">
@@ -4171,11 +4175,12 @@ wrapper.innerHTML = `
 
 
         container.appendChild(wrapper);
-    MathJax.typesetPromise([wrapper]).catch(()=>{})
-        
-        }
-    )};
-document.getElementById("topics-dropdown").addEventListener("click", function(e) {
+        MathJax.typesetPromise([wrapper]).catch(() => { })
+
+    }
+    )
+};
+document.getElementById("topics-dropdown").addEventListener("click", function (e) {
     const button = e.target.closest(".topic-button");
     if (!button) return;
 
@@ -4187,7 +4192,7 @@ document.getElementById("topics-dropdown").addEventListener("click", function(e)
 
 
 // ---------- Next Question Geometry ----------
-function geometryNext(){
+function geometryNext() {
     // Slide out
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
@@ -4195,11 +4200,11 @@ function geometryNext(){
         problemsWrapper.classList.remove("slide-out");
         geometryCurrent++;
         const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
-        if (mistakesGeometryTrue === true){
+        if (mistakesGeometryTrue === true) {
             let alreadyDefined = false
             wrongQuestionsGeometry.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         geometryQuestion = item
                         prevError.style.display = "inline"
                         loadGeometry();
@@ -4210,18 +4215,18 @@ function geometryNext(){
             })
         } else if (geometryCurrent < geometryQ.length) {
             prevError.style.display = 'none  '
-    geometryQuestion = geometryQ[geometryIndex]
+            geometryQuestion = geometryQ[geometryIndex]
             loadQuestion(geometryCurrent);
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
-}
+            restart();
+        }
 
     }, 300); // matches slide-out duration
-questionType = "geometry";
+    questionType = "geometry";
 }
 function probNext() {
     // Slide out
@@ -4231,11 +4236,11 @@ function probNext() {
         problemsWrapper.classList.remove("slide-out");
         probCurrent++;
         const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
-        if (mistakesProbTrue === true){
+        if (mistakesProbTrue === true) {
             let alreadyDefined = false
             wrongQuestionsProb.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         probQuestion = item
                         prevError.style.display = "inline"
                         loadProb();
@@ -4246,18 +4251,18 @@ function probNext() {
             })
         } else if (probCurrent < probabilityQ.length) {
             prevError.style.display = 'none'
-    probQuestion = probabilityQ[probIndex]
+            probQuestion = probabilityQ[probIndex]
             loadProb();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
+            restart();
+        }
+    })
 }
-})
-}
-function numNext(){
+function numNext() {
     // Slide out
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
@@ -4265,11 +4270,11 @@ function numNext(){
         problemsWrapper.classList.remove("slide-out");
         numCurrent++;
         const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
-        if (mistakesNumTrue === true){
+        if (mistakesNumTrue === true) {
             let alreadyDefined = false
             wrongQuestionsNum.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         numQuestion = item
                         prevError.style.display = "inline"
                         loadNumTheory();
@@ -4280,16 +4285,16 @@ function numNext(){
             })
         } else if (numCurrent < numTheoryQ.length) {
             prevError.style.display = 'none'
-    numQuestion = numTheoryQ[numIndex]
+            numQuestion = numTheoryQ[numIndex]
             loadQuestion();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
-}
-})
+            restart();
+        }
+    })
 }
 
 // ---------- Enter Key ----------
@@ -4322,45 +4327,45 @@ probCurrent = 0;
 
 //------------Switch Subjects--------------
 function loadQuestion() {
-        errorTags.style.display = "none"
-        strikesContainer.display = "none"
-        seeStep.style.display = "none"
-        stepOne.style.display = "none"
-        hintText.style.display = "none"
-        strikes = 2;
-        hintBtn.style.display = 'none'
-        strikeOne.style.color = 'var(--shadow-color) !important'
-        strikeTwo.style.color = 'var(--shadow-color) !important'
-        strikeThree.style.color = 'var(--shadow-color) !important'
+    errorTags.style.display = "none"
+    strikesContainer.display = "none"
+    seeStep.style.display = "none"
+    stepOne.style.display = "none"
+    hintText.style.display = "none"
+    strikes = 2;
+    hintBtn.style.display = 'none'
+    strikeOne.style.color = 'var(--shadow-color) !important'
+    strikeTwo.style.color = 'var(--shadow-color) !important'
+    strikeThree.style.color = 'var(--shadow-color) !important'
     submitSolutionForm.style.display = "none";
-    submitSolutionButton.style.display='block'
-if (questionType === "probability"){
+    submitSolutionButton.style.display = 'block'
+    if (questionType === "probability") {
         loadProb(probCurrent);
         questionType = "probability"
     }
     if (questionType === "algebra") {
         loadAlgebra(currentQuestion);
-    } else if (questionType === "geometry"){
+    } else if (questionType === "geometry") {
         loadGeometry(geometryCurrent);
         questionType = "geometry";
-    } else if (questionType === "numTheory"){
+    } else if (questionType === "numTheory") {
         loadNumTheory(numCurrent)
         questionType = "numTheory"
-    } else if (questionType === 'all'){
+    } else if (questionType === 'all') {
         loadAll(allCurrent);
         questionType = 'all'
     }
-      saveUserStatsToCloud()
+    saveUserStatsToCloud()
 }
 
 shuffleArray(probabilityQ)
 
-    // 5. Update Container HTML
+// 5. Update Container HTML
 
 
 function checkMiniMC(selected, correct, solution, containerId) {
     const container = document.getElementById(containerId);
-    
+
     // Disable all choice buttons
     container.querySelectorAll('.mini-mc-btn').forEach(b => b.disabled = true);
     const solutionDiv = container.querySelector('.mini-solution');
@@ -4378,7 +4383,7 @@ close_small</span> Incorrect. ${solution}`;
 
     solutionDiv.style.display = 'block';
     nextBtn.style.display = 'inline-block';
-    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
+    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(() => { });
 }
 
 function checkMiniAnswer(btn, answer, solution, containerId) {
@@ -4400,101 +4405,101 @@ close_small</span> Incorrect. ${solution}`;
     btn.disabled = true;
     solutionDiv.style.display = 'block';
     nextBtn.style.display = 'inline-block';
-    
-    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
+
+    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(() => { });
 }
-submitSolutionButton.addEventListener("click", function() {
-        submitSolutionForm.style.display = 'block';
-        submitSolutionButton.style.display = 'none';
+submitSolutionButton.addEventListener("click", function () {
+    submitSolutionForm.style.display = 'block';
+    submitSolutionButton.style.display = 'none';
 })
-function noHint(array,object) {
-        array.forEach(i => {
-                if (i.object === null){
-                        i.object = "Not available for this question"
-                }
-        })
+function noHint(array, object) {
+    array.forEach(i => {
+        if (i.object === null) {
+            i.object = "Not available for this question"
+        }
+    })
 }
 noHint(questions, hint)
 noHint(geometryQ, hint)
 noHint(numTheoryQ, hint)
 noHint(probabilityQ)
 function noStep(array) {
-        array.forEach(i => {
-                if (i.step === null){
-                        i.step = "Not available for this question"
-                }
-        })
+    array.forEach(i => {
+        if (i.step === null) {
+            i.step = "Not available for this question"
+        }
+    })
 }
 noStep(questions)
 noStep(geometryQ)
 noStep(numTheoryQ)
 noStep(probabilityQ)
-function getExpectedScore(userRating, questionRating){
+function getExpectedScore(userRating, questionRating) {
     let expectedRating = (1 / (1 + Math.pow(10, (questionRating - userRating) / 400)));
     updateRating(userRating, expectedRating, correct);
 }
-function updateRating(oldRating, expectedRating, correct){
+function updateRating(oldRating, expectedRating, correct) {
     let newRating = oldRating + (250 * (correct - expectedRating))
-    if (questionType !== "all"){
-        if (questionType === "algebra"){
-                userRating = newRating
-        } else if (questionType === "geometry"){
-                userRatingGeometry = newRating
-        } else if (questionType === "probability"){
-                userRatingProbability = newRating
-        } else if(questionType === "numTheory"){
-                userRatingNumTheory = newRating
-        } else if (questionType === "all"){
-                userRatingAll = newRating
+    if (questionType !== "all") {
+        if (questionType === "algebra") {
+            userRating = newRating
+        } else if (questionType === "geometry") {
+            userRatingGeometry = newRating
+        } else if (questionType === "probability") {
+            userRatingProbability = newRating
+        } else if (questionType === "numTheory") {
+            userRatingNumTheory = newRating
+        } else if (questionType === "all") {
+            userRatingAll = newRating
         }
     }
     updateAllRating();
     save();
 }
 function store() {
-localStorage.setItem("elo", userRatingAll)
+    localStorage.setItem("elo", userRatingAll)
 }
-hintBtn.addEventListener("click", function(){
-        if (hintText.style.display === "none"){
-                hintText.style.display = "block"
-                hintBtn.innerHTML = "Hide Hint"
-                if (questionType === "algebra"){
-                        hintText.innerHTML = "<b>HINT: </b>" + algebraQuestion.hint
-                        hint.style.color = "var(--accent-color)"
-                } else if (questionType === "geometry"){
-                        hintText.innerHTML = "<b>HINT: </b>" + geometryQuestion.hint
-                        hint.style.color = "var(--accent-color)"                
-                } else if (questionType === "numTheory"){
-                        hintText.innerHTML = "<b>HINT: </b>" + numQuestion.hint
-                        hint.style.color = "var(--accent-color)"                        
-                } else if (questionType === "probability"){
-                        hintText.innerHTML = "<b>HINT: </b>" + probQuestion.hint
-                        hint.style.color = "var(--accent-color)"    
-                }
-                MathJax.typesetPromise([hintText]);
-        } else {
-                hintText.style.display = "none"
-                hintBtn.innerHTML = "Show Hint"
+hintBtn.addEventListener("click", function () {
+    if (hintText.style.display === "none") {
+        hintText.style.display = "block"
+        hintBtn.innerHTML = "Hide Hint"
+        if (questionType === "algebra") {
+            hintText.innerHTML = "<b>HINT: </b>" + algebraQuestion.hint
+            hint.style.color = "var(--accent-color)"
+        } else if (questionType === "geometry") {
+            hintText.innerHTML = "<b>HINT: </b>" + geometryQuestion.hint
+            hint.style.color = "var(--accent-color)"
+        } else if (questionType === "numTheory") {
+            hintText.innerHTML = "<b>HINT: </b>" + numQuestion.hint
+            hint.style.color = "var(--accent-color)"
+        } else if (questionType === "probability") {
+            hintText.innerHTML = "<b>HINT: </b>" + probQuestion.hint
+            hint.style.color = "var(--accent-color)"
         }
+        MathJax.typesetPromise([hintText]);
+    } else {
+        hintText.style.display = "none"
+        hintBtn.innerHTML = "Show Hint"
+    }
 })
-seeStep.addEventListener("click", function() {
-        if (stepOne.style.display === "none"){
-                stepOne.style.display = "block"
-                seeStep.innerHTML = "Hide First Step"
-                if (questionType === "algebra"){
-                        stepOneText.innerHTML = algebraQuestion.step
-                } else if (questionType === "geometry"){
-                        stepOneText.innerHTML = geometryQuestion.step
-                } else if (questionType === "numTheory"){
-                        stepOneText.innerHTML = numQuestion.step
-                } else if (questionType === "probability"){
-                        stepOneText.innerHTML = probQuestion.step
-                }
-                MathJax.typesetPromise([stepOneText]);
-        } else {
-                stepOne.style.display = "none"
-                seeStep.innerHTML = "See The First Step"
-        }        
+seeStep.addEventListener("click", function () {
+    if (stepOne.style.display === "none") {
+        stepOne.style.display = "block"
+        seeStep.innerHTML = "Hide First Step"
+        if (questionType === "algebra") {
+            stepOneText.innerHTML = algebraQuestion.step
+        } else if (questionType === "geometry") {
+            stepOneText.innerHTML = geometryQuestion.step
+        } else if (questionType === "numTheory") {
+            stepOneText.innerHTML = numQuestion.step
+        } else if (questionType === "probability") {
+            stepOneText.innerHTML = probQuestion.step
+        }
+        MathJax.typesetPromise([stepOneText]);
+    } else {
+        stepOne.style.display = "none"
+        seeStep.innerHTML = "See The First Step"
+    }
 })
 
 function loadTopicQuestion(topic) {
@@ -4529,7 +4534,7 @@ function loadTopicQuestion(topic) {
                     Check
                 </button>
             </div>`;
-}
+    }
 
     container.innerHTML = `
 <div class="miniTitleContainer">
@@ -4544,48 +4549,48 @@ function loadTopicQuestion(topic) {
             Next Question
         </button>
     `;
-    if (window.MathJax) MathJax.typesetPromise([container]).catch(()=>{});
-    if (q.type != 'mc'){
-    const checkBtnMini = document.getElementById(checkBtnId)
-    checkBtnMini.addEventListener("click", function () {
-        checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
-    })
-}
-if (q.type === 'mc'){
-    const option1 = document.getElementById(q.choices[0])
-    const option2 = document.getElementById(q.choices[1])
-    const option3 = document.getElementById(q.choices[2])
-    const option4 = document.getElementById(q.choices[3])
-    const option5 = document.getElementById(q.choices[4])
-    option1.addEventListener("click", function() {
-        checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
-    })
-    option2.addEventListener("click", function() {
-        checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
-    })
-    option3.addEventListener("click", function() {
-        checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
-    })
-    option4.addEventListener("click", function() {
-        checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
-    })
-    option5.addEventListener("click", function() {
-        checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
-    })
-}
+    if (window.MathJax) MathJax.typesetPromise([container]).catch(() => { });
+    if (q.type != 'mc') {
+        const checkBtnMini = document.getElementById(checkBtnId)
+        checkBtnMini.addEventListener("click", function () {
+            checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
+        })
+    }
+    if (q.type === 'mc') {
+        const option1 = document.getElementById(q.choices[0])
+        const option2 = document.getElementById(q.choices[1])
+        const option3 = document.getElementById(q.choices[2])
+        const option4 = document.getElementById(q.choices[3])
+        const option5 = document.getElementById(q.choices[4])
+        option1.addEventListener("click", function () {
+            checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
+        })
+        option2.addEventListener("click", function () {
+            checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
+        })
+        option3.addEventListener("click", function () {
+            checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
+        })
+        option4.addEventListener("click", function () {
+            checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
+        })
+        option5.addEventListener("click", function () {
+            checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
+        })
+    }
 }
 
-mistakeBtn.addEventListener("click", function(){
+mistakeBtn.addEventListener("click", function () {
     mistake += 1
     localStorage.setItem("mistakeSolve", mistake)
     updateBarGraph()
 })
-unfamiliarBtn.addEventListener("click", function(){
+unfamiliarBtn.addEventListener("click", function () {
     unfamiliar += 1
     localStorage.setItem("unfamiliarSolve", unfamiliar)
     updateBarGraph()
 })
-stuckBtn.addEventListener("click", function(){
+stuckBtn.addEventListener("click", function () {
     stuck += 1
     updateBarGraph()
     localStorage.setItem("stuckSolve", stuck)
@@ -4613,7 +4618,7 @@ function updateBarGraph() {
         },
         options: {
             responsive: true,
-scales: {
+            scales: {
                 x: {
                     grid: { color: textColor }, // Dynamic gridlines
                     ticks: { color: textColor } // Dynamic label text
@@ -4630,7 +4635,7 @@ scales: {
     });
 }
 let pieChart = null
-function updatePieChart(){
+function updatePieChart() {
 
     if (pieChart) {
         pieChart.destroy();
@@ -4640,62 +4645,66 @@ function updatePieChart(){
     let yValues = []
     topicsToWorkOn.forEach(i => {
         const topicObj = TOPIC_GLOSSARY.find(x => x.id === i);
-if (topicObj && topicObj.errors && topicObj.errors > 0) {
+        if (topicObj && topicObj.errors && topicObj.errors > 0) {
             xValues.push(topicObj.name || topicObj.id); // Use name if available
             yValues.push(topicObj.errors);
         }
 
     })
-pieChart = new Chart("pieChart", {
-  type: "pie",
-  data: {
-    labels: xValues,
-    datasets: [{
-      data: yValues,
-      backgroundColor: ["#88B0FF", "#c7deff", "#FFB192", "#ffd0c0"],
-      borderColor: backgroundColor
-    }]
-  },
-options: {
-    plugins: {
-      legend: {
-        labels: {
-          color: textColor
+    pieChart = new Chart("pieChart", {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                data: yValues,
+                backgroundColor: ["#88B0FF", "#c7deff", "#FFB192", "#ffd0c0"],
+                borderColor: backgroundColor
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColor
+                    }
+                }
+            }
         }
-      }
-    }
-  }
-});
+    });
 }
 let myRadarChart = null
-function updateRadarChart(){
-                    const data = {
-        labels: 
-        ["Algebra", "Geometry", "Number Theory", "Probability"],
-        datasets: [{label: "Incorrect", 
+function updateRadarChart() {
+    const data = {
+        labels:
+            ["Algebra", "Geometry", "Number Theory", "Probability"],
+        datasets: [{
+            label: "Incorrect",
             data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
         },
-        {label: "Attempted", 
+        {
+            label: "Attempted",
             data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#ebf3ff'
         },
-]
+        ]
 
     }
-            if (colorMode  === 'dark'){
-                const data = {
-        labels: 
-        ["Algebra", "Geometry", "Number Theory", "Probability"],
-        datasets: [{label: "Incorrect", 
-            data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
-        },
-        {label: "Attempted", 
-            data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#88B0FF'
-        },
-]
-        }      
+    if (colorMode === 'dark') {
+        const data = {
+            labels:
+                ["Algebra", "Geometry", "Number Theory", "Probability"],
+            datasets: [{
+                label: "Incorrect",
+                data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
+            },
+            {
+                label: "Attempted",
+                data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#88B0FF'
+            },
+            ]
         }
+    }
 
-if (myRadarChart) {
+    if (myRadarChart) {
         myRadarChart.destroy();
     }
 
@@ -4704,33 +4713,33 @@ if (myRadarChart) {
     myRadarChart = new Chart(ctx, {
         type: 'radar',
         data: data,
- options: {
-    scales: {
-      r: {
-        // 1. Change color of the category labels (e.g., "Speed", "Strength")
-        pointLabels: {
-          color: textColor, 
-          font: {
-            size: 14
-          }
-        },
-        // 2. Change color of the numbers on the radial axis
-        ticks: {
-          color: textColor,
-          showLabelBackdrop: false,
+        options: {
+            scales: {
+                r: {
+                    // 1. Change color of the category labels (e.g., "Speed", "Strength")
+                    pointLabels: {
+                        color: textColor,
+                        font: {
+                            size: 14
+                        }
+                    },
+                    // 2. Change color of the numbers on the radial axis
+                    ticks: {
+                        color: textColor,
+                        showLabelBackdrop: false,
 
+                    }
+                }
+            },
+            plugins: {
+                // 3. Change color of the legend text
+                legend: {
+                    labels: {
+                        color: textColor
+                    }
+                }
+            }
         }
-      }
-    },
-    plugins: {
-      // 3. Change color of the legend text
-      legend: {
-        labels: {
-          color: textColor
-        }
-      }
-    }
-  }
 
     })
 }
@@ -4752,123 +4761,123 @@ window.loadTopicQuestion = loadTopicQuestion;
 window.loadQuestion = loadQuestion;
 //-----------------------Authentication--------------------------
 document.getElementById("btn-signup").addEventListener("click", async () => {
-  const email = document.getElementById("auth-email").value;
-  const password = document.getElementById("auth-password").value;
-  const username = document.getElementById("auth-username").value;
-  const passwordCheck = document.getElementById("auth-password-check").value
-  if (!email || !password || !username) {
-    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
-    return;
-  }
-  if (password == passwordCheck){
-  const { data, error } = await supabase.auth.signUp({ email, password });
-  if (error) return alert(error.message);
-  if (data.user) {
-    await supabase.from('profiles').insert([
-      { 
-        id: data.user.id, 
-        username: username, 
-        topicsToWorkOnSolvefire: topicsToWorkOn,
-        TOPICGLOSSARYSolvefire: TOPIC_GLOSSARY,
-        unfamiliarSolvefire:  unfamiliar,
-        stuckSolvefire: stuck,
-        mistakeSolvefire: mistake,
-        algebraTotalSolvefire: algebraTotal,
-        algebraWrongSolvefire: algebraWrong,
-        geometryTotalSolvefire: geometryTotal,
-        geometryWrongSolvefire: geometryWrong,
-        numTotalSolvefire: numTotal,
-        probTotalSolvefire: probTotal,
-        numWrongSolvefire: numWrong,
-        probWrongSolvefire: probWrong,
-        streakSolvefire: streakCount
-      }
-    ]);
-    
-    alert("Account created!");
-    
-    document.getElementById('accountPannel').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';
-    document.getElementById("username-display").innerHTML = username
-    loadQuestion()
-  }
-  } else {
-    document.getElementById("signup-error").innerHTML = "Passwords do not match"
-    return;
-  }
+    const email = document.getElementById("auth-email").value;
+    const password = document.getElementById("auth-password").value;
+    const username = document.getElementById("auth-username").value;
+    const passwordCheck = document.getElementById("auth-password-check").value
+    if (!email || !password || !username) {
+        document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+        return;
+    }
+    if (password == passwordCheck) {
+        const { data, error } = await supabase.auth.signUp({ email, password });
+        if (error) return alert(error.message);
+        if (data.user) {
+            await supabase.from('profiles').insert([
+                {
+                    id: data.user.id,
+                    username: username,
+                    topicsToWorkOnSolvefire: topicsToWorkOn,
+                    TOPICGLOSSARYSolvefire: TOPIC_GLOSSARY,
+                    unfamiliarSolvefire: unfamiliar,
+                    stuckSolvefire: stuck,
+                    mistakeSolvefire: mistake,
+                    algebraTotalSolvefire: algebraTotal,
+                    algebraWrongSolvefire: algebraWrong,
+                    geometryTotalSolvefire: geometryTotal,
+                    geometryWrongSolvefire: geometryWrong,
+                    numTotalSolvefire: numTotal,
+                    probTotalSolvefire: probTotal,
+                    numWrongSolvefire: numWrong,
+                    probWrongSolvefire: probWrong,
+                    streakSolvefire: streakCount
+                }
+            ]);
+
+            alert("Account created!");
+
+            document.getElementById('accountPannel').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById("username-display").innerHTML = username
+            loadQuestion()
+        }
+    } else {
+        document.getElementById("signup-error").innerHTML = "Passwords do not match"
+        return;
+    }
 });
 async function loadUserStats(userId) {
-  const { data: profile, error } = await supabase
-    .from('profiles')
-   .select('id, username, topicsToWorkOnSolvefire, TOPICGLOSSARYSolvefire, unfamiliarSolvefire, stuckSolvefire, mistakeSolvefire, algebraTotalSolvefire, algebraWrongSolvefire, geometryTotalSolvefire, geometryWrongSolvefire, numTotalSolvefire, numWrongSolvefire, probTotalSolvefire, probWrongSolvefire, streakSolvefire')
-   .eq('id', userId)
+    const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('id, username, topicsToWorkOnSolvefire, TOPICGLOSSARYSolvefire, unfamiliarSolvefire, stuckSolvefire, mistakeSolvefire, algebraTotalSolvefire, algebraWrongSolvefire, geometryTotalSolvefire, geometryWrongSolvefire, numTotalSolvefire, numWrongSolvefire, probTotalSolvefire, probWrongSolvefire, streakSolvefire')
+        .eq('id', userId)
 
-  if (error) {
-    console.error("Error downloading profile data:");
-    return;
-  }
+    if (error) {
+        console.error("Error downloading profile data:");
+        return;
+    }
 
-  if (profile) {
-    console.log(profile)
-    let userProfile = profile[0]
-    console.log(userProfile.username)
-    document.getElementById("username-display").innerHTML = userProfile.username
-    document.getElementById("streak-count").innerHTML = userProfile.streakSolvefire;
-    topicsToWorkOn = userProfile.topicsToWorkOnSolvefire || [];
-    TOPIC_GLOSSARY = userProfile.TOPICGLOSSARYSolvefire || TOPIC_GLOSSARY;
-    unfamiliar = userProfile.unfamiliarSolvefire || 0;
-    stuck = userProfile.stuckSolvefire || 0;
-    mistake = userProfile.mistakeSolvefire || 0;
-    algebraTotal = userProfile.algebraTotalSolvefire || 0;
-    algebraWrong = userProfile.algebraWrongSolvefire || 0;
-    geometryTotal = userProfile.geometryTotalSolvefire || 0;
-    geometryWrong = userProfile.geometryWrongSolvefire || 0;
-    numTotal = userProfile.numTotalSolvefire || 0;
-    numWrong = userProfile.numWrongSolvefire || 0;
-    probTotal = userProfile.probTotalSolvefire || 0;
-    probWrong = userProfile.probWrongSolvefire || 0;
-    document.getElementById("btn-dashboard").innerHTML = userProfile.username
+    if (profile) {
+        console.log(profile)
+        let userProfile = profile[0]
+        console.log(userProfile.username)
+        document.getElementById("username-display").innerHTML = userProfile.username
+        document.getElementById("streak-count").innerHTML = userProfile.streakSolvefire;
+        topicsToWorkOn = userProfile.topicsToWorkOnSolvefire || [];
+        TOPIC_GLOSSARY = userProfile.TOPICGLOSSARYSolvefire || TOPIC_GLOSSARY;
+        unfamiliar = userProfile.unfamiliarSolvefire || 0;
+        stuck = userProfile.stuckSolvefire || 0;
+        mistake = userProfile.mistakeSolvefire || 0;
+        algebraTotal = userProfile.algebraTotalSolvefire || 0;
+        algebraWrong = userProfile.algebraWrongSolvefire || 0;
+        geometryTotal = userProfile.geometryTotalSolvefire || 0;
+        geometryWrong = userProfile.geometryWrongSolvefire || 0;
+        numTotal = userProfile.numTotalSolvefire || 0;
+        numWrong = userProfile.numWrongSolvefire || 0;
+        probTotal = userProfile.probTotalSolvefire || 0;
+        probWrong = userProfile.probWrongSolvefire || 0;
+        document.getElementById("btn-dashboard").innerHTML = userProfile.username
 
 
-    
-    // 3. Trigger your chart re-renders
-    if (typeof updateRadarChart === "function") updateRadarChart();
-    if (typeof updateBarGraph === "function") updateBarGraph();
-    if (typeof updatePieChart === "function") updatePieChart()
-  } 
+
+        // 3. Trigger your chart re-renders
+        if (typeof updateRadarChart === "function") updateRadarChart();
+        if (typeof updateBarGraph === "function") updateBarGraph();
+        if (typeof updatePieChart === "function") updatePieChart()
+    }
 }
 loginBtn.addEventListener("click", async () => {
     const email = document.getElementById("login-email").value.trim()
     const password = document.getElementById("login-password").value
     if (!email || !password) {
-        
-document.getElementById("login-error").innerHTML = "Please Input Both Fields"
-    return;
-  }
-  loginBtn.disabled = true;
-const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
-  });
 
-  if (error) {
-    alert("Login Error: " + error.message);
+        document.getElementById("login-error").innerHTML = "Please Input Both Fields"
+        return;
+    }
+    loginBtn.disabled = true;
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+    });
+
+    if (error) {
+        alert("Login Error: " + error.message);
+        loginBtn.disabled = false;
+        loginBtn.innerText = "Login";
+        return;
+    }
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    accountTrue = false
+    // 3. Pull their ELO data out of the database (Step 2 below)
+    await loadUserStats(data.user.id);
+
+    // Reset button state
     loginBtn.disabled = false;
-    loginBtn.innerText = "Login";
-    return;
-  }
-  document.getElementById('accountPannel').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-  accountTrue = false
-  // 3. Pull their ELO data out of the database (Step 2 below)
-  await loadUserStats(data.user.id);
-  
-  // Reset button state
-  loginBtn.disabled = false;
-  loadQuestion()
-  updateRadarChart()
-  updateBarGraph()
-  updatePieChart()
+    loadQuestion()
+    updateRadarChart()
+    updateBarGraph()
+    updatePieChart()
 
     loadQuestion();
 
@@ -4876,71 +4885,71 @@ const { data, error } = await supabase.auth.signInWithPassword({
 const logoutBtn = document.getElementById('btn-logout');
 
 logoutBtn.addEventListener('click', async () => {
-      mistake = 0
-  stuck = 0
-  unfamiliar = 0
-  algebraTotal = 0
-  algebraWrong = 0
-  geometryTotal = 0
-  geometryWrong = 0
-  numTotal = 0
-  numWrong = 0
-  probTotal = 0
-  probWrong = 0
-  topicsToWorkOn = []
-  TOPIC_GLOSSARY.forEach(i => {
-    i.errors = 0
-  })
-  loadQuestion()
-  updateRadarChart()
-  updateBarGraph()
-  updatePieChart()
-            document.getElementById("login").style.display = "block"
-  // 1. Call Supabase to clear the secure cloud session
-  console.log('logging out')
-  const { error } = await supabase.auth.signOut();
+    mistake = 0
+    stuck = 0
+    unfamiliar = 0
+    algebraTotal = 0
+    algebraWrong = 0
+    geometryTotal = 0
+    geometryWrong = 0
+    numTotal = 0
+    numWrong = 0
+    probTotal = 0
+    probWrong = 0
+    topicsToWorkOn = []
+    TOPIC_GLOSSARY.forEach(i => {
+        i.errors = 0
+    })
+    loadQuestion()
+    updateRadarChart()
+    updateBarGraph()
+    updatePieChart()
+    document.getElementById("login").style.display = "block"
+    // 1. Call Supabase to clear the secure cloud session
+    console.log('logging out')
+    const { error } = await supabase.auth.signOut();
 
-  if (error) {
-    alert("Error logging out: " + error.message);
-    return;
-  }
+    if (error) {
+        alert("Error logging out: " + error.message);
+        return;
+    }
 
 
-  alert("You have been logged out successfully!");
-  window.location.reload();
+    alert("You have been logged out successfully!");
+    window.location.reload();
 });
 
 const deleteAccountBtn = document.getElementById('btn-delete-account');
 
 if (deleteAccountBtn) {
-  deleteAccountBtn.addEventListener('click', async () => {
-    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
-    
-    if (!confirmed) return;
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
+    deleteAccountBtn.addEventListener('click', async () => {
+        const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
 
-    const userId = session.user.id;
+        if (!confirmed) return;
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) return;
 
-    // 3. Clear their specific user row from your public profiles table
-    const { error: dbError } = await supabase
-      .from('profiles')
-      .delete()
-      .eq('id', userId);
+        const userId = session.user.id;
 
-    if (dbError) {
-      alert("Error erasing profile data: " + dbError.message);
-      return;
-    }
+        // 3. Clear their specific user row from your public profiles table
+        const { error: dbError } = await supabase
+            .from('profiles')
+            .delete()
+            .eq('id', userId);
 
-    await supabase.auth.signOut();
+        if (dbError) {
+            alert("Error erasing profile data: " + dbError.message);
+            return;
+        }
 
-    localStorage.clear();
-    loadQuestion()
+        await supabase.auth.signOut();
 
-    alert("Your account records and progress have been completely erased.");
-    window.location.reload();
-  });
+        localStorage.clear();
+        loadQuestion()
+
+        alert("Your account records and progress have been completely erased.");
+        window.location.reload();
+    });
 }
 
 console.log(supabase)
@@ -4948,126 +4957,126 @@ console.log(supabase)
 
 
 supabase.auth.onAuthStateChange(async (event, session) => {
-  const accountBtn = document.getElementById('accountBtn');
-  const logoutBtn = document.getElementById('btn-logout');
-  const loginBtn = document.getElementById('btn-login');
-  const signup = document.getElementById('no-account');
-  const login = document.getElementById('login');
-  const usernameDisplay = document.getElementById("username-display");
-  const createAccount = document.getElementById("no-account")
-  const deleteAccount = document.getElementById("btn-delete-account")
-  const usernameDisplayModal = document.getElementById("btn-dashboard")
+    const accountBtn = document.getElementById('accountBtn');
+    const logoutBtn = document.getElementById('btn-logout');
+    const loginBtn = document.getElementById('btn-login');
+    const signup = document.getElementById('no-account');
+    const login = document.getElementById('login');
+    const usernameDisplay = document.getElementById("username-display");
+    const createAccount = document.getElementById("no-account")
+    const deleteAccount = document.getElementById("btn-delete-account")
+    const usernameDisplayModal = document.getElementById("btn-dashboard")
 
-  // A. Check if a secure user session actually exists
-  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
-    console.log("Secure adaptive practice session discovered for:", session.user.email);
+    // A. Check if a secure user session actually exists
+    if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
+        console.log("Secure adaptive practice session discovered for:", session.user.email);
 
-    // Toggle UI display blocks safely
-    if (logoutBtn) logoutBtn.style.display = 'block';
-    if (login) login.style.display = "none";
-    console.log("login goes invisible")
-    if (createAccount) createAccount.style.display = "none"
-    if (deleteAccount) deleteAccount.style.display = "block"
-    if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
+        // Toggle UI display blocks safely
+        if (logoutBtn) logoutBtn.style.display = 'block';
+        if (login) login.style.display = "none";
+        console.log("login goes invisible")
+        if (createAccount) createAccount.style.display = "none"
+        if (deleteAccount) deleteAccount.style.display = "block"
+        if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
 
-    // 1. Fetch cloud records safely using correct lowercase columns
-  const { data: profile, error } = await supabase
-loadUserStats(session.user.id)
-  } else  {
-    console.log("No user session found. Reverting adaptive practice to Guest defaults.");
-    if (typeof runDiagnostic === "function") runDiagnostic();
-    
-    if (logoutBtn) logoutBtn.style.display = 'none';
-    if (login) login.style.display = "block";
-    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
-    if (createAccount) createAccount.style.display = "block"
-    if (deleteAccount) deleteAccount.style.display = "none"
-    if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
-    // Reset runtime math parameters back to baseline
-    userRatingAll = 1200;
-    userRating = 1200;
-    userRatingGeometry = 1200;
-    userRatingNumTheory = 1200;
-    userRatingProbability = 1200;
-    mistake = 0;
-    stuck = 0;
-    unfamiliar = 0;
-    topicsToWorkOn = [];
-    
-    if (Array.isArray(TOPIC_GLOSSARY)) {
-      TOPIC_GLOSSARY.forEach(i => { if(i) i.errors = 0; });
+        // 1. Fetch cloud records safely using correct lowercase columns
+        const { data: profile, error } = await supabase
+        loadUserStats(session.user.id)
+    } else {
+        console.log("No user session found. Reverting adaptive practice to Guest defaults.");
+        if (typeof runDiagnostic === "function") runDiagnostic();
+
+        if (logoutBtn) logoutBtn.style.display = 'none';
+        if (login) login.style.display = "block";
+        if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
+        if (createAccount) createAccount.style.display = "block"
+        if (deleteAccount) deleteAccount.style.display = "none"
+        if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
+        // Reset runtime math parameters back to baseline
+        userRatingAll = 1200;
+        userRating = 1200;
+        userRatingGeometry = 1200;
+        userRatingNumTheory = 1200;
+        userRatingProbability = 1200;
+        mistake = 0;
+        stuck = 0;
+        unfamiliar = 0;
+        topicsToWorkOn = [];
+
+        if (Array.isArray(TOPIC_GLOSSARY)) {
+            TOPIC_GLOSSARY.forEach(i => { if (i) i.errors = 0; });
+        }
+
+        const scoreCountElement = document.getElementById('scoreCount');
+        if (scoreCountElement) scoreCountElement.innerHTML = 1200;
+
+        // Redraw empty guest charts
+        if (typeof updateBarGraph === "function") updateBarGraph();
+        if (typeof updateRadarChart === "function") updateRadarChart();
+        if (typeof updatePieChart === "function") updatePieChart();
+        console.log("here")
+
+    }
+});
+async function saveUserStatsToCloud() {
+    console.log("updating")
+    // 1. Get the currently logged-in user session
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError || !session) {
+        return; // Stop here if they are a guest
     }
 
-    const scoreCountElement = document.getElementById('scoreCount');
-    if (scoreCountElement) scoreCountElement.innerHTML = 1200;
+    const userId = session.user.id;
 
-    // Redraw empty guest charts
-    if (typeof updateBarGraph === "function") updateBarGraph();
-    if (typeof updateRadarChart === "function") updateRadarChart();
-    if (typeof updatePieChart === "function") updatePieChart();
-    console.log("here")
+    console.log(TOPIC_GLOSSARY)
+    // 2. Push all the live active values up to the database
+    const { data, error } = await supabase
+        .from('profiles')
+        .update({
+            topicsToWorkOnSolvefire: topicsToWorkOn,
+            TOPICGLOSSARYSolvefire: TOPIC_GLOSSARY,
+            unfamiliarSolvefire: unfamiliar,
+            stuckSolvefire: stuck,
+            mistakeSolvefire: mistake,
+            algebraTotalSolvefire: algebraTotal,
+            algebraWrongSolvefire: algebraWrong,
+            geometryTotalSolvefire: geometryTotal,
+            geometryWrongSolvefire: geometryWrong,
+            numTotalSolvefire: numTotal,
+            probTotalSolvefire: probTotal,
+            numWrongSolvefire: numWrong,
+            probWrongSolvefire: probWrong,
+            streakSolvefire: streakCount
+        })
+        .eq('id', userId); // ⚠️ CRITICAL: Ensure you only update THIS user's row!
 
-  }
-});
-  async function saveUserStatsToCloud() {
-    console.log("updating")
-  // 1. Get the currently logged-in user session
-  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-  if (sessionError || !session) {
-    return; // Stop here if they are a guest
-  }
-
-  const userId = session.user.id;
-
-  console.log(TOPIC_GLOSSARY)
-  // 2. Push all the live active values up to the database
-  const { data, error } = await supabase
-    .from('profiles')
-    .update({
-        topicsToWorkOnSolvefire: topicsToWorkOn,
-        TOPICGLOSSARYSolvefire: TOPIC_GLOSSARY,
-        unfamiliarSolvefire:  unfamiliar,
-        stuckSolvefire: stuck,
-        mistakeSolvefire: mistake,
-        algebraTotalSolvefire: algebraTotal,
-        algebraWrongSolvefire: algebraWrong,
-        geometryTotalSolvefire: geometryTotal,
-        geometryWrongSolvefire: geometryWrong,
-        numTotalSolvefire: numTotal,
-        probTotalSolvefire: probTotal,
-        numWrongSolvefire: numWrong,
-        probWrongSolvefire: probWrong,
-        streakSolvefire: streakCount
-    })
-    .eq('id', userId); // ⚠️ CRITICAL: Ensure you only update THIS user's row!
-
-  if (error) {
-    console.error("Failed to sync stats to cloud database:", error.message);
-  }
+    if (error) {
+        console.error("Failed to sync stats to cloud database:", error.message);
+    }
 
 }
 const resetBtn = document.getElementById("btn-request-reset");
 
 if (resetBtn) {
-  resetBtn.addEventListener("click", async () => {
-    const email = document.getElementById("login-email").value;
+    resetBtn.addEventListener("click", async () => {
+        const email = document.getElementById("login-email").value;
 
-    if (!email) {
-      alert("Please enter your email address first.");
-      return;
-    }
+        if (!email) {
+            alert("Please enter your email address first.");
+            return;
+        }
 
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/update-password.html',
+        const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin + '/update-password.html',
+        });
+
+        if (error) {
+            console.error("Reset request failed:", error.message);
+            alert("Error: " + error.message);
+        } else {
+            alert("Check your inbox! A secure password reset link has been sent.");
+        }
     });
-
-    if (error) {
-      console.error("Reset request failed:", error.message);
-      alert("Error: " + error.message);
-    } else {
-      alert("Check your inbox! A secure password reset link has been sent.");
-    }
-  });
 }
 // --- Integrated Draggable Floating Scratchpad Engine ---
 const scratchPopup = document.getElementById("scratchpad-popup");
@@ -5078,134 +5087,192 @@ const clearScratchBtn = document.getElementById("btn-clear-scratchpad");
 const closeScratchBtn = document.getElementById("btn-close-scratchpad");
 
 if (scratchPopup && scratchHeader && scratchCanvas) {
-  const ctx = scratchCanvas.getContext("2d");
-  let isDrawing = false;
-  let lastX = 0, lastY = 0;
+    const ctx = scratchCanvas.getContext("2d");
+    let isDrawing = false;
+    let lastX = 0, lastY = 0;
 
-  // --- 1. Open / Close Window Visibility Toggles ---
-  function openScratchpad() {
-    scratchPopup.style.display = "block";
-    setupBrushColors();
-  }
-
-  function closeScratchpad() {
-    toggleScratchBtn.innerHTML = "Open Scratchpad"
-    scratchPopup.style.display = "none";
-  }
-
-  toggleScratchBtn.addEventListener("click", () => {
-    if (scratchPopup.style.display === "none" || scratchPopup.style.display === "") {
-      openScratchpad();
-      toggleScratchBtn.innerHTML = "Close Scratchpad"
-    } else {
-      closeScratchpad();
-      toggleScratchBtn.innerHTML = "Open Scratchpad"
+    // --- 1. Open / Close Window Visibility Toggles ---
+    function openScratchpad() {
+        scratchPopup.style.display = "block";
+        setupBrushColors();
     }
-  });
 
-  closeScratchBtn.addEventListener("click", closeScratchpad);
-  
-  clearScratchBtn.addEventListener("click", () => {
-    ctx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
-  });
+    function closeScratchpad() {
+        toggleScratchBtn.innerHTML = "Open Scratchpad"
+        scratchPopup.style.display = "none";
+    }
 
-  function setupBrushColors() {
-    let computedColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
-    ctx.strokeStyle = computedColor ? computedColor : '#4A90E2'; 
-    ctx.lineWidth = 2.5;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-  }
+    toggleScratchBtn.addEventListener("click", () => {
+        if (scratchPopup.style.display === "none" || scratchPopup.style.display === "") {
+            openScratchpad();
+            toggleScratchBtn.innerHTML = "Close Scratchpad"
+        } else {
+            closeScratchpad();
+            toggleScratchBtn.innerHTML = "Open Scratchpad"
+        }
+    });
 
-  // --- 2. Canvas Core Drawing Mechanics ---
-  function getCanvasCoordinates(e) {
-    const rect = scratchCanvas.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    return {
-      x: clientX - rect.left,
-      y: clientY - rect.top
-    };
-  }
+    closeScratchBtn.addEventListener("click", closeScratchpad);
 
-  scratchCanvas.addEventListener("mousedown", (e) => {
-    isDrawing = true;
-    const coords = getCanvasCoordinates(e);
-    [lastX, lastY] = [coords.x, coords.y];
-  });
+    clearScratchBtn.addEventListener("click", () => {
+        ctx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+    });
 
-  scratchCanvas.addEventListener("mousemove", (e) => {
-    if (!isDrawing) return;
-    e.preventDefault();
-    const coords = getCanvasCoordinates(e);
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(coords.x, coords.y);
-    ctx.stroke();
-    [lastX, lastY] = [coords.x, coords.y];
-  });
+    function setupBrushColors() {
+        let computedColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+        ctx.strokeStyle = computedColor ? computedColor : '#4A90E2';
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+    }
 
-  const stopDrawing = () => isDrawing = false;
-  scratchCanvas.addEventListener("mouseup", stopDrawing);
-  scratchCanvas.addEventListener("mouseleave", stopDrawing);
+    // --- 2. Canvas Core Drawing Mechanics ---
+    function getCanvasCoordinates(e) {
+        const rect = scratchCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+        };
+    }
 
-  // Mobile Drawing Support
-  scratchCanvas.addEventListener("touchstart", (e) => {
-    isDrawing = true;
-    const coords = getCanvasCoordinates(e);
-    [lastX, lastY] = [coords.x, coords.y];
-  });
-  scratchCanvas.addEventListener("touchmove", (e) => {
-    if (!isDrawing) return;
-    e.preventDefault();
-    const coords = getCanvasCoordinates(e);
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(coords.x, coords.y);
-    ctx.stroke();
-    [lastX, lastY] = [coords.x, coords.y];
-  });
-  scratchCanvas.addEventListener("touchend", stopDrawing);
+    scratchCanvas.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        const coords = getCanvasCoordinates(e);
+        [lastX, lastY] = [coords.x, coords.y];
+    });
+
+    scratchCanvas.addEventListener("mousemove", (e) => {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const coords = getCanvasCoordinates(e);
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(coords.x, coords.y);
+        ctx.stroke();
+        [lastX, lastY] = [coords.x, coords.y];
+    });
+
+    const stopDrawing = () => isDrawing = false;
+    scratchCanvas.addEventListener("mouseup", stopDrawing);
+    scratchCanvas.addEventListener("mouseleave", stopDrawing);
+
+    // Mobile Drawing Support
+    scratchCanvas.addEventListener("touchstart", (e) => {
+        isDrawing = true;
+        const coords = getCanvasCoordinates(e);
+        [lastX, lastY] = [coords.x, coords.y];
+    });
+    scratchCanvas.addEventListener("touchmove", (e) => {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const coords = getCanvasCoordinates(e);
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(coords.x, coords.y);
+        ctx.stroke();
+        [lastX, lastY] = [coords.x, coords.y];
+    });
+    scratchCanvas.addEventListener("touchend", stopDrawing);
 
 
-  // --- 3. Window Translation Component (Dragging Logic) ---
-  let isDraggingWindow = false;
-  let offsetX = 0, offsetY = 0;
+    // --- 3. Window Translation Component (Dragging Logic) ---
+    let isDraggingWindow = false;
+    let offsetX = 0, offsetY = 0;
 
-  function startWindowDrag(e) {
-    // Prevent text highlight selection artifacts during runtime translation
-    if (e.target === clearScratchBtn || e.target === closeScratchBtn) return;
-    
-    isDraggingWindow = true;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
-    offsetX = clientX - scratchPopup.offsetLeft;
-    offsetY = clientY - scratchPopup.offsetTop;
-  }
+    function startWindowDrag(e) {
+        // Prevent text highlight selection artifacts during runtime translation
+        if (e.target === clearScratchBtn || e.target === closeScratchBtn) return;
 
-  function dragWindow(e) {
-    if (!isDraggingWindow) return;
-    e.preventDefault();
-    
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
-    scratchPopup.style.left = (clientX - offsetX) + "px";
-    scratchPopup.style.top = (clientY - offsetY) + "px";
-  }
+        isDraggingWindow = true;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-  function stopWindowDrag() {
-    isDraggingWindow = false;
-  }
+        offsetX = clientX - scratchPopup.offsetLeft;
+        offsetY = clientY - scratchPopup.offsetTop;
+    }
 
-  // Desktop Drag Bindings
-  scratchHeader.addEventListener("mousedown", startWindowDrag);
-  document.addEventListener("mousemove", dragWindow);
-  document.addEventListener("mouseup", stopWindowDrag);
+    function dragWindow(e) {
+        if (!isDraggingWindow) return;
+        e.preventDefault();
 
-  // Mobile Drag Bindings
-  scratchHeader.addEventListener("touchstart", startWindowDrag);
-  document.addEventListener("touchmove", dragWindow, { passive: false });
-  document.addEventListener("touchend", stopWindowDrag);
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        scratchPopup.style.left = (clientX - offsetX) + "px";
+        scratchPopup.style.top = (clientY - offsetY) + "px";
+    }
+
+    function stopWindowDrag() {
+        isDraggingWindow = false;
+    }
+
+    // Desktop Drag Bindings
+    scratchHeader.addEventListener("mousedown", startWindowDrag);
+    document.addEventListener("mousemove", dragWindow);
+    document.addEventListener("mouseup", stopWindowDrag);
+
+    // Mobile Drag Bindings
+    scratchHeader.addEventListener("touchstart", startWindowDrag);
+    document.addEventListener("touchmove", dragWindow, { passive: false });
+    document.addEventListener("touchend", stopWindowDrag);
 }
+
+let countdownScriptRun = false;
+let timeLeft = parseInt(localStorage.getItem("secondsLeftInPractice"))
+
+function updateDailyPracticeCountdown() {
+    let todayIso = (new Date()).toISOString().split('T')[0]
+    if (countdownScriptRun === false) {
+        countdownScriptRun = true
+        if (localStorage.getItem("secondsLeftInPractice")) {
+            if (localStorage.getItem("lastPracticeCountdownSet") === todayIso) {
+                const timer = setInterval(() => {
+                    if (isPaused) {
+                        if (isPaused == true) {
+                            return
+                        }
+                    }
+                    timeLeft--
+                    document.getElementById("time-left").innerHTML = `${Math.round(timeLeft / 60)}:${timeLeft % 60}`
+                    localStorage.setItem("secondsLeftInPractice", timeLeft)
+                    if (timeLeft <= 0) {
+                        clearInterval(timer)
+                        showTimeComplete()
+                    }
+                }, 1000)
+            }
+        }
+    }
+}
+
+function showTimeComplete() {
+    document.getElementById("practiceFinishedModal").style.display = "block";
+    overlay.style.display = "block"
+}
+const INACTIVITY_LIMIT = 3 * 60 * 1000
+let idleTimer = null
+let restIdle = null
+let isPaused = false
+document.getElementById("time-left").innerHTML = `${Math.round(localStorage.getItem("secondsLeftInPractice") / 60)}:${localStorage.getItem("secondsLeftInPractice") % 60}`
+function setupRestTimer() {
+    restIdle = () => {
+        isPaused = false
+        clearTimeout(idleTimer)
+        idleTimer = setTimeout(() => {
+            isPaused = true
+            document.getElementById("pausePannel").style.display = "block"
+            overlay.style.display = "block"
+        }, INACTIVITY_LIMIT)
+    }
+}
+if (timeLeft) {
+    if (timeLeft > 0) {
+        document.getElementById("time-left").innerHTML = `${Math.round(localStorage.getItem("secondsLeftInPractice") / 60)}:${localStorage.getItem("secondsLeftInPractice") % 60}`
+    } else {
+        document.getElementById("timer-container").style.display = "none"
+    }
+}
+
+

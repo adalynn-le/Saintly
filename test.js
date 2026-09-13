@@ -1,7 +1,7 @@
 let userRating = 1200
 let userRatingGeometry = 1200
 let userRatingProbability = 1200
-let userRatingNumTheory= 1200
+let userRatingNumTheory = 1200
 let userRatingAll = 1200
 const toggleBrightness = document.getElementById("brightness")
 let colorMode = 'light'
@@ -11,83 +11,83 @@ let diagnosticGeometryTotal = 1
 let diagnosticNumTheoryTotal = 1
 let diagnosticProbabilityTotal = 1
 let diagnosticAlgebraCorrect = 0
-let diagnosticGeometryCorrect= 0
-let diagnosticNumTheoryCorrect= 0
+let diagnosticGeometryCorrect = 0
+let diagnosticNumTheoryCorrect = 0
 let diagnosticProbabilityCorrect = 0
 let colorModeTrue = localStorage.getItem("colorMode")
 let textColor = "#e3e2f0"
 let backgroundColor = "rgb(253, 253, 255)"
-if  (colorModeTrue !== false){
-       colorMode =  colorModeTrue
- if (colorMode === 'dark'){
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark'; 
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", "dark")
-                textColor = "#e3e2f0"
-                backgroundColor = "#222329"
+if (colorModeTrue !== false) {
+    colorMode = colorModeTrue
+    if (colorMode === 'dark') {
+        colorMode = 'dark';
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        toggleBrightness.textContent = "sunny"
+        localStorage.setItem("colorMode", "dark")
+        textColor = "#e3e2f0"
+        backgroundColor = "#222329"
 
-        } else {
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light';
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", "light")
-                textColor = "#625c6e"
-                backgroundColor = "rgb(253, 253, 255)"
-        }
+    } else {
+        colorMode = 'light';
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        toggleBrightness.textContent = "bedtime"
+        localStorage.setItem("colorMode", "light")
+        textColor = "#625c6e"
+        backgroundColor = "rgb(253, 253, 255)"
+    }
 } else {
-function toggleSystemTheme() {
-  const root = document.documentElement;
-  
-  if (!root.style.colorScheme) {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    root.style.colorScheme = prefersDark ? 'dark' : 'light';
-  }
-  
-  colorMode = root.style.colorScheme;
+    function toggleSystemTheme() {
+        const root = document.documentElement;
 
-  if (colorMode === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-      textColor = "#e3e2f0"
-  } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-      textColor = "#625c6e"
-  }
-}
-toggleSystemTheme();
-}
-toggleBrightness.addEventListener("click", function(){
-        if (colorMode === 'dark'){
-                colorMode = 'light';
-                document.documentElement.style.colorScheme = 'light'; 
-                document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                toggleBrightness.textContent = "bedtime"
-                localStorage.setItem("colorMode", colorMode)
-                textColor = "#625c6e"
-                backgroundColor="rgb(253, 253, 255)"
-                updatePieChart()
-                updateRadarChart()
-                updateBarGraph()
-        } else {
-                colorMode = 'dark';
-                document.documentElement.style.colorScheme = 'dark';
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                toggleBrightness.textContent = "sunny"
-                localStorage.setItem("colorMode", colorMode)
-                textColor = "#e3e2f0"
-                backgroundColor = "#222329"
-                updatePieChart()
-                updateRadarChart()
-                updateBarGraph()
+        if (!root.style.colorScheme) {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            root.style.colorScheme = prefersDark ? 'dark' : 'light';
         }
+
+        colorMode = root.style.colorScheme;
+
+        if (colorMode === 'dark') {
+            root.classList.add('dark');
+            root.classList.remove('light');
+            textColor = "#e3e2f0"
+        } else {
+            root.classList.add('light');
+            root.classList.remove('dark');
+            textColor = "#625c6e"
+        }
+    }
+    toggleSystemTheme();
+}
+toggleBrightness.addEventListener("click", function () {
+    if (colorMode === 'dark') {
+        colorMode = 'light';
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        toggleBrightness.textContent = "bedtime"
+        localStorage.setItem("colorMode", colorMode)
+        textColor = "#625c6e"
+        backgroundColor = "rgb(253, 253, 255)"
+        updatePieChart()
+        updateRadarChart()
+        updateBarGraph()
+    } else {
+        colorMode = 'dark';
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        toggleBrightness.textContent = "sunny"
+        localStorage.setItem("colorMode", colorMode)
+        textColor = "#e3e2f0"
+        backgroundColor = "#222329"
+        updatePieChart()
+        updateRadarChart()
+        updateBarGraph()
+    }
 });
 // Gets the live computed color string from your CSS :root
 
@@ -99,19 +99,19 @@ const supabaseURL = 'https://joevkictcfaoofqhbhgw.supabase.co';
 const supabaseKey = 'sb_publishable_8Iat4psKXuFn91uT8yuw7g_2n3Buc5w';
 const supabase = createClient(supabaseURL, supabaseKey);
 const imageDiagnostic = document.getElementById("diagnosticImage")
-    imageDiagnostic.style.display = "none"
-    const diagnosticInput = document.getElementById("diagnosticInput")
-    diagnosticInput.style.display = "none"
-    const diagnosticMCContainer = document.getElementById("diagnostic-mc-container")
-    diagnosticMCContainer.classList.add("hidden")
-    const diagnosticCheck = document.getElementById("diagnosticCheck")
-    diagnosticCheck.style.display = "none"
-    const diagnosticChoices = Array.from(document.querySelectorAll(".diagnostic-choice"));
-    const diagnosticNext = document.getElementById("diagnosticNext")
-    diagnosticNext.style.display = "none"
-    const diagnosticSolutionContainer = document.getElementById("diagnosticSolutionContainer")
-    diagnosticSolutionContainer.style.display = 'none'
-    const diagnosticSolutionText = document.getElementById("diagnosticSolutionText")
+imageDiagnostic.style.display = "none"
+const diagnosticInput = document.getElementById("diagnosticInput")
+diagnosticInput.style.display = "none"
+const diagnosticMCContainer = document.getElementById("diagnostic-mc-container")
+diagnosticMCContainer.classList.add("hidden")
+const diagnosticCheck = document.getElementById("diagnosticCheck")
+diagnosticCheck.style.display = "none"
+const diagnosticChoices = Array.from(document.querySelectorAll(".diagnostic-choice"));
+const diagnosticNext = document.getElementById("diagnosticNext")
+diagnosticNext.style.display = "none"
+const diagnosticSolutionContainer = document.getElementById("diagnosticSolutionContainer")
+diagnosticSolutionContainer.style.display = 'none'
+const diagnosticSolutionText = document.getElementById("diagnosticSolutionText")
 let diagnosticQuestions = []
 let index = 0
 let wrongTopicGeometry = []
@@ -131,7 +131,7 @@ let difficulty = 1;
 let questionType = "algebra";
 let difficultyProgress = 0;
 let algebraQuestion = 0;
-let difficultyG=  1;
+let difficultyG = 1;
 let difficultyProgressG = 0;
 let topicsToWorkOn = [];
 let topicToUpdate = ''
@@ -158,7 +158,7 @@ let numQuestion = 0
 let probQuestion = 0
 let currentQuestion = 0
 let geometryCurrent = 0
-let numCurrent = 0 
+let numCurrent = 0
 let algebraWrong = 0
 let geometryWrong = 0
 let numWrong = 0
@@ -173,12 +173,12 @@ function capitalizeFirstLetter(val) {
     return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 let score = 0;
-function toggleSubMenu(button){
+function toggleSubMenu(button) {
     button.nextElementSibling.classList.toggle('show');
     button.classList.toggle('rotate');
 }
-function updateAllRating(){
-    userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory)/4
+function updateAllRating() {
+    userRatingAll = (userRating + userRatingGeometry + userRatingProbability + userRatingNumTheory) / 4
 }
 
 let TOPIC_GLOSSARY = [
@@ -204,9 +204,9 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: "arithmetic"  ,  
-    title: `Arithmetic`,
+    {
+        id: "arithmetic",
+        title: `Arithmetic`,
         description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
         workOn: [
             "Mental/Quick Math",
@@ -215,20 +215,20 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: "systems of equations",    
-    title: `Systems of Equations`,
+    {
+        id: "systems of equations",
+        title: `Systems of Equations`,
         description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
         workOn: [
             "Logic",
-            "Substitution", 
+            "Substitution",
             "Elimination",
         ],
         errors: 0,
     },
-{
-    id: 'functions and graphing',   
-    title: `Functions and Graphing`,
+    {
+        id: 'functions and graphing',
+        title: `Functions and Graphing`,
         description: "Recognizing and manipulating popular parent functions and being able to identify them",
         workOn: [
             "Parent Functions",
@@ -237,19 +237,19 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-     {
+    {
         id: 'logic',
         title: `Logic`,
         description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
         workOn: [
-            "Recognizing Patterns", 
+            "Recognizing Patterns",
             "Quick Mental Math",
         ],
         errors: 0,
     },
-{
-    id: 'inequalities',    
-    title: `Inequalities`,
+    {
+        id: 'inequalities',
+        title: `Inequalities`,
         description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
         workOn: [
             "Graphing Inequalities",
@@ -258,18 +258,18 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'modular arithmetic',
-    title: `Modular Arithmetic`,
+    {
+        id: 'modular arithmetic',
+        title: `Modular Arithmetic`,
         description: "These problems pertain to the remainders (mods) of operations (typically division)",
         workOn: [
             "Modular Arithmetic Rules",
         ],
         errors: 0,
     },
- {
-    id: 'factoring' , 
-    title: `Factoring`,
+    {
+        id: 'factoring',
+        title: `Factoring`,
         description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
         workOn: [
             "Sum/difference of squares",
@@ -287,9 +287,9 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'percents',    
-    title: `Percents`,
+    {
+        id: 'percents',
+        title: `Percents`,
         description: "A different representation of fractions and ratios, make sure you understand what percents are",
         workOn: [
             "Decimal Multiplication",
@@ -297,9 +297,9 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'graphing'  ,  
-    title: `Graphing`,
+    {
+        id: 'graphing',
+        title: `Graphing`,
         description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
         workOn: [
             "Parent Functions",
@@ -308,17 +308,17 @@ let TOPIC_GLOSSARY = [
         errors: 0,
     },
     {
-       id: 'floor functions',
+        id: 'floor functions',
         title: `Floor Functions`,
         description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
-        workOn:[
+        workOn: [
             'Graphing',
             'Logic + Intuition',
         ],
         errors: 0,
     },
-     {
-       id: 'speed-distance-time',
+    {
+        id: 'speed-distance-time',
         title: `Speed Distance Time`,
         description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
         workOn: [
@@ -327,7 +327,7 @@ let TOPIC_GLOSSARY = [
             "Word problems and conceptualy understanding what is being asked",
         ],
         errors: 0,
-    },{
+    }, {
         id: 'averages',
         title: `Averages`,
         description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
@@ -338,7 +338,7 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
+    {
         id: 'induction',
         title: `Induction`,
         description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
@@ -348,8 +348,8 @@ let TOPIC_GLOSSARY = [
             "'Limiting' solutions",
         ],
         errors: 0,
-    }, 
- {
+    },
+    {
         id: 'series',
         title: `Series`,
         description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
@@ -360,42 +360,42 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'absolute value',    
-    title: `Absolute Value`,
+    {
+        id: 'absolute value',
+        title: `Absolute Value`,
         description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
         workOn:
-        [ 
-            "Graphing",
-            "Intuition"
-        ],
+            [
+                "Graphing",
+                "Intuition"
+            ],
         errors: 0,
     },
- {
+    {
         id: 'exponents',
         title: `Exponents`,
         description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
-        workOn: 
-        [
-            "Change of base",
-            "Adding, subtracting, multiplying, dividing exponents",
-            "Factoring out squares",
-        ],
+        workOn:
+            [
+                "Change of base",
+                "Adding, subtracting, multiplying, dividing exponents",
+                "Factoring out squares",
+            ],
         errors: 0,
 
     },
- {
-    id: 'discriminant' ,   
-    title: `Discriminant`,
+    {
+        id: 'discriminant',
+        title: `Discriminant`,
         description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
-        workOn:[
+        workOn: [
             "Quadratic Formula"
         ],
-        errors:0,
+        errors: 0,
     },
-{
-    id: 'casework',    
-    title: `Casework`,
+    {
+        id: 'casework',
+        title: `Casework`,
         description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
         workOn: [
             'Absolute Value Questions',
@@ -403,9 +403,9 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-  id: 'medians',
-    title: `Medians`,
+    {
+        id: 'medians',
+        title: `Medians`,
         description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
         workOn: [
             'Statistics',
@@ -413,9 +413,9 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'similar triangles'  , 
-    title: `Similar Triangles`,
+    {
+        id: 'similar triangles',
+        title: `Similar Triangles`,
         description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
         workOn: [
             "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
@@ -423,7 +423,7 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
+    {
         id: 'surface area',
         title: `Surface Area`,
         description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
@@ -433,9 +433,9 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'triangle lines'  , 
-    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
+    {
+        id: 'triangle lines',
+        title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
         description: `<p>Remember the following lines that you can add to a triangle</p>
         <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
         <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
@@ -448,8 +448,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'counting',
+    {
+        id: 'counting',
         title: `Counting`,
         description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
         workOn: [
@@ -459,8 +459,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'composite shapes',
+    {
+        id: 'composite shapes',
         title: `Composite Shapes`,
         description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
         workOn: [
@@ -468,8 +468,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'transformations',
+    {
+        id: 'transformations',
         title: `Transformations`,
         description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
         workOn: [
@@ -488,8 +488,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'prime numbers',
+    {
+        id: 'prime numbers',
         title: `Prime Numbers`,
         description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
         workOn: [
@@ -497,8 +497,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'hexagons',
+    {
+        id: 'hexagons',
         title: `Hexagons`,
         description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
         workOn: [
@@ -507,8 +507,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'optimization',
+    {
+        id: 'optimization',
         title: `Optimization`,
         description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
         workOn: [
@@ -517,8 +517,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'volume relationships',
+    {
+        id: 'volume relationships',
         title: `Volume Relationships`,
         description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
         workOn: [
@@ -526,8 +526,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'pyramids',
+    {
+        id: 'pyramids',
         title: `Pyramids`,
         description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
         workOn: [
@@ -536,8 +536,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'trigonometry',
+    {
+        id: 'trigonometry',
         title: `Trigonometry`,
         description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
         workOn: [
@@ -547,8 +547,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    id: 'coordinate plane',
+    {
+        id: 'coordinate plane',
         title: `Coordinate Plane`,
         description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
         workOn: [
@@ -558,9 +558,9 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
-{
-    title: "Pythagorean Theorem",
-    id: 'pythagorean theorem',
+    {
+        title: "Pythagorean Theorem",
+        id: 'pythagorean theorem',
         description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
         workOn: [
             "Pythagorean Triples",
@@ -578,8 +578,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'power of a point',
+    {
+        id: 'power of a point',
         title: `Power of A Point`,
         description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
         workOn: [
@@ -588,9 +588,9 @@ let TOPIC_GLOSSARY = [
             "Secants",
         ],
         errors: 0,
- },
- {
-    id: 'bases',
+    },
+    {
+        id: 'bases',
         title: `Bases`,
         description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
         <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
@@ -601,8 +601,8 @@ let TOPIC_GLOSSARY = [
         ],
         errors: 0,
     },
- {
-    id: 'combinations',
+    {
+        id: 'combinations',
         title: `Combinations`,
         description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
         workOn:
@@ -610,18 +610,18 @@ let TOPIC_GLOSSARY = [
                 "Recognizing combinations vs permutations",
                 "Combinations equation",
             ],
-            errors: 0,
+        errors: 0,
     },
     {
         id: 'counting',
         title: `Counting`,
         description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
         workOn:
-        [
-            `Permutations Formula \\(n!\\)`,
-            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
-            'Factorials',
-        ],
+            [
+                `Permutations Formula \\(n!\\)`,
+                'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
+                'Factorials',
+            ],
         errors: 0,
     },
     {
@@ -629,9 +629,9 @@ let TOPIC_GLOSSARY = [
         title: `Expected Outcome`,
         description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
         workOn:
-        [
-            'Expected Outcome Formula'
-        ],
+            [
+                'Expected Outcome Formula'
+            ],
         errors: 0,
     },
     {
@@ -645,8 +645,8 @@ let TOPIC_GLOSSARY = [
     }
 
 ];
-TOPIC_GLOSSARY.forEach(q =>{
-        q.attempts = 0;
+TOPIC_GLOSSARY.forEach(q => {
+    q.attempts = 0;
 })
 
 // ---------- Shuffle Function ----------
@@ -660,7 +660,7 @@ function showHighlight() {
     highlight.style.transform = 'scaleX(0)';
     highlight.style.left = '0';
     highlight.offsetHeight; // force reflow
-            // Step 1: expand from left to right
+    // Step 1: expand from left to right
     highlight.style.transition = 'transform 0.3s ease-out';
     highlight.style.transform = 'scaleX(1)';
 
@@ -690,50 +690,50 @@ const myConfetti = confetti.create(confettiCanvas, {
 
 const questions = [
     {
-title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
+        title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-used: false,
-difficulty: 3,
-rating: 1200,
-text: `<p>Define</p>
+        used: false,
+        difficulty: 3,
+        rating: 1200,
+        text: `<p>Define</p>
 $$
 P(x)=(x-1^2)(x-2^2)...(x-100^2)
 $$
 <p>How many integers \\(n\\) are there such that \\(P(n) \\leq 0\\)?`,
-type: 'mc',
-choices: ['\\(A) 4900\\)', '\\(B) 4950\\)', '\\(C) 5000\\)', '\\(D) 5050\\)', '\\(E) 5100\\)'],
-solution: `<b>5100</b><p>If \\(P(n)=0\\), that already gives us \\(100\\) values, because each different term can be a \\(0\\)</p>
+        type: 'mc',
+        choices: ['\\(A) 4900\\)', '\\(B) 4950\\)', '\\(C) 5000\\)', '\\(D) 5050\\)', '\\(E) 5100\\)'],
+        solution: `<b>5100</b><p>If \\(P(n)=0\\), that already gives us \\(100\\) values, because each different term can be a \\(0\\)</p>
 <p>If we don't, we have \\(50\\) ranges for which it works, because every other range between zeroes changes the number of negative factors</p>
 <p>Notice that this gives a bunch of differences of squares, which, when expanded just gives the sum of numbers from \\(1\\) to \\(100\\) that sums to \\(5000\\). We have \\(5000+100=5100\\)`,
-answer: '\\(E) 5100\\)',
-topic: 'counting',
-hint: `Think about the "ranges" for which \\(P(x) < 0\\) and for which \\(P(x) > 0\\) and how they interact sequentially (think about how the ranges affect the number of negative factors).`,
-step: "Divide all values of \\(P(x)\\) into \\(100\\) ranges based on how they affect the factors of \\(P(x)\\)"
+        answer: '\\(E) 5100\\)',
+        topic: 'counting',
+        hint: `Think about the "ranges" for which \\(P(x) < 0\\) and for which \\(P(x) > 0\\) and how they interact sequentially (think about how the ranges affect the number of negative factors).`,
+        step: "Divide all values of \\(P(x)\\) into \\(100\\) ranges based on how they affect the factors of \\(P(x)\\)"
     },
     {
-    title:`AMC 10A 2021 Problem 15 <span class="material-symbols-outlined">
+        title: `AMC 10A 2021 Problem 15 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
-    used: false, 
-    difficulty: 3,
-rating: 1200,
-    text: `Values for \\(A,B,C,\\) and \\(D\\) are to be selected from \\({1,2,3,4,5,6}\\) without replacement (i.e. no two letters have the same value). How many ways are there to make such choices so that the two curves \\(y=Ax^2+b\\) and \\(y=Cx^2+D\\) intersect? (The order in which the curves are listed does not matter; for example, the choices \\(A=3, B=2, C=4, D=1)\\) is considered the same as the choices \\(A=4, B=1, C=3, D=2)\\)`, 
-    type: 'mc', 
-    choices: ['\\(A) 30\\)', '\\(B) 60\\)', '\\(C) 90\\)', '\\(D) 180\\)', '\\(E) 360\\)'], 
-    answer: '\\(C) 90\\)', 
-    solution: `<b>90</b><p>Some basic logic tells us that for every value, it will give two parabolas that intersect, this is because we just get differently stretched hyperbola at different z-offsets. This is because there are no negatives to worry about, essentially. Thus, we do \\(6\\) choose \\(2\\) times \\(4\\) choose \\(2=90\\)`, 
-    topic: 'logic', 
-    hint: `Think about how transformations work with quadratics and parabolas`,
-    step: "Try graphing the equation with arbitrary values of \\(A,B,C,\\) and \\(D\\)"
+</span>`,
+        used: false,
+        difficulty: 3,
+        rating: 1200,
+        text: `Values for \\(A,B,C,\\) and \\(D\\) are to be selected from \\({1,2,3,4,5,6}\\) without replacement (i.e. no two letters have the same value). How many ways are there to make such choices so that the two curves \\(y=Ax^2+b\\) and \\(y=Cx^2+D\\) intersect? (The order in which the curves are listed does not matter; for example, the choices \\(A=3, B=2, C=4, D=1)\\) is considered the same as the choices \\(A=4, B=1, C=3, D=2)\\)`,
+        type: 'mc',
+        choices: ['\\(A) 30\\)', '\\(B) 60\\)', '\\(C) 90\\)', '\\(D) 180\\)', '\\(E) 360\\)'],
+        answer: '\\(C) 90\\)',
+        solution: `<b>90</b><p>Some basic logic tells us that for every value, it will give two parabolas that intersect, this is because we just get differently stretched hyperbola at different z-offsets. This is because there are no negatives to worry about, essentially. Thus, we do \\(6\\) choose \\(2\\) times \\(4\\) choose \\(2=90\\)`,
+        topic: 'logic',
+        hint: `Think about how transformations work with quadratics and parabolas`,
+        step: "Try graphing the equation with arbitrary values of \\(A,B,C,\\) and \\(D\\)"
     },
     {
         title: `AMC 10B 2024 Problem 9 <span class="material-symbols-outlined">
@@ -743,7 +743,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Real numbers \\(a,b,\\) and \\(c\\) have arithmetic mean of \\(0\\). The arithmetic mean of \\(a^2,b^2\\) and \\(c^2\\) is \\(10\\). What is the arithmetic 
         mean of \\(ab, ac, bc\\)?`,
         type: 'mc',
@@ -755,28 +755,28 @@ rating: 1000,
         hint: `Try writing out what these statements actually mean, and then relating them to quadratic and factored equations.`,
         step: "Solve for \\(a+b+c\\) and square it"
     },
-{ 
-    title: `AMC 10A 2025 Problem 7 <span class="material-symbols-outlined">
+    {
+        title: `AMC 10A 2025 Problem 7 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
-    used: false, 
-    difficulty: 2,
-rating: 1000, 
-type: 'mc',
-    text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`, 
-    solution: `<b>18</b><p>We do synthetic division, effectively treating \\(a\\) and \\(b\\) like numbers. We end up with \\(a+b+2=4\\) and \\(2a+b+12=6\\). We solve for \\(a=-8\\), \\(b=10\\), so \\(10-(-8)=18\\)`, 
-    choices: ['\\(A) 14\\)','\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'], 
-    answer: '\\(E) 18\\)', 
-    topic: 'division',
-    hint: `Try using synthetic division`,
-    step: "Do synthetic division and treat \\(a\\) and \\(b\\) as constants to get algebraic equations that you can solve to find the variables"
-},
+</span>`,
+        used: false,
+        difficulty: 2,
+        rating: 1000,
+        type: 'mc',
+        text: `Suppose \\(a\\) and \\(b\\) are real numbers. When the polynomial \\(x^3+x^2+ax+b\\) is divided by \\(x-1\\), the remainder is \\(4\\). When the polynomial is divided by \\(x-2\\), the remainder is \\(6\\). What is \\(b-a\\)?`,
+        solution: `<b>18</b><p>We do synthetic division, effectively treating \\(a\\) and \\(b\\) like numbers. We end up with \\(a+b+2=4\\) and \\(2a+b+12=6\\). We solve for \\(a=-8\\), \\(b=10\\), so \\(10-(-8)=18\\)`,
+        choices: ['\\(A) 14\\)', '\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'],
+        answer: '\\(E) 18\\)',
+        topic: 'division',
+        hint: `Try using synthetic division`,
+        step: "Do synthetic division and treat \\(a\\) and \\(b\\) as constants to get algebraic equations that you can solve to find the variables"
+    },
     {
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         title: `AMC 10A 2025 Problem 4 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -796,7 +796,7 @@ star
     {
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         title: `AMC 10B 2022 Problem 4 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -829,7 +829,7 @@ exclamation
     {
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         title: `AMC 10A 2021 Spring Problem 3 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -863,7 +863,7 @@ exclamation
     {
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         title: `AMC 10A 2021 Spring Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -899,7 +899,7 @@ $$
     {
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         title: `AMC 10A 2023 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -908,7 +908,7 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
         `,
         type: "fr",
         answer: "4:30",
-        solution:`<b>4:30</b>
+        solution: `<b>4:30</b>
         start by writting and equation and defining your variables. For this, we can have
         <p>\\(h = \\)the hours since Betsy left</p>
         <p>We know that Andy has been traveling for \\(h+1\\) hours. We also know that speed is equal to distance over  time, or that distance is equal to speed times time. Knowing this, we can set up equations for the distance they have both traveled:
@@ -944,7 +944,7 @@ Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at \
     {
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         title: `AMC 10A 2025 Problem 9 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -989,8 +989,8 @@ exclamation
     {
         used: false,
         difficulty: 1,
-rating: 800,
-        title:`AMC 10B 2024 Problem 2 <span class="material-symbols-outlined">
+        rating: 800,
+        title: `AMC 10B 2024 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
         text: "What is \\(10! - 7! \\cdot 6!\\)",
@@ -1002,13 +1002,13 @@ star
         <p>We can factor out \\(7!\\) and get \\(7!(8 \\cdot 9 - 6!)\\). Expand this to find \\(7!(720-720)=0\\)
         `,
         topic: "factoring",
-        hint:"What can you factor out?",
+        hint: "What can you factor out?",
         step: "Factor out \\(7!\\)",
     },
     {
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         title: `AMC 10B 2024 Problem 3 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -1046,7 +1046,7 @@ exclamation
     {
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         title: `AMC 10B 2024 Problem 13 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -1103,7 +1103,7 @@ star
     {
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         title: `AMC 10B 2024 Problem 14 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -1163,7 +1163,7 @@ exclamation
     {
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         title: `AMC 10B 2024 Problem 24 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
@@ -1202,10 +1202,10 @@ exclamation
         hint: "Break it down into cases, and then consider the divisibility of \\(2022, 2023, 2024,\\) and \\(2025\\)",
         step: "Find a rule for the remainders of each term"
     },
-    {   
+    {
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         title: `AMC 10A 2024 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -1219,10 +1219,10 @@ star
         hint: "How can you factor \\(9901\\) and \\(10101\\) to have common terms (Hint, you might have to add or subtract something)",
         step: "Factor \\(9901\\) as \\((99 \\cdot 110)+1\\) and \\(10101\\) as \\(100(100 \\cdot 101) + 1\\)"
     },
-    {   
+    {
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         title: `AMC 10A 2024 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
@@ -1296,7 +1296,7 @@ star
         type: "mc",
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         choices: ["\\(A) 2\\)", "\\(B) 3\\)", "\\(C)5\\)", "\\(D) 6\\)", "\\(E) 13\\)"],
         answer: "\\(B) 3\\)",
         solution: `<b>3</b><p>First start by finding the prime factorization of \\(60\\). Doing this should yield</p>
@@ -1333,7 +1333,7 @@ star
         type: "mc",
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         choices: ["\\(A) 1:25 PM\\)", "\\(B) 1:35 PM\\)", "\\(C) 1:45 PM\\)", "\\(D) 1:55 PM\\)", "\\(E) 2:05 PM\\)"],
         answer: "\\(A) 1:25 PM\\)",
         solution: `<b> 1:25 PM </b><p>To solve this, let's first find out how many packages Amy, Bomani, and Charlie made in total. We know that they worked for \\(1\\) hour and \\(45\\) minutes, or \\(105\\) minutes. We don't really have to find the 
@@ -1355,9 +1355,9 @@ star
         type: "mc",
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         choices: ["\\(A) 1\\)", "\\(B) 2\\)", "\\(C) 3\\)", "\\(D) 4\\)", "\\(E) Infinitely Many\\)"],
-        answer:"\\(D) 4\\)",
+        answer: "\\(D) 4\\)",
         solution: `<b>4</b><p>Does this expression look a little bit familiar..? What is we rewrite it?</p>
         $$
         \\sqrt{n^2-49}^2=m^2
@@ -1401,7 +1401,7 @@ star
         used: false,
         image: "202412.png",
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         answer: "1715",
         solution: `<b>1715</b><p>Notice that we do not have to actually calculate the totals on each day. If we calculate the averages of the scores relative to the original \\(1700\\) and add that to \\(1700\\) it will have the same effect. Recall that the numbers are relative to the day before, not the starting score. WIth this, set up the following equation:
         $$
@@ -1429,7 +1429,7 @@ star
         choices: ["\\(A) 212\\)", "\\(B) 247\\)", "\\(C) 258\\)", "\\(D) 276\\)", "\\(E) 284\\)"],
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         answer: "\\(C) 258\\)",
         solution: `<b>276</b><p>Start by adding the first two equations. This gets us
         $$
@@ -1491,7 +1491,7 @@ rating: 1600,
         $$
         `,
         topic: "algebraic manipulation",
-        hint:   "What operations can you do with the equations to solve for \\(a, b,\\) and \\(c\\)? How can we use the information that \\(a, b\\) and \\(c\\) must all be integers? Can any of them be negative?",
+        hint: "What operations can you do with the equations to solve for \\(a, b,\\) and \\(c\\)? How can we use the information that \\(a, b\\) and \\(c\\) must all be integers? Can any of them be negative?",
         step: "Add the first two equations and factor to find all possible values for \\(b\\)"
     },
     {
@@ -1502,9 +1502,9 @@ star
         type: "mc",
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         choices: ["A) \\(\\frac{1}{12}\\)", "B) \\(\\frac{1}{4}\\)", "C) \\(\\frac{1}{6}\\)", "D) \\(\\frac{1}{8}\\)", "E) \\(\\frac{2}{9}\\)"],
-        answer:"B) \\(\\frac{1}{4}\\)",
+        answer: "B) \\(\\frac{1}{4}\\)",
         solution: `<b\\(\\frac{1}{4})></b><p>Let's call the fraction of how much juice Mrs. Jones pours out \\(x\\). We can say that after she evens out the amount of juice in each cup, each of the \\(3\\) filled cups, the cup that was \\(\\frac{1}{3}\\) full will then be \\(\\frac{1}{3}+3x\\) full and the rest will be \\(1-x\\) full. Since we want them all to be equal, we can set these equations to be equal to each other and solve</p>
         $$
         \\frac{1}{3}+3x=1-x
@@ -1527,7 +1527,7 @@ star
         \\(7.5%\\) sales tax on the discounted price. He had \\(43\\) dollars. What is the origina (before discount) price of the most expensive shoes he could afford to buy?`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         type: "fr",
         answer: "50",
         solution: `<b>50</b><p>We can set the original value of the shoes to \\(x\\). The discount takes off \\(20%\\), meaning that we multiply \\(x  \\cdot 0.8\\) to find the discounted price. Now we add the sales tax. we multiply the discounted price, \\(0.8x\\) by \\(1.075\\) and know that this must be equal to \\($43\\) in order for Carlos to be paying the most expensive shoes he can get. Now, solve: </p>
@@ -1551,7 +1551,7 @@ star
         text: `Maddy and Lara see a list of numbers written on a blackboard. Maddy adds \\(3\\) to each number in the list and finds that the sum of her new numbers is \\(45\\). Lara multiplies each number in the list by \\(3\\) and finds that the sum of her new numbers is also \\(45\\). How many numbers are written on the blcakboard?`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         type: "fr",
         answer: "10",
         solution: `<b>10</b><p>Let's call the total amount of numbers on the board \\(x\\) and the sum of the numbers on the board, without any altering \\(y\\). </p>
@@ -1573,13 +1573,13 @@ rating: 800,
         $$
         x=10
         `,
-        topic:"systems of equations",
+        topic: "systems of equations",
         choices: ['\\(A) 10\\)', '\\(B) 11\\)', '\\(C) 12\\)', '\\(D) 13\\)', '\\(E) 14\\)'],
         hint: "Try writing an algebraic equation to model the number of terms and the sum",
         step: "First find the sum of values on the board prior to any alteration"
     },
     {
-        title:`AMC 10B 2023 Problem 12 <span class="material-symbols-outlined">
+        title: `AMC 10B 2023 Problem 12 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -1593,7 +1593,7 @@ star
         <p>are removed from the number line, what remains is the union of 11 disjoint open interavls. On how many of these intervals is \\(P(x)\\) positive?`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         type: "fr",
         answer: "6",
         solution: `<b>6</b><p>Recognize that \\(P(x)\\) is positive when there is an even number of negative factors. None of the factors within parentheseis raised to an even power will ever be negative, so we only have to worry about the odd powers. Let's take all the even powers out of our equation:
@@ -1616,7 +1616,7 @@ star
 star
 </span>`,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `What is the area of the region on the coordinate plane defined by
         $$
         ||x|-1|+||y|-1| \\le 1?
@@ -1639,7 +1639,7 @@ star
 star
 </span>`,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: "How many ordered pairs of integers \\((m,n)\\) satisfy the equation \\(m^2+mn+n^2=m^2n^2\\)",
         used: false,
         type: "fr",
@@ -1670,7 +1670,7 @@ star
 star
 </span>`,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: "How many distinct values \\(x\\) satisfy \\(\\lfloor{x}^2\\rfloor-3x+2=0\\) where \\(\\lfloor{x}\\rfloor\\) denotes the largest integer less than or equal to \\(x\\)",
         used: false,
         type: "mc",
@@ -1689,7 +1689,7 @@ rating: 1600,
 star
 </span>`,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         used: false,
         text: "Cities \\(A\\) and \\(B\\) are \\(45\\) miles apart. Alicia lives in \\(A\\) and Beth lives in \\(B\\). Alicia bikes towards \\(B\\) at \\(18\\) miles per hour. Leaving at the same time, Beth bikes toward \\(A\\) at \\(12\\) miles per hour. How many miles from City \\(A\\) will they be when they meet?",
         type: "fr",
@@ -1765,7 +1765,7 @@ star
         text: `Barb the baker has developed a new temperature scale for her bakery called the Breadus scale, which is a linear function of the Fahrenheit scale. Bread rises at \\(110\\) degrees Fahrenheit which is \\(0\\) degrees on the Breadus scale. Bread is baked at \\(350\\) degrees Fahrenheit, which is \\(100\\) degrees on the Breadus scale. Breada is done when its internal temperature is \\(200\\) degrees Farenheit. What is this, in degrees, on the Breadus scale? Answer as a decimal.`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         type: "fr",
         answer: "37.5",
         solution: `<b>37.5</b><p>We know that the equation is linear, and thus that it can be expressed as \\(y=mx+b\\). We'll call \\(y\\) the degrees in Farenheit and \\(x\\) the degrees on the Breadus scale. We know that \\(110=0m+b\\), so \\(b\\) is equal to \\(110\\). We plug this in to
@@ -1798,7 +1798,7 @@ star
         text: `Maureen is keeping track of the mean of her quiz scores this semester. If Maureen scores an \\(11\\) on the next quiz, her mean will increase by \\(1\\). If she scores an \\(11\\) on each of the next three quizzes, her mean will increase by \\(2\\). What is the mean of her scores currently?`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         type: "fr",
         solution: `<b>7</b><p>We know that the mean, which we'll call \\(m\\) is the sum of her total scores, \\(x\\), divided by the number of tests she's taken, \\(n\\). We set up the following equation:</p>
         $$
@@ -1844,15 +1844,15 @@ rating: 1000,
         `,
         answer: "7",
         topic: "averages",
-        hint:"You can use the equation for averages\\(\\frac{\\textup{sum of }n}{n}\\) to create a system of equations.",
-solution: "Write the equations \\(\\frac{mn + 11}{n+1}=m+1\\) and \\(\\frac{mn+33}{n+3}=m+2\\) where \\(m=\\) mean and \\(n=\\) tests she has taken"
+        hint: "You can use the equation for averages\\(\\frac{\\textup{sum of }n}{n}\\) to create a system of equations.",
+        solution: "Write the equations \\(\\frac{mn + 11}{n+1}=m+1\\) and \\(\\frac{mn+33}{n+3}=m+2\\) where \\(m=\\) mean and \\(n=\\) tests she has taken"
     },
     {
         title: `AMC 10B 2022 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         used: false,
         text: `Define \\(x \\diamond y\\) to be \\(|x-y|\\) for all real numbers \\(x\\) and \\(y\\). What is the value of
         $$
@@ -1880,14 +1880,14 @@ rating: 800,
 star
 </span>`,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         used: false,
         text: `What is the value of 
         $$
         \\frac{(1+\\frac{1}{3})(1+\\frac{1}{5})(1+\\frac{1}{7{}})}{\\sqrt{(1-\\frac{1}{3^2})(1-\\frac{1}{5^2})(1-\\frac{1}{7^2})}}?
         $$
         `,
-        type: "mc", 
+        type: "mc",
         choices: ["\\(A) \\sqrt{3}\\)", "\\(B) 2\\)", "\\(C) \\sqrt{15}\\)", "\\(D) 4\\)", "\\(E) \\sqrt{105}\\)"],
         answer: "\\(B) 2\\)",
         solution: `<b>2</b><p>Realistically, you don't need to solve this in some eloquent and complicated way, as simple brute force solving could be quicker. This explanation will not delve into the details of how to do brute force, since
@@ -1934,7 +1934,7 @@ star
 star
 </span>`,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         used: false,
         text: `For how many values of the constant \\(k\\) will the polynomial \\(x^2+kx+36\\) have two distinct integer roots?`,
         answer: "8",
@@ -1950,9 +1950,9 @@ rating: 1000,
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         used: false,
         type: `mc`,
         choices: ["\\(A) 2020\\)", "\\(B) 2021\\)", "\\(C) 2022\\)", "\\(D) 2023\\)", "\\(E) 2024\\)"],
@@ -1974,7 +1974,7 @@ exclamation
         topic: "induction",
         hint: "Is there any pattern to the sums of \\(\\frac{n-1}{n!}\\)",
         step: "List the sums of the first \\(1, 2, 3\\) etc. values"
-    }, 
+    },
     {
         title: `AMC 10B 2022 Problem 15 <span class="material-symbols-outlined">
 star
@@ -1984,7 +1984,7 @@ star
 star
 </span>`,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         used: false,
         type: "fr",
         text: "Let \\(S_{n}\\) be the sum of the first \\(n\\) terms of an arithmetic sequence that has a common difference of \\(2\\). The quotient \\(\\frac{S_{3n}}{S_{n}}\\) does not depend on \\(n\\). What is \\(S_{20}\\)?",
@@ -2036,7 +2036,7 @@ star
 star
 </span>`,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         used: false,
         type: "fr",
         text: `Let \\(P(x)\\) be a polynomial with rational coefficients such that when \\(P(x)\\) is divided by the polynomial \\(x^2+x+1\\), the remainder is \\(x+2\\), and when \\(P(x)\\) is divided by
@@ -2119,7 +2119,7 @@ star
 star
 </span>`,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         used: false,
         text: `<p>Consider functions \\(f\\) that satisfy</p>
         $$
@@ -2132,7 +2132,7 @@ rating: 1600,
         `,
         type: "mc",
         choices: ["\\(A) 25\\)", "\\(B) 50\\)", "\\(C) 100\\)", "\\(D) 150\\)", "\\(E) 200\\)"],
-        answer:  "\\(B) 50\\)" ,
+        answer: "\\(B) 50\\)",
         solution: `<b>50</b><p>The first thing I would do is substitute \\(x\\) and \\(y\\) for \\(x_{1}\\) and \\(x_{2}\\), because in terms of functions, \\(y\\) can get confused for the output, which we don't want. You'll find out why later</p>
         <p>We start by dividng \\(|x_{1}-x_{2}|\\) on both sides, giving us</p>
         $$
@@ -2155,16 +2155,16 @@ rating: 1600,
         exactly \\(100\\) away from the input for \\(a\\). Since we want the greatest difference, we want one to be greater than \\(a\\) and one to be smaller. We also want the change from \\(a\\) to \\(f(800/400)\\) to be as large as possible, so we use the largest possible slope, which we know is \\(\\pm \\frac{1}{2}\\). Since the difference is \\(100\\) between \\(300\\) and \\(400\\), we can say the output goes down by
         \\(50\\) and the same for the other two, making the maximum distance \\(100\\). Now, we input that into our equation \\(|f(f(800))-f(f(400))| \\le \\frac{1}{2}|f(800)-f(400)|\\) so we know that the final answer is \\(50\\).</p>
         `,
-        topic: "functions and graphing", 
+        topic: "functions and graphing",
         hint: "How can you relate this to the slope formula to predict the value of \\(f(x)\\)?",
         step: "Input \\(f(800)\\) and \\(f(400\\) as the inputs for \\(x\\) and \\(y\\), then find the maximum value of \\(f(800)-f(400)\\)"
-    }, 
+    },
     {
         title: `AMC 10A 2022 Problem 1 <span class="material-symbols-outlined">
 star
 </span>`,
         difficulty: 1,
-rating: 800, 
+        rating: 800,
         used: false,
         text: `<p>What is the value of</p>
         $$
@@ -2199,16 +2199,16 @@ rating: 800,
         step: "Solve by brute force and arithmetic using the rules for fractions"
     },
     {
-    title: `AMC 10A 2022 Problem 2 <span class="material-symbols-outlined">
+        title: `AMC 10A 2022 Problem 2 <span class="material-symbols-outlined">
 star
 </span>`,
-    difficulty: 1,
-rating: 800,
-    used: false,
-    text: `Mike cycled \\(15\\) laps in \\(57\\) minutes. Assume he cycled at a constant speed throughout. Approximately how many laps did he complete in the first \\(27\\) minutes?`,
-    type: `mc`,
-    choices: ["\\(A) 5\\)", "\\(B) 7\\)", "\\(C) 9\\)", "\\(D) 11\\)", "\\(E) 13\\)"],
-    solution: `<b>7</b><p>We can denote Mike's speed as \\(s\\), which is equal to the distance he coverd divided by time, or \\(\\frac{15}{57}\\). To find the distance he traveled, we multiply speed by time and solve:</p>
+        difficulty: 1,
+        rating: 800,
+        used: false,
+        text: `Mike cycled \\(15\\) laps in \\(57\\) minutes. Assume he cycled at a constant speed throughout. Approximately how many laps did he complete in the first \\(27\\) minutes?`,
+        type: `mc`,
+        choices: ["\\(A) 5\\)", "\\(B) 7\\)", "\\(C) 9\\)", "\\(D) 11\\)", "\\(E) 13\\)"],
+        solution: `<b>7</b><p>We can denote Mike's speed as \\(s\\), which is equal to the distance he coverd divided by time, or \\(\\frac{15}{57}\\). To find the distance he traveled, we multiply speed by time and solve:</p>
     $$
     \\frac{15}{57} \\cdot 27
     $$
@@ -2219,17 +2219,17 @@ rating: 800,
     \\approx 7
     $$
     `,
-    answer: "\\(B) 7\\)",
-    topic: "speed-distance-time",
-    hint: "Start by finding his speed",
-    step: "Find Mike's speed (distance divided by time)"
-    }, 
+        answer: "\\(B) 7\\)",
+        topic: "speed-distance-time",
+        hint: "Start by finding his speed",
+        step: "Find Mike's speed (distance divided by time)"
+    },
     {
         title: `AMC 10A 2022 Problem 3 <span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         used: false,
         text: `The sum of three numbers is \\(96\\). The first number is \\(6\\) times the third number,
         and the third number is \\(40\\) less than the second number. What is the absolute value ofthe difference beween the 
@@ -2269,7 +2269,7 @@ rating: 1200,
         topic: "systems of equations",
         hint: "Use variables to show the relationship between the numbers?",
         step: "Write equations to describe every rule listed in the question"
-    
+
     },
     {
         title: `AMC 10A 2022 Problem 4 <span class="material-symbols-outlined">
@@ -2277,16 +2277,16 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `In some countries, automobile fuel efficiency is measured in liters per \\(100\\) kilometers while other countries use miles per gallon.
         Suppose that \\(1\\) kilometer equals \\(m\\) miles, and \\(1\\) gallon equals \\(l\\) liters. Which of the following gives the fuel efficiency in liters per \\(100\\) kilometers for 
         a car that gets \\(x\\) miles per gallon?`,
-        type: 'mc', 
+        type: 'mc',
         choices: ["\\(A) \\frac{x}{100lm}\\)", "\\(B) \\frac{xlm}{100}\\)", "\\(C) \\frac{lm}{100x}\\)", "\\(D) \\frac{100}{xlm}\\)", "\\(E) \\frac{100lm}{x}\\)"],
         solution: `<b>\\(\\frac{100lm}{x}\\)</b><p>We know that a car that gets \\(x\\) miles per gallon needs \\(\\frac{100}{x}\\) gallons to go \\(100\\) miles. If one gallon is equal to \\(l\\) miles, we multiply that by \\(l\\). We now have \\(\\frac{100l}{x}\\), which tells us how many liters it takes to travel \\(100\\) miles. We see only one answer that has \\(100lm\\) in the numerator
         so we know that the answer is \\(\\frac{100lm}{x}\\).`,
         answer: "\\(E) \\frac{100lm}{x}\\)",
-        topic: "word problems", 
+        topic: "word problems",
         hint: "Use logic and set up an equation to manipulate",
         step: "Find the number of gallons needed to go \\(100\\) miles"
 
@@ -2299,7 +2299,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,     
+        rating: 1000,
         text: `<p>Which expression is equal to</p>
         $$
         |a-2-\\sqrt{(a-2)^2}|
@@ -2321,10 +2321,10 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: "Ted mistakenly wrote \\(2^m \\cdot \\sqrt{\\frac{1}{4096}}\\) as \\(2 \\cdot \\sqrt[m]{\\frac{1}{4096}}\\). What is the sum of all real numbers \\(m\\) for which these two expressions have the same value?",
         type: 'fr',
         solution: `<b>7</b><p>Start by rewriting everything with a baes of \\(2\\). We can find the prime factorization of \\(4096\\) and see that it's \\(2^12\\), so \\(\\frac{1}{4096}\\) is \\(2^-12\\). We also know that
@@ -2365,15 +2365,15 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `A four term sequence is formed by adding each term of a four-term arithmetic sequence of positive integers to the corresponding term of a four-term geometric sequence
         of positive integers. The first three terms of the resulting four-term sequence are \\(57, 60\\) and \\(91\\). What
         is the fourth term in this sequence?`,
         type: "mc",
-        choices: ["\\(A) 190\\)", "\\(B) 194\\)", "\\(C) 198\\)","\\(D) 202\\)", "\\(E) 206\\)"],
+        choices: ["\\(A) 190\\)", "\\(B) 194\\)", "\\(C) 198\\)", "\\(D) 202\\)", "\\(E) 206\\)"],
         answer: "\\(E) 206\\)",
         solution: `<b>206</b><p>By definition, the terms in the arithmetic series can be written as \\(x, x+d, x+2d, x+3d\\), and the terms of the geometric
         series can be written as \\(y, yr, yr^2, yr^3 \\). Thus, the terms of the four term arithmetic series are as follows:</p>
@@ -2447,7 +2447,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: "What is the value of \\(1234+2341+3412+4123\\)?",
         solution: `<b>11110</b><p>With something like this, it's simply easier to just brute force your way through. Add the values and find that it is \\(11110\\).</p>
         <p><b>Solution by Fluffy1234</b><p>
@@ -2472,7 +2472,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) where \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
         type: "fr",
         solution: `<b>4041</b><p>This is also a situation where brute forcing may be easier than finding and rationalizing a solution</p>
@@ -2492,8 +2492,8 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
-        text:`At noon on a certain day, Minneapolis is \\(N\\) degrees warmer than St. Louis. At \\(4:00\\) the temperature in Minneapolis has fallen by 
+        rating: 800,
+        text: `At noon on a certain day, Minneapolis is \\(N\\) degrees warmer than St. Louis. At \\(4:00\\) the temperature in Minneapolis has fallen by 
         \\(5\\) degrees while the temperature in St. Louis has risen by \\(3\\) degrees, at which time the temperatures in the two cities differ by \\(2\\) degrees.
         What is the product of all possible values of \\(N\\).`,
         type: "fr",
@@ -2514,7 +2514,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `The knights in a certain kingdom come in two colors. \\(\\frac{2}{7}\\) of them are red, and the rest are blue. Furthermore, \\(\\frac{1}{6}\\) of the knights are magical, 
         and the fraction of red knights who are magical is \\(2\\) times the fraction of blue knights who are magical. What fraction of red knights are magical?`,
         type: "mc",
@@ -2545,7 +2545,7 @@ rating: 1000,
         answer: "\\(C) \\frac{7}{27}\\)",
         topic: "word problems",
         hint: "What 4 cattegories can we divide the knights into? How many are in each cattegory?",
-        step:  "Try breaking this down into cattegories: Magical Red Knights, Nonmagical Red Knights, Magical Blue Knights, Non Magical Blue Knights. You might not have to calculate each one, but look at those instead of Red and Blue vs Magic and Non-Magic",
+        step: "Try breaking this down into cattegories: Magical Red Knights, Nonmagical Red Knights, Magical Blue Knights, Non Magical Blue Knights. You might not have to calculate each one, but look at those instead of Red and Blue vs Magic and Non-Magic",
     },
     {
         title: `AMC 10B Fall 2021 Problem 22 <span class="material-symbols-outlined">
@@ -2560,8 +2560,8 @@ star
 star
 </span>`,
         difficulty: 5,
-rating: 1600,
-        used: false,   
+        rating: 1600,
+        used: false,
         text: `For each integer \\(n \\ge 2\\), let \\(S_{n}\\) be the sum of all products \\(jk\\), where \\(j\\) and \\(k\\) are integers and
         \\(1 \\le j < k \\le n\\). What is the sum of the \\(10\\) least values of \\(n\\) such that \\(S_{n}\\) is divisible by \\(3\\)?`,
         type: "mc",
@@ -2586,7 +2586,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `What is the value of \\(\\frac{(2112-2021)^2}{169}\\)?`,
         type: "fr",
         solution: `<b>49</b><p>This is a simple enough equation to solve by brute force:</p>
@@ -2612,7 +2612,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `Mr. Lopez has a choice of two routes to get to work. Route A is \\(6\\) miles long, and his average speed along this route is \\(30\\) miles per hour. Route
         B is \\(5\\) miles long, and his average speed along this route is \\(40\\) miles per hour, except for a \\(\\frac{1}{2}\\) mile stretch in a school zone
         where his average speed is \\(20\\) miles per hour. By how many minutes is Routbe B quicker than Route A?`,
@@ -2675,7 +2675,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Elmer the emu takes\\(44\\) equal strides to walk between consecutive telephone poles on a rural road. Oscar the ostritch can cover the same distance in \\(12\\) equal leaps.
         The telephone poles are evenly spaced, and the \\(41\\)st pole along this road is exactly one mile ((\\5280\\) feet) from the first pole. How much longer, in feet, is Oscar's leap than Elmer's stride?`,
         type: "fr",
@@ -2717,10 +2717,10 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Emily sees a ship traveling at a constant speed along a straight section of a river. She walks parallel to the riverbank at a uniform rate faster than 
         the ship. She counts \\(210\\) equal steps walking frm the back of the ship to the front. Walking in the opposite direction, she counts \\(42\\) steps of the same
         size from the front of the ship to the back. in terms of Emily's equal steps, what is the length of the ship?`,
@@ -2757,7 +2757,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200, 
+        rating: 1200,
         answer: "5",
         text: `<p>How many ordered pairs \\((x,y)\\) of real numbers satisfy the following system of equations?</p>
         $$
@@ -2812,14 +2812,14 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `<p>The graph of</p>
         $$
         f(x) = |\\lfloor x \\rfloor | - | \\lfloor 1 - x \\rfloor |
         $$
         <p>is synmetric about which of the following? (Here \\(\\lfloor x \\rfloor\\) is the greatest integer not exceeding \\(x\\).)</p>`,
         type: "mc",
-        choices: ["\\(A)\\) the \\(y\\)-axis", "\\(B)\\) the line \\(x=1\\)", "\\(C)\\) the origin", "\\(D)\\) the point \\((\\frac{1}{2}, 0)\\)"," \\(E)\\) the point \\((0,0)\\)" ],
+        choices: ["\\(A)\\) the \\(y\\)-axis", "\\(B)\\) the line \\(x=1\\)", "\\(C)\\) the origin", "\\(D)\\) the point \\((\\frac{1}{2}, 0)\\)", " \\(E)\\) the point \\((0,0)\\)"],
         solution: `<b>the point \\((\\frac{1}{2}, 0)\\)"</b><p>Evaluate the terms seperately. We know that \\(\\lfloor x \\rfloor \\) is symetric about the origin . However, when we take the absolute value of that, function, the resulting image is similar to combining the floor function and the
         absolute value function. Essentially, we keep everything in Quadrant 1 and make it symetric about the \\(y\\)-axis instead.</p>
         <p>For \\(-| \\lfloor 1-x \\rfloor |\\) we follow the same process and attempt to conceptualize how it looks. \\(\\lfloor 1-x \\rfloor \\) is just the standard floor function with a negative slope and shifted to the right. 
@@ -2839,10 +2839,10 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `For how many ordered pairs \\((b,c)\\) of positive integers does neither \\(x^2+bx+c=0\\) nor \\(x^2+cx+b=0\\) have two distinct real solutions?`,
         used: false,
         type: "fr",
@@ -2868,7 +2868,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `How many integer values of \\(x\\) satisfy \\(|x| < 3\\pi\\)?`,
         solution: '<b>19</b><p>We know that \\(3 \\pi \\approx 9\\). Thus, \\(x\\) can be all values between \\(-9\\) and \\(9\\), inclusive. We count or just use logic and find that there are \\(19\\) such values</p>',
         answer: "19",
@@ -2883,9 +2883,9 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         type: "mc",
-        choices: ["\\(A) 0\\)", "\\(B) 4\\sqrt{3} -6 \\)", "\\(C) 6\\)", "\\(D) 4 \\sqrt{3}\\)", "\\(E) 4\\sqrt{3} +6 \\)" ],
+        choices: ["\\(A) 0\\)", "\\(B) 4\\sqrt{3} -6 \\)", "\\(C) 6\\)", "\\(D) 4 \\sqrt{3}\\)", "\\(E) 4\\sqrt{3} +6 \\)"],
         text: `What is the value of \\(\\sqrt{(3-2\\sqrt{3})^2}+\\sqrt{(3+2\\sqrt{3})^2}\\)?`,
         answer: "\\(D) 4 \\sqrt{3}\\)",
         solution: `<b>\\(4 \\sqrt{3}\\)</b><p>At first, it may seem intuitive to ignore the squaring and root and just solve, because those take the inverses, right? Not exactly.</p>
@@ -2910,7 +2910,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `In an after-school program for juniors and seniors, there is a debate team with equal numbers of students from each class on team. Among \\(28\\) students in the program,
         \\(25%\\) of juniors and \\(10%\\) of the seniors are on the debate team. How many juniors are in the program?`,
         type: "fr",
@@ -2939,7 +2939,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `At a math contest, 57 students are wearing blue shirts, and another 75 students are wearing yellow shirts. The 132 students are assigned into 66 pairs. 
         In exactly 23 of these pairs, both students are wearing blue shirts. In how many pairs are both students wearing yellow shirts?`,
         type: `fr`,
@@ -2958,7 +2958,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Mr. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is \\(84\\), and the afternoon class's mean score is \\(70\\). The ratio of the number of students in the 
         morning class to the number of students in the afternoon class is \\(\\frac{3}{4}). What is the mean of the scores of all the students.`,
         type: `fr`,
@@ -2980,7 +2980,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `The real number \\(x\\) satisfies the equation \\(x+ \\frac{1}{x} = \\sqrt{5}\\). What is the value of \\(x^11-7x^7+x^3)?`,
         type: `mc`,
         choices: ["\\(A) -1\\)", "\\(B) 0\\)", "\\(C) 1\\)", "\\(D) 2\\)", "\\(E) \\sqrt{5} \\)"],
@@ -3041,7 +3041,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Suppose that \\(S\\) is a fininte set of positive integers. If the greatest integer in \\(S\\) is removed from \\(S\\), then the average value (arithmetic mean) of the integers
         remaining is \\(32\\). If the least integer in \\(S\\) is also removed, then the average value of the integers remaining is \\(35\\). If the greatest integer is then returned to the set, the average
         value of the integers rises to \\(40\\). The greatest integer in the original set of \\(S\\) is \\(72\\) greater than the least integer \\(S\\). What is the average value
@@ -3105,7 +3105,7 @@ rating: 1400,
         $$
         `,
         topic: "algebraic manipulation",
-        answer:"36.8",
+        answer: "36.8",
         hint: "How can you change the averages equation to account for the different scenarios listed",
         step: "Call the sum of all values in \\(S\\), \\(s\\). Call the largest value \\(x\\) and the smallest value \\(y\\). Call the number of values in \\(S\\), \\(n\\). We can set up the following equations:</p> \\(\\frac{s-x}{n-1}=32\\), \\(\\frac{s-x-y}{n-2}=35\\),\\(\\frac{s-y}{n-1}=40\\), \\(x-y=72\\)"
     },
@@ -3114,7 +3114,7 @@ rating: 1400,
 star
 </span>`,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         used: false,
         text: `Portia's high school has \\(3\\) times as many students as Lara's high school. The two high schools have a total of 
         \\(2600\\) students. How many students does Portia's highschool have?`,
@@ -3146,7 +3146,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `A cart rolls down a hill, traveling \\(5\\) inches the first second and accelerating so that during each successive \\(1\\) second time interval, it travels \\(7\\) inches more than during the previous \\(1\\) second interval.
         The card takes \\(30\\) seconds to reach the bottom of the hill. How far, in inches, does it travel?`,
         type: 'fr',
@@ -3173,7 +3173,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `The quiz scores of a class with \\(k>12\\) students have  a mean of \\(8\\). The mean of a collection of \\(12\\) of these quiz scores is \\(14\\). What is the mean of the reamining 
         quiz scores in terms of \\(k\\)?`,
         solution: `<b></b><p>We know that the sum of the \\(12\\) scores who averaged \\(14\\) is \\(12 \\cdot 14 = 168\\). Likewise, we know that the sum of all of the tests is \\(8k\\). The average of the reamining tests is the sum of the remaining test scores divided by \\(k-12\\).</p>
@@ -3182,7 +3182,7 @@ rating: 800,
         \\frac{8k-168}{k-12}
         $$`,
         type: "mc",
-        choices: [ `\\(A) \\frac{14-8}{k-12} \\)`,  `\\(B) \\frac{8k-168}{k-12} \\)`,  `\\(C) \\frac{14}{2}-\\frac{8}{k} \\)`,  `\\(D) \\frac{14(k-12)}{k^2} \\)`,  `\\(E) \\frac{14(k-12)}{8k} \\)`],
+        choices: [`\\(A) \\frac{14-8}{k-12} \\)`, `\\(B) \\frac{8k-168}{k-12} \\)`, `\\(C) \\frac{14}{2}-\\frac{8}{k} \\)`, `\\(D) \\frac{14(k-12)}{k^2} \\)`, `\\(E) \\frac{14(k-12)}{8k} \\)`],
         answer: `\\(B) \\frac{8k-168}{k-12} \\)`,
         topic: `algebraic manipulation`,
         hint: "What is the sum of the scores minus the sum of the \\(12\\) scores that average to \\(14\\)? How many students are left? How can you use those to find the average?",
@@ -3196,7 +3196,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Chantal and Jean start hiking from a trailhead toward a fire tower. Jean is wearing a heavy backpack and walks slower. Chantal starts walking at \\(4\\) miles per hour. Halfway to the tower, the trail
         becomes really steep, and Chantal slows down to \\(2\\) miles per hour. After reaching the tower, she immediately turns around and descends the steep part of the trail at \\(3\\) miles per hour. She meets Jean at the halfway point.
         What was Jean's average speed, in miles per hour, until they met.`,
@@ -3226,7 +3226,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `What is the least possible value of \\((xy-1)^2+(x+y)^2\\) for real numbers \\(x\\) and \\(y\\)?`,
         type: `mc`,
         choices: ["\\(A) 0\\)", "\\(B) \\frac{1}{4}\\)", "\\(C) \\frac{1}{2}\\)", "\\(D) 1\\)", "\\(E) 2\\)"],
@@ -3258,10 +3258,10 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `All the roots of the polynomial \\(z^6-10z^5+Az^4+Bz^3+Cz^2+Dz+16\\) are positive integers, possibly repeated. What is the value of \\(B\\)?`,
         solution: `<b></b><p>By Vieta's rules, we know that the product of all \\(6\\) factors is \\(16\\). If this intuition doesn't make sense, try messing around with basic quadratics and factoring for a bit.</p>
         <p>We find the prime factorization of \\(16\\), which ends up being \\(2^4\\), so there are \\(5\\) factors to work with these being \\(1, 2, 4, 8,\\) and \\(16\\).</p>
@@ -3296,7 +3296,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `<p>In the following list of numbers, the integer \\(n\\) appears \\(n\\) times in the list for \\(1 \\le n \\le 200\\).</p>
         $$
         1, 2, 2, 3, 3, 3, 4, 4, 4, 4,  ..., 200, 200, ..., 200
@@ -3339,10 +3339,10 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         type: 'mc',
         choices: ["\\(A) \\frac{17}{32}\\)", "\\(B) \\frac{11}{16}\\)", "\\(C) \\frac{7}{9}\\)", "\\(D) \\frac{7}{6}\\)", "\\(E) \\frac{25}{11}\\)"],
         text: `Let \\(f\\) be a function defined on the set of positive rational numbers with the property that \\(f(a \\cdot b) = f(a)+f(b)\\) for all the 
@@ -3397,7 +3397,7 @@ star
 star
 </span>`,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         used: false,
         type: 'mc',
         choices: ['\\(A) 18\\)', '\\(B) 27\\)', '\\(C) 36\\)', '\\(D) 45\\)', '\\(E) 54\\)'],
@@ -3487,7 +3487,7 @@ star
 star
 </span>`,
         difficulty: 5,
-rating: 1600, 
+        rating: 1600,
         used: false,
         type: `mc`,
         choices: ["\\(A) 10\\)", "\\(B) 13\\)", "\\(C) 15\\)", "\\(D) 17\\)", "\\(E) 20\\)"],
@@ -3509,7 +3509,7 @@ rating: 1600,
 star
 </span>`,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         used: false,
         type: 'fr',
         text: `<p>What is the value of \\(1-(-2)-3-(-4)-5-(-6)\\)?</p>`,
@@ -3535,14 +3535,14 @@ star
         text: 'The ratio of \\(w\\) to \\(x\\) is \\(4:3\\), the ratio of \\(y\\) to \\(z\\) is \\(3:2\\) and the ratio of \\(z\\) to \\(x\\) is \\(1:6\\). What is the ratio of \\(w:y\\)?',
         type: 'mc',
         choices: ['\\(A) 4:3\\)', '\\(B) 3:2\\)', '\\(C) 8:3\\)', '\\(D) 4:1\\)', '\\(E) 16:3\\)'],
-        solution:`<b>16:3</b><p>We can write \\(y:x\\) as \\(3:2:1:6\\), or \\(1:4\\). Thus, \\(x:y\\) is \\(4:1\\). This means that \\(w:y\\) is \\(4:3:4:1\\) or \\(16:3\\)`,
+        solution: `<b>16:3</b><p>We can write \\(y:x\\) as \\(3:2:1:6\\), or \\(1:4\\). Thus, \\(x:y\\) is \\(4:1\\). This means that \\(w:y\\) is \\(4:3:4:1\\) or \\(16:3\\)`,
         answer: '\\(E) 16:3\\)',
         topic: "ratios",
         used: false,
         difficulty: 1,
-rating: 800,
-hint: "Try writing out the relations in the variables before you use numbers, and then substitue everything in",
-step: "Write \\(y:x\\) as \\(3:2:1:6\\)"
+        rating: 800,
+        hint: "Try writing out the relations in the variables before you use numbers, and then substitue everything in",
+        step: "Write \\(y:x\\) as \\(3:2:1:6\\)"
     },
     {
         title: `AMC 10B 2020 Problem 9 <span class="material-symbols-outlined">
@@ -3552,7 +3552,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `How many ordered pairs of integers \\((x,y)\\) satisfy the equation \\(x^2020 + y^2 =2y\\)?`,
         type: 'fr',
         solution: `<b>4</b>Rearrange all the terms onto one side</p>
@@ -3586,7 +3586,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `<p>What is the value of</p>
         $$
         x=\\frac{3}{4}+\\frac{5}{12}-\\frac{1}{3}?
@@ -3617,7 +3617,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800, 
+        rating: 800,
         text: `The numbers \\(3, 5, 7, a\\) and \\(b\\) have an average (arithmetic mean) of \\(15\\). What is the average of \\(a\\) and \\(b\\)?`,
         type: 'fr',
         solution: '<b></b><p>The sum of the \\(5\\) values must be equal to \\(15 \\cdot 5=75\\). If we subtract \\(3,5, \\) and \\(7\\), we can find \\(a+b=75-3-5-7=60\\). The average of \\(a\\) and \\(b\\) is equal to \\(\\frac{a+b}{2}=\\frac{60}{2}=30\\).</p>',
@@ -3632,14 +3632,14 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800, 
+        rating: 800,
         text: `<p>Assuming \\(a \\neq 3, b \\neq 4, c \\neq 5\\), what is the value in simplest form of the following expression?</p>
         $$
         \\frac{a-3}{5-c} \\cdot \\frac{b-4}{3-a} \\cdot \\frac{c-5}{4-b}
         $$
         `,
         type: 'mc',
-        choices: ['\\(A) -1\\)', '\\(B) 1\\)', '\\(C) \\frac{abc}{60}\\)', '\\(D) \\frac{1}{abc}-\\frac{1}{60}\\)', '\\(E) \\frac{1}{60}-\\frac{1}{abc}\\)' ],
+        choices: ['\\(A) -1\\)', '\\(B) 1\\)', '\\(C) \\frac{abc}{60}\\)', '\\(D) \\frac{1}{abc}-\\frac{1}{60}\\)', '\\(E) \\frac{1}{60}-\\frac{1}{abc}\\)'],
         solution: `<b>-1</b><p>Notice that \\(a-3 = -(3-a)\\), \\(b-4=-(4-b)\\), and \\(c-5=-(5-c)\\). Using this, we eliminate via cross multiplication. We end up with \\(-1^3=-1\\)</p>`,
         answer: '\\(A) -1\\)',
         topic: 'algebraic manipulation',
@@ -3652,16 +3652,16 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `A driver travels for \\(2\\) hours at \\(60\\) miles per hour, during which her car gets \\(30\\) miles per gallon of 
         gasoline. She is paid \\($0.5\\) per mile, and her only expense is gasoline, at \\($2.00\\) per gallon. What is her net rate of pay, in dollars per hour, after this expense?`,
         type: 'fr',
         solution: `<b>26</b><p>The driver travels \\(2 \\cdot 60=120\\) miles and earns \\(120 \\cdot 0.5=$60\\). Her car uses \\(\\frac{120}{30}=4\\) gallons of gas which costs her \\(4 \\cdot 2=$8\\). She thus made \\(60-8=$52\\) dollars over the course of the 
     \\(2\\)hours. We divide this by \\(2\\) to get the dollars per hour, which is \\($26\\). `,
-    answer: '26',
-    topic: 'speed-distance-time',
-    hint: "Use rates to find the distance traveled before finding the cost",
-    step: "Multiply the time by speed to find the distance she travels"
+        answer: '26',
+        topic: 'speed-distance-time',
+        hint: "Use rates to find the distance traveled before finding the cost",
+        step: "Multiply the time by speed to find the distance she travels"
     },
     {
         title: `AMC 10A 2020 Problem 5 <span class="material-symbols-outlined">
@@ -3669,7 +3669,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `<p>What is the sum of all real numbers \\(x\\) for which</p>
         $$
         |x^2-12x+34|=2
@@ -3710,7 +3710,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         type: 'fr',
         text: `<p>What is the value of </p>
         $$
@@ -3762,7 +3762,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         type: 'mc',
         text: `What is the median of the following list of \\(4040\\) numbers?
         $$
@@ -3790,7 +3790,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         type: 'mc',
         choices: ['\\(A) 360\\)', '\\(B) 400\\)', '\\(C) 420\\)', '\\(D) 440\\)', '\\(E) 480\\)'],
         text: `<p>Real numbers \\(x\\) and \\(y\\) satisfy \\(x+y=4\\) and \\(x \\cdot y = -2\\). What is the value of</p>
@@ -3861,7 +3861,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `<p>There exists a unique strictly increasing sequence of nonnegative integers \\(a_{1} < a_{2}} < ... < a_{k}}\\) such that 
         </p>
         $$
@@ -3895,40 +3895,40 @@ rating: 1600,
 
 function getNextQuestion(questions, userRating) {
 
-  let available = questions.filter(
-    q => !q.used && Math.abs(q.rating - userRating) < 100
-  );
-
-  if (available.length === 0) {
-    available = questions.filter(q => !q.used);
-  }
-
-  if (available.length === 0) {
-    questions.forEach(q => q.used = false);
-
-    available = questions.filter(
-      q => Math.abs(q.rating - userRating) < 100
+    let available = questions.filter(
+        q => !q.used && Math.abs(q.rating - userRating) < 100
     );
 
     if (available.length === 0) {
-      available = questions;
+        available = questions.filter(q => !q.used);
     }
-  }
 
-  // 4. Pick best match (not first!)
-  let best = available[0];
-  let bestDiff = Math.abs(userRating - best.rating);
+    if (available.length === 0) {
+        questions.forEach(q => q.used = false);
 
-  for (const q of available) {
-    const diff = Math.abs(q.rating - userRating);
-    if (diff < bestDiff) {
-      best = q;
-      bestDiff = diff;
+        available = questions.filter(
+            q => Math.abs(q.rating - userRating) < 100
+        );
+
+        if (available.length === 0) {
+            available = questions;
+        }
     }
-  }
 
-  best.used = true;
-  return best;
+    // 4. Pick best match (not first!)
+    let best = available[0];
+    let bestDiff = Math.abs(userRating - best.rating);
+
+    for (const q of available) {
+        const diff = Math.abs(q.rating - userRating);
+        if (diff < bestDiff) {
+            best = q;
+            bestDiff = diff;
+        }
+    }
+
+    best.used = true;
+    return best;
 }
 
 shuffleArray(questions);
@@ -3943,7 +3943,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Points \\(P\\) and \\(Q\\) lie in a plane with \\(PQ=8\\). How many locations for point \\(R\\) in this plane are there such that the triangle with vertices \\(P, Q,\\) and \\(R\\) is a right triangle with 
         area \\(12\\) square units?`,
         type: 'mc',
@@ -3951,7 +3951,7 @@ rating: 1000,
         answer: '\\(C) 8\\)',
         solution: `<b>8</b><p>\\(PQ\\) is a leg or a hypotenuse. If it is a leg, there are \\(4\\) places. We can visualize this by putting it on the \\(y-\\) axis on a coordinate plane and finding \\(4\\) diferent places for it to go. </p>
         <p>If it is a hypotenuse, there are also \\(4\\), because it can go in either direction, and each side length is interchangeable. \\(4+4=8\\)`,
-        topic: 'triangles',  
+        topic: 'triangles',
         hint: "What are the classifications for the types of sides of a right triangle?",
         step: "Calculate the number of places \\(R\\) can go if \\(PQ\\) is a leg, and then the number of places \\(R\\) can go if \\(PQ\\) is a hypotenuse"
     },
@@ -3969,7 +3969,7 @@ star
         image: "AMC10A2025.png",
         answer: "32pi",
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         solution: `<b>\\(32\\pi\\)</b><p>The key tip of this problem is to make everything as simple as possible. We have virtually no constraints for the size of the smaller semicircle. Thus, we can manipulate it however we want. For us, the simplest solution is to ignore it by making it infitesimally small to the point where it is no longer consequential. The smaller the circle gets, the closer \\(\\overline{CD}\\) or \\(16\\) gets to the diameter. Thus, if we ignore the existence of the semicircle, the diameter becomes 16. It is easy to solve from there, because we're just finding the area of a semicircle with diameter \\(16\\).
         $$
         \\frac{16}{2}=8
@@ -4009,7 +4009,7 @@ In the figure below, the outside square contains infinitely many squares, each o
         `,
         image: "AMC10A202513.png",
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         answer: "0.75",
         solution: `<b>0.75</b><p>Since we're only dealing with ratios, we can make the dimension of the larger square whatever we want. If this weren't abour ratios, I would recommend using a variable. However, since the values don't really matter here, we can just use 1, which will make our math the easiest. The areas of the squares are then 1, \\(k^2\\) (since the side lengths are multiplied by k, and then multiplied by each other). Effectively from here on out, the area is \\(k\\) raised to the power of the-xth-largest-square-times-two. Since we know that the shading alternates, and we are solving for the shaded area, we can alternate between adding and subtracting these.</p>
         $$
@@ -4038,9 +4038,9 @@ rating: 1200,
 
 
 `,
-topic: "series",
-hint: "What kind of series can you use to model the area of the shaded squares?",
-step: "Assume the side length of the largest square is \\(1\\) and then write an infinite geometric series with \\(a_{1}=1\\) and \\(r=-k^2\\) to model the area"
+        topic: "series",
+        hint: "What kind of series can you use to model the area of the shaded squares?",
+        step: "Assume the side length of the largest square is \\(1\\) and then write an infinite geometric series with \\(a_{1}=1\\) and \\(r=-k^2\\) to model the area"
     },
     {
         title: `AMC 10A 2025 Problem 15 <span class="material-symbols-outlined">
@@ -4055,7 +4055,7 @@ star
         image: "AMC10A202515.png",
         answer: "0.375",
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         solution: `<b>0.375</b><p>My first step would be to label everything. In my drawing, I also included that \\(\\angle ACB\\) is equal to angle \\(\\angle ECD\\) by vertical angles. This also means that \\(\\triangle ABC\\) and \\(\\triangle ECD \\) are similar</p><br><img src="images/AMC10A13S1.png" style='max-width:100%; height:auto;' />
         <p>Next, let's label \\(BC\\) as \\(x\\) so that we can calculate some metric for each other side using the pythagorean theorem, \\(a^2+b^2=c^2\\).</p><br><img src="images/AMC10A13S2.png" style='max-width:100%; height:auto;' />
         <p>From here, we can use the fact that two triangles are similar to set up two ratios. We know that \\(AC\\) and \\(CE\\) are both hypotenuses to their respective triangles, and that the same is true for \\(CD\\) and \\(BC\\). Using this we can set up a ratio. Also notice that \\(CD\\) is equal to \\(5-sqrt{x^2-1}\\)</p>
@@ -4108,10 +4108,10 @@ star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-        text:"The first three terms of a geometric sequence are the integers \\(a, 720\\) and \\(b\\) where \\(a<720<b\\). What is the sum of the digits of the least possible value of \\(b\\)?",
+        text: "The first three terms of a geometric sequence are the integers \\(a, 720\\) and \\(b\\) where \\(a<720<b\\). What is the sum of the digits of the least possible value of \\(b\\)?",
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         answer: "21",
         solution: `<b>21</b><p>Just because \\(a\\) and \\(b\\) have to be integers doesn't nescessarily mean that \\(r\\), the common ratio, has to be. A common mistake would be to just find the smallest prime factor of \\(720\\) and multiply that, but if we use a smaller ratio, we can minimize \\(b\\) even further.</p>
         <p>\\(r\\) must be greater than \\(1\\) in order to fuffil the rule that \\(a<720<b\\). We can write it as a fraction \\(\\frac{y}{x}) where \\(y>x\\), but \\(y\\) and \\(x\\) are as close as possible without breaking this rule, in order to minimize \\(r\\).</p> 
@@ -4137,7 +4137,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Seven cubes whose volumes are \\(1, 8, 27, 64, 216,\\) and \\(343\\) cubic units are stacked vertically to form a tower in which the volumes of the cubes decrease from bottom to top. Except for the bottom cube, the bottom face
         of each cube lines completely on top of the cube below it. What is the total surface area of the tower, including the bottom, in square units?`,
         type: 'fr',
@@ -4174,7 +4174,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: 'Triangle \\(AMC\\) is isoceles with \\(AM = CM\\). Medians \\(\\overline{MV}\\) and \\(\\overline{CU}\\) are perpendicular to each other, and \\(MV=CU=12\\). What is the area of \\(\\triangle AMC\\)?',
         image: "amc10202012.png",
         solution: `<b>96</b><p>By median theorem, we know that \\(\\overline{PC} = 2\\overline{UP}\\) and \\(\\overline{MP}=2\\overline{VP}\\) and also that \\(\\overline{PC}+\\overline{UP}=\\overline{MP}+\\overline{VP}=12\\).</p>
@@ -4195,7 +4195,7 @@ rating: 1200,
 
     },
     {
-     title: `AMC 10A 2020 Problem 19 <span class="material-symbols-outlined">
+        title: `AMC 10A 2020 Problem 19 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -4204,14 +4204,14 @@ star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-     used: false,
-     difficulty: 4,
-rating: 1400,
-     text: `As shown in the figure below, a rectangular dodecahedron (the polyhedron consisting of \\(12\\) congruent rectangular pentagonal faces) floats in space with two horizontal faces. Note
+        used: false,
+        difficulty: 4,
+        rating: 1400,
+        text: `As shown in the figure below, a rectangular dodecahedron (the polyhedron consisting of \\(12\\) congruent rectangular pentagonal faces) floats in space with two horizontal faces. Note
      that there is a ring of five slanted faces adjacent to the top face, and a ring of five slanted faces adjacent to the bottom face.How many ways are there
      to move from the top face to the bottom face via a sequence of adjacent faces so that each face is visited at  most once and moves are not permitted from the bottom ring to the top ring.</p>`,
-     image: "amc10202019.png",
-     solution: `<b>810</b>Your first move gives you \\(5\\) choices to go to. If you continue going around the top, you can go in \\(2\\) directions, with each direction having \\(3\\) possibilites of where you stop. We can also go straigt down, which adds another possibilityThere are
+        image: "amc10202019.png",
+        solution: `<b>810</b>Your first move gives you \\(5\\) choices to go to. If you continue going around the top, you can go in \\(2\\) directions, with each direction having \\(3\\) possibilites of where you stop. We can also go straigt down, which adds another possibilityThere are
      \\(5 \\cdot 3\\ cdot 3= 45\\) ways to go through the top row. After that, there are \\(2\\) different plcaes to start the bottom ring at. After this, it's just the same \\(3 \\cdot 3\\), which means \\(2 \\cdot 3 \\cdot 3\\) or \\(18\\) ways to complete bottom row. 
      \\(18 \\cdot 45 = 810\\)</p>
      <h3>Common Mistake <span class="material-symbols-outlined">
@@ -4223,12 +4223,12 @@ exclamation
 </span></h3>
      <p>Don't waste time counting how many ways you can go. Not only is it a waste of time and difficult to keep track of, you should be able to tell by the answer choices that it just isn't convenient. Instead, blend probability and counting into geometry to optimize your answer.</p>
      `,
-     type: 'mc',
-     choices: ['\\(A) 125\\)', '\\(B) 250\\)', '\\(C) 405\\)', `\\(D) 640\\)`, '\\(E) 810\\)'],
-     answer: '\\(E) 810\\)',
-     topic: 'counting',
-     hint: "Calculate the number of places you can go after each move",
-     step: "You start with \\(5\\) options. Going around the top gives you \\(2\\) directions with \\(3\\) posibilities. Follow the same logic to find more paths!"
+        type: 'mc',
+        choices: ['\\(A) 125\\)', '\\(B) 250\\)', '\\(C) 405\\)', `\\(D) 640\\)`, '\\(E) 810\\)'],
+        answer: '\\(E) 810\\)',
+        topic: 'counting',
+        hint: "Calculate the number of places you can go after each move",
+        step: "You start with \\(5\\) options. Going around the top gives you \\(2\\) directions with \\(3\\) posibilities. Follow the same logic to find more paths!"
     },
     {
         title: `AMC 10A 2020 Problem 20 <span class="material-symbols-outlined">
@@ -4242,7 +4242,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Quadrilateral \\(ABCD\\) satisfies \\(\\angle ABC = 90^\\circ\\), \\(AC = 20\\), and \\(CD = 30\\).
         Diagonals \\(\\overline{AC}\\) and \\(\\overline{BD}\\) intersect at point \\(E\\) and \\(AE = 5\\). What is the area of quadrilateral \\(ABCD\\)?`,
         solution: `<b></b><p>I just wanted to point out that the first thing I personally noticed was that \\(ABCD\\) is NOT a rectangle so we can't force simplify. This is because, had it been a rectangle, we could split it into two right triangles, but \\(AE\\) is not long enough to be the hypotenuse.</p>
@@ -4274,14 +4274,14 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Let \\(T\\) be the triangle with verticies at \\((0,0), (4,0)\\) and \\((0,3)\\). Consider the following five isometries (rigid transformations) of the plane:
         rotations of \\(90^\\circ, 180^\\circ\\), and \\(270^\\circ\\) about the origin and reflections across the \\(x\\) and \\(y\\) axis. How many of the \\(125\\) sequences of three of these transformations
         (not nescessarily distinct) will return \\(T\\) to its original position? (For example a \\(180^\\circ\\) rotation, followed by a reflection across the \\(x-axis\\), and followed by a
         reflection across the \\(y\\)-axis will return \\(T\\) to its original position but a \\(90^\\circ\\) rotation followed by a reflection across the \\(x\\)-axis, followed by another reflection across the
         \\(x\\)-axis will not return \\(T\\) to its original position.) `,
         type: 'mc',
-        choices: ['\\(A) 12\\)', '\\(B) 15\\)', '\\(C) 17\\)', '\\(D) 20\\)', '\\(E) 25\\)' ],
+        choices: ['\\(A) 12\\)', '\\(B) 15\\)', '\\(C) 17\\)', '\\(D) 20\\)', '\\(E) 25\\)'],
         answer: "\\(A) 12\\)",
         solution: `<b>12</b><p>Let's start by setting a few clear rules nad guidelines, then we'll procede to use casework:</p>
         <p>First, we know that two reflections over the same axis will return \\(T\\) to the original position. This can't happen, because that would mean we only have on turn left, which would take it back off the origin</p>
@@ -4302,7 +4302,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `Carl has \\(5\\) cubes of sidelenght \\(1\\), and Kate has \\(5\\) cubes of side length \\(2\\). What is the total volume of the \\(10\\) cubes?`,
         type: 'fr',
         answer: '45',
@@ -4317,7 +4317,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `<p>The acute angles of a right triangle are \\(a^\\circ\\) and \\(b^\\circ\\), where \\(a > b\\) and both \\(a\\) and \\(b\\) are prime numbers. What is the least possible value of \\(b\\)?`,
         type: "mc",
         choices: ["\\(A) 2\\)", "\\(B) 3\\)", "\\(C) 5\\)", "\\(D) 7\\)", "\\(E) 11\\)"],
@@ -4337,7 +4337,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `A three quarter section of a circle of radius \\(4\\) inches together with its interior can be rolled up to form the lateral surface area of a right circular cone by taping together along the two radii shown. 
         What is the volume of the cone in cubic inches?`,
         type: 'mc',
@@ -4368,7 +4368,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Andy the Ant lives on a coordinate plane and is currently at \\(-20,20\\) facing east (that is, in the positive \\(x\\) - direction). Andy moves 
         \\(1\\) unit and then turns \\(90^\\circ \\) left. He then moves \\(2\\) units (north) and then turns \\(90^\\circ\\) 
         left. He then moves \\(3\\) units (west) and again turns \\(90^\\circ \\) left. Andy continues his progress, increasing his distance each time 
@@ -4396,11 +4396,11 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `As shown in the figure below, six semicircles lie in the interior of a rectangular hexagon with side length \\(2\\) so that the diameters of the semicircles coincide with the sides of the hexagon.
         What is the area of the shaded region - inside the hexagon but outside all of the semicircles?`,
         type: 'mc',
-        choices: ['\\(A) 6\\sqrt{3}-3\\pi\\)', '\\(B) \\frac{8\\sqrt{3}}{2}-2\\pi\\)','\\(C) \\frac{3\\sqrt{3}}{2}-\\frac{\\pi}{3}\\)', '\\(D) 3\\sqrt{3} - \\pi\\)', '\\(E) \\frac{9\\sqrt{3}}{2}-\\pi\\)'],
+        choices: ['\\(A) 6\\sqrt{3}-3\\pi\\)', '\\(B) \\frac{8\\sqrt{3}}{2}-2\\pi\\)', '\\(C) \\frac{3\\sqrt{3}}{2}-\\frac{\\pi}{3}\\)', '\\(D) 3\\sqrt{3} - \\pi\\)', '\\(E) \\frac{9\\sqrt{3}}{2}-\\pi\\)'],
         image: "amc10202014.png",
         solution: `<b>\\(A) 6\\sqrt{3}-3\\pi\\)</b><p>We start by finding the total area of the hexagon. This is a lot easier if you know the area of a hexagon, but a lot of us won't have that tidbit of information memorized, so let's derive it</p>
         <p>First off, a regular hexagon is composed of \\(6\\) equilateral triangles, in this case of side length \\(2\\). Once again, if you know the area of an equilateral triangle, that will make things easier, but here's a quick rundown:</p>
@@ -4434,7 +4434,7 @@ star
 star
 </span>`,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         used: false,
         text: `Let \\(B\\) be a right rectangular prism (box) with edges lengths \\(1, 3\\) and \\(4,\\) together with its interior. For
         real \\(r \\ge 0\\), let \\(S(r)\\) be the set of points in \\(3\\) -dimensional space that lie within a distance \\(r\\) of some point in \\(B\\).
@@ -4479,7 +4479,7 @@ star
 star
 </span>`,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         used: false,
         text: `In square \\(ABCD\\), points \\(E\\) and \\(H\\) lie on \\(\\overline{AB}\\) and \\(\\overline{DA}\\), respectively, so that \\(AE=AH\\). Points
         \\(F\\) and \\(G\\) lie on \\(\\overline{BC}\\) and \\(\\overline{CD}\\), respectively, and points \\(I\\) and \\(J\\) lie on \\(\\overline{EH}\\) so that 
@@ -4508,7 +4508,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Two right circular cones with verticies facing down as shown in the figure below contain the same amount of liquid. The radii of the tops of the liquid surfaces are \\(3\\) cm and \\(6\\) cm. Into
         each cone is droppeed a spherical marble of radius \\(1\\) cm, which sinks to the bottom and is completely submerged without spilling any liquid. What is the ratio of the rise of the liquid level in the narrow
         cone to the rise of the liquid level in the wide cone?`,
@@ -4535,7 +4535,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: 'What is the volume of a tetrahedron \\(ABCD\\) with edge lengths \\(AB=2, AC=3, AD=4, BC=\\sqrt{13}, BD=2\\sqrt{5}\\), and \\(CD=5\\)?',
         type: 'fr',
         solution: `<b>4</b><p>The first thing I want to clarify: a tetrahedron is like a pyramid with a triangular base. Now that that's cleared, the first thing I noticed as that \\(AC, AD\\) and \\(CD\\) form a right triangle by being a pythagorean triple.
@@ -4558,7 +4558,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Trapezoid \\(ABCD\\) has \\(\\overline{AB} || \\overline{CD}, BC = CD = 43\\), and \\(\\overline{AD} \\perp \\overline{BD}\\). Let
         \\(O\\( be the intersection of the diagonals \\(\\overline{AC}\\) and \\(\\overline{BD}\\) and let \\(P\\) be the midpoint of \\(\\overline{BD}\\). Given that
         \\(OP=11\\), the length \\(AD\\) can be written in the form \\(m\\sqrt{n}\\), where \\(m\\) and \\(n\\) are positive integers and \\(n\\) is not divisible by the square of any prime. What is \\(m+n\\)?`,
@@ -4584,7 +4584,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Let \\(ABCDEF\\) be an equiangular hexagon. The lines \\(AB\\), \\(CD\\), and \\(EF\\) determine a triangle with area \\(192\\sqrt{3}\\), and the lines \\(BC\\), \\(DE\\), and \\(FA\\) determine a triangle with area 
         \\(192\\sqrt{3}\\), and the lines \\(BC\\), \\(DE\\), and \\(FA\\) determine a triangle with area \\(324\\sqrt{3}\\). The perimeter of hexagon \\(ABCDEF\\) can be expressed as \\(m+n\\sqrt{p}\\), where \\(m, n\\) and \\(p\\) are positive integers and \\(p\\) is not divisible by the square of any prime. What is \\(m+n+p\\)?`,
         answer: '55',
@@ -4604,7 +4604,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `In a plane, four circles with radii \\(1, 3, 5,\\) and \\(7\\) are tangent at line \\(l\\) at the same point \\(A\\) but they may be on either side of \\(l\\). Region \\(S\\) consists of all the 
         points that lie inside exactly one of the four circles. What is the maximum possible area of region \\(S\\)?`,
         answer: '\\(D) 65\\pi\\)',
@@ -4639,7 +4639,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `The point \\(P(a,b)\\) in the \\(xy\\) plane is first rotated counterclockwise by \\(90^\\circ\\) around the point \\((1,5)\\) and then reflected about the line \\(y=-x\\). The image of 
         \\(P\\) after these two transformations is at \\((-6,3)\\). What is \\(b-a\\)?`,
         type: 'fr',
@@ -4661,7 +4661,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `An inverted cone with base radius \\(12\\)cm and height \\(18\\)cm is full of water. The water is poured into a tall cylinder whose horizontal base has a radius of \\(24\\) cm. What is the height in centimeters of the water in the cylinder?`,
         type: 'fr',
         solution: '<b>1.5</b><p>The volume of the water in the cone is \\(12^2 \\cdot \\pi \\cdot 18 \\ cdot \\frac{1}{3} = 864\\pi\\). We divide this by \\(24^2\\pi=576\\pi\\) for a final answer of \\(1.5\\)</p>',
@@ -4680,7 +4680,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Grandma has just finished baking a large rectangular pan of brownies. She is planning to make rectangular pieces of equal size and shape, with straight cuts parallel to the sidesof the pan. 
         Each cut must be made entirely acros the pan. Grandma wants to make the same number of interior pieces as pieces along the perimeter of the pan. What is the greatest possilbe number of brownies she can produce?`,
         solution: `<b60></b><p>We know that half of the pieces of the brownies are on the interior, and the other half are on the exterior. We can make a whole complex expresion for both, but instead, we can just figure that, with dimensions \\(x\\) and \\(y\\), the interior \\((x-2)(y-2)=\\frac{xy}{2}\\). 
@@ -4712,10 +4712,10 @@ rating: 1200,
         <p>The potentials pairs are \\((5,12)\\) and \\((6,8)\\)</p>
         <p>Try both of these to get \\(60\\) or \\(48\\), with the prior being larger</p>
    `,
-   answer: '60',
-   topic: 'optimization',
-   hint: "Write two expressions for the inner brownies and then for the outer brownies",
-   step: "Set up expressions for the inner brownies and for the outer brownies: with dimensions \\(x\\) and \\(y\\), the interior \\((x-2)(y-2)=\\frac{xy}{2}\\)"
+        answer: '60',
+        topic: 'optimization',
+        hint: "Write two expressions for the inner brownies and then for the outer brownies",
+        step: "Set up expressions for the inner brownies and for the outer brownies: with dimensions \\(x\\) and \\(y\\), the interior \\((x-2)(y-2)=\\frac{xy}{2}\\)"
     },
     {
         title: `AMC 10B Spring 2021 Problem 14 <span class="material-symbols-outlined">
@@ -4727,7 +4727,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Three equally spaced parallel llines intersect a circle, creating three chords of lengths \\(38\\), \\(38\\), and \\(34\\). What is the distance between two adjacent parallel lines?`,
         answer: '6',
         type: 'fr',
@@ -4763,7 +4763,7 @@ star
 star
 </span>`,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         used: false,
         text: 'The figure is constructed from 11 line segments, each of which has length \\(2\\). The area of pentagon \\(ABCDE\\) can be written as \\(\\sqrt{m}+\\sqrt{n}\\) where \\(m\\) and \\(n\\) are positive integers. What is \\(m+n\\)?',
         image: 'amc10202120.png',
@@ -4793,7 +4793,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `Menakara has a \\(4 \\times 6\\) index card. If she shortens the length of one side of this card by \\(1\\) inch, the 
         card would have an area of \\(18\\) square inches. What would the area of the card be in square inches if she shortens the length of the other side by \\(1\\) inch?`,
         solution: '<b>20</b><p>We notice immediately that the shortened side is the \\(4\\) because \\(6\\cdot 3=18\\), so we just switch it around and multiply \\(4\\cdot5=20\\)',
@@ -4810,7 +4810,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `As shown in the figure below, point \\(E\\) lies on the opposite half plane determined by line \\(CD\\) from point \\(A\\) so that \\(\\angle CDE = 110^\\circ\\). Point
         \\(F\\) lies on \\(\\overline{AD}\\) so that \\(DE=DF\\), and \\(ABCD\\) is a square. What is the degree measure of \\(\\angle AFE\\)?`,
         solution: `<b>170</b><p>We see that \\(\\angle ADE = 270-110=160\\). Since \\(\\triangle DFE\\) is isoceles, we know that the base angles \\(\\angle EFD\\) and \\(\\angle DEF \\) measure \\(10^\\circ\\). \\(AFE=180-10=170^\\circ\\)`,
@@ -4829,7 +4829,7 @@ star
 star
 </span>`,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         used: false,
         text: `Isoceles triangle \\(ABC\\) has \\(AB = AC = 3\\sqrt{6}\\), and a circle with radius \\(5\\sqrt{2}\\) is tangent to line \\(AB\\) at \\(B\\) and to line \\(AC\\) at \\(C\\). What is the
         area of the circle that passes through verticies \\(A, B\\) and \\(C\\)?`,
@@ -4856,7 +4856,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `An architect is building a structure that will place vertical pillars at the verticies of regular hexagon \\(ABCDEF\\), which is lying horizontally on the ground. The six pillars will hold up a flat solar panel that
         will not be parallel to the ground. The heights of pillars \\(A, B\\) and \\(C\\) are \\(12, 9,\\) and \\(10\\) meters, respectively. What is the height, in meters, of the pillar at \\(E\\)?`,
         type: 'mc',
@@ -4880,7 +4880,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `A disk of radius \\(1\\) rolls all the way around the inside of a square of side length \\(s > 4\\) and sweeps out a region of area \\(A\\). A second 
         disk of radius \\(1\\)  rolls all the way around the outside of the same square and sweeps out a region of area \\(2A\\). The value of \\(s\\) can be written as 
         \\(a+\\frac{b\\pi}{c}, where \\(a, b,\\) and \\(c\\) are positive integers and \\(b\\) and \\(c\\) are relatively prime. What is \\(a+b+c\\)?`,
@@ -4927,7 +4927,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Inside a right circular cone with base radius \\(5\\) and height \\(12\\) are three congruent spheres with radius \\(r\\). Each sphere is tangent to the other two spheres and also tangent to the
         bae and side of the cone. What is \\(r\\)?`,
         solution: `<b>\\(\\frac{90=40\\sqrt{3}}{11}\\)</b><p>First start by drawing two diagrams. The first is half a vertical cross-section of the cone. We would draw a right triangle with legs \\(5\\) and \\(12\\) and hypotenuse(by pythagorean theorem\\) \\(13\\). We then draw a circle of radius \\(r\\) tangent to the bottom 
@@ -4975,7 +4975,7 @@ rating: 1600,
 star
 </span>`,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         used: false,
         text: `What is the area of the shaded figure shown below?`,
         image: `amc1020211.png`,
@@ -4988,7 +4988,7 @@ rating: 800,
         rid of the small triangle the shaded area becaomse a triangle with \\(4\\) by \\(5\\) for an area of \\(10\\) and \\(10-4=6\\)`,
         answer: '6',
         topic: 'area',
-        hint : "Find the whole thing, then remove",
+        hint: "Find the whole thing, then remove",
         step: "Find the area of the whole rectangle"
     },
     {
@@ -4998,9 +4998,9 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         used: false,
         text: `A regular hexagon of side length \\(1\\) is inscribed in a circle. Each minor arc of the circle determined by a side of the hexagon is reflected over that side. What is the area of the region bounded by these \\(6\\) reflected arcs?`,
         solution: `<b>\\(3\\sqrt{3}-\\pi\\)</b><p>Start by finding the area of the hexagon to be \\(\\frac{3\\sqrt{3}}{2}\\). Now, let''s focus on the curves. We have no formula for their exact area, but we do realize that, if we draw the hexagon as \\(6\\) equilateral triangles, and get rid of the edge it will eventually be reflected over, we end up with a nifty little section of a circle.</p>
@@ -5030,7 +5030,7 @@ star
 star
 </span>`,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         used: false,
         text: `A square with side length \\(3\\) is inscribed in an isoceles triangle with one side of the square along the bae ofthe triangle. A square with side length \\(2\\) has two vertices on the other square and the other two sides of the triangle, as shown. What is the area of the triangle?`,
         image: 'amc10202013.png',
@@ -5054,7 +5054,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `In square \\(ABCD\\), points \\(P\\) and \\(Q\\) lie on \\(\\overline{AD}\\) and \\(\\overline{AB}\\), respectively.
         Segments \\(\\overline{BP}\\) and \\(\\overline{CQ}\\) intersect at right angles at \\(R\\) with \\(BR=6\\) and \\(PR=7\\). What is the area of the square?`,
         image: 'amc10202115.png',
@@ -5091,13 +5091,13 @@ rating: 1200,
         <p>We can find that \\(QB=\\sqrt{4^2+6^2}=2\\sqrt{13}\\). We now know that the ratio of \\(\\frac{\\triangle CQB}{\\triangle QRB} = \\frac{13}{2\\sqrt{13}}\\) so we apply that to the leg of side length \\(6\\) for \\(CB\\) = \\(\\frac{13}{2\\sqrt{13}} \\cdot 6 = \\frac{39\\sqrt{13}}{13}=3\\sqrt{13}\\). We 
         square this to find the area of \\(ABCD\\) is \\(117\\)</p>
     `,
-    answer: '117',
-    topic: 'similar triangles',
-    hint: "What is the relation betwen triangles \\(RBQ\\), \\(CBQ\\) and \\(CRB\\)?",
-    step: "Use the following equations that utilize the pythagorean theorem: \\(6^2+RC^2=CB^2, 6^2+RQ^2+QB^2, CB^2+QB^2=(RC+RQ)^2\\)"
+        answer: '117',
+        topic: 'similar triangles',
+        hint: "What is the relation betwen triangles \\(RBQ\\), \\(CBQ\\) and \\(CRB\\)?",
+        step: "Use the following equations that utilize the pythagorean theorem: \\(6^2+RC^2=CB^2, 6^2+RQ^2+QB^2, CB^2+QB^2=(RC+RQ)^2\\)"
     },
     {
-     title: `AMC 10B Fall 2021 Problem 18 <span class="material-symbols-outlined">
+        title: `AMC 10B Fall 2021 Problem 18 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -5106,26 +5106,26 @@ star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-     used: false, 
-     difficulty: 4,
-rating: 1400,
-     text: `Three identical square sheets of paper each with side length \\(6\\) are stacked on top of each other. The middle sheet is rotated clockwise \\(30^\\circ\\) about its center and the top sheet is rotated clockwise \\(60^\\circ\\) about its center, resulting in the $24$-sided polygon shown in the figure below. 
+        used: false,
+        difficulty: 4,
+        rating: 1400,
+        text: `Three identical square sheets of paper each with side length \\(6\\) are stacked on top of each other. The middle sheet is rotated clockwise \\(30^\\circ\\) about its center and the top sheet is rotated clockwise \\(60^\\circ\\) about its center, resulting in the $24$-sided polygon shown in the figure below. 
      The area of this polygon can be expressed in the form \\(a-b\\sqrt{c}\\), where \\(a, b\\) and \\(c\\) are positive integers, and $c$ is not divisible by the square of any prime. What is \\(a+b+c?\\)`,
-     image: 'amc10202118.png',
-    solution: `<b>147</b><p>By drawing lines fron the...indented..? parts of each point, we can see that the figure is divided into \\(11\\) kite-shaped figures. Now, dividing these in half by drawing a line from the 
+        image: 'amc10202118.png',
+        solution: `<b>147</b><p>By drawing lines fron the...indented..? parts of each point, we can see that the figure is divided into \\(11\\) kite-shaped figures. Now, dividing these in half by drawing a line from the 
     protruding point/vertex to the center, we have \\(24\\) triangles to deal with. Looking at these, my first instinct was to find the altitiude where the base is \\(\\frac{\\sqrt{6^2+6^2}}{2}=3\\sqrt{2}\\). We know this because the side lengths of the squares is \\(6\\), and we find the whole diagonal length and then divide by \\(2\\). </p>
     <p>At this point, I got stuck trying to find the altitude, although I'm not enitrely sure it's impossible and will try to look at it again</p>
     <p>We can notice, however, that since the angle  at the furthermost vertex is \\(90\\) degrees, we can make a square by extending the lines adjacent to that vertex and meeting them with perpendicular lines frm the origin. This creates a square. If we use the equation \\((3\\sqrt{2})^2=2x^2\\), we know that the side lengths are equal to \\(3\\). We know that the right triangles on the sides of the
     square, the ones that we created by creating the square, are \\(30-60-90\\), because we rotated each sheet by \\(30^\\circ\\). Thus, to find the top edge of the right triangle, we just find \\(3\\cdot \\tan(30)=\\sqrt{3}\\). That means that the edge of the original triangles we had, those opposite the center, have a dimension of \\(3-\\sqrt{3}\\) and the altitude is just \\(3\\), so the total
     area is \\(\\frac{9-3\\sqrt{3}}{2}\\). There are \\(24\\) of these for a total of \\(108-36\\sqrt{3}\\) and \\(108+36+3=147\\)`,
-    answer: '147',
-    type: 'fr',
-    topic: 'trigonometry',
-    hint: "You need to use trigonometry for this problem",
-    step: "Divide one of th esquares into 4 smaller squares of equal size (so like corners), and inside each of those, two congruent triangles that make a kite (modeling the corner)"
+        answer: '147',
+        type: 'fr',
+        topic: 'trigonometry',
+        hint: "You need to use trigonometry for this problem",
+        step: "Divide one of th esquares into 4 smaller squares of equal size (so like corners), and inside each of those, two congruent triangles that make a kite (modeling the corner)"
     },
     {
-       title: `AMC 10B Fall 2021 Problem 21 <span class="material-symbols-outlined">
+        title: `AMC 10B Fall 2021 Problem 21 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -5136,12 +5136,12 @@ star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-       used: false,
-       difficulty: 5,
-rating: 1600,
-       text: `Regular polygons with \\(5, 6, 7\\) and \\(8\\) sides are inscribed in the same circle. No two of the regular polygons share a vertex, and no three of their
+        used: false,
+        difficulty: 5,
+        rating: 1600,
+        text: `Regular polygons with \\(5, 6, 7\\) and \\(8\\) sides are inscribed in the same circle. No two of the regular polygons share a vertex, and no three of their
        sides intersect at a common point. At how many points inside the circle do two of their sides intersect?`,
-       solution: `<b>68</b><p>Start by doing a few basic experimens and seeing if there's a pattern. We don't even nescessarily need the whole \\(5, 6, 7\\) etc., because that will get pretty 
+        solution: `<b>68</b><p>Start by doing a few basic experimens and seeing if there's a pattern. We don't even nescessarily need the whole \\(5, 6, 7\\) etc., because that will get pretty 
        hard to keep precise, so let's try with just \\(3\\) and \\(4\\). A regular, equilateral triangle in a circle with an inscribed square will be intersected \\(2\\) times per side, for a total of \\(6\\) times.</p>
        <p>This holds true no matter what, because, if you imagine the lines as "bouncing" off the circle, since the angles they reflect at are different, they must cross paths multiple times, once when "going" towards the vertex it is about to bounce off of, and once when going away from it.</p>
        <p>Since no more than \\(2\\) shapes may intersect at a point, we can count them by cases, not worrying about multiple intersecting at once or over counting:</p>
@@ -5151,10 +5151,10 @@ rating: 1600,
        <p>\\(6\\) and \\(7\\) (iykyk) has \\(12\\) intersections</p>
        <p>\\(6\\) and \\(8\\) has \\(12\\) intersections</p>
        <p>\\(7\\) and \\(8\\) has \\(14\\) intersections for a total of \\(10+10+10+12+14=68\\)`,
-       answer: '68',
-       topic: 'inscribed shapes', 
-       hint: "Use induction to find a pattern",
-       step: "There isn't really a first step for this, but the logic follows that there is an intersection twice for each side on the lesser-side-lengthed polygon"
+        answer: '68',
+        topic: 'inscribed shapes',
+        hint: "Use induction to find a pattern",
+        step: "There isn't really a first step for this, but the logic follows that there is an intersection twice for each side on the lesser-side-lengthed polygon"
     },
     {
         title: `AMC 10B Fall 2021 Problem 25 <span class="material-symbols-outlined">
@@ -5170,7 +5170,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `A rectangle with side lengths \\(1\\) and \\(3\\), a square with side length \\(1\\), and a rectangle \\(R\\) are inscribed inside a 
         larger square as shown. The sum of all possible values of the area of \\(R\\) can be written in the form \\(frac{m}{n}\\), where \\(m\\) 
         and \\(n\\) are relatively prime positive integers. What is \\(m+n\\?)`,
@@ -5189,7 +5189,7 @@ rating: 1600,
         <p>Calculating from here gets messy. However, we can solve for the possible side lengths using \\(a=\\sqrt{\\frac{1}{10}}\\) in both cases to find areas of \\(\\frac{9}{5}\\) and \\(\\frac{5}{3}\\) for \\(\\frac{m}{n}=\\frac{52}{15}\\) and \\(m+n=67\\)</p>
         <p>Side note, if you wanted to not assign variables and just calculate, you can also use the pythagorean theorem and find that \\(a=\\frac{\\sqrt{10}}{10}\\) and do the rest of the calculations from there. This ibt is extraneous, but if you like using numbers more than ratios, it may help
         `,
-        answer:'67',
+        answer: '67',
         topic: 'similar triangles',
         hint: "Use the pythagorean theorem to solve for the relationship between the side lengths of the small triangles adjacent to the square",
         solution: "Label every point and find that the triangles bounded by the perimeter of the large square and the two marked quadrilaterals are similar with a ratio of \\(3\\). Then, use the pythagorean theorem to solve for the side lengths"
@@ -5197,10 +5197,10 @@ rating: 1600,
     {
         title: `AMC 10A 2022 Problem 5 <span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `Square \\(ABCD\\) has side length \\(1\\). Points \\(P, Q, R, S\\) each lie on a side of \\(ABCD\\) such that \\(APQCRS\\) is an equilateral convex
         hexagon with side length \\(s\\). What is \\(s\\)?`,
         type: 'mc',
@@ -5244,7 +5244,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `DDR Daniel finds a rectangular index card and measures its diagonal to be \\(8\\) centimeters. DDR Daniel then cuts out equal squares of
         side \\(1\\) cm at two opposite corners of the index card and measures the distance between the two closest verticies of these squares to be \\(4\\sqrt{2}\\) centimeters,
         as shown below. What is the area of the original index card?`,
@@ -5295,12 +5295,12 @@ star
 star
 </span>`,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         used: false,
         text: `Let \\(\\triangle ABC\\) be a scalene triangle. Point \\(P\\) lies on \\(\\overline{BC}\\) so that \\(\\overline{AP}\\) bisects \\(\\angle BAC).
         The line through \\(B\\) perpendicular to \\(\\overline{AP}\\) intersects the line through \\(A\\) parallel to \\(\\overline{BC}\\) at point 
         \\(D\\). Suppose \\(BP=2\\) and \\(PC=3\\). What is \\(AD\\)?`,
-        answer:  '10',
+        answer: '10',
         solution: `<b>10</b><p>We know that \\(\\overline{AP}\\) is the angle bisector of \\(\\angle A\\). We can use angle bisector theorem, which tells us that \\(\\frac{BP}{BC}=\\frac{AB}{AC}\\). We can
         thus conclude that \\(\\frac{AB}{AC}=\\frac{2}{3}\\). We can say that \\(AB=2x\\) and \\(AC=3x\\). Since \\(\\overline{AD}\\) is parallel to \\(\\overline{BC}\\), we can look at \\(\\overline{BD}\\)
         as a transveral. Thus, \\(\\angle B\\) is equal to \\(\\angle D\\) and \\(\\angle C\\) is equal to \\(\\angle \\(CAD\\) (using \\(\\overline{AC}\\) as a transversal). We have two similar triangles.</p>
@@ -5320,7 +5320,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Quadrilateral \\(ABCD\\) with side lengths \\(AB=7, BC=24, CD=20, DA=15\\) is inscribed in a circle. The area interior to the circle but exterior to the quadrilateral can be
         written in the form \\(\\frac{a\\pi-b}{c}\\), where \\(a, b\\) and \\(c\\) are positive integers such that \\(a\\) and \\(c\\) have 
         no common prime factor. What is \\(a+b+c?\\)`,
@@ -5337,7 +5337,7 @@ rating: 1200,
         $$
         <p>The total area then is \\(\\frac{625}{4}\\pi-84-150\\) or \\(\\frac{625\\pi-936}{4}\\). We add the constants and coefficients for \\(625+936+4=1565\\)</p>
         `,
-        answer:'\\(D) 1565\\)',
+        answer: '\\(D) 1565\\)',
         hint: "Notice any pythagorean triples?",
         step: "Notice that \\(15\\) and \\(20\\) make a pythagorean triple. This can help us find the diameter of the circle"
     },
@@ -5352,11 +5352,11 @@ star
 star
 </span>`,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         used: false,
         text: `A bowl is formed by attatching four rectangular hexagons of side \\(1\\) to acquire a square of side \\(1\\). The edges of the adjacent hexagons coincide, as shown in the figure. 
         What is the are of the octagon obtained by joining the top eight vertices of the four hexagons, situated on the rim of the bowl?`,
-        type:'mc',
+        type: 'mc',
         choices: ['\\(A) 6\\)', "\\(B) 7\\)", "\\(C) 5+2\\sqrt{2}\\)", "\\(D) 8\\)", "\\(E) 9\\)"],
         image: 'amc10202220.png',
         solution: `<b>7</b><p>We know that the interior angles of a regular and thus equiangular octagon are \\(135^\\circ\\). If we look at the vertice where two octagons and a triangle intersect, and imagine it in two dimensions, we see that the remaining angle, the one of the triangle, becomes \\(360-135-135=90\\). The triangles are right triangles with legs \\(1\\) for a hypotneuse of \\(\\sqrt{2}\\)</p>
@@ -5381,7 +5381,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Isoceles trapezoid \\(ABCD\\) has parallel sides \\(\\overline{AD}\\) and \\(\\overline{BC}\\), with \\(BC<AD\\) and 
         \\(AB=CD\\). There is a point \\(P\\) in the plane such that \\(PA=1\\), \\(PB=2),\\(PC=3\\), and \\(PD=4). What is \\(\\frac{BC}{AD}\\)?`,
         solution: `<b>\\(\\frac{1}{3}\\)</b><p>There's an old trick in competition math where you do something called "forced simplification". This is a process
@@ -5394,7 +5394,7 @@ rating: 1600,
         answer: "\\(B) \\frac{1}{3}\\)",
         topic: 'forced simplification',
         hint: "How can you force simplify this?",
-        step: "Assume the height of the trapezoid is 0 =P"                                                                                                                                                                                                                                                                                                                                      
+        step: "Assume the height of the trapezoid is 0 =P"
     },
     {
         title: `AMC 10A 2022 Problem 25 <span class="material-symbols-outlined">
@@ -5410,7 +5410,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `<p>Let \\(R, S\\) and \\(T\\) be squares that have vertices at lattice points (i.e., points whose coordinates are both integers) in the coordinate plane, together with their interiors. The
         bottom edge of each square is on the \\(x-\\)axis. The left edge of \\(R\\) and the right edge of \\(S\\) are on the \\(y-\\)axis, and \\(R\\) contains \\(\\frac{9}{4}\\) as amny lattice points as does \\(S\\). The 
         top two vertices of \\(T\\) are in \\(R\\cup S\\), and \\(T\\) contains \\(\\frac{1}{4}\\) of the lattice points contained in \\(R\\cup S\\). See the figure (not drawn to scale)</p>
@@ -5433,10 +5433,10 @@ rating: 1600,
     {
         title: `AMC 10B 2022 Problem 2 <span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `In rhombus \\(ABCD\\), point \\(P\\) lies on segment \\(\\overline{AD}\\) so that \\(\\overline{BP} \\perp \\overline{AD}, AP=3\\), and
         \\(PD=2\\). What is the area of \\(ABCD\\)? (Note: The figure is not drawn to scale.)`,
         image: 'amc1020222.png',
@@ -5461,7 +5461,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `The diagram below shows a rectangle with side lengths \\(4\\) and \\(8\\) and a square with side length \\(5\\). Three vertices of the square lie on three different sides of the
         rectangle, as shown. What is the area of the region inside both the square and the rectangle?`,
         image: "amc10202216.png",
@@ -5490,8 +5490,8 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
-text:"Let \\(ABCD\\) be a rhombus with \\(\\angle ADC=46^\\circ\\). Let \\(E\\) be the midpoint of \\(\\overline{CD}\\) and let \\(F\\) be the point on \\(\\overline{BE}\\) such that \\(\\overline{AF}\\) is perpendicular to \\(\\overline{BE}\\) What is the degreee measure of \\(\\angle BFC\\)? ",
+        rating: 1400,
+        text: "Let \\(ABCD\\) be a rhombus with \\(\\angle ADC=46^\\circ\\). Let \\(E\\) be the midpoint of \\(\\overline{CD}\\) and let \\(F\\) be the point on \\(\\overline{BE}\\) such that \\(\\overline{AF}\\) is perpendicular to \\(\\overline{BE}\\) What is the degreee measure of \\(\\angle BFC\\)? ",
         solution: `<b>113</b><p>We can extend lines \\(\\overline{AD}\\) and \\(\\overline{BE}\\) until they intersect at a point we call point \\(G\\).
         We then draw a circle centered at \\(G\\ that has \\(A\\), \\(F\\), and \\(C\\) on it. We know that \\(\\angle EDG\\) is equal to \\(180-46=134\\). By power of a point and inscribed angles, 
         we know that \\(\\angle EFC=\\frac{1}{2}\\angle EDG = 67\\) (iykyk). We also know that \\(\\angle EFC\\) makes a linear pair with \\(\\angle BFC\\) so \\(m\\angle BFC=180-67=133^\\circ\\).`,
@@ -5511,7 +5511,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `A square of area \\(2\\) is inscribed in a square of area \\(3\\), creating four congruent triangles, as shown below. What
         is the ratio of the shorter leg to the longer leg in the shaded right triangle?`,
         image: `amc10202311.png`,
@@ -5537,7 +5537,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Abdul and Chiang are standing \\(48\\) feet apart in a field. Bharat is standing in the same field as far from Abdul as possible so that the angle formed
         by his lines of sight to Abdul and Chiang measures \\(60^\\circ\\). What is the square of the distance (in feet) between Abdul and Bharat?`,
         solution: `<b>3072</b><p>We know that Bharat is furthest from Abdul when he is perpendicular to the line between Abdul and Chiang. We know that this causes a \\(30-60-90\\) right triangle. We know that \\(\\frac{48}{x}=\\sin(60)\\) so \\(\\frac{48}{x}=\\sqrt{3}{2}\\)
@@ -5557,7 +5557,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `An even number of circles are nested, starting with a radius of \\(1\\) and increasing by \\(1\\) each time, all sharing a common point. The region between every other circle is shaded, starting with the 
         region inside the circle of radius \\(2\\) but outide the circle of radius \\(1\\). An example showing \\(8\\) circles is displayed below. What is the least number of circles needed to make the total shaded area at least \\(2023\\pi\\)?`,
         solution: `<b></b><p>We evaluate a few basic cases to know that the area enclosed by the \\(2\\)nd and \\(1\\)st circles is \\(3\\pi\\), the area enclosed by hte \\(3\\)rd and \\(4\\)th is \\(7\\pi\\), etc. etc. for \\(11\\pi\\), \\(15\\pi\\). This is an arithmetic series of \\(a_{1}=3\\) and \\(d=4\\). The
@@ -5600,7 +5600,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Let \\(ABCD\\) be a rectangle with \\(AB=30\\) and \\(BC=28\\). Point \\(P\\) and \\(Q\\) lie on \\(\\overline{BC}\\) and \\(\\overline{CD}\\) respectively so that all sides of \\(\\triangle ABP, \\triangle PCQ,\\) and \\(\\triangle QDA\\) have integer lengths.
         What is the perimeter of \\(\\triangle APQ\\)`,
         solution: `<b>84</b><p>Based on the answer choices, we can pretty reasonably conclude that all of the values are integers. We also know that drawing a triangle with vertices on the sides will create right triangles bounded by the lights and by the edges of the square. Using
@@ -5633,7 +5633,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `A rhombic dodecahedron is a solid with \\(12\\) congruent rhombus faces. At every vertex, \\(3\\) or \\(4\\) edges meet, depending on the vertex. How many vertices have exactly \\(3\\) edges meet?`,
         solution: `<b>8</b><p>This question uses something called Euler's formula, which dicatates that \\(\\textup{Vertices}+\\textup{Faces}-\\textup{Edges}=2\\). We know that there are 
         \\(12\\) rhombuses each with \\(4\\) edges meaning there are \\(48\\) "collision places". However, we must note that edges are shared between two rhombuses for \\(\\frac{48}{2}=24\\) total edges. If \\(x=\\)vertexes that intersect at \\(3\\) points and \\(y=\\)number of vertexes that intersect \\(4\\) points, we have that
@@ -5675,7 +5675,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Circle \\(C_{1}\\) and \\(C_{2}\\) each have radius \\(1\\), and the distance betwen their centers is \\(\\frac{1}{2}\\). Circle \\(C_{3}\\) is the largest circle internally tangent to both \\(C_{1}\\) and \\(C_{2}\\).
         Cirlce \\(C_{4}\\) is internally tangent to both \\(C_{1}\\) and \\(C_{2}\\) and externaly tangent to \\(C_{3}\\). What is the radius of \\(C_{4}\\)?`,
         image: 'amc10202318.png',
@@ -5716,7 +5716,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Six regular hexagonal blocks of side length \\(1\\) unit are arranged inside a regular hexagonal frame. Each block lies along an inside edge of the frame and is aligned with two other blocks, as shown in the figure below. The distance from any corner of the frame to the nearest vertex of a block is \\(\\frac{3}{7} unit). What is 
         the area of the region isde the frame not occupied by the blocks?`,
         image: 'amc10202324.png',
@@ -5736,7 +5736,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `A \\(3-4-5\\) right triangle is inscribed in circle \\(A\\), and a \\(5-12-13\\) right triangle is inscribed in circle \\(B\\). What is the ratio of the area of circle 
         \\(A\\) to the area of circle \\(B\\)?`,
         type: 'mc',
@@ -5766,10 +5766,10 @@ rating: 800,
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `Square \\(ABCD\\) is rotated \\(20^\\circ\\) clockwise about its center to obtain square \\(EFGH\\), as shown below. What is the degree measure of \\(\\angle EAB\\)?`,
         solution: `<b>\\(35^\\circ\\)</b><p>The first thing that occurred to me to find was where the \\(20^\\circ\\) was actually expressed, since it's not super obvious from the image. HOWEVER, if we were to draw a point at the center of both squares, let's call it
         \\(I\\) and draw line segments \\(\\overline{AI}\\) and \\(\\overline{EI}\\) than we do indeed get a \\(20^\\circ\\) angle</p>
@@ -5795,7 +5795,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `A rectangular box \\(P\\) has distinct edge lengths \\(a, b,\\) and \\(c\\). The sum of the lengths of all \\(12\\) edges of 
         \\(P\\) is \\(13\\), the sum of the areas of all \\(6\\) faces of \\(P\\) is \\(\\frac{11}{2}\\), and the volume of \\(P\\) is \\(\\frac{1}{2}\\).
         What is the length of the longest interior diagonal connecting two vertices of \\(P\\)?`,
@@ -5814,12 +5814,12 @@ rating: 1400,
          $$
          \\frac{9}{4}
          $$`,
-         topic: 'algebraic manipulation',
-         type: 'mc',
-         choices: ['\\(A) 2\\)', '\\(B) \\frac{3}{8}\\)', '\\(C) \\frac{9}{8}\\)', '\\(D) \\frac{9}{4}\\)', '\\(E) \\frac{3}{2}\\)'],
-         answer: '\\(D) \\frac{9}{4}\\)',
-         hint: "How can you model edge length and face area using algebra? How can you use the difference of squares and factoring to model the expression we are solving for?",
-         step: "Use the equations \\(2(a+b+c)=13\\) and \\(2(ab+bc+ac)=\\frac{11}{2}\\) to model the sum of the edges and faces, respectively"
+        topic: 'algebraic manipulation',
+        type: 'mc',
+        choices: ['\\(A) 2\\)', '\\(B) \\frac{3}{8}\\)', '\\(C) \\frac{9}{8}\\)', '\\(D) \\frac{9}{4}\\)', '\\(E) \\frac{3}{2}\\)'],
+        answer: '\\(D) \\frac{9}{4}\\)',
+        hint: "How can you model edge length and face area using algebra? How can you use the difference of squares and factoring to model the expression we are solving for?",
+        step: "Use the equations \\(2(a+b+c)=13\\) and \\(2(ab+bc+ac)=\\frac{11}{2}\\) to model the sum of the edges and faces, respectively"
     },
     {
         title: `AMC 10B 2023 Problem 20 <span class="material-symbols-outlined">
@@ -5833,7 +5833,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Four coungruent semicircles are drawn on the surface of a sphere with radius \\(2\\), as shown, creating a close curve that divides the surface into two congruent regions. The
         length of the curve is \\(\\pi\\sqrt{n}\\). What is \\(n\\)?`,
         image: 'amc10202320.png',
@@ -5849,7 +5849,7 @@ rating: 1400,
         step: "Take a cross section because the endpoints of the arcs \\(A,B,C,D\\) are all coplanar. From there you hvae a circle with radius \\(2\\) and all the points on the circumfrence. The diameter of the arcs is the distance between the points"
     },
     {
-     title: `AMC 10B 2023 Problem 25 <span class="material-symbols-outlined">
+        title: `AMC 10B 2023 Problem 25 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -5860,11 +5860,11 @@ star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-     used: false,
-     difficulty: 5,
-rating: 1600,
-     text: 'A regular pentagon with area \\(1+\\sqrt{5}\\) is printed on paper and cut out. All five vertices are folded to the center of the pentagon, creating a smaller pentagon. What is the area of the new pentagon?',
-      solution: `<b>\\(\\sqrt{5}-1\\)</b><p>When we fold a pentagon, or any regular polygon, so that it forms another regular polygon of the same sort, we notice two things:</p>
+        used: false,
+        difficulty: 5,
+        rating: 1600,
+        text: 'A regular pentagon with area \\(1+\\sqrt{5}\\) is printed on paper and cut out. All five vertices are folded to the center of the pentagon, creating a smaller pentagon. What is the area of the new pentagon?',
+        solution: `<b>\\(\\sqrt{5}-1\\)</b><p>When we fold a pentagon, or any regular polygon, so that it forms another regular polygon of the same sort, we notice two things:</p>
       <p>1) The inner polygon is rotated (idk this helped me visualize it)</p>
       <p>2) The vertices of the new, smaller polygon are colinear with the center of the polygon and the midpoint of the edges of the larger polygon,
       and visa versa (with the midpoints of the smaller andges and the vertices of the larger one). Not only that, the midpoint of the edge of the smaller polygon is situated on the midpoint of a line between the center and the vertex of the larger polygon.</p>
@@ -5872,12 +5872,12 @@ rating: 1600,
       <p>If we draw an altitude by bisecting the vertex angle and connecting it to the midpoint of the opposite edge. This gives us two right triangles with angle measures of \\(\\frac{72}{2}=36\\) and \\(90-36=54\\).</p>
       <p>We know the shorter leg has a measure of \\(\\frac{\\sqrt{5}+1}{2}\\) so we can use some trigonometry to find the length of th hypotenuse, then divide that by \\(2\\) to find the altitude of the smaller isoceles triangles that make up the smaller
       pentagon, and from there the side lengths. The math for this turns out to be pretty robust and involves angle identities, so I won't go too far into it, but the basic process is outlined above.`,
-      type: 'mc',
-      choices: ['\\(A) 4-\\sqrt{5}\\)', '\\(B) \\sqrt{5}-1\\)', '\\(C) 8-3\\sqrt{5}\\)', '\\(D) \\frac{\\sqrt{5}+1}{2}\\)', '\\(E) \\frac{2+\\sqrt{5}}{3}\\)'],
-      answer: '\\(B) \\sqrt{5}-1\\)',
-      topic: 'trigonometry',
-      hint: "Where can you draw lines to divide the polygon into triangles?",
-      step: "Draw lines from the vertices to the center, and then again fron the midpoints to the center to divide the shape into smaller triangles"
+        type: 'mc',
+        choices: ['\\(A) 4-\\sqrt{5}\\)', '\\(B) \\sqrt{5}-1\\)', '\\(C) 8-3\\sqrt{5}\\)', '\\(D) \\frac{\\sqrt{5}+1}{2}\\)', '\\(E) \\frac{2+\\sqrt{5}}{3}\\)'],
+        answer: '\\(B) \\sqrt{5}-1\\)',
+        topic: 'trigonometry',
+        hint: "Where can you draw lines to divide the polygon into triangles?",
+        step: "Draw lines from the vertices to the center, and then again fron the midpoints to the center to divide the shape into smaller triangles"
     },
     {
         title: `AMC 10A 2024 Problem 14 <span class="material-symbols-outlined">
@@ -5889,7 +5889,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `One side of an equilateral triangle of height \\(24\\) lies on line \\(l\\). A circle of radius \\(12\\) is tangent to line \\(l\\) and is externally tangent to the triangle. The area of the region exterior to the trinagle and the circle and bounded by the triangle, the circle, and line \\(l\\) can be
         written as \\(a\\sqrt{b}-c\\pi\\) where \\(a, b,\\) and \\(c\\) are positive integers and \\(b\\) is not divisible by the square of any prime. What is \\(a+b+c\\)?`,
         solution: `<b>74</b><p>We start by drawing the radii connecting the center of the circle to the point of intersections with the circle and triangle and the circle and \\(l\\). The angle between the triangle and \\(l\\) on the EXTERIOR is \\(180-60=120\\) and 
@@ -5915,7 +5915,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: 'All of the rectangles in the figure below, which is drawn to scale, are similar to the enclosing rectangle. Each number represents the area of the rectangle. What is length \\(AB\\)?',
         image: 'amc10202416.png',
         solution: `<b>\\(10\\sqrt[4]{2}\\)</b><p>We know by the answer choices that the side lengths are probably not integers. That sucks for us. We ARE however told that the rectangle is drawn to scale. This helps a whole lot.</p>
@@ -5933,12 +5933,12 @@ rating: 1400,
         $$
         <p>We have that \\(AB=4(2^{\\frac{1}{4}})\\sqrt{2}+\\frac{12}{2^{\\frac{1}{4}}}=10\\sqrt[4]{2})</p>
 `,
-type: 'mc',
-choices: ['\\(A) 4+4\\sqrt{5}\\)', '\\(B) 10\\sqrt{2}\\)', '\\(C) 5+5\\sqrt{5}\\)', '\\(D) 10 \\sqrt[4]{8}\\)', '\\(E) 20\\)'],
-topic: 'similarity',
-hint: "Label as many values as possible",
-step: "Draw the diagram and label everything you can with variables",
-answer: '\\(D) 10 \\sqrt[4]{8}\\)'
+        type: 'mc',
+        choices: ['\\(A) 4+4\\sqrt{5}\\)', '\\(B) 10\\sqrt{2}\\)', '\\(C) 5+5\\sqrt{5}\\)', '\\(D) 10 \\sqrt[4]{8}\\)', '\\(E) 20\\)'],
+        topic: 'similarity',
+        hint: "Label as many values as possible",
+        step: "Draw the diagram and label everything you can with variables",
+        answer: '\\(D) 10 \\sqrt[4]{8}\\)'
     },
     {
         title: `AMC 10B 2024 Problem 6 <span class="material-symbols-outlined">
@@ -5948,7 +5948,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `A rectangle has integer length sides and an area of 2024. What is the least possible perimeter of the rectangle?`,
         solution: `<b>180</b><p>We know that the perimeter will be smallest when the the side lengths are as close to each other as possible (if you don't know this try using a few smaller tests and make a conjecture)</p>
         <p>We know that \\(\\sqrt{2025}=45\\) so we're looking for something near \\(45\\). Obviously, \\(45\\) is not a factor, but \\(44\\) is. The dimensions are \\(44\\) and \\(46\\) for a combined perimeter of \\(44+46+44+46=180\\)`,
@@ -5963,10 +5963,10 @@ rating: 1000,
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Quadrilateral \\(ABCD\\) is a parallelogram, and \\(E\\) is the midpoint of the side \\(\\overline{AD}\\). Let \\(F\\) be the intersection of lines \\(EB\\) and \\(AC\\). What
         is the ratio of the area of qudrilateral \\(CDEF\\) to the area of \\(\\triangle CFB\\)?`,
         solution: `<b>\\(5:4\\)</b><p>For this, we use a system called "forced simplification". Parallelogram? Make it a square! Side lengths? Make them \\(1\\)!. Since we know we're working with ratios, it doesn't really matter.</p>
@@ -5991,7 +5991,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `In the figure below \\(WXYZ\\) is a rectangle with \\(WX=4\\) and \\(WZ=8\\). Point \\(M\\) lies \\(\\overline{XY}\\),
         point \\(A\\) lies on \\(\\overline{YZ}\\) and \\(\\angle WMA\\) is a right angle. The areas of \\(triangle WXM\\) and \\(\\triangle WAZ\\) are equal. What is the area of \\(\\triangle WMA?\\)`,
         image: 'amc10202411.png',
@@ -6032,7 +6032,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Two straight pipes (circular cylinders) with radii \\(1\\) and \\(\\frac{1}{4}\\), lie parallel in contact on a flat floor. The 
         figure below shows a head-on view. What is the sum of the possible radii of a third parallel pipe lying on the same floor and in contact with both? `,
         image: `amc10202421.png`,
@@ -6128,7 +6128,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `How many isosceles triangles are there with positive area whose side lengths are all positive integers and whose longest side has length \\(2025\\)?`,
         solution: `<b>3037</b><p>We know that the sum of two sides must be greater than the remaining side. We evaluate two cases:</p>
         <p>1) The longest side is the base side, the one opposite the vertex angle, measures \\(2025\\). The side angles must be greater than \\(\\frac{2025}{2}=2=1012.5\\) and must be less than \\(2024\\), thus there are \\(1012\\) possible values</p>
@@ -6146,13 +6146,13 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `In an equilateral triangle, each interior angle is trisected by a pair of rays. The intersection of the interiors of the middle \\(20^\\circ\\)-angle at each evertex is the
         interior of a convex hexagon. What is the degree measure of the smallest angle of this hexxagon?`,
         choices: ['\\(A) 80\\)', '\\(B) 90\\)', '\\(C) 100\\)', '\\(D) 110\\)', '\\(E) 120\\)'],
         answer: '\\(C) 100\\)',
         type: 'mc',
-        solution:  `<b>100</b><p>We notice that there is an isoceles triangle formed withthe base of the equilateral triangle and the two rays that make a \\(20^\\circ\\) angle off out it (I recommend drawing this). The vertex
+        solution: `<b>100</b><p>We notice that there is an isoceles triangle formed withthe base of the equilateral triangle and the two rays that make a \\(20^\\circ\\) angle off out it (I recommend drawing this). The vertex
         angle is \\(180-20-20=140\\). By vertical angles, one of the angles of the hexagon is equal to that. Doing this for each side gives \\(3\\) angles of \\(140^\\circ\\). Since we know that the sum of the angles must be \\((6-2)(180)=720\\) we find
         \\(\\frac{720-140-140-140}{3}=100\\)`,
         topic: 'triangles',
@@ -6164,45 +6164,45 @@ rating: 1000,
 shuffleArray(geometryQ);
 const numTheoryQ = [
     {
-title: `AMC 10A 2025 Problem 11 <span class="material-symbols-outlined">
+        title: `AMC 10A 2025 Problem 11 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-used: false,
-difficulty: 3,
-rating: 1200,
-text: `The sequence \\(1,x,y,z\\) is arithmetic. The sequence \\(1,p,q,z\\) is geometric. Both sequences are strictly increasing and contain only integers, and 
+        used: false,
+        difficulty: 3,
+        rating: 1200,
+        text: `The sequence \\(1,x,y,z\\) is arithmetic. The sequence \\(1,p,q,z\\) is geometric. Both sequences are strictly increasing and contain only integers, and 
 \\(z\\) is as small as possible. What is the value of \\(x+y+z+p+q\\)?`,
-type: 'mc',
-choices: ['\\(A) 66\\)', '\\(B) 91\\)', '\\(C) 103\\)', '\\(D) 132\\)', '\\(E) 149\\)'],
-solution: `<b>149</b><p>Let's call the common difference \\(d\\) and the common ratio \\(a\\). We have that \\(z=1+3d\\) and \\(z=a^3\\). We're looking for the smallest values of \\(a\\) and \\(d\\).</p>
+        type: 'mc',
+        choices: ['\\(A) 66\\)', '\\(B) 91\\)', '\\(C) 103\\)', '\\(D) 132\\)', '\\(E) 149\\)'],
+        solution: `<b>149</b><p>Let's call the common difference \\(d\\) and the common ratio \\(a\\). We have that \\(z=1+3d\\) and \\(z=a^3\\). We're looking for the smallest values of \\(a\\) and \\(d\\).</p>
 <p>We need the smallest value \\(a\\) such that \\(a^3-1\\) is divisible by \\(3\\). \\(a=2\\) gives us \\(\\frac{7}{3}\\). \\(a=3\\) gives \\(\\frac{26}{3}\\). \\(a=4\\) gives \\(d=\\frac{63}{3}=21\\). We thus have \\(4+16+64+22+43=149\\)`,
-answer: '\\(E) 149\\)',
-topic: 'series',
-hint: "How can you create two equations for \\(z\\) using common difference \\(d\\) and common ratio \\(a\\) such that \\(z\\) is as small as possible?",
-step: "Use the equations \\(z=1+3d\\) and \\(z=a^3\\) where \\(d\\) is the common difference and \\(a\\) is the common ratio. How small can you make \\(a\\) and \\(d\\)?"
+        answer: '\\(E) 149\\)',
+        topic: 'series',
+        hint: "How can you create two equations for \\(z\\) using common difference \\(d\\) and common ratio \\(a\\) such that \\(z\\) is as small as possible?",
+        step: "Use the equations \\(z=1+3d\\) and \\(z=a^3\\) where \\(d\\) is the common difference and \\(a\\) is the common ratio. How small can you make \\(a\\) and \\(d\\)?"
     },
     {
-title: `AMC 10B 2023 Problem 9 <span class="material-symbols-outlined">
+        title: `AMC 10B 2023 Problem 9 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-used: false,
-difficulty: 2,
-rating: 1000,
-text: `The numbers \\(16\\) and \\(25\\) are a pair of consecutive positive squares whose difference is \\(9\\). How many pairs of consectuve positive perfect squares have a distance of less than or 
+        used: false,
+        difficulty: 2,
+        rating: 1000,
+        text: `The numbers \\(16\\) and \\(25\\) are a pair of consecutive positive squares whose difference is \\(9\\). How many pairs of consectuve positive perfect squares have a distance of less than or 
 equal to \\(2023\\)?`,
-type: 'mc',
-choices: ['\\(A) 674\\)', '\\(B) 1011\\)', '\\(C) 1010\\)', '\\(D) 2019\\)', '\\(E) 2017\\)'],
-solution: `<b>674</b><p>The difference between squares can be mapped as a line with equation \\(2n+1\\). We're looking for how many values of \\(n\\) satisfy \\(2n+1 \\leq 2023\\). Solving for \\(n\\), we get \\(n \\leq 1011\\). Thus, we have \\(n=1011\\)</p>`,
-answer: '\\(B) 1011\\)',
-topic: 'squares',
-hint: "What pattern do you notice in the differences of squares?",
-step: "Write out the first few differences of squares : \\(1, 3, 5\\). Model this with the equation \\(2n+1\\)"
+        type: 'mc',
+        choices: ['\\(A) 674\\)', '\\(B) 1011\\)', '\\(C) 1010\\)', '\\(D) 2019\\)', '\\(E) 2017\\)'],
+        solution: `<b>674</b><p>The difference between squares can be mapped as a line with equation \\(2n+1\\). We're looking for how many values of \\(n\\) satisfy \\(2n+1 \\leq 2023\\). Solving for \\(n\\), we get \\(n \\leq 1011\\). Thus, we have \\(n=1011\\)</p>`,
+        answer: '\\(B) 1011\\)',
+        topic: 'squares',
+        hint: "What pattern do you notice in the differences of squares?",
+        step: "Write out the first few differences of squares : \\(1, 3, 5\\). Model this with the equation \\(2n+1\\)"
 
     },
     {
@@ -6213,11 +6213,11 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `A single bench section at a school event can hold either \\(7\\) adults or \\(11\\) children. When \\(N\\) bench sections are connected end to end, an equal number of adults and children seated together will occupy the bench space. What is the least positive
         integer value of \\(N\\)?`,
         type: 'mc',
-        choices: ['\\(A) 9\\)', '\\(B) 18\\)', '\\(C) 27\\)','\\(D) 36\\)', '\\(E) 77\\)'],
+        choices: ['\\(A) 9\\)', '\\(B) 18\\)', '\\(C) 27\\)', '\\(D) 36\\)', '\\(E) 77\\)'],
         answer: '\\(B) 18\\)',
         solution: `<b>18</b><p>The number of each that will be seated is the LCM of \\(11\\) and \\(7\\) which is \\(77\\). Thus, we need \\(11\\) benches for the adults and \\(7\\) for the children for \\(N=11+7=18\\)`,
         topic: 'LCM',
@@ -6225,21 +6225,21 @@ rating: 1000,
         step: "The number of children and adults individually that can be seated is the LCM of \\(11\\) and \\(7\\) which is \\(77\\)"
     },
     {
-title: `AMC 10B 2020 Problem 7 <span class="material-symbols-outlined">
+        title: `AMC 10B 2020 Problem 7 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-used: false,
-difficulty: 2,
-rating: 1000,
-text: 'How many positive even multipes of \\(3\\) less than \\(2020\\) are perfect squares?',
-choices: ['\\(A) 7\\)', '\\(B) 8\\)', '\\(C) 9\\)', '\\(D) 10\\)', '\\(E) 12\\)'],
-type: 'mc',
-solution: `<b>7</b><p>What this is really saying is how many multiples of \\(6\\) less than \\(2020\\) are perfect squares. We know it has to be even, so it must have at least
+        used: false,
+        difficulty: 2,
+        rating: 1000,
+        text: 'How many positive even multipes of \\(3\\) less than \\(2020\\) are perfect squares?',
+        choices: ['\\(A) 7\\)', '\\(B) 8\\)', '\\(C) 9\\)', '\\(D) 10\\)', '\\(E) 12\\)'],
+        type: 'mc',
+        solution: `<b>7</b><p>What this is really saying is how many multiples of \\(6\\) less than \\(2020\\) are perfect squares. We know it has to be even, so it must have at least
 one factor of \\(2\\), which is included in the \\(6\\). We know \\(2020\\) is close to \\(2025=45^2\\). \\(\\frac{45}{6}\\) is roughly \\(7\\), so we get that as our answer`,
-answer: '\\(A) 7\\)',
-topic: 'squares',
+        answer: '\\(A) 7\\)',
+        topic: 'squares',
     },
     {
         title: `AMC 10B 2023 Problem 6 <span class="material-symbols-outlined">
@@ -6249,7 +6249,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Let \\(L_{1}=3, L_{2}=3\\) and \\(L_{n+2}=L_{n+1}+L_{n}\\) for \\(n \\geq 1\\). How many terms in the sequence \\(L_{1},L_{2},L_{3}...L_{2023}\\) are even>`,
         solution: `<b>674</b><p>Let's do some induction. We have \\(1,3,4,7,11,18,29,47,76...\\). It goes odd, odd, even, odd, odd, even, odd, odd even. That means every \\(3\\), there is an even . We have \\(\\frac{2023}{3}=674\\) with  remainder of \\(1\\). That gives, \\(674\\) evens`,
         type: 'mc',
@@ -6267,7 +6267,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `An integer is assigned to each vertex of a cube. The value of an edge is defined to be the
         sum of the values of the two vertices it touches, and the value of a face is defined to be the
         sum of the values of the four edges surrounding it. The value of the cube is defined as the
@@ -6280,7 +6280,7 @@ rating: 1000,
         topic: 'logic',
         hint: "How many edges is each vertice a part of? How many faces is each edge apart of?",
         step: "Because each vertice is `apart of` three edges, it gets counted \\(3\\) times. We now now that the sum of the edges is \\(3(21)=63\\). Follow the same logic for the edges and faces"
-    
+
     },
     {
         title: `AMC 10A 2020 Problem 6 <span class="material-symbols-outlined">
@@ -6290,7 +6290,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `How many \\(4\\)-digit positive integers (that is integers between \\(1000\\) and \\(9999\\), inclusive) having only even digits are 
         divisible by \\(5\\)?`,
         solution: `<b>100</b><p>Since it has to be divisible by \\(5\\), we need it to end with \\(5\\) or \\(0\\). Since it must have all even digits, it must end with \\(0\\).
@@ -6310,7 +6310,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `The \\(25\\) integers from \\(-10\\) to \\(14\\), inclusive, can be arranged to form a \\(5\\)-by-\\(5\\) square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the
         numbers along each of the main diagonals are all the same. What is the value of the common sum?`,
         solution: `<b>10</b><p>Notice that there are multiple ways to do this, if anything because of rotational symmetry. This alone tells us that finding "the exact solution" isn't best</p>
@@ -6355,9 +6355,9 @@ star
         type: 'mc',
         used: false,
         difficulty: 4,
-rating: 1400,
-hint: "What factor of \\(60\\) can you use to find the last digit of \\(n\\)?",
-step: "Realize that the units digit of \\(n\\) must be \\(7\\) because \\(n+63\\) must end in \\(0\\). Find the smallest value of \\(n\\) such that \\(n+120\\) is divisible by \\(21\\) but not \\(63\\)"
+        rating: 1400,
+        hint: "What factor of \\(60\\) can you use to find the last digit of \\(n\\)?",
+        step: "Realize that the units digit of \\(n\\) must be \\(7\\) because \\(n+63\\) must end in \\(0\\). Find the smallest value of \\(n\\) such that \\(n+120\\) is divisible by \\(21\\) but not \\(63\\)"
     },
     {
         title: `AMC 10B 2020 Problem 6 <span class="material-symbols-outlined">
@@ -6367,7 +6367,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Driving along a highway, Megan noticed that her odometer showed \\(1591\\) (miles). This number is a palindrome-it reads the same forward and backward. Then \\(2\\) hours later,
         the odometer displayed the next higher palindrome. What was her average speed, in miles per hour, during this \\(2\\)-hour period?`,
         solution: `<b>55</b><p>We don't actually want to focus on the ones digit, because, when it comes down to that, it won't matter as much. We start bigger. We know that we want the next number to be as small as possible, so then we ideally stay in the \\(10,000\\)s territory. We then have \\(1 x x x 1\\). We, ideally,
@@ -6387,7 +6387,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `<p>The decimal representation of</p>
         $$
         \\frac{1}{20^20}
@@ -6413,7 +6413,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Steve wrote the digits \\(1, 2, 3, 4,\\) and \\(5\\) in order repeatedly from left to right, forming a list of \\(10,000\\) digits beginning \\(123451234512...\\) He then erased every third digit from his list (that is the \\(3\\)rd, \\(6\\)th, \\(9\\)th...digits from the left),
         the erased every fourth digit from the resulting list (that is the \\(4\\)th, \\(8\\)th, \\(12\\)th,...digits from the left in what remained), and then erased every fifth digit from what remained at that point. What is the sum of the three digits that were in the positions of \\(2019, 2020, 2021\\)?`,
         solution: `<b>11</b><p>This problem really isn't as complicated as it may look. Yes, at a glance, it is long winded. However, the key to this problem is realizing that every few runs, there will be a pattern.</p>
@@ -6446,10 +6446,10 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Bela and Jenn play the following game on the closed interval \\([0,n]\\) of the real number line, where \\(n\\) is a fixed integer greater than \\(4\\). They take turns playing, with Bela going first. At his first turn,
         Bela chooses any real number in the interval \\([0,n]\\). Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?`,
         type: 'mc',
@@ -6472,26 +6472,26 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `What is the remainder when \\(2^202 + 202\\) is idivided by \\(2^101+2^51+1\\)?`,
         solution: `<b>201</b><p>If \\(x=2^50\\), we can substitute \\(\\frac{4x^4+202}{2x^2+2x+1}\\) we factor out \\((2x^2+2x+1)(2x^2-2x+1)+201\\) in the numerator and divide out the denominator for \\(2x^2-2x+2\\) which we solve to be \\(201\\)</p>`,
         answer: '201',
         topic: 'factoring',
         hint: "What value in exponential form can you substitute into the expressions to simplify?",
         step: "Substitute \\(x=2^50\\) in and factor the denominator out of the numerator"
-    }, 
+    },
     {
         title: `AMC 10A 2021 Spring Problem 7 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `<p>Tom has a collection of \\(13\\) snakes, \\(4\\) of which are purple and \\(5\\) of which are happy. He observes that</p>
         <p>All of his happy snakes can add</p>
         <p>None of his purple snakes can subtract</p>
@@ -6510,10 +6510,10 @@ rating: 1000,
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `<p>When a student multiplied the number \\(66\\) by the repeating decimal,</p>
         $$
         1.abab...\\underline{1}.\\overline{ab},
@@ -6547,7 +6547,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `<p>Which of the following is equivalent to</p>
         $$
         (2+3)(2^2+3^2)(2^4+3^4)(2^8+3^8)(2^16+3^16)(2^32+3^32)(2^64+3^64)
@@ -6568,10 +6568,10 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `For which of the following integers \\(b\\) is the base-\\(b\\) number \\(2021_{b}-221_{b}\\) not divisible by \\(3\\)?`,
         type: 'mc',
         choices: ['\\(A) 3\\)', '\\(B) 4\\)', '\\(C) 6\\)', '\\(D) 7\\)', '\\(E) 8\\)'],
@@ -6584,16 +6584,16 @@ rating: 1000,
         hint: "What are the remainders of each number divided by \\(3\\)?",
         step: "Find the remainders of each divided by \\(3\\). Which one is different?"
 
-    }, 
+    },
     {
         title: `AMC 10B 2021 Spring Problem 8 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Mr. Zhou places all the integers from \\(1\\) to \\(225\\) into a \\(15\\) by \\(15\\) grid. he places \\(1\\) in the middle square (eighth row and eighth column) and places other numbers one by one clockwise, as shown in part in the diagram below.
         What is the sum of the greatest number and the last number that appear in the second row from the top?`,
         image: "amc1020218.png",
@@ -6611,17 +6611,17 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: 'Let \\(N=34\\cdot 34 \\cdot 63 \\cdot 270\\). What is the ratio of the sum of the odd divisors of \\(N\\) to the sum of the even divisors of \\(N\\)',
         type: 'mc',
         choices: ['\\(A) 1:16', '\\(B) 1:15\\)', '\\(C) 1:14\\)', '\\(D) 1:8\\)', '\\(E) 1:3\\)'],
         soltuion: `<b>1:14</b><p>We start by finding the prime factorization. We break up \\(34\\) into \\(2 \\cdot 17\\), \\(63\\) into \\(3^2 \\cdot 7\\) and \\(270\\) into \\(3^3 \\cdot 2 \\cdot 5\\) for a prime factorization of \\(2^3 \\cdot 3^5 \\cdot 5 \\cdot 7 \\cdot 17^2\\). Every even factor must have a factor of \\(2, 4\\) or \\(8\\), and
         each odd factor must be able to be multipled by \\(2, 4, \\) or \\(8\\), so the sum ratio is \\(1:2+4+8=1:14\\)`,
         answer: "\\(C) 1:14\\)",
-        topic: "prime factorization",    
+        topic: "prime factorization",
         hint: "What is the prime factorization of \\(N\\)? What is the prime factorization of the factors of \\(N\\)? For each odd factor, what and how many even factors must there be?",
         step: "Find the prime factorization of \\(N\\)"
     },
@@ -6636,7 +6636,7 @@ star
         text: "Let \\(n\\) be a positive integer and \\(d\\) be a digit such that the value of the numeral \\(32d\\) in base \\(n\\) equals \\(263\\), and the value of the numeral \\(324\\) in base \\(n\\) equals the value of the numeral  \\(11d1\\) in base six. What is \\(n+d\\)",
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         solution: `<b></b><p>Recall that when we want to change a number in base \\(x\\) into base \\(10\\), we multiply the number in each digits place to \\(x\\) to the whatever-th place power (eg 2 for 100, 3 for a thousand). Thus, \\(32d\\), a base \\(n\\) number, is equal to \\(3n^2+2n+d=263\\). The second fact tell us that \\(3n^2+2n+4=216+36+6d+1\\). We solve for \\(d\\) and \\(n\\), or if we can, \\(n+d\\) directly</p>
         $$
         3n^2+2n+d=263
@@ -6682,10 +6682,10 @@ star
 star
 </span><span class="material-symbols-outlined">
 star
-</span>`, 
+</span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Call a positive integer an uphill integer if every digit is strictly greater than the previous digit. For example, \\(1357\\), \\(89\\) and \\(5\\) are all uphill integers, but \\(32\\), \\(1240\\) and \\(466\\), are not. How many uphill integers are divisble by \\(15\\)`,
         solution: `<b>6</b><p>First off, we know it must end with a \\(5\\) because it needs ot end in \\(5\\) or \\(0\\) to be divisible by \\(15\\) and uphill integers can't end in \\(0\\)</p>
         <p>Next, we know that the digits need to sum to a number divisible by \\(3\\). We compute with using casework by the number of digits</p>
@@ -6710,7 +6710,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Ravon, Oscar, Aditi, Tyrone, and Kim play a card game. Each persion is given \\(2\\) cards out of a set of cards numbered \\(1, 2, 3, ..., 10\\). The score of a player is the sum of the numbers of their cards. The 
         scores of the players are as follows: Ravon-\\(11\\), Oscar-\\(4\\), Aditi-\\(7\\), Tyrone-\\(16\\), Kim-\\(17\\). Which of the following statements is true?`,
         type: 'mc',
@@ -6729,7 +6729,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: "The six-digit number \\(20210A\\) is prime for only one digit \\(A\\). What is \\(A\\)?",
         type: 'fr',
         solution: `<b>9</b><p>Obviously, we know the answer can't end in an even number because then it would be divisible by \\(2\\)</p>
@@ -6750,7 +6750,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `A two-digit positive integer is said to be \\(cuddly\\) if it is equal to the sum of its nonzero tens digit and the square of its units digit. How many two-digit positive integers are cuddly?`,
         solution: `<b>1</b><p>We take the definition we are given and rewrite it into an equation. Call \\(x\\) the tens digit and \\(y\\) the units digit. We have that our number, that has to be \\(cuddly\\) is equal to \\(10x+y\\) and that it must be equal to \\(x+y^2\\) so we write \\(10x+y=x+y^2\\) or
         \\(9x=y^2-y\\). We then proceed to try out values of \\(y\\) between \\(0\\) and \\(9\\)</p>
@@ -6771,18 +6771,18 @@ rating: 1000,
         step: "With tens digit \\(x\\) and unit digits \\(y\\), use \\(10x+y=x+y^2\\)"
     },
     {
-       title: `AMC 10A 2021 Fall Problem 12 <span class="material-symbols-outlined">
+        title: `AMC 10A 2021 Fall Problem 12 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-       used: false,
-       difficulty: 3,
-rating: 1200,
-       text: `The base-nine representaiton of the number \\(N\\) is  \\(27,006,000,052_{nine}\\). What is the remainder when \\(N\\) is divided by \\(5\\)?`,
-       solution: `<b>3</b><p>Brute forcing this is not an option, because we'd be calculating \\(9\\) to the \\(10\\)th power. Notice that the remainder when divided by \\(5\\) only depends on the last digit so we don't have to calculate that much. We know that to convert\\(N\\) back into base \\(10\\) we follow essentially \\(2\\cdot9^10 + 7 \\cdot 9^9\\) etc. However,
+        used: false,
+        difficulty: 3,
+        rating: 1200,
+        text: `The base-nine representaiton of the number \\(N\\) is  \\(27,006,000,052_{nine}\\). What is the remainder when \\(N\\) is divided by \\(5\\)?`,
+        solution: `<b>3</b><p>Brute forcing this is not an option, because we'd be calculating \\(9\\) to the \\(10\\)th power. Notice that the remainder when divided by \\(5\\) only depends on the last digit so we don't have to calculate that much. We know that to convert\\(N\\) back into base \\(10\\) we follow essentially \\(2\\cdot9^10 + 7 \\cdot 9^9\\) etc. However,
        even if we only focus on the units digit that is annoying to calculate \\(9\\) to that many powers. However, when we multiply, we only need to find the units digits of the two numbers we multiply to find the units digit of the product. And luckily, a lot of exponents follow patterns when it comes to units digits. Let's try it with \\(9\\) and make a conjecture:</p>
        $$
        9^0=1
@@ -6797,10 +6797,10 @@ rating: 1200,
        9^3=729
        $$
        <p>The units digits alternate between \\(1\\) and \\(9\\). Since there are so many zeroes in the base \\(9\\) representation, that also makes things easier. We find the sum \\(2+5+6+3+2=18\\) which is congruent to \\(3\\) modulo \\(5\\)`,
-       answer: '3',
-       topic: 'bases',
-       hint: "Which digit is remainder modulo \\(5\\) dependent on?",
-       step: "Since you only need to calculate the units digit, find a pattern for the units digit of powers of \\(9\\)"
+        answer: '3',
+        topic: 'bases',
+        hint: "Which digit is remainder modulo \\(5\\) dependent on?",
+        step: "Since you only need to calculate the units digit, find a pattern for the units digit of powers of \\(9\\)"
     },
     {
         title: `AMC 10A Fall 2021 Problem 23 <span class="material-symbols-outlined">
@@ -6814,7 +6814,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `For each positive integer \\(n\\), let \\(f_{1}(n)\\) be twice the number of positive integer divisors of \\(n\\), and for \\(j \\ge 2\\), let \\(f_{j}(n)=f_{1}(f_{j-1}(n))\\). For how many values of \\(n \\ge 50\\) is \\(f_{50}(n)=12\\)?`,
         solution: `<b>10</b><p>Let's first explain what this is saying. Essentially, for \\(f_{j}\\) you continuously use the function until you get down to \\(1\\). With \\(f_{50}\\) that looks like \\(f_{1}(f_{1}(f_{1}))\\) \\(50\\) times. Considering 
         how complex this is, there's probably a better way to solve it. </p>
@@ -6845,7 +6845,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `The expression \\(\\frac{2021}{2020}-\\frac{2020}{2021}\\) is equal to the fraction \\(\\frac{p}{q}\\) in which \\(p\\) and \\(q\\) are positive integers whose greatest common divisor is \\(1\\). What is \\(p\\)?`,
         solution: `<b>4041</b><p>We know that adjacent, or consecutive, numbers are always relatively prime. Thus, we don't really have to worry about simplifying. We just have to find the numerator. You could probalby brute force this if you really wanted to, but let's be sensible about it. For \\(x=2020\\) we have \\(\\frac{x+1}{x} - \\frac{x}{x+1}\\) which ends up as \\(\\frac{(x+1)(-x-1) -x^2}{x(x+1)}\\). Substitute back
         for numerator of \\(4041\\)`,
@@ -6860,7 +6860,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `Let \\(n=8^2022\\). Which of the following is equal to \\(\\frac{n}{4}\\)?`,
         type: 'mc',
         choices: ['\\(A) 4^1010\\)', '\\(B) 2^2022\\)', '\\(C) 8^2018\\)', '\\(D) 4^3031\\)', '\\(E) 4^3032\\)'],
@@ -6879,7 +6879,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `The least positive integer with exactly \\(2021\\) distinct positive divisors can be written in the form of \\(m \\cdot 6^k\\), where \\(m\\) and \\(k\\) are integers and \\(6\\) is not a divisor of \\(m\\). What is \\(m+k\\)?`,
         solution: `<b>58</b><p>We know that \\(6^k\\) can be written as \\(2^k \\cdot 3^k\\). We also know that the number of divisors a number has is equal to the product of \\(1\\) plus the powers in its prime facotrization. Thus, \\(2021 = 2 \\cdot (k+1)^2\\), but that's not possible because the
         powers have to be integers and \\(2021\\) is odd. That is, unless \\(m\\) is not prime. We now know for sure that \\(m\\) cannot be prime OR must be a facotr of \\(6\\). Returning to our way of finding the number of factors, we note that \\(2021=43 \\cdot 47\\) which we can find by using \\(45^2\\) and going for closer values. We know that the prime factorization must be \\(2^46 \\cdot 3^42\\) or \\(2^4 \\cdot 6^42\\) for \\(m=16\\) and \\(k=42\\) and an answer of \\(58\\) `,
@@ -6896,7 +6896,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Call a fraction \\(\\frac{a}{b}\\), not nescessarily in simplest form, special if \\(a\\) and \\(b\\) are positive integers whose sum is \\(15\\). How many distinct integers can be written as the sum of two, not nescessarily different, special fractions?`,
         solution: `<b>11</b><p>First find all the special fractions</p>
         $$
@@ -6945,7 +6945,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Forty slips of paper numbered \\(1\\) to \\(40\\) are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other.
         Alice says "I can't tell who has the larger number." Then Bob says, "I know who has the larger number." Alice says, "You do?" Is your number prime?" Bob replies, "Yes." Alice says, "In that case, if I multiply your number by \\(100\\) and add my number, the result is a perfect square," What is the sum of the two numbers drawn from the hat?`,
         solution: `<b>27</b><p>Let's break this down individually:</p>
@@ -6968,7 +6968,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Which of the following conditions is sufficient to guarantee that integers \\(x, y,\\) and \\(z\\) satisfy the equation \\(x(x-y)+y(y-z)+z(z-x)=1\\)?`,
         type: 'mc',
         choices: ['\\(A) x>y\\) and \\(y=z\\)', '\\(B) x=y-1\\) and \\(y=z-1\\)', '\\(C) x=z+1\\) and \\(y=x+1\\)', '\\(D) x=z\\) and \\(y-1=x\\)', '\\(E) x+y+z=1\\)'],
@@ -6998,7 +6998,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Let \\(N\\) be a positive integer \\(7777...777\\) a \\(313\\)-digit number where each digit is a \\(7\\). Let \\(f(r)\\) be the leading digit of the \\(r\\)th root of \\(N\\). What is \\(f(2)+f(3)+f(4)+f(5)+f(6)\\)?`,
         solution: `<b>8</b><p>We can make a few basic rules. The first is that dividing by any power of \\(10\\) does not change the leading digit, because it just adds \\(0\\)s, which are insignificant. From this, we don't concern ourselves with the whole \\(313\\) digit thing and instead only focus on the leading digits of \\(7.777...\\) after a bunch of roots. We approximate that the sum ends up being
         \\(2+1+1+3+1=8\\)</p>
@@ -7021,7 +7021,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `The least common multiple of a positive integer \\(n\\) and \\(18\\)  is \\(180\\) and te greatest common divisor of \\(n\\) and \\(45\\) is \\(15\\). What is the sum of digits of \\(n\\)?`,
         solution: `<b>3</b><p>We know by the second rule that \\(n\\) must be \\(15\\) or \\(30\\). However, the \\(LCM\\) of \\(18\\) and \\(15\\) isn't \\(180\\), it's \\(90\\), so we know \\(n=30\\) for a sum of digits \\(3\\)`,
         answer: '3',
@@ -7037,7 +7037,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `A dataset consists of \\(6\\) (not distinct) positive integers \\(1,7,5,2,5\\) and \\(X\\). The average (arithmetic mean) of the \\(6\\) numbers equals a value in the data set. What is the sum of all possible values of \\(X\\)?`,
         solution: `<b>32</b><p>By the definition of a mean, we know that the sum of the numbers must be equal to \\(6 \\cdot 1 = 6, 6 \\cdot 7 = 42, 6 \\cdot 5 = 30\\) or \\(6 \\cdot 2 = 12\\). The current sum is \\(20\\) so \\(X\\) must be equal to \\(10\\) or \\(22\\) for a sum of \\(32\\)`,
         answer: '32',
@@ -7055,7 +7055,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `<p>On Halloween, \\(31\\) children walked into the principal's office asking for candy. They can be classified into three types: Some always lie; some always tell the truth; and some alternately lie and tell the truth. The alternaters arbitrarily choose their first response, either a lie or the truth, but each subsequent statement has the opposite truth value from its predecessor. The principal asked everyone the same three questions in this order.</p>
         <p>"Are you a truth-teller?" The principal gave a piece of candy to each of the $22$ children who answered yes.</p>
         <p>"Are you an alternater?" The principal gave a piece of candy to each of the $15$ children who answered yes.</p>
@@ -7082,7 +7082,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `How many three-digit positive integers \\(abc\\) are there whose nonzero digits \\(a, b,\\) and \\(c\\) satisfy \\(0.\\overline{abc}=\\frac{1}{3}(0.\\overline{a}+0.\\overline{b}+0.\\overline{c})\\)?`,
         solution: `<b>13</b><p>We know that \\(0.\\overline{a}=\\frac{a}{9}\\). If you don't know why, try that out with any integer less than \\(10\\). Anyways, we rewrite RHS (right hand side) to \\(\\frac{abc}{27}\\). For the LHS
         we divide by \\(999\\) but make the numerator a 3 digit number \\(100a+10b+c\\) for \\(\\frac{100a+10b+c}{999}\\). We rewrite the entire equation as \\(100a+10b+c=37a+37b+37c\\) which we can solve for by solving for \\(a\\) and factoring out the GCD until we get \\(7a+3b+4c\\). Since \\((1,1,1)\\) is a solution, we 'scale that up' for every digit, whikch gives us 
@@ -7104,7 +7104,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `<p>Define L_{n} as the least common multiple of all the integers from \\(1\\) to \\(n\\) inclusive. There is a unique integer \\(h\\) such that</p>
         $$
         \\frac{1}{1}+\\frac{1}{2}+\\frac{1}{3}+...+\\frac{1}{17}=\\frac{h}{L_{17}}
@@ -7139,7 +7139,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `How many strings of length \\(5\\) formed from the digits \\(0,1,2,3,4\\) are there such that for each \\(j \\in {1,2,3,4},\\) at least \\(j\\) of the digits are less than \\(j\\)?
         (For example \\(02214\\) satisfies this condition because it contains at least \\(1\\) digit less than \\(1\\), at least \\(2\\) digits less than \\(2\\) at least \\(3\\) digits less than \\(3\\), and at least \\(4\\) digits less than \\(4\\). The string \\(23404\\) does not satisfy the condition
         because it does not contain at least \\(2\\) digits less than \\(2\\).)`,
@@ -7164,7 +7164,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `How many three-digit positive integers have an odd number of even digits?`,
         type: 'mc',
         choices: ['\\(A) 150\\)', '\\(B) 250\\)', '\\(C) 350\\)', '\\(D) 450\\)', '\\(E) 550\\)'],
@@ -7184,7 +7184,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `How many of the first ten numbers of the sequence \\(121, 11211, 1112111,...\\) are prime numbers?`,
         type: 'mc',
         choices: ['\\(A) 0\\)', '\\(B) 1\\)', '\\(C) 2\\)', '\\(D) 3\\)', '\\(E) 4\\)'],
@@ -7204,7 +7204,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `<p>Consider the following \\(100\\) sets of \\(10\\) elements each:</p>
         $$
         {1,2,3,...,10},
@@ -7238,7 +7238,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Camila writes down five positive integers. The unique mode of these integers is \\(2\\) greater than their median, and the median is \\(2\\) greater than their arithmetic mean. What is the least possible value for the mode?`,
         solution: `<b></b><p>Let's call our values \\(a, b, c, d, e\\). We know one value must happen at least more than once, because there is a unique mode. Call \\(e\\) and \\(d\\) the mode values and \\(c\\) the median. We have that \\(\\frac{a+b+c+2d}{5}+2=c=d-4\\). We then use the answer choices from here</p>
         <p>If the mode is \\(5\\) then \\(c\\) must be equal to \\(3\\) and the mean is \\(1\\) which isn't possible</p>
@@ -7262,7 +7262,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `All the high schools in a large school district are involved in a fundraiser selling T-shirts. Which of the choices below is logically equivalent to the statement "No school bigger than Euclid HS sold more T-shirts than Euclid HS"?`,
         type: 'mc',
         choices: ['\\(A)\\) All schools smaller than Euclid HS sold fewer T-shirt than Euclid HS', '\\(B)\\) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS', '\\(C)\\) All schools bigger than Euclid HS sold fewer shirts T-shirts than Euclid HS', '\\(D)\\) All schools that sold fewer T-shirts than Euclid HS are smaller than Euclid HS.', '\\(E)\\) All schools smaller than Euclid HS sold more T-shirts than Euclid HS'],
@@ -7287,7 +7287,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `The positive difference between a pair of primes is equal to \\(2\\), and the positive difference between the cubes of the two primes is \\(31106\\). What is the sum of the digits of the least prime that is greater than those two primes?`,
         solution: `<b>16</b><p>We write the given info as the equations \\(x-y=2\\) and \\(x^3-y^3=31106\\). We solve by substitution</p>
         $$
@@ -7315,7 +7315,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Suppose that \\(S\\) is a subset of \\({1,2,3,...,25}\\) such that the sum of any two (not nescessarily distinct) elements of \\(S\\) is never an element of \\(S\\) What is the maximum number of elements \\(S\\) may contain?`,
         solution: `<b>13</b><p>Essentially, we just need doubling the smallest value to be greater than the largest value, \\(25\\). This occurs when the smallest value is greater than \\(\\frac{25}{2}\\), so we have a smallest value \\(13\\) for \\(13\\) elements`,
         answer: '13',
@@ -7335,7 +7335,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `One of the following numbers is not divisible by any prime number less than \\(10\\). Which is it?`,
         choices: ['\\(A) 2^606 -1\\)', '\\(B) 2^606 +1\\)', '\\(C) 2^607 -1', '\\(D) 2^607 + 1\\)', `\\(E) 2^607 + 3&607\\)`],
         solution: `<b>2^607-1</b><p>This is a really difficult one, if I'm being honest. I doubt you would actually want/have time to do this in its entirety on a test</p>
@@ -7352,7 +7352,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: "How many positive perfect squares less than \\(2023\\) are divisible by \\(5\\)?",
         solution: `<b>8</b><p>We know that for a perfect square to be divisible by \\(5\\), its root should be a multiple of \\(5\\). We just need to find what square of a number divisible of \\(5\\) is closest to and less than \\(2023\\). We know that 
         \\(2023\\) is closed to \\(2025=45^2\\), so we're looking at \\(44\\), which has \\(\\frac{44}{8}=8\\frac{4}{5}\\) \\(5's\\) so there are \\(8\\) total`,
@@ -7367,7 +7367,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `How many digits are in the base \\(10\\) representation of \\(8^5 \\cdot 5^1 \\cdot 15^5\\)?`,
         type: 'mc',
         choices: ['\\(A) 14\\)', '\\(B) 15\\)', '\\(C) 16\\)', '\\(D) 17\\)', '\\(E) 18\\)'],
@@ -7386,7 +7386,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `A digital display shows the current date as an \\(8\\)-digit integer consisting of a \\(4\\)-digit year, followed by a \\(2\\)idigit month, followed by a \\(2\\)-digit date within the month. For example, Arbor Day this year
         is displayed as \\(20230428\\). For how many dates in \\(2023\\) does each digit appear an even number of times in the \\(8\\)-digit display for that date?`,
         solution: `<b>9</b><p>The first digit must be \\(0\\) or \\(1\\). The first \\(4\\) digits are set. We know we need at least one more \\(3\\) and one more \\(0\\). If the month as a \\(0\\), we can have Jan \\(13\\)th, Jan \\(31\\)st, Feb \\(23\\)th, March \\(11\\)th, March \\(22\\)nd, Oct \\(13\\)th, Oct \\(31\\)st. For the \\(0\\) NOT in the month, we have November \\(3\\)rd and \\(30\\)th`,
@@ -7405,7 +7405,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `<p>How many three-digit positive integers \\(N\\) satisfy the following properties?</p>
         <p>The number \\(N\\) is divisible by \\(7\\)</p>
         <p>The number formed by reversing the digits of \\(N\\) is divisible by \\(5\\)</p>`,
@@ -7436,7 +7436,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `In a table tennis tournament every participant played every other participant exactly once. Although there were twice as many right-handed players as left-handed players, the number of games won by left-handed players was \\(40%\\) more than the number of games won by right-handed players. (There were no ties and no ambidextrous players.) What is the total number of games played?`,
         solution: `<b>48</b>The total number of games \\(x\\) is equal to those won by the right-handed players plus those won by the left hand players \\(y+z\\), respectively. We know that \\(y=1.4z\\) so we have \\(x=2.4z\\). Since all values must be integers, we know that \\(x\\) must be divisible by \\(12\\). That gives us \\(36\\) and \\(48\\). Since each game is decided by choosing \\(2\\) people, we need \\(x\\) choose \\(2\\) to be 
         possible, which is only possible for \\(48\\)`,
@@ -7461,7 +7461,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `<b></b><p>If the positive integer \\(c\\) has positive integer divisors \\(a\\) and \\(b\\) with \\(c=ab\\), then \\(a\\) and \\(b\\) are said to be \\(complementary\\) divisors of \\(c\\). Suppose that \\(N\\) is a positive integer that has one complementary pair of divisors that differ by \\(20\\) and another pair of complementary divisors that differ by \\(23\\). What is the sum of the digits of \\(N\\)?`,
         solution: `<b></b><p>We have that \\(N=x^2+20x\\) and \\(N=y^2+23y\\). We know by logic that \\(x>y\\) and \\(x+20 < y+23\\). We can descripte the relationship as either \\(x=y+1\\) or \\(x=y+2\\), because if we went any higher, it would defy the second rule we set. We create the following equations:</p>
         $$
@@ -7491,7 +7491,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `What is the units digit of \\(2022^2023 + 2023^2022\\)?`,
         solution: `<b>7</b><p>We need to understand that unit digits are cyclic to best comprehend this. For \\(2\\), it goes \\(2,4,8,6,\\), so the units digit of \\(2022^2023=8\\). For \\(3\\) it's \\(3,9,7,1\\) so the unit digit is \\(9\\). Addint this gives \\(17\\). Thus, the units digit is \\(7\\)`,
         answer: '7',
@@ -7507,8 +7507,8 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
-        text:`You are playing a game. A \\(2 \\times 1\\) rectangle covers two adjacent squares (oriented either horizontally or vertically) of a\\(3\\times 3\\) grid of squares, but you are
+        rating: 1400,
+        text: `You are playing a game. A \\(2 \\times 1\\) rectangle covers two adjacent squares (oriented either horizontally or vertically) of a\\(3\\times 3\\) grid of squares, but you are
          not told which two squares are covered. Your goal is to find at least one square that is covered by the rectangle. A "turn" consists of you guessing a square, after which you are told whether that square is covered by the hidden rectangle. What is the minimum number of turns you need to ensure 
         that at least one of your guessed squares is covered by the rectangle?`,
         solution: `<b>4</b><p>There are \\(\\frac{(3 \\times 3)!}{2!((3 \\times 3)-2)!}=36\\) ways to choose \\(2\\) squares, but, because we need them to be adjacent, thee are really only \\(12\\) (because there are \\(4\\) corner squares with \\(2\\) orientations and \\(4\\) non-corner edge squares with \\(1\\). </p>
@@ -7528,7 +7528,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Suzzane went to the bank and withdrew \\($800\\). The teller gave her this amount of using \\($20\\) bills, \\($50\\) bills, and \\($100\\) bills, with at least one of each denominator. How many different collections of bills could Suzanne have recieved?`,
         solution: `<b>21</b><p>We write the equation as \\(2x+5y+10z=80\\) (we divide by \\(10\\)) and solve by casework using the smallest denominaton</p>
         <p>There is one \\(2\\). There's \\(78\\) left, which sin't nescessary unless we have more \\(2\\)s. We must have some multiple of \\(5\\) \\(2\\)s</p>
@@ -7550,7 +7550,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `What is the least positive integer \\(m\\) such that \\(m \\cdot 2! \\cdot 3! \\cdot 4! \\cdot 5! ... 16!\\) is a perfect square?`,
         solution: `<b></b><p>The sequence, which we'll call \\(S\\) is a perfect square when each number appears an even number of times in the prime factorization. We expand and find that \\(2!, 4!, 6!...16!\\) will all have odd exponents</p>
         <p>Thus, we just need \\(m \\cdot 2\\cdot 4 \\cdot 6 ... 16\\) to be a perfect square which we factorize and find \\(m=70\\) at lowest`,
@@ -7569,12 +7569,12 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Define an \\(upno\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly increasing moving left to right. Similarly, define a \\(downo\\) to be a positive integer of \\(2\\) or more digits where the digits are strictly decreasing moving eft to right. For instance, the number
         \\(258\\) is an upno and \\(8620\\) is a downo. Let \\(U\\)  equal to the total number of \\(upnos\\) and let \\(D\\) equal the total number of \\(downos\\). What is \\(|U-D|\\)`,
         solution: `<b>512</b><p>First off, notice that \\(upno\\)s can never include \\(0\\). There are \\(10\\) possible numbers for \\(downo\\)s and \\(9\\) for \\(upno\\)s. Each number can either be used as a part of the \\(upno/downo\\) or not, because there will always be a way to arrange it. Thus, we have \\(2^10\\) ways to make a \\(downo\\) and \\(2^9\\) ways to make an \\(upno\\)</p>
         <p>That being said, that solution overcounts, because it accounts for situations where there are no digits or only one digit. We thus need to subtract \\(11\\) from the downos and \\(10\\) from the upnos. We have\\(2^10-11-2^9+10\\)`,
-        type:'mc',
+        type: 'mc',
         choices: ['\\(A) 512\\)', '\\(B) 10\\)', '\\(C) 0\\)', '\\(D) 9\\)', '\\(E) 511\\)'],
         topic: 'casework',
         hint: "What digit cannot appear in upnos? How can you use exponents to express the total number of upnos and downos?",
@@ -7590,7 +7590,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `<p>Suppose \\(a, b,\\) and \\(c\\) are positive integers such that</p>
         $$
         \\frac{a}{14}+\\frac{b}{15}=\\frac{c}{210}
@@ -7605,7 +7605,7 @@ rating: 1200,
         <p>The second one is true...I'm not really sure how to explain it but we can try induction and simple intuition + logic. I sorta just asummed, if I'm being honest. What it's really telling us is that if the RHS is in simplest form, 
         one of the LHS fractions must be in simplest form. This checks out because it means we can't simplify more</p>
         <p>Since there is no option for just \\(II\\\), we know that it must be \\(II\\) and \\(III\\)`,
-        answer:'\\(E) II \\textup{and} III \\textup{only}\\)',
+        answer: '\\(E) II \\textup{and} III \\textup{only}\\)',
         topic: 'logic',
         hint: "Which one can you prove conclusively? What does that narrow our answer choices to? Realize that a \\(\\textup{gcd}\\) of \\(1\\) means it cannot be simplified",
         step: "Find counterexamples to disprove some of the statements"
@@ -7616,7 +7616,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `What is the sum of the digits of the smallest prime that can be written as a sum of \\(5\\) distinct primes?`,
         solution: `<b>7</b><p>We know that the smallest prime would be the sum of the \\(5\\) smallest primes. However, the smallest prime is \\(2\\) which, when summed with \\(4\\) other odd numbers, would become even. Thus, we can't use \\(2\\). We try the next \\(5\\) smallest prime numbers \\(3, 5, 7, 11, 13\\). This sums to \\(39\\). Still not prime. We substitute \\(13\\) for \\(17\\) which gives us \\(43\\). We have that \\(4+3=7\\)`,
         answer: '7',
@@ -7630,7 +7630,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `The number \\(2024\\) is written as the sum of not nescessarily distinct two-digit numbers. What is the least number of two-digit numbers needed to write this sum?`,
         solution: `<b></b><p>We want to use as many large numbers as possible so that we use as little two digit numbers of possible. Obviously, the largest 2-digit number is \\(99\\) so divide \\(2024\\) by that: \\(\\frac{2024}{99} = 20\\) with remainder \\(44\\). There are thus \\(21\\) two digit numbers.`,
         answer: '21',
@@ -7644,7 +7644,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `What is the least value of \\(n\\) such that \\(n!\\) is a multiple of \\(2024\\)?`,
         solution: `<b>23</b><p>We find the prime factorization of \\(2024\\) to be \\(2^3 \\cdot 11 \\cdot 23\\). The highest prime number is \\(23\\) in this, so it must be at least \\(23\\)`,
         answer: '23',
@@ -7660,7 +7660,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `The product of three integers is \\(60\\). What is the least possible positive sum of the three integers?`,
         solution: `<b>3</b><p>We know that the sum is minimized when factors are nearest to each other. However, we are not told that the factors have to be positive, just the sum. We still want to numbers to be close, however.</p>
         <p>We list the prime factorization as \\(2^2\\cdot 3 \\cdot 5\\). What we CAN do is have one be \\(1\\). Thus, we take the closest thing to the square root, \\(6\\) and \\(10\\) and make the \\(6\\) and \\(1\\) negative for a sum of \\(3\\) `,
@@ -7679,7 +7679,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Consider the following operation. Given a positive integer \\(n\\), if \\(n\\) is a multiple of \\(3\\), then you replace \\(n\\) by \\(\\frac{n}{3}\\). If \\(n\\) is not a multiple of \\(3\\), then you replace \\(n\\) by \\(n+10\\).
         For example, beginning with \\(n=4\\), this procedure gives\\(4\\rightarrow 14 \\rightarrow 24\\rightarrow 8 \\rightarrow 18 \\rightarrow 6\\rightarrow 2 \\rightarrow 12\\rightarrow ...\\). Suppose you start with \\(n=100\\). What value results if you perform this operation exactly \\(100\\) times `,
         solution: `<b></b><p>Let's try this a few times and see if we can make a conjecture. We have \\(100 \\rightarrow 110 \\rightarrow 120 \\rightarrow 40 \\rightarrow 50 \\rightarrow 60\\rightarrow 20 \\rightarrow 30\\). From here, the sequence repeats \\(20, 30,10\\). We use some modular arithmetic</p>
@@ -7697,9 +7697,9 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Let \\(M\\) be the greatest integer such that both \\(M+1213\\) and \\(M+3773\\) are perfect squares. What is the units digit of \\(M\\)?`,
-        solution:  `<b>8</b><p>Write equations \\(M+1213=x^2\\) and (M+3773=(x+y)^2\\). It's sort of trivial that \\(y\\) should be as small as possible</p>
+        solution: `<b>8</b><p>Write equations \\(M+1213=x^2\\) and (M+3773=(x+y)^2\\). It's sort of trivial that \\(y\\) should be as small as possible</p>
         <p>If you don't get why, think of it this way: Imagine the square root parent function. That's similar to what's happening, if you call the enitre \\(LHS\\) \\(x\\) and the \\(RHS\\) \\(y\\).</p>
         <p>Recall that the slope of the graph diminishes over time. What that tells us is that as \\(x\\) becomes larger, the difference between the roots decreases</p>
         <p>Ok, back to the problem. We want to minimize the difference, \\(y\\) should equal \\(1\\), right? Not exactly. Since both constants are odd and \\(M\\) must be constant for both equations, they will either both be
@@ -7738,7 +7738,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `There are exactly \\(K\\) positive integers \\(5 \\le b \\le 2024\\) such that the base-\\(b\\) integer \\(2024_{b}\\) is divisible by \\(16\\)(where \\(16\\) is in base ten). What is the sum of the digits of \\(K\\)?`,
         solution: `<b>20</b><p>We convert \\(2024_{b}\\) to base \\(10\\) by creating the equation \\(2b^3+2b+4\\). We need \\(\\frac{2b^3+2b+4}{16}\\) to be a whole numberWe can simplify this down by writing
         \\(\\frac{b^3+b}{8}+\\frac{1}{4}\\) is a whole number. We thus have that \\(\\frac{b^3+b}{8}=\\frac{3}{4}+x\\) where \\(x\\) is effectively any whole number. This is similar to how you would solve a sine graph, if that makes sense</p>
@@ -7773,7 +7773,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `<p>Let \\(S\\) be a subset of \\({1,2,3,...,2024}\\) such that the following two conditions hold:</p>
         <p>If \\(x\\) and \\(y\\) are distinct elements of \\(S\\), then \\(|x-y|>2\\)</p>
         <p>If \\(x\\) and \\(y\\) are distinct odd elements of \\(S\\), then \\(|x-y|>6\\)</p>
@@ -7811,7 +7811,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `The numbers, in order, of each row and the numbers, in order, of each column of a \\(5 \\times 5\\) array of integers form an arithmetic progression of length \\(5\\). The numbers in positions \\((5,5), (2,4), (4,3),\\) and \\((3,1)\\) are \\(0,47,16,\\) and \\(12\\) respectively. What number 
         is in position \\((1,2)\\)?`,
         solution: `<b>29</b><p>Just off the bat, this is a really annoying problem to solve. There is quite a bit of algebra in it, and honestly, if I saw this on the AMC 10 I would skip it. That being said, here's how to solve it</p>
@@ -7844,7 +7844,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `In a long line of people arranged left to right, the \\(1013\\)th person from the left is also the \\(1010\\)th person from the right. How many people are in the line?`,
         solution: `<b>2022</b><p>This is easy, right? I mean you just add them? Nope, because the issue with that is you would count the person twice. What you do instead is add and subtract \\(1\\) for \\(1013+1010-1=2022\\)</p>
         <h3>Common Mistake <span class="material-symbols-outlined">
@@ -7868,7 +7868,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `<p>In the following expression, Melanie changed some of the plus signs to minus signs:</p>
         $$
         1+3+5+7+...+97+99
@@ -7900,7 +7900,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `What is the remainder when \\(7^2024 + 7^2025 + 7^2026\\) is divided by \\(19\\)?`,
         solution: `<b>0</b><p>We factor out \\(7^2024\\) for \\(7^2024(1+7+49)\\) or \\(7^2024(57)\\). Since \\(57\\) is divisible by \\(19\\) (being \\(19 \\cdot 3\\)\\), we have a remainder of \\(0\\)`,
         topic: 'factoring',
@@ -7909,22 +7909,22 @@ rating: 1000,
         step: "Factor out \\(7^2024\\)"
     },
     {
-       title: `AMC 10B 2024 Problem 8 <span class="material-symbols-outlined">
+        title: `AMC 10B 2024 Problem 8 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-       used: false,
-       difficulty: 2,
-rating: 1000,
-       text: `Let \\(N\\) be the product of all the positive integer divisors of \\(42\\). What is the units digit of \\(N\\)?`,
-       solution: `<b>6</b><p>Through pure logic, we know that the product of all divisors of \\(42\\) will be some power of \\(42\\).</p>
+        used: false,
+        difficulty: 2,
+        rating: 1000,
+        text: `Let \\(N\\) be the product of all the positive integer divisors of \\(42\\). What is the units digit of \\(N\\)?`,
+        solution: `<b>6</b><p>Through pure logic, we know that the product of all divisors of \\(42\\) will be some power of \\(42\\).</p>
        <p>The prime factorization of \\(42\\) is \\(2 \\cdot 3 \\cdot 7\\) for a total of \\(8\\) factors and \\(4\\) factor pairs. Thus, \\(42\\) is raised to the \\(4\\)th power. </p>
        <p>The units digit will follow a pattern, so we just find the pattern for \\(2\\) to be \\(2, 4, 8, 6\\). Thus, the units digit is \\(6\\)` ,
-       answer: '6',
-       topic: 'prime factorization',
-       hint: "How can you find all of the prime factors of \\(48\\)",
-       step: "Find the prime factorization and find how many factors there are through that"
+        answer: '6',
+        topic: 'prime factorization',
+        hint: "How can you find all of the prime factors of \\(48\\)",
+        step: "Find the prime factorization and find how many factors there are through that"
     },
     {
         title: `AMC 10B 2024 Problem 12 <span class="material-symbols-outlined">
@@ -7937,7 +7937,7 @@ star
         used: false,
         difficulty: 3,
         answer: "\\(A) 9\\)",
-rating: 1200,
+        rating: 1200,
         text: `A group of \\(100\\) students from different countries meet at a mathematics competition. Each student speaks the same number of languages, and, for every pair of students \\(A\\) and \\(B\\), student \\(A\\)
         and \\(B\\), student \\(A\\) speaks some language that student \\(B\\) does not speak, and student \\(B\\) speaks some language that student \\(A\\) does not speak. What is the least possible total 
         number of languages spoken by all students?`,
@@ -7960,7 +7960,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `A list of \\(9\\) real numbers consists of \\(1, 2.2, 3.2, 5.2, 6.2\\) and \\(7\\) as well as \\(x, y,\\) and \\(z\\) with \\(x \\le y \\le z\\). The range of the list is \\(7\\) and the mean and the median are both positive integers. how many ordered triples \\(x,y,z\\) are possible?`,
         solution: `<b>3</b><p>We either have \\(x=0\\) or \\(z=8\\) and that \\(y\\) must be the medain. The sum of all the numbers must be divisible by \\(9\\) in order for the mean to be a whole number. The current sum is \\(24.8\\) so the remaining numbers must sum to \\(2.2, 11.2, 20.2\\). \\(2.2\\) isn't possible unless we hvae a negative \\(x\\), which we can't without 
         disrupting the range. For \\(11.2\\), we know that the median \\(y\\) must be between \\(3.2\\) and \\(5.2\\) so it's either \\(4\\) or \\(5\\). The prior makes \\(x\\) and \\(z\\) which contradicts our previous statement but is still correct (lesson in oversimplifaction, not always the best) and the latter gives \\(0\\) and \\(6.2\\)</p>
@@ -7984,7 +7984,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Jerry likes to play with numbers. One day, he wrote all the integers from \\(1\\) to \\(2024\\) on the whiteboard. Then he repeatedly chose four numbers on the whiteboard, erased them, and replaced them by either their sum or their product. (For example, Jerry's first step might have been to erase
         \\(1,2,3\\) and \\(5\\), and then write either \\(11\\) their sum, or \\(30\\) their product, on the whiteboard). After repeatedly performing this operation, Jerry noticed that all the remaining numbers on the whiteboard were odd. What is the maximum possible number of integers on the whiteboard at that time?
         `,
@@ -7995,7 +7995,7 @@ rating: 1400,
         answer: '\\(A) 1010\\)',
         topic: 'logic',
         hint: "What is Jerry's optimal strategy?",
-        step:"Realize that Jerry's starting strategy should be to remove \\(3\\) even integers and \\(1\\) odd until he runs out of even integers"
+        step: "Realize that Jerry's starting strategy should be to remove \\(3\\) even integers and \\(1\\) odd until he runs out of even integers"
     },
     {
         title: `AMC 10B 2024 Problem 18 <span class="material-symbols-outlined">
@@ -8009,7 +8009,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: "How many different remainders can result when the \\(100\\textup{th}\\) power of any integer is divided by \\(125\\)?",
         solution: `<b>2</b><p>Any integer can be written as \\(5x, 5x+1, 5x+2, 5x+3, 5x+4\\). When we raise these to the \\(100\\)th power, they will leave specific remainders. For \\(5x\\) it leaves \\(0\\) because the \\(5\\) effectively "handles" the \\(125\\). Not quite sure how else to explain it. We also notice that \\(5x+4 = 5(x+1)-1\\) and the same logic for \\(5x+3\\). \\(5x \\pm 1\\) or \\(2\\) give remainder of \\(1\\) (see link for more complex proof)</p>`,
         answer: '2',
@@ -8031,7 +8031,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `<p>The Fibonacci numbers are defined by \\(F_{1}=1, F_{2}=1,\\) and \\(F_{n}=F_{n-1}+F_{n-2}\\) for \\(n \\ge 3\\) What is</p>
         $$
         \\frac{F_{2}}{F_{1}}+\\frac{F_{4}}{F_{2}}+\\frac{F_{6}}{F_{3}}+...+\\frac{F_{20}}{F_10}}?
@@ -8050,7 +8050,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `<p>Consider the sequence of positive integers</p>
         $$
         1,2,1,2,3,2,1,2,3,4,3,2,1,2,3,4,5,4,3,2,1,2,3,4,5,6,5,4,3,2,1,2,...
@@ -8068,7 +8068,8 @@ rating: 800,
         answer: '\\(E) 45\\)',
         topic: 'patterns',
         hint: "Look at the pattern for the location of the \\(1\\)s",
-step: "Realize that the location of the \\(1\\)s is increasing by increasing even numbers. We can use this to find how many sequences of `hills` there are, and then find the `remainder`"    },
+        step: "Realize that the location of the \\(1\\)s is increasing by increasing even numbers. We can use this to find how many sequences of `hills` there are, and then find the `remainder`"
+    },
     {
         title: `AMC 10A 2025 Problem 8 <span class="material-symbols-outlined">
 star
@@ -8077,7 +8078,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `<p>Agnes writes the following four statements on a blank piece of paper</p>
         <p> - At least one of these statements is true</p>
         <p> - At least two of these statements are true</p>
@@ -8109,7 +8110,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Let \\(N\\) be the unique positive integer such that dividng \\(273436\\) by \\(N\\) leaves a remainder of \\(16\\) and dividing \\(272760\\) by \\(N\\) leaves a remainder of \\(15\\). What is the tens digit of \\(N\\)?`,
         solution: `<b>4</b><p>We have that \\(x \\cdot N + 16 = 273436\\) and that \\(y \\cdot N + 15 = 272760\\). We can also rewrite this into
         \\(x \\cdot N = 273420\\) and \\(y \\cdot N = 272745\\). We effectively need the \\(GCF\\) of the two constants. </p>
@@ -8133,7 +8134,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Call a positive integer fair if no digit is used more than once, it has no \\(0\\)s and no digit is adjacent to two
         greater digits. For example, \\(196, 23\\) and \\(12463\\) are fair, but \\(1546, 320,\\) and \\(34321\\) are not. How many fair positive integers are there?`,
         type: 'mc',
@@ -8151,7 +8152,7 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `The ages of Jonie's four cousins are distinct single-digit positive integers. Two of the cousin's
         ages multiplied together gives \\(24\\) while the other two multiply to \\(30\\). What is the sum of the ages of Jonie's four cousins?`,
         type: 'mc',
@@ -8166,81 +8167,81 @@ rating: 800,
 shuffleArray(numTheoryQ);
 const probabilityQ = [
     {
-title: `AMC 10B 2021 Fall Problem 16 <span class="material-symbols-outlined">
+        title: `AMC 10B 2021 Fall Problem 16 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-used: false,
-difficulty: 3,
-rating: 1200,
-text: `Five balls are arranged around a circle. Chris chooses two adjacent balls at random and
+        used: false,
+        difficulty: 3,
+        rating: 1200,
+        text: `Five balls are arranged around a circle. Chris chooses two adjacent balls at random and
 interchanges them. Then Silva does the same, with her choice of adjacent balls to
  interchange being independent of Chris's. What is the expected number of balls that occupy
   their original positions after these two successive transpositions?`,
-  type: 'mc',
-  choices: ['\\(A) 1.6\\)', '\\(B) 1.8\\)', '\\(C) 2.0\\)', '\\(D) 2.2\\)', '\\(E) 2.4\\)'],
-  solution: `<b>2.2</b><p>The first switch doesn't matter. We do casework. </p>
+        type: 'mc',
+        choices: ['\\(A) 1.6\\)', '\\(B) 1.8\\)', '\\(C) 2.0\\)', '\\(D) 2.2\\)', '\\(E) 2.4\\)'],
+        solution: `<b>2.2</b><p>The first switch doesn't matter. We do casework. </p>
   <p>One case is that she switches them back ,we have \\(5\\). This is a \\(\\frac{1}{5}\\) chance so we have \\(1\\)</p>
   <p>Next is switching one that hasn't been swapper. Then we have \\(2\\). There are \\(2\\) ways for this to happen so \\(\\frac{4}{5}\\)</p>
   <p>Finally, two different ones. There are \\(2\\) ways for this to happen with \\(1\\) left for \\(\\frac{2}{5}\\). Adding these gives \\(2.2\\)`,
-answer: '\\(D) 2.2\\)',
-topic: 'expected value',
-hint: "What are the three types of switches Silvia can make in relation to Chris's?",
-step: "Split into cases based on how many of Chris's balls Silvia picks"
+        answer: '\\(D) 2.2\\)',
+        topic: 'expected value',
+        hint: "What are the three types of switches Silvia can make in relation to Chris's?",
+        step: "Split into cases based on how many of Chris's balls Silvia picks"
     },
     {
-title: `AMC 10A 2025 Problem 14 <span class="material-symbols-outlined">
+        title: `AMC 10A 2025 Problem 14 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-used: false,
-difficulty: 3,
-rating: 1200,
-text: `Six chairs are arranged around a round table. Two students and two teachers randomly select four of the chairs to
+        used: false,
+        difficulty: 3,
+        rating: 1200,
+        text: `Six chairs are arranged around a round table. Two students and two teachers randomly select four of the chairs to
 sit in. What is the probability that the two students will sit in two adjacent chairs and the two teachers will also sit in two adjacent chairs?`,
-type: 'mc',
-choices: ['\\(A) \\frac{1}{6}\\)', '\\(B) \\frac{1}{5}\\)', '\\(C) \\frac{2}{9}\\)', '\\(D) \\frac{3}{13}'],
-solution: `<b>\\(frac{1}{5}\\)</b><p>The first student has \\(6\\) places they can sit in. The second has a \\(5\\), but only \\(2\\) of which fuffil the requirements of being adjacent. This would be \\(6 \\times 2\\). Of the remaining seats, we can't just do \\(4 \\cdot 2\\), because some seats that the teachers pick,
+        type: 'mc',
+        choices: ['\\(A) \\frac{1}{6}\\)', '\\(B) \\frac{1}{5}\\)', '\\(C) \\frac{2}{9}\\)', '\\(D) \\frac{3}{13}'],
+        solution: `<b>\\(frac{1}{5}\\)</b><p>The first student has \\(6\\) places they can sit in. The second has a \\(5\\), but only \\(2\\) of which fuffil the requirements of being adjacent. This would be \\(6 \\times 2\\). Of the remaining seats, we can't just do \\(4 \\cdot 2\\), because some seats that the teachers pick,
 particularly the ones adjacent to students, cannot gurantee two adjacent seats next to them.If we were to draw this out, we would see that there are \\(3\\) pairs of adjacent seats, and we multiply this by \\(2\\), because the order in which the students sit there can switch.</p>
 <p>There are \\(6 \\cdot 5 \\cdot 4 \\cdot 3=360\\) arrangements for them for a probability of \\(\\frac{12 \\cdot 6}{360}=\\frac{1}{5}\\)
 <p>`,
-answer: '\\(B) \\frac{1}{5}\\)',
-topic: 'counting',
-hint: "How can you find the number of ways for the teachers to sit without overcounting",
-step: "Find the number of places where the students can sit (assuming students first) with \\(6 \\cdot 2\\) because the first student can sit in \\(6\\) places and has \\(2\\) seats adjacent to it."
+        answer: '\\(B) \\frac{1}{5}\\)',
+        topic: 'counting',
+        hint: "How can you find the number of ways for the teachers to sit without overcounting",
+        step: "Find the number of places where the students can sit (assuming students first) with \\(6 \\cdot 2\\) because the first student can sit in \\(6\\) places and has \\(2\\) seats adjacent to it."
     },
     {
-title: `AMC 10A 2020 Problem 13 <span class="material-symbols-outlined">
+        title: `AMC 10A 2020 Problem 13 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-used: false,
-difficulty: 3,
-rating: 1200,
-text: `A frog sitting at the point \\((1,2)\\) begins a sequence of jumps, where each jump is parallel to one of the cordinate axes and has length \\(1\\), and the
+        used: false,
+        difficulty: 3,
+        rating: 1200,
+        text: `A frog sitting at the point \\((1,2)\\) begins a sequence of jumps, where each jump is parallel to one of the cordinate axes and has length \\(1\\), and the
 direction of eacn jump (up, down, right, or left) is chosen independently at random. The sequence ends when the frog reaches a side of the square with vertices \\((0,0), (0,4), (4,4),\\) and \\((4,0)\\). 
 What is the probability that the sequence of jumps ends on a vertical side of the square?`,
-type: 'mc',
-choices: ['\\(A) \\frac{1}{2}\\)', '\\(B) \\frac{5}{8}\\)', '\\(C) \\frac{2}{3}\\)', '\\(D) \\frac{3}{4}\\)', '\\(E) \\frac{7}{8}\\)',
-],
-topic: 'casework',
-solution: `<b>\\(\\frac{5}{8}\\)</b><p>We do casework based on the first jump.</p>
+        type: 'mc',
+        choices: ['\\(A) \\frac{1}{2}\\)', '\\(B) \\frac{5}{8}\\)', '\\(C) \\frac{2}{3}\\)', '\\(D) \\frac{3}{4}\\)', '\\(E) \\frac{7}{8}\\)',
+        ],
+        topic: 'casework',
+        solution: `<b>\\(\\frac{5}{8}\\)</b><p>We do casework based on the first jump.</p>
 <p>Jumping left gives us a vertical side already, so a \\(\\frac{1}{4}\\) chance</p>
 <p>Jumping right gives us the center, so a \\(\\frac{1}{2} \\cdot \\frac{1}{4}=\\frac{1}{8}\\)</p>
 <p>Jumping up and jumping down both hit corners with diagonal symetry, which gives \\(\\frac{1}{2}\\) chance. We have \\(\\frac{1}{2} \\cdot \\frac{1}{2}\\)</p>
 <p>Adding these up gives us \\(\\frac{5}{8}\\)</p>`,
-answer: '\\(B) \\frac{5}{8}\\)',
-hint: "How can you break this down into cases?",
-step: "Break this down into cases ofr the first jump and add the probabilities. For instance, jumping left already lands you on an edge, so that's already a \\(\\frac{1}{4}\\) chance"
+        answer: '\\(B) \\frac{5}{8}\\)',
+        hint: "How can you break this down into cases?",
+        step: "Break this down into cases ofr the first jump and add the probabilities. For instance, jumping left already lands you on an edge, so that's already a \\(\\frac{1}{4}\\) chance"
     },
     {
         title: `AMC 10A 2020 Problem 15 <span class="material-symbols-outlined">
@@ -8252,7 +8253,7 @@ star
 </span>`,
         uesd: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `A positive integer divisor of \\(12!\\) is chosen at random. The probability that the divisor chosen is a perfecct square can be expressed as \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are relatively prime
         positive integers. What is \\(m+n\\)?`,
         type: 'mc',
@@ -8292,7 +8293,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `A point is chosen at random witin the square in the coordinate plane whose vertices are \\((0,0), (2020,0), (2020,2020),\\) and \\((0,2020)\\). The 
         probability that the point is within \\(d\\) units of a lattice point is \\(\\frac{1}{2}\\). (A point \\((x,y)\\) is a lattice point if \\(x\\) and \\(y\\) are both integers.) What is \\(d\\) to the nearest tenth?`,
         type: 'mc',
@@ -8319,12 +8320,12 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if
         the sum of the numbers face up on the three dice is exactly \\(7\\). Jason always plays to optimize
         his chances of winning. What is the probability that he chooses to reroll exactly two of the dice? ,       `,
         type: 'mc',
-        choices:['\\(A) \\frac{7}{36}\\)', '\\(B) \\frac{5}{24}\\)', '\\(C) \\frac{2}{9}\\)', '\\(D) \\frac{17}{72}\\)', '\\(E) \\frac{1}{4}\\)'],
+        choices: ['\\(A) \\frac{7}{36}\\)', '\\(B) \\frac{5}{24}\\)', '\\(C) \\frac{2}{9}\\)', '\\(D) \\frac{17}{72}\\)', '\\(E) \\frac{1}{4}\\)'],
         answer: '\\(A) \\frac{7}{36}\\)',
         solution: `<b>\\(\\frac{7}{36}\\)</b><p>Jason rerolls \\(0\\) dice when he already has a \\(7\\) and rerolls \\(3\\) dice when he has a \\(6\\) or \\(5\\), assuming he hasn't already won. This is sort of just intuitive</p>
         <p>For Jason to roll \\(2\\) die, the probability of winning MUST be above that of completely rerolling and that of rerolling one.</p>>
@@ -8359,12 +8360,12 @@ star
 </span>`,
         used: false,
         difficulty: 1,
-rating: 800,
+        rating: 800,
         text: `How many distinguishable arrangements are there of \\(1\\) brown tile, \\(1\\) purple tile, \\(2\\) green tiles, and \\(3\\) yellow tiles in a row from left to right?`,
         solution: `<b>420</b><p>All we have to do for this is find the total number of combination and then divide the ways to arrange the tiles of the same color</p>
         <p>We have \\(\\frac{7!}{3! \\cdot 2!}=420\\)<p><b>Solution by snowflake:</b><p>Call all brown tiles B, all purple tiles P, all green tiles G, and all yellow tiles Y. Then, it's just the amount of 'words' you can form. Since there are 7 total characters, and 3 Y repeats and 2 G repeats, it's just \\(\\frac{7!}{(3! \\cdot 2!)} = \\frac{5040}{12} = 420\\)`,
         answer: '420',
-        type:'fr',
+        type: 'fr',
         topic: 'counting',
         hint: "What should you divide the total number of combinations by",
         step: "Find the total number of combinations \\(7!\\) and divide by the number of ways to arrange tiles of the same color"
@@ -8379,7 +8380,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Ms. Carr asks her students to read any \\(5\\) of the \\(10\\) books on a reading list. Harold randomly selects \\(5\\) books from the list, and Betty does the same. What is the probability that there are exactly \\(2\\) books that they select?`,
         type: 'mc',
         choices: ['\\(A) \\frac{1}{8}\\)', '\\(B) \\frac{5}{36}\\)', '\\(C) \\frac{14]{45}\\)}', '\\(D) \\frac{25}{63}\\)', '\\(E) \\frac{1}{2}\\)'],
@@ -8402,7 +8403,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `An urn cotains one red ball and one blue ball. A box of extra red and blue balls lies nearby. Geogre performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?`,
         type: 'mc',
         choices: ['\\(A) \\frac{1}{6}\\)', '\\(B) \\frac{1}{5}\\)', '\\(C) \\frac{1}{4}\\)', '\\(D) \\frac{1}{3}\\)', '\\(E) \\frac{1}{2}\\)'],
@@ -8428,7 +8429,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `There are \\(10\\) people standing equally spaced around a circle. Each person knows exactly \\(3\\) of the other \\(9\\) people: the \\(2\\) people standing next to him or her, as well as the person directly across the circle.
         How many ways are there for the \\(10\\) people to split up into \\(5\\) pairs so that the members of each pair know each other?`,
         solution: `<b>13</b><p>We use the circle to visualize. Notice that we can just pair everybody with the person next to them. That would give us \\(2\\) cases because we can pair clockwise or counterclockwise</p>
@@ -8452,7 +8453,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `In a certain card game, a player is dealt a hand of \\(10\\) cards from a deck of \\(52\\) distinct cards. The number of distinct (unordered) hands that can be deal to the player can be written as \\(158A00A4AA0\\). What is the digit \\(A\\)?`,
         solution: `<b>2</b><p>What we're really looking for is the tens digit of \\(52\\) choose \\(10\\) or \\(\\frac{52!}{10!(42!)}\\) which simplifies down to \\(\\frac{52 \\cdot 51 \\cdot 50 ... \\cdot 43}{10!}\\). From here, it's decently easy to just simplify down by factoring and get \\(\\frac{26 \\cdot 17 \\cdot 7 \\cdot 47 \\cdot 46 \\cdot 5 \\cdot 11 \\cdot\\ 43}\\) which we divide by \\(10\\) again for modulo \\(2\\). `,
         answer: '2',
@@ -8472,7 +8473,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `In how many ways can the sequence \\(1,2,3,4,5\\) be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?`,
         solution: `<b></b>We know each sequence of increasing or decreasing numbers must be of length \\(2\\). Thus, it must go increase, decrease, increase, decrease, or visa versa. </p>
         <p>With increase decrease increase decrease, the terms that you increase to have to be \\(3,4,5\\). That gives us \\(_3_5_, _5_3_, _4_5_, _5_4_\\). Notice that we cannot have \\(3,4\\) in any combination. The first option can be \\(13254\\) or \\(23154\\). The same is said for the second one, because it's the same
@@ -8496,7 +8497,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Frieda the frog begins a sequence of hops on a \\(3 \\times 3\\) grid of squares, moving one square on each hope and choosing at random the direction of each hop-up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she "wraps around" and jumps to the opposite edge.
         For example if Frieda begins in the center square and makes two hops "up", the first hop would place her in the top row middle square, and the second hop would cause Frieda to jump to the opposite edge, landing in the bottom row
         middle square. Suppose Frieda starts from the center square, makes at most four hops at random, and stops hopping if she lands on a corner square. What is the probability that she reaches a corner square on one of the four hops?`,
@@ -8526,7 +8527,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `How many ways are there to place \\(3\\) indistinguihsable red chips, \\(3\\) indistinguishable blue chips, and \\(3\\) indistinguishable green chips in the squares of a \\(3 \\times 3\\) grid so that no two chips of the same color
         are directly adjacent to each other, either vertically or horizontally?`,
         solution: `<b></b><p>We know, right off the bat, that the answer has to be a multiple of \\(6\\), because any combination needs to work when the colors are switched around  in \\(3!=6\\) ways</p>
@@ -8553,7 +8554,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Ang, Ben, and Jasmin each have \\(5\\) blocks, colored red, blue, yellow, white, and green; and there are \\(5\\) empty boxes. Each of the people randomly and indepenedently of the other two people places one of their blocks into each box. The probability that at least one box 
         recieves \\(3\\) blocks of all of the same color is \\(\\frac{m}{n}\\), where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n?\\)`,
         solution: `<b>471</b><p>The number of ways for at least one box to have all of one color can be calculated by dividing it into three cattegories:</p>
@@ -8579,7 +8580,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `When a certain unfair die is rolled, an even number is \\(3\\) times as likely to appear as an odd number. The die is rolled twice. What is the probability that the sum of the numbers rolled is even?</p>`,
         solution: `<b>\\(\\frac{5}{8}\\)</b><p>Let's first start by figuring out what the values of the number need to be. The question doesn't specify the number of faces so let's just imagine it's a coin that is either even or odd (you can also imagine \\(1\\) or \\(2\\) but it's up to you)</p>
         <p>We have that \\(P(O)=\\frac{1}{4}\\) and \\(P(E)=\\frac{3}{4}\\) because \\(\\frac{3}{4}+\\frac{1}{4}=1\\) (you can solve it algebraicly but it's relatively trivial)</p>
@@ -8599,7 +8600,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `A school has \\(100\\) students and \\(5\\) teachers. In the first period, each studentis taking one class and each teacher is teacing one class. The
         enrollments in the classes are \\(50,20,20,5\\) and \\(5\\). Let \\(t\\) be the average value obtained if a teacher is picked at random and the number of students
         in their class is noted. Let \\(s\\) be the average be the average value obtained if a student was picked at random and the number of students in their class, including the student, is noted.
@@ -8614,27 +8615,27 @@ rating: 1000,
         step: "Use the formula for expected outcome to find the expected outcome for the students and teachers"
     },
     {
-     title: `AMC 10A 2021 Fall Problem 13 <span class="material-symbols-outlined">
+        title: `AMC 10A 2021 Fall Problem 13 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-     used: false,
-     difficulty: 3,
-rating: 1200,
-     text: `Each of \\(6\\) balls is randomly and independently painted either black or white with equal probability. What is the probability that every ball is different in color from more than half of the other \\(5\\) balls?`,
-     type: 'mc',
-     choices: ['\\(A) \\frac{1}{64}\\)', '\\(B) \\frac{1}{6}\\)', '\\(C) \\frac{1}{4}\\)', '\\(D) \\frac{5}{16}\\)', '\\(E) \\frac{1}{2}\\)'],
-     solution: `<b>\\(\\frac{5}{16}\\)</b><p>All this question is asking is what the probability is that there are \\(3\\) white and \\(3\\) blue.</p>
+        used: false,
+        difficulty: 3,
+        rating: 1200,
+        text: `Each of \\(6\\) balls is randomly and independently painted either black or white with equal probability. What is the probability that every ball is different in color from more than half of the other \\(5\\) balls?`,
+        type: 'mc',
+        choices: ['\\(A) \\frac{1}{64}\\)', '\\(B) \\frac{1}{6}\\)', '\\(C) \\frac{1}{4}\\)', '\\(D) \\frac{5}{16}\\)', '\\(E) \\frac{1}{2}\\)'],
+        solution: `<b>\\(\\frac{5}{16}\\)</b><p>All this question is asking is what the probability is that there are \\(3\\) white and \\(3\\) blue.</p>
      <p>We compute this by finding the total number of ways to pick \\(3\\) out of \\(6\\) to be black (so essentially \\(6\\) choose \\(3\\)) and divide that by the total number of colorings \\((2^6\\))</p>
      <p>This solves down to \\(\\frac{5}{16}\\)</p> 
      `,
-     answer: '\\(D) \\frac{5}{16}\\)',
-     topic: 'combinations',  
-     hint: "There need to bbe \\(3\\) and \\(3\\). How many ways can you pick \\(3\\) from \\(6\\)?",
-     step: "Find \\(6 \\textup{choose} 3\\) and divide by the total number of ways to color "
+        answer: '\\(D) \\frac{5}{16}\\)',
+        topic: 'combinations',
+        hint: "There need to bbe \\(3\\) and \\(3\\). How many ways can you pick \\(3\\) from \\(6\\)?",
+        step: "Find \\(6 \\textup{choose} 3\\) and divide by the total number of ways to color "
     },
     {
         title: `AMC 10A 2021 Fall Problem 18 <span class="material-symbols-outlined">
@@ -8648,7 +8649,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `A farmer's rectangular field is partitioned into a \\(2\\) by \\(2\\) grid of \\(4\\) rectangular sections as shown in the figure. In
         each section the farmer will plant one crop: corn, wheat, soybeans, or potatoes. The farmder does not want to grow corn and wheat in any two sections that share a border, and the farmer does not want to grow soybeans and potatoes in any two sections that share a border. 
         Given these restrictions, in how many ways can the farmer choose crops to plant in each of the four sections of the field?`,
@@ -8683,7 +8684,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Each of the \\(20\\) balls is tossed independently and at random into one of the \\(5\\) bins. Let \\(p\\) be the probability that some bin ends up with \\(3\\) balls, another with \\(5\\) balls, and the other three with \\(4\\) balls each. Let
         \\(q\\) be the probability that every bin ends up with \\(4\\) balls. What is \\(\\frac{p}{q}\\)?`,
         solution: `<b>16</b><p>The actual concept for this isn't super complicated, it really just comes down to arithmetic and quick simplification</p>
@@ -8705,7 +8706,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4\\)?`,
         solution: `<b>\\(\\frac{59}{64}\\)</b><p>The product is divisible by \\(4\\) if you either roll at least one \\(4\\) or two \\(2\\)s, or a \\(2\\) and a \\(6\\), or a \\(6\\) and a \\(6\\). That's quite a handful. Instead, we find the chance that none of these happen. This happens when either the answer is odd or divisible by \\(2\\) and not \\(4\\)</p>
         <p>For it to be odd, we need all the factors to be odd. There's a \\(\\frac{1}{2}^6=\\frac{1}{64}\\) chance of this</p>
@@ -8733,7 +8734,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `A rectangle is partitioned into \\(5\\) regions as shown.  
         Each region is to be painted a solid color - red, orange, yellow, blue, or green - so that regions that touch are painted different colors,
          and colors can be used more than once.
@@ -8750,16 +8751,16 @@ rating: 1000,
         step: "Split into cases for using \\(5\\) colors and \\(4\\) colors, then multiply by \\(5!\\) for the different combinations of colors"
     },
     {
-       title: `AMC 10A 2022 Problem 14 <span class="material-symbols-outlined">
+        title: `AMC 10A 2022 Problem 14 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-       used: false,
-       difficulty: 3,
-rating: 1200,
+        used: false,
+        difficulty: 3,
+        rating: 1200,
         text: `How many ways are there to split the integers \\(1\\) through \\(14\\) into \\(7\\) pairs such that in each pair, the greater number is at least \\(2\\) times the lesser number?`,
         solution: `<b>144</b><p>We know for a fact that \\((7,14)\\) has to be a pair. That gives \\((6,13)\\) or \\((6,12)\\). Consequently, \\((5,10), (5,11), (5,12), (5,13)\\), but the last two depend on the value that \\(6\\) is paired with</p>
         <p>\\(1,2,3,4\\) can be with any number. That being said, remmber that \\(8-14\\) cannot pair because for the smallest  value \\(8\\) we need \\(\\ge 16\\), which we don't have. Thus gives us \\(2\\) for \\(6\\), \\(3\\) for \\(5\\) (since it can't be one of \\(6\\)'s values) and \\(4\\) for 4, and so on so that we have \\(2 \\cdot 3 \\cdot 4!=144\\)`,
@@ -8782,7 +8783,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Suppose that \\(13\\) cards numbered \\(1,2,3,...,13\\) are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards \\(1,2,3\\) are picked up on the first pass, \\(4\\) and \\(5\\)
         on the second pass, \\(6\\) on the third pass, \\(7,8,9,10\\) on the fourth pass, and \\(11,12,13\\) on the fifth pass. For how many of the \\(13!\\) possible orderings of the cards will the \\(13\\) cards be picked up in exactly two passes?`,
         solution: `<b>8178</b><p>Let's find some shorter sequences and then work our way up. For the first \\(3\\) values, we have \\(4\\) sequences. We see \\((1,3,2), (2,1,3), (2,3,1), (3,1,2)\\). Trying with \\(4\\) gives \\(11\\). With \\(5\\) we have \\(26\\) so we set up \\(2^n-n-1\\). This is
@@ -8802,7 +8803,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `A pair of fair \\(6\\)-sided dice is rolled \\(n\\) times. What is the least value of \\(n\\) such that the probability that the sum of the numbers face up on a roll equals \\(7\\) at least once is greater than \\(\\frac{1}{2}\\)</p>`,
         solution: `<b></b><p>We know the probability of the sum being \\(7\\) after two rolls is \\(\\frac{1}{6}\\) because each value has a pair that will make it add to \\(7\\). Since the first value doesn't matter, we have the probability is based on the second value, thus meaning that there's a
         probability of \\(\\frac{1}{6}\\). We can't exactly find the combined probability for \\(\\frac{1}{2}\\), so instead we use complementary counting, or finding the probability that it does NOT sum to \\(7\\), which is \\(1-\\frac{1}{6}\\), which is \\(\\frac{5}{6}\\). The probability of this after \\(n\\) rolls needs to be less than \\(\\frac{1}{2}\\), so we set up \\(\\frac{5}{6}^n < \\frac{1}{2}\\) and some experimentation with the ansewr choices gives us \\(n=4\\)`,
@@ -8821,7 +8822,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `Janet rolls a standard \\(6\\)-sided die \\(4\\) times and keeps a running total of the numbers she rolls. What is the probability that at some point, her runing total will equal \\(3\\)?`,
         solution: `<b>\\(\\frac{49}{216}\\)</b><p>She can't have a running total of \\(3\\) after more than \\(3\\) rolls. Let's find the probability that her running total is \\(3\\) after \\(1,2,3\\) rolls as different cases</p>
         <p>With \\(1\\) roll, she needs to run a \\(3\\), which is a \\(\\frac{1}{3}\\) chance</p>
@@ -8845,7 +8846,7 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `A number is chosen at random from among the first \\(100\\) positive integers, and a positive integer divisor of that number is chosen at
         What is the probability that the chosen divisor is divisble by \\(11\\)?`,
         solution: `<b>\\(\\frac{9}{200}\\)</b><p>First, we need to calculate the probability of the chosen integer having \\(11\\) as a factor at all. We have \\(11, 22, 33, 44, 55, 66, 77, 88, 99\\). That's \\(\\frac{9}{100}\\)</p>
@@ -8862,7 +8863,7 @@ rating: 1200,
         step: "Find the multiples of \\(11\\) that are \\(leq 100\\) to be \\(11,22,33,44,55,66,77,88,99\\) and find the probability for each of these"
     },
     {
-       title: `AMC 10A 2023 Problem 20 <span class="material-symbols-outlined">
+        title: `AMC 10A 2023 Problem 20 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
@@ -8871,16 +8872,16 @@ star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-       used: false,
-       difficulty: 4,
-rating: 1400,
-       text: `Each \\(3 \\times 3\\) grid of squares is colored red, white, blue, or green so that every \\(2 \\times 2\\) square contains one square of each color. One such coloring is shown on the right below.
+        used: false,
+        difficulty: 4,
+        rating: 1400,
+        text: `Each \\(3 \\times 3\\) grid of squares is colored red, white, blue, or green so that every \\(2 \\times 2\\) square contains one square of each color. One such coloring is shown on the right below.
        How many different colorings are possible?`,
-       solution: `<b>72                              </b><p>Start at the top right square. We have \\(4!\\) ways to arrange it. Next, bottom left, we have \\(3\\) spaces left, and what we put there defines the rest, so we have \\(4! \\cdot 3 = 24 \\cdot 3 = 72\\)`,
-       answer: '72',
-       topic: 'counting', 
-       hint: "Two well chosen `blocks` of \\(2\\times 2\\) can define the rest",
-       step: "Find the combinations for one corner, then the diagonal corner. That will define the rest"
+        solution: `<b>72                              </b><p>Start at the top right square. We have \\(4!\\) ways to arrange it. Next, bottom left, we have \\(3\\) spaces left, and what we put there defines the rest, so we have \\(4! \\cdot 3 = 24 \\cdot 3 = 72\\)`,
+        answer: '72',
+        topic: 'counting',
+        hint: "Two well chosen `blocks` of \\(2\\times 2\\) can define the rest",
+        step: "Find the combinations for one corner, then the diagonal corner. That will define the rest"
     },
     {
         title: `AMC 10B 2023 Problem 19 <span class="material-symbols-outlined">
@@ -8894,7 +8895,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Sonya the frog chooses a point uniformly at random lying within the square \\([0,6] \\times [0,6]\\) in the coordinate plane and hops to that point. She then randomly chooses a distance uniformly at random from \\([0,1]\\), and a direction
         uniformly at random from {north, south, east, west}. All her choices are independent. She now hops the distance in the chosen direction. What is the probability that she lands outside ths square`,
         solution: `<b>\\(\\frac{1}{12}\\)</b><p>She can only land outside the square if she first hops onto a border square. There are \\(20\\) of these out of \\(36\\), which gives a \\(\\frac{5}{9}\\). For \\(16\\) of the border squares, you need to jump \\(1\\) in the right direction which gives a \\(\\frac{1}{2} \\cdot \\frac{1}{4}=\\frac{1}{8}\\) chance
@@ -8921,7 +8922,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `Each of \\(2023\\) balls is randomly placed into one of \\(3\\) bins. Which of the following is closets to the probability that each of the bins will contain an odd number of balls?`,
         solution: `<b>\\(\\frac{1}{4}\\)</b><p>We know that every odd number is \\(2k+1\\) for some integer \\(k\\). We know each bin must have at least \\(1\\), and then we need to add groups of 2 frm there so we find \\(1012\\) choose \\(2\\), effectively figuring out how many different variations we can have for the groups of 2. We then divide this by the total number of 
         ways to sort it. We use a technique called stars and bars to do this. We thus have \\(2023+3-1 \\textup{choose} 2\\). Dividing this gives \\(\\frac{1}{4})`,
@@ -8931,7 +8932,7 @@ rating: 1600,
         topic: 'combinations',
         hint: "First find how to do it such that the numbers are always odd. You can do this by distributing in groups of \\(2\\)",
         step: "Find the number of ways to distribute as groups of \\(2\\) and divide that by the total number of ways to distribute (in stars and bars)"
-    }, 
+    },
     {
         title: `AMC 10A 2024 Problem 6 <span class="material-symbols-outlined">
 star
@@ -8940,7 +8941,7 @@ star
 </span>`,
         used: false,
         difficulty: 2,
-rating: 1000,
+        rating: 1000,
         text: `What is the minimum number of successive swaps of adjacent letters in the string \\(ABCDEF\\) that are needed to change the string to \\(FEDCBA\\)? (For example, \\(3\\) swapps are required to chance \\(ABC\\) to \\(CBA\\); one such sequence of swaps is \\(ABC --> BAC --> BCA --> CBA\\).)`,
         solution: `<b>15</b><p>The easiest way to do this is to start by moving \\(A\\), and then \\(B\\), and then \\(C\\) and so on, which takes \\(5+4+3+2+1=15\\)`,
         answer: `15`,
@@ -8949,16 +8950,16 @@ rating: 1000,
         step: "Systematically move fron front to back using \\(A\\) first. Do this for the rest and sum the number of moves"
     },
     {
-       title: `AMC 10A 2024 Problem 9 <span class="material-symbols-outlined">
+        title: `AMC 10A 2024 Problem 9 <span class="material-symbols-outlined">
 star
 </span><span class="material-symbols-outlined">
 star
 </span>`,
-       used: false,
-       difficulty: 2,
-rating: 1000,
-       text: `In how many ways can \\(6\\) juniors and \\(6\\) seniors form \\(3\\) disjoint teams of \\(4\\) people so that each team has \\(2\\) juniors and \\(2\\) seniors?`,
-       solution: `<b>1350</b><p>We start with the juniors. There are \\(6\\) choose \\(2=15\\) ways for them to make the first group, and then \\(4\\) choose \\(2=6\\) ways to choose the second. The last is set. That's \\(15 \\cdot 6\\), and just as many for the seniors. We  get
+        used: false,
+        difficulty: 2,
+        rating: 1000,
+        text: `In how many ways can \\(6\\) juniors and \\(6\\) seniors form \\(3\\) disjoint teams of \\(4\\) people so that each team has \\(2\\) juniors and \\(2\\) seniors?`,
+        solution: `<b>1350</b><p>We start with the juniors. There are \\(6\\) choose \\(2=15\\) ways for them to make the first group, and then \\(4\\) choose \\(2=6\\) ways to choose the second. The last is set. That's \\(15 \\cdot 6\\), and just as many for the seniors. We  get
        \\(8100\\) but divide by \\(3!\\), which is the number of ways to arrange the group (because the order doesn't matter). This gives us \\(1350\\) </p>
        <h3>Common Mistake <span class="material-symbols-outlined">
 exclamation
@@ -8968,11 +8969,11 @@ exclamation
 exclamation
 </span></h3>
        <p>Don't forget to divide by \\(3!\\). A big part of math, especially competition math, is knowing exactly what you are doing, not just plugging numbers into equations. Understanding why and what happens is vital for solvingAMC 10 Problems`,
-       type: 'mc',
-       choices: ['\\(A) 720\\)', '\\(B) 1350\\)', '\\(C) 2700\\)', '\\(D) 3280\\)', '\\(E) 8100\\)'],
-       answer: '\\(E) 1350\\)',
-       hint: "How many ways are there to make groups of two by class",
-       step: "Starting with one of the classes, lets say juniors, find the number of ways to make groups of \\(2\\), and then more and more groups of \\(2\\) with who is lef"
+        type: 'mc',
+        choices: ['\\(A) 720\\)', '\\(B) 1350\\)', '\\(C) 2700\\)', '\\(D) 3280\\)', '\\(E) 8100\\)'],
+        answer: '\\(E) 1350\\)',
+        hint: "How many ways are there to make groups of two by class",
+        step: "Starting with one of the classes, lets say juniors, find the number of ways to make groups of \\(2\\), and then more and more groups of \\(2\\) with who is lef"
     },
     {
         title: `AMC 10A 2024 Problem 17 <span class="material-symbols-outlined">
@@ -8986,7 +8987,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Two teams are in a best-two-out-of-three playoff: the teams will play at most \\(3\\) games, and the winner of the playoff is the first team to win \\(2\\) games. The 
         first game is played on Team A's homefield, and the remaining games are played on Team B's home field. Team A has a \\(\\frac{2}{3}\\) chance of winning at home, and it's probability when playing away from home is 
         \\(p\\). Outcomes of the games are independent. The probability that Team A wins the playoff is \\(\\frac{1}{2}\\). Then \\(p\\) can be written in the form \\(\\frac{1}{2}(m-\\sqrt{n})\\)where \\(m\\) and \\(n\\) are positive integers. What is \\(m+n\\)`,
@@ -9014,7 +9015,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `In a race among \\(5\\) snails, there is at most one tie, but that tie can involve any number of snails. For example,
         the result of the race might be that Dazzler is first, Abby, Cyrus, and Elroy are tied for second; and Bruna is fifth. How many different
         results of the race are possible?`,
@@ -9024,7 +9025,7 @@ rating: 1400,
         <p>For \\(3\\) we have \\(5\\) choose \\(3=10\\) combinations for the tie. The remaining \\(2\\) can be either both in front, both in back, or on either side in \\(2!=2\\) orders, so that gives \\(600\\)</p>
         <p>For \\(2\\), we have \\(5\\) choose \\(2=10\\). We can have \\(3\\) in front, \\(2\\) in front, \\(1\\) in front, or \\(0\\) front in \\(3!=6\\0 ways which give us \\(4 \\cdot 6 \\cdot 10=240\\) ways.</p>
         <p>For \\(1\\) in a tie, or no ties, we have \\(5!=120\\) ways. Adding gives \\(1+10+20+240+120=413\\)`,
-        answer:'431',
+        answer: '431',
         topic: 'casework',
         hint: "Use casework",
         step: "Divide into cases by the number of snails in the tie"
@@ -9041,7 +9042,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `Three different pairs of shoes are placed in a row so that no left shoe is next to a right shoe from a different pair. In how many ways can these six shoes be lined up?`,
         solution: `<b>60</b><p>Let's do some casework. If we start with a left shoe, we have </p>
         <p>LRRLLR, where each shoe is being put with its pair. There are \\(2\\) variations of this, because the last \\(3\\) combinations for the starting pair and \\(2\\) ways to order the remaining ones. Thus,
@@ -9049,7 +9050,7 @@ rating: 1400,
         <p>LLRRRL, we have \\(3\\) possibilities for the first, \\(2\\) for the second, \\(1\\) for the thid, \\(1\\) for the forth, and essentially \\(1\\) for the rest. There's \\(6\\) here</p>
         <p>LRRRLL, we have \\(3, 1, 2, 1, 1, 1,\\), so \\(6\\) again</p>
         <p>A bit of induction tells us that most, if not all sequences will have \\(6\\). Thus, we find \\(10\\) potential patterns for \\(6 \\cdot 10\\)</p>`,
-        type:'mc',
+        type: 'mc',
         choices: ['\\(A) 60\\)', '\\(B) 72\\)', '\\(C) 90\\)', '\\(D) 108\\)', '\\(E) 120\\)'],
         answer: '\\(A) 60\\)',
         topic: 'induction',
@@ -9070,12 +9071,12 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `A group of \\(16\\) people will be partitioned into \\(4\\) indistinguishable \\(4\\)-person committees. Each committee will have one chairperson and one secretary. 
         The number of different ways to make these assignments can be written as \\(3^r M\\), where \\(r\\) and \\(M\\) are positive integers and \\(M\\) is not divisibly by \\(3\\). What is \\(r\\)?`,
         solution: `<b>5</b><p>We have \\(16\\) choose \\(4\\) ways to choose the first committee, and then \\(12\\) choose \\(4\\) for the second, and so on. We have \\(4!\\) ways to order the committees, but we divide by \\(4!\\) because they are indistinguishable. This gives us \\(\\frac{16!}{(4!)^5})</p>
         <p>Each group has \\(4 \\cdot 3 = 12\\) ways to pick the two roles. Thus, we have \\(\\frac{16!}{(4!)^5}\\cdot 12^4 which has \\(3^5\\) in the factorization, so we have \\(r=5\\))`,
-        answer:'5',
+        answer: '5',
         topic: 'prime factorization',
         hint: "Start by organizing the comittees and multiply by how to organize the chairperson and secretary within the comittees",
         step: "Start by orgaizing the number of comittees with \\(\\16 \\textup{choose} 12 \\textup{choose} 4 \\cdot 8 \\{choose} 4\\) divided by \\(4!\\) because the order of the comitees does not matter. Now, find the number of ways of organizing each comittee"
@@ -9090,16 +9091,16 @@ star
 </span>`,
         used: false,
         difficulty: 3,
-rating: 1200,
+        rating: 1200,
         text: `Carlos uses a \\(4\\)-digit passcode to unlock his computer. In his pascode, exatly one digit is even, exactly one (possibly different) digit is prime, and
         no digit is \\(0\\). How many \\(4\\)-digit passcodes satisfy these conditions?`,
         solution: `<b>464</b><p>Let's say that the even and prime are the same. Thus, we have \\(2\\) which can be in \\(4\\) different places. The remaining three must be odd composite numbers, which must be \\(9\\) or \\(1\\). That gives us \\(2^3 \\cdot 4 = 32\\) possibilities</p>
         <p>If the even and prime digit are different, we must have two values that are either\\(9\\) or \\(1\\). We need to have a \\(4,6,8\\) and a \\(3,5,7\\). We have \\(4\\) ways to place the even, \\(3\\) ways to place the prime, and \\(2\\) variants for the remaining ones, wihch gives, \\(4 \\cdot 3  \\cdot 3 \\cdot 3 \\cdot 2 \\cdot 2 =432\\)  
     <p>Adding these together gives us \\(432+32=464\\)`,
-    answer: '464',
-    topic: 'casework',
-    hint: "What must the remaining digits be?",
-    step: "First, split up into cases based on whether or not the prime number is \\(2\\). Use basic counting to solve the rest"
+        answer: '464',
+        topic: 'casework',
+        hint: "What must the remaining digits be?",
+        step: "First, split up into cases based on whether or not the prime number is \\(2\\). Use basic counting to solve the rest"
     },
     {
         title: `AMC 10A 2025 Problem 16 <span class="material-symbols-outlined">
@@ -9113,7 +9114,7 @@ star
 </span>`,
         used: false,
         difficulty: 4,
-rating: 1400,
+        rating: 1400,
         text: `There are three jars. Each of three coins is placed in one of the three jars, chosen at random and independently of the placements of the other coins. What is the expected number of coins in a jar with the most coins?`,
         solution: `<b>\\(\\frac{17}{9}\\)</b><p>We calculate the probabiity of the higher jar having \\(x\\) number of coins</p>
         <p>Case 1: All 3. There are \\(3\\) choose \\(1\\) = \\(3\\) ways to pick which jar, and a \\(\\frac{1}{3}^3=\\frac{1}{27}\\) chance of them all ending up there. We have \\(\\frac{3}{27}  \\cdot 3 =\\frac{1}{3}\\), which we multiply by \\(3\\) because it's expected outcome</p>
@@ -9141,7 +9142,7 @@ star
 </span>`,
         used: false,
         difficulty: 5,
-rating: 1600,
+        rating: 1600,
         text: `A point \\(P\\) is chosen at random inside square \\(ABCD\\). The probability that \\(\\overline{AP}\\) is neither the shortest nor the longest side of \\(\\triangle APB\\) can be written as 
         \\(\\frac{a+b\\pi -c\\sqrt{d}}{e}\\, where \\(a,b,c,d\\) and \\(e\\\) are positive integers, \\(\\textup{gcd}(a,b,c,e)=1\\), and \\(d\\) is not divisible by the square of a prime. What is \\(a+b+c+d+e\\)? `,
         solution: `<b>25</b>Let's just assume that the height of the square is \\(1\\) and that \\(AB\\) is the top. The solution will work whatever you do, but this is forced simplification. Since we're dealing with probability instead of
@@ -9161,7 +9162,7 @@ rating: 1600,
         hint: "How can you divide the square geometrically to account for the side lengths",
         step: "Divide vertically in half (with \\(AB\\) at the top) where to the left \\(AP<AB\\) and to the right \\(AP>AB\\). Next, draw a circle of radius equal to the side lentgh around \\(A\\). The area inside that ensures \\(AP<AB\\)"
     },
-    
+
 
 ]
 const allQ = []
@@ -9242,23 +9243,23 @@ const errorTags = document.getElementById("tagQuestion")
 const loginBtn = document.getElementById("btn-login")
 let accountTrue = false
 accountBtn.addEventListener("click", function () {
-        let account = true
+    let account = true
 
-    document.getElementById("no-account").addEventListener("click", function() {
-    if (account === false){
-        account = true
-        document.getElementById("login").style.display = "block"
-        document.getElementById("signup").style.display = "none"
-                       document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
-    } else {
-        document.getElementById('login').style.display = "none"
-        account = false
-        document.getElementById("signup").style.display = "block"
-        document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
-    }
+    document.getElementById("no-account").addEventListener("click", function () {
+        if (account === false) {
+            account = true
+            document.getElementById("login").style.display = "block"
+            document.getElementById("signup").style.display = "none"
+            document.getElementById("no-account").innerHTML = "Don't have an account? Sign up!"
+        } else {
+            document.getElementById('login').style.display = "none"
+            account = false
+            document.getElementById("signup").style.display = "block"
+            document.getElementById("no-account").innerHTML = "Already have an account? Log in!"
+        }
     })
-    helpPannel.style.display  = "none"
-    if (accountTrue === false){
+    helpPannel.style.display = "none"
+    if (accountTrue === false) {
         accountPannel.style.display = "block"
         overlay.style.display = "block"
         accountTrue = true
@@ -9269,9 +9270,9 @@ accountBtn.addEventListener("click", function () {
     }
 })
 helpBtn.addEventListener("click", function () {
-    if (helpOn === true){
+    if (helpOn === true) {
         helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
+        overlay.style.display = "none";
         helpOn = false;
     } else {
         helpPannel.style.display = "block";
@@ -9289,7 +9290,7 @@ let scoreCount = document.getElementById("score-count");
 
 function getProblemNumber(array) {
     array.forEach(q => {
-  const match = q.title.match(/Problem (\d+)/);
+        const match = q.title.match(/Problem (\d+)/);
         q.pNumber = match ? parseInt(match[1]) : null;
     })
 }
@@ -9312,7 +9313,8 @@ function recordWrongTopic(topic) {
     } else if (questionType === "probability") {
         topicToUpdate = probQuestion.topic;
     } else if (questionType === "all") {
-        topicToUpdate = allQuestion.topic;}
+        topicToUpdate = allQuestion.topic;
+    }
     if (!topicToUpdate) return;
 
     if (!topicsToWorkOn.includes(topicToUpdate)) {
@@ -9322,45 +9324,45 @@ function recordWrongTopic(topic) {
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === topicToUpdate);
     if (topicObj) {
         topicObj.errors += 1;
-        topicObj.mastery = ((1 - (topicObj.errors/topicObj.attempts))*100) + "%"
+        topicObj.mastery = ((1 - (topicObj.errors / topicObj.attempts)) * 100) + "%"
     }
 
     updateTopicsDropdown();
 }
-function buttonsWork(){
+function buttonsWork() {
     errorTags.style.display = "none"
-    algButton.addEventListener("click", function() {
+    algButton.addEventListener("click", function () {
         questionType = "algebra";
         updateColors();
         prevError.style.display = "none"
         loadQuestion();
     });
-    geometryButton.addEventListener("click", function() {
+    geometryButton.addEventListener("click", function () {
         questionType = "geometry";
         updateColors();
         prevError.style.display = "none"
         loadQuestion();
     });
-    numButton.addEventListener("click", function() {
+    numButton.addEventListener("click", function () {
         questionType = "numTheory"
         updateColors();
         loadQuestion();
     })
-    probButton.addEventListener("click", function() {
+    probButton.addEventListener("click", function () {
         questionType = "probability"
         updateColors();
         prevError.style.display = "none"
         loadQuestion();
     });
-    allButton.addEventListener("click", function() {
+    allButton.addEventListener("click", function () {
         questionType = "all"
         updateColors();
         prevError.style.display = "none"
         loadQuestion();
     });
 }
-function updateColors(){
-    if (questionType === "algebra"){
+function updateColors() {
+    if (questionType === "algebra") {
         algButton.classList.add("topicEnabled")
         geometryButton.classList.remove("topicEnabled")
         probButton.classList.remove("topicEnabled")
@@ -9372,7 +9374,7 @@ function updateColors(){
         probButton.classList.remove("topicEnabled")
         numButton.classList.remove("topicEnabled")
         allButton.classList.remove("topicEnabled")
-    } else if (questionType === "numTheory"){
+    } else if (questionType === "numTheory") {
         numButton.classList.add("topicEnabled")
         geometryButton.classList.remove("topicEnabled")
         probButton.classList.remove("topicEnabled")
@@ -9424,17 +9426,17 @@ function loadAlgebra() {
             btn.onclick = () => handleMCAnswer(algebraQuestion.choices[i]);
         });
     }
-    if (algebraQuestion.image){
-        image.src=algebraQuestion.image;
-        image.style.display="block";
+    if (algebraQuestion.image) {
+        image.src = algebraQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 allQuestion = getNextQuestion(questions, userRatingAll);
@@ -9469,24 +9471,24 @@ function loadAll() {
             btn.onclick = () => handleMCAnswer(allQuestion.choices[i]);
         });
     }
-    if (allQuestion.image){
-        image.src=allQuestion.image;
-        image.style.display="block";
+    if (allQuestion.image) {
+        image.src = allQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry);
 
 function loadGeometry() {
     questionType = "geometry",
-    mcChoices.forEach(btn => btn.disabled = false);
+        mcChoices.forEach(btn => btn.disabled = false);
 
     questionTitle.innerHTML = geometryQuestion.title;
     questionText.innerHTML = geometryQuestion.text;
@@ -9516,17 +9518,17 @@ function loadGeometry() {
             btn.onclick = () => handleMCAnswer(geometryQuestion.choices[i]);
         });
     }
-    if (geometryQuestion.image){
-        image.src=geometryQuestion.image;
-        image.style.display="block";
+    if (geometryQuestion.image) {
+        image.src = geometryQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory);
@@ -9561,22 +9563,22 @@ function loadNumTheory() {
             btn.onclick = () => handleMCAnswer(numQuestion.choices[i]);
         });
     }
-    if (numQuestion.image){
-        image.src=numQuestion.image;
-        image.style.display="block";
+    if (numQuestion.image) {
+        image.src = numQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 
 
-    probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
+probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
 function loadProb() {
     mcChoices.forEach(btn => btn.disabled = false);
 
@@ -9608,17 +9610,17 @@ function loadProb() {
             btn.onclick = () => handleMCAnswer(probQuestion.choices[i]);
         });
     }
-    if (probQuestion.image){
-        image.src=numQuestion.image;
-        image.style.display="block";
+    if (probQuestion.image) {
+        image.src = numQuestion.image;
+        image.style.display = "block";
     } else {
-        image.style.display="none";
+        image.style.display = "none";
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionText]).catch(()=>{});
+        MathJax.typesetPromise([questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([questionChoices]).catch(()=>{});
+        MathJax.typesetPromise([questionChoices]).catch(() => { });
     }
 }
 
@@ -9627,8 +9629,8 @@ function loadProb() {
 function handleMCAnswer(choice) {
     answerInput.value = choice; // reuse existing checker
     checkBtn.click();
-    if (nextBtn.style.display !== "none"){
-mcChoices.forEach(btn => btn.disabled = true);
+    if (nextBtn.style.display !== "none") {
+        mcChoices.forEach(btn => btn.disabled = true);
     }
 }
 
@@ -9651,155 +9653,155 @@ const capitalizedString = capitalizeFirstLetter(originalString);
 let correct = 1
 function checkAnswerGeometry() {
     updateRadarChart()
-    if (strikes == 2){
-                
-                geometryTotal += 1
-                    updateRadarChart()
+    if (strikes == 2) {
+
+        geometryTotal += 1
+        updateRadarChart()
     }
 
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === geometryQuestion.topic);
-                logAttempt(geometryQuestion.title, true)
+    logAttempt(geometryQuestion.title, true)
     if (topicObj) {
         topicObj.attempts += 1;
     }
     const userAnswer = answerInput.value.trim();
     const correctAnswer = geometryQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
         correct = 1;
         getExpectedScore(userRatingGeometry, geometryQuestion.rating)
         score = score + geometryQuestion.difficulty;
         scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
-            streakCount++;
-            correctCount++;
-            difficultyProgressG++;
-            if (difficultyG == 1 && difficultyProgressG == 4){
-                difficultyG++;
-                difficultyProgressG = 0;
-                
-            } else if (difficultyG == 2 && difficultyProgressG  == 3){
-                difficultyG++;
-                difficultyProgressG = 0;
-                
-            } else if (difficultyG == 3 && difficultyProgressG  == 2){
-                difficultyG++;
-                difficultyProgressG = 0;
-                
-            } else if (difficultyG == 4 && difficultyProgressG == 1){
-                difficultyG ++;
-                difficultyProgressG = 0;
-                
-            }
+        streakCount++;
+        correctCount++;
+        difficultyProgressG++;
+        if (difficultyG == 1 && difficultyProgressG == 4) {
+            difficultyG++;
+            difficultyProgressG = 0;
+
+        } else if (difficultyG == 2 && difficultyProgressG == 3) {
+            difficultyG++;
+            difficultyProgressG = 0;
+
+        } else if (difficultyG == 3 && difficultyProgressG == 2) {
+            difficultyG++;
+            difficultyProgressG = 0;
+
+        } else if (difficultyG == 4 && difficultyProgressG == 1) {
+            difficultyG++;
+            difficultyProgressG = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + geometryQuestion.solution;
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
+        solutionDiv.style.display = "block";
+        solutionText.style.display = "block"
+        nextBtn.style.display = "inline-block";
 
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-           if (strikes ==  2){
+        if (strikes == 2) {
             geometryWrong += 1
 
-            
-            errors += 1
-                    logAttempt(geometryQuestion.title, false)
-                hintBtn.innerHTML  = "Show Hint"
-                strikesContainer.style.display = "inline"
-const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
-const wrongTopicTrue = wrongTopicGeometry.some(item => item.countdown === 0)
-const wrongEntryTopicTrue = wrongTopicGeometry.some(item => item.topic === geometryQuestion.topic)
-if (wrongEntryTopicTrue === false){
-    const item = {topic: geometryQuestion.topic}
-    wrongTopicGeometry.push(item)
-    wrongTopicGeometry[wrongTopicGeometry.length - 1].errorCount = 0
-    wrongTopicGeometry[wrongTopicGeometry.length-1].countdown = 3
-}
-        strikeOne.style.color = "var(--primary-color) !important"
-        correct = 0;
-        hintBtn.style.display = "inline"
-        getExpectedScore(userRating, geometryQuestion.rating)
-        recordWrongTopic(geometryQuestion.topic);
-        difficultyG = Math.max(1, difficultyG - 1);
-        difficultyProgressG = 0;
-        score = score - difficultyG;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(geometryQuestion.topic);
-        wrongCount++;
-        const wrongEntryTrueAlgebra = wrongQuestionsGeometry.some(item => item.title === wrongQuestionsGeometry.title);
-        if (wrongEntryTrueAlgebra === false){
-        wrongQuestionsGeometry.push(geometryQuestion)
-        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].errorCount = 1;
-        wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].countdown = 5
-                if (mistakesGeometryTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsGeometry.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 * item.errorCount)
-                    }
-                }
-            })
-        }
-        }
-        document.getElementById("streak-count").innerHTML = streakCount;
 
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "geometry"
-        strikes -= 1
-        getExpectedScore(userRating, geometryQuestion.rating)
-                        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-                        updateRadarChart()
-                        updatePieChart()
-    } else  if (strikes === 1){
-        seeStep.style.display = "inline"
-        strikeTwo.style.color = "var(--primary-color) !important"
-        strikes -= 1
-    } else {
-        errorTags.style.display = "inline"
-        strikeThree.style.color = "var(--primary-color) !important"
+            errors += 1
+            logAttempt(geometryQuestion.title, false)
+            hintBtn.innerHTML = "Show Hint"
+            strikesContainer.style.display = "inline"
+            const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+            const wrongTopicTrue = wrongTopicGeometry.some(item => item.countdown === 0)
+            const wrongEntryTopicTrue = wrongTopicGeometry.some(item => item.topic === geometryQuestion.topic)
+            if (wrongEntryTopicTrue === false) {
+                const item = { topic: geometryQuestion.topic }
+                wrongTopicGeometry.push(item)
+                wrongTopicGeometry[wrongTopicGeometry.length - 1].errorCount = 0
+                wrongTopicGeometry[wrongTopicGeometry.length - 1].countdown = 3
+            }
+            strikeOne.style.color = "var(--primary-color) !important"
+            correct = 0;
+            hintBtn.style.display = "inline"
+            getExpectedScore(userRating, geometryQuestion.rating)
+            recordWrongTopic(geometryQuestion.topic);
+            difficultyG = Math.max(1, difficultyG - 1);
+            difficultyProgressG = 0;
+            score = score - difficultyG;
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+            streakCount = 0;
+            topicWrong = capitalizeFirstLetter(geometryQuestion.topic);
+            wrongCount++;
+            const wrongEntryTrueAlgebra = wrongQuestionsGeometry.some(item => item.title === wrongQuestionsGeometry.title);
+            if (wrongEntryTrueAlgebra === false) {
+                wrongQuestionsGeometry.push(geometryQuestion)
+                wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].errorCount = 1;
+                wrongQuestionsGeometry[wrongQuestionsGeometry.length - 1].countdown = 5
+                if (mistakesGeometryTrue === true) {
+                    let alreadyDefined = false
+                    wrongQuestionsGeometry.forEach(item => {
+                        if (item.countdown === 0) {
+                            if (alreadyDefined === false) {
+                                item.errorCount += 1
+                                item.countdown = (2 * item.errorCount)
+                            }
+                        }
+                    })
+                }
+            }
+            document.getElementById("streak-count").innerHTML = streakCount;
+
+            problemsWrapper.classList.add("shake");
+            setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+            questionType = "geometry"
+            strikes -= 1
+            getExpectedScore(userRating, geometryQuestion.rating)
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+            updateRadarChart()
+            updatePieChart()
+        } else if (strikes === 1) {
+            seeStep.style.display = "inline"
+            strikeTwo.style.color = "var(--primary-color) !important"
+            strikes -= 1
+        } else {
+            errorTags.style.display = "inline"
+            strikeThree.style.color = "var(--primary-color) !important"
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + geometryQuestion.solution;
-const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
-}
+            const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
+            solutionDiv.style.display = "block";
+            solutionText.style.display = "block"
+            nextBtn.style.display = "inline-block";
+            stepOne.style.display = "none"
+            hintBtn.style.display = "none"
+            hintText.style.display = "none"
+            seeStep.style.display = "none"
+        }
 
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
 }
-function checkAnswerAlgebra(){
+function checkAnswerAlgebra() {
     updateRadarChart()
-    if (strikes == 2){
-                algebraTotal += 1
-                updateRadarChart()
+    if (strikes == 2) {
+        algebraTotal += 1
+        updateRadarChart()
     }
 
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === algebraQuestion.topic);
@@ -9810,140 +9812,140 @@ function checkAnswerAlgebra(){
     const userAnswer = answerInput.value.trim();
     const correctAnswer = algebraQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
         logAttempt(algebraQuestion.title, true)
-            nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
+        nextBtn.style.display = "inline-block";
+        stepOne.style.display = "none"
+        hintBtn.style.display = "none"
+        hintText.style.display = "none"
+        seeStep.style.display = "none"
         correct = 1;
         getExpectedScore(userRating, algebraQuestion.rating)
         score = score + algebraQuestion.difficulty;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-            streakCount++;
-            correctCount++;
-            difficultyProgress++;
-            if (difficulty == 1 && difficultyProgress == 4){
-                difficulty++;
-                difficultyProgress = 0;
-                
-            } else if (difficulty == 2 && difficultyProgress  == 3){
-                difficulty++;
-                difficultyProgress = 0;
-                
-            } else if (difficulty == 3 && difficultyProgress  == 2){
-                difficulty++;
-                difficultyProgress = 0;
-                
-            } else if (difficulty == 4 && difficultyProgress == 1){
-                difficulty ++;
-                difficultyProgress = 0;
-                
-            }
+        scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+        streakCount++;
+        correctCount++;
+        difficultyProgress++;
+        if (difficulty == 1 && difficultyProgress == 4) {
+            difficulty++;
+            difficultyProgress = 0;
+
+        } else if (difficulty == 2 && difficultyProgress == 3) {
+            difficulty++;
+            difficultyProgress = 0;
+
+        } else if (difficulty == 3 && difficultyProgress == 2) {
+            difficulty++;
+            difficultyProgress = 0;
+
+        } else if (difficulty == 4 && difficultyProgress == 1) {
+            difficulty++;
+            difficultyProgress = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + algebraQuestion.solution;
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        solutionDiv.style.display = "block";
+        solutionText.style.display = "block"
+        nextBtn.style.display = "inline-block";
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-        if (strikes ==  2){
+        if (strikes == 2) {
             algebraWrong += 1
 
             errors += 1
             logAttempt(algebraQuestion.title, false)
-                scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-                hintBtn.innerHTML  = "Show Hint"
-                strikesContainer.style.display = "inline"
-const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
-const wrongTopicTrue = wrongTopicAlgebra.some(item => item.countdown === 0)
-const wrongEntryTopicTrue = wrongTopicAlgebra.some(item => item.topic === algebraQuestion.topic)
-if (wrongEntryTopicTrue === false){
-    const item = {topic: algebraQuestion.topic}
-    wrongTopicAlgebra.push(item)
-    wrongTopicAlgebra[wrongTopicAlgebra.length - 1].errorCount = 0
-    wrongTopicAlgebra[wrongTopicAlgebra.length-1].countdown = 3
-}
-        strikeOne.style.color = "var(--primary-color) !important"
-        correct = 0;
-        hintBtn.style.display = "inline"
-        getExpectedScore(userRating, algebraQuestion.rating)
-        recordWrongTopic(algebraQuestion.topic);
-        difficulty = Math.max(1, difficulty - 1);
-        difficultyProgress = 0;
-        score = score - difficulty;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(algebraQuestion.topic);
-        wrongCount++;
-        const wrongEntryTrueAlgebra = wrongQuestionsAlgebra.some(item => item.title === wrongQuestionsAlgebra.title);
-        if (wrongEntryTrueAlgebra === false){
-        wrongQuestionsAlgebra.push(algebraQuestion)
-        wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].errorCount = 1;
-        wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].countdown = 5
-                if (mistakesAlgebraTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsAlgebra.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 * item.errorCount)
-                    }
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+            hintBtn.innerHTML = "Show Hint"
+            strikesContainer.style.display = "inline"
+            const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+            const wrongTopicTrue = wrongTopicAlgebra.some(item => item.countdown === 0)
+            const wrongEntryTopicTrue = wrongTopicAlgebra.some(item => item.topic === algebraQuestion.topic)
+            if (wrongEntryTopicTrue === false) {
+                const item = { topic: algebraQuestion.topic }
+                wrongTopicAlgebra.push(item)
+                wrongTopicAlgebra[wrongTopicAlgebra.length - 1].errorCount = 0
+                wrongTopicAlgebra[wrongTopicAlgebra.length - 1].countdown = 3
+            }
+            strikeOne.style.color = "var(--primary-color) !important"
+            correct = 0;
+            hintBtn.style.display = "inline"
+            getExpectedScore(userRating, algebraQuestion.rating)
+            recordWrongTopic(algebraQuestion.topic);
+            difficulty = Math.max(1, difficulty - 1);
+            difficultyProgress = 0;
+            score = score - difficulty;
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+            streakCount = 0;
+            topicWrong = capitalizeFirstLetter(algebraQuestion.topic);
+            wrongCount++;
+            const wrongEntryTrueAlgebra = wrongQuestionsAlgebra.some(item => item.title === wrongQuestionsAlgebra.title);
+            if (wrongEntryTrueAlgebra === false) {
+                wrongQuestionsAlgebra.push(algebraQuestion)
+                wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].errorCount = 1;
+                wrongQuestionsAlgebra[wrongQuestionsAlgebra.length - 1].countdown = 5
+                if (mistakesAlgebraTrue === true) {
+                    let alreadyDefined = false
+                    wrongQuestionsAlgebra.forEach(item => {
+                        if (item.countdown === 0) {
+                            if (alreadyDefined === false) {
+                                item.errorCount += 1
+                                item.countdown = (2 * item.errorCount)
+                            }
+                        }
+                    })
                 }
-            })
-        }
-        }
-        document.getElementById("streak-count").innerHTML = streakCount;
+            }
+            document.getElementById("streak-count").innerHTML = streakCount;
 
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "algebra"
-        strikes -= 1
-        correct = 0
-        getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')))
-        updateRadarChart()
-        updatePieChart()
-    } else  if (strikes === 1){
-        seeStep.style.display = "inline"
-        strikeTwo.style.color = "var(--primary-color) !important"
-        strikes -= 1
-    } else {
-        errorTags.style.display = "inline"
-        strikeThree.style.color = "var(--primary-color) !important"
+            problemsWrapper.classList.add("shake");
+            setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+            questionType = "algebra"
+            strikes -= 1
+            correct = 0
+            getExpectedScore(userRating, algebraQuestion.rating)
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')))
+            updateRadarChart()
+            updatePieChart()
+        } else if (strikes === 1) {
+            seeStep.style.display = "inline"
+            strikeTwo.style.color = "var(--primary-color) !important"
+            strikes -= 1
+        } else {
+            errorTags.style.display = "inline"
+            strikeThree.style.color = "var(--primary-color) !important"
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + algebraQuestion.solution;
-const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
-}
+            const mistakesAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
+            solutionDiv.style.display = "block";
+            solutionText.style.display = "block"
+            nextBtn.style.display = "inline-block";
+            stepOne.style.display = "none"
+            hintBtn.style.display = "none"
+            hintText.style.display = "none"
+            seeStep.style.display = "none"
+        }
 
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
 }
 
@@ -9955,42 +9957,42 @@ function checkAnswerAll() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = allQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
         score = score + allQuestion.difficulty;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-            streakCount++;
-            correctCount++;
-            difficultyProgressAll++;
-            if (difficultyAll == 1 && difficultyProgressAll == 4){
-                difficultyAll++;
-                difficultyProgressAll = 0;
-                
-            } else if (difficultyAll == 2 && difficultyProgressAll  == 3){
-                difficultyAll++;
-                difficultyProgressAll = 0;
-                
-            } else if (difficultyAll == 3 && difficultyProgressAll  == 2){
-                difficultyAll++;
-                difficultyProgressAll = 0;
-                
-            } else if (difficultyAll == 4 && difficultyProgressAll == 1){
-                difficultyAll ++;
-                difficultyProgressAll = 0;
-                
-            }
+        scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+        streakCount++;
+        correctCount++;
+        difficultyProgressAll++;
+        if (difficultyAll == 1 && difficultyProgressAll == 4) {
+            difficultyAll++;
+            difficultyProgressAll = 0;
+
+        } else if (difficultyAll == 2 && difficultyProgressAll == 3) {
+            difficultyAll++;
+            difficultyProgressAll = 0;
+
+        } else if (difficultyAll == 3 && difficultyProgressAll == 2) {
+            difficultyAll++;
+            difficultyProgressAll = 0;
+
+        } else if (difficultyAll == 4 && difficultyProgressAll == 1) {
+            difficultyAll++;
+            difficultyProgressAll = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + allQuestion.solution;
 
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
@@ -10000,15 +10002,15 @@ check
         difficultyAll = Math.max(1, difficultyAll - 1);
         difficultyProgressAll = 0;
         score = score - difficulty;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
+        scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
         streakCount = 0;
         topicWrong = capitalizeFirstLetter(allQuestion.topic);
         wrongCount++;
         const wrongEntryTrueAll = wrongQuestionsAll.some(item => item.title === wrongQuestionsAll.title);
-        if (wrongEntryTrueAll === false){
-        wrongQuestionsAll.push(allQuestion)
-        wrongQuestionsAll[wrongQuestionsAll.length - 1].errorCount = 1;
-        wrongQuestionsAll[wrongQuestionsAll.length - 1].countdown = 5
+        if (wrongEntryTrueAll === false) {
+            wrongQuestionsAll.push(allQuestion)
+            wrongQuestionsAll[wrongQuestionsAll.length - 1].errorCount = 1;
+            wrongQuestionsAll[wrongQuestionsAll.length - 1].countdown = 5
         }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
@@ -10021,36 +10023,36 @@ close_small
 
     solutionDiv.style.display = "block";
     nextBtn.style.display = "inline-block";
-const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
-const wrongTopicTrue = wrongTopicAll.some(item => item.countdown === 0)
-const wrongEntryTopicTrue = wrongTopicAll.some(item => item.topic === allQuestion.topic)
-if (wrongEntryTopicTrue === false){
-    const item = {topic: wrongTopicAll.topic}
-    wrongTopicAll.push(item)
-    wrongTopicAll[wrongTopicAll.length - 1].errorCount = 0
-    wrongTopicAll[wrongTopicAll.length-1].countdown = 3
-}
-        if (mistakesAllTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsAll.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 * item.errorCount)
-                    }
+    const mistakesAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
+    const wrongTopicTrue = wrongTopicAll.some(item => item.countdown === 0)
+    const wrongEntryTopicTrue = wrongTopicAll.some(item => item.topic === allQuestion.topic)
+    if (wrongEntryTopicTrue === false) {
+        const item = { topic: wrongTopicAll.topic }
+        wrongTopicAll.push(item)
+        wrongTopicAll[wrongTopicAll.length - 1].errorCount = 0
+        wrongTopicAll[wrongTopicAll.length - 1].countdown = 3
+    }
+    if (mistakesAllTrue === true) {
+        let alreadyDefined = false
+        wrongQuestionsAll.forEach(item => {
+            if (item.countdown === 0) {
+                if (alreadyDefined === false) {
+                    item.errorCount += 1
+                    item.countdown = (2 * item.errorCount)
                 }
-            })
-        }
+            }
+        })
+    }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
 }
 
 function checkAnswerProb() {
     updateRadarChart()
-    if (strikes == 2){
-            probTotal += 1
-            updateRadarChart()
+    if (strikes == 2) {
+        probTotal += 1
+        updateRadarChart()
     }
 
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === probQuestion.topic);
@@ -10060,139 +10062,139 @@ function checkAnswerProb() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = probQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-                logAttempt(probQuestion.title, true)
-            correct = 1;
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
+        logAttempt(probQuestion.title, true)
+        correct = 1;
         getExpectedScore(userRatingProbability, probQuestion.rating)
         score = score + probQuestion.difficulty;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-            streakCount++;
-            correctCount++;
-            difficultyProgressP++;
-            if (difficultyP == 1 && difficultyProgressP == 1){
-                difficultyP++;
-                difficultyProgressP = 0;
-                
-            } else if (difficultyP == 2 && difficultyProgressP  == 3){
-                difficultyN++;
-                difficultyProgressP = 0;
-                
-            } else if (difficultyP == 3 && difficultyProgressP  == 2){
-                difficultyP++;
-                difficultyProgressP = 0;
-                
-            } else if (difficultyP == 4 && difficultyProgressP == 1){
-                difficultyP ++;
-                difficultyProgressP = 0;
-                
-            }
+        scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+        streakCount++;
+        correctCount++;
+        difficultyProgressP++;
+        if (difficultyP == 1 && difficultyProgressP == 1) {
+            difficultyP++;
+            difficultyProgressP = 0;
+
+        } else if (difficultyP == 2 && difficultyProgressP == 3) {
+            difficultyN++;
+            difficultyProgressP = 0;
+
+        } else if (difficultyP == 3 && difficultyProgressP == 2) {
+            difficultyP++;
+            difficultyProgressP = 0;
+
+        } else if (difficultyP == 4 && difficultyProgressP == 1) {
+            difficultyP++;
+            difficultyProgressP = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + probQuestion.solution;
 
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-     if (strikes ==  2){
-        probWrong += 1
-        errors += 1
-                logAttempt(probQuestion.title, false)
-                scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-                hintBtn.innerHTML  = "Show Hint"
-                strikesContainer.style.display = "inline"
-const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
-        strikeOne.style.color = "var(--primary-color) !important"
-        correct = 0;
-        hintBtn.style.display = "inline"
-        getExpectedScore(userRating, probQuestion.rating)
-        recordWrongTopic(probQuestion.topic);
-        difficultyP = Math.max(1, difficultyP - 1);
-        difficultyProgressP = 0;
-        score = score - difficultyP;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(probQuestion.topic);
-        wrongCount++;
-        const wrongEntryTrueProb = wrongQuestionsProb.some(item => item.title === wrongQuestionsProb.title);
-        if (wrongEntryTrueProb === false){
-        wrongQuestionsProb.push(algebraQuestion)
-        wrongQuestionsProb[wrongQuestionsProb.length - 1].errorCount = 1;
-        wrongQuestionsProb[wrongQuestionsProb.length - 1].countdown = 5
-                if (mistakesProbTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsProb.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 * item.errorCount)
-                    }
+        if (strikes == 2) {
+            probWrong += 1
+            errors += 1
+            logAttempt(probQuestion.title, false)
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+            hintBtn.innerHTML = "Show Hint"
+            strikesContainer.style.display = "inline"
+            const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+            strikeOne.style.color = "var(--primary-color) !important"
+            correct = 0;
+            hintBtn.style.display = "inline"
+            getExpectedScore(userRating, probQuestion.rating)
+            recordWrongTopic(probQuestion.topic);
+            difficultyP = Math.max(1, difficultyP - 1);
+            difficultyProgressP = 0;
+            score = score - difficultyP;
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+            streakCount = 0;
+            topicWrong = capitalizeFirstLetter(probQuestion.topic);
+            wrongCount++;
+            const wrongEntryTrueProb = wrongQuestionsProb.some(item => item.title === wrongQuestionsProb.title);
+            if (wrongEntryTrueProb === false) {
+                wrongQuestionsProb.push(algebraQuestion)
+                wrongQuestionsProb[wrongQuestionsProb.length - 1].errorCount = 1;
+                wrongQuestionsProb[wrongQuestionsProb.length - 1].countdown = 5
+                if (mistakesProbTrue === true) {
+                    let alreadyDefined = false
+                    wrongQuestionsProb.forEach(item => {
+                        if (item.countdown === 0) {
+                            if (alreadyDefined === false) {
+                                item.errorCount += 1
+                                item.countdown = (2 * item.errorCount)
+                            }
+                        }
+                    })
                 }
-            })
-        }
-        }
-        document.getElementById("streak-count").innerHTML = streakCount;
+            }
+            document.getElementById("streak-count").innerHTML = streakCount;
 
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "probability"
-        getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')))
-        strikes -= 1
-        updateRadarChart()
-        updatePieChart()
-    } else  if (strikes === 1){
-        seeStep.style.display = "inline"
-        strikeTwo.style.color = "var(--primary-color) !important"
-        strikes -= 1
-    } else {
-        errorTags.style.display = "inline"
-        strikeThree.style.color = "var(--primary-color) !important"
+            problemsWrapper.classList.add("shake");
+            setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+            questionType = "probability"
+            getExpectedScore(userRating, algebraQuestion.rating)
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')))
+            strikes -= 1
+            updateRadarChart()
+            updatePieChart()
+        } else if (strikes === 1) {
+            seeStep.style.display = "inline"
+            strikeTwo.style.color = "var(--primary-color) !important"
+            strikes -= 1
+        } else {
+            errorTags.style.display = "inline"
+            strikeThree.style.color = "var(--primary-color) !important"
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + probQuestion.solution;
-const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
-const wrongTopicTrue = wrongTopicProb.some(item => item.countdown === 0)
-const wrongEntryTopicTrue = wrongTopicProb.some(item => item.topic === probQuestion.topic)
-if (wrongEntryTopicTrue === false){
-    const item = {topic: probQuestion.topic}
-    wrongTopicProb.push(item)
-    wrongTopicProb[wrongTopicProb.length - 1].errorCount = 0
-    wrongTopicProb[wrongTopicProb.length-1].countdown = 3
-}
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
-}
+            const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
+            const wrongTopicTrue = wrongTopicProb.some(item => item.countdown === 0)
+            const wrongEntryTopicTrue = wrongTopicProb.some(item => item.topic === probQuestion.topic)
+            if (wrongEntryTopicTrue === false) {
+                const item = { topic: probQuestion.topic }
+                wrongTopicProb.push(item)
+                wrongTopicProb[wrongTopicProb.length - 1].errorCount = 0
+                wrongTopicProb[wrongTopicProb.length - 1].countdown = 3
+            }
+            solutionDiv.style.display = "block";
+            solutionText.style.display = "block"
+            nextBtn.style.display = "inline-block";
+            stepOne.style.display = "none"
+            hintBtn.style.display = "none"
+            hintText.style.display = "none"
+            seeStep.style.display = "none"
+        }
 
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     questionType = "probability"
 }
 function checkAnswerNum() {
     updateRadarChart()
-    if (strikes == 2){
-            numTotal += 1
-            updateRadarChart()
+    if (strikes == 2) {
+        numTotal += 1
+        updateRadarChart()
     }
 
     const topicObj = TOPIC_GLOSSARY.find(x => x.id === numQuestion.topic);
@@ -10202,181 +10204,184 @@ function checkAnswerNum() {
     const userAnswer = answerInput.value.trim();
     const correctAnswer = numQuestion.answer.trim();
 
-    if (userAnswer === correctAnswer && nextBtn.style.display==="none") {
-                logAttempt(numQuestion.title, true)
-            correct = 1;
+    if (userAnswer === correctAnswer && nextBtn.style.display === "none") {
+        logAttempt(numQuestion.title, true)
+        correct = 1;
         getExpectedScore(userRatingNumTheory, numQuestion.rating)
         score = score + numQuestion.difficulty;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-            streakCount++;
-            correctCount++;
-            difficultyProgressN++;
-            if (difficultyN == 1 && difficultyProgressN == 4){
-                difficultyN++;
-                difficultyProgressN = 0;
-                
-            } else if (difficultyN == 2 && difficultyProgressN  == 3){
-                difficultyN++;
-                difficultyProgressN = 0;
-                
-            } else if (difficultyN == 3 && difficultyProgressN  == 2){
-                difficultyN++;
-                difficultyProgressN = 0;
-                
-            } else if (difficultyN == 4 && difficultyProgressN == 1){
-                difficultyN ++;
-                difficultyProgressN = 0;
-                
-            }
+        scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+        streakCount++;
+        correctCount++;
+        difficultyProgressN++;
+        if (difficultyN == 1 && difficultyProgressN == 4) {
+            difficultyN++;
+            difficultyProgressN = 0;
+
+        } else if (difficultyN == 2 && difficultyProgressN == 3) {
+            difficultyN++;
+            difficultyProgressN = 0;
+
+        } else if (difficultyN == 3 && difficultyProgressN == 2) {
+            difficultyN++;
+            difficultyProgressN = 0;
+
+        } else if (difficultyN == 4 && difficultyProgressN == 1) {
+            difficultyN++;
+            difficultyProgressN = 0;
+
+        }
         document.getElementById("streak-count").innerHTML = streakCount;
         solutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + numQuestion.solution;
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
+        solutionDiv.style.display = "block";
+        solutionText.style.display = "block"
+        nextBtn.style.display = "inline-block";
 
-      // Existing confetti
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        // Existing confetti
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
-    // Your existing streak bar animation
+        // Your existing streak bar animation
         showHighlight();
-        if (streakCount >= longestStreak){
-            longestStreak=streakCount;
+        if (streakCount >= longestStreak) {
+            longestStreak = streakCount;
         }
 
 
 
     } else if (userAnswer !== correctAnswer && nextBtn.style.display === "none") {
-    if (strikes ==  2){
-        numWrong += 1
-        errors += 1
-                logAttempt(numQuestion.title, false)
-                scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-                hintBtn.innerHTML  = "Show Hint"
-                strikesContainer.style.display = "inline"
-const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
-const wrongTopicTrue = wrongTopicNum.some(item => item.countdown === 0)
-const wrongEntryTopicTrue = wrongTopicNum.some(item => item.topic === numQuestion.topic)
-if (wrongEntryTopicTrue === false){
-    const item = {topic: numQuestion.topic}
-    wrongTopicNum.push(item)
-    wrongTopicNum[wrongTopicNum.length - 1].errorCount = 0
-    wrongTopicNum[wrongTopicNum.length-1].countdown = 3
-}
-        strikeOne.style.color = "var(--primary-color) !important"
-        correct = 0;
-        hintBtn.style.display = "inline"
-        getExpectedScore(userRating, numQuestion.rating)
-        recordWrongTopic(numQuestion.topic);
-        difficultyN = Math.max(1, difficultyN - 1);
-        difficultyProgressN = 0;
-        score = score - difficultyN;
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-        streakCount = 0;
-        topicWrong = capitalizeFirstLetter(numQuestion.topic);
-        wrongCount++;
-        const wrongEntryTrue = wrongQuestionsNum.some(item => item.title === wrongQuestionsNum.title);
-        if (wrongEntryTrue === false){
-        wrongQuestionsNum.push(numQuestion)
-        wrongQuestionsNum[wrongQuestionsNum.length - 1].errorCount = 1;
-        wrongQuestionsNum[wrongQuestionsNum.length - 1].countdown = 5
-                if (mistakesNumTrue === true){
-            let alreadyDefined = false
-            wrongQuestionsNum.forEach(item => {
-                if (item.countdown === 0) {
-                    if (alreadyDefined === false){
-                        item.errorCount += 1
-                        item.countdown = (2 * item.errorCount)
-                    }
+        if (strikes == 2) {
+            numWrong += 1
+            errors += 1
+            logAttempt(numQuestion.title, false)
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+            hintBtn.innerHTML = "Show Hint"
+            strikesContainer.style.display = "inline"
+            const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+            const wrongTopicTrue = wrongTopicNum.some(item => item.countdown === 0)
+            const wrongEntryTopicTrue = wrongTopicNum.some(item => item.topic === numQuestion.topic)
+            if (wrongEntryTopicTrue === false) {
+                const item = { topic: numQuestion.topic }
+                wrongTopicNum.push(item)
+                wrongTopicNum[wrongTopicNum.length - 1].errorCount = 0
+                wrongTopicNum[wrongTopicNum.length - 1].countdown = 3
+            }
+            strikeOne.style.color = "var(--primary-color) !important"
+            correct = 0;
+            hintBtn.style.display = "inline"
+            getExpectedScore(userRating, numQuestion.rating)
+            recordWrongTopic(numQuestion.topic);
+            difficultyN = Math.max(1, difficultyN - 1);
+            difficultyProgressN = 0;
+            score = score - difficultyN;
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+            streakCount = 0;
+            topicWrong = capitalizeFirstLetter(numQuestion.topic);
+            wrongCount++;
+            const wrongEntryTrue = wrongQuestionsNum.some(item => item.title === wrongQuestionsNum.title);
+            if (wrongEntryTrue === false) {
+                wrongQuestionsNum.push(numQuestion)
+                wrongQuestionsNum[wrongQuestionsNum.length - 1].errorCount = 1;
+                wrongQuestionsNum[wrongQuestionsNum.length - 1].countdown = 5
+                if (mistakesNumTrue === true) {
+                    let alreadyDefined = false
+                    wrongQuestionsNum.forEach(item => {
+                        if (item.countdown === 0) {
+                            if (alreadyDefined === false) {
+                                item.errorCount += 1
+                                item.countdown = (2 * item.errorCount)
+                            }
+                        }
+                    })
                 }
-            })
-        }
-        }
-        document.getElementById("streak-count").innerHTML = streakCount;
+            }
+            document.getElementById("streak-count").innerHTML = streakCount;
 
-        problemsWrapper.classList.add("shake");
-        setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
-        questionType = "numTheory"
-        strikes -= 1
-        getExpectedScore(userRating, algebraQuestion.rating)
-        scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')))
-        updateRadarChart()
-        updatePieChart()
-    } else  if (strikes === 1){
-        seeStep.style.display = "inline"
-        strikeTwo.style.color = "var(--primary-color) !important"
-        strikes -= 1
-    } else {
-        updatePieChart()
-        errorTags.style.display = "inline"
-        strikeThree.style.color = "var(--primary-color) !important"
+            problemsWrapper.classList.add("shake");
+            setTimeout(() => problemsWrapper.classList.remove("shake"), 400);
+            questionType = "numTheory"
+            strikes -= 1
+            getExpectedScore(userRating, algebraQuestion.rating)
+            scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')))
+            updateRadarChart()
+            updatePieChart()
+        } else if (strikes === 1) {
+            seeStep.style.display = "inline"
+            strikeTwo.style.color = "var(--primary-color) !important"
+            strikes -= 1
+        } else {
+            updatePieChart()
+            errorTags.style.display = "inline"
+            strikeThree.style.color = "var(--primary-color) !important"
             solutionText.innerHTML = `<span class="material-symbols-outlined">
 close_small
 </span> Incorrect` + numQuestion.solution;
-const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
-                solutionDiv.style.display = "block";
-    solutionText.style.display = "block"
-    nextBtn.style.display = "inline-block";
-    stepOne.style.display = "none"
-    hintBtn.style.display = "none"
-    hintText.style.display = "none"
-    seeStep.style.display = "none"
-}
+            const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
+            solutionDiv.style.display = "block";
+            solutionText.style.display = "block"
+            nextBtn.style.display = "inline-block";
+            stepOne.style.display = "none"
+            hintBtn.style.display = "none"
+            hintText.style.display = "none"
+            seeStep.style.display = "none"
+        }
 
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     if (window.MathJax) {
-        MathJax.typesetPromise([solutionDiv, questionText]).catch(()=>{});
+        MathJax.typesetPromise([solutionDiv, questionText]).catch(() => { });
     }
     questionType = "numTheory"
 }
 checkBtn.addEventListener("click", async function () {
-    if (questionType === "algebra"){
-            checkAnswerAlgebra();
+    updateDailyPracticeCountdown()
+    setupRestTimer()
+    restIdle()
+    if (questionType === "algebra") {
+        checkAnswerAlgebra();
     }
-    if (questionType ==="geometry"){
+    if (questionType === "geometry") {
         checkAnswerGeometry();
     }
-    if (questionType ==="numTheory"){
+    if (questionType === "numTheory") {
         checkAnswerNum();
     }
-    if (questionType === "probability"){
+    if (questionType === "probability") {
         checkAnswerProb();
-    } 
-    if (questionType === 'all'){
+    }
+    if (questionType === 'all') {
         checkAnswerAll();
     }
     // Inside your "Correct Answer" logic block:
-clearInterval(timerInterval); // Freeze the clock immediately
+    clearInterval(timerInterval); // Freeze the clock immediately
 
-// Add current performance metrics to your local totals
-userTotalTimeSpent += currentQuestionSeconds;
-userTimedQuestionsCount += 1;
+    // Add current performance metrics to your local totals
+    userTotalTimeSpent += currentQuestionSeconds;
+    userTimedQuestionsCount += 1;
 
-// Update your interface displays
-updateAvgTimerUI();
+    // Update your interface displays
+    updateAvgTimerUI();
 
-// Sync the updated duration metrics directly to your Supabase profiles table
-const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-if (session && !sessionError) {
-const { error: timerSyncError } = await supabase
-  .from('profiles')
-  .update({
-      totalTimeSpent: userTotalTimeSpent,
-      timedQuestionsCount: userTimedQuestionsCount
-  })
-  .eq('id', session.user.id); // Matches user session profile
+    // Sync the updated duration metrics directly to your Supabase profiles table
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (session && !sessionError) {
+        const { error: timerSyncError } = await supabase
+            .from('profiles')
+            .update({
+                totalTimeSpent: userTotalTimeSpent,
+                timedQuestionsCount: userTimedQuestionsCount
+            })
+            .eq('id', session.user.id); // Matches user session profile
 
-if (timerSyncError) {
-  console.error("Failed to sync structural timing metrics:", timerSyncError.message);
-}
-  }
+        if (timerSyncError) {
+            console.error("Failed to sync structural timing metrics:", timerSyncError.message);
+        }
+    }
 });
-function restart(){
+function restart() {
     currentQuestion = 0;
     document.getElementById("streak-count").innerHTML = streakCount;
     shuffleArray(questions);
@@ -10393,46 +10398,46 @@ function restart(){
 }
 // ---------- Next Question ----------
 nextBtn.addEventListener("click", function () {
-        strikesContainer.style.display = "none"
-    if (questionType === "algebra"){
+    strikesContainer.style.display = "none"
+    if (questionType === "algebra") {
         algebraNext();
         wrongQuestionsAlgebra.forEach(item => {
             item.countdown -= 1;
         })
-                wrongTopicAlgebra.forEach(item => {
+        wrongTopicAlgebra.forEach(item => {
             item.countdown -= 1
         })
-    } else if (questionType === "geometry"){
+    } else if (questionType === "geometry") {
         geometryNext();
-        wrongQuestionsGeometry.forEach(item =>{
+        wrongQuestionsGeometry.forEach(item => {
             item.countdown -= 1;
         })
         wrongTopicGeometry.forEach(item => {
             item.countdown -= 1
         })
 
-    } else if (questionType === "numTheory"){
+    } else if (questionType === "numTheory") {
         numNext();
-        wrongQuestionsNum.forEach(item =>{
+        wrongQuestionsNum.forEach(item => {
             item.countdown -= 1;
         })
-                wrongTopicNum.forEach(item => {
+        wrongTopicNum.forEach(item => {
             item.countdown -= 1
         })
-    } else if (questionType === "probability"){
+    } else if (questionType === "probability") {
         probNext();
-        wrongQuestionsProb.forEach(item =>{
+        wrongQuestionsProb.forEach(item => {
             item.countdown -= 1;
         })
-                wrongTopicProb.forEach(item => {
+        wrongTopicProb.forEach(item => {
             item.countdown -= 1
         })
-    } else if (questionType === 'all'){
+    } else if (questionType === 'all') {
         allNext();
-        wrongQuestionsAll.forEach(item =>{
+        wrongQuestionsAll.forEach(item => {
             item.countdown -= 1;
         })
-                wrongTopicAll.forEach(item => {
+        wrongTopicAll.forEach(item => {
             item.countdown -= 1
         })
     }
@@ -10443,16 +10448,16 @@ function algebraNext() {
 
     setTimeout(() => {
         let alreadyDefined = false
-            let topicMistakesTrue = wrongTopicAlgebra.some(i => i.countdown == 0)
+        let topicMistakesTrue = wrongTopicAlgebra.some(i => i.countdown == 0)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         geometryCurrent++;
         const mistakeAlgebraTrue = wrongQuestionsAlgebra.some(item => item.countdown === 0);
-        if (mistakeAlgebraTrue === true){
+        if (mistakeAlgebraTrue === true) {
             alreadyDefined = false
             wrongQuestionsAlgebra.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         algebraQuestion = item
                         prevError.style.display = "inline"
                         loadAlgebra();
@@ -10461,36 +10466,36 @@ function algebraNext() {
                     }
                 }
             })
-        } else if (topicMistakesTrue === true){
-    wrongTopicAlgebra.forEach(item => {
-        if (item.countdown === 0){
-            if (alreadyDefined === false){
-                algebraQuestion = questions.find(question => question.topic === item.topic)
-                prevError.style.display = "inline"
-                document.getElementById('prevErrorText').textContent = item.topic
-                alreadyDefined = true
-                loadAlgebra()
-            } else {
-                item.countdown += 1
-            }
-        }
-    })
-}        else if (currentQuestion < questions.length) {
+        } else if (topicMistakesTrue === true) {
+            wrongTopicAlgebra.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false) {
+                        algebraQuestion = questions.find(question => question.topic === item.topic)
+                        prevError.style.display = "inline"
+                        document.getElementById('prevErrorText').textContent = item.topic
+                        alreadyDefined = true
+                        loadAlgebra()
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (currentQuestion < questions.length) {
             prevError.style.display = 'none'
-    algebraQuestion = getNextQuestion(questions, userRating);
+            algebraQuestion = getNextQuestion(questions, userRating);
             loadQuestion();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
-}
+            restart();
+        }
 
     }, 300); // matches slide-out duration
-questionType = "algebra";
+    questionType = "algebra";
 }
-function findTopic(topic){
+function findTopic(topic) {
     return topic.name === topic;
 }
 function allNext() {
@@ -10498,16 +10503,16 @@ function allNext() {
 
     setTimeout(() => {
         let alreadyDefined = false
-                let topicMistakesTrue = wrongTopicAll.some(i => i.countdown === 0)
+        let topicMistakesTrue = wrongTopicAll.some(i => i.countdown === 0)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         allCurrent++;
         const mistakeAllTrue = wrongQuestionsAll.some(item => item.countdown === 0);
-        if (mistakeAllTrue === true){
+        if (mistakeAllTrue === true) {
             alreadyDefined = false
             wrongQuestionsAll.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         allQuestion = item
                         prevError.style.display = "inline"
                         document.getElementById('prevErroText').textContent = "Previous Error"
@@ -10517,39 +10522,39 @@ function allNext() {
                     }
                 }
             })
-        } else if (topicMistakesTrue === true){
-    wrongTopicAll.forEach(item => {
-        if (item.countdown === 0){
-            if (alreadyDefined === false){
-                allQuestion = allQ.find(question => question.topic === item.topic)
-                prevError.style.display = "inline"
-                document.getElementById('prevErrorText').textContent = item.topic
-                alreadyDefined = true
-                loadAll()
-            } else {
-                item.countdown += 1
-            }
-        }
-    })
-} else if (currentQuestion < allQ.length) {
+        } else if (topicMistakesTrue === true) {
+            wrongTopicAll.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false) {
+                        allQuestion = allQ.find(question => question.topic === item.topic)
+                        prevError.style.display = "inline"
+                        document.getElementById('prevErrorText').textContent = item.topic
+                        alreadyDefined = true
+                        loadAll()
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (currentQuestion < allQ.length) {
             prevError.style.display = 'none'
-    allQuestion = getNextQuestion(allQ, userRatingAll);
+            allQuestion = getNextQuestion(allQ, userRatingAll);
             loadAll();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
-}
+            restart();
+        }
 
     }, 300); // matches slide-out duration
-questionType = "all";
+    questionType = "all";
 }
 function updateTopicsDropdown() {
 
-TOPIC_GLOSSARY.sort((a,b) => b.errors-a.errors)
-const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
+    TOPIC_GLOSSARY.sort((a, b) => b.errors - a.errors)
+    const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
     const container = document.getElementById("topics-dropdown");
 
     container.innerHTML = ""; // clear old content
@@ -10558,9 +10563,9 @@ const topicsFixed = TOPIC_GLOSSARY.filter(u => u.errors > 0).map(x => x.id);
         if (!info) return;
         const wrapper = document.createElement("div");
         wrapper.className = "topic-item";
-    let show = info.errors;
-    let mastery = info.mastery;
-wrapper.innerHTML = `
+        let show = info.errors;
+        let mastery = info.mastery;
+        wrapper.innerHTML = `
   <button class="topic-button">
     ${info.title}
     <svg class="dropdown-icon" viewBox="0 0 24 24">
@@ -10582,11 +10587,12 @@ wrapper.innerHTML = `
 
 
         container.appendChild(wrapper);
-    MathJax.typesetPromise([wrapper]).catch(()=>{})
-        
-        }
-    )};
-document.getElementById("topics-dropdown").addEventListener("click", function(e) {
+        MathJax.typesetPromise([wrapper]).catch(() => { })
+
+    }
+    )
+};
+document.getElementById("topics-dropdown").addEventListener("click", function (e) {
     const button = e.target.closest(".topic-button");
     if (!button) return;
 
@@ -10598,7 +10604,7 @@ document.getElementById("topics-dropdown").addEventListener("click", function(e)
 
 
 // ---------- Next Question Geometry ----------
-function geometryNext(){
+function geometryNext() {
     // Slide out
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
@@ -10608,11 +10614,11 @@ function geometryNext(){
         let alreadyDefined = false
         const mistakesGeometryTrue = wrongQuestionsGeometry.some(item => item.countdown === 0);
         const topicMistakesTrue = wrongTopicGeometry.some(item => item.countdown === 0)
-        if (mistakesGeometryTrue === true){
-        alreadyDefined = false
+        if (mistakesGeometryTrue === true) {
+            alreadyDefined = false
             wrongQuestionsGeometry.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         geometryQuestion = item
                         prevError.style.display = "inline"
                         document.getElementById("prevErrorText").textContent = "Previous Error"
@@ -10624,35 +10630,35 @@ function geometryNext(){
                 }
             })
             loadQuestion()
-        } else if (topicMistakesTrue === true){
-    wrongTopicGeometry.forEach(item => {
-        if (item.countdown === 0){
-            if (alreadyDefined === false){
-                geometryQuestion = geometryQ.find(question => question.topic === item.topic)
-                prevError.style.display = "inline"
-                document.getElementById('prevErrorText').textContent = item.topic
-                alreadyDefined = true
-            } else {
-                item.countdown += 1
-            }
-        }
-    })
-    loadQuestion()
-} else if (geometryCurrent < geometryQ.length) {
+        } else if (topicMistakesTrue === true) {
+            wrongTopicGeometry.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false) {
+                        geometryQuestion = geometryQ.find(question => question.topic === item.topic)
+                        prevError.style.display = "inline"
+                        document.getElementById('prevErrorText').textContent = item.topic
+                        alreadyDefined = true
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+            loadQuestion()
+        } else if (geometryCurrent < geometryQ.length) {
 
             prevError.style.display = 'none  '
-    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry);
+            geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry);
             loadQuestion(geometryCurrent);
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
-}
+            restart();
+        }
 
     }, 300); // matches slide-out duration
-questionType = "geometry";
+    questionType = "geometry";
 }
 
 function probNext() {
@@ -10661,104 +10667,104 @@ function probNext() {
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
         let alreadyDefined = false
-            const topicMistakesTrue = wrongTopicProb.some(i => i.countdown === 0)
+        const topicMistakesTrue = wrongTopicProb.some(i => i.countdown === 0)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         probCurrent++;
         const mistakesProbTrue = wrongQuestionsProb.some(item => item.countdown === 0);
-        if (mistakesProbTrue === true){
+        if (mistakesProbTrue === true) {
             alreadyDefined = false
             wrongQuestionsProb.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         probQuestion = item
                         prevError.style.display = "inline"
-                                   document.getElementById('prevErroText').textContent = "Previous Error"
+                        document.getElementById('prevErroText').textContent = "Previous Error"
                         loadProb();
                     } else {
                         item.countdown += 1
                     }
                 }
             })
-        } 
-        else if (topicMistakesTrue === true){
-    wrongTopicProb.forEach(item => {
-        if (item.countdown === 0){
-            if (alreadyDefined === false){
-                probQuestion = probabilityQ.find(question => question.topic === item.topic)
-                prevError.style.display = "inline"
-                document.getElementById('prevErrorText').textContent = item.topic
-                alreadyDefined = true
-                loadProb()
-            } else {
-                item.countdown += 1
-            }
         }
-    })
-} else if (probCurrent < probabilityQ.length) {
+        else if (topicMistakesTrue === true) {
+            wrongTopicProb.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false) {
+                        probQuestion = probabilityQ.find(question => question.topic === item.topic)
+                        prevError.style.display = "inline"
+                        document.getElementById('prevErrorText').textContent = item.topic
+                        alreadyDefined = true
+                        loadProb()
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (probCurrent < probabilityQ.length) {
             prevError.style.display = 'none'
-    probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
+            probQuestion = getNextQuestion(probabilityQ, userRatingProbability);
             loadProb();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
+            restart();
+        }
+    })
 }
-})
-}
-function numNext(){
+function numNext() {
     // Slide out
 
     problemsWrapper.classList.add("slide-out");
     setTimeout(() => {
         let alreadyDefined = false
-            const topicMistakesTrue = wrongTopicNum.some(i => i.countdown === 0)
+        const topicMistakesTrue = wrongTopicNum.some(i => i.countdown === 0)
         // Remove slide-out and load next question
         problemsWrapper.classList.remove("slide-out");
         numCurrent++;
         const mistakesNumTrue = wrongQuestionsNum.some(item => item.countdown === 0);
-        if (mistakesNumTrue === true){
+        if (mistakesNumTrue === true) {
             alreadyDefined = false
             wrongQuestionsNum.forEach(item => {
                 if (item.countdown === 0) {
-                    if (alreadyDefined === false){
+                    if (alreadyDefined === false) {
                         numQuestion = item
                         prevError.style.display = "inline"
-                               document.getElementById('prevErroText').textContent = "Previous Error"
+                        document.getElementById('prevErroText').textContent = "Previous Error"
                         loadNumTheory();
                     } else {
                         item.countdown += 1
                     }
                 }
             })
-        } else if (topicMistakesTrue === true){
-    wrongTopicNum.forEach(item => {
-        if (item.countdown === 0){
-            if (alreadyDefined === false){
-                numQuestion = numTheoryQ.find(question => question.topic === item.topic)
-                prevError.style.display = "inline"
-                document.getElementById('prevErrorText').textContent = item.topic
-                alreadyDefined = true
-                loadNumTheory()
-            } else {
-                item.countdown += 1
-            }
-        }
-    })
-} else if (numCurrent < numTheoryQ.length) {
+        } else if (topicMistakesTrue === true) {
+            wrongTopicNum.forEach(item => {
+                if (item.countdown === 0) {
+                    if (alreadyDefined === false) {
+                        numQuestion = numTheoryQ.find(question => question.topic === item.topic)
+                        prevError.style.display = "inline"
+                        document.getElementById('prevErrorText').textContent = item.topic
+                        alreadyDefined = true
+                        loadNumTheory()
+                    } else {
+                        item.countdown += 1
+                    }
+                }
+            })
+        } else if (numCurrent < numTheoryQ.length) {
             prevError.style.display = 'none'
-    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory);
+            numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory);
             loadQuestion();
 
             // Slide in effect
             problemsWrapper.classList.add("slide-in");
             setTimeout(() => problemsWrapper.classList.remove("slide-in"), 350);
         } else {
-restart();
-}
-})
+            restart();
+        }
+    })
 }
 
 // ---------- Enter Key ----------
@@ -10788,104 +10794,108 @@ geometryCurrent = 0;
 numCurrent = 0;
 probCurrent = 0;
 
-  async function saveUserStatsToCloud() {
-  // 1. Get the currently logged-in user session
-  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-  if (sessionError || !session) {
-    return; // Stop here if they are a guest
-  }
+async function saveUserStatsToCloud() {
+    // 1. Get the currently logged-in user session
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError || !session) {
+        return; // Stop here if they are a guest
+    }
 
-  const userId = session.user.id;
-  // 2. Push all the live active values up to the database
-  const { data, error } = await supabase
-    .from('profiles')
-    .update({
-        elo: Math.round(userRatingAll),                
-        eloAlgebra: Math.round(userRating),             
-        eloGeometry: Math.round(userRatingGeometry),
-        eloNum: Math.round(userRatingNumTheory),
-        eloProb: Math.round(userRatingProbability)   ,
-        topicsToWorkOn: topicsToWorkOn,
-        TOPICGLOSSARY: TOPIC_GLOSSARY,
-        unfamiliar:  unfamiliar,
-        stuck: stuck,
-        mistake: mistake,
-        algebraTotal: algebraTotal,
-        algebraWrong: algebraWrong,
-        geometryTotal: geometryTotal,
-        geometryWrong: geometryWrong,
-        numTotal: numTotal,
-        probTotal: probTotal,
-        numWrong: numWrong,
-        probWrong: probWrong,
-        streak: streakCount,
-        TOPICGLOSSARY: TOPIC_GLOSSARY
-    })
-    .eq('id', userId); // ⚠️ CRITICAL: Ensure you only update THIS user's row!
+    const userId = session.user.id;
+    // 2. Push all the live active values up to the database
+    const { data, error } = await supabase
+        .from('profiles')
+        .update({
+            elo: Math.round(userRatingAll),
+            eloAlgebra: Math.round(userRating),
+            eloGeometry: Math.round(userRatingGeometry),
+            eloNum: Math.round(userRatingNumTheory),
+            eloProb: Math.round(userRatingProbability),
+            topicsToWorkOn: topicsToWorkOn,
+            TOPICGLOSSARY: TOPIC_GLOSSARY,
+            unfamiliar: unfamiliar,
+            stuck: stuck,
+            mistake: mistake,
+            algebraTotal: algebraTotal,
+            algebraWrong: algebraWrong,
+            geometryTotal: geometryTotal,
+            geometryWrong: geometryWrong,
+            numTotal: numTotal,
+            probTotal: probTotal,
+            numWrong: numWrong,
+            probWrong: probWrong,
+            streak: streakCount,
+            TOPICGLOSSARY: TOPIC_GLOSSARY
+        })
+        .eq('id', userId); // ⚠️ CRITICAL: Ensure you only update THIS user's row!
 
-  if (error) {
-    console.error("Failed to sync stats to cloud database:", error.message);
-  }
+    if (error) {
+        console.error("Failed to sync stats to cloud database:", error.message);
+    }
 
 }
 //------------Switch Subjects--------------
 function loadQuestion() {
     startQuestionTimer()
-    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
+    scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
     errorTags.style.display = "none"
-        strikesContainer.display = "none"
-        seeStep.style.display = "none"
-        stepOne.style.display = "none"
-        hintText.style.display = "none"
-        strikes = 2;
-        hintBtn.style.display = 'none'
-        strikeOne.style.color = 'var(--shadow-color) !important'
-        strikeTwo.style.color = 'var(--shadow-color) !important'
-        strikeThree.style.color = 'var(--shadow-color) !important'
+    strikesContainer.display = "none"
+    seeStep.style.display = "none"
+    stepOne.style.display = "none"
+    hintText.style.display = "none"
+    strikes = 2;
+    hintBtn.style.display = 'none'
+    strikeOne.style.color = 'var(--shadow-color) !important'
+    strikeTwo.style.color = 'var(--shadow-color) !important'
+    strikeThree.style.color = 'var(--shadow-color) !important'
     submitSolutionForm.style.display = "none";
-    submitSolutionButton.style.display='block'
-if (questionType === "probability"){
+    submitSolutionButton.style.display = 'block'
+    if (questionType === "probability") {
         loadProb(probCurrent);
         questionType = "probability"
     }
     if (questionType === "algebra") {
         loadAlgebra(currentQuestion);
-    } else if (questionType === "geometry"){
+    } else if (questionType === "geometry") {
         loadGeometry(geometryCurrent);
         questionType = "geometry";
-    } else if (questionType === "numTheory"){
+    } else if (questionType === "numTheory") {
         loadNumTheory(numCurrent)
         questionType = "numTheory"
-    } else if (questionType === 'all'){
+    } else if (questionType === 'all') {
         loadAll(allCurrent);
         questionType = 'all'
     }
-      saveUserStatsToCloud()
+    saveUserStatsToCloud()
 
-      
+
 }
-overlay.addEventListener("click", function(){
-    if (helpOn === true){
+overlay.addEventListener("click", function () {
+    if (helpOn === true) {
         helpPannel.style.display = "none";
-        overlay.style.display = "none"; 
+        overlay.style.display = "none";
         helpOn = false;
-    } 
-    if (accountTrue === true){
+    }
+    if (accountTrue === true) {
         accountPannel.style.display = "none"
         overlay.style.display = "none"
         accountTrue = false
     }
-document.getElementById("streak-count").innerHTML = streakCount;
-    
+    document.querySelectorAll(".helpPannel").forEach(i => {
+        i.style.display = "none"
+        overlay.style.display = "none"
+    })
+    document.getElementById("streak-count").innerHTML = streakCount;
+
 });
 shuffleArray(probabilityQ)
 
-    // 5. Update Container HTML
+// 5. Update Container HTML
 
 
 function checkMiniMC(selected, correct, solution, containerId) {
     const container = document.getElementById(containerId);
-    
+
     // Disable all choice buttons
     container.querySelectorAll('.mini-mc-btn').forEach(b => b.disabled = true);
     const solutionDiv = container.querySelector('.mini-solution');
@@ -10903,7 +10913,7 @@ close_small</span> Incorrect. ${solution}`;
 
     solutionDiv.style.display = 'block';
     nextBtn.style.display = 'inline-block';
-    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
+    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(() => { });
 }
 
 function checkMiniAnswer(btn, answer, solution, containerId) {
@@ -10925,52 +10935,52 @@ close_small</span> Incorrect. ${solution}`;
     btn.disabled = true;
     solutionDiv.style.display = 'block';
     nextBtn.style.display = 'inline-block';
-    
-    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(()=>{});
+
+    if (window.MathJax) MathJax.typesetPromise([solutionDiv]).catch(() => { });
 }
-submitSolutionButton.addEventListener("click", function() {
-        submitSolutionForm.style.display = 'block';
-        submitSolutionButton.style.display = 'none';
+submitSolutionButton.addEventListener("click", function () {
+    submitSolutionForm.style.display = 'block';
+    submitSolutionButton.style.display = 'none';
 })
-function noHint(array,object) {
-        array.forEach(i => {
-                if (i.object === null){
-                        i.object = "Not available for this question"
-                }
-        })
+function noHint(array, object) {
+    array.forEach(i => {
+        if (i.object === null) {
+            i.object = "Not available for this question"
+        }
+    })
 }
 noHint(questions, hint)
 noHint(geometryQ, hint)
 noHint(numTheoryQ, hint)
 noHint(probabilityQ)
 function noStep(array) {
-        array.forEach(i => {
-                if (i.step === null){
-                        i.step = "Not available for this question"
-                }
-        })
+    array.forEach(i => {
+        if (i.step === null) {
+            i.step = "Not available for this question"
+        }
+    })
 }
 noStep(questions)
 noStep(geometryQ)
 noStep(numTheoryQ)
 noStep(probabilityQ)
-function getExpectedScore(userRating, questionRating){
+function getExpectedScore(userRating, questionRating) {
     let expectedRating = (1 / (1 + Math.pow(10, (questionRating - userRating) / 400)));
     updateRating(userRating, expectedRating, correct);
 }
-function updateRating(oldRating, expectedRating, correct){
+function updateRating(oldRating, expectedRating, correct) {
     let newRating = oldRating + (250 * (correct - expectedRating))
-    if (questionType !== "all"){
-        if (questionType === "algebra"){
-                userRating = newRating
-        } else if (questionType === "geometry"){
-                userRatingGeometry = newRating
-        } else if (questionType === "probability"){
-                userRatingProbability = newRating
-        } else if(questionType === "numTheory"){
-                userRatingNumTheory = newRating
-        } else if (questionType === "all"){
-                userRatingAll = newRating
+    if (questionType !== "all") {
+        if (questionType === "algebra") {
+            userRating = newRating
+        } else if (questionType === "geometry") {
+            userRatingGeometry = newRating
+        } else if (questionType === "probability") {
+            userRatingProbability = newRating
+        } else if (questionType === "numTheory") {
+            userRatingNumTheory = newRating
+        } else if (questionType === "all") {
+            userRatingAll = newRating
         }
     }
     updateAllRating();
@@ -10978,77 +10988,77 @@ function updateRating(oldRating, expectedRating, correct){
 }
 function store() {
 }
-hintBtn.addEventListener("click", function(){
-        if (hintText.style.display === "none"){
-                hintText.style.display = "block"
-                hintBtn.innerHTML = "Hide Hint"
-                if (questionType === "algebra"){
-                        hintText.innerHTML = "<b>HINT: </b>" + algebraQuestion.hint
-                        hint.style.color = "var(--accent-color)"
-                } else if (questionType === "geometry"){
-                        hintText.innerHTML = "<b>HINT: </b>" + geometryQuestion.hint
-                        hint.style.color = "var(--accent-color)"                
-                } else if (questionType === "numTheory"){
-                        hintText.innerHTML = "<b>HINT: </b>" + numQuestion.hint
-                        hint.style.color = "var(--accent-color)"                        
-                } else if (questionType === "probability"){
-                        hintText.innerHTML = "<b>HINT: </b>" + probQuestion.hint
-                        hint.style.color = "var(--accent-color)"    
-                }
-                MathJax.typesetPromise([hintText]);
-        } else {
-                hintText.style.display = "none"
-                hintBtn.innerHTML = "Show Hint"
+hintBtn.addEventListener("click", function () {
+    if (hintText.style.display === "none") {
+        hintText.style.display = "block"
+        hintBtn.innerHTML = "Hide Hint"
+        if (questionType === "algebra") {
+            hintText.innerHTML = "<b>HINT: </b>" + algebraQuestion.hint
+            hint.style.color = "var(--accent-color)"
+        } else if (questionType === "geometry") {
+            hintText.innerHTML = "<b>HINT: </b>" + geometryQuestion.hint
+            hint.style.color = "var(--accent-color)"
+        } else if (questionType === "numTheory") {
+            hintText.innerHTML = "<b>HINT: </b>" + numQuestion.hint
+            hint.style.color = "var(--accent-color)"
+        } else if (questionType === "probability") {
+            hintText.innerHTML = "<b>HINT: </b>" + probQuestion.hint
+            hint.style.color = "var(--accent-color)"
         }
+        MathJax.typesetPromise([hintText]);
+    } else {
+        hintText.style.display = "none"
+        hintBtn.innerHTML = "Show Hint"
+    }
 })
-seeStep.addEventListener("click", function() {
-        if (stepOne.style.display === "none"){
-                stepOne.style.display = "block"
-                seeStep.innerHTML = "Hide First Step"
-                if (questionType === "algebra"){
-                        stepOneText.innerHTML = algebraQuestion.step
-                } else if (questionType === "geometry"){
-                        stepOneText.innerHTML = geometryQuestion.step
-                } else if (questionType === "numTheory"){
-                        stepOneText.innerHTML = numQuestion.step
-                } else if (questionType === "probability"){
-                        stepOneText.innerHTML = probQuestion.step
-                }
-                MathJax.typesetPromise([stepOneText]);
-        } else {
-                stepOne.style.display = "none"
-                seeStep.innerHTML = "See The First Step"
-        }        
+seeStep.addEventListener("click", function () {
+    if (stepOne.style.display === "none") {
+        stepOne.style.display = "block"
+        seeStep.innerHTML = "Hide First Step"
+        if (questionType === "algebra") {
+            stepOneText.innerHTML = algebraQuestion.step
+        } else if (questionType === "geometry") {
+            stepOneText.innerHTML = geometryQuestion.step
+        } else if (questionType === "numTheory") {
+            stepOneText.innerHTML = numQuestion.step
+        } else if (questionType === "probability") {
+            stepOneText.innerHTML = probQuestion.step
+        }
+        MathJax.typesetPromise([stepOneText]);
+    } else {
+        stepOne.style.display = "none"
+        seeStep.innerHTML = "See The First Step"
+    }
 })
-function save(){
+function save() {
 }
-function get(){
-        return localStorage.getItem("ELO")
+function get() {
+    return localStorage.getItem("ELO")
 }
 async function getHardestProblems(limit = 10) {
-  const { data, error } = await supabase
-    .from('question_stats')
-    .select('question_title, attempts, failures, success_rate')
-    .gte('attempts', 5) // filter out problems with too few attempts
-    .order('success_rate', { ascending: true })
-    .limit(limit);
+    const { data, error } = await supabase
+        .from('question_stats')
+        .select('question_title, attempts, failures, success_rate')
+        .gte('attempts', 5) // filter out problems with too few attempts
+        .order('success_rate', { ascending: true })
+        .limit(limit);
 
-  return data;
+    return data;
 }
 
 // Assume supabase client is already initialized
 async function getTableData() {
-  const { data, error } = await supabase
-    .from('question_stats')
-    .select('*'); // '*' selects all columns
+    const { data, error } = await supabase
+        .from('question_stats')
+        .select('*'); // '*' selects all columns
 
-  if (error) {
-    console.error('Error fetching data:', error);
-    return;
-  }
+    if (error) {
+        console.error('Error fetching data:', error);
+        return;
+    }
 
-  // 'data' is already an array of objects: [{id: 1, ...}, {id: 2, ...}]           
-  return data;
+    // 'data' is already an array of objects: [{id: 1, ...}, {id: 2, ...}]           
+    return data;
 }
 //leaderboard one
 let answerLOne = ""
@@ -11064,38 +11074,37 @@ const solutionOne = document.getElementById("solution-one")
 const solutionOneText = document.getElementById("solution-text-one")
 const answerInputOne = document.getElementById("leaderboard-input-one")
 const leaderboardDropdownOne = document.getElementById("leaderboard-one-dropdown")
-let cleanedOne = questionStats[0].question_title.replaceAll( `<span class="material-symbols-outlined">
+let cleanedOne = questionStats[0].question_title.replaceAll(`<span class="material-symbols-outlined">
 star
 </span>`, "")
 oneTitle.innerHTML = cleanedOne
 let arraySearchOne = questionStats[0].question_title
 let percentOneSuccess = (questionStats[0].success_rate * 100).toFixed(0) + '% Success Rate'
 percentOne.innerHTML = percentOneSuccess
-oneCard.addEventListener("click", function(){
+oneCard.addEventListener("click", function () {
     oneProblem.classList.toggle("hiddenToggle")
     leaderboardDropdownOne.classList.toggle('rotated')
     leaderboardOnePar.innerHTML = allQ.find(q => q.title === arraySearchOne).text
     MathJax.typesetPromise([leaderboardOnePar]);
 })
-if (allQ.find(q => q.title === arraySearchOne).type === "mc"){
-         mcChoicesLOne.forEach((btn, i) => {
-            btn.innerHTML = allQ.find(q => q.title === arraySearchOne).choices[i];
-            MathJax.typesetPromise([btn]);
-            btn.addEventListener("click", function(){
-mcChoicesLOne.forEach(btn => btn.disabled = true);
-answerLOne = btn.innerHTML
-leaderboardCheckOne.click()
-            })
-        });   
+if (allQ.find(q => q.title === arraySearchOne).type === "mc") {
+    mcChoicesLOne.forEach((btn, i) => {
+        btn.innerHTML = allQ.find(q => q.title === arraySearchOne).choices[i];
+        MathJax.typesetPromise([btn]);
+        btn.addEventListener("click", function () {
+            mcChoicesLOne.forEach(btn => btn.disabled = true);
+            answerLOne = btn.innerHTML
+            leaderboardCheckOne.click()
+        })
+    });
 }
-leaderboardCheckOne.addEventListener("click", function(){
+leaderboardCheckOne.addEventListener("click", function () {
     solutionOne.style.display = "block"
-    if (allQ.find(q => q.title === arraySearchOne).type !== "mc")
-    {
+    if (allQ.find(q => q.title === arraySearchOne).type !== "mc") {
         answerLOne = answerInputOne.value.trim();
     }
     let correctAnswer = allQ.find(q => q.title === arraySearchOne).answer.trim();
-    if (answerLOne === correctAnswer){
+    if (answerLOne === correctAnswer) {
         solutionOneText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + allQ.find(q => q.title === arraySearchOne).solution;
@@ -11103,7 +11112,7 @@ check
         solutionOneText.innerHTML = `<span class="material-symbols-outlined">
 close_small 
 </span> Incorrect. ` + allQ.find(q => q.title === arraySearchOne).solution;
-    } 
+    }
     MathJax.typesetPromise([solutionOneText]);
 })
 //leaderboard two
@@ -11118,38 +11127,37 @@ const solutionTwo = document.getElementById("solution-two")
 const solutionTwoText = document.getElementById("solution-text-two")
 const answerInputTwo = document.getElementById("leaderboard-input-two")
 const leaderboardDropdownTwo = document.getElementById("leaderboard-two-dropdown")
-let cleanedTwo = questionStats[1].question_title.replaceAll( `<span class="material-symbols-outlined">
+let cleanedTwo = questionStats[1].question_title.replaceAll(`<span class="material-symbols-outlined">
 star
 </span>`, "")
 twoTitle.innerHTML = cleanedTwo
 let arraySearchTwo = questionStats[1].question_title
 let percentTwoSuccess = (questionStats[1].success_rate * 100).toFixed(0) + '% Success Rate'
 percentTwo.innerHTML = percentTwoSuccess
-twoCard.addEventListener("click", function(){
+twoCard.addEventListener("click", function () {
     twoProblem.classList.toggle("hiddenToggle")
     leaderboardDropdownTwo.classList.toggle('rotated')
     leaderboardTwoPar.innerHTML = allQ.find(q => q.title === arraySearchTwo).text
     MathJax.typesetPromise([leaderboardTwoPar]);
 })
-if (allQ.find(q => q.title === arraySearchTwo).type === "mc"){
-         mcChoicesLTwo.forEach((btn, i) => {
-            btn.innerHTML = allQ.find(q => q.title === arraySearchTwo).choices[i];
-            MathJax.typesetPromise([btn]);
-            btn.addEventListener("click", function(){
-mcChoicesLTwo.forEach(btn => btn.disabled = true);
-answerLTwo = btn.innerHTML
-leaderboardCheckTwo.click()
-            })
-        });   
+if (allQ.find(q => q.title === arraySearchTwo).type === "mc") {
+    mcChoicesLTwo.forEach((btn, i) => {
+        btn.innerHTML = allQ.find(q => q.title === arraySearchTwo).choices[i];
+        MathJax.typesetPromise([btn]);
+        btn.addEventListener("click", function () {
+            mcChoicesLTwo.forEach(btn => btn.disabled = true);
+            answerLTwo = btn.innerHTML
+            leaderboardCheckTwo.click()
+        })
+    });
 }
-leaderboardCheckTwo.addEventListener("click", function(){
+leaderboardCheckTwo.addEventListener("click", function () {
     solutionTwo.style.display = "block"
-    if (allQ.find(q => q.title === arraySearchTwo).type !== "mc")
-    {
+    if (allQ.find(q => q.title === arraySearchTwo).type !== "mc") {
         answerLTwo = answerInputTwo.value.trim();
     }
     let correctAnswer = allQ.find(q => q.title === arraySearchTwo).answer.trim();
-    if (answerLTwo === correctAnswer){
+    if (answerLTwo === correctAnswer) {
         solutionTwoText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + allQ.find(q => q.title === arraySearchTwo).solution;
@@ -11157,7 +11165,7 @@ check
         solutionTwoText.innerHTML = `<span class="material-symbols-outlined">
 close_small 
 </span> Incorrect. ` + allQ.find(q => q.title === arraySearchTwo).solution;
-    } 
+    }
     MathJax.typesetPromise([solutionTwoText]);
 })
 //leaderboard three
@@ -11172,38 +11180,37 @@ const solutionThree = document.getElementById("solution-three")
 const solutionThreeText = document.getElementById("solution-text-three")
 const answerInputThree = document.getElementById("leaderboard-input-three")
 const leaderboardDropdownThree = document.getElementById("leaderboard-three-dropdown")
-let cleanedThree = questionStats[2].question_title.replaceAll( `<span class="material-symbols-outlined">
+let cleanedThree = questionStats[2].question_title.replaceAll(`<span class="material-symbols-outlined">
 star
 </span>`, "")
 threeTitle.innerHTML = cleanedThree
 let arraySearchThree = questionStats[2].question_title
 let percentThreeSuccess = (questionStats[2].success_rate * 100).toFixed(0) + '% Success Rate'
 percentThree.innerHTML = percentThreeSuccess
-threeCard.addEventListener("click", function(){
+threeCard.addEventListener("click", function () {
     threeProblem.classList.toggle("hiddenToggle")
     leaderboardDropdownThree.classList.toggle('rotated')
     leaderboardThreePar.innerHTML = allQ.find(q => q.title === arraySearchThree).text
     MathJax.typesetPromise([leaderboardThreePar]);
 })
-if (allQ.find(q => q.title === arraySearchThree).type === "mc"){
-         mcChoicesLThree.forEach((btn, i) => {
-            btn.innerHTML = allQ.find(q => q.title === arraySearchThree).choices[i];
-            MathJax.typesetPromise([btn]);
-            btn.addEventListener("click", function(){
-mcChoicesLThree.forEach(btn => btn.disabled = true);
-answerLThree = btn.innerHTML
-leaderboardCheckThree.click()
-            })
-        });   
+if (allQ.find(q => q.title === arraySearchThree).type === "mc") {
+    mcChoicesLThree.forEach((btn, i) => {
+        btn.innerHTML = allQ.find(q => q.title === arraySearchThree).choices[i];
+        MathJax.typesetPromise([btn]);
+        btn.addEventListener("click", function () {
+            mcChoicesLThree.forEach(btn => btn.disabled = true);
+            answerLThree = btn.innerHTML
+            leaderboardCheckThree.click()
+        })
+    });
 }
-leaderboardCheckThree.addEventListener("click", function(){
+leaderboardCheckThree.addEventListener("click", function () {
     solutionThree.style.display = "block"
-    if (allQ.find(q => q.title === arraySearchThree).type !== "mc")
-    {
+    if (allQ.find(q => q.title === arraySearchThree).type !== "mc") {
         answerLThree = answerInputThree.value.trim();
     }
     let correctAnswer = allQ.find(q => q.title === arraySearchThree).answer.trim();
-    if (answerLThree === correctAnswer){
+    if (answerLThree === correctAnswer) {
         solutionThreeText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + allQ.find(q => q.title === arraySearchThree).solution;
@@ -11211,7 +11218,7 @@ check
         solutionThreeText.innerHTML = `<span class="material-symbols-outlined">
 close_small 
 </span> Incorrect. ` + allQ.find(q => q.title === arraySearchThree).solution;
-    } 
+    }
     MathJax.typesetPromise([solutionThreeText]);
 })
 //leaderboard four
@@ -11226,38 +11233,37 @@ const solutionFour = document.getElementById("solution-four")
 const solutionFourText = document.getElementById("solution-text-four")
 const answerInputFour = document.getElementById("leaderboard-input-four")
 const leaderboardDropdownFour = document.getElementById("leaderboard-four-dropdown")
-let cleanedFour = questionStats[3].question_title.replaceAll( `<span class="material-symbols-outlined">
+let cleanedFour = questionStats[3].question_title.replaceAll(`<span class="material-symbols-outlined">
 star
 </span>`, "")
 fourTitle.innerHTML = cleanedFour
 let arraySearchFour = questionStats[3].question_title
 let percentFourSuccess = (questionStats[3].success_rate * 100).toFixed(0) + '% Success Rate'
 percentFour.innerHTML = percentFourSuccess
-fourCard.addEventListener("click", function(){
+fourCard.addEventListener("click", function () {
     fourProblem.classList.toggle("hiddenToggle")
     leaderboardDropdownFour.classList.toggle('rotated')
     leaderboardFourPar.innerHTML = allQ.find(q => q.title === arraySearchFour).text
     MathJax.typesetPromise([leaderboardFourPar]);
 })
-if (allQ.find(q => q.title === arraySearchFour).type === "mc"){
-         mcChoicesLFour.forEach((btn, i) => {
-            btn.innerHTML = allQ.find(q => q.title === arraySearchFour).choices[i];
-            MathJax.typesetPromise([btn]);
-            btn.addEventListener("click", function(){
-mcChoicesLFour.forEach(btn => btn.disabled = true);
-answerLFour = btn.innerHTML
-leaderboardCheckFour.click()
-            })
-        });   
+if (allQ.find(q => q.title === arraySearchFour).type === "mc") {
+    mcChoicesLFour.forEach((btn, i) => {
+        btn.innerHTML = allQ.find(q => q.title === arraySearchFour).choices[i];
+        MathJax.typesetPromise([btn]);
+        btn.addEventListener("click", function () {
+            mcChoicesLFour.forEach(btn => btn.disabled = true);
+            answerLFour = btn.innerHTML
+            leaderboardCheckFour.click()
+        })
+    });
 }
-leaderboardCheckFour.addEventListener("click", function(){
+leaderboardCheckFour.addEventListener("click", function () {
     solutionFour.style.display = "block"
-    if (allQ.find(q => q.title === arraySearchFour).type !== "mc")
-    {
+    if (allQ.find(q => q.title === arraySearchFour).type !== "mc") {
         answerLFour = answerInputFour.value.trim();
     }
     let correctAnswer = allQ.find(q => q.title === arraySearchFour).answer.trim();
-    if (answerLFour === correctAnswer){
+    if (answerLFour === correctAnswer) {
         solutionFourText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + allQ.find(q => q.title === arraySearchFour).solution;
@@ -11265,7 +11271,7 @@ check
         solutionFourText.innerHTML = `<span class="material-symbols-outlined">
 close_small 
 </span> Incorrect. ` + allQ.find(q => q.title === arraySearchFour).solution;
-    } 
+    }
     MathJax.typesetPromise([solutionFourText]);
 })
 //leaderboard five
@@ -11280,38 +11286,37 @@ const solutionFive = document.getElementById("solution-five")
 const solutionFiveText = document.getElementById("solution-text-five")
 const answerInputFive = document.getElementById("leaderboard-input-five")
 const leaderboardDropdownFive = document.getElementById("leaderboard-five-dropdown")
-let cleanedFive = questionStats[4].question_title.replaceAll( `<span class="material-symbols-outlined">
+let cleanedFive = questionStats[4].question_title.replaceAll(`<span class="material-symbols-outlined">
 star
 </span>`, "")
 fiveTitle.innerHTML = cleanedFive
 let arraySearchFive = questionStats[4].question_title
 let percentFiveSuccess = (questionStats[4].success_rate * 100).toFixed(0) + '% Success Rate'
 percentFive.innerHTML = percentFiveSuccess
-fiveCard.addEventListener("click", function(){
+fiveCard.addEventListener("click", function () {
     fiveProblem.classList.toggle("hiddenToggle")
     leaderboardDropdownFive.classList.toggle('rotated')
     leaderboardFivePar.innerHTML = allQ.find(q => q.title === arraySearchFive).text
     MathJax.typesetPromise([leaderboardFivePar]);
 })
-if (allQ.find(q => q.title === arraySearchFive).type === "mc"){
-         mcChoicesLFive.forEach((btn, i) => {
-            btn.innerHTML = allQ.find(q => q.title === arraySearchFive).choices[i];
-            MathJax.typesetPromise([btn]);
-            btn.addEventListener("click", function(){
-mcChoicesLFive.forEach(btn => btn.disabled = true);
-answerLFive = btn.innerHTML
-leaderboardCheckFive.click()
-            })
-        });   
+if (allQ.find(q => q.title === arraySearchFive).type === "mc") {
+    mcChoicesLFive.forEach((btn, i) => {
+        btn.innerHTML = allQ.find(q => q.title === arraySearchFive).choices[i];
+        MathJax.typesetPromise([btn]);
+        btn.addEventListener("click", function () {
+            mcChoicesLFive.forEach(btn => btn.disabled = true);
+            answerLFive = btn.innerHTML
+            leaderboardCheckFive.click()
+        })
+    });
 }
-leaderboardCheckFive.addEventListener("click", function(){
+leaderboardCheckFive.addEventListener("click", function () {
     solutionFive.style.display = "block"
-    if (allQ.find(q => q.title === arraySearchFive).type !== "mc")
-    {
+    if (allQ.find(q => q.title === arraySearchFive).type !== "mc") {
         answerLFive = answerInputFive.value.trim();
     }
     let correctAnswer = allQ.find(q => q.title === arraySearchFive).answer.trim();
-    if (answerLFive === correctAnswer){
+    if (answerLFive === correctAnswer) {
         solutionFiveText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + allQ.find(q => q.title === arraySearchFive).solution;
@@ -11319,7 +11324,7 @@ check
         solutionFiveText.innerHTML = `<span class="material-symbols-outlined">
 close_small 
 </span> Incorrect. ` + allQ.find(q => q.title === arraySearchFive).solution;
-    } 
+    }
     MathJax.typesetPromise([solutionFiveText]);
 })
 function loadTopicQuestion(topic) {
@@ -11354,7 +11359,7 @@ function loadTopicQuestion(topic) {
                     Check
                 </button>
             </div>`;
-}
+    }
 
     container.innerHTML = `
 <div class="miniTitleContainer">
@@ -11369,45 +11374,45 @@ function loadTopicQuestion(topic) {
             Next Question
         </button>
     `;
-    if (window.MathJax) MathJax.typesetPromise([container]).catch(()=>{});
-    if (q.type != 'mc'){
-    const checkBtnMini = document.getElementById(checkBtnId)
-    checkBtnMini.addEventListener("click", function () {
-        checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
-    })
+    if (window.MathJax) MathJax.typesetPromise([container]).catch(() => { });
+    if (q.type != 'mc') {
+        const checkBtnMini = document.getElementById(checkBtnId)
+        checkBtnMini.addEventListener("click", function () {
+            checkMiniAnswer(checkBtnMini, q.answer, q.solution, containerId)
+        })
+    }
+    if (q.type === 'mc') {
+        const option1 = document.getElementById(q.choices[0])
+        const option2 = document.getElementById(q.choices[1])
+        const option3 = document.getElementById(q.choices[2])
+        const option4 = document.getElementById(q.choices[3])
+        const option5 = document.getElementById(q.choices[4])
+        option1.addEventListener("click", function () {
+            checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
+        })
+        option2.addEventListener("click", function () {
+            checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
+        })
+        option3.addEventListener("click", function () {
+            checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
+        })
+        option4.addEventListener("click", function () {
+            checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
+        })
+        option5.addEventListener("click", function () {
+            checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
+        })
+    }
 }
-if (q.type === 'mc'){
-    const option1 = document.getElementById(q.choices[0])
-    const option2 = document.getElementById(q.choices[1])
-    const option3 = document.getElementById(q.choices[2])
-    const option4 = document.getElementById(q.choices[3])
-    const option5 = document.getElementById(q.choices[4])
-    option1.addEventListener("click", function() {
-        checkMiniMC(option1.textContent, q.answer, q.solution, containerId)
-    })
-    option2.addEventListener("click", function() {
-        checkMiniMC(option2.textContent, q.answer, q.solution, containerId)
-    })
-    option3.addEventListener("click", function() {
-        checkMiniMC(option3.textContent, q.answer, q.solution, containerId)
-    })
-    option4.addEventListener("click", function() {
-        checkMiniMC(option4.textContent, q.answer, q.solution, containerId)
-    })
-    option5.addEventListener("click", function() {
-        checkMiniMC(option5.textContent, q.answer, q.solution, containerId)
-    })
-}
-}
-mistakeBtn.addEventListener("click", function(){
+mistakeBtn.addEventListener("click", function () {
     mistake += 1
     updateBarGraph()
 })
-unfamiliarBtn.addEventListener("click", function(){
+unfamiliarBtn.addEventListener("click", function () {
     unfamiliar += 1
     updateBarGraph()
 })
-stuckBtn.addEventListener("click", function(){
+stuckBtn.addEventListener("click", function () {
     stuck += 1
     updateBarGraph()
 })
@@ -11434,7 +11439,7 @@ function updateBarGraph() {
         },
         options: {
             responsive: true,
-scales: {
+            scales: {
                 x: {
                     grid: { color: textColor }, // Dynamic gridlines
                     ticks: { color: textColor } // Dynamic label text
@@ -11451,7 +11456,7 @@ scales: {
     });
 }
 let pieChart = null
-function updatePieChart(){
+function updatePieChart() {
 
     if (pieChart) {
         pieChart.destroy();
@@ -11461,62 +11466,66 @@ function updatePieChart(){
     let yValues = []
     topicsToWorkOn.forEach(i => {
         const topicObj = TOPIC_GLOSSARY.find(x => x.id === i);
-if (topicObj && topicObj.errors && topicObj.errors > 0) {
+        if (topicObj && topicObj.errors && topicObj.errors > 0) {
             xValues.push(topicObj.name || topicObj.id); // Use name if available
             yValues.push(topicObj.errors);
         }
 
     })
-pieChart = new Chart("pieChart", {
-  type: "pie",
-  data: {
-    labels: xValues,
-    datasets: [{
-      data: yValues,
-      backgroundColor: ["#88B0FF", "#c7deff", "#FFB192", "#ffd0c0"],
-      borderColor: backgroundColor
-    }]
-  },
-options: {
-    plugins: {
-      legend: {
-        labels: {
-          color: textColor
+    pieChart = new Chart("pieChart", {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                data: yValues,
+                backgroundColor: ["#88B0FF", "#c7deff", "#FFB192", "#ffd0c0"],
+                borderColor: backgroundColor
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColor
+                    }
+                }
+            }
         }
-      }
-    }
-  }
-});
+    });
 }
 let myRadarChart = null
-function updateRadarChart(){
-                    const data = {
-        labels: 
-        ["Algebra", "Geometry", "Number Theory", "Probability"],
-        datasets: [{label: "Incorrect", 
+function updateRadarChart() {
+    const data = {
+        labels:
+            ["Algebra", "Geometry", "Number Theory", "Probability"],
+        datasets: [{
+            label: "Incorrect",
             data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
         },
-        {label: "Attempted", 
+        {
+            label: "Attempted",
             data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#ebf3ff'
         },
-]
+        ]
 
     }
-            if (colorMode  === 'dark'){
-                const data = {
-        labels: 
-        ["Algebra", "Geometry", "Number Theory", "Probability"],
-        datasets: [{label: "Incorrect", 
-            data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
-        },
-        {label: "Attempted", 
-            data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#88B0FF'
-        },
-]
-        }      
+    if (colorMode === 'dark') {
+        const data = {
+            labels:
+                ["Algebra", "Geometry", "Number Theory", "Probability"],
+            datasets: [{
+                label: "Incorrect",
+                data: [algebraWrong, geometryWrong, numWrong, probWrong], borderColor: '#ffb192', backgroundColor: '#fff0eb'
+            },
+            {
+                label: "Attempted",
+                data: [algebraTotal, geometryTotal, numTotal, probTotal], borderColor: '#88B0FF', backgroundColor: '#88B0FF'
+            },
+            ]
         }
+    }
 
-if (myRadarChart) {
+    if (myRadarChart) {
         myRadarChart.destroy();
     }
 
@@ -11525,33 +11534,33 @@ if (myRadarChart) {
     myRadarChart = new Chart(ctx, {
         type: 'radar',
         data: data,
- options: {
-    scales: {
-      r: {
-        // 1. Change color of the category labels (e.g., "Speed", "Strength")
-        pointLabels: {
-          color: textColor, 
-          font: {
-            size: 14
-          }
-        },
-        // 2. Change color of the numbers on the radial axis
-        ticks: {
-          color: textColor,
-          showLabelBackdrop: false,
+        options: {
+            scales: {
+                r: {
+                    // 1. Change color of the category labels (e.g., "Speed", "Strength")
+                    pointLabels: {
+                        color: textColor,
+                        font: {
+                            size: 14
+                        }
+                    },
+                    // 2. Change color of the numbers on the radial axis
+                    ticks: {
+                        color: textColor,
+                        showLabelBackdrop: false,
 
+                    }
+                }
+            },
+            plugins: {
+                // 3. Change color of the legend text
+                legend: {
+                    labels: {
+                        color: textColor
+                    }
+                }
+            }
         }
-      }
-    },
-    plugins: {
-      // 3. Change color of the legend text
-      legend: {
-        labels: {
-          color: textColor
-        }
-      }
-    }
-  }
 
     })
 }
@@ -11574,12 +11583,12 @@ getProblemNumber(probabilityQ)
 getInitialRating(probabilityQ)
 getProblemNumber(allQ)
 getInitialRating(allQ)
-scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
+scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
 async function logAttempt(questionTitle, isCorrect) {
-  await supabase.rpc('log_attempt', {
-    q_title: questionTitle,
-    is_correct: isCorrect
-  });
+    await supabase.rpc('log_attempt', {
+        q_title: questionTitle,
+        is_correct: isCorrect
+    });
 }
 // Example — call inside your answer check logic:
 // logAttempt(algebraQuestion.title, correct);
@@ -11588,11 +11597,10 @@ window.loadQuestion = loadQuestion;
 // etc. for any function called from HTML onclick attributes
 const array = []
 allQ.forEach(i => {
-    if (i.topic == "word problems"){
+    if (i.topic == "word problems") {
         array.push(i)
     }
 })
-console.log(array)
 
 function runDiagnostic() {
     document.getElementById("actualStuff").style.display = "none"
@@ -11607,7 +11615,7 @@ function runDiagnostic() {
         if (item.rating >= 1100 && item.rating <= 1800) {
             item.diagnosticElligible = true
             questionsUsedCount += 1
-            if (questionsUsedCount < 2){
+            if (questionsUsedCount < 2) {
                 diagnosticQuestions.push(item)
                 diagnosticQuestions[diagnosticQuestions.length - 1].subject = "algebra"
             }
@@ -11616,11 +11624,11 @@ function runDiagnostic() {
         }
     })
     questionsUsedCount = 0
-        geometryQ.forEach(item => {
+    geometryQ.forEach(item => {
         if (item.rating >= 1100 && item.rating <= 1800) {
             item.diagnosticElligible = true
             questionsUsedCount += 1
-            if (questionsUsedCount < 2){
+            if (questionsUsedCount < 2) {
                 diagnosticQuestions.push(item)
                 diagnosticQuestions[diagnosticQuestions.length - 1].subject = "geometry"
             }
@@ -11629,11 +11637,11 @@ function runDiagnostic() {
         }
     })
     questionsUsedCount = 0
-        numTheoryQ.forEach(item => {
+    numTheoryQ.forEach(item => {
         if (item.rating >= 1100 && item.rating <= 1800) {
             item.diagnosticElligible = true
             questionsUsedCount += 1
-            if (questionsUsedCount < 2){
+            if (questionsUsedCount < 2) {
                 diagnosticQuestions.push(item)
                 diagnosticQuestions[diagnosticQuestions.length - 1].subject = "numTheory"
             }
@@ -11641,12 +11649,12 @@ function runDiagnostic() {
             item.diagnosticElligible = false
         }
     })
-        questionsUsedCount = 0
-        probabilityQ.forEach(item => {
+    questionsUsedCount = 0
+    probabilityQ.forEach(item => {
         if (item.rating >= 1100 && item.rating <= 1800) {
             item.diagnosticElligible = true
             questionsUsedCount += 1
-            if (questionsUsedCount < 2){
+            if (questionsUsedCount < 2) {
                 diagnosticQuestions.push(item)
                 diagnosticQuestions[diagnosticQuestions.length - 1].subject = "probability"
             }
@@ -11654,23 +11662,23 @@ function runDiagnostic() {
             item.diagnosticElligible = false
         }
     })
-        questionsUsedCount = 0
-        allQ.forEach(item => {
+    questionsUsedCount = 0
+    allQ.forEach(item => {
         if (item.rating >= 1100 && item.rating <= 1800) {
             item.diagnosticElligible = true
             questionsUsedCount += 1
-            if (questionsUsedCount < 2){
+            if (questionsUsedCount < 2) {
                 diagnosticQuestions.push(item)
-                if (questions.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) === true){
+                if (questions.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) === true) {
                     diagnosticQuestions[diagnosticQuestions.length - 1].subject = "algebra"
                     diagnosticAlgebraTotal += 1
-                } else if (geometryQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) ===  true){
+                } else if (geometryQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) === true) {
                     diagnosticQuestions[diagnosticQuestions.length - 1].subject = "geometry"
                     diagnosticGeometryTotal += 1
-                } else if (numTheoryQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) ===  true){
+                } else if (numTheoryQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) === true) {
                     diagnosticQuestions[diagnosticQuestions.length - 1].subject = "numTheory"
                     diagnosticNumTheoryTotal += 1
-                } else if (probabilityQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) === true){
+                } else if (probabilityQ.some(i => i.title === diagnosticQuestions[diagnosticQuestions.length - 1]) === true) {
                     diagnosticQuestions[diagnosticQuestions.length - 1].subject = "probability"
                     diagnosticProbabilityTotal += 1
                 }
@@ -11681,49 +11689,49 @@ function runDiagnostic() {
     })
     shuffleArray(diagnosticQuestions)
 
-document.getElementById("skip").addEventListener("click", function() {
-    document.getElementById("diagnosticStuff").style.display = "none"
-    document.getElementById("actualStuff").style.display = ""
-    algebraQuestion = getNextQuestion(questions, userRating)
-    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
-    probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
-    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
-    allQuestion = getNextQuestion(allQ, userRatingAll)
+    document.getElementById("skip").addEventListener("click", function () {
+        document.getElementById("diagnosticStuff").style.display = "none"
+        document.getElementById("actualStuff").style.display = ""
+        algebraQuestion = getNextQuestion(questions, userRating)
+        geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
+        probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
+        numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
+        allQuestion = getNextQuestion(allQ, userRatingAll)
 
-    loadQuestion();
-    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-    mistake = 0
-    stuck = 0
-    unfamiliar = 0
-    topicsToWorkOn = []
-    TOPIC_GLOSSARY.forEach(i => i.errors = 0)
-    updateRadarChart()
-    updateBarGraph()
-    updatePieChart()
-});
-    document.getElementById("startDiagnostic").addEventListener("click", function() {
+        loadQuestion();
+        scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+        mistake = 0
+        stuck = 0
+        unfamiliar = 0
+        topicsToWorkOn = []
+        TOPIC_GLOSSARY.forEach(i => i.errors = 0)
+        updateRadarChart()
+        updateBarGraph()
+        updatePieChart()
+    });
+    document.getElementById("startDiagnostic").addEventListener("click", function () {
         loadDiagnosticQuestion()
     })
- 
+
 
 
 
 }
-   function loadDiagnosticQuestion() {
+function loadDiagnosticQuestion() {
     diagnosticNext.style.display = "none"
     diagnosticCheck.disabled = false
     diagnosticInput.value = ""
     diagnosticInput.innerHTML = ""
-            document.getElementById("diagnosticTitle").innerHTML = diagnosticQuestions[index].title
-        document.getElementById("diagnosticText").innerHTML = diagnosticQuestions[index].text
-        document.getElementById("startDiagnostic").style.display = "none"
-        document.getElementById("skip").style.display = "none"
-        diagnosticSolutionContainer.style.display = "none"
-    if (diagnosticQuestions[index].image){
-        imageDiagnostic.src=diagnosticQuestions[index].image;
-        imageDiagnostic.style.display="block";
+    document.getElementById("diagnosticTitle").innerHTML = diagnosticQuestions[index].title
+    document.getElementById("diagnosticText").innerHTML = diagnosticQuestions[index].text
+    document.getElementById("startDiagnostic").style.display = "none"
+    document.getElementById("skip").style.display = "none"
+    diagnosticSolutionContainer.style.display = "none"
+    if (diagnosticQuestions[index].image) {
+        imageDiagnostic.src = diagnosticQuestions[index].image;
+        imageDiagnostic.style.display = "block";
     } else {
-        imageDiagnostic.style.display="none";
+        imageDiagnostic.style.display = "none";
     }
     if (!diagnosticQuestions[index].type || diagnosticQuestions[index].type === "fr") {
         diagnosticInput.style.display = "inline-block";
@@ -11737,10 +11745,10 @@ document.getElementById("skip").addEventListener("click", function() {
 
         diagnosticChoices.forEach((btn, i) => {
             btn.innerHTML = diagnosticQuestions[index].choices[i];
-            btn.addEventListener("click", function() {
+            btn.addEventListener("click", function () {
                 handleDiagnosticAnswer(diagnosticQuestions[index].choices[i])
             })
-            MathJax.typesetPromise([btn]).catch(()=>{})
+            MathJax.typesetPromise([btn]).catch(() => { })
         });
     } else {
         diagnosticMCContainer.classList.add("hidden")
@@ -11751,15 +11759,15 @@ document.getElementById("skip").addEventListener("click", function() {
             document.getElementById("diagnosticTitle"),
             document.getElementById("diagnosticText"),
             document.getElementById("diagnostic-mc-container")
-        ]).catch(()=>{});
+        ]).catch(() => { });
     }
-} 
+}
 
 function handleDiagnosticAnswer(choice) {
     diagnosticInput.value = choice
     diagnosticCheck.click();
-    if (nextBtn.style.display !== "none"){
-diagnosticChoices.forEach(btn => btn.disabled = true);
+    if (nextBtn.style.display !== "none") {
+        diagnosticChoices.forEach(btn => btn.disabled = true);
     }
 }
 diagnosticCheck.addEventListener("click", function () {
@@ -11767,20 +11775,20 @@ diagnosticCheck.addEventListener("click", function () {
     const userAnswer = diagnosticInput.value.trim();
     const correctAnswer = diagnosticQuestions[index].answer.trim();
     if (userAnswer === correctAnswer) {
-        if (diagnosticQuestions[index].subject === "algebra"){
+        if (diagnosticQuestions[index].subject === "algebra") {
             diagnosticAlgebraCorrect += 1
-        } else if (diagnosticQuestions[index].subject === 'geometry'){
+        } else if (diagnosticQuestions[index].subject === 'geometry') {
             diagnosticGeometryCorrect += 1
-        } else if (diagnosticQuestions[index].subject === 'numTheory'){
+        } else if (diagnosticQuestions[index].subject === 'numTheory') {
             diagnosticNumTheoryCorrect += 1
-        } else if (diagnosticQuestions[index].subject === 'probability'){
+        } else if (diagnosticQuestions[index].subject === 'probability') {
             diagnosticProbabilityCorrect += 1
         }
         diagnosticCorrect += 1
         diagnosticSolutionText.innerHTML = `<span class="material-symbols-outlined">
 check
 </span> Correct! ` + diagnosticQuestions[index].solution;
-       myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
 
 
@@ -11792,72 +11800,72 @@ close_small
     diagnosticSolutionContainer.style.display = "block";
     diagnosticNext.style.display = "inline-block";
 
-        MathJax.typesetPromise([diagnosticSolutionText]).catch(()=>{});
+    MathJax.typesetPromise([diagnosticSolutionText]).catch(() => { });
 });
-diagnosticNext.addEventListener("click", function() {
-    if (index <= 3){
-    index += 1
-    loadDiagnosticQuestion()
+diagnosticNext.addEventListener("click", function () {
+    if (index <= 3) {
+        index += 1
+        loadDiagnosticQuestion()
     } else {
-    updatePieChart();
-    updateRadarChart();
-    updateBarGraph();
-    let totalRating = 0
-    diagnosticQuestions.forEach(i => {
-        let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
-        totalRating += expectedRating
-    })
-    userRatingAll = Math.round(1300 + ((50 * (diagnosticCorrect - totalRating))))
+        updatePieChart();
+        updateRadarChart();
+        updateBarGraph();
+        let totalRating = 0
+        diagnosticQuestions.forEach(i => {
+            let expectedRating = (1 / (1 + 10 ** ((i.rating - 1300) / 400)))
+            totalRating += expectedRating
+        })
+        userRatingAll = Math.round(1300 + ((50 * (diagnosticCorrect - totalRating))))
         let algebraRating = 0
-    diagnosticQuestions.forEach(i => {
-        if (i.subject === "algebra"){
-            let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
-            algebraRating +=  expectedRating
-        }
-    })
-    userRating = Math.round(1300 + ((50 * (diagnosticAlgebraCorrect - algebraRating))))
-    let geometryRating = 0
-    diagnosticQuestions.forEach(i => {
-        if (i.subject === "geometry"){
-            let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
-            geometryRating +=  expectedRating
-        }
-    })
-    userRatingGeometry = Math.round(1300 + ((50 * (diagnosticGeometryCorrect - geometryRating))))
-    let numTheoryRating = 0
-    diagnosticQuestions.forEach(i => {
-        if (i.subject === "numTheory"){
-            let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
-            numTheoryRating +=  expectedRating
-        }
-    })
-    userRatingNumTheory = Math.round(1300 + ((50 * (diagnosticNumTheoryCorrect - numTheoryRating))))
-    let probRating = 0
-    diagnosticQuestions.forEach(i => {
-        if (i.subject === "probability"){
-            let expectedRating = (1 / (1+10 ** ((i.rating - 1300) / 400)))
-            probRating +=  expectedRating
-        }
-    })
-    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
-    document.getElementById("diagnosticTitle").innerHTML = "Diagnostic Complete"
-    document.getElementById("diagnosticText").innerHTML = `<p>Your ELO: ${userRatingAll}</p>
+        diagnosticQuestions.forEach(i => {
+            if (i.subject === "algebra") {
+                let expectedRating = (1 / (1 + 10 ** ((i.rating - 1300) / 400)))
+                algebraRating += expectedRating
+            }
+        })
+        userRating = Math.round(1300 + ((50 * (diagnosticAlgebraCorrect - algebraRating))))
+        let geometryRating = 0
+        diagnosticQuestions.forEach(i => {
+            if (i.subject === "geometry") {
+                let expectedRating = (1 / (1 + 10 ** ((i.rating - 1300) / 400)))
+                geometryRating += expectedRating
+            }
+        })
+        userRatingGeometry = Math.round(1300 + ((50 * (diagnosticGeometryCorrect - geometryRating))))
+        let numTheoryRating = 0
+        diagnosticQuestions.forEach(i => {
+            if (i.subject === "numTheory") {
+                let expectedRating = (1 / (1 + 10 ** ((i.rating - 1300) / 400)))
+                numTheoryRating += expectedRating
+            }
+        })
+        userRatingNumTheory = Math.round(1300 + ((50 * (diagnosticNumTheoryCorrect - numTheoryRating))))
+        let probRating = 0
+        diagnosticQuestions.forEach(i => {
+            if (i.subject === "probability") {
+                let expectedRating = (1 / (1 + 10 ** ((i.rating - 1300) / 400)))
+                probRating += expectedRating
+            }
+        })
+        scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
+        document.getElementById("diagnosticTitle").innerHTML = "Diagnostic Complete"
+        document.getElementById("diagnosticText").innerHTML = `<p>Your ELO: ${userRatingAll}</p>
     <p>Accuracy: ${diagnosticCorrect}/5</p>`
-    diagnosticMCContainer.style.display = "none"
-    diagnosticSolutionContainer.style.display = "none"
-    diagnosticNext.style.display = "none"
-    diagnosticInput.style.display = "none"
-           myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
+        diagnosticMCContainer.style.display = "none"
+        diagnosticSolutionContainer.style.display = "none"
+        diagnosticNext.style.display = "none"
+        diagnosticInput.style.display = "none"
+        myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.2, y: 1 } });
         myConfetti({ particleCount: 160, spread: 200, origin: { x: 0.8, y: 1 } });
         diagnosticCheck.style.display = "none"
         imageDiagnostic.style.display = "none"
         document.getElementById("startadaptive").style.display = "block"
-        
+
 
 
     }
 })
-document.getElementById("startadaptive").addEventListener("click", function() {
+document.getElementById("startadaptive").addEventListener("click", function () {
     document.getElementById("diagnosticStuff").style.display = "none"
     document.getElementById("actualStuff").style.display = ""
     userRatingAll = userRatingAllTrue
@@ -11867,615 +11875,615 @@ document.getElementById("startadaptive").addEventListener("click", function() {
     numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
     allQuestion = getNextQuestion(allQ, userRatingAll)
     loadQuestion();
-    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
+    scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
     updateRadarChart()
     updateBarGraph()
     updatePieChart()
 });
 document.getElementById("btn-signup").addEventListener("click", async () => {
-    
-  const email = document.getElementById("auth-email").value;
-  const password = document.getElementById("auth-password").value;
-  const username = document.getElementById("auth-username").value;
-  const passwordCheck = document.getElementById("auth-password-check").value
 
-  // Validate fields aren't empty
-  if (!email || !password || !username) {
-    document.getElementById("signup-error").innerHTML = "Please fill out all fields"
-    return;
-  }
-if (password === passwordCheck){
-  // 1. Create the user credentials using your existing supabase client
-  const { data, error } = await supabase.auth.signUp({ email, password });
+    const email = document.getElementById("auth-email").value;
+    const password = document.getElementById("auth-password").value;
+    const username = document.getElementById("auth-username").value;
+    const passwordCheck = document.getElementById("auth-password-check").value
 
-  if (error) return alert(error.message);
+    // Validate fields aren't empty
+    if (!email || !password || !username) {
+        document.getElementById("signup-error").innerHTML = "Please fill out all fields"
+        return;
+    }
+    if (password === passwordCheck) {
+        // 1. Create the user credentials using your existing supabase client
+        const { data, error } = await supabase.auth.signUp({ email, password });
 
-  // 2. Insert their CURRENT ELO ratings into your 'profiles' table
-  if (data.user) {
-    
-    await supabase.from('profiles').insert([
-      { 
-        id: data.user.id, 
-        username: username, 
-        elo: Math.round(userRatingAll),                
-        eloAlgebra: Math.round(userRating),             
-        eloGeometry: Math.round(userRatingGeometry),
-        eloNum: Math.round(userRatingNumTheory),
-        eloProb: Math.round(userRatingProbability)   ,
-        topicsToWorkOn: topicsToWorkOn,
-        TOPICGLOSSARY: TOPIC_GLOSSARY,
-        unfamiliar:  unfamiliar,
-        stuck: stuck,
-        mistake: mistake,
-        algebraTotal: algebraTotal,
-        algebraWrong: algebraWrong,
-        geometryTotal: geometryTotal,
-        geometryWrong: geometryWrong,
-        numTotal: numTotal,
-        probTotal: probTotal,
-        numWrong: numWrong,
-        probWrong: probWrong,
-        streak: streakCount
-      }
-    ]);
-    
-    alert("Account created!");
-    
-    document.getElementById('accountPannel').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';
-    document.getElementById("username-display").innerHTML = username
-    loadQuestion()
-  }
-  } else {
+        if (error) return alert(error.message);
+
+        // 2. Insert their CURRENT ELO ratings into your 'profiles' table
+        if (data.user) {
+
+            await supabase.from('profiles').insert([
+                {
+                    id: data.user.id,
+                    username: username,
+                    elo: Math.round(userRatingAll),
+                    eloAlgebra: Math.round(userRating),
+                    eloGeometry: Math.round(userRatingGeometry),
+                    eloNum: Math.round(userRatingNumTheory),
+                    eloProb: Math.round(userRatingProbability),
+                    topicsToWorkOn: topicsToWorkOn,
+                    TOPICGLOSSARY: TOPIC_GLOSSARY,
+                    unfamiliar: unfamiliar,
+                    stuck: stuck,
+                    mistake: mistake,
+                    algebraTotal: algebraTotal,
+                    algebraWrong: algebraWrong,
+                    geometryTotal: geometryTotal,
+                    geometryWrong: geometryWrong,
+                    numTotal: numTotal,
+                    probTotal: probTotal,
+                    numWrong: numWrong,
+                    probWrong: probWrong,
+                    streak: streakCount
+                }
+            ]);
+
+            alert("Account created!");
+
+            document.getElementById('accountPannel').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById("username-display").innerHTML = username
+            loadQuestion()
+        }
+    } else {
         document.getElementById("signup-error").innerHTML = "Passwords do not match"
-    return;
-  }
+        return;
+    }
 })
 async function loadUserStats(userId) {
-  const { data: profile, error } = await supabase
-    .from('profiles')
-    .select('elo, eloAlgebra, eloNum, eloGeometry, eloProb, eloNum, username, topicsToWorkOn, "TOPICGLOSSARY", unfamiliar, stuck, mistake, algebraTotal, algebraWrong, geometryTotal, geometryWrong, numTotal, numWrong, probTotal, probWrong, streak')
-    .eq('id', userId)
-    .single(); // Tells Supabase to return one object, not an array
+    const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('elo, eloAlgebra, eloNum, eloGeometry, eloProb, eloNum, username, topicsToWorkOn, "TOPICGLOSSARY", unfamiliar, stuck, mistake, algebraTotal, algebraWrong, geometryTotal, geometryWrong, numTotal, numWrong, probTotal, probWrong, streak')
+        .eq('id', userId)
+        .single(); // Tells Supabase to return one object, not an array
 
-  if (error) {
-    console.error("Error downloading profile data:");
-    return;
-  }
+    if (error) {
+        console.error("Error downloading profile data:");
+        return;
+    }
 
-  if (profile) {
-    let userProfile = profile[0]
-    TOPIC_GLOSSARY = profile.TOPICGLOSSARY || [ {
-        id: "word problems",
-        title: `Word Problems`,
-        description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
-        workOn: [
-            "Identifying keywords",
-            "Setting up equations",
-            "Avoiding misinterpretation"
-        ],
-        errors: 0,
-    },
-    {
-        id: "algebraic manipulation",
-        title: `Algebraic Manipulation`,
-        description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
-        workOn: [
-            "Factoring",
-            "Combining like terms",
-            "Recognizing algebraic patterns"
-        ],
-        errors: 0,
-    },
- {
-    id: "arithmetic"  ,  
-    title: `Arithmetic`,
-        description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
-        workOn: [
-            "Mental/Quick Math",
-            "Identifying keywords",
-            "Shortcuts and factoring (for multiplication and division)"
-        ],
-        errors: 0,
-    },
- {
-    id: "systems of equations",    
-    title: `Systems of Equations`,
-        description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
-        workOn: [
-            "Logic",
-            "Substitution", 
-            "Elimination",
-        ],
-        errors: 0,
-    },
-{
-    id: 'functions and graphing',   
-    title: `Functions and Graphing`,
-        description: "Recognizing and manipulating popular parent functions and being able to identify them",
-        workOn: [
-            "Parent Functions",
-            "Composition of Functions",
-            ""
-        ],
-        errors: 0,
-    },
-     {
-        id: 'logic',
-        title: `Logic`,
-        description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
-        workOn: [
-            "Recognizing Patterns", 
-            "Quick Mental Math",
-        ],
-        errors: 0,
-    },
-{
-    id: 'inequalities',    
-    title: `Inequalities`,
-        description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
-        workOn: [
-            "Graphing Inequalities",
-            "Understanding when a question is asking for inequalities",
-            "Composition of Functions"
-        ],
-        errors: 0,
-    },
-{
-    id: 'modular arithmetic',
-    title: `Modular Arithmetic`,
-        description: "These problems pertain to the remainders (mods) of operations (typically division)",
-        workOn: [
-            "Modular Arithmetic Rules",
-        ],
-        errors: 0,
-    },
- {
-    id: 'factoring' , 
-    title: `Factoring`,
-        description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
-        workOn: [
-            "Sum/difference of squares",
-            "GCF and LCM",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'prime factorization',
-        title: `Prime Factorization`,
-        description: "Reducing a number to its prime factors and using it to solve problems",
-        workOn: [
-            "Factor Trees (or whatever method you like to use)",
-            "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
-        ],
-        errors: 0,
-    },
- {
-    id: 'percents',    
-    title: `Percents`,
-        description: "A different representation of fractions and ratios, make sure you understand what percents are",
-        workOn: [
-            "Decimal Multiplication",
-            "Converting numbers between Percents, Ratios, and Fractions",
-        ],
-        errors: 0,
-    },
- {
-    id: 'graphing'  ,  
-    title: `Graphing`,
-        description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
-        workOn: [
-            "Parent Functions",
-            "Logic + Intuition",
-        ],
-        errors: 0,
-    },
-    {
-       id: 'floor functions',
-        title: `Floor Functions`,
-        description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
-        workOn:[
-            'Graphing',
-            'Logic + Intuition',
-        ],
-        errors: 0,
-    },
-     {
-       id: 'speed-distance-time',
-        title: `Speed Distance Time`,
-        description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
-        workOn: [
-            "Memorizing the speed, distance, time equation",
-            "Understanding conversions and how the different variables relate to each other",
-            "Word problems and conceptualy understanding what is being asked",
-        ],
-        errors: 0,
-    },{
-        id: 'averages',
-        title: `Averages`,
-        description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
-        workOn: [
-            'Deriving equations',
-            'Arithmetic mean',
-            'Statistics',
-        ],
-        errors: 0,
-    },
- {
-        id: 'induction',
-        title: `Induction`,
-        description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
-        workOn: [
-            "Making educated guesses",
-            "Recognizing Patterns",
-            "'Limiting' solutions",
-        ],
-        errors: 0,
-    }, 
- {
-        id: 'series',
-        title: `Series`,
-        description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
-        workOn: [
-            "Memorizing equations for series",
-            "Arithmetic and Geometric Series",
-            "Recognizing patterns",
-        ],
-        errors: 0,
-    },
-{
-    id: 'absolute value',    
-    title: `Absolute Value`,
-        description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
-        workOn:
-        [ 
-            "Graphing",
-            "Intuition"
-        ],
-        errors: 0,
-    },
- {
-        id: 'exponents',
-        title: `Exponents`,
-        description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
-        workOn: 
-        [
-            "Change of base",
-            "Adding, subtracting, multiplying, dividing exponents",
-            "Factoring out squares",
-        ],
-        errors: 0,
+    if (profile) {
+        let userProfile = profile[0]
+        TOPIC_GLOSSARY = profile.TOPICGLOSSARY || [{
+            id: "word problems",
+            title: `Word Problems`,
+            description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
+            workOn: [
+                "Identifying keywords",
+                "Setting up equations",
+                "Avoiding misinterpretation"
+            ],
+            errors: 0,
+        },
+        {
+            id: "algebraic manipulation",
+            title: `Algebraic Manipulation`,
+            description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
+            workOn: [
+                "Factoring",
+                "Combining like terms",
+                "Recognizing algebraic patterns"
+            ],
+            errors: 0,
+        },
+        {
+            id: "arithmetic",
+            title: `Arithmetic`,
+            description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
+            workOn: [
+                "Mental/Quick Math",
+                "Identifying keywords",
+                "Shortcuts and factoring (for multiplication and division)"
+            ],
+            errors: 0,
+        },
+        {
+            id: "systems of equations",
+            title: `Systems of Equations`,
+            description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
+            workOn: [
+                "Logic",
+                "Substitution",
+                "Elimination",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'functions and graphing',
+            title: `Functions and Graphing`,
+            description: "Recognizing and manipulating popular parent functions and being able to identify them",
+            workOn: [
+                "Parent Functions",
+                "Composition of Functions",
+                ""
+            ],
+            errors: 0,
+        },
+        {
+            id: 'logic',
+            title: `Logic`,
+            description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
+            workOn: [
+                "Recognizing Patterns",
+                "Quick Mental Math",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'inequalities',
+            title: `Inequalities`,
+            description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
+            workOn: [
+                "Graphing Inequalities",
+                "Understanding when a question is asking for inequalities",
+                "Composition of Functions"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'modular arithmetic',
+            title: `Modular Arithmetic`,
+            description: "These problems pertain to the remainders (mods) of operations (typically division)",
+            workOn: [
+                "Modular Arithmetic Rules",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'factoring',
+            title: `Factoring`,
+            description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
+            workOn: [
+                "Sum/difference of squares",
+                "GCF and LCM",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'prime factorization',
+            title: `Prime Factorization`,
+            description: "Reducing a number to its prime factors and using it to solve problems",
+            workOn: [
+                "Factor Trees (or whatever method you like to use)",
+                "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'percents',
+            title: `Percents`,
+            description: "A different representation of fractions and ratios, make sure you understand what percents are",
+            workOn: [
+                "Decimal Multiplication",
+                "Converting numbers between Percents, Ratios, and Fractions",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'graphing',
+            title: `Graphing`,
+            description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
+            workOn: [
+                "Parent Functions",
+                "Logic + Intuition",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'floor functions',
+            title: `Floor Functions`,
+            description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
+            workOn: [
+                'Graphing',
+                'Logic + Intuition',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'speed-distance-time',
+            title: `Speed Distance Time`,
+            description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
+            workOn: [
+                "Memorizing the speed, distance, time equation",
+                "Understanding conversions and how the different variables relate to each other",
+                "Word problems and conceptualy understanding what is being asked",
+            ],
+            errors: 0,
+        }, {
+            id: 'averages',
+            title: `Averages`,
+            description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
+            workOn: [
+                'Deriving equations',
+                'Arithmetic mean',
+                'Statistics',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'induction',
+            title: `Induction`,
+            description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
+            workOn: [
+                "Making educated guesses",
+                "Recognizing Patterns",
+                "'Limiting' solutions",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'series',
+            title: `Series`,
+            description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
+            workOn: [
+                "Memorizing equations for series",
+                "Arithmetic and Geometric Series",
+                "Recognizing patterns",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'absolute value',
+            title: `Absolute Value`,
+            description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
+            workOn:
+                [
+                    "Graphing",
+                    "Intuition"
+                ],
+            errors: 0,
+        },
+        {
+            id: 'exponents',
+            title: `Exponents`,
+            description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
+            workOn:
+                [
+                    "Change of base",
+                    "Adding, subtracting, multiplying, dividing exponents",
+                    "Factoring out squares",
+                ],
+            errors: 0,
 
-    },
- {
-    id: 'discriminant' ,   
-    title: `Discriminant`,
-        description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
-        workOn:[
-            "Quadratic Formula"
-        ],
-        errors:0,
-    },
-{
-    id: 'casework',    
-    title: `Casework`,
-        description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
-        workOn: [
-            'Absolute Value Questions',
-            'Quadratics',
-        ],
-        errors: 0,
-    },
- {
-  id: 'medians',
-    title: `Medians`,
-        description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
-        workOn: [
-            'Statistics',
-            'Datasets',
-        ],
-        errors: 0,
-    },
-{
-    id: 'similar triangles'  , 
-    title: `Similar Triangles`,
-        description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
-        workOn: [
-            "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
-            "Ratios",
-        ],
-        errors: 0,
-    },
-{
-        id: 'surface area',
-        title: `Surface Area`,
-        description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
-        workOn: [
-            "Surface Area equations (for spheres and cones in addition to typical polygons)",
-            "3D conceptualization (e.g. imagining how it looks so you can understand it)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'triangle lines'  , 
-    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
-        description: `<p>Remember the following lines that you can add to a triangle</p>
+        },
+        {
+            id: 'discriminant',
+            title: `Discriminant`,
+            description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
+            workOn: [
+                "Quadratic Formula"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'casework',
+            title: `Casework`,
+            description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
+            workOn: [
+                'Absolute Value Questions',
+                'Quadratics',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'medians',
+            title: `Medians`,
+            description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
+            workOn: [
+                'Statistics',
+                'Datasets',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'similar triangles',
+            title: `Similar Triangles`,
+            description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
+            workOn: [
+                "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
+                "Ratios",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'surface area',
+            title: `Surface Area`,
+            description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
+            workOn: [
+                "Surface Area equations (for spheres and cones in addition to typical polygons)",
+                "3D conceptualization (e.g. imagining how it looks so you can understand it)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'triangle lines',
+            title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
+            description: `<p>Remember the following lines that you can add to a triangle</p>
         <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
         <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
         <p>Perpendicular Bisectors: Lines that pass through a side and are perpendicular and bisect it. Intersect at the circumcenter that is the center for the circumscribed circle (touching all vertices)</p>
         <p>Angle Bisectors: Lines that bisect angles, intersect at the incenter, the center of the inscribed circle (tangent to all sides)</p>`,
-        workOn: [
-            "Medians",
-            "Perpendicular Bisectors",
-            "Angle Bisectors",
-        ],
-        errors: 0,
-    },
-{
-    id: 'counting',
-        title: `Counting`,
-        description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
-        workOn: [
-            "Optimization",
-            "Logic",
-            "Casework"
-        ],
-        errors: 0,
-    },
-{
-    id: 'composite shapes',
-        title: `Composite Shapes`,
-        description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
-        workOn: [
-            "Area",
-        ],
-        errors: 0,
-    },
- {
-    id: 'transformations',
-        title: `Transformations`,
-        description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
-        workOn: [
-            "Translations",
-            "Reflections",
-            "Rotations",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'volume',
-        title: `Volume`,
-        description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
-        workOn: [
-            "Volume Formulas",
-        ],
-        errors: 0,
-    },
- {
-    id: 'prime numbers',
-        title: `Prime Numbers`,
-        description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
-        workOn: [
-            "Factoring"
-        ],
-        errors: 0,
-    },
-{
-    id: 'hexagons',
-        title: `Hexagons`,
-        description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
-        workOn: [
-            "Area of a hexagon",
-            "Area of equilateral triangles",
-        ],
-        errors: 0,
-    },
- {
-    id: 'optimization',
-        title: `Optimization`,
-        description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
-        workOn: [
-            "Casework",
-            "Counting"
-        ],
-        errors: 0,
-    },
-{
-    id: 'volume relationships',
-        title: `Volume Relationships`,
-        description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
-        workOn: [
-            "ratios"
-        ],
-        errors: 0,
-    },
- {
-    id: 'pyramids',
-        title: `Pyramids`,
-        description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
-        workOn: [
-            "Pythagorean theorem",
-            "Surface Area"
-        ],
-        errors: 0,
-    },
- {
-    id: 'trigonometry',
-        title: `Trigonometry`,
-        description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
-        workOn: [
-            "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
-            "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
-            "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'coordinate plane',
-        title: `Coordinate Plane`,
-        description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
-        workOn: [
-            "Slope",
-            "Functions",
-            "Graphing",
-        ],
-        errors: 0,
-    },
-{
-    title: "Pythagorean Theorem",
-    id: 'pythagorean theorem',
-        description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
-        workOn: [
-            "Pythagorean Triples",
-            "Theorem",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'forced simplification',
-        title: `Forced Simplification`,
-        description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
-        workOn: [
-            "Logic",
-            "Understanding problems",
-        ],
-        errors: 0,
-    },
- {
-    id: 'power of a point',
-        title: `Power of A Point`,
-        description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
-        workOn: [
-            "Chords",
-            "Tangents",
-            "Secants",
-        ],
-        errors: 0,
- },
- {
-    id: 'bases',
-        title: `Bases`,
-        description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
-        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
-        workOn: [
-            "Changing from base \\(10\\)",
-            "Changing to base \\(10\\)",
-            "Modular Arithmetic",
-        ],
-        errors: 0,
-    },
- {
-    id: 'combinations',
-        title: `Combinations`,
-        description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
-        workOn:
-            [
-                "Recognizing combinations vs permutations",
-                "Combinations equation",
+            workOn: [
+                "Medians",
+                "Perpendicular Bisectors",
+                "Angle Bisectors",
             ],
             errors: 0,
-    },
-    {
-        id: 'counting',
-        title: `Counting`,
-        description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
-        workOn:
-        [
-            `Permutations Formula \\(n!\\)`,
-            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
-            'Factorials',
-        ],
-        errors: 0,
-    },
-    {
-        id: 'expected outcome',
-        title: `Expected Outcome`,
-        description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
-        workOn:
-        [
-            'Expected Outcome Formula'
-        ],
-        errors: 0,
-    },
-    {
-        id: 'complementary counting',
-        title: `Complementary Counting`,
-        description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
-        workOn: [
-            "Saving time"
-        ],
-        errors: 0,
-    }
-]
-    topicsToWorkOn = profile.topicsToWorkOn || [];
-    userRatingAll = profile.elo; 
-    userRating = profile.eloAlgebra
-    userRatingNumTheory = profile.eloNum
-    userRatingProbability = profile.eloProb
-    userRatingGeometry = profile.eloGeometry
-    unfamiliar = profile.unfamiliar
-    stuck = profile.stuck
-    mistake = profile.mistake
-    algebraTotal = profile.algebraTotal
-    algebraWrong = profile.algebraWrong
-    geometryTotal = profile.geometryTotal
-    geometryWrong = profile.geometryWrong
-    numTotal = profile.numTotal
-    numWrong = profile.numWrong
-    probTotal = profile.probTotal
-    probWrong = profile.probWrong
-    streakCount = profile.streak
-    document.getElementById("btn-dashboard").innerHTML = userProfile.username
-      document.getElementById("username-display").innerHTML = profile.username;
-    
-    // 2. Update your frontend UI elements
-    const scoreCountElement = document.getElementById('scoreCount'); // update with your real ID if different
-    if (scoreCountElement) {
-      scoreCountElement.innerHTML = Math.round(userRatingAll);
-    }
-    document.getElementById("streak-count").innerHTML = streakCount;
+        },
+        {
+            id: 'counting',
+            title: `Counting`,
+            description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
+            workOn: [
+                "Optimization",
+                "Logic",
+                "Casework"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'composite shapes',
+            title: `Composite Shapes`,
+            description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
+            workOn: [
+                "Area",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'transformations',
+            title: `Transformations`,
+            description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
+            workOn: [
+                "Translations",
+                "Reflections",
+                "Rotations",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'volume',
+            title: `Volume`,
+            description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
+            workOn: [
+                "Volume Formulas",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'prime numbers',
+            title: `Prime Numbers`,
+            description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
+            workOn: [
+                "Factoring"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'hexagons',
+            title: `Hexagons`,
+            description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
+            workOn: [
+                "Area of a hexagon",
+                "Area of equilateral triangles",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'optimization',
+            title: `Optimization`,
+            description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
+            workOn: [
+                "Casework",
+                "Counting"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'volume relationships',
+            title: `Volume Relationships`,
+            description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
+            workOn: [
+                "ratios"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'pyramids',
+            title: `Pyramids`,
+            description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
+            workOn: [
+                "Pythagorean theorem",
+                "Surface Area"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'trigonometry',
+            title: `Trigonometry`,
+            description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
+            workOn: [
+                "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
+                "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
+                "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'coordinate plane',
+            title: `Coordinate Plane`,
+            description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
+            workOn: [
+                "Slope",
+                "Functions",
+                "Graphing",
+            ],
+            errors: 0,
+        },
+        {
+            title: "Pythagorean Theorem",
+            id: 'pythagorean theorem',
+            description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
+            workOn: [
+                "Pythagorean Triples",
+                "Theorem",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'forced simplification',
+            title: `Forced Simplification`,
+            description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
+            workOn: [
+                "Logic",
+                "Understanding problems",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'power of a point',
+            title: `Power of A Point`,
+            description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
+            workOn: [
+                "Chords",
+                "Tangents",
+                "Secants",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'bases',
+            title: `Bases`,
+            description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
+        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
+            workOn: [
+                "Changing from base \\(10\\)",
+                "Changing to base \\(10\\)",
+                "Modular Arithmetic",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'combinations',
+            title: `Combinations`,
+            description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
+            workOn:
+                [
+                    "Recognizing combinations vs permutations",
+                    "Combinations equation",
+                ],
+            errors: 0,
+        },
+        {
+            id: 'counting',
+            title: `Counting`,
+            description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
+            workOn:
+                [
+                    `Permutations Formula \\(n!\\)`,
+                    'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
+                    'Factorials',
+                ],
+            errors: 0,
+        },
+        {
+            id: 'expected outcome',
+            title: `Expected Outcome`,
+            description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
+            workOn:
+                [
+                    'Expected Outcome Formula'
+                ],
+            errors: 0,
+        },
+        {
+            id: 'complementary counting',
+            title: `Complementary Counting`,
+            description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
+            workOn: [
+                "Saving time"
+            ],
+            errors: 0,
+        }
+        ]
+        topicsToWorkOn = profile.topicsToWorkOn || [];
+        userRatingAll = profile.elo;
+        userRating = profile.eloAlgebra
+        userRatingNumTheory = profile.eloNum
+        userRatingProbability = profile.eloProb
+        userRatingGeometry = profile.eloGeometry
+        unfamiliar = profile.unfamiliar
+        stuck = profile.stuck
+        mistake = profile.mistake
+        algebraTotal = profile.algebraTotal
+        algebraWrong = profile.algebraWrong
+        geometryTotal = profile.geometryTotal
+        geometryWrong = profile.geometryWrong
+        numTotal = profile.numTotal
+        numWrong = profile.numWrong
+        probTotal = profile.probTotal
+        probWrong = profile.probWrong
+        streakCount = profile.streak
+        document.getElementById("btn-dashboard").innerHTML = userProfile.username
+        document.getElementById("username-display").innerHTML = profile.username;
+
+        // 2. Update your frontend UI elements
+        const scoreCountElement = document.getElementById('scoreCount'); // update with your real ID if different
+        if (scoreCountElement) {
+            scoreCountElement.innerHTML = Math.round(userRatingAll);
+        }
+        document.getElementById("streak-count").innerHTML = streakCount;
 
 
-    
-    // 3. Trigger your chart re-renders
-    if (typeof updateRadarChart === "function") updateRadarChart();
-    if (typeof updateBarGraph === "function") updateBarGraph();
-    updatePieChart()
-  }
+
+        // 3. Trigger your chart re-renders
+        if (typeof updateRadarChart === "function") updateRadarChart();
+        if (typeof updateBarGraph === "function") updateBarGraph();
+        updatePieChart()
+    }
 }
 loginBtn.addEventListener("click", async () => {
     const email = document.getElementById("login-email").value.trim()
     const password = document.getElementById("login-password").value
     if (!email || !password) {
-        
-document.getElementById("login-error").innerHTML = "Please Input Both Fields"
-    return;
-  }
-  loginBtn.disabled = true;
-const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
-  });
 
-  if (error) {
-    alert("Login Error: " + error.message);
+        document.getElementById("login-error").innerHTML = "Please Input Both Fields"
+        return;
+    }
+    loginBtn.disabled = true;
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+    });
+
+    if (error) {
+        alert("Login Error: " + error.message);
+        loginBtn.disabled = false;
+        loginBtn.innerText = "Login";
+        return;
+    }
+    document.getElementById('accountPannel').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    accountTrue = false
+    // 3. Pull their ELO data out of the database (Step 2 below)
+    await loadUserStats(data.user.id);
+
+    // Reset button state
     loginBtn.disabled = false;
-    loginBtn.innerText = "Login";
-    return;
-  }
-  document.getElementById('accountPannel').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-  accountTrue = false
-  // 3. Pull their ELO data out of the database (Step 2 below)
-  await loadUserStats(data.user.id);
-  
-  // Reset button state
-  loginBtn.disabled = false;
-  loadQuestion()
-  updateRadarChart()
-  updateBarGraph()
-  updatePieChart()
-      document.getElementById("diagnosticStuff").style.display = "none"
+    loadQuestion()
+    updateRadarChart()
+    updateBarGraph()
+    updatePieChart()
+    document.getElementById("diagnosticStuff").style.display = "none"
     document.getElementById("actualStuff").style.display = ""
     userRatingAll = userRatingAllTrue
     algebraQuestion = getNextQuestion(questions, userRating)
@@ -12484,7 +12492,7 @@ const { data, error } = await supabase.auth.signInWithPassword({
     numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
     allQuestion = getNextQuestion(allQ, userRatingAll)
     loadQuestion();
-    scoreCount.innerHTML =Math.round( Number(String(userRatingAll).replace(/,/g, '')));
+    scoreCount.innerHTML = Math.round(Number(String(userRatingAll).replace(/,/g, '')));
     updateRadarChart()
     updateBarGraph()
     updatePieChart()
@@ -12493,1128 +12501,1128 @@ const { data, error } = await supabase.auth.signInWithPassword({
 const logoutBtn = document.getElementById('btn-logout');
 
 logoutBtn.addEventListener('click', async () => {
-      mistake = 0
-  stuck = 0
-  unfamiliar = 0
-  algebraTotal = 0
-  algebraWrong = 0
-  geometryTotal = 0
-  geometryWrong = 0
-  numTotal = 0
-  numWrong = 0
-  probTotal = 0
-  probWrong = 0
-  topicsToWorkOn = []
-  TOPIC_GLOSSARY.forEach(i => {
-    i.errors = 0
-  })
-  userRatingAll = 1200
-  userRating = 1200
-  userRatingGeometry = 1200
-  userRatingNumTheory = 1200
-  userRatingProbability = 1200
-  loadQuestion()
-  updateRadarChart()
-  updateBarGraph()
-  updatePieChart()
-            document.getElementById("login").style.display = "block"
-  // 1. Call Supabase to clear the secure cloud session
-  const { error } = await supabase.auth.signOut();
+    mistake = 0
+    stuck = 0
+    unfamiliar = 0
+    algebraTotal = 0
+    algebraWrong = 0
+    geometryTotal = 0
+    geometryWrong = 0
+    numTotal = 0
+    numWrong = 0
+    probTotal = 0
+    probWrong = 0
+    topicsToWorkOn = []
+    TOPIC_GLOSSARY.forEach(i => {
+        i.errors = 0
+    })
+    userRatingAll = 1200
+    userRating = 1200
+    userRatingGeometry = 1200
+    userRatingNumTheory = 1200
+    userRatingProbability = 1200
+    loadQuestion()
+    updateRadarChart()
+    updateBarGraph()
+    updatePieChart()
+    document.getElementById("login").style.display = "block"
+    // 1. Call Supabase to clear the secure cloud session
+    const { error } = await supabase.auth.signOut();
 
-  if (error) {
-    alert("Error logging out: " + error.message);
-    return;
-  }
+    if (error) {
+        alert("Error logging out: " + error.message);
+        return;
+    }
 
-  // 2. Clear out your app's local storage so guest data doesn't get mixed up
-  localStorage.removeItem("elo");
-  localStorage.removeItem("eloAlgebra");
-  localStorage.removeItem("eloGeometry");
-  localStorage.removeItem("eloProb");
-  localStorage.removeItem("eloNum");
+    // 2. Clear out your app's local storage so guest data doesn't get mixed up
+    localStorage.removeItem("elo");
+    localStorage.removeItem("eloAlgebra");
+    localStorage.removeItem("eloGeometry");
+    localStorage.removeItem("eloProb");
+    localStorage.removeItem("eloNum");
 
 
-  alert("You have been logged out successfully!");
+    alert("You have been logged out successfully!");
 
-  // 3. Force a page reload to refresh the state back to defaults (or manually reset variables)
-  window.location.reload();
+    // 3. Force a page reload to refresh the state back to defaults (or manually reset variables)
+    window.location.reload();
 });
 
 const deleteAccountBtn = document.getElementById('btn-delete-account');
 
 if (deleteAccountBtn) {
-  deleteAccountBtn.addEventListener('click', async () => {
-    // 1. Double check confirmation so they don't accidentally click it
-    const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
-    
-    if (!confirmed) return;
+    deleteAccountBtn.addEventListener('click', async () => {
+        // 1. Double check confirmation so they don't accidentally click it
+        const confirmed = confirm("Are you absolutely sure you want to delete your account? This will permanently erase your math rankings, diagnostic logs, and history. This action cannot be undone.");
 
-    // 2. Fetch active session
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
+        if (!confirmed) return;
 
-    const userId = session.user.id;
+        // 2. Fetch active session
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) return;
 
-    // 3. Clear their specific user row from your public profiles table
-    const { error: dbError } = await supabase
-      .from('profiles')
-      .delete()
-      .eq('id', userId);
+        const userId = session.user.id;
 
-    if (dbError) {
-      alert("Error erasing profile data: " + dbError.message);
-      return;
-    }
+        // 3. Clear their specific user row from your public profiles table
+        const { error: dbError } = await supabase
+            .from('profiles')
+            .delete()
+            .eq('id', userId);
 
-    // 4. Sign them out completely from the auth system
-    await supabase.auth.signOut();
+        if (dbError) {
+            alert("Error erasing profile data: " + dbError.message);
+            return;
+        }
 
-    // 5. Clean up any remaining guest browser cache tracks
-    localStorage.clear();
-    loadQuestion()
+        // 4. Sign them out completely from the auth system
+        await supabase.auth.signOut();
 
-    alert("Your account records and progress have been completely erased.");
-    window.location.reload();
-  });
+        // 5. Clean up any remaining guest browser cache tracks
+        localStorage.clear();
+        loadQuestion()
+
+        alert("Your account records and progress have been completely erased.");
+        window.location.reload();
+    });
 }// ONE CLEAN LISTEN BLOCK FOR ADAPTIVE PRACTICE (test.js)
 supabase.auth.onAuthStateChange(async (event, session) => {
-  const accountBtn = document.getElementById('accountBtn');
-  const logoutBtn = document.getElementById('btn-logout');
-  const loginBtn = document.getElementById('btn-login');
-  const signup = document.getElementById('no-account');
-  const login = document.getElementById('login');
-  const usernameDisplay = document.getElementById("username-display");
-  const createAccount = document.getElementById("no-account")
-  const deleteAccount = document.getElementById("btn-delete-account")
-  const usernameDisplayModal = document.getElementById("btn-dashboard")
+    const accountBtn = document.getElementById('accountBtn');
+    const logoutBtn = document.getElementById('btn-logout');
+    const loginBtn = document.getElementById('btn-login');
+    const signup = document.getElementById('no-account');
+    const login = document.getElementById('login');
+    const usernameDisplay = document.getElementById("username-display");
+    const createAccount = document.getElementById("no-account")
+    const deleteAccount = document.getElementById("btn-delete-account")
+    const usernameDisplayModal = document.getElementById("btn-dashboard")
 
-  // A. Check if a secure user session actually exists
-  if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
+    // A. Check if a secure user session actually exists
+    if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
 
-    // Toggle UI display blocks safely
-    if (logoutBtn) logoutBtn.style.display = 'block';
-    if (login) login.style.display = "none";
-    if (createAccount) createAccount.style.display = "none"
-    if (deleteAccount) deleteAccount.style.display = "block"
-    if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
+        // Toggle UI display blocks safely
+        if (logoutBtn) logoutBtn.style.display = 'block';
+        if (login) login.style.display = "none";
+        if (createAccount) createAccount.style.display = "none"
+        if (deleteAccount) deleteAccount.style.display = "block"
+        if (usernameDisplayModal) usernameDisplayModal.style.display = "block"
 
-    // 1. Fetch cloud records safely using correct lowercase columns
-    const { data: profile, error } = await supabase
-      .from('profiles')
-      .select('username, elo, eloAlgebra, eloGeometry, eloNum, eloProb, topicsToWorkOn, "TOPICGLOSSARY", mistake, stuck, unfamiliar,algebraTotal, algebraWrong, geometryTotal, geometryWrong, numTotal, numWrong, probTotal, probWrong, totalTimeSpent, timedQuestionsCount')
-      .eq('id', session.user.id)
-      .single();
+        // 1. Fetch cloud records safely using correct lowercase columns
+        const { data: profile, error } = await supabase
+            .from('profiles')
+            .select('username, elo, eloAlgebra, eloGeometry, eloNum, eloProb, topicsToWorkOn, "TOPICGLOSSARY", mistake, stuck, unfamiliar,algebraTotal, algebraWrong, geometryTotal, geometryWrong, numTotal, numWrong, probTotal, probWrong, totalTimeSpent, timedQuestionsCount')
+            .eq('id', session.user.id)
+            .single();
 
-    if (error) {
-      console.error("Error downloading adaptive practice data:", error.message);
-      return;
-    }
+        if (error) {
+            console.error("Error downloading adaptive practice data:", error.message);
+            return;
+        }
 
-    if (profile) {
-      
-      // 2. Synchronize database states to local runtime memory
-      userRatingAll = profile.elo || 1200;
-      userRating = profile.eloAlgebra || 1200;
-      userRatingGeometry = profile.eloGeometry || 1200;
-      userRatingNumTheory = profile.eloNum || 1200;
-      userRatingProbability = profile.eloProb || 1200;
-      userTotalTimeSpent = profile.totalTimeSpent || 0;
-userTimedQuestionsCount = profile.timedQuestionsCount || 0;
-updateAvgTimerUI();
-      TOPIC_GLOSSARY = profile.TOPICGLOSSARY || [ {
-        // Inside your user authentication profile parsing sequence:
+        if (profile) {
 
-        id: "word problems",
-        title: `Word Problems`,
-        description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
-        workOn: [
-            "Identifying keywords",
-            "Setting up equations",
-            "Avoiding misinterpretation"
-        ],
-        errors: 0,
-    },
-    {
-        id: "algebraic manipulation",
-        title: `Algebraic Manipulation`,
-        description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
-        workOn: [
-            "Factoring",
-            "Combining like terms",
-            "Recognizing algebraic patterns"
-        ],
-        errors: 0,
-    },
- {
-    id: "arithmetic"  ,  
-    title: `Arithmetic`,
-        description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
-        workOn: [
-            "Mental/Quick Math",
-            "Identifying keywords",
-            "Shortcuts and factoring (for multiplication and division)"
-        ],
-        errors: 0,
-    },
- {
-    id: "systems of equations",    
-    title: `Systems of Equations`,
-        description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
-        workOn: [
-            "Logic",
-            "Substitution", 
-            "Elimination",
-        ],
-        errors: 0,
-    },
-{
-    id: 'functions and graphing',   
-    title: `Functions and Graphing`,
-        description: "Recognizing and manipulating popular parent functions and being able to identify them",
-        workOn: [
-            "Parent Functions",
-            "Composition of Functions",
-            ""
-        ],
-        errors: 0,
-    },
-     {
-        id: 'logic',
-        title: `Logic`,
-        description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
-        workOn: [
-            "Recognizing Patterns", 
-            "Quick Mental Math",
-        ],
-        errors: 0,
-    },
-{
-    id: 'inequalities',    
-    title: `Inequalities`,
-        description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
-        workOn: [
-            "Graphing Inequalities",
-            "Understanding when a question is asking for inequalities",
-            "Composition of Functions"
-        ],
-        errors: 0,
-    },
-{
-    id: 'modular arithmetic',
-    title: `Modular Arithmetic`,
-        description: "These problems pertain to the remainders (mods) of operations (typically division)",
-        workOn: [
-            "Modular Arithmetic Rules",
-        ],
-        errors: 0,
-    },
- {
-    id: 'factoring' , 
-    title: `Factoring`,
-        description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
-        workOn: [
-            "Sum/difference of squares",
-            "GCF and LCM",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'prime factorization',
-        title: `Prime Factorization`,
-        description: "Reducing a number to its prime factors and using it to solve problems",
-        workOn: [
-            "Factor Trees (or whatever method you like to use)",
-            "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
-        ],
-        errors: 0,
-    },
- {
-    id: 'percents',    
-    title: `Percents`,
-        description: "A different representation of fractions and ratios, make sure you understand what percents are",
-        workOn: [
-            "Decimal Multiplication",
-            "Converting numbers between Percents, Ratios, and Fractions",
-        ],
-        errors: 0,
-    },
- {
-    id: 'graphing'  ,  
-    title: `Graphing`,
-        description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
-        workOn: [
-            "Parent Functions",
-            "Logic + Intuition",
-        ],
-        errors: 0,
-    },
-    {
-       id: 'floor functions',
-        title: `Floor Functions`,
-        description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
-        workOn:[
-            'Graphing',
-            'Logic + Intuition',
-        ],
-        errors: 0,
-    },
-     {
-       id: 'speed-distance-time',
-        title: `Speed Distance Time`,
-        description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
-        workOn: [
-            "Memorizing the speed, distance, time equation",
-            "Understanding conversions and how the different variables relate to each other",
-            "Word problems and conceptualy understanding what is being asked",
-        ],
-        errors: 0,
-    },{
-        id: 'averages',
-        title: `Averages`,
-        description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
-        workOn: [
-            'Deriving equations',
-            'Arithmetic mean',
-            'Statistics',
-        ],
-        errors: 0,
-    },
- {
-        id: 'induction',
-        title: `Induction`,
-        description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
-        workOn: [
-            "Making educated guesses",
-            "Recognizing Patterns",
-            "'Limiting' solutions",
-        ],
-        errors: 0,
-    }, 
- {
-        id: 'series',
-        title: `Series`,
-        description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
-        workOn: [
-            "Memorizing equations for series",
-            "Arithmetic and Geometric Series",
-            "Recognizing patterns",
-        ],
-        errors: 0,
-    },
-{
-    id: 'absolute value',    
-    title: `Absolute Value`,
-        description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
-        workOn:
-        [ 
-            "Graphing",
-            "Intuition"
-        ],
-        errors: 0,
-    },
- {
-        id: 'exponents',
-        title: `Exponents`,
-        description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
-        workOn: 
-        [
-            "Change of base",
-            "Adding, subtracting, multiplying, dividing exponents",
-            "Factoring out squares",
-        ],
-        errors: 0,
+            // 2. Synchronize database states to local runtime memory
+            userRatingAll = profile.elo || 1200;
+            userRating = profile.eloAlgebra || 1200;
+            userRatingGeometry = profile.eloGeometry || 1200;
+            userRatingNumTheory = profile.eloNum || 1200;
+            userRatingProbability = profile.eloProb || 1200;
+            userTotalTimeSpent = profile.totalTimeSpent || 0;
+            userTimedQuestionsCount = profile.timedQuestionsCount || 0;
+            updateAvgTimerUI();
+            TOPIC_GLOSSARY = profile.TOPICGLOSSARY || [{
+                // Inside your user authentication profile parsing sequence:
 
-    },
- {
-    id: 'discriminant' ,   
-    title: `Discriminant`,
-        description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
-        workOn:[
-            "Quadratic Formula"
-        ],
-        errors:0,
-    },
-{
-    id: 'casework',    
-    title: `Casework`,
-        description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
-        workOn: [
-            'Absolute Value Questions',
-            'Quadratics',
-        ],
-        errors: 0,
-    },
- {
-  id: 'medians',
-    title: `Medians`,
-        description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
-        workOn: [
-            'Statistics',
-            'Datasets',
-        ],
-        errors: 0,
-    },
-{
-    id: 'similar triangles'  , 
-    title: `Similar Triangles`,
-        description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
-        workOn: [
-            "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
-            "Ratios",
-        ],
-        errors: 0,
-    },
-{
-        id: 'surface area',
-        title: `Surface Area`,
-        description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
-        workOn: [
-            "Surface Area equations (for spheres and cones in addition to typical polygons)",
-            "3D conceptualization (e.g. imagining how it looks so you can understand it)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'triangle lines'  , 
-    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
-        description: `<p>Remember the following lines that you can add to a triangle</p>
+                id: "word problems",
+                title: `Word Problems`,
+                description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
+                workOn: [
+                    "Identifying keywords",
+                    "Setting up equations",
+                    "Avoiding misinterpretation"
+                ],
+                errors: 0,
+            },
+            {
+                id: "algebraic manipulation",
+                title: `Algebraic Manipulation`,
+                description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
+                workOn: [
+                    "Factoring",
+                    "Combining like terms",
+                    "Recognizing algebraic patterns"
+                ],
+                errors: 0,
+            },
+            {
+                id: "arithmetic",
+                title: `Arithmetic`,
+                description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
+                workOn: [
+                    "Mental/Quick Math",
+                    "Identifying keywords",
+                    "Shortcuts and factoring (for multiplication and division)"
+                ],
+                errors: 0,
+            },
+            {
+                id: "systems of equations",
+                title: `Systems of Equations`,
+                description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
+                workOn: [
+                    "Logic",
+                    "Substitution",
+                    "Elimination",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'functions and graphing',
+                title: `Functions and Graphing`,
+                description: "Recognizing and manipulating popular parent functions and being able to identify them",
+                workOn: [
+                    "Parent Functions",
+                    "Composition of Functions",
+                    ""
+                ],
+                errors: 0,
+            },
+            {
+                id: 'logic',
+                title: `Logic`,
+                description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
+                workOn: [
+                    "Recognizing Patterns",
+                    "Quick Mental Math",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'inequalities',
+                title: `Inequalities`,
+                description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
+                workOn: [
+                    "Graphing Inequalities",
+                    "Understanding when a question is asking for inequalities",
+                    "Composition of Functions"
+                ],
+                errors: 0,
+            },
+            {
+                id: 'modular arithmetic',
+                title: `Modular Arithmetic`,
+                description: "These problems pertain to the remainders (mods) of operations (typically division)",
+                workOn: [
+                    "Modular Arithmetic Rules",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'factoring',
+                title: `Factoring`,
+                description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
+                workOn: [
+                    "Sum/difference of squares",
+                    "GCF and LCM",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'prime factorization',
+                title: `Prime Factorization`,
+                description: "Reducing a number to its prime factors and using it to solve problems",
+                workOn: [
+                    "Factor Trees (or whatever method you like to use)",
+                    "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'percents',
+                title: `Percents`,
+                description: "A different representation of fractions and ratios, make sure you understand what percents are",
+                workOn: [
+                    "Decimal Multiplication",
+                    "Converting numbers between Percents, Ratios, and Fractions",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'graphing',
+                title: `Graphing`,
+                description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
+                workOn: [
+                    "Parent Functions",
+                    "Logic + Intuition",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'floor functions',
+                title: `Floor Functions`,
+                description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
+                workOn: [
+                    'Graphing',
+                    'Logic + Intuition',
+                ],
+                errors: 0,
+            },
+            {
+                id: 'speed-distance-time',
+                title: `Speed Distance Time`,
+                description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
+                workOn: [
+                    "Memorizing the speed, distance, time equation",
+                    "Understanding conversions and how the different variables relate to each other",
+                    "Word problems and conceptualy understanding what is being asked",
+                ],
+                errors: 0,
+            }, {
+                id: 'averages',
+                title: `Averages`,
+                description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
+                workOn: [
+                    'Deriving equations',
+                    'Arithmetic mean',
+                    'Statistics',
+                ],
+                errors: 0,
+            },
+            {
+                id: 'induction',
+                title: `Induction`,
+                description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
+                workOn: [
+                    "Making educated guesses",
+                    "Recognizing Patterns",
+                    "'Limiting' solutions",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'series',
+                title: `Series`,
+                description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
+                workOn: [
+                    "Memorizing equations for series",
+                    "Arithmetic and Geometric Series",
+                    "Recognizing patterns",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'absolute value',
+                title: `Absolute Value`,
+                description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
+                workOn:
+                    [
+                        "Graphing",
+                        "Intuition"
+                    ],
+                errors: 0,
+            },
+            {
+                id: 'exponents',
+                title: `Exponents`,
+                description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
+                workOn:
+                    [
+                        "Change of base",
+                        "Adding, subtracting, multiplying, dividing exponents",
+                        "Factoring out squares",
+                    ],
+                errors: 0,
+
+            },
+            {
+                id: 'discriminant',
+                title: `Discriminant`,
+                description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
+                workOn: [
+                    "Quadratic Formula"
+                ],
+                errors: 0,
+            },
+            {
+                id: 'casework',
+                title: `Casework`,
+                description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
+                workOn: [
+                    'Absolute Value Questions',
+                    'Quadratics',
+                ],
+                errors: 0,
+            },
+            {
+                id: 'medians',
+                title: `Medians`,
+                description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
+                workOn: [
+                    'Statistics',
+                    'Datasets',
+                ],
+                errors: 0,
+            },
+            {
+                id: 'similar triangles',
+                title: `Similar Triangles`,
+                description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
+                workOn: [
+                    "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
+                    "Ratios",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'surface area',
+                title: `Surface Area`,
+                description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
+                workOn: [
+                    "Surface Area equations (for spheres and cones in addition to typical polygons)",
+                    "3D conceptualization (e.g. imagining how it looks so you can understand it)",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'triangle lines',
+                title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
+                description: `<p>Remember the following lines that you can add to a triangle</p>
         <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
         <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
         <p>Perpendicular Bisectors: Lines that pass through a side and are perpendicular and bisect it. Intersect at the circumcenter that is the center for the circumscribed circle (touching all vertices)</p>
         <p>Angle Bisectors: Lines that bisect angles, intersect at the incenter, the center of the inscribed circle (tangent to all sides)</p>`,
-        workOn: [
-            "Medians",
-            "Perpendicular Bisectors",
-            "Angle Bisectors",
-        ],
-        errors: 0,
-    },
-{
-    id: 'counting',
-        title: `Counting`,
-        description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
-        workOn: [
-            "Optimization",
-            "Logic",
-            "Casework"
-        ],
-        errors: 0,
-    },
-{
-    id: 'composite shapes',
-        title: `Composite Shapes`,
-        description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
-        workOn: [
-            "Area",
-        ],
-        errors: 0,
-    },
- {
-    id: 'transformations',
-        title: `Transformations`,
-        description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
-        workOn: [
-            "Translations",
-            "Reflections",
-            "Rotations",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'volume',
-        title: `Volume`,
-        description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
-        workOn: [
-            "Volume Formulas",
-        ],
-        errors: 0,
-    },
- {
-    id: 'prime numbers',
-        title: `Prime Numbers`,
-        description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
-        workOn: [
-            "Factoring"
-        ],
-        errors: 0,
-    },
-{
-    id: 'hexagons',
-        title: `Hexagons`,
-        description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
-        workOn: [
-            "Area of a hexagon",
-            "Area of equilateral triangles",
-        ],
-        errors: 0,
-    },
- {
-    id: 'optimization',
-        title: `Optimization`,
-        description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
-        workOn: [
-            "Casework",
-            "Counting"
-        ],
-        errors: 0,
-    },
-{
-    id: 'volume relationships',
-        title: `Volume Relationships`,
-        description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
-        workOn: [
-            "ratios"
-        ],
-        errors: 0,
-    },
- {
-    id: 'pyramids',
-        title: `Pyramids`,
-        description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
-        workOn: [
-            "Pythagorean theorem",
-            "Surface Area"
-        ],
-        errors: 0,
-    },
- {
-    id: 'trigonometry',
-        title: `Trigonometry`,
-        description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
-        workOn: [
-            "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
-            "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
-            "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'coordinate plane',
-        title: `Coordinate Plane`,
-        description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
-        workOn: [
-            "Slope",
-            "Functions",
-            "Graphing",
-        ],
-        errors: 0,
-    },
-{
-    title: "Pythagorean Theorem",
-    id: 'pythagorean theorem',
-        description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
-        workOn: [
-            "Pythagorean Triples",
-            "Theorem",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'forced simplification',
-        title: `Forced Simplification`,
-        description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
-        workOn: [
-            "Logic",
-            "Understanding problems",
-        ],
-        errors: 0,
-    },
- {
-    id: 'power of a point',
-        title: `Power of A Point`,
-        description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
-        workOn: [
-            "Chords",
-            "Tangents",
-            "Secants",
-        ],
-        errors: 0,
- },
- {
-    id: 'bases',
-        title: `Bases`,
-        description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
+                workOn: [
+                    "Medians",
+                    "Perpendicular Bisectors",
+                    "Angle Bisectors",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'counting',
+                title: `Counting`,
+                description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
+                workOn: [
+                    "Optimization",
+                    "Logic",
+                    "Casework"
+                ],
+                errors: 0,
+            },
+            {
+                id: 'composite shapes',
+                title: `Composite Shapes`,
+                description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
+                workOn: [
+                    "Area",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'transformations',
+                title: `Transformations`,
+                description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
+                workOn: [
+                    "Translations",
+                    "Reflections",
+                    "Rotations",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'volume',
+                title: `Volume`,
+                description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
+                workOn: [
+                    "Volume Formulas",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'prime numbers',
+                title: `Prime Numbers`,
+                description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
+                workOn: [
+                    "Factoring"
+                ],
+                errors: 0,
+            },
+            {
+                id: 'hexagons',
+                title: `Hexagons`,
+                description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
+                workOn: [
+                    "Area of a hexagon",
+                    "Area of equilateral triangles",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'optimization',
+                title: `Optimization`,
+                description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
+                workOn: [
+                    "Casework",
+                    "Counting"
+                ],
+                errors: 0,
+            },
+            {
+                id: 'volume relationships',
+                title: `Volume Relationships`,
+                description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
+                workOn: [
+                    "ratios"
+                ],
+                errors: 0,
+            },
+            {
+                id: 'pyramids',
+                title: `Pyramids`,
+                description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
+                workOn: [
+                    "Pythagorean theorem",
+                    "Surface Area"
+                ],
+                errors: 0,
+            },
+            {
+                id: 'trigonometry',
+                title: `Trigonometry`,
+                description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
+                workOn: [
+                    "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
+                    "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
+                    "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'coordinate plane',
+                title: `Coordinate Plane`,
+                description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
+                workOn: [
+                    "Slope",
+                    "Functions",
+                    "Graphing",
+                ],
+                errors: 0,
+            },
+            {
+                title: "Pythagorean Theorem",
+                id: 'pythagorean theorem',
+                description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
+                workOn: [
+                    "Pythagorean Triples",
+                    "Theorem",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'forced simplification',
+                title: `Forced Simplification`,
+                description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
+                workOn: [
+                    "Logic",
+                    "Understanding problems",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'power of a point',
+                title: `Power of A Point`,
+                description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
+                workOn: [
+                    "Chords",
+                    "Tangents",
+                    "Secants",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'bases',
+                title: `Bases`,
+                description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
         <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
-        workOn: [
-            "Changing from base \\(10\\)",
-            "Changing to base \\(10\\)",
-            "Modular Arithmetic",
-        ],
-        errors: 0,
-    },
- {
-    id: 'combinations',
-        title: `Combinations`,
-        description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
-        workOn:
-            [
-                "Recognizing combinations vs permutations",
-                "Combinations equation",
+                workOn: [
+                    "Changing from base \\(10\\)",
+                    "Changing to base \\(10\\)",
+                    "Modular Arithmetic",
+                ],
+                errors: 0,
+            },
+            {
+                id: 'combinations',
+                title: `Combinations`,
+                description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
+                workOn:
+                    [
+                        "Recognizing combinations vs permutations",
+                        "Combinations equation",
+                    ],
+                errors: 0,
+            },
+            {
+                id: 'counting',
+                title: `Counting`,
+                description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
+                workOn:
+                    [
+                        `Permutations Formula \\(n!\\)`,
+                        'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
+                        'Factorials',
+                    ],
+                errors: 0,
+            },
+            {
+                id: 'expected outcome',
+                title: `Expected Outcome`,
+                description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
+                workOn:
+                    [
+                        'Expected Outcome Formula'
+                    ],
+                errors: 0,
+            },
+            {
+                id: 'complementary counting',
+                title: `Complementary Counting`,
+                description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
+                workOn: [
+                    "Saving time"
+                ],
+                errors: 0,
+            }
+            ]
+
+            topicsToWorkOn = profile.topicsToWorkOn || [];
+            mistake = profile.mistake || 0;
+            stuck = profile.stuck || 0;
+            unfamiliar = profile.unfamiliar || 0;
+            algebraWrong = profile.algebraWrong || 0;
+            algebraTotal = profile.algebraTotal || 0;
+            geometryTotal = profile.geometryTotal || 0;
+            geometryWrong = profile.geometryWrong || 0;
+            numTotal = profile.numTotal || 0;
+            numWrong = profile.numWrong || 0;
+            probTotal = profile.probTotal
+            probWrong = profile.probWrong
+            if (usernameDisplayModal) usernameDisplayModal.innerHTML = profile.username
+
+            // 3. Update DOM text values
+            if (usernameDisplay) usernameDisplay.innerHTML = profile.username;
+
+            const scoreCountElement = document.getElementById('scoreCount');
+            if (scoreCountElement) {
+                scoreCountElement.innerHTML = Math.round(Number(userRatingAll.toString().replace(/,/g, '')));
+            }
+
+            // 4. Re-render visual analytics blocks
+            if (typeof updateBarGraph === "function") updateBarGraph();
+            if (typeof updateRadarChart === "function") updateRadarChart();
+            if (typeof updatePieChart === "function") updatePieChart();
+        }
+        document.getElementById("diagnosticStuff").style.display = "none"
+        algebraQuestion = getNextQuestion(questions, userRating)
+        geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
+        probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
+        numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
+        allQuestion = getNextQuestion(allQ, userRatingAll)
+        loadQuestion();
+
+    } else {
+        if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
+        if (typeof runDiagnostic === "function") runDiagnostic();
+        TOPIC_GLOSSARY = [{
+            id: "word problems",
+            title: `Word Problems`,
+            description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
+            workOn: [
+                "Identifying keywords",
+                "Setting up equations",
+                "Avoiding misinterpretation"
             ],
             errors: 0,
-    },
-    {
-        id: 'counting',
-        title: `Counting`,
-        description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
-        workOn:
-        [
-            `Permutations Formula \\(n!\\)`,
-            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
-            'Factorials',
-        ],
-        errors: 0,
-    },
-    {
-        id: 'expected outcome',
-        title: `Expected Outcome`,
-        description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
-        workOn:
-        [
-            'Expected Outcome Formula'
-        ],
-        errors: 0,
-    },
-    {
-        id: 'complementary counting',
-        title: `Complementary Counting`,
-        description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
-        workOn: [
-            "Saving time"
-        ],
-        errors: 0,
-    }
-]
-      
-      topicsToWorkOn = profile.topicsToWorkOn || [];
-      mistake = profile.mistake || 0;
-      stuck = profile.stuck || 0;
-      unfamiliar = profile.unfamiliar || 0;
-      algebraWrong = profile.algebraWrong || 0;
-      algebraTotal = profile.algebraTotal || 0;
-      geometryTotal = profile.geometryTotal || 0;
-      geometryWrong = profile.geometryWrong || 0;
-      numTotal = profile.numTotal || 0;
-      numWrong = profile.numWrong || 0;
-      probTotal = profile.probTotal
-      probWrong = profile.probWrong
-      if (usernameDisplayModal) usernameDisplayModal.innerHTML = profile.username
+        },
+        {
+            id: "algebraic manipulation",
+            title: `Algebraic Manipulation`,
+            description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
+            workOn: [
+                "Factoring",
+                "Combining like terms",
+                "Recognizing algebraic patterns"
+            ],
+            errors: 0,
+        },
+        {
+            id: "arithmetic",
+            title: `Arithmetic`,
+            description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
+            workOn: [
+                "Mental/Quick Math",
+                "Identifying keywords",
+                "Shortcuts and factoring (for multiplication and division)"
+            ],
+            errors: 0,
+        },
+        {
+            id: "systems of equations",
+            title: `Systems of Equations`,
+            description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
+            workOn: [
+                "Logic",
+                "Substitution",
+                "Elimination",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'functions and graphing',
+            title: `Functions and Graphing`,
+            description: "Recognizing and manipulating popular parent functions and being able to identify them",
+            workOn: [
+                "Parent Functions",
+                "Composition of Functions",
+                ""
+            ],
+            errors: 0,
+        },
+        {
+            id: 'logic',
+            title: `Logic`,
+            description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
+            workOn: [
+                "Recognizing Patterns",
+                "Quick Mental Math",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'inequalities',
+            title: `Inequalities`,
+            description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
+            workOn: [
+                "Graphing Inequalities",
+                "Understanding when a question is asking for inequalities",
+                "Composition of Functions"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'modular arithmetic',
+            title: `Modular Arithmetic`,
+            description: "These problems pertain to the remainders (mods) of operations (typically division)",
+            workOn: [
+                "Modular Arithmetic Rules",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'factoring',
+            title: `Factoring`,
+            description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
+            workOn: [
+                "Sum/difference of squares",
+                "GCF and LCM",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'prime factorization',
+            title: `Prime Factorization`,
+            description: "Reducing a number to its prime factors and using it to solve problems",
+            workOn: [
+                "Factor Trees (or whatever method you like to use)",
+                "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'percents',
+            title: `Percents`,
+            description: "A different representation of fractions and ratios, make sure you understand what percents are",
+            workOn: [
+                "Decimal Multiplication",
+                "Converting numbers between Percents, Ratios, and Fractions",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'graphing',
+            title: `Graphing`,
+            description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
+            workOn: [
+                "Parent Functions",
+                "Logic + Intuition",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'floor functions',
+            title: `Floor Functions`,
+            description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
+            workOn: [
+                'Graphing',
+                'Logic + Intuition',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'speed-distance-time',
+            title: `Speed Distance Time`,
+            description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
+            workOn: [
+                "Memorizing the speed, distance, time equation",
+                "Understanding conversions and how the different variables relate to each other",
+                "Word problems and conceptualy understanding what is being asked",
+            ],
+            errors: 0,
+        }, {
+            id: 'averages',
+            title: `Averages`,
+            description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
+            workOn: [
+                'Deriving equations',
+                'Arithmetic mean',
+                'Statistics',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'induction',
+            title: `Induction`,
+            description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
+            workOn: [
+                "Making educated guesses",
+                "Recognizing Patterns",
+                "'Limiting' solutions",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'series',
+            title: `Series`,
+            description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
+            workOn: [
+                "Memorizing equations for series",
+                "Arithmetic and Geometric Series",
+                "Recognizing patterns",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'absolute value',
+            title: `Absolute Value`,
+            description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
+            workOn:
+                [
+                    "Graphing",
+                    "Intuition"
+                ],
+            errors: 0,
+        },
+        {
+            id: 'exponents',
+            title: `Exponents`,
+            description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
+            workOn:
+                [
+                    "Change of base",
+                    "Adding, subtracting, multiplying, dividing exponents",
+                    "Factoring out squares",
+                ],
+            errors: 0,
 
-      // 3. Update DOM text values
-      if (usernameDisplay) usernameDisplay.innerHTML = profile.username;
-      
-      const scoreCountElement = document.getElementById('scoreCount');
-      if (scoreCountElement) {
-        scoreCountElement.innerHTML = Math.round(Number(userRatingAll.toString().replace(/,/g, '')));
-      }
-
-      // 4. Re-render visual analytics blocks
-      if (typeof updateBarGraph === "function") updateBarGraph();
-      if (typeof updateRadarChart === "function") updateRadarChart();
-      if (typeof updatePieChart === "function") updatePieChart();
-    }
-            document.getElementById("diagnosticStuff").style.display = "none"
-    algebraQuestion = getNextQuestion(questions, userRating)
-    geometryQuestion = getNextQuestion(geometryQ, userRatingGeometry)
-    probQuestion = getNextQuestion(probabilityQ, userRatingProbability)
-    numQuestion = getNextQuestion(numTheoryQ, userRatingNumTheory)
-    allQuestion = getNextQuestion(allQ, userRatingAll)
-    loadQuestion();
-
-  } else  {
-    if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
-    if (typeof runDiagnostic === "function") runDiagnostic();
-    TOPIC_GLOSSARY = [ {
-        id: "word problems",
-        title: `Word Problems`,
-        description: "What sets the AMC 10 apart is that it requires actively understanding math and how to apply it. Word problem are generally questions where the exact numbers and values are expressed indirectly through words rather than a clear problem",
-        workOn: [
-            "Identifying keywords",
-            "Setting up equations",
-            "Avoiding misinterpretation"
-        ],
-        errors: 0,
-    },
-    {
-        id: "algebraic manipulation",
-        title: `Algebraic Manipulation`,
-        description: "Covers simplifying expressions, solving equations, and working with algebraic structures.",
-        workOn: [
-            "Factoring",
-            "Combining like terms",
-            "Recognizing algebraic patterns"
-        ],
-        errors: 0,
-    },
- {
-    id: "arithmetic"  ,  
-    title: `Arithmetic`,
-        description: "Arithmetic pertains to simple math using the \\(4\\) main operations: addition, multiplication, subtraction, and division. It typically shows up in earlier questions and tends to be straightforward",
-        workOn: [
-            "Mental/Quick Math",
-            "Identifying keywords",
-            "Shortcuts and factoring (for multiplication and division)"
-        ],
-        errors: 0,
-    },
- {
-    id: "systems of equations",    
-    title: `Systems of Equations`,
-        description: "This includes when you have multiple equations and need to solve for the variables. A general rule is that it is possible to solve when the amount of equations you have is more than or equal to the amount of variables.",
-        workOn: [
-            "Logic",
-            "Substitution", 
-            "Elimination",
-        ],
-        errors: 0,
-    },
-{
-    id: 'functions and graphing',   
-    title: `Functions and Graphing`,
-        description: "Recognizing and manipulating popular parent functions and being able to identify them",
-        workOn: [
-            "Parent Functions",
-            "Composition of Functions",
-            ""
-        ],
-        errors: 0,
-    },
-     {
-        id: 'logic',
-        title: `Logic`,
-        description: "The AMC 10 is a timed test, so it serves you well to finish as much as possible as soon as possible. Using logic to eliminate clear answers (i.e. answers that HAVE to be negative, one number being too short) can help you progress faster",
-        workOn: [
-            "Recognizing Patterns", 
-            "Quick Mental Math",
-        ],
-        errors: 0,
-    },
-{
-    id: 'inequalities',    
-    title: `Inequalities`,
-        description: "These are problems where you have to find a range instead of a concrete answer. Familiarize yourself with how inequality graphs work and how to interpret them",
-        workOn: [
-            "Graphing Inequalities",
-            "Understanding when a question is asking for inequalities",
-            "Composition of Functions"
-        ],
-        errors: 0,
-    },
-{
-    id: 'modular arithmetic',
-    title: `Modular Arithmetic`,
-        description: "These problems pertain to the remainders (mods) of operations (typically division)",
-        workOn: [
-            "Modular Arithmetic Rules",
-        ],
-        errors: 0,
-    },
- {
-    id: 'factoring' , 
-    title: `Factoring`,
-        description: "Popular in algebra, factoring helps us solve equations more quickly and find zeroes",
-        workOn: [
-            "Sum/difference of squares",
-            "GCF and LCM",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'prime factorization',
-        title: `Prime Factorization`,
-        description: "Reducing a number to its prime factors and using it to solve problems",
-        workOn: [
-            "Factor Trees (or whatever method you like to use)",
-            "Memorizing the multiples of a few prime factors (e.g. \\(13\\) and \\(17\\)",
-        ],
-        errors: 0,
-    },
- {
-    id: 'percents',    
-    title: `Percents`,
-        description: "A different representation of fractions and ratios, make sure you understand what percents are",
-        workOn: [
-            "Decimal Multiplication",
-            "Converting numbers between Percents, Ratios, and Fractions",
-        ],
-        errors: 0,
-    },
- {
-    id: 'graphing'  ,  
-    title: `Graphing`,
-        description: "You will not be allowed a graphing calculator on the test, however, it would help you out to know how to at least basically sketch graphs. In my experience, this helps you get an idea of what exactly the problem is asking for",
-        workOn: [
-            "Parent Functions",
-            "Logic + Intuition",
-        ],
-        errors: 0,
-    },
-    {
-       id: 'floor functions',
-        title: `Floor Functions`,
-        description: "These are surprisingly common in the AMC 10 despite not really being features anywhere else. For floor functions the recorded value is the greatest number less than or equal to \\(x\\)",
-        workOn:[
-            'Graphing',
-            'Logic + Intuition',
-        ],
-        errors: 0,
-    },
-     {
-       id: 'speed-distance-time',
-        title: `Speed Distance Time`,
-        description: "Equations that have to do with rates in some way or form. Recall that \\(s=\\frac{d}{t}\\)",
-        workOn: [
-            "Memorizing the speed, distance, time equation",
-            "Understanding conversions and how the different variables relate to each other",
-            "Word problems and conceptualy understanding what is being asked",
-        ],
-        errors: 0,
-    },{
-        id: 'averages',
-        title: `Averages`,
-        description: "The AMC 10 likes to play with these a lot. Don't just memorize the formula for an average but remember how it works. Recall that if the average of \\(n\\) numbers is \\(a\\). If you take out a value \\(s\\) from the set, the new average is \\(\\frac{an-s}{n-1}\\)",
-        workOn: [
-            'Deriving equations',
-            'Arithmetic mean',
-            'Statistics',
-        ],
-        errors: 0,
-    },
- {
-        id: 'induction',
-        title: `Induction`,
-        description: "Induction, or more commonly engineer's induction, is the process of making educated guesses based on patterns, limitations, etc.",
-        workOn: [
-            "Making educated guesses",
-            "Recognizing Patterns",
-            "'Limiting' solutions",
-        ],
-        errors: 0,
-    }, 
- {
-        id: 'series',
-        title: `Series`,
-        description: "Series are essentially patterns in math. They can be geometric (increasing with a ratio) or arithmetic (increasing with a difference). The equation for the sum of an arithmetic series with \\(n\\) numbers and a common difference \\(d\\) is \\(S_{n}=\\frac{n(a_{1}+a_{n})}{2}\\) and the sum of a geometric series is \\(S_{n}=\\frac{a(1-r^n}{1-r}\\)",
-        workOn: [
-            "Memorizing equations for series",
-            "Arithmetic and Geometric Series",
-            "Recognizing patterns",
-        ],
-        errors: 0,
-    },
-{
-    id: 'absolute value',    
-    title: `Absolute Value`,
-        description: "The absolute value function takes any input and returns a positive output. This is convenient for casework and also appears in a lot of problems. Familiarize yourself with the behavior and use of this function.",
-        workOn:
-        [ 
-            "Graphing",
-            "Intuition"
-        ],
-        errors: 0,
-    },
- {
-        id: 'exponents',
-        title: `Exponents`,
-        description: "Repeated multiplication. Learning exponent and logarithm rules can help save you a lot of time on the AMC 10",
-        workOn: 
-        [
-            "Change of base",
-            "Adding, subtracting, multiplying, dividing exponents",
-            "Factoring out squares",
-        ],
-        errors: 0,
-
-    },
- {
-    id: 'discriminant' ,   
-    title: `Discriminant`,
-        description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
-        workOn:[
-            "Quadratic Formula"
-        ],
-        errors:0,
-    },
-{
-    id: 'casework',    
-    title: `Casework`,
-        description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
-        workOn: [
-            'Absolute Value Questions',
-            'Quadratics',
-        ],
-        errors: 0,
-    },
- {
-  id: 'medians',
-    title: `Medians`,
-        description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
-        workOn: [
-            'Statistics',
-            'Datasets',
-        ],
-        errors: 0,
-    },
-{
-    id: 'similar triangles'  , 
-    title: `Similar Triangles`,
-        description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
-        workOn: [
-            "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
-            "Ratios",
-        ],
-        errors: 0,
-    },
-{
-        id: 'surface area',
-        title: `Surface Area`,
-        description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
-        workOn: [
-            "Surface Area equations (for spheres and cones in addition to typical polygons)",
-            "3D conceptualization (e.g. imagining how it looks so you can understand it)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'triangle lines'  , 
-    title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
-        description: `<p>Remember the following lines that you can add to a triangle</p>
+        },
+        {
+            id: 'discriminant',
+            title: `Discriminant`,
+            description: "The discriminant of a polynomial tells us how many solutions (zeroes) it has. For quadratics, the discriminant is \\(-b-4ac\\). If positive, there are \\(2\\) real zeroes, if \\(0\\) there is one, and if negative there are none",
+            workOn: [
+                "Quadratic Formula"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'casework',
+            title: `Casework`,
+            description: "This involves splitting up potential answers into different 'cases' depending on what potential outcomes there could be and computing them individuallly. This is especially helpful in questions asking for 'how many of \\(x\\)' or quesitons with absolute value and even powers",
+            workOn: [
+                'Absolute Value Questions',
+                'Quadratics',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'medians',
+            title: `Medians`,
+            description: "A facet of statistics, medians are the centers of a dataset and widely considerd the best measure of a dataset. You find the median by removing values from either side unitl you reach the middle",
+            workOn: [
+                'Statistics',
+                'Datasets',
+            ],
+            errors: 0,
+        },
+        {
+            id: 'similar triangles',
+            title: `Similar Triangles`,
+            description: "If you could only study one geometry concept for the AMC 10, it should be this. Similar triangles are everywhere. The most important thing to do when you're given a problem with triangles is to see if any triangles are similar and to find the ratio",
+            workOn: [
+                "Similarity Rules (AA) and Congruency Rules (SSS, SAS, ASA, AAS)",
+                "Ratios",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'surface area',
+            title: `Surface Area`,
+            description: "The combined measure of the area on all faces of a polygon. It's rare but not unheard of and typically appears once or twice per test.",
+            workOn: [
+                "Surface Area equations (for spheres and cones in addition to typical polygons)",
+                "3D conceptualization (e.g. imagining how it looks so you can understand it)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'triangle lines',
+            title: `Triangle Lines (Medians, Altitudes, Perpendicular Bisectors, Angle Bisectors)`,
+            description: `<p>Remember the following lines that you can add to a triangle</p>
         <p>Medians: From the vertex to the midpoint of the opposite line. Intersecting at the centroid which divides medians into \\(1:2\\) ratios and the triangle into \\(6\\) triangles of equal area</p>
         <p>Altitudes: From the vertex perpendicular to the opposite side. Used to find area</p>
         <p>Perpendicular Bisectors: Lines that pass through a side and are perpendicular and bisect it. Intersect at the circumcenter that is the center for the circumscribed circle (touching all vertices)</p>
         <p>Angle Bisectors: Lines that bisect angles, intersect at the incenter, the center of the inscribed circle (tangent to all sides)</p>`,
-        workOn: [
-            "Medians",
-            "Perpendicular Bisectors",
-            "Angle Bisectors",
-        ],
-        errors: 0,
-    },
-{
-    id: 'counting',
-        title: `Counting`,
-        description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
-        workOn: [
-            "Optimization",
-            "Logic",
-            "Casework"
-        ],
-        errors: 0,
-    },
-{
-    id: 'composite shapes',
-        title: `Composite Shapes`,
-        description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
-        workOn: [
-            "Area",
-        ],
-        errors: 0,
-    },
- {
-    id: 'transformations',
-        title: `Transformations`,
-        description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
-        workOn: [
-            "Translations",
-            "Reflections",
-            "Rotations",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'volume',
-        title: `Volume`,
-        description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
-        workOn: [
-            "Volume Formulas",
-        ],
-        errors: 0,
-    },
- {
-    id: 'prime numbers',
-        title: `Prime Numbers`,
-        description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
-        workOn: [
-            "Factoring"
-        ],
-        errors: 0,
-    },
-{
-    id: 'hexagons',
-        title: `Hexagons`,
-        description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
-        workOn: [
-            "Area of a hexagon",
-            "Area of equilateral triangles",
-        ],
-        errors: 0,
-    },
- {
-    id: 'optimization',
-        title: `Optimization`,
-        description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
-        workOn: [
-            "Casework",
-            "Counting"
-        ],
-        errors: 0,
-    },
-{
-    id: 'volume relationships',
-        title: `Volume Relationships`,
-        description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
-        workOn: [
-            "ratios"
-        ],
-        errors: 0,
-    },
- {
-    id: 'pyramids',
-        title: `Pyramids`,
-        description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
-        workOn: [
-            "Pythagorean theorem",
-            "Surface Area"
-        ],
-        errors: 0,
-    },
- {
-    id: 'trigonometry',
-        title: `Trigonometry`,
-        description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
-        workOn: [
-            "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
-            "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
-            "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
-        ],
-        errors: 0,
-    },
-{
-    id: 'coordinate plane',
-        title: `Coordinate Plane`,
-        description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
-        workOn: [
-            "Slope",
-            "Functions",
-            "Graphing",
-        ],
-        errors: 0,
-    },
-{
-    title: "Pythagorean Theorem",
-    id: 'pythagorean theorem',
-        description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
-        workOn: [
-            "Pythagorean Triples",
-            "Theorem",
-        ],
-        errors: 0,
-    },
-    {
-        id: 'forced simplification',
-        title: `Forced Simplification`,
-        description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
-        workOn: [
-            "Logic",
-            "Understanding problems",
-        ],
-        errors: 0,
-    },
- {
-    id: 'power of a point',
-        title: `Power of A Point`,
-        description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
-        workOn: [
-            "Chords",
-            "Tangents",
-            "Secants",
-        ],
-        errors: 0,
- },
- {
-    id: 'bases',
-        title: `Bases`,
-        description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
-        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
-        workOn: [
-            "Changing from base \\(10\\)",
-            "Changing to base \\(10\\)",
-            "Modular Arithmetic",
-        ],
-        errors: 0,
-    },
- {
-    id: 'combinations',
-        title: `Combinations`,
-        description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
-        workOn:
-            [
-                "Recognizing combinations vs permutations",
-                "Combinations equation",
+            workOn: [
+                "Medians",
+                "Perpendicular Bisectors",
+                "Angle Bisectors",
             ],
             errors: 0,
-    },
-    {
-        id: 'counting',
-        title: `Counting`,
-        description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
-        workOn:
-        [
-            `Permutations Formula \\(n!\\)`,
-            'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
-            'Factorials',
-        ],
-        errors: 0,
-    },
-    {
-        id: 'expected outcome',
-        title: `Expected Outcome`,
-        description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
-        workOn:
-        [
-            'Expected Outcome Formula'
-        ],
-        errors: 0,
-    },
-    {
-        id: 'complementary counting',
-        title: `Complementary Counting`,
-        description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
-        workOn: [
-            "Saving time"
-        ],
-        errors: 0,
+        },
+        {
+            id: 'counting',
+            title: `Counting`,
+            description: "Popular in probability, this technique involves using logic to find the number of combinations/ways/paths of something, depending on the question. Often, we want to use casweowkr to optimize things instead of physically counting each way",
+            workOn: [
+                "Optimization",
+                "Logic",
+                "Casework"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'composite shapes',
+            title: `Composite Shapes`,
+            description: "Shapes made from intersections of other shapes. Find the area or perimeter by calculating each shape individually then subtracting/adding any overlap",
+            workOn: [
+                "Area",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'transformations',
+            title: `Transformations`,
+            description: "Moving items on a coordinate plane. You can translate, rotate, reflect or dilate",
+            workOn: [
+                "Translations",
+                "Reflections",
+                "Rotations",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'volume',
+            title: `Volume`,
+            description: "The area contained within a polygon. Make sure to memorize that of more omplex shapes (e.g. spheres) and not just typical ones. Also pay attention to how they are derived in case you need to find the area of something like a dodecahedron or icosahedron",
+            workOn: [
+                "Volume Formulas",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'prime numbers',
+            title: `Prime Numbers`,
+            description: "Prime numbers are what all others are built on. This can help with factoring and solving equations",
+            workOn: [
+                "Factoring"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'hexagons',
+            title: `Hexagons`,
+            description: "These are surprisingly common on the AMC 10. Recall that most hexagons are composed of triangles and regular hexagons are composed of \\(6\\) equilateral triangles. Recall that the area of a hexagon is \\(\\sqrt{3}{4}s^2\\)",
+            workOn: [
+                "Area of a hexagon",
+                "Area of equilateral triangles",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'optimization',
+            title: `Optimization`,
+            description: "Popular in probabilityl this includes finding the best or most efficient or most criteria matching answer when multiple exist",
+            workOn: [
+                "Casework",
+                "Counting"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'volume relationships',
+            title: `Volume Relationships`,
+            description: "Knowing the ratios between volumes of different shapes and between volume and area can save time when calculating",
+            workOn: [
+                "ratios"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'pyramids',
+            title: `Pyramids`,
+            description: "There's a number of things we can use in pyramids: height, lateral height, surface area, volume, etc.",
+            workOn: [
+                "Pythagorean theorem",
+                "Surface Area"
+            ],
+            errors: 0,
+        },
+        {
+            id: 'trigonometry',
+            title: `Trigonometry`,
+            description: "I like to describe this as 'the study of angles'. Recall identities, and use the unit circle if you need help. Also memorize law of sines and law of cosines in case you see oblique triangles",
+            workOn: [
+                "Trig Identites \\(\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}\\)",
+                "Law of Cosines \\(c^2=a^2+b^2-2ab\\cos(C)\\)",
+                "Law of Sines \\(\\frac{\\sin(A)}{a}=\\frac{\\sin(B)}{b}=\\frac{\\sin(C)}{c}\\)",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'coordinate plane',
+            title: `Coordinate Plane`,
+            description: "Popular in algebra and geometry, this can either help you solve just by being able to give you clear values and coordinates for each point, or also just be what the question asks for",
+            workOn: [
+                "Slope",
+                "Functions",
+                "Graphing",
+            ],
+            errors: 0,
+        },
+        {
+            title: "Pythagorean Theorem",
+            id: 'pythagorean theorem',
+            description: "Used for right triangles, \\(a^2+b^2=c^2\\)",
+            workOn: [
+                "Pythagorean Triples",
+                "Theorem",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'forced simplification',
+            title: `Forced Simplification`,
+            description: "A technique used to solve quickly. Involves taking ambigous rules and making them as simple as possible",
+            workOn: [
+                "Logic",
+                "Understanding problems",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'power of a point',
+            title: `Power of A Point`,
+            description: "I like to think of this as 'triangle lines' for circles. There's a lot of facets, so I won't explain all, but this pertains to chords, tangents, and secants on circles",
+            workOn: [
+                "Chords",
+                "Tangents",
+                "Secants",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'bases',
+            title: `Bases`,
+            description: `Let's start by unwinding what base \\(b\\) numbers mean. Essentially, you keep counting up, but when you reach the number of the base you are (say \\(10\\)), you reset the place (as in tens place) you are in back to \\(0\\) and then add another digit starting at\\(1\\). </p>
+        <p>Thus, the way we convert bases is by dividng the number by the base, finding the remainder, writing that as a digit, then taking the quotient (w/o remainder), dividing by the base again, taking the remainder, etc. etc.</p>`,
+            workOn: [
+                "Changing from base \\(10\\)",
+                "Changing to base \\(10\\)",
+                "Modular Arithmetic",
+            ],
+            errors: 0,
+        },
+        {
+            id: 'combinations',
+            title: `Combinations`,
+            description: "Common in probability and occasionally present in number theory, combinations are ways to arrange something without regard to the order. The equation for \\(n\\) choose \\(k\\) (ways to make a combination of \\(k\\) elements from  \\(n\\) total) is \\(\\frac{n!}{k!(n-k)!}\\)",
+            workOn:
+                [
+                    "Recognizing combinations vs permutations",
+                    "Combinations equation",
+                ],
+            errors: 0,
+        },
+        {
+            id: 'counting',
+            title: `Counting`,
+            description: "Counting is effective to find not just the chances of something happening, but the total number of ways something can happen. Recall the formulas for permutations and combinations and familiarize yourself with computing factorials",
+            workOn:
+                [
+                    `Permutations Formula \\(n!\\)`,
+                    'Combinations formula \\(\\frac{n!}(k!(n-k)}\\)',
+                    'Factorials',
+                ],
+            errors: 0,
+        },
+        {
+            id: 'expected outcome',
+            title: `Expected Outcome`,
+            description: `The probability of something happpening combined with the value associated with it. It is calculated by the probability multiplied by the value, summed with all the other potential values and their probabilities`,
+            workOn:
+                [
+                    'Expected Outcome Formula'
+                ],
+            errors: 0,
+        },
+        {
+            id: 'complementary counting',
+            title: `Complementary Counting`,
+            description: "A technique used in probability that involves calculating the alternate probability and then subtracting from one. This can often save time when the given probability is too hard or complex",
+            workOn: [
+                "Saving time"
+            ],
+            errors: 0,
+        }
+        ]
+        if (logoutBtn) logoutBtn.style.display = 'none';
+        if (login) login.style.display = "block";
+        if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
+        if (createAccount) createAccount.style.display = "block"
+        if (deleteAccount) deleteAccount.style.display = "none"
+        // Reset runtime math parameters back to baseline
+        userRatingAll = 1200;
+        userRating = 1200;
+        userRatingGeometry = 1200;
+        userRatingNumTheory = 1200;
+        userRatingProbability = 1200;
+        mistake = 0;
+        stuck = 0;
+        unfamiliar = 0;
+        topicsToWorkOn = [];
+
+        if (Array.isArray(TOPIC_GLOSSARY)) {
+            TOPIC_GLOSSARY.forEach(i => { if (i) i.errors = 0; });
+        }
+
+        const scoreCountElement = document.getElementById('scoreCount');
+        if (scoreCountElement) scoreCountElement.innerHTML = 1200;
+
+        // Redraw empty guest charts
+        if (typeof updateBarGraph === "function") updateBarGraph();
+        if (typeof updateRadarChart === "function") updateRadarChart();
+        if (typeof updatePieChart === "function") updatePieChart();
+
     }
-]
-    if (logoutBtn) logoutBtn.style.display = 'none';
-    if (login) login.style.display = "block";
-    if (usernameDisplay) usernameDisplay.innerHTML = "Log In";
-    if (createAccount) createAccount.style.display = "block"
-    if (deleteAccount) deleteAccount.style.display = "none"
-    // Reset runtime math parameters back to baseline
-    userRatingAll = 1200;
-    userRating = 1200;
-    userRatingGeometry = 1200;
-    userRatingNumTheory = 1200;
-    userRatingProbability = 1200;
-    mistake = 0;
-    stuck = 0;
-    unfamiliar = 0;
-    topicsToWorkOn = [];
-    
-    if (Array.isArray(TOPIC_GLOSSARY)) {
-      TOPIC_GLOSSARY.forEach(i => { if(i) i.errors = 0; });
-    }
-
-    const scoreCountElement = document.getElementById('scoreCount');
-    if (scoreCountElement) scoreCountElement.innerHTML = 1200;
-
-    // Redraw empty guest charts
-    if (typeof updateBarGraph === "function") updateBarGraph();
-    if (typeof updateRadarChart === "function") updateRadarChart();
-    if (typeof updatePieChart === "function") updatePieChart();
-
-  }
 });
 const arrayPrint = []
 TOPIC_GLOSSARY.forEach(i => {
@@ -13624,25 +13632,25 @@ TOPIC_GLOSSARY.forEach(i => {
 const resetBtn = document.getElementById("btn-request-reset");
 
 if (resetBtn) {
-  resetBtn.addEventListener("click", async () => {
-    const email = document.getElementById("login-email").value;
+    resetBtn.addEventListener("click", async () => {
+        const email = document.getElementById("login-email").value;
 
-    if (!email) {
-      alert("Please enter your email address first.");
-      return;
-    }
+        if (!email) {
+            alert("Please enter your email address first.");
+            return;
+        }
 
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/update-password.html',
+        const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin + '/update-password.html',
+        });
+
+        if (error) {
+            console.error("Reset request failed:", error.message);
+            alert("Error: " + error.message);
+        } else {
+            alert("Check your inbox! A secure password reset link has been sent.");
+        }
     });
-
-    if (error) {
-      console.error("Reset request failed:", error.message);
-      alert("Error: " + error.message);
-    } else {
-      alert("Check your inbox! A secure password reset link has been sent.");
-    }
-  });
 }
 
 // --- 1. Timer State Variables ---
@@ -13653,33 +13661,33 @@ let userTimedQuestionsCount = 0;  // Fetched from database on login
 
 // --- 2. Helper: Format seconds into MM:SS ---
 function formatTime(totalSeconds) {
-  const mins = Math.floor(totalSeconds / 60);
-  const secs = totalSeconds % 60;
-  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
 // --- 3. Core Functions: Start and Stop ---
 function startQuestionTimer() {
-  // Clear any old ticking interval safety check
-  clearInterval(timerInterval);
-  currentQuestionSeconds = 0;
-  document.getElementById("current-timer").innerText = "0:00";
+    // Clear any old ticking interval safety check
+    clearInterval(timerInterval);
+    currentQuestionSeconds = 0;
+    document.getElementById("current-timer").innerText = "0:00";
 
-  // Tick every 1 second
-  timerInterval = setInterval(() => {
-    currentQuestionSeconds++;
-    document.getElementById("current-timer").innerText = formatTime(currentQuestionSeconds);
-  }, 1000);
+    // Tick every 1 second
+    timerInterval = setInterval(() => {
+        currentQuestionSeconds++;
+        document.getElementById("current-timer").innerText = formatTime(currentQuestionSeconds);
+    }, 1000);
 }
 
 // Update UI display for lifetime average
 function updateAvgTimerUI() {
-  if (userTimedQuestionsCount === 0) {
-    document.getElementById("avg-timer").innerText = "0:00";
-    return;
-  }
-  const avgSeconds = Math.round(userTotalTimeSpent / userTimedQuestionsCount);
-  document.getElementById("avg-timer").innerText = formatTime(avgSeconds);
+    if (userTimedQuestionsCount === 0) {
+        document.getElementById("avg-timer").innerText = "0:00";
+        return;
+    }
+    const avgSeconds = Math.round(userTotalTimeSpent / userTimedQuestionsCount);
+    document.getElementById("avg-timer").innerText = formatTime(avgSeconds);
 }// --- Integrated Draggable Floating Scratchpad Engine ---
 const scratchPopup = document.getElementById("scratchpad-popup");
 const scratchHeader = document.getElementById("scratchpad-header");
@@ -13689,180 +13697,186 @@ const clearScratchBtn = document.getElementById("btn-clear-scratchpad");
 const closeScratchBtn = document.getElementById("btn-close-scratchpad");
 
 if (scratchPopup && scratchHeader && scratchCanvas) {
-  const ctx = scratchCanvas.getContext("2d");
-  let isDrawing = false;
-  let lastX = 0, lastY = 0;
+    const ctx = scratchCanvas.getContext("2d");
+    let isDrawing = false;
+    let lastX = 0, lastY = 0;
 
-  // --- 1. Open / Close Window Visibility Toggles ---
-  function openScratchpad() {
-    scratchPopup.style.display = "block";
-    setupBrushColors();
-  }
-
-  function closeScratchpad() {
-    toggleScratchBtn.innerHTML = "Open Scratchpad"
-    scratchPopup.style.display = "none";
-  }
-
-  toggleScratchBtn.addEventListener("click", () => {
-    if (scratchPopup.style.display === "none" || scratchPopup.style.display === "") {
-      openScratchpad();
-      toggleScratchBtn.innerHTML = "Close Scratchpad"
-    } else {
-      closeScratchpad();
-      toggleScratchBtn.innerHTML = "Open Scratchpad"
+    // --- 1. Open / Close Window Visibility Toggles ---
+    function openScratchpad() {
+        scratchPopup.style.display = "block";
+        setupBrushColors();
     }
-  });
 
-  closeScratchBtn.addEventListener("click", closeScratchpad);
-  
-  clearScratchBtn.addEventListener("click", () => {
-    ctx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
-  });
+    function closeScratchpad() {
+        toggleScratchBtn.innerHTML = "Open Scratchpad"
+        scratchPopup.style.display = "none";
+    }
 
-  function setupBrushColors() {
-    let computedColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
-    ctx.strokeStyle = computedColor ? computedColor : '#4A90E2'; 
-    ctx.lineWidth = 2.5;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-  }
+    toggleScratchBtn.addEventListener("click", () => {
+        if (scratchPopup.style.display === "none" || scratchPopup.style.display === "") {
+            openScratchpad();
+            toggleScratchBtn.innerHTML = "Close Scratchpad"
+        } else {
+            closeScratchpad();
+            toggleScratchBtn.innerHTML = "Open Scratchpad"
+        }
+    });
 
-  // --- 2. Canvas Core Drawing Mechanics ---
-  function getCanvasCoordinates(e) {
-    const rect = scratchCanvas.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    return {
-      x: clientX - rect.left,
-      y: clientY - rect.top
-    };
-  }
+    closeScratchBtn.addEventListener("click", closeScratchpad);
 
-  scratchCanvas.addEventListener("mousedown", (e) => {
-    isDrawing = true;
-    const coords = getCanvasCoordinates(e);
-    [lastX, lastY] = [coords.x, coords.y];
-  });
+    clearScratchBtn.addEventListener("click", () => {
+        ctx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+    });
 
-  scratchCanvas.addEventListener("mousemove", (e) => {
-    if (!isDrawing) return;
-    e.preventDefault();
-    const coords = getCanvasCoordinates(e);
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(coords.x, coords.y);
-    ctx.stroke();
-    [lastX, lastY] = [coords.x, coords.y];
-  });
+    function setupBrushColors() {
+        let computedColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+        ctx.strokeStyle = computedColor ? computedColor : '#4A90E2';
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+    }
 
-  const stopDrawing = () => isDrawing = false;
-  scratchCanvas.addEventListener("mouseup", stopDrawing);
-  scratchCanvas.addEventListener("mouseleave", stopDrawing);
+    // --- 2. Canvas Core Drawing Mechanics ---
+    function getCanvasCoordinates(e) {
+        const rect = scratchCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+        };
+    }
 
-  // Mobile Drawing Support
-  scratchCanvas.addEventListener("touchstart", (e) => {
-    isDrawing = true;
-    const coords = getCanvasCoordinates(e);
-    [lastX, lastY] = [coords.x, coords.y];
-  });
-  scratchCanvas.addEventListener("touchmove", (e) => {
-    if (!isDrawing) return;
-    e.preventDefault();
-    const coords = getCanvasCoordinates(e);
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(coords.x, coords.y);
-    ctx.stroke();
-    [lastX, lastY] = [coords.x, coords.y];
-  });
-  scratchCanvas.addEventListener("touchend", stopDrawing);
+    scratchCanvas.addEventListener("mousedown", (e) => {
+        isDrawing = true;
+        const coords = getCanvasCoordinates(e);
+        [lastX, lastY] = [coords.x, coords.y];
+    });
+
+    scratchCanvas.addEventListener("mousemove", (e) => {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const coords = getCanvasCoordinates(e);
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(coords.x, coords.y);
+        ctx.stroke();
+        [lastX, lastY] = [coords.x, coords.y];
+    });
+
+    const stopDrawing = () => isDrawing = false;
+    scratchCanvas.addEventListener("mouseup", stopDrawing);
+    scratchCanvas.addEventListener("mouseleave", stopDrawing);
+
+    // Mobile Drawing Support
+    scratchCanvas.addEventListener("touchstart", (e) => {
+        isDrawing = true;
+        const coords = getCanvasCoordinates(e);
+        [lastX, lastY] = [coords.x, coords.y];
+    });
+    scratchCanvas.addEventListener("touchmove", (e) => {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const coords = getCanvasCoordinates(e);
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(coords.x, coords.y);
+        ctx.stroke();
+        [lastX, lastY] = [coords.x, coords.y];
+    });
+    scratchCanvas.addEventListener("touchend", stopDrawing);
 
 
-  // --- 3. Window Translation Component (Dragging Logic) ---
-  let isDraggingWindow = false;
-  let offsetX = 0, offsetY = 0;
+    // --- 3. Window Translation Component (Dragging Logic) ---
+    let isDraggingWindow = false;
+    let offsetX = 0, offsetY = 0;
 
-  function startWindowDrag(e) {
-    // Prevent text highlight selection artifacts during runtime translation
-    if (e.target === clearScratchBtn || e.target === closeScratchBtn) return;
-    
-    isDraggingWindow = true;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
-    offsetX = clientX - scratchPopup.offsetLeft;
-    offsetY = clientY - scratchPopup.offsetTop;
-  }
+    function startWindowDrag(e) {
+        // Prevent text highlight selection artifacts during runtime translation
+        if (e.target === clearScratchBtn || e.target === closeScratchBtn) return;
 
-  function dragWindow(e) {
-    if (!isDraggingWindow) return;
-    e.preventDefault();
-    
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
-    scratchPopup.style.left = (clientX - offsetX) + "px";
-    scratchPopup.style.top = (clientY - offsetY) + "px";
-  }
+        isDraggingWindow = true;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-  function stopWindowDrag() {
-    isDraggingWindow = false;
-  }
+        offsetX = clientX - scratchPopup.offsetLeft;
+        offsetY = clientY - scratchPopup.offsetTop;
+    }
 
-  // Desktop Drag Bindings
-  scratchHeader.addEventListener("mousedown", startWindowDrag);
-  document.addEventListener("mousemove", dragWindow);
-  document.addEventListener("mouseup", stopWindowDrag);
+    function dragWindow(e) {
+        if (!isDraggingWindow) return;
+        e.preventDefault();
 
-  // Mobile Drag Bindings
-  scratchHeader.addEventListener("touchstart", startWindowDrag);
-  document.addEventListener("touchmove", dragWindow, { passive: false });
-  document.addEventListener("touchend", stopWindowDrag);
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        scratchPopup.style.left = (clientX - offsetX) + "px";
+        scratchPopup.style.top = (clientY - offsetY) + "px";
+    }
+
+    function stopWindowDrag() {
+        isDraggingWindow = false;
+    }
+    scratchHeader.addEventListener("mousedown", startWindowDrag);
+    document.addEventListener("mousemove", dragWindow);
+    document.addEventListener("mouseup", stopWindowDrag);
+    scratchHeader.addEventListener("touchstart", startWindowDrag);
+    document.addEventListener("touchmove", dragWindow, { passive: false });
+    document.addEventListener("touchend", stopWindowDrag);
 }
-function updateCountdown() {
-    const now = new Date();
-    
-    // Create a target date object in UTC
-    let targetMonday = new Date();
-    
-    // Find how many days to add to get to the next Monday
-    // now.getUTCDay() returns 0 for Sunday, 1 for Monday, etc.
-    let daysUntilMonday = (1 - now.getUTCDay() + 7) % 7;
-    
-    // If it is currently Monday, check if 5:00 AM UTC has already passed
-    if (daysUntilMonday === 0) {
-        const currentUTCHours = now.getUTCHours();
-        // Change 5 to 4 if tracking EDT (Daylight Saving Time)
-        if (currentUTCHours >= 5) {
-            daysUntilMonday = 7; // Target next week's Monday instead
+
+let countdownScriptRun = false;
+let timeLeft = parseInt(localStorage.getItem("secondsLeftInPractice"))
+
+function updateDailyPracticeCountdown() {
+    let todayIso = (new Date()).toISOString().split('T')[0]
+    if (countdownScriptRun === false) {
+        countdownScriptRun = true
+        if (localStorage.getItem("secondsLeftInPractice")) {
+            if (localStorage.getItem("lastPracticeCountdownSet") === todayIso) {
+                const timer = setInterval(() => {
+                    if (isPaused) {
+                        if (isPaused == true) {
+                            return
+                        }
+                    }
+                    timeLeft--
+                    document.getElementById("time-left").innerHTML = `${Math.round(timeLeft / 60)}:${timeLeft % 60}`
+                    localStorage.setItem("secondsLeftInPractice", timeLeft)
+                    if (timeLeft <= 0) {
+                        clearInterval(timer)
+                        showTimeComplete()
+                    }
+                }, 1000)
+            }
         }
     }
-    
-    // Set the target date matching next Monday at 5:00 AM UTC (12:00 AM EST)
-    targetMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
-    targetMonday.setUTCHours(5, 0, 0, 0); // 5 AM UTC = 12 AM EST
-
-    const timeDifference = targetMonday - now;
-
-    // If the countdown is finished
-    if (timeDifference <= 0) {
-        document.getElementById("countdown-timer").innerHTML = "🎉 New Content Unlocked!";
-        return;
-    }
-
-    // Time calculations for days, hours, minutes, and seconds
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-    // Display the results with leading zeros for clean formatting
-    document.getElementById("days").innerText = String(days).padStart(2, '0');
-    document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-    document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+function showTimeComplete() {
+    document.getElementById("practiceFinishedModal").style.display = "block";
+    overlay.style.display = "block"
+}
+const INACTIVITY_LIMIT = 3 * 60 * 1000
+let idleTimer = null
+let restIdle = null
+let isPaused = false
+document.getElementById("time-left").innerHTML = `${Math.round(localStorage.getItem("secondsLeftInPractice") / 60)}:${localStorage.getItem("secondsLeftInPractice") % 60}`
+function setupRestTimer() {
+    restIdle = () => {
+        isPaused = false
+        clearTimeout(idleTimer)
+        idleTimer = setTimeout(() => {
+            isPaused = true
+            document.getElementById("pausePannel").style.display = "block"
+            overlay.style.display = "block"
+        }, INACTIVITY_LIMIT)
+    }
+}
+if (timeLeft) {
+    if (timeLeft > 0) {
+        document.getElementById("time-left").innerHTML = `${Math.round(localStorage.getItem("secondsLeftInPractice") / 60)}:${localStorage.getItem("secondsLeftInPractice") % 60}`
+    } else {
+        document.getElementById("timer-container").style.display = "none"
+    }
+}

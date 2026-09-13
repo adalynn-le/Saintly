@@ -9,7 +9,7 @@ let width;
 
 document.addEventListener('DOMContentLoaded', () => {
   width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  
+
   const sidebarPlaceholder = document.getElementById('sidebarPlaceholder');
   if (sidebarPlaceholder) {
     sidebarPlaceholder.innerHTML = `
@@ -67,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="material-symbols-outlined iconsvg">book</span>
               <span class="dropdownText">Topics Dashboard</span>
             </a>
+                        <a href="study plan.html">
+              <span class="material-symbols-outlined iconsvg">calendar_today</span>
+              <span class="dropdownText">Study Planner</span>
+            </a>
             <a href="/ourpartners.html">
               <span class="material-symbols-outlined">handshake</span>
               <span class="dropdownText">Our Partners</span>
@@ -97,24 +101,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   sidebar = document.getElementById('sidebar');
-  
+
   document.getElementById('side-bar-toggle')?.addEventListener('click', toggleSidebar);
-  document.getElementById('btn-subjects')?.addEventListener('click', function() { toggleSubMenu(this); });
-  document.getElementById('btn-advprep')?.addEventListener('click', function() { toggleSubMenu(this); });
-  document.getElementById('btn-collabs')?.addEventListener('click', function() { toggleSubMenu(this); });
+  document.getElementById('btn-subjects')?.addEventListener('click', function () { toggleSubMenu(this); });
+  document.getElementById('btn-advprep')?.addEventListener('click', function () { toggleSubMenu(this); });
+  document.getElementById('btn-collabs')?.addEventListener('click', function () { toggleSubMenu(this); });
 
   updateMainMargin();
   updateTopBar();
   supabase.auth.onAuthStateChange(async (event, session) => {
     const link = document.getElementById("yourDashLink");
 
-    if (!link) return; 
+    if (!link) return;
 
     if (session && (event === 'SIGNED_IN' || event === 'INITIAL_SESSION')) {
       link.style.setProperty('display', 'flex', 'important');
       link.style.setProperty('align-items', 'center', 'important');
-      link.style.setProperty('gap', '5px', 'important'); 
-      
+      link.style.setProperty('gap', '5px', 'important');
+
       console.log("Sidebar Auth: User Session Found -> Displaying Dashboard Link");
     } else {
       link.style.setProperty('display', 'none', 'important');
@@ -150,7 +154,7 @@ function updateMainMargin() {
   }
 }
 
-function updateTopBar(){
+function updateTopBar() {
   const topBar = document.getElementById('top-bar');
   if (!topBar || !sidebar) return;
 
