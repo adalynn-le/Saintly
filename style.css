@@ -3790,7 +3790,7 @@ input[type="range"]:focus{
 .intensityOption{
   height: 75x;
   width: 400px;
-  background-color: white !important;
+  background-color: var(--background-color) !important;
   border: 2px solid var(--border-color) !important;
   border-radius: 10px;
   padding: 10px;
@@ -4015,3 +4015,121 @@ input[type="range"]:focus{
   'opsz' 24
 }
 
+
+#verticalHr{
+  background-color: var(--border-color);
+  width: 2px;
+  height: 300px;
+}
+.saintly-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 4px 13px;
+    text-align: center !important;
+    
+    border-radius: 999px;
+    
+    background: var(--highlight-color);
+    border: 0.25px solid var(--primary-color);
+    
+    color: var(--primary-color);
+    font-weight: 500;
+    
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.saintly-tagOrange {
+    display: inline-flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 4px 13px;
+    text-align: center !important;
+
+    
+    border-radius: 999px;
+    
+    background: var(--highlight-color-orange);
+    border: 0.25px solid var(--accent-color);
+    
+    color: var(--accent-color);
+    font-weight: 500;
+    
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+
+.saintly-tagYellow {
+    display: inline-flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 4px 13px;
+    text-align: center !important;
+
+    
+    border-radius: 999px;
+    
+    background: light-dark(#fff3e5, #3a3025);
+    border: 0.25px solid #ffc14f;
+    
+    color: #ffc14f;
+    font-weight: 500;
+    
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.volunteer-search {
+    margin: 25px 0 30px;
+}
+
+#volunteerSearch {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--accent-color);
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: 'National Park', sans-serif;
+    font-size: 1rem;
+    outline: none;
+}
+
+
+.volunteer-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.volunteer-filter {
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--accent-color);
+    background: var(--background-color);
+    color: var(--accent-color);
+    font-family: 'National Park', sans-serif;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.volunteer-filter:hover {
+    background: var(--primary-color);
+    color: white
+}
+
+.volunteer-filter.active {
+    background: var(--background-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
