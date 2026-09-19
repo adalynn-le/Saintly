@@ -1,0 +1,442 @@
+<head>
+  <title>Saintly | Education Team Application</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3X50VWZM2"></script>
+  <script src="https://t.contentsquare.net/uxa/cb77e0fd80dbf.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N3X50VWZM2');
+  </script>
+  <link rel="stylesheet" href="\style.css">
+  <meta charset="UTF-8">
+  <meta name="description"
+    content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly">
+  <meta name="keywords"
+    content="AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+  <title>Saintly | Accessible Competition Math Prep by Students for Students</title>
+  <meta property="og:title" content="Saintly | Accessible Competition Math Prep by Students for Students" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://saintlymath.com" />
+  <meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:description"
+    content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href=".favicon-16x16.png">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=chevron_left,chevron_right,star,stars" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=ads_click,book,calendar_today,check,close_small,handshake,lab_profile,local_fire_department,playlist_add_check,send,star,sunny,update,volunteer_activism" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Saintly Math",
+  "url": "saintlymath.com",
+  "description": "Free AMC 10 and AMC 12 prep",
+  "sameAs": []
+}
+</script>
+<script>
+  window.addEventListener("load", function () {
+    const loader = document.getElementById("loader");
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.style.display = "none";
+      document.body.style.overflow = ""
+    }, 300)
+  });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+<body>
+  <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+    <p style="font-family: 'Instrument Serif', serif;font-size: 48px; color: #77a4ff; font-style: italic;">
+      Saintly
+    </p>
+  </div>
+  <nav id="sidebarPlaceholder"></nav>
+  <script type="module" src="subfoldersidebar.js"></script>
+  <div id="top-bar">
+    <div class="aContainer">
+      <a href="/index.html" class="top-text">Home</a>
+    </div>
+    <div class="center-align">
+      <button class='topBtn' onclick="window.location.href='index.html'">
+        <img alt="full Saintly Logo" class="fullLogo" src="../images/fullLogo.png">
+      </button>
+    </div>
+    <div class="right-align">
+      <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+        send
+      </span>
+      <span onclick="window.location.href='/volunteer.html'" class="material-symbols-outlined volunteerButton">
+        volunteer_activism
+      </span>
+      <span class="material-symbols-outlined volunteerButton brightness" id="brightness">
+        sunny
+      </span>
+      <a href="https://discord.gg/SuAvtn7595" style="justify-self: flex-end;" class="start-practice hover"
+        id="joindiscord">Join Our Discord!</a>
+      <button id="accountBtn"
+        style=" height: 34px; display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 6px; color: #88b0ff; font-family: 'National Park', sans-serif; padding: 0 12px; margin: 0 5px; cursor: pointer;  width: auto !important; max-width: fit-content !important;"
+        class="start-practice hover">
+        <span class="material-symbols-outlined"
+          style="margin: 0; font-size: 20px; display: inline-flex; align-items: center; justify-content: center; color: #88b0ff;">
+          account_circle
+        </span>
+        <span style="white-space: nowrap;" id="username-display">Log In</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <div class="container" id="container">
+      <h1 class="amc10title">Apply as a Volunteer (Education Team)</h1>
+      <a href="#startApplication" class="start-practice">Start Application</a>
+      <p>Saintly's educational volunteering team is in charge of creating all of the educational content and direction of our platform. </p>
+        <span style="display: flex; flex-direction: row; gap: 50px">
+                  <div style="flex: 1">
+          <h2 class="tinytitle">WHAT DO VOLUNTEERS DO?</h2>
+          <h2 class="subtitle">Student's Helping Students</h2>
+          <p class="par">Saintly education volunteers are the key drivers of the pathway and essence of Saintly. They <mark class="blue">ideate, plan, and develop the content on our page.</mark> Without education, Saintly cannot grow. Saintly tutors can help <mark class="blue">create and edit learning pathways</mark>, <mark class="blue">write scripts for and record videos</mark>, and <mark class="blue">write articles</mark>. As a volunteer, you will be putting things into the world that oters are actively using to carry their learning.
+          <p class="par">Here is the full list of responsibilities</p>
+          <ul>
+            <li style="font-size: 17px">Create and edit learning pathways</li>
+            <li style="font-size: 17px">Write scripts for videos</li>
+            <li style="font-size: 17px">Record and edit educational videos</li>
+            <li style="font-size: 17px">Write articles and create demos</li>
+            <li style="font-size: 17px">Create and think of external content ideas to promote and help studying Saintly</li>
+            <li style="font-size: 17px">Create tutor packets and materials</li>
+          </ul>
+        </div>
+          <div style="flex: 0.75">
+            <h3 class="tinytitle">WHAT IS THE STRUCTURE LIKE?</h3>
+            <h3 class="subtitle">3 Roles, One Goal</h3>
+            <span class="howworkcard">
+              <h4 class="amc10subtitle ittyBitty">Curriculum Developer</h4>
+              <p class="par">Plan and prioritize what lessons need to be covered next, pick who from the team you think would work best with it. Create detailed curriculum guides and materials.</p>
+            </span>
+            <span class="howworkcard">
+              <h4 class="amc10subtitle ittyBitty">Video Creator</h4>
+              <p class="par">Create engaging scripts for education videos. Show and present curriculum in an engaging manner. Record videos using scripts and interactive demos to help students learn in a personalized manner.</p>
+            </span>
+            <span class="howworkcard">
+              <h4 class="amc10subtitle ittyBitty">Article Writer</h4>
+              <p class="par">Write topics glossary articles and suggest demos. Create easy to explain pieces to help students learn.</p>
+            </span>
+          </div>
+         
+              </span>
+            </span>
+      <h2 class="tinytitle">WHO ARE WE LOOKING FOR?</h2>
+      <h2 class="subtitle">Leaders and Learners</h2>
+      <p class="par">Saintly values <mark class="blue">leadership and initiative</mark> over knowledge. We believe everybody has the ability to grow into dedicated learners. We look for the following characteristics in our tutors:</p>
+      <span style="display: flex; flex-direction: row; gap: 10px">
+    <div class="howworkcard" style="flex: 1">
+          <h3 class="amc10subtitle ittyBitty">Understanding</h3>
+          <p class="par">In order to teach, you need to be able to truly understand. We want our volunteers to be so familiar and confident with their skill that they can explain even the most complex concepts as if they are simple. Our content should take difficult concepts and explain them simply. </p>
+        </div>
+    <div class="howworkcard" style="flex: 1">
+          <h3 class="amc10subtitle ittyBitty">Communication</h3>
+          <p class="par">Volunteers will be working in a large and collaborative environment. This requires coordination between groups, people, and responsibilities. We expect volunteers to be able to communicate with each other and work together to achieve a common goal. </p>
+        </div>
+                <div class="howworkcard" style="flex: 1">
+          <h3 class="amc10subtitle ittyBitty">Initiative</h3>
+          <p class="par">We aren't just looking for content creators, we are looking for dedicated members of the saintly team who can take initiative and grow our program. Tutoring is just one of the many responsibilities associated with working on Saintly, and we hope to get tutors who will actively contribute outside of their repsonsibilities, without being told what to do.</p>
+        </div>
+      </span>
+      <span style="display: flex; flex-direction: row; gap: 50px;">
+        <div style="flex: 1">
+                    <h2 class="tinytitle">WHY SHOULD I VOLUNTEER WITH SAINTLY?</h2>
+
+          <h2 class="subtitle">A Helping Hand in Free Education</h2>
+          <p class="par"><mark class="blue">The best way to enrich your learning experience and reach proficiency in a
+              subject is to teach.</mark> By volunteering with Saintly, you will not just be helping a community of over
+            two thousand students learn, you'll be deepening your own understanding while getting access to unique and
+            complex curriculum. By working with Saintly, you will
+          <ul>
+            <li style="font-size: 17px">Help yourself reach new levels of proficiency and understanding</li>
+            <li style="font-size: 17px">Interact with a community of dedicated learners</li>
+            <li style="font-size: 17px">Get real-world experience that could benefit your resume and applications</li>
+            <li style="font-size: 17ox">Be Saintly!</li>
+          </ul>
+          </p>
+          <h2 class="tinytitle">WHO CAN APPLY?</h2>
+          <h2 class="subtitle">Our Requirements</h2>
+          <ul>
+            <li style="font-size: 17px">At least 15 years old, and no older than 18</li>
+            <li style="font-size: 17px">Competed in at least one math competition</li>
+            <li style="font-size: 17px">Proficiency in math  (completed Algebra 2 or Integrated Math 3 and currently enrolled in Precalculus or equivalent)</li>
+            <li style="font-size: 17px">At least one hour per week to dedicate to responsibilities</li>
+            <li style="font-size: 17px">Readily available access to strong internet connection (must be able to hodl zoom meetings with camera and microphone on)</li>
+          </ul>
+        </div>
+        <div style="flex: 1">
+
+          <h2 class="tinytitle">WHAT IS REQUIRED OF VOLUNTEERS?</h2>
+          <h2 class="subtitle">Saintly Volunteer, Saintly Behavior</h2>
+          <p class="par">Volunteers are expected to follow a <mark class="blue">Saintly code of conduct</mark> to ensure
+            safe, appropriate, and fair behavior. All applicants and registered volunteers are expected to follow the
+            attatched code of conduct. By applying, you are comitting to following conduct:</p>
+          <ul>
+            <li style="font-size: 17px">No harassment</li>
+            <li style="font-size: 17px">No inappropriate or unprofessional communication</li>
+            <li style="font-size: 17px">No direct or unsupervised contact with team members or users</li>
+            <li style="font-size: 17px">No requesting or prodviding unescessary personal information</li>
+
+            <li style="font-size: 17px">All concerns and events must be reported to Saintly executives</li>
+            <li style="font-size: 17px">Maintain appropriate professional boundaries</li>
+          </ul>
+
+        </div>
+        
+      </span>
+     <iframe id="start-application" data-tally-src="https://tally.so/embed/44ZNro?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="849" frameborder="0" marginheight="0" marginwidth="0" title="Education Team Application"></iframe>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+      <div class="helpPannel" id="privacyPolicy" display="none">
+
+        <div class="helpPannel" id="accountPannel">
+          <div id="login">
+            <h2 class="amc10subtitle ittyBitty">Welcome Back!</h2>
+            <p class="par">Access your progress across all your devices</p>
+            <p id="login-error" style="color: red"></p>
+            <input type="email" id="login-email" placeholder="Email" />
+            <input type="password" id="login-password" placeholder="Password" />
+            <span style="display: flex; flex-direction: row; justify-content: flex-start; gap: 16px">
+
+            </span>
+            <button id="btn-login" class="start-practice">Log In</button>
+            <button class="start-practice" id="btn-request-reset">Forgot Your Password? Send a Reset Email</button>
+
+
+          </div>
+          <div id="signup" style="display: none">
+            <p id="signup-error" style="color: red"></p>
+            <h2 class="amc10subtitle ittyBitty">Make an Account</h2>
+            <p class="par">Want to store your progress, see how you stand in comparison to other students, and climb the
+              leaderboard? Create a free account today!</p>
+            <div id="auth-container">
+              <input type="email" id="auth-email" placeholder="Email" />
+              <input type="password" id="auth-password" placeholder="Password" />
+              <input type="password" id="auth-password-check" placeholder="Confirm Password" />
+              <input type="text" id="auth-username" placeholder="Display Name" />
+            </div>
+            <button id="btn-signup" class="start-practice">Sign Up</button>
+          </div>
+          <a class="amc10subtitle ittyBitty pset-link" href="your dashboard.html" id="btn-dashboard">Username</a>
+          <button id="btn-logout" class="start-practice" style="display: none; cursor: pointer;">Log Out</button>
+          <button id="no-account" class="start-practice">Don't have an account? Sign Up!</button>
+          <button id="btn-delete-account" class="start-practice" style="display: none">
+            Delete Account & Wipe Progress
+          </button>
+        </div>
+
+        <div id="helpPannel" class="helpPannel">
+          <h2>Need Some Help?</h2>
+          <p class="par">Contact us through our form</p>
+          <div data-fs-success></div>
+          <div data-fs-error></div>
+
+          <form action="https://formspree.io/f/mwvwgrwr" method="POST">
+            <label class="formsubmission">
+              Name:
+              <input type="text" name="name" placeholder="First Last">
+            </label>
+            <label class="formsubmission">
+              Email:
+              <input type="email" name="email" placeholder="youremail@gmail.com">
+            </label>
+            <label class="formsubmission">
+              Message:
+              <input type="text" name="message" required></input>
+            </label>
+            <!-- your other form fields go here -->
+            <label class="formsubmission">
+              <p>What type of message is this?</p>
+              <div class="mcqwrapper" style="display: flex; flex-wrap: wrap; gap: 8px 16px;">
+                <label class="checkbox-option">
+                  <input type="checkbox" name="messageType"> Reporting an Error
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="messageType"> Suggesting an addition
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="messageType"> Feedback or Review
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="messageType"> Other
+                </label>
+              </div>
+            </label>
+          </form>
+        </div>
+        <h4>Privacy Policy</h4>
+        <h5>Data Collection</h5>
+        <li>We use local storage to track and save your ELO on your device</li>
+        <li>We use Supabase backend to track overall acuracy on questions</li>
+        <li>We trackk individual user usage on our website, pages, etc. by tracking time spent and interaction</li>
+        <h5>How we use your data</h5>
+        <li>To personalize your learning experience</li>
+        <li>We never sell your data to third parties</li>
+        <h5>Children's Privacy</h5>
+        <li>Saintly is intended for students. We encourage parents to monitor their children's internet usage. We do not
+          knowingly collect personal information from children under 13 without parental consent (per COPPA guidelines).
+        </li>
+      </div>
+      <div class="helpPannel" id="termsAndConditions" display="none">
+        <h4>Terms and Conditions</h4>
+        <li>By using Saintly you agree to the terms and conditions</li>
+        <li>You may not scrape the site or re-distribute our unique interactive code without permission.</li>
+        <li>Be "Saintly." No harassment, no attempts to hack the site, and no using the platform to cheat on active
+          competitions.</li>
+        <li>Math is hard! While we strive for 100% accuracy, Saintly is provided "as is." We aren't responsible if a
+          specific formula explanation doesn't lead to a perfect AMC score (though we hope it does!).</li>
+        <li>Saintly and its volunteers are not liable for any damages arising from your use of the site.</li>
+      </div>
+  </main>
+
+  <div id="overlay"></div>
+
+  </main>
+  <footer class="saintly-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <img class="footer-logo" src="../images/fullLogo.png" height="35px"></img>
+        <p>Making competition math accessible for everyone.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/volunteer.html">Volunteer</a></li>
+          <li><a href="/am10.html">AMC 10</a></li>
+          <li><a href="/amc10adaptivepractice.html">Adaptive Practice</a></li>
+          <li><a href="/algebralearningpath.html">Algebra</a></li>
+          <li><a href="/topics dash.html">Topics Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <div class="social-icons">
+          <a>saintly.math@gmail.com</a>
+          <span style="display: flex; flex-direction: row">
+            <a href="https://instagram.com/saintly.math" class="fa fa-instagram" style="display: inline-block">
+              <p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>
+                @saintly.math</p>
+            </a>
+          </span>
+          <span style="display: flex; flex-direction: row">
+            <a href="https://pinterest.com/saintlymath" class="fa fa-pinterest" style="display: inline-block">
+              <p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>Saintly</p>
+            </a>
+
+          </span>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Privacy</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+          <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+        </ul>
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Saintly Math. Built with drive.
+    </div>
+  </footer>
+  <div id="overlay"></div>
+  <canvas id="confetti-canvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+    const toggleBrightness = document.getElementById("brightness")
+    const carouselLight = document.querySelectorAll("carousel-logo-light")
+    const carouselDark = document.querySelectorAll("carousel-logo-dark")
+    let colorMode = 'light'
+    let colorModeTrue = localStorage.getItem("colorMode")
+    console.log(colorModeTrue)
+    if (colorModeTrue !== false) {
+      console.log("setting color mode")
+      colorMode = colorModeTrue
+      console.log(colorModeTrue)
+      if (colorMode === 'dark') {
+        colorMode = 'dark';
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        toggleBrightness.textContent = "sunny"
+        localStorage.setItem("colorMode", "dark")
+      } else {
+        colorMode = 'light';
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        toggleBrightness.textContent = "bedtime"
+        localStorage.setItem("colorMode", "light")
+      }
+    } else {
+      function toggleSystemTheme() {
+        const root = document.documentElement;
+
+        // 1. Check what the system preference is, or if it's already set
+        if (!root.style.colorScheme) {
+          // If it's not set yet, match the user's system preferences
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          root.style.colorScheme = prefersDark ? 'dark' : 'light';
+        }
+
+        colorMode = root.style.colorScheme;
+
+        // 2. Add the correct matching class right away so the logos render correctly!
+        if (colorMode === 'dark') {
+          root.classList.add('dark');
+          root.classList.remove('light');
+        } else {
+          root.classList.add('light');
+          root.classList.remove('dark');
+        }
+      }
+      toggleSystemTheme();
+    }
+    toggleBrightness.addEventListener("click", function () {
+      if (colorMode === 'dark') {
+        colorMode = 'light';
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        toggleBrightness.textContent = "bedtime"
+        localStorage.setItem("colorMode", colorMode)
+      } else {
+        colorMode = 'dark';
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        toggleBrightness.textContent = "sunny"
+        localStorage.setItem("colorMode", colorMode)
+      }
+      console.log(localStorage.getItem("colorMode"));
+    });
+  </script>
+</body>
