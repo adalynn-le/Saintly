@@ -4133,3 +4133,35 @@ input[type="range"]:focus{
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
+.job-search-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto 25px auto;
+}
+
+.job-search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 18px;
+
+    border: 2px solid #d9d9d9;
+    border-radius: 12px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    background: white;
+    color: #222;
+
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.job-search:focus {
+    border-color: #4f7cff;
+    box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.12);
+}
+
+.job-search::placeholder {
+    color: #888;
+}
