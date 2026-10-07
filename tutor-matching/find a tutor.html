@@ -27,7 +27,7 @@ window.addEventListener("load", function () {
 </script>
  
 <meta name="keywords" content="arithmetic, what is arithmetic, AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
-    <meta property="og:title" content="Saintly | Absolute Value" />
+    <meta property="og:title" content="Saintly | Find a Tutor" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://saintlymath.com" />
 <meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
@@ -91,6 +91,43 @@ sunny
     <div class="container">
     <h1 class="amc10title">Find a Tutor!</h1>
     <p class="par">Improve your competition math skills through personalized teaching with a dedicated tutor suited to your needs!</p>
+    <div id="tutor-selection-wizard">
+      <h2 class="amc10subtitle ittyBitty">Find Your Perfect Tutor</h2>
+      <p class="par">Help us find a tutor that fits your style, ability, and schedule. Tell us a little bit about yourself!</p>
+      <div class="tutorWizardQuestionContainer">
+      <h3 class="tutorWizardQuestionTitle">Full Name</h3>
+      <input class="tutorWizardTextEntry" id="fullName" type="text" placeholder="Jane Doe"></input>
+      </div>
+      <div class="tutorWizardQuestionContainer">
+      <h3 class="tutorWizardQuestionTitle">Preferred Name</h3>
+      <input class="tutorWizardTextEntry" id="preferredName" type="text" placeholder="Jane Doe"></input>
+      </div>
+      <span style="display: flex; flex-direction: row; width: 75%; gap: 10px; padding: 0; justify-content: space-between">
+      <div class="tutorWizardQuestionContainer"tyle="flex: 1">
+      <h3 class="tutorWizardQuestionTitle">Age</h3>
+      <input class="tutorWizardTextEntry" id="age" type="number" placeholder="15" style="width: 550px"></input>
+      </div>
+      <div class="tutorWizardQuestionContainer"tyle="flex: 1">
+      <h3 class="tutorWizardQuestionTitle">Grade</h3>
+      <input class="tutorWizardTextEntry" id="grade" type="number" placeholder="9" style="width: 550px; margin-left: 0"></input>
+      </div>
+      </span>
+      <div class="tutorWizardQuestionContainer"tyle="flex: 1">
+      <h3 class="tutorWizardQuestionTitle">Gender</h3>
+      <label for = "male">
+        <input name="gender" type="radio" id="male">Male
+      </label>
+      <label for="female">
+        <input name = "gender" type="radio" id="female">Female
+      </label>
+      <label for = "other">
+        <input name="gender" type ="radio" id="other">Other
+      </label>
+      <label for="preferNotToSay">
+        <input name="gender" type="radio" id="preferNotToSay">Prefer Not to Say
+      </label>
+      </div>
+    </div>
     </div>
 <div class="helpPannel" id="privacyPolicy" display="none">
 
