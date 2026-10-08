@@ -12,7 +12,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="\favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="\favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">   
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=account_circle,ads_click,bedtime,book,calendar_today,check,close_small,exclamation,handshake,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,sunny,volunteer_activism,warning" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=account_circle,ads_click,bedtime,book,calendar_today,check,close_small,exclamation,handshake,lab_profile,leaderboard,local_fire_department,playlist_add_check,select_check_box,send,star,stars,sunny,volunteer_activism,warning" />
+   <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=chevron_left,chevron_right,star,stars" />
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=close" />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <script>
@@ -103,16 +105,16 @@ sunny
       <input class="tutorWizardTextEntry" id="preferredName" type="text" placeholder="Jane Doe"></input>
       </div>
       <span style="display: flex; flex-direction: row; width: 75%; gap: 10px; padding: 0; justify-content: space-between">
-      <div class="tutorWizardQuestionContainer"tyle="flex: 1">
+      <div class="tutorWizardQuestionContainer"style="flex: 1">
       <h3 class="tutorWizardQuestionTitle">Age</h3>
       <input class="tutorWizardTextEntry" id="age" type="number" placeholder="15" style="width: 550px"></input>
       </div>
-      <div class="tutorWizardQuestionContainer"tyle="flex: 1">
+      <div class="tutorWizardQuestionContainer"style="flex: 1">
       <h3 class="tutorWizardQuestionTitle">Grade</h3>
       <input class="tutorWizardTextEntry" id="grade" type="number" placeholder="9" style="width: 550px; margin-left: 0"></input>
       </div>
       </span>
-      <div class="tutorWizardQuestionContainer"tyle="flex: 1">
+      <div class="tutorWizardQuestionContainer"style="flex: 1">
       <h3 class="tutorWizardQuestionTitle">Gender</h3>
       <label for = "male">
         <input name="gender" type="radio" id="male">Male
@@ -127,7 +129,370 @@ sunny
         <input name="gender" type="radio" id="preferNotToSay">Prefer Not to Say
       </label>
       </div>
+
+<div class="tutorWizardQuestionContainer">
+    <h3 class="tutorWizardQuestionTitle">Experience in Competition Math</h3>
+    <p class="tutorWizardQuestionDescription">
+        Choose the level that best describes your current experience.
+    </p>
+
+    <div class="tutorOptionGrid tutorExperienceGrid">
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="first-time" checked>
+            <span class="tutorOptionContent">
+                <strong>First Time</strong>
+                <small>I've never done competition math before.</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="novice">
+            <span class="tutorOptionContent">
+                <strong>Novice</strong>
+                <small>I've done some competition math and am still learning the basics.</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="intermediate">
+            <span class="tutorOptionContent">
+                <strong>Intermediate</strong>
+                <small>I'm comfortable with competition-style problems.</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="advanced-aime">
+            <span class="tutorOptionContent">
+                <strong>Advanced / AIME</strong>
+                <small>I've competed at an advanced level or qualified for AIME.</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="advanced-preparation">
+            <span class="tutorOptionContent">
+                <strong>Advanced Preparation</strong>
+                <small>I'm preparing for very advanced competitions such as USAMO.</small>
+            </span>
+        </label>
+
     </div>
+</div>
+
+
+<!-- =========================================================
+     SUBJECT PREFERENCE
+     ========================================================= -->
+
+<div class="tutorWizardQuestionContainer subjectPreferenceSection">
+
+    <h3 class="tutorWizardQuestionTitle">
+        Subject Preference
+    </h3>
+
+    <p class="tutorWizardQuestionDescription">
+        Drag each subject into the category that best describes
+        how much help you'd like with it.
+    </p>
+
+
+    <div class="subjectPreferenceBoard">
+
+
+        <!-- NEED HELP -->
+
+        <div class="subjectCategory">
+
+            <div class="subjectCategoryTitle">
+                Need Help
+            </div>
+
+            <div
+                class="subjectDropZone"
+                data-category="need-help"
+            >
+                <div class="dropPlaceholder">
+                    Drop subjects here
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- COULD USE HELP -->
+
+        <div class="subjectCategory">
+
+            <div class="subjectCategoryTitle">
+                Could Use Help
+            </div>
+
+            <div
+                class="subjectDropZone"
+                data-category="could-use-help"
+            >
+                <div class="dropPlaceholder">
+                    Drop subjects here
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- COMFORTABLE -->
+
+        <div class="subjectCategory">
+
+            <div class="subjectCategoryTitle">
+                Comfortable
+            </div>
+
+            <div
+                class="subjectDropZone"
+                data-category="comfortable"
+            >
+                <div class="dropPlaceholder">
+                    Drop subjects here
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- NO HELP -->
+
+        <div class="subjectCategory">
+
+            <div class="subjectCategoryTitle">
+                No Help Needed
+            </div>
+
+            <div
+                class="subjectDropZone"
+                data-category="no-help"
+            >
+                <div class="dropPlaceholder">
+                    Drop subjects here
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUBJECTS TO SORT -->
+
+    <div class="subjectBank" id="subjectBank">
+
+        <div
+            class="subjectChip"
+            draggable="true"
+            data-subject="Algebra"
+        >
+            Algebra
+        </div>
+
+        <div
+            class="subjectChip"
+            draggable="true"
+            data-subject="Geometry"
+        >
+            Geometry
+        </div>
+
+        <div
+            class="subjectChip"
+            draggable="true"
+            data-subject="Number Theory"
+        >
+            Number Theory
+        </div>
+
+        <div
+            class="subjectChip"
+            draggable="true"
+            data-subject="Combinatorics"
+        >
+            Combinatorics
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tutorWizardQuestionContainer">
+    <h3 class="tutorWizardQuestionTitle">Preferred Class Size</h3>
+
+    <p class="tutorWizardQuestionDescription">
+        What type of tutoring environment would you prefer?
+    </p>
+
+    <div class="tutorOptionGrid classSizeGrid">
+
+        <label class="tutorOption">
+            <input type="radio" name="classSize" value="individual">
+            <span class="tutorOptionContent">
+                <strong>Individual</strong>
+                <small>One student and one tutor</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="classSize" value="small-group">
+            <span class="tutorOptionContent">
+                <strong>Small Group</strong>
+                <small>A few students learning together</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="classSize" value="large-group">
+            <span class="tutorOptionContent">
+                <strong>Large Group</strong>
+                <small>A larger class environment</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="classSize" value="seminar">
+            <span class="tutorOptionContent">
+                <strong>Seminar</strong>
+                <small>A structured discussion or lesson</small>
+            </span>
+        </label>
+
+    </div>
+</div>
+
+
+
+<div class="tutorWizardQuestionContainer">
+    <h3 class="tutorWizardQuestionTitle">
+        Tell Us About Yourself
+    </h3>
+
+    <p class="tutorWizardQuestionDescription">
+        Tell your tutor a little about yourself, your experience,
+        your goals, and how you learn best.
+    </p>
+
+    <textarea
+        class="tutorWizardTextEntry tutorWizardTextarea"
+        id="studentDescription"
+        name="studentDescription"
+        rows="7"
+        placeholder="Hello, my name is Jane. I've participated in AMC 8 and AMC 10 before and enjoy competition math because I like solving difficult problems. I would like to get better at geometry and combinatorics. I learn best through worked examples and then trying problems myself..."
+    ></textarea>
+
+    <p class="tutorFieldHint">
+        This description may be shared with tutors you are matched with.
+    </p>
+</div>
+
+
+<!-- =========================================================
+     WEEKLY AVAILABILITY
+     ========================================================= -->
+
+<div class="tutorWizardQuestionContainer availabilitySection">
+
+    <h3 class="tutorWizardQuestionTitle">
+        Timing
+    </h3>
+
+    <p class="tutorWizardQuestionDescription">
+        Select the times you are usually available each week.
+        Click and drag across the calendar to highlight a time range.
+    </p>
+
+
+    <div class="availabilityTimezone">
+
+        <span class="availabilityTimezoneLabel">
+            Time Zone
+        </span>
+
+        <select
+            class="tutorWizardSelect availabilityTimezoneSelect"
+            id="timeZone"
+            name="timeZone"
+        >
+            <option value="">
+                Select Time Zone
+            </option>
+
+            <option value="PT">
+                Pacific Time
+            </option>
+
+            <option value="MT">
+                Mountain Time
+            </option>
+
+            <option value="CT">
+                Central Time
+            </option>
+
+            <option value="ET">
+                Eastern Time
+            </option>
+
+            <option value="AKT">
+                Alaska Time
+            </option>
+
+            <option value="HT">
+                Hawaii Time
+            </option>
+        </select>
+
+    </div>
+
+
+    <div class="weeklyCalendar">
+
+        <div class="calendarHeader">
+
+            <div class="calendarTimeCorner"></div>
+
+            <div class="calendarDay">Mon</div>
+            <div class="calendarDay">Tue</div>
+            <div class="calendarDay">Wed</div>
+            <div class="calendarDay">Thu</div>
+            <div class="calendarDay">Fri</div>
+            <div class="calendarDay">Sat</div>
+            <div class="calendarDay">Sun</div>
+
+        </div>
+
+
+        <div
+            class="calendarGrid"
+            id="availabilityCalendar"
+        ></div>
+
+    </div>
+
+
+    <div
+        class="availabilitySummary"
+        id="availabilitySummary"
+    >
+        No times selected yet.
+    </div>
+
+</div>
+    <div
+        class="availabilitySummary"
+        id="availabilitySummary"
+    >
+        Select the times that usually work for you.
+    </div>
+
+</div>    </div>
     </div>
 <div class="helpPannel" id="privacyPolicy" display="none">
 
@@ -349,4 +714,5 @@ sunny
       console.log(localStorage.getItem("colorMode"));
     });
   </script>
+  <script type="module" src="find a tutorjs.js"></script>
 </body>
