@@ -333,7 +333,6 @@ helpBtn.addEventListener("click", function () {
                 helpOn = true
         }
 })
-//------------------------------Diagnostic------------------------
 let testDate = ""
 let testVersion = ""
 let today = new Date()

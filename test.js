@@ -10355,17 +10355,11 @@ checkBtn.addEventListener("click", async function () {
     if (questionType === 'all') {
         checkAnswerAll();
     }
-    // Inside your "Correct Answer" logic block:
-    clearInterval(timerInterval); // Freeze the clock immediately
-
-    // Add current performance metrics to your local totals
+    clearInterval(timerInterval); 
     userTotalTimeSpent += currentQuestionSeconds;
     userTimedQuestionsCount += 1;
-
-    // Update your interface displays
     updateAvgTimerUI();
 
-    // Sync the updated duration metrics directly to your Supabase profiles table
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if (session && !sessionError) {
         const { error: timerSyncError } = await supabase

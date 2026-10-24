@@ -93,28 +93,32 @@ sunny
     <div class="container">
     <h1 class="amc10title">Find a Tutor!</h1>
     <p class="par">Improve your competition math skills through personalized teaching with a dedicated tutor suited to your needs!</p>
-    <div id="tutor-selection-wizard">
+    <div id="tutorSelectionWizard">
       <h2 class="amc10subtitle ittyBitty">Find Your Perfect Tutor</h2>
       <p class="par">Help us find a tutor that fits your style, ability, and schedule. Tell us a little bit about yourself!</p>
-      <div class="tutorWizardQuestionContainer">
+      <div class="tutorWizardQuestionContainer" id="fullNameContainer">
       <h3 class="tutorWizardQuestionTitle">Full Name</h3>
       <input class="tutorWizardTextEntry" id="fullName" type="text" placeholder="Jane Doe"></input>
       </div>
-      <div class="tutorWizardQuestionContainer">
-      <h3 class="tutorWizardQuestionTitle">Preferred Name</h3>
-      <input class="tutorWizardTextEntry" id="preferredName" type="text" placeholder="Jane Doe"></input>
+      <div class="tutorWizardQuestionContainer" id="preferredNameContainer">
+      <h3 class="tutorWizardQuestionTitle">Preferred/First Name</h3>
+      <input class="tutorWizardTextEntry" id="preferredName" type="text" placeholder="Jane"></input>
       </div>
       <span style="display: flex; flex-direction: row; width: 75%; gap: 10px; padding: 0; justify-content: space-between">
-      <div class="tutorWizardQuestionContainer"style="flex: 1">
+      <div class="tutorWizardQuestionContainer" id="ageContainer"style="flex: 1">
       <h3 class="tutorWizardQuestionTitle">Age</h3>
       <input class="tutorWizardTextEntry" id="age" type="number" placeholder="15" style="width: 550px"></input>
       </div>
-      <div class="tutorWizardQuestionContainer"style="flex: 1">
-      <h3 class="tutorWizardQuestionTitle">Grade</h3>
+      <div class="tutorWizardQuestionContainer"id="gradeContainer"style="flex: 1">
+      <h3 class="tutorWizardQuestionTitle" >Grade</h3>
       <input class="tutorWizardTextEntry" id="grade" type="number" placeholder="9" style="width: 550px; margin-left: 0"></input>
       </div>
+      <div class="tutorWizardQuestionContainer" id="emailContainer" style="flex: 1">
+      <h3 class="tutorWizardQuestionTitle" >Email</h3>
+      <input class="tutorWizardTextEntry" id="email" type="email" placeholder="jane.doe@example.com" style="width: 550px; margin-left: 0"></input>
+      </div>
       </span>
-      <div class="tutorWizardQuestionContainer"style="flex: 1">
+      <div class="tutorWizardQuestionContainer" id="genderContainer" style="flex: 1">
       <h3 class="tutorWizardQuestionTitle">Gender</h3>
       <label for = "male">
         <input name="gender" type="radio" id="male">Male
@@ -130,7 +134,7 @@ sunny
       </label>
       </div>
 
-<div class="tutorWizardQuestionContainer">
+<div class="tutorWizardQuestionContainer" id="experienceContainer">
     <h3 class="tutorWizardQuestionTitle">Experience in Competition Math</h3>
     <p class="tutorWizardQuestionDescription">
         Choose the level that best describes your current experience.
@@ -181,12 +185,7 @@ sunny
     </div>
 </div>
 
-
-<!-- =========================================================
-     SUBJECT PREFERENCE
-     ========================================================= -->
-
-<div class="tutorWizardQuestionContainer subjectPreferenceSection">
+<div class="tutorWizardQuestionContainer subjectPreferenceSection" id="subjectPreferenceContainer">
 
     <h3 class="tutorWizardQuestionTitle">
         Subject Preference
@@ -199,9 +198,6 @@ sunny
 
 
     <div class="subjectPreferenceBoard">
-
-
-        <!-- NEED HELP -->
 
         <div class="subjectCategory">
 
@@ -219,10 +215,6 @@ sunny
             </div>
 
         </div>
-
-
-        <!-- COULD USE HELP -->
-
         <div class="subjectCategory">
 
             <div class="subjectCategoryTitle">
@@ -239,10 +231,6 @@ sunny
             </div>
 
         </div>
-
-
-        <!-- COMFORTABLE -->
-
         <div class="subjectCategory">
 
             <div class="subjectCategoryTitle">
@@ -259,10 +247,6 @@ sunny
             </div>
 
         </div>
-
-
-        <!-- NO HELP -->
-
         <div class="subjectCategory">
 
             <div class="subjectCategoryTitle">
@@ -281,10 +265,6 @@ sunny
         </div>
 
     </div>
-
-
-    <!-- SUBJECTS TO SORT -->
-
     <div class="subjectBank" id="subjectBank">
 
         <div
@@ -323,7 +303,7 @@ sunny
 
 </div>
 
-<div class="tutorWizardQuestionContainer">
+<div class="tutorWizardQuestionContainer" id="classSizeContainer">
     <h3 class="tutorWizardQuestionTitle">Preferred Class Size</h3>
 
     <p class="tutorWizardQuestionDescription">
@@ -369,7 +349,7 @@ sunny
 
 
 
-<div class="tutorWizardQuestionContainer">
+<div class="tutorWizardQuestionContainer" id="descriptionContainer">
     <h3 class="tutorWizardQuestionTitle">
         Tell Us About Yourself
     </h3>
@@ -391,13 +371,7 @@ sunny
         This description may be shared with tutors you are matched with.
     </p>
 </div>
-
-
-<!-- =========================================================
-     WEEKLY AVAILABILITY
-     ========================================================= -->
-
-<div class="tutorWizardQuestionContainer availabilitySection">
+<div class="tutorWizardQuestionContainer availabilitySection" id="availabilityContainer">
 
     <h3 class="tutorWizardQuestionTitle">
         Timing
@@ -477,26 +451,69 @@ sunny
     </div>
 
 
-    <div
-        class="availabilitySummary"
-        id="availabilitySummary"
-    >
-        No times selected yet.
-    </div>
 
 </div>
-    <div
-        class="availabilitySummary"
-        id="availabilitySummary"
+
+    <button class="start-practice" id="tutorFormComplete">Find my Tutor!</button>
+    <button class="start-practice" id="updateApplicationEdits" style="display: none;">Update Application</button>
+</div>    
+    <div id="tutorCatalogContainer" style="display: none">
+      <h2 class="amc10subtitle ittyBitty">Pick Your Ideal Tutor</h2>
+      <p class="par">We've sorted the perfect tutors for you based on your availability, learning style, and subject preferences. Click to learn more and contact a tutor!</p>
+      <div class="job-search-container">
+    <input
+        type="search"
+        id="jobSearch"
+        class="job-search"
+        placeholder="Search name, description, tags..."
+        aria-label="Search tutors"
     >
-        Select the times that usually work for you.
+</div>
+<div id="tutorCardsContainer" style="display: flex; flex-wrap: wrap;" style="display: none"></div>
     </div>
-
-</div>    </div>
+    <div id="locked" class="helpPannel" style="z-index: 1000; display: none;">
+      <h3 class="amc10subtitle ittyBitty">
+        Sign In to Get Tutored!
+      </h3>
     </div>
-<div class="helpPannel" id="privacyPolicy" display="none">
+  <div id="availabilityModal" class="helpPannel" style="z-index: 10000; display: none; width: 90%; max-height: 80%; overflow: scroll">
+    <div id="calendarView">
+    <h4 class="amc10subtitle ittyBitty">Schedule a Session</h4>
+    <p class="par" id="calendarScheduleDescription">Find a time that works for you and send a tutor request!
+    </p>
+       <div class="weeklyCalendar" style="overflow: scroll">
 
-        <div class="helpPannel" id="accountPannel">
+        <div class="calendarHeader">
+
+            <div class="calendarTimeCorner"></div>
+
+            <div class="calendarDay">Mon</div>
+            <div class="calendarDay">Tue</div>
+            <div class="calendarDay">Wed</div>
+            <div class="calendarDay">Thu</div>
+            <div class="calendarDay">Fri</div>
+            <div class="calendarDay">Sat</div>
+            <div class="calendarDay">Sun</div>
+
+        </div>
+
+
+        <div
+            class="calendarGrid"
+            id="tutorCalendar"
+        ></div>
+</div>
+    </div>
+    <div id="cardsView">
+      <h4 class="amc10subtitle ittyBitty">Join a Group</h4>
+      <p class="par">Apply to join a preexisting study group or class</p>
+      <div id="tutorGroupCardsContainer"></div>
+
+  </div>
+        <button class="start-practice" id="toggleView">Switch to Classes View</button>
+        </div>
+
+        <div class="helpPannel" id="accountPannel"  style="z-index: 10000;">
           <div id="login">
             <h2 class="amc10subtitle ittyBitty">Welcome Back!</h2>
             <p class="par">Access your progress across all your devices</p>
@@ -532,7 +549,7 @@ sunny
           </button>
         </div>
 
-        <div id="helpPannel" class="helpPannel">
+        <div id="helpPannel" class="helpPannel" style=" z-index: 10000;">
           <h2>Need Some Help?</h2>
           <p class="par">Contact us through our form</p>
           <div data-fs-success></div>
@@ -570,6 +587,13 @@ sunny
             </label>
           </form>
         </div>
+        <div class="helpPannel" id="sessionApplicationModal">
+          <h3 class="amc10subtitle ittyBitty">Want to join this session?</h3>
+          <p class="par">Are you ready to register for a session? We'll send a tutor an email with your application. Please note that an application does not gaurauntee acceptance</p>
+          <div id="applicationPreview"></div>
+          <button class="start-practice" id="emailTutor">Contact this Tutor!<
+        </div>
+            <div class="helpPannel" id="privacyPolicy" display="none" style="z-index: 10000;">
         <h4>Privacy Policy</h4>
         <h5>Data Collection</h5>
         <li>We use local storage to track and save your ELO on your device</li>
@@ -583,7 +607,7 @@ sunny
           knowingly collect personal information from children under 13 without parental consent (per COPPA guidelines).
         </li>
       </div>
-      <div class="helpPannel" id="termsAndConditions" display="none">
+      <div class="helpPannel" id="termsAndConditions" display="none"  style="z-index: 10000;">
         <h4>Terms and Conditions</h4>
         <li>By using Saintly you agree to the terms and conditions</li>
         <li>You may not scrape the site or re-distribute our unique interactive code without permission.</li>
@@ -593,6 +617,9 @@ sunny
           specific formula explanation doesn't lead to a perfect AMC score (though we hope it does!).</li>
         <li>Saintly and its volunteers are not liable for any damages arising from your use of the site.</li>
       </div>
+</div>
+    </div>
+
   </main>
 
   <div id="overlay"></div>
@@ -716,3 +743,4 @@ sunny
   </script>
   <script type="module" src="find a tutorjs.js"></script>
 </body>
+</html>
