@@ -1162,9 +1162,8 @@ function showTutorAvailability(tutor) {
         }
       }
       }  
-      box.addEventListener("click", async (event) => {
-    event.preventDefault()
-    contactTutor(tutor, slot)
+      box.addEventListener("click", function() {
+        applyToSession(tutor, slot)
   })
     });
   });
@@ -1507,6 +1506,8 @@ document.getElementById("updateApplicationEdits").addEventListener("click", asyn
       .select()
   }
 });
+
+const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/dvrw2e5xliyht9v8sg5ptv7jht7v5puyE";
 async function contactTutor(tutor, session){
  const payload = {
   studentName: userProfileLocal[0].fullName,
@@ -1525,6 +1526,7 @@ async function contactTutor(tutor, session){
   })
   if (!response.ok) throw new Error(`Request failed ${response.status}`)
  } catch (error) {
-  console.lerror(error)
+  console.error(error)
 }
 }
+
