@@ -36,7 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="/amc10.html">
               <svg xmlns="http://www.w3.org/2000/svg" class="iconsvg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm80-80h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm200-190q13 0 21.5-8.5T510-820q0-13-8.5-21.5T480-850q-13 0-21.5 8.5T450-820q0 13 8.5 21.5T480-790ZM200-200v-560 560Z"/></svg>
               <span class="dropdownText">AMC 10</span>
-            </a>
+          <a href="find a tutor.html">
+            <span class="material-symbols-outlined iconsvg" href="find a tutor.html">school</span>
+            <span class="dropdownText" href="find a tutor.html">Live Tutoring</span>
+          </a>
           </li>
           <li>
             <button class="dropdown-btn" id="btn-subjects">
@@ -89,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <li><a href="/zeroset.html">ZeroSet</a></li>
             </ul>
           </li>
+
           <li>
             <a class="changelogicon" href="/updatelog.html">
               <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#5985E1"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M11,8v5l4.25,2.52l0.77-1.28l-3.52-2.09V8H11z M21,10V3l-2.64,2.64C16.74,4.01,14.49,3,12,3c-4.97,0-9,4.03-9,9 s4.03,9,9,9s9-4.03,9-9h-2c0,3.86-3.14,7-7,7s-7-3.14-7-7s3.14-7,7-7c1.93,0,3.68,0.79,4.95,2.05L14,10H21z"/></g></g></svg>
@@ -166,3 +170,14 @@ function updateTopBar() {
       topBar.style.width = width > 768 ? 'calc(100% - 175px)' : 'calc(100% - 80px)';
    }
 }
+document.querySelectorAll(".faqQuestionContainer").forEach(questionBox => {
+  const questionText = questionBox.querySelector(".faqAnswersText")
+  if (questionBox){
+  questionBox.addEventListener("click", function() {
+    if (questionText){
+      questionText.classList.toggle("hidden")
+    }
+  })
+}
+})
+
