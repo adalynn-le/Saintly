@@ -863,7 +863,7 @@ button.btn2 {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 #stats-dashboard button {
@@ -7160,10 +7160,12 @@ transform: rotate(-30deg)
   gap: 10px;
   align-content: center !important;
   align-items: center !important;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  max-width: 250px;
-  min-width: 200px;
+  width: 1000px;
+  height: 450px;
+  padding: 10px;
+  padding-top: 20px;
 }
 .tutorPathwayNode .material-symbols-rounded{
   color: white !important;
@@ -7179,9 +7181,27 @@ transform: rotate(-30deg)
 }
 .tutorPathwayNodeConnector{
   background-color: var(--highlight-color);
-  width: 200px;
-  height: 10px;
+  width: 100px;
+  height: 20px;
   border-radius: 50px;
   border: 1px solid var(--primary-color);
   align-self: center !important;
+  margin: 0;
+  padding: 0;
+}
+.itemContainerWhyTutor{
+  width: 450px;
+  display: inline-flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  height: 375px;
+}
+
+.itemContainerWhyTutor .material-symbols-rounded{
+  font-size: 50px;
+}
+.faqText{
+  font-weight: 400;
+  color: var(--text-variant)
 }
