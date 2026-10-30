@@ -13874,3 +13874,35 @@ if (timeLeft) {
         document.getElementById("timer-container").style.display = "none"
     }
 }
+
+document.getElementById("saveThisProblem").addEventListener("click", async function() {
+    let questionData = {}
+    if (questionType){
+    if (questionType === "algebra") {
+        questionData = algebraQuestion
+    }
+    if (questionType === "geometry") {
+        questionData = geometryQuestion
+    }
+    if (questionType === "numTheory") {
+        questionData = numQuestion
+    }
+    if (questionType === "probability") {
+       questionData = probQuestion 
+    }
+    if (questionType === 'all') {
+       questionData = allQuestion 
+    }
+}
+console.log(questionData)
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (session && !sessionError) {
+ 
+    const userId = session.user.id
+    const { data, error } = await supabase
+  .rpc('append_to_jsonb_array', { 
+    row_id: userId, 
+    new_element: questionData
+  });
+}
+})
