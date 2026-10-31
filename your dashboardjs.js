@@ -1,4 +1,4 @@
-
+ let mathNotebook = []
 const questions = [
     {
 title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
@@ -8644,7 +8644,7 @@ document.getElementById("btn-signup").addEventListener("click", async () => {
 async function loadUserStats(userId) {
   const { data: profile, error } = await supabase
     .from('profiles')
-   .select('id, username, probabilityIndex, algebraIndex, numTheoryIndex, geometryIndex, algebraTotal, geometryTotal, numTotal, probTotal, algebraWrong, geometryWrong, numWrong, probWrong, algebraTotalSolvefire, geometryTotalSolvefire, numTotalSolvefire, probTotalSolvefire, algebraWrongSolvefire, geometryWrongSolvefire, numWrongSolvefire, probWrongSolvefire, algebraTotalYimo, geometryTotalYimo, numTotalYimo, probTotalYimo, algebraWrongYimo, geometryWrongYimo, numWrongYimo, probWrongYimo, longestStreak, elo, mistake, unfamiliar, stuck, mistakeSolvefire, unfamiliarSolvefire, stuckSolvefire, mistakeYimo, unfamiliarYimo, stuckYimo, TOPICGLOSSARY, TOPICGLOSSARYSolvefire, TOPICGLOSSARYYimo')
+   .select('id, username, probabilityIndex, algebraIndex, numTheoryIndex, geometryIndex, algebraTotal, geometryTotal, numTotal, probTotal, algebraWrong, geometryWrong, numWrong, probWrong, algebraTotalSolvefire, geometryTotalSolvefire, numTotalSolvefire, probTotalSolvefire, algebraWrongSolvefire, geometryWrongSolvefire, numWrongSolvefire, probWrongSolvefire, algebraTotalYimo, geometryTotalYimo, numTotalYimo, probTotalYimo, algebraWrongYimo, geometryWrongYimo, numWrongYimo, probWrongYimo, longestStreak, elo, mistake, unfamiliar, stuck, mistakeSolvefire, unfamiliarSolvefire, stuckSolvefire, mistakeYimo, unfamiliarYimo, stuckYimo, TOPICGLOSSARY, TOPICGLOSSARYSolvefire, TOPICGLOSSARYYimo, mathnotebook')
    .eq('id', userId)
 
   if (error) {
@@ -8679,11 +8679,13 @@ async function loadUserStats(userId) {
     TOPIC_GLOSSARY_YIMO = userProfile.TOPICGLOSSARYYimo || [];
     TOPIC_GLOSSARY_SOLVEFIRE = userProfile.TOPICGLOSSARYSolvefire || [];
     document.getElementById('btn-dashboard').innerHTML = userProfile.username
+    mathNotebook = userProfile.mathnotebook
     
   } 
   updateBarGraph()
   updateRadarChart()
   updatePieChart()
+  showMathNotebook()
 }
 const loginBtn = document.getElementById("btn-login");
 loginBtn.addEventListener("click", async () => {
@@ -8972,7 +8974,6 @@ options: {
 });
 let max = 0
 let worstTopic = ""
-console.log(combinedData)
 combinedData.forEach(i => {
   if (i.errors > 0){
     worstTopic = i.name
@@ -9003,16 +9004,12 @@ allQ.push(...questions)
 allQ.push(...geometryQ)
 allQ.push(...numTheoryQ)
 allQ.push(...probabilityQ)
-console.log(allQ)
 allQ.forEach(i => {
   if (i.topic === worstTopic){
     perTopic.push(i)
   }
 })
 document.getElementById('prevErrorText').innerHTML = worstTopic
-console.log(perTopic)
-console.log(max)
-console.log(worstTopic)
 shuffleArray(perTopic)
 loadQuestion()
 }
@@ -9204,4 +9201,38 @@ if (resetBtn) {
       alert("Check your inbox! A secure password reset link has been sent.");
     }
   });
+}
+function showMathNotebook() {
+  if (mathNotebook.length === 0) {
+        document.getElementById("mathNotebookCardsView").style.display = "none"
+        document.getElementById("mathNotebookHidden").style.display = "block"
+  } else {
+        console.log("creating cards")
+        document.getElementById("mathNotebookHidden").style.display = "none"
+        document.getElementById("mathNotebookCardsView").style.display = "block"
+        mathNotebook.forEach(i => {
+                const card = document.createElement("div")
+                card.innerHTML = `<span class="howworkcard mathNotebookCard" style="flex: 0.25; width: 25%">
+                 <h3 class="amc10subtitle ittyBitty">
+                        ${i.title}
+                 </h3>
+                 <div class="saintly-tag">${i.topic}</div>
+                </span>`
+                if (i.notes.length > 0){
+                        const notes = document.createElement("div")
+                        notes.innerHTML = `<span class="howworkcard">
+                                <p style="color: var(--text-variant-light)">${i.notes[0].content}</p>
+                        </span>`
+                        card.querySelector("howworkcard").appendChild(notes)
+                }
+                document.getElementById("mathNotebookCardsView").appendChild(card)
+                card.addEventListener("click", function() {
+                        openQuestion()
+                })
+        })
+        console.log("card created")
+         }
+}
+function openQuestion() {
+
 }

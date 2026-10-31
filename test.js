@@ -13894,7 +13894,25 @@ document.getElementById("saveThisProblem").addEventListener("click", async funct
        questionData = allQuestion 
     }
 }
-console.log(questionData)
+    questionData.saved = new Date()
+    questionData.notes = []
+   saveEntry(questionData) 
+
+})
+function saveEntry(questionData) {
+    document.getElementById("notes").value = ""
+    document.getElementById("saveThisQuestionNotesPopUp").style.display = "block"
+    overlay.style.display = "block"
+    document.getElementById("saveToSupabaseNotebook").addEventListener("click", async function() {
+        document.getElementById("saveThisQuestionNotesPopUp").style.display = "none"
+        document.getElementById("overlay").style.display = "none"
+        if (document.getElementById("notes").value !== ""){
+        const notesEntry = {
+            date: new Date(),
+            content: document.getElementById("notes").value
+        }
+        questionData.notes.push(notesEntry)
+    }
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if (session && !sessionError) {
  
@@ -13904,5 +13922,8 @@ console.log(questionData)
     row_id: userId, 
     new_element: questionData
   });
+  console.log(`Saved to SupaBase: ${questionData}`)
 }
-})
+    }, {once: true})
+
+}
