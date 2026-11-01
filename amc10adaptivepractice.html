@@ -182,6 +182,7 @@ warning
 </span>
 <p id="prevErrorText" style="display: inline">Previous Mistake</p></div>
     <div id="question-title" class="amc10title small">Question 1:</div>
+<button class="start-practice" id="saveThisProblem">Save this Problem</button>
 <div class="scratchpad-controls" style="margin-bottom: 10px; position: relative; z-index: 20;">
   <button id="btn-toggle-scratchpad" class="start-practice" style="border: 1px solid #88b1ff; background-color: transparent;">Open Scratchpad</button>
 </div>
@@ -226,7 +227,6 @@ function
 </span> <span class="error-tag-text">Small Arithmetic Mistake</span></button>
 </span>
 </div>
-<button class="start-practice" id="saveThisProblem">Save this Problem</button>
       <button id="submit-a-solution">Submit a Solution</button>
       <div id="submit-a-solution-form" class="submit-a-solution-form">
       
@@ -443,8 +443,18 @@ function
 </span>
 <div id ="saveThisQuestionNotesPopUp"class="helpPannel">
   <h3 class="amc10subtitle ittyBitty">Save this Question</h3>
-  <p class="par">Want to add notes to your entry?</p>
+  <p class="par">Want to add notes to your entry? (Optional)</p>
   <input type="text" id="notes" placeholder="I enjoyed this question because... I struggled because...">
+  <p class="par">Add Tags (Optional)</p>
+  <div class="howworkcard" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 5px;">
+    <span class="saintly-tagOrange saveTag">New Concept</span>
+  <span class="saintly-tagOrange saveTag">Fun!</span>
+  <span class="saintly-tagOrange saveTag">Tricky</span>
+  <span class="saintly-tagOrange saveTag">Need to Review</span>
+<span class="saintly-tagOrange saveTag">Strong Example</span>
+
+
+  </div>
   <button class="start-practice" id="saveToSupabaseNotebook">Save</button>
 </div>
 <div class="countdown-container" style="display: flex; flex-direction: row; gap: 10px; align-content: center; border-color: #88b0ff; border: 2px solid #88b0ff; width: 600px; border-radius: 20px; height: 125px;">

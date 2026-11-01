@@ -13896,6 +13896,28 @@ document.getElementById("saveThisProblem").addEventListener("click", async funct
 }
     questionData.saved = new Date()
     questionData.notes = []
+    questionData.tags = [
+        {
+            name: "New Concept",
+            selected: false,
+        },
+        {
+            name: "Fun!",
+            selected: false,
+        },
+        {
+            name: "Tricky",
+            selected: false,
+        },
+        {
+            name: "Need to Review",
+            selected: false,
+        },
+        {
+            name: "Strong Example",
+            selected: false,
+        }
+    ]
    saveEntry(questionData) 
 
 })
@@ -13903,6 +13925,22 @@ function saveEntry(questionData) {
     document.getElementById("notes").value = ""
     document.getElementById("saveThisQuestionNotesPopUp").style.display = "block"
     overlay.style.display = "block"
+    document.querySelectorAll(".saveTag").forEach(tag => {
+        tag.addEventListener("click", function() {
+            if (tag.classList.contains("saintly-tagOrange")) {
+                tag.classList.remove("saintly-tagOrange")
+                tag.classList.add("saintly-tag")
+            } else {
+                tag.classList.remove("saintly-tag")
+                tag.classList.add("saintly-tagOrange")
+            }
+            questionData.tags.forEach(tagName => {
+                if (tag.textContent === tagName.name) {
+                    tagName.selected = !tagName.selected
+                }
+            })
+        })
+    })
     document.getElementById("saveToSupabaseNotebook").addEventListener("click", async function() {
         document.getElementById("saveThisQuestionNotesPopUp").style.display = "none"
         document.getElementById("overlay").style.display = "none"
@@ -13912,6 +13950,7 @@ function saveEntry(questionData) {
             content: document.getElementById("notes").value
         }
         questionData.notes.push(notesEntry)
+
     }
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if (session && !sessionError) {

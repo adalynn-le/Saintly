@@ -9218,7 +9218,17 @@ function showMathNotebook() {
                  <h3 class="amc10subtitle ittyBitty" style="font-size: 20px;">
                         ${i.title}
                  </h3>
-                 <div class="saintly-tag">${i.topic}</div>`
+                 <div class="tagsContainerCardView" style="display: flex; flex-direction: row; gap: 5px; flex-wrap: wrap;">
+                 <div class="saintly-tag">${i.topic}</div>
+                 </div>`
+                 i.tags.forEach(tag => {
+                        if (tag.selected === true){
+                                let tagDiv = document.createElement("span")
+                                tagDiv.className = "saintly-tag"
+                                tagDiv.innerHTML = tag.name
+                                card.querySelector(".tagsContainerCardView").appendChild(tagDiv)
+                        }
+                 })
                 if (i.notes.length > 0){
 
                         const notes = document.createElement("div")
