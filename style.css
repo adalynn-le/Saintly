@@ -7215,3 +7215,9 @@ transform: rotate(-30deg)
   top: -7.5px !important;
 
 }
+#mathNotebookCardsView {
+  display: flex !important;
+  flex-wrap: wrap !important; 
+  gap: 16px; 
+  width: 100%;
+}

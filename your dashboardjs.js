@@ -9211,19 +9211,23 @@ function showMathNotebook() {
         document.getElementById("mathNotebookHidden").style.display = "none"
         document.getElementById("mathNotebookCardsView").style.display = "block"
         mathNotebook.forEach(i => {
-                const card = document.createElement("div")
-                card.innerHTML = `<span class="howworkcard mathNotebookCard" style="flex: 0.25; width: 25%">
-                 <h3 class="amc10subtitle ittyBitty">
+                const card = document.createElement("span")
+                card.className = "howworkcard mathNotebookCard"
+                card.style.flex = "25%"
+                card.innerHTML = `
+                 <h3 class="amc10subtitle ittyBitty" style="font-size: 20px;">
                         ${i.title}
                  </h3>
-                 <div class="saintly-tag">${i.topic}</div>
-                </span>`
+                 <div class="saintly-tag">${i.topic}</div>`
                 if (i.notes.length > 0){
+
                         const notes = document.createElement("div")
                         notes.innerHTML = `<span class="howworkcard">
-                                <p style="color: var(--text-variant-light)">${i.notes[0].content}</p>
+                                <p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">Latest Notes:</p>
+                                <p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(i.notes[(i.notes.length - 1)].date)}</p>
+                                <p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${i.notes[(i.notes.length - 1)].content}</p>
                         </span>`
-                        card.querySelector("howworkcard").appendChild(notes)
+                        card.appendChild(notes)
                 }
                 document.getElementById("mathNotebookCardsView").appendChild(card)
                 card.addEventListener("click", function() {
@@ -9235,4 +9239,16 @@ function showMathNotebook() {
 }
 function openQuestion() {
 
+}
+function getCorrectDate(rawDateValue) {
+  const date = new Date(rawDateValue)
+  if (isNaN(date.getTime())) {
+    console.warn("Found an invalid date value:", rawDateValue);
+    return "N/A"
+  }
+  return date.toLocaleDateString('en-US', {
+    month: '2-digit',
+    day: '2-digit',
+    year: 'numeric'
+  });
 }
