@@ -13939,6 +13939,7 @@ function saveEntry(questionData) {
                     tagName.selected = !tagName.selected
                 }
             })
+            questionData.entryType = "question"
         })
     })
     document.getElementById("saveToSupabaseNotebook").addEventListener("click", async function() {

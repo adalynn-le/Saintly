@@ -7205,6 +7205,11 @@ transform: rotate(-30deg)
   font-weight: 400;
   color: var(--text-variant)
 }
+.mathNotebookCard {
+  width: 25% !important;
+  flex: 25% !important;
+  max-width: 25% !important;
+}
 .mathNotebookCard .material-symbols-outlined{
   color: var(--accent-color) !important;
   font-size: 50px !important;
@@ -7216,8 +7221,17 @@ transform: rotate(-30deg)
 
 }
 #mathNotebookCardsView {
-  display: flex !important;
+  display: flex;
   flex-wrap: wrap !important; 
   gap: 16px; 
   width: 100%;
+}
+#notebookQuestionTitle .material-symbols-outlined{
+  color: var(--accent-color) !important;
+  font-size: 50px !important;
+  font-variation-settings: 'FILL' 1, 'wght' 100, 'GRAD' 0, 'opsz' 24;
+  vertical-align: top !important;
+  text-align: top !important;
+  position: relative !important;
+  top: -7.5px !important;
 }

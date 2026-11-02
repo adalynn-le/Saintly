@@ -9206,14 +9206,22 @@ function showMathNotebook() {
   if (mathNotebook.length === 0) {
         document.getElementById("mathNotebookCardsView").style.display = "none"
         document.getElementById("mathNotebookHidden").style.display = "block"
+        document.getElementById("mathNotebookQuestionView").style.display = "none"
   } else {
-        console.log("creating cards")
+        createCards()
+}
+}
+function createCards() {
+         document.getElementById("mathNotebookQuestionView").style.display = "none"
         document.getElementById("mathNotebookHidden").style.display = "none"
-        document.getElementById("mathNotebookCardsView").style.display = "block"
+        document.getElementById("mathNotebookCardsView").innerHTML = ""
+        document.getElementById("mathNotebookCardsView").style.display = "flex"
         mathNotebook.forEach(i => {
+                if (i.entryType == "question"){
                 const card = document.createElement("span")
                 card.className = "howworkcard mathNotebookCard"
                 card.style.flex = "25%"
+                card.style.width = "25%"
                 card.innerHTML = `
                  <h3 class="amc10subtitle ittyBitty" style="font-size: 20px;">
                         ${i.title}
@@ -9240,14 +9248,44 @@ function showMathNotebook() {
                         card.appendChild(notes)
                 }
                 document.getElementById("mathNotebookCardsView").appendChild(card)
+                card.style.cursor = "pointer"
                 card.addEventListener("click", function() {
-                        openQuestion()
-                })
+                        openQuestion(i)
+                })}
         })
-        console.log("card created")
-         }
+        
 }
-function openQuestion() {
+function openQuestion(question) {
+        document.getElementById("mathNotebookCardsView").style.display = "none"
+        document.getElementById("mathNotebookQuestionView").style.display = "block"
+        document.getElementById("notebookQuestionTitle").innerHTML = `${question.title}`
+        document.getElementById("notebookQuestionText").innerHTML = `${question.text}`
+        if (question.type == 'mc') {
+                document.getElementById("notebookQuestionInput").style.display = "none"
+                document.getElementById("notebookQuestionSubmit").style.display = "none"
+                document.getElementById("notebookQuestionChoices").style.display = "block"
+                document.querySelectorAll(".mc-choice-notebook").forEach(button => button.style.display = "none")
+                for (let i = 0; i < (question.choices.length - 1); i++){
+                        document.querySelectorAll(".mc-choice-notebook")[i].style.display = "block"
+                        document.querySelectorAll(".mc-choice-notebook")[i].innerHTML = question.choices[i]
+                        document.querySelectorAll(".mc-choice-notebook")[i].addEventListener("click", function() {
+                                checkNotebookAnswer(question.choices[i])
+                        })
+        
+                        if (window.MathJax) {
+                                MathJax.typesetPromise([document.querySelectorAll('.mc-choice-notebook')[i]]).catch(()=>{})
+                        }
+                }
+        } else {
+                document.getElementById("notebookQuestionInput").style.display = "block"
+                document.getElementById("notebookQuestionSubmit").style.display = "block"
+                document.getElementById("notebookQuestionChoices").style.display = "none"
+        }
+        if (window.MathJax) {
+        MathJax.typesetPromise([document.getElementById('notebookQuestionText')]).catch(()=>{});
+    }
+}
+function checkNotebookAnswer(answerEntry) {
 
 }
 function getCorrectDate(rawDateValue) {
@@ -9257,8 +9295,7 @@ function getCorrectDate(rawDateValue) {
     return "N/A"
   }
   return date.toLocaleDateString('en-US', {
-    month: '2-digit',
-    day: '2-digit',
+    month: '2-digit', day: '2-digit',
     year: 'numeric'
   });
 }
