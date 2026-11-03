@@ -9255,10 +9255,12 @@ function createCards() {
         })
         
 }
+let mathNotebookIndex = 0
 function openQuestion(question) {
+        mathNotebookIndex = mathNotebook.findIndex(entry => entry.title === question.title)
         document.getElementById("mathNotebookSolution").style.display = "none"
         document.getElementById("mathNotebookCardsView").style.display = "none"
-        document.getElementById("mathNotebookQuestionView").style.display = "block"
+        document.getElementById("mathNotebookQuestionView").style.display = "flex"
         document.getElementById("notebookQuestionTitle").innerHTML = `${question.title}`
         document.getElementById("notebookQuestionText").innerHTML = `${question.text}`
         if (question.type == 'mc') {
@@ -9313,3 +9315,19 @@ function getCorrectDate(rawDateValue) {
     year: 'numeric'
   });
 }
+document.getElementById("carouselButtonLeft").addEventListener("click", function() {
+        console.log(mathNotebookIndex)
+        if (mathNotebookIndex !== 0){
+                openQuestion(mathNotebook[mathNotebookIndex - 1])
+        } else {
+                openQuestion(mathNotebook[mathNotebook.length - 1])
+        }
+})
+document.getElementById("carouselButtonRight").addEventListener("click", function() {
+        console.log(mathNotebookIndex)
+        if (mathNotebookIndex !== (mathNotebook.length - 1)){
+                openQuestion(mathNotebook[mathNotebookIndex + 1])
+        } else {
+                openQuestion(mathNotebook[0])
+        }
+})

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=calendar_today,kid_star" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,ads_click,bedtime,book,check,close_small,exclamation,handshake,lab_profile,local_fire_department,playlist_add_check,send,star,star_shine,sunny,volunteer_activism,warning" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_circle,lightbulb,menu_book,schedule" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_circle,arrow_back_ios,arrow_forward_ios,ilightbulb,menu_book,schedule" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -185,8 +185,13 @@ sunny
 </div>
 <div id="mathNotebookCardsView" style="display: none; flex-wrap: wrap;"></div>
     </div>
-    <div id="mathNotebookQuestionView" style="display: flex; flex-direction: row; justify-content: center; justify-items: center;">
-      <span class="howworkcard" style="flex: 75%; width: 75%">
+    <div id="mathNotebookQuestionView" style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+      <div id="carouselButtonLeft" class = "carouselButtonMathNotebook">
+        <span class="material-symbols-rounded">
+          arrow_back_ios
+        </span>
+      </div>
+      <span class="howworkcardEditted" style="flex: 75%; width: 75%v">
         <h3 id="notebookQuestionTitle" class="amc10subtitle ittyBitty">Title</h3>
         <p class="par" id="notebookQuestionText">Example Text</p>
         <span style="display: flex; flex-direction: row; gap: 5px">
@@ -216,6 +221,11 @@ sunny
         </div>
         <div class="solution" id="mathNotebookSolution"style="display: none"></div>
       </span>
+      <div id="carouselButtonRight" class = "carouselButtonMathNotebook">
+        <span class="material-symbols-rounded">
+          arrow_forward_ios
+        </span>
+      </div>
     </div>
    </div>
 <div class="helpPannel"  id="accountPannel">
