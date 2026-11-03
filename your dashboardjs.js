@@ -9256,6 +9256,7 @@ function createCards() {
         
 }
 function openQuestion(question) {
+        document.getElementById("mathNotebookSolution").style.display = "none"
         document.getElementById("mathNotebookCardsView").style.display = "none"
         document.getElementById("mathNotebookQuestionView").style.display = "block"
         document.getElementById("notebookQuestionTitle").innerHTML = `${question.title}`
@@ -9269,8 +9270,8 @@ function openQuestion(question) {
                         document.querySelectorAll(".mc-choice-notebook")[i].style.display = "block"
                         document.querySelectorAll(".mc-choice-notebook")[i].innerHTML = question.choices[i]
                         document.querySelectorAll(".mc-choice-notebook")[i].addEventListener("click", function() {
-                                checkNotebookAnswer(question.choices[i])
-                        })
+                                checkNotebookAnswer(question.choices[i], question)
+                        }, {once: true})
         
                         if (window.MathJax) {
                                 MathJax.typesetPromise([document.querySelectorAll('.mc-choice-notebook')[i]]).catch(()=>{})
@@ -9284,8 +9285,21 @@ function openQuestion(question) {
         if (window.MathJax) {
         MathJax.typesetPromise([document.getElementById('notebookQuestionText')]).catch(()=>{});
     }
+    document.getElementById("notebookQuestionSubmit").addEventListener("click", function(){
+        checkNotebookAnswer(document.getElementById("notebookQuestionInput").value, question)
+    })
 }
-function checkNotebookAnswer(answerEntry) {
+function checkNotebookAnswer(answerEntry, questionData) {
+        document.getElementById("mathNotebookSolution").style.display = "block"
+        if (answerEntry === questionData.answer){
+                document.getElementById("mathNotebookSolution").innerHTML = `<p><span class="material-symbols-outlined">check</span> Correct!</p><p>${questionData.solution}`
+
+        } else {
+                document.getElementById("mathNotebookSolution").innerHTML = `<p><span class="material-symbols-outlined">close_small</span> Incorrect</p><p>${questionData.solution}`
+        }
+        if (window.MathJax){
+                MathJax.typesetPromise([document.getElementById("mathNotebookSolution")]).catch(() => {})
+        }
 
 }
 function getCorrectDate(rawDateValue) {
