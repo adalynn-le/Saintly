@@ -9331,3 +9331,6 @@ document.getElementById("carouselButtonRight").addEventListener("click", functio
                 openQuestion(mathNotebook[0])
         }
 })
+document.getElementById("cardViewSwitch").addEventListener("click", function() {
+        createCards()
+})
