@@ -7268,3 +7268,11 @@ transform: rotate(-30deg)
 .carouselButtonMathNotebook:hover{
   background-color: var(--accent-color) !important;
 }
+#newNoteQuestionPannelTextEntry{
+  border: 2px solid var(--border-color) !important;
+  border-radius: 5px !important;
+  color: var(--text-variant) !important;
+}
+#newNoteQuestionPannelTextEntry::placeholder{
+  color: var(--text-variant) !important;
+}

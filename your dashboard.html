@@ -207,7 +207,7 @@ sunny
           <button class="mc-choice-notebook problemBtn"></button>
         </div>
         <div style="display: flex; flex-direction: row; gap: 5px">
-          <span class="howworkcard" style="flex: 1; cursor: pointer;">
+          <span class="howworkcard" id="newNoteQuestion" style="flex: 1; cursor: pointer;">
             <div class="material-symbols-rounded" style="color: var(--text-variant-light)">add_circle</div>
             <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">New Entry</div>
           </span>
@@ -228,6 +228,13 @@ sunny
         </span>
       </div>
     </div>
+   </div>
+   <div class="helpPannel" id="newNoteQuestionPannel">
+    <h3 class="amc10subtitle ittyBitty">New Note</h3>
+    <p class="par">Insert your text.  Latex will automatically render(surround with a backslash, parentheseis on either side)</p>
+    <textarea style="min-width: 500px;" class="howworkcard" placeholder="Start by adding \(1\) to \(3\)" id="newNoteQuestionPannelTextEntry"></textarea>
+    <div id="newNoteQuestionPannelTextEntryPreview"></div>
+    <button class="start-practice" id="newNoteQuestionSaveEntry">Save Entry</button>
    </div>
 <div class="helpPannel"  id="accountPannel">
   <div id="login">

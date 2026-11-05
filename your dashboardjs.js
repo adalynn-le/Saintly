@@ -9334,3 +9334,14 @@ document.getElementById("carouselButtonRight").addEventListener("click", functio
 document.getElementById("cardViewSwitch").addEventListener("click", function() {
         createCards()
 })
+document.getElementById("newNoteQuestion").addEventListener("click", function() {
+        document.getElementById("newNoteQuestionPannel").style.display = "block"
+        overlay.style.display = "block"
+})
+document.getElementById("newNoteQuestionPannelTextEntry").addEventListener("input", function() {
+        console.log("updating")
+        document.getElementById("newNoteQuestionPannelTextEntryPreview").innerHTML = document.getElementById("newNoteQuestionPannelTextEntry").value 
+        if (window.MathJax){
+                MathJax.typesetPromise([document.getElementById("newNoteQuestionPannelTextEntryPreview")]).catch(() => {})
+        }
+})
