@@ -9243,8 +9243,12 @@ function createCards() {
                         notes.innerHTML = `<span class="howworkcard">
                                 <p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">Latest Notes:</p>
                                 <p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(i.notes[(i.notes.length - 1)].date)}</p>
-                                <p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${i.notes[(i.notes.length - 1)].content}</p>
+                                <p class="notesDisplay" style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${i.notes[(i.notes.length - 1)].content}</p>
                         </span>`
+                        if (window.MathJax) {
+                                MathJax.typesetPromise([notes]).catch(()=>{})
+
+                        }
                         card.appendChild(notes)
                 }
                 document.getElementById("mathNotebookCardsView").appendChild(card)
@@ -9324,7 +9328,7 @@ document.getElementById("carouselButtonLeft").addEventListener("click", function
         }
 })
 document.getElementById("carouselButtonRight").addEventListener("click", function() {
-        console.log(mathNotebookIndex)
+     
         if (mathNotebookIndex !== (mathNotebook.length - 1)){
                 openQuestion(mathNotebook[mathNotebookIndex + 1])
         } else {
@@ -9345,3 +9349,50 @@ document.getElementById("newNoteQuestionPannelTextEntry").addEventListener("inpu
                 MathJax.typesetPromise([document.getElementById("newNoteQuestionPannelTextEntryPreview")]).catch(() => {})
         }
 })
+document.getElementById("newNoteQuestionSaveEntry").addEventListener("click", async function() {
+    let questionData = mathNotebook[mathNotebookIndex] 
+const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (session && !sessionError) {
+ 
+    const userId = session.user.id
+   await addNoteToQuestion(userId, questionData.title, document.getElementById("newNoteQuestionPannelTextEntry").value) 
+    }
+    document.getElementById("newNoteQuestionPannel").style.display = "none"
+    document.getElementById("overlay").style.display = "none"
+})
+async function addNoteToQuestion(studentId, questionTitle, noteContent) {
+  try {
+    const { data: student, error: fetchError } = await supabase
+      .from('profiles')
+      .select('mathnotebook')
+      .eq('id', studentId)
+      .single();
+
+    if (fetchError) throw fetchError;
+
+    let mathNotebook = student.mathnotebook || [];
+
+    const questionIndex = mathNotebook.findIndex(q => q.title === questionTitle);
+
+    if (questionIndex === -1) {
+      console.log("Question not found!");
+      return;
+    }
+
+    mathNotebook[questionIndex].notes.push({
+      date: new Date(),
+      content: noteContent
+    });
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({ mathnotebook: mathNotebook })
+      .eq('id', studentId);
+
+    if (updateError) throw updateError;
+
+    console.log("Note added successfully!");
+  } catch (err) {
+    console.error("Error updating notebook:", err);
+  }
+}
