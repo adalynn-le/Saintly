@@ -8598,6 +8598,10 @@ overlay.addEventListener("click", function(){
         overlay.style.display = "none"
         accountTrue = false
     }
+    document.querySelectorAll(".helpPannel").forEach(panel => {
+        panel.style.display = "none"
+        overlay.style.display = "none"
+    })
 })
 helpBtn.addEventListener("click", function () {
     if (helpOn === true){
@@ -9261,6 +9265,7 @@ function createCards() {
 }
 let mathNotebookIndex = 0
 function openQuestion(question) {
+        document.getElementById("stepOneNotebook").style.display = "none"
         mathNotebookIndex = mathNotebook.findIndex(entry => entry.title === question.title)
         document.getElementById("mathNotebookSolution").style.display = "none"
         document.getElementById("mathNotebookCardsView").style.display = "none"
@@ -9396,3 +9401,31 @@ async function addNoteToQuestion(studentId, questionTitle, noteContent) {
     console.error("Error updating notebook:", err);
   }
 }
+document.getElementById("seePastEntriesQuestion").addEventListener("click", function() {
+        console.log("clicked")
+        document.getElementById("seePastQuestionsPannel").style.display = "block"
+        overlay.style.display = "block"
+        document.getElementById("pastEntriesContainer").innerHTML = ""
+        mathNotebook[mathNotebookIndex].notes.forEach(i => {
+                console.log(i)
+                const entry = document.createElement("span")
+                entry.className = "howworkcard mathNotebookCardNotes"
+                entry.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(i.date)}</p><p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${i.content})}</p>`
+                if (window.MathJax){
+                MathJax.typesetPromise([entry]).catch(() => {})
+                }
+                if (mathNotebook[mathNotebookIndex].notes.length === 0){
+                        document.getElementById("pastEntriesContainer").innerHTML = "<p style='color: var(--text-variant-light);'>No Past Entries</p>"
+                }
+                document.getElementById("pastEntriesContainer").appendChild(entry)
+        })
+})
+document.getElementById("seeHintsAndStepsQuestion").addEventListener("click", function() {
+        document.getElementById("stepOneNotebook").style.display = "block"
+        document.getElementById("stepOneNotebook").innerHTML = `
+        <p>Hint: ${mathNotebook[mathNotebookIndex].hint}</p>
+        <p>First Step: ${mathNotebook[mathNotebookIndex].step}</p>`
+        if (window.MathJax){
+                MathJax.typesetPromise([document.getElementById("stepOneNotebook")]).catch(() => {})
+        }
+})
