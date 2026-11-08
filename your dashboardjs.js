@@ -8689,7 +8689,7 @@ async function loadUserStats(userId) {
   updateBarGraph()
   updateRadarChart()
   updatePieChart()
-  showMathNotebook()
+  loadMathNotebookView("Questions")
 }
 const loginBtn = document.getElementById("btn-login");
 loginBtn.addEventListener("click", async () => {
@@ -9206,16 +9206,23 @@ if (resetBtn) {
     }
   });
 }
-function showMathNotebook() {
-  if (mathNotebook.length === 0) {
-        document.getElementById("mathNotebookCardsView").style.display = "none"
-        document.getElementById("mathNotebookHidden").style.display = "block"
-        document.getElementById("mathNotebookQuestionView").style.display = "none"
-  } else {
-        createCards()
-}
-}
+
 function createCards() {
+        const mathNotebookQuestions = []
+        mathNotebook.forEach(note => {
+                if (note.entryType == "question"){
+                        mathNotebookQuestions.push(note)
+                }
+        })
+        if (mathNotebookQuestions.length === 0) {
+                document.getElementById("mathNotebookCardsView").style.display = "none"
+                document.getElementById("mathNotebookHidden").style.display = "block"
+                document.getElementById("mathNotebookQuestionView").style.display = "none"
+                return
+        }
+        document.getElementById("mathNotebookJournalView").style.display = "none"
+        document.getElementById("mathNotebookConceptsView").style.display = "none"
+        document.getElementById("mathNotebookAllView").style.display = "none"
          document.getElementById("mathNotebookQuestionView").style.display = "none"
         document.getElementById("mathNotebookHidden").style.display = "none"
         document.getElementById("mathNotebookCardsView").innerHTML = ""
@@ -9429,3 +9436,140 @@ document.getElementById("seeHintsAndStepsQuestion").addEventListener("click", fu
                 MathJax.typesetPromise([document.getElementById("stepOneNotebook")]).catch(() => {})
         }
 })
+document.querySelectorAll(".tab").forEach(tab => {
+        tab.addEventListener("click", function() {
+                document.querySelectorAll(".tab").forEach(i => i.classList.remove("tabSelected"))
+                tab.classList.add("tabSelected")
+                loadMathNotebookView(tab.innerHTML)
+        })
+})
+function loadMathNotebookView(mode){
+        if (mode === "Questions"){
+                createCards()
+        } else if (mode == "Concepts"){
+
+        } else if (mode === "Journals") {
+                loadFreeFormCards()
+        } else if (mode === "All"){
+                
+        }
+}
+let entry = {}
+function loadFreeFormCards() {
+        document.getElementById("mathNotebookJournalView").style.display = "flex"
+        document.getElementById("mathNotebookConceptsView").style.display = "none"
+        document.getElementById("mathNotebookAllView").style.display = "none"
+        document.getElementById("mathNotebookQuestionView").style.display = "none"
+        document.getElementById("mathNotebookHidden").style.display = "none"
+        document.getElementById("mathNotebookJournalView").innerHTML = ""
+        document.getElementById("mathNotebookCardsView").style.display = "none"
+        document.getElementById("mathNotebookJournalView").innerHTML = ""
+        mathNotebook.forEach(note => {
+                if (note.entryType == "journal"){
+                        console.log(note)
+                        const card = document.createElement("span")
+                        card.className = "howworkcard mathNotebookCard"
+                        card.style.flex = "25%"
+                        card.style.width = "25%"
+                        card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${note.title}</h3><div style="display: flex; flex-direction: row; gap: 3px; flex-wrap: wrap;" class="tagContainer"></div>`
+                        note.tags.forEach(tag => {
+                                if (tag.selected == true){
+                                        const tagSpan = document.createElement("span")
+                                        tagSpan.classList = "saintly-tag"
+                                        tagSpan.innerHTML = tag.name
+                                        card.querySelector(".tagContainer").appendChild(tagSpan)
+                                }
+                        })
+                        const noteDiv = document.createElement("div")
+                        noteDiv.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(note.date)}</p>
+                                <p class="notesDisplay" style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${note.description}</p>`
+                        card.appendChild(noteDiv)
+                        document.getElementById("mathNotebookJournalView").appendChild(card)
+                }
+               
+        })
+         const addCard = document.createElement("span")
+                addCard.style.flex = "25%"
+                addCard.style.width = "25%"
+                addCard.className = "howworkcard mathNotebookCard"
+                addCard.style.justifyContent = "center"
+                addCard.style.alignContent = "center"
+                addCard.innerHTML = `<span style="color: var(--text-variant-light); font-size: 50px; text-align: center; min-height: 100px; align-content: center; justify-content: center;"class="material-symbols-rounded">add_circle</span>`
+                document.getElementById("mathNotebookJournalView").appendChild(addCard)
+                addCard.addEventListener("click", function() {
+                        overlay.style.display = "block"
+                        document.getElementById("journalNotebookSubmissionPannel").style.display = "block"
+                        document.getElementById("journalNotebookSubmissionPannelError").innerHTML = ""
+                entry.tags = [
+                {
+                        name: "Reflection",
+                        selected: false
+
+                },
+                {
+                        name: "Study Tip",
+                        selected: false
+                },
+                {
+                        name: "Test Technique",
+                        selected: false
+                },
+                {
+                        name: "Concept",
+                        selected: false
+                }
+        ]
+
+ document.querySelectorAll(".saveJournalTag").forEach(tag => {
+        tag.style.cursorStyle = "pointer"
+        tag.addEventListener("click", function() {
+                console.log("clicked")
+            if (tag.classList.contains("saintly-tagOrange")) {
+                tag.classList.remove("saintly-tagOrange")
+                tag.classList.add("saintly-tag")
+            } else {
+                tag.classList.remove("saintly-tag")
+                tag.classList.add("saintly-tagOrange")
+            }
+            entry.tags.forEach(tagName => {
+                if (tag.textContent === tagName.name) {
+                    tagName.selected = !tagName.selected
+                }
+            })
+        })
+    })
+
+                })
+ 
+}
+document.getElementById("createNewJournal").addEventListener("click", function() {
+        if (document.getElementById("journalTitleInput").value !== "" && document.getElementById("journalDescriptionInput").value !== ""){
+        entry.title = document.getElementById("journalTitleInput").value
+        entry.description = document.getElementById("journalDescriptionInput").value
+        entry.date = new Date()
+        entry.notes = []
+        
+        
+            entry.entryType = "journal"
+           
+        saveJournalEntry(entry)
+        } else {
+        document.getElementById("journalNotebookSubmissionPannelError").innerHTML = "Please Complete All Fields"
+}
+})
+async function saveJournalEntry(entry) {
+    
+            document.getElementById("journalNotebookSubmissionPannel").style.display = "none"
+        document.getElementById("overlay").style.display = "none"
+           const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (session && !sessionError) {
+ 
+    const userId = session.user.id
+    const { data, error } = await supabase
+  .rpc('append_to_jsonb_array', { 
+    row_id: userId, 
+    new_element: entry 
+  });
+}
+
+}

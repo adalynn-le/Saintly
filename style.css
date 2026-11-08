@@ -10,6 +10,7 @@
   --shadow-color: light-dark(rgb(218, 217, 235), rgba(7, 4, 3, 0.5));
   --highlight-color-orange: light-dark(#fff0eb, #4e3931);
   --border-color: light-dark(rgb(222, 222, 236), rgb(48, 48, 66));
+  --border-color-light: light-dark(rgb(243, 243, 248), rgb(44, 44, 61));
   --problemBtnColors: light-dark(white, white);
   --text-variant-light: light-dark(rgb(205, 205, 223), rgb(98, 98, 122));
 }
@@ -1917,7 +1918,7 @@ body {
   cursor: pointer;
 }
 
-button:not(.dropdown-btn):hover {
+button:not(.dropdown-btn):not(.tab):hover {
   background-color: var(--primary-color);
   color: var(--background-color);
   border: 1px solid var(--primary-color);
@@ -7283,4 +7284,84 @@ transform: rotate(-30deg)
 }
 #newNoteQuestionPannelTextEntry::placeholder{
   color: var(--text-variant) !important;
+}
+.tab{
+  all: unset;
+  color: var(--text-variant);
+  padding: 10px; 
+  text-align: center;
+  text-justify: center;
+  height: 20px;
+  margin: 0 !important;
+  width: 100px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  
+}
+.tab:hover{
+  color: var(--primary-color);
+  background-color: var(--highlight-color);
+  padding: 10px;
+  border-radius: 20px;
+  width: 100px;
+  text-align: center;
+  margin: 0 !important;
+}
+#tabsContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: var(--border-color-light);
+  gap: 10px;
+  padding: 5px;
+  border-radius: 30px;
+  width: min-content;
+  border: 3px solid var(--border-color)
+}
+.tab.tabSelected{
+  color: white;
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-radius: 20px;
+  width: 100px;
+  text-align: center;
+  margin: 0 !important;
+  animation: slideInUp 0.1s ease-out;
+}
+@keyframes slideInUp {
+    from {
+        transform: translateY(10%);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+#journalTitleInput{
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-variant) !important;
+}
+#journalTitleInput::placeholder{
+  color: var(--text-variant-light) !important;
+}
+#journalTitleInput:focus::placeholder{
+  color: var(--text-variant-light) !important;
+}
+#journalTitleInput:focus{
+  caret-color: var(--text-variant) !important;
+}
+#journalDescriptionInput{
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-variant) !important;
+}
+#journalDescriptionInput::placeholder{
+  color: var(--text-variant-light) !important;
+}
+#journalDescriptionInput:focus::placeholder{
+  color: var(--text-variant-light) !important;
+}
+#journalDescriptionInput:focus{
+  caret-color: var(--text-variant) !important;
 }

@@ -19,9 +19,9 @@
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=calendar_today,kid_star" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,ads_click,bedtime,book,check,close_small,exclamation,handshake,lab_profile,local_fire_department,lightbulb_2,playlist_add_check,send,star,star_shine,sunny,volunteer_activism,warning" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,ads_click,bedtime,book,calendar_today,check,close_small,exclamation,handshake,lab_profile,local_fire_department,lightbulb_2,playlist_add_check,send,star,star_shine,sunny,volunteer_activism,warning" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_circle,arrow_back_ios,arrow_forward_ios,ilightbulb,lightbulb_2,menu_book,schedule" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_circle,arrow_back_ios,arrow_forward_ios,calendar_today,lightbulb_2,menu_book,schedule" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -176,13 +176,18 @@ sunny
    </div>
    <div>
     <h3 class="amc10subtitle ittyBitty">Your Math Notebook</h3>
-    <p class="par">Save questions and notes to reference later and study off of!</p>
+<span id="tabsContainer" style="display: flex; flex-direction: row; justify-content: flex-start">
+  <button class="tab tabSelected" id="questionsTab">Questions</button>  <button class="tab" id="conceptsTab">Concepts</button>  <button class="tab" id="jouranlsTab">Journals</button><button class="tab" id="allViw">All</button>
+</span>
     <div id="mathNotebookHidden" style="display: flex; flex-direction: row; justify-content: center">
       <div style="display: flex; flex-direction: column; align-content: center; align-items: center; justify-items: center; justify-content: center; gap: 15px;">
       <span class="material-symbols-rounded" style="color: var(--text-variant); font-size: 100px; font-weight: 400">schedule</span>
       </div>
       <div style="font-size: 25px; font-weight: 500; color: var(--text-variant); max-width: 250px; text-align: center;">Save a question, concept, or note to see it in your math notebook!</div>
 </div>
+<div id="mathNotebookJournalView"style="display: none; flex-wrap: wrap;"></div>
+<div id="mathNotebookConceptsView"style="display: none; flex-wrap: wrap;"></div>
+<div id="mathNotebookAllView"style="display: none; flex-wrap: wrap;"></div>
 <div id="mathNotebookCardsView" style="display: none; flex-wrap: wrap;"></div>
     </div>
     <div id="mathNotebookQuestionView" style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
@@ -230,6 +235,17 @@ sunny
         </span>
       </div>
     </div>
+   </div>
+   <div class="helpPannel" id="journalNotebookSubmissionPannel">
+    <h3 class="amc10subtitle ittiByttiy">Create a New Journal</h3>
+    <p style="color: red" id="journalNotebookSubmissionPannelError"></p>
+        <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px;">
+      <div class="saintly-tag saveJournalTag">Reflection</div>      <div class="saintly-tag saveJournalTag">Study Tip</div>      <div class="saintly-tag saveJournalTag">Test Technique</div>      <div class="saintly-tag saveJournalTag">Concept</div>
+    </span>
+    <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Title:</p><input style="margin-top: 0px;" type="text" id="journalTitleInput" placeholder="Stars and Bars Journal">
+    <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Description: (you can add more entries later)</p>
+    <textarea id="journalDescriptionInput"></textarea>
+    <button class="start-practice" id="createNewJournal">Create New Journal</button>
    </div>
    <div class="helpPannel" id="seePastQuestionsPannel" style="width: 75%">
     <h3 class="amc10subtitle ittyBitty">Past Entries</h3>
