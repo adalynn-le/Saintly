@@ -9396,16 +9396,7 @@ async function addNoteToQuestion(studentId, questionTitle, noteContent) {
 
     if (fetchError) throw fetchError;
 
-    let mathNotebook = student.mathnotebook || [];
-
-    const questionIndex = mathNotebook.findIndex(q => q.title === questionTitle);
-
-    if (questionIndex === -1) {
-      console.log("Question not found!");
-      return;
-    }
-
-    mathNotebook[questionIndex].notes.push({
+     mathNotebook[mathNotebookIndex].notes.push({
       date: new Date(),
       content: noteContent
     });
@@ -9426,7 +9417,9 @@ async function addNoteToQuestion(studentId, questionTitle, noteContent) {
     console.log("Note added successfully!");
   } catch (err) {
     console.error("Error updating notebook:", err);
+
   }
+  openQuestion(mathNotebook[mathNotebookIndex])
 }
 document.getElementById("seePastEntriesQuestion").addEventListener("click", function() {
         console.log("clicked")
@@ -9584,7 +9577,7 @@ document.getElementById("createNewJournal").addEventListener("click", function()
 }
 })
 async function saveJournalEntry(entry) {
-    
+        journalEntries.push(entry)
             document.getElementById("journalNotebookSubmissionPannel").style.display = "none"
         document.getElementById("overlay").style.display = "none"
            const { data: { session }, error: sessionError } = await supabase.auth.getSession();
@@ -9596,6 +9589,7 @@ async function saveJournalEntry(entry) {
     row_id: userId, 
     new_element: entry 
   });
+  loadFreeFormCards()
 }
 
 }
@@ -9672,6 +9666,8 @@ async function createNewJournalEntry(){
  
     const userId = session.user.id
    await saveNewJournalEntry(userId, journalEntries[journalIndex].title, document.querySelector(".journalDescriptionInput").value) 
+   document.getElementById("mathNotebookJournalViewEntriesContainer").removeChild(card)
+   showJournalEntry(journalEntries[journalIndex])
     }
 } else {
         document.querySelector("newJournalEntryError").innerHTML = "Please Complete All Fields"
