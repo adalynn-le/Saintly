@@ -8432,6 +8432,7 @@ const strikesContainer = document.getElementById("strikesContainer")
 const solutionDiv = document.getElementById("solution");
 const solutionText = document.getElementById("solution-text");
 const nextBtn = document.getElementById("next-btn");
+let journalEntries = []
 let strikes  = 2
 // ---------- Start ----------
 let userRating = 1200
@@ -8683,7 +8684,17 @@ async function loadUserStats(userId) {
     TOPIC_GLOSSARY_YIMO = userProfile.TOPICGLOSSARYYimo || [];
     TOPIC_GLOSSARY_SOLVEFIRE = userProfile.TOPICGLOSSARYSolvefire || [];
     document.getElementById('btn-dashboard').innerHTML = userProfile.username
-    mathNotebook = userProfile.mathnotebook
+    mathNotebook = []
+    journalEntries = []
+        userProfile.mathnotebook.forEach(i => {
+                if (i.entryType == "question"){
+                        mathNotebook.push(i)
+                } else if (i.entryType == "journal"){
+                        journalEntries.push(i)
+                }
+        }) 
+                console.log(mathNotebook)
+                console.log(journalEntries)
     
   } 
   updateBarGraph()
@@ -9208,6 +9219,7 @@ if (resetBtn) {
 }
 
 function createCards() {
+        document.getElementById("mathNotebookJournalViewCards").style.display = "none"
         const mathNotebookQuestions = []
         mathNotebook.forEach(note => {
                 if (note.entryType == "question"){
@@ -9271,6 +9283,7 @@ function createCards() {
         
 }
 let mathNotebookIndex = 0
+let journalIndex = 0
 function openQuestion(question) {
         document.getElementById("stepOneNotebook").style.display = "none"
         mathNotebookIndex = mathNotebook.findIndex(entry => entry.title === question.title)
@@ -9456,6 +9469,7 @@ function loadMathNotebookView(mode){
 }
 let entry = {}
 function loadFreeFormCards() {
+        document.getElementById("mathNotebookJournalViewCards").style.display = "none"
         document.getElementById("mathNotebookJournalView").style.display = "flex"
         document.getElementById("mathNotebookConceptsView").style.display = "none"
         document.getElementById("mathNotebookAllView").style.display = "none"
@@ -9464,14 +9478,14 @@ function loadFreeFormCards() {
         document.getElementById("mathNotebookJournalView").innerHTML = ""
         document.getElementById("mathNotebookCardsView").style.display = "none"
         document.getElementById("mathNotebookJournalView").innerHTML = ""
-        mathNotebook.forEach(note => {
+        journalEntries.forEach(note => {
                 if (note.entryType == "journal"){
                         console.log(note)
                         const card = document.createElement("span")
                         card.className = "howworkcard mathNotebookCard"
                         card.style.flex = "25%"
                         card.style.width = "25%"
-                        card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${note.title}</h3><div style="display: flex; flex-direction: row; gap: 3px; flex-wrap: wrap;" class="tagContainer"></div>`
+                        card.innerHTML = `<h3 class="amc10subtitle ittyBitty"style="margin-bottom: 0px;">${note.title}</h3><div style="display: flex; flex-direction: row; gap: 3px; flex-wrap: wrap;margin-top: 0; margin-bottom: 5px;" class="tagContainer" ></div>`
                         note.tags.forEach(tag => {
                                 if (tag.selected == true){
                                         const tagSpan = document.createElement("span")
@@ -9484,7 +9498,12 @@ function loadFreeFormCards() {
                         noteDiv.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(note.date)}</p>
                                 <p class="notesDisplay" style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${note.description}</p>`
                         card.appendChild(noteDiv)
+                        card.style.cursorStyle = "pointer"
+                        card.addEventListener("click", function() {
+                                showJournalEntry(note)
+                        })
                         document.getElementById("mathNotebookJournalView").appendChild(card)
+                        
                 }
                
         })
@@ -9573,3 +9592,46 @@ async function saveJournalEntry(entry) {
 }
 
 }
+function showJournalEntry(note){
+        journalIndex = journalEntries.findIndex(entry => entry.title === note.title)
+        document.getElementById("mathNotebookJournalView").style.display = "none"
+        document.getElementById("mathNotebookJournalViewCards").style.display = "flex"
+        document.getElementById("mathNotebookJournalViewTitle").innerHTML = note.title
+        document.getElementById("mathNotebookJournalViewDescription").innerHTML = note.description
+        document.getElementById("tagContainerJournalView").innerHTML = ""
+        document.getElementById("mathNotebookJournalViewEntriesContainer").innerHTML = ""
+        note.tags.forEach(tag => {
+                if (tag.selected === true){
+                        const tagSpan = document.createElement("span")
+                        tagSpan.classList = "saintly-tag"
+                        tagSpan.innerHTML = tag.name
+                        document.getElementById("tagContainerJournalView").appendChild(tagSpan)
+                }
+        })
+        note.notes.forEach(entry => {
+
+        })
+        const addCard = document.createElement("div")
+        addCard.classList = "howworkcard"
+        addCard.style.padding = "10px"
+        addCard.innerHTML = `<span class="material-symbols-rounded" style="color: var(--text-variant-light); font-size: 40px; font-weight: 500; align-self: center; justify-self: center;">add_circle</span>`
+        addCard.addEventListener("click", function() {
+
+        })
+        document.getElementById("mathNotebookJournalViewEntriesContainer").appendChild(addCard)
+
+}
+document.getElementById("carouselButtonLeftJournalViewCards").addEventListener("click", function() {
+        if (journalIndex !== 0){
+                showJournalEntry(journalEntries[journalIndex - 1])
+        } else {
+                showJournalEntry(journalEntries[journalEntries.length - 1])
+        }
+})
+document.getElementById("carouselButtonRightJournalViewCards").addEventListener("click", function() {
+        if (journalIndex !== (journalEntries.length - 1)){
+                showJournalEntry(journalEntries[journalIndex + 1])
+        } else {
+                showJournalEntry(journalEntries[0])
+        }
+})
