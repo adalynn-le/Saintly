@@ -9220,6 +9220,7 @@ if (resetBtn) {
 
 function createCards() {
         document.getElementById("mathNotebookJournalViewCards").style.display = "none"
+        document.getElementById("mathNotebookJournalView").style.display = "none"
         const mathNotebookQuestions = []
         mathNotebook.forEach(note => {
                 if (note.entryType == "question"){
@@ -9408,10 +9409,16 @@ async function addNoteToQuestion(studentId, questionTitle, noteContent) {
       date: new Date(),
       content: noteContent
     });
-
+    mathNotebookFull = []
+    journalEntries.forEach(i => {
+        mathNotebookFull.push(i)
+    })
+    mathNotebook.forEach(i => {
+        mathNotebookFull.push(i)
+    })
     const { error: updateError } = await supabase
       .from('profiles')
-      .update({ mathnotebook: mathNotebook })
+      .update({ mathnotebook: mathNotebookFull })
       .eq('id', studentId);
 
     if (updateError) throw updateError;
@@ -9616,7 +9623,8 @@ function showJournalEntry(note){
         addCard.style.padding = "10px"
         addCard.innerHTML = `<span class="material-symbols-rounded" style="color: var(--text-variant-light); font-size: 40px; font-weight: 500; align-self: center; justify-self: center;">add_circle</span>`
         addCard.addEventListener("click", function() {
-
+         document.getElementById("mathNotebookJournalViewEntriesContainer").removeChild(addCard)
+         createNewJournalEntry()       
         })
         document.getElementById("mathNotebookJournalViewEntriesContainer").appendChild(addCard)
 
@@ -9635,3 +9643,74 @@ document.getElementById("carouselButtonRightJournalViewCards").addEventListener(
                 showJournalEntry(journalEntries[0])
         }
 })
+async function createNewJournalEntry(){
+        const card = document.createElement("div")
+        card.classList = "howworkcard"
+        card.innerHTML = `<p style="color: red" class="newJournalEntryError"></p>
+        <p style="color: var(--text-variant-light); margin-bottom: 0px;">Title:</p>
+        <input class="journalTitleInput" type="text" style=" margin-bottom: 0px;">
+        <p style="color: var(--text-variant-light); margin-bottom: 0px;">Date:</p>
+        <p style="color: var(--text-variant-light); margin-bottom: 0px;">${getCorrectDate(new Date())}
+        <p style="color: var(--text-variant-light); margin-bottom: 0px;">Entry (LaTex will render in preview):</p>
+        <textarea class="journalDescriptionInput"></textarea>
+        <div class="journalEntryLaTexPreview"></div>
+        <button class="start-practice" id="saveJournalEntryButton">Save Entry</button>`
+       document.getElementById("mathNotebookJournalViewEntriesContainer").appendChild(card)
+        document.querySelector(".journalDescriptionInput").addEventListener("input", function() {
+                const text = document.querySelector(".journalDescriptionInput").value
+                document.querySelector(".journalEntryLaTexPreview").innerHTML = text
+                if(window.MathJax){
+                        MathJax.typesetPromise([document.querySelector(".journalEntryLaTexPreview")]).catch(() => {})
+                }
+         
+        
+        })
+        document.getElementById("saveJournalEntryButton").addEventListener("click", async function() {
+                        if (document.querySelector(".journalDescriptionInput").value !== "" && document.querySelector(".journalTitleInput").value !== ""){
+                const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (session && !sessionError) {
+ 
+    const userId = session.user.id
+   await saveNewJournalEntry(userId, journalEntries[journalIndex].title, document.querySelector(".journalDescriptionInput").value) 
+    }
+} else {
+        document.querySelector("newJournalEntryError").innerHTML = "Please Complete All Fields"
+}
+        })
+        
+}
+let mathNotebookFull = []
+async function saveNewJournalEntry(studentId, journalTitle, noteContent) {
+  try {
+    const { data: student, error: fetchError } = await supabase
+      .from('profiles')
+      .select('mathnotebook')
+      .eq('id', studentId)
+      .single();
+
+    if (fetchError) throw fetchError;
+    journalEntries[journalIndex].notes.push({
+      date: new Date(),
+      content: noteContent
+    });
+    console.log(journalEntries)
+    mathNotebookFull = []
+    journalEntries.forEach(i => {
+        mathNotebookFull.push(i)
+    })
+    mathNotebook.forEach(i => {
+        mathNotebookFull.push(i)
+    })
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({ mathnotebook: mathNotebookFull })
+      .eq('id', studentId);
+
+    if (updateError) throw updateError;
+
+    console.log("Note added successfully!");
+  } catch (err) {
+    console.error("Error updating notebook:", err);
+  }
+}

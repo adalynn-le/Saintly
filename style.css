@@ -7365,3 +7365,29 @@ transform: rotate(-30deg)
 #journalDescriptionInput:focus{
   caret-color: var(--text-variant) !important;
 }
+.journalTitleInput{
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-variant) !important;
+}
+.journalTitleInput::placeholder{
+  color: var(--text-variant-light) !important;
+}
+.journalTitleInput:focus::placeholder{
+  color: var(--text-variant-light) !important;
+}
+.journalTitleInput:focus{
+  caret-color: var(--text-variant) !important;
+}
+.journalDescriptionInput{
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-variant) !important;
+}
+.journalDescriptionInput::placeholder{
+  color: var(--text-variant-light) !important;
+}
+.journalDescriptionInput:focus::placeholder{
+  color: var(--text-variant-light) !important;
+}
+.journalDescriptionInput:focus{
+  caret-color: var(--text-variant) !important;
+}
