@@ -9610,7 +9610,12 @@ function showJournalEntry(note){
                 }
         })
         note.notes.forEach(entry => {
-
+                const card = document.createElement("div")
+                card.classList = "howworkcard"
+                card.style.padding = "10px"
+                card.innerHTML = `<h3 class="amc10subtitle ittyBitty" style="color: var(--text-variant-light)">${entry.title} - ${getCorrectDate(entry.date)}</h3>
+                <p>${entry.content}</p> `
+                document.getElementById("mathNotebookJournalViewEntriesContainer").appendChild(card)
         })
         const addCard = document.createElement("div")
         addCard.classList = "howworkcard"
@@ -9665,7 +9670,7 @@ async function createNewJournalEntry(){
     if (session && !sessionError) {
  
     const userId = session.user.id
-   await saveNewJournalEntry(userId, journalEntries[journalIndex].title, document.querySelector(".journalDescriptionInput").value) 
+   await saveNewJournalEntry(userId, document.querySelector(".journalTitleInput").value, document.querySelector(".journalDescriptionInput").value) 
    document.getElementById("mathNotebookJournalViewEntriesContainer").removeChild(card)
    showJournalEntry(journalEntries[journalIndex])
     }
@@ -9687,7 +9692,8 @@ async function saveNewJournalEntry(studentId, journalTitle, noteContent) {
     if (fetchError) throw fetchError;
     journalEntries[journalIndex].notes.push({
       date: new Date(),
-      content: noteContent
+      content: noteContent,
+      title: journalTitle
     });
     console.log(journalEntries)
     mathNotebookFull = []
