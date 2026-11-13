@@ -185,6 +185,7 @@ sunny
       </div>
       <div style="font-size: 25px; font-weight: 500; color: var(--text-variant); max-width: 250px; text-align: center;">Save a question, concept, or note to see it in your math notebook!</div>
 </div>
+<div id="mathNotebookConceptView" style="display: none; flex-wrap: wrap; "></div>
 <div id="mathNotebookJournalView"style="display: none; flex-wrap: wrap;"></div>
 <div id="mathNotebookConceptsView"style="display: none; flex-wrap: wrap;"></div>
 <div id="mathNotebookAllView"style="display: none; flex-wrap: wrap;"></div>
@@ -257,6 +258,29 @@ sunny
     </div>
   
    
+   <div class="helpPannel" id="conceptNotebookSubmissionPannel">
+    <h3 class="amc10subtitle ittiByttiy">Create a New Concept Note</h3>
+    <p style="color: red" id="conceptNotebookSubmissionPannelError"></p>
+        <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px;">
+      <div class="saintly-tag saveJournalTag">Algebra</div>      <div class="saintly-tag saveJournalTag">Geometry</div>      <div class="saintly-tag saveJournalTag">Number Theory</div>      <div class="saintly-tag saveJournalTag">Combinatorics</div>
+    </span>
+    <p style="color: var(--text-variant-light)" id="displaySubtopics">Subtopics <span id="displayTopicsArrow" class="material-symbols-rounded">arrow_back_ios</span></p>
+    <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 7px;" id="conceptNotebookSubmissionPannelTagsContainer"></span>
+    <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Title:</p><input style="margin-top: 0px;" type="text" id="journalTitleInput" placeholder="Stars and Bars Journal"><p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Definition:</p>
+ <textarea id="conceptDefinitionInput"></textarea>
+ 
+<p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Formulas</p>
+
+<p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">My Explanation</p>
+ <textarea id="conceptExplanationInput"></textarea>
+ 
+<p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Link a Question:</p>
+
+<p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Link a Concept:</p>
+
+
+    <button class="start-practice" id="createNewJournal">Create New Journal</button>
+   </div>
    <div class="helpPannel" id="journalNotebookSubmissionPannel">
     <h3 class="amc10subtitle ittiByttiy">Create a New Journal</h3>
     <p style="color: red" id="journalNotebookSubmissionPannelError"></p>

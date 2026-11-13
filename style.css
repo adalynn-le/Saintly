@@ -7391,3 +7391,17 @@ transform: rotate(-30deg)
 .journalDescriptionInput:focus{
   caret-color: var(--text-variant) !important;
 }
+#displayTopicsArrow{
+  transform: rotate(-90deg);
+  color: var(--text-variant-light);
+  font-size: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#displayTopicsArrow.displayTopicsArrowSelected{
+  transform: rotate(90deg) !important;
+  color: var(--text-variant-light);
+  font-size: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
