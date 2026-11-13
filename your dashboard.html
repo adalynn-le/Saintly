@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=calendar_today,kid_star" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,ads_click,bedtime,book,calendar_today,check,close_small,exclamation,handshake,lab_profile,local_fire_department,lightbulb_2,playlist_add_check,send,star,star_shine,sunny,volunteer_activism,warning" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,ads_click,bedtime,book,calendar_today,check,close_small,delete,exclamation,handshake,lab_profile,local_fire_department,lightbulb_2,playlist_add_check,send,star,star_shine,sunny,volunteer_activism,warning" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_circle,arrow_back_ios,arrow_forward_ios,calendar_today,lightbulb_2,menu_book,schedule" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -258,7 +258,7 @@ sunny
     </div>
   
    
-   <div class="helpPannel" id="conceptNotebookSubmissionPannel">
+   <div class="helpPannel" id="conceptNotebookSubmissionPannel" style="overflow: scroll; max-height: 75%; max-width: 90%">
     <h3 class="amc10subtitle ittiByttiy">Create a New Concept Note</h3>
     <p style="color: red" id="conceptNotebookSubmissionPannelError"></p>
         <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px;">
@@ -270,13 +270,16 @@ sunny
  <textarea id="conceptDefinitionInput"></textarea>
  
 <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Formulas</p>
+<div id="formulaCardsContainer"></div>
+<div class="howworkcard" id="addFormula"><span class="material-symbols-rounded" style="color: var(--text-variant-light); font-size: 40px; font-weight: 500; align-self: center; justify-self: center;">add_circle</span></div>
 
 <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">My Explanation</p>
  <textarea id="conceptExplanationInput"></textarea>
  
 <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Link a Question:</p>
-
+<div id="conceptQuestionLinksContainer"></div>
 <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Link a Concept:</p>
+<div id="conceptTopicLinksContainer"></div>
 
 
     <button class="start-practice" id="createNewJournal">Create New Journal</button>

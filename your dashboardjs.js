@@ -1,4 +1,5 @@
 let mathNotebook = [];
+let conceptEntries = [];
 const questions = [
   {
     title: `AMC 10A 2020 Problem 17 <span class="material-symbols-outlined">
@@ -9587,6 +9588,8 @@ async function loadUserStats(userId) {
         mathNotebook.push(i);
       } else if (i.entryType == "journal") {
         journalEntries.push(i);
+      } else if (i.entryType == "concept") {
+        conceptEntries.push(i)
       }
     });
     console.log(mathNotebook);
@@ -10748,7 +10751,7 @@ function loadConceptCards() {
   document.getElementById("mathNotebookJournalView").innerHTML = "";
   document.getElementById("mathNotebookCardsView").style.display = "none";
   document.getElementById("mathNotebookConceptView").innerHTML = "";
-  journalEntries.forEach((note) => {
+  conceptEntries.forEach((note) => {
     if (note.entryType == "concept") {
       const card = document.createElement("span");
       card.className = "howworkcard mathNotebookCard";
@@ -10839,7 +10842,7 @@ document.getElementById("displayTopicsArrow").classList.add("displayTopicsArrowS
 document.getElementById("displayTopicsArrow").classList.remove("displayTopicsArrowSelected")
       }
     })
-
+    document.getElementById("formulaCardsContainer").innerHTML = ""
     document.querySelectorAll(".saveJournalTag").forEach((tag) => {
       tag.style.cursorStyle = "pointer";
       tag.addEventListener("click", function () {
@@ -10858,5 +10861,43 @@ document.getElementById("displayTopicsArrow").classList.remove("displayTopicsArr
         });
       });
     });
+    document.getElementById("conceptQuestionLinksContainer").innerHTML = ""
+    mathNotebook.forEach(i => {
+      const card = document.createElement("div")
+      card.classList = "howworkcard"
+      card.width = "25%"
+      card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${i.title}</h3>
+      <span class="saintly-tag">${i.topic}</span>
+      <p class="par">${i.text}</p><button class="start-practice conceptLinkQuestion">Link This Question</button>`
+      document.getElementById("conceptQuestionLinksContainer").appendChild(card)
+    })
+    document.getElementById("conceptTopicLinksContainer").innerHTML = ""
+    conceptCard.forEach(i => {
+      if (i.title !== note.title) {
+        const card = document.createElement("div")
+        card.classList = "howworkcard"
+        card.width = "25%"
+        card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${i.title}</h3>
+       <button class="start-practice conceptLinkTopic">Link This Concept</button>`
+        document.getElementById("conceptTopicLinksContainer").appendChild(card)
+      }
+    })
+    
   });
 }
+document.getElementById("addFormula").addEventListener("click", function() {
+  const card = document.createElement("div")
+  card.classList = "howworkcard"
+  card.innerHTML = `<p style="color: var(--text-variant-light); margin-bottom: 0px;">Formula (LaTex)</p><input type="text" class="formulaInput"><div class="formulaRender"></div><p style="color: var(--text-variant-light); margin-bottom: 0px;">Caption:</p><input type="text" class="formulaCaption"><button class="start-practice">Delete Note</button>`
+  document.getElementById("formulaCardsContainer").appendChild(card)
+  card.querySelector(".formulaInput").addEventListener("input", function(){
+    const formula = card.querySelector(".formulaInput").value
+    card.querySelector(".formulaRender").innerHTML = formula
+    if (window.MathJax){
+       MathJax.typesetPromise([document.querySelector(".formulaRender")]).catch(() => {})
+    }
+  })
+  card.querySelector(".start-practice").addEventListener("click", function() {
+    document.getElementById("formulaCardsContainer").removeChild(card)
+  })
+})
