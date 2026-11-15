@@ -10812,7 +10812,7 @@ function loadConceptCards() {
     document.getElementById("conceptNotebookSubmissionPannelTagsContainer").innerHTML = ""
     TOPIC_GLOSSARY.forEach(topic => {
       const tag = document.createElement("div")
-      tag.className = "saintly-tag"
+      tag.className = "saintly-tag saveConceptSubtag"
       tag.style.cursorStyle = "pointer"
       tag.innerHTML = topic.title
       document.getElementById("conceptNotebookSubmissionPannelTagsContainer").appendChild(tag)
@@ -10843,7 +10843,7 @@ document.getElementById("displayTopicsArrow").classList.remove("displayTopicsArr
       }
     })
     document.getElementById("formulaCardsContainer").innerHTML = ""
-    document.querySelectorAll(".saveJournalTag").forEach((tag) => {
+    document.querySelectorAll(".saveConceptTag").forEach((tag) => {
       tag.style.cursorStyle = "pointer";
       tag.addEventListener("click", function () {
         console.log("clicked");
@@ -10862,6 +10862,7 @@ document.getElementById("displayTopicsArrow").classList.remove("displayTopicsArr
       });
     });
     document.getElementById("conceptQuestionLinksContainer").innerHTML = ""
+    document.getElementById("conceptNotebookSubmissionPannelError").innerHTML = ""
     mathNotebook.forEach(i => {
       const card = document.createElement("div")
       card.classList = "howworkcard"
@@ -10870,9 +10871,18 @@ document.getElementById("displayTopicsArrow").classList.remove("displayTopicsArr
       <span class="saintly-tag">${i.topic}</span>
       <p class="par">${i.text}</p><button class="start-practice conceptLinkQuestion">Link This Question</button>`
       document.getElementById("conceptQuestionLinksContainer").appendChild(card)
+      card.querySelector(".conceptLinkQuestion").addEventListener("click", function() {
+        if (card.classList.contains("selectedQuestion")){
+          card.classList.remove("selectedQuestion")
+          card.querySelector(".conceptLinkQuestion").innerHTML = "Link This Question"
+        } else {
+          card.classList.add("selectedQuestion")
+          card.querySelector(".conceptLinkQuestion").innerHTML = "Remove This Link"
+        }
+      })
     })
     document.getElementById("conceptTopicLinksContainer").innerHTML = ""
-    conceptCard.forEach(i => {
+    conceptEntries.forEach(i => {
       if (i.title !== note.title) {
         const card = document.createElement("div")
         card.classList = "howworkcard"
@@ -10880,6 +10890,15 @@ document.getElementById("displayTopicsArrow").classList.remove("displayTopicsArr
         card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${i.title}</h3>
        <button class="start-practice conceptLinkTopic">Link This Concept</button>`
         document.getElementById("conceptTopicLinksContainer").appendChild(card)
+      card.querySelector(".conceptLinkTopic").addEventListener("click", function() {
+        if (card.classList.contains("selectedQuestion")){
+          card.classList.remove("selectedTopic")
+          card.querySelector(".conceptLinkTopic").innerHTML = "Link This Question"
+        } else {
+          card.classList.add("selectedTopic")
+          card.querySelector(".conceptLinkQuestion").innerHTML = "Remove This Link"
+        }
+      })
       }
     })
     
@@ -10900,4 +10919,49 @@ document.getElementById("addFormula").addEventListener("click", function() {
   card.querySelector(".start-practice").addEventListener("click", function() {
     document.getElementById("formulaCardsContainer").removeChild(card)
   })
+})
+document.getElementById("saveConceptEntry").addEventListener("click", function() {
+  if (document.getElementById("journalTitleInput").value === "none" || document.getElementById("conceptDefinitionInput").value === "none"){
+    document.getElementById("conceptNotebookSubmissionPannelError").innerHTML = "Please include a title and definition"
+  } else {
+  const entry = {}
+  entry.title = document.getElementById("journalTitleInput").value
+  entry.date = new Date()
+  entry.tags = []
+  document.querySelectorAll(".saveConceptTag").forEach(tag => {
+    if (tag.classList.contains("saintly-tagOrange")) {
+      entry.tags.push(tag.innerHTML)
+    }
+  })
+  entry.subTags = []
+  document.querySelectorAll(".saveConceptSubtag").forEach(tag => {
+    if (tag.classList.contains("saintly-tagOrangee")){
+      entry.subTags.push(tag.innerHTML)
+    }
+  })
+  entry.formulas = []
+  entry.description = document.getElementById("conceptDefinitionInput").value
+  Array.from(document.getElementById("formulaCardsContainer").children).forEach(card => {
+    entry.formulas.push({
+      formula: card.querySelector(".formulaInput").value,
+      caption: card.querySelector(".formulaCaption").value
+    })
+  })
+  entry.myExplanation = document.getElementById("conceptExplanationInput").value
+  entry.linkedQuestions = []
+  Array.from(document.getElementById("conceptQuestionLinksContainer").children).forEach(question => {
+    if (question.classList.contains("selectedQuestion")) {
+      entry.linkedQuestions.push(question.querySelector(".amc10subtitle").innerHTML)
+    }
+  })
+  entry.linkedConcept= []
+  Array.from(document.getElementById("conceptTopicLinksContainer").children).forEach(question => {
+    if (question.classList.contains("selectedQuestion")) {
+      entry.linkedTopics.push(question.querySelector(".amc10subtitle").innerHTML)
+    }
+  })
+  document.getElementById("conceptNotebookSubmissionPannel").style.display = "none"
+  overlay.style.display = "none"
+  console.log(entry)
+  }
 })
