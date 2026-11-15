@@ -10920,7 +10920,7 @@ document.getElementById("addFormula").addEventListener("click", function() {
     document.getElementById("formulaCardsContainer").removeChild(card)
   })
 })
-document.getElementById("saveConceptEntry").addEventListener("click", function() {
+document.getElementById("saveConceptEntry").addEventListener("click", async function() {
   if (document.getElementById("journalTitleInput").value === "none" || document.getElementById("conceptDefinitionInput").value === "none"){
     document.getElementById("conceptNotebookSubmissionPannelError").innerHTML = "Please include a title and definition"
   } else {
@@ -10935,7 +10935,8 @@ document.getElementById("saveConceptEntry").addEventListener("click", function()
   })
   entry.subTags = []
   document.querySelectorAll(".saveConceptSubtag").forEach(tag => {
-    if (tag.classList.contains("saintly-tagOrangee")){
+    console.log(tag)
+    if (tag.classList.contains("saintly-tagOrange")){
       entry.subTags.push(tag.innerHTML)
     }
   })
@@ -10962,6 +10963,21 @@ document.getElementById("saveConceptEntry").addEventListener("click", function()
   })
   document.getElementById("conceptNotebookSubmissionPannel").style.display = "none"
   overlay.style.display = "none"
-  console.log(entry)
+  saveConceptEntry(entry)
   }
 })
+async function saveConceptEntry(entry) {
+  conceptEntries.push(entry);
+  const {
+    data: { session },
+    error: sessionError,
+  } = await supabase.auth.getSession();
+  if (session && !sessionError) {
+    const userId = session.user.id;
+    const { data, error } = await supabase.rpc("append_to_jsonb_array", {
+      row_id: userId,
+      new_element: entry,
+    });
+    loadConceptCards();
+  }
+}
