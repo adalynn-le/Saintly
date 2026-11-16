@@ -1,4 +1,5 @@
 let mathNotebook = [];
+let conceptIndex = 0;
 let conceptEntries = [];
 const questions = [
   {
@@ -9583,17 +9584,16 @@ async function loadUserStats(userId) {
     document.getElementById("btn-dashboard").innerHTML = userProfile.username;
     mathNotebook = [];
     journalEntries = [];
+    conceptEntries = [];
     userProfile.mathnotebook.forEach((i) => {
       if (i.entryType == "question") {
         mathNotebook.push(i);
       } else if (i.entryType == "journal") {
         journalEntries.push(i);
       } else if (i.entryType == "concept") {
-        conceptEntries.push(i)
+        conceptEntries.push(i);
       }
     });
-    console.log(mathNotebook);
-    console.log(journalEntries);
   }
   updateBarGraph();
   updateRadarChart();
@@ -10154,6 +10154,9 @@ if (resetBtn) {
 }
 
 function createCards() {
+  document.getElementById("mathNotebookConceptViewCards").style.display =
+    "none";
+
   document.getElementById("mathNotebookJournalViewCards").style.display =
     "none";
   document.getElementById("mathNotebookJournalView").style.display = "none";
@@ -10306,7 +10309,6 @@ function getCorrectDate(rawDateValue) {
 document
   .getElementById("carouselButtonLeft")
   .addEventListener("click", function () {
-    console.log(mathNotebookIndex);
     if (mathNotebookIndex !== 0) {
       openQuestion(mathNotebook[mathNotebookIndex - 1]);
     } else {
@@ -10336,7 +10338,6 @@ document
 document
   .getElementById("newNoteQuestionPannelTextEntry")
   .addEventListener("input", function () {
-    console.log("updating");
     document.getElementById("newNoteQuestionPannelTextEntryPreview").innerHTML =
       document.getElementById("newNoteQuestionPannelTextEntry").value;
     if (window.MathJax) {
@@ -10391,8 +10392,6 @@ async function addNoteToQuestion(studentId, questionTitle, noteContent) {
       .eq("id", studentId);
 
     if (updateError) throw updateError;
-
-    console.log("Note added successfully!");
   } catch (err) {
     console.error("Error updating notebook:", err);
   }
@@ -10401,12 +10400,10 @@ async function addNoteToQuestion(studentId, questionTitle, noteContent) {
 document
   .getElementById("seePastEntriesQuestion")
   .addEventListener("click", function () {
-    console.log("clicked");
     document.getElementById("seePastQuestionsPannel").style.display = "block";
     overlay.style.display = "block";
     document.getElementById("pastEntriesContainer").innerHTML = "";
     mathNotebook[mathNotebookIndex].notes.forEach((i) => {
-      console.log(i);
       const entry = document.createElement("span");
       entry.className = "howworkcard mathNotebookCardNotes";
       entry.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(i.date)}</p><p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${i.content})}</p>`;
@@ -10454,19 +10451,24 @@ function loadMathNotebookView(mode) {
 }
 let entry = {};
 function loadFreeFormCards() {
+  document.getElementById("mathNotebookConceptViewCards").style.display =
+    "none";
+
   document.getElementById("mathNotebookJournalViewCards").style.display =
     "none";
   document.getElementById("mathNotebookJournalView").style.display = "flex";
-  document.getElementById("mathNotebookConceptsView").style.display = "none";
   document.getElementById("mathNotebookAllView").style.display = "none";
   document.getElementById("mathNotebookQuestionView").style.display = "none";
   document.getElementById("mathNotebookHidden").style.display = "none";
   document.getElementById("mathNotebookJournalView").innerHTML = "";
   document.getElementById("mathNotebookCardsView").style.display = "none";
   document.getElementById("mathNotebookJournalView").innerHTML = "";
+  document.getElementById("mathNotebookConceptViewCards").style.display =
+    "none";
+  document.getElementById("mathNotebookConceptsView").style.display = "none";
+  document.getElementById("mathNotebookConceptView").style.display = "none";
   journalEntries.forEach((note) => {
     if (note.entryType == "journal") {
-      console.log(note);
       const card = document.createElement("span");
       card.className = "howworkcard mathNotebookCard";
       card.style.flex = "25%";
@@ -10527,7 +10529,6 @@ function loadFreeFormCards() {
     document.querySelectorAll(".saveJournalTag").forEach((tag) => {
       tag.style.cursorStyle = "pointer";
       tag.addEventListener("click", function () {
-        console.log("clicked");
         if (tag.classList.contains("saintly-tagOrange")) {
           tag.classList.remove("saintly-tagOrange");
           tag.classList.add("saintly-tag");
@@ -10656,7 +10657,7 @@ async function createNewJournalEntry() {
         <p style="color: var(--text-variant-light); margin-bottom: 0px;">Title:</p>
         <input class="journalTitleInput" type="text" style=" margin-bottom: 0px;">
         <p style="color: var(--text-variant-light); margin-bottom: 0px;">Date:</p>
-        <p style="color: var(--text-variant-light); margin-bottom: 0px;">${getCorrectDate(new Date())}
+        <p style="color: var(--text-variant-light); margin-bottom: 0px;">${getCorrectDate(new Date())}</p>
         <p style="color: var(--text-variant-light); margin-bottom: 0px;">Entry (LaTex will render in preview):</p>
         <textarea class="journalDescriptionInput"></textarea>
         <div class="journalEntryLaTexPreview"></div>
@@ -10699,7 +10700,7 @@ async function createNewJournalEntry() {
           showJournalEntry(journalEntries[journalIndex]);
         }
       } else {
-        document.querySelector("newJournalEntryError").innerHTML =
+        document.querySelector(".newJournalEntryError").innerHTML =
           "Please Complete All Fields";
       }
     });
@@ -10719,7 +10720,6 @@ async function saveNewJournalEntry(studentId, journalTitle, noteContent) {
       content: noteContent,
       title: journalTitle,
     });
-    console.log(journalEntries);
     mathNotebookFull = [];
     journalEntries.forEach((i) => {
       mathNotebookFull.push(i);
@@ -10734,8 +10734,6 @@ async function saveNewJournalEntry(studentId, journalTitle, noteContent) {
       .eq("id", studentId);
 
     if (updateError) throw updateError;
-
-    console.log("Note added successfully!");
   } catch (err) {
     console.error("Error updating notebook:", err);
   }
@@ -10751,6 +10749,9 @@ function loadConceptCards() {
   document.getElementById("mathNotebookJournalView").innerHTML = "";
   document.getElementById("mathNotebookCardsView").style.display = "none";
   document.getElementById("mathNotebookConceptView").innerHTML = "";
+  document.getElementById("mathNotebookConceptView").replaceChildren();
+  document.getElementById("mathNotebookConceptViewCards").style.display =
+    "none";
   conceptEntries.forEach((note) => {
     if (note.entryType == "concept") {
       const card = document.createElement("span");
@@ -10768,11 +10769,11 @@ function loadConceptCards() {
       });
       const noteDiv = document.createElement("div");
       noteDiv.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(note.date)}</p>
-                                <p class="notesDisplay" style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${note.myExplanation}</p>`;
+                                <p class="notesDisplay" style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${note.description}</p>`;
       card.appendChild(noteDiv);
       card.style.cursorStyle = "pointer";
       card.addEventListener("click", function () {
-        showJournalEntry(note);
+        showConceptEntry(note);
       });
       document.getElementById("mathNotebookConceptView").appendChild(card);
     }
@@ -10809,44 +10810,18 @@ function loadConceptCards() {
         selected: false,
       },
     ];
-    document.getElementById("conceptNotebookSubmissionPannelTagsContainer").innerHTML = ""
-    TOPIC_GLOSSARY.forEach(topic => {
-      const tag = document.createElement("div")
-      tag.className = "saintly-tag saveConceptSubtag"
-      tag.style.cursorStyle = "pointer"
-      tag.innerHTML = topic.title
-      document.getElementById("conceptNotebookSubmissionPannelTagsContainer").appendChild(tag)
-      tag.addEventListener("click", function () {
-        console.log("clicked");
-        if (tag.classList.contains("saintly-tagOrange")) {
-          tag.classList.remove("saintly-tagOrange");
-          tag.classList.add("saintly-tag");
-        } else {
-          tag.classList.remove("saintly-tag");
-          tag.classList.add("saintly-tagOrange");
-        }
-        entry.tags.forEach((tagName) => {
-          if (tag.textContent === tagName.name) {
-            tagName.selected = !tagName.selected;
-          }
-        });
-      });
-      
-    })
-    document.getElementById("displaySubtopics").addEventListener("click", function() {
-      if (document.getElementById("conceptNotebookSubmissionPannelTagsContainer").style.display =="none"){
-document.getElementById("conceptNotebookSubmissionPannelTagsContainer").style.display = "block"
-document.getElementById("displayTopicsArrow").classList.add("displayTopicsArrowSelected")
-      } else {
-        document.getElementById("conceptNotebookSubmissionPannelTagsContainer").style.display = "none"
-document.getElementById("displayTopicsArrow").classList.remove("displayTopicsArrowSelected")
-      }
-    })
-    document.getElementById("formulaCardsContainer").innerHTML = ""
-    document.querySelectorAll(".saveConceptTag").forEach((tag) => {
+    document.getElementById(
+      "conceptNotebookSubmissionPannelTagsContainer",
+    ).innerHTML = "";
+    TOPIC_GLOSSARY.forEach((topic) => {
+      const tag = document.createElement("div");
+      tag.className = "saintly-tag saveConceptSubtag";
       tag.style.cursorStyle = "pointer";
+      tag.innerHTML = topic.title;
+      document
+        .getElementById("conceptNotebookSubmissionPannelTagsContainer")
+        .appendChild(tag);
       tag.addEventListener("click", function () {
-        console.log("clicked");
         if (tag.classList.contains("saintly-tagOrange")) {
           tag.classList.remove("saintly-tagOrange");
           tag.classList.add("saintly-tag");
@@ -10861,111 +10836,187 @@ document.getElementById("displayTopicsArrow").classList.remove("displayTopicsArr
         });
       });
     });
-    document.getElementById("conceptQuestionLinksContainer").innerHTML = ""
-    document.getElementById("conceptNotebookSubmissionPannelError").innerHTML = ""
-    mathNotebook.forEach(i => {
-      const card = document.createElement("div")
-      card.classList = "howworkcard"
-      card.width = "25%"
+    document
+      .getElementById("displaySubtopics")
+      .addEventListener("click", function () {
+        if (
+          document.getElementById(
+            "conceptNotebookSubmissionPannelTagsContainer",
+          ).style.display == "none"
+        ) {
+          document.getElementById(
+            "conceptNotebookSubmissionPannelTagsContainer",
+          ).style.display = "block";
+          document
+            .getElementById("displayTopicsArrow")
+            .classList.add("displayTopicsArrowSelected");
+        } else {
+          document.getElementById(
+            "conceptNotebookSubmissionPannelTagsContainer",
+          ).style.display = "none";
+          document
+            .getElementById("displayTopicsArrow")
+            .classList.remove("displayTopicsArrowSelected");
+        }
+      });
+    document.getElementById("formulaCardsContainer").innerHTML = "";
+    document.querySelectorAll(".saveConceptTag").forEach((tag) => {
+      tag.style.cursorStyle = "pointer";
+      tag.addEventListener("click", function () {
+        if (tag.classList.contains("saintly-tagOrange")) {
+          tag.classList.remove("saintly-tagOrange");
+          tag.classList.add("saintly-tag");
+        } else {
+          tag.classList.remove("saintly-tag");
+          tag.classList.add("saintly-tagOrange");
+        }
+        entry.tags.forEach((tagName) => {
+          if (tag.textContent === tagName.name) {
+            tagName.selected = !tagName.selected;
+          }
+        });
+      });
+    });
+    document.getElementById("conceptQuestionLinksContainer").innerHTML = "";
+    document.getElementById("conceptNotebookSubmissionPannelError").innerHTML =
+      "";
+    mathNotebook.forEach((i) => {
+      const card = document.createElement("div");
+      card.classList = "howworkcard";
+      card.width = "25%";
       card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${i.title}</h3>
       <span class="saintly-tag">${i.topic}</span>
-      <p class="par">${i.text}</p><button class="start-practice conceptLinkQuestion">Link This Question</button>`
-      document.getElementById("conceptQuestionLinksContainer").appendChild(card)
-      card.querySelector(".conceptLinkQuestion").addEventListener("click", function() {
-        if (card.classList.contains("selectedQuestion")){
-          card.classList.remove("selectedQuestion")
-          card.querySelector(".conceptLinkQuestion").innerHTML = "Link This Question"
-        } else {
-          card.classList.add("selectedQuestion")
-          card.querySelector(".conceptLinkQuestion").innerHTML = "Remove This Link"
-        }
-      })
-    })
-    document.getElementById("conceptTopicLinksContainer").innerHTML = ""
-    conceptEntries.forEach(i => {
-      if (i.title !== note.title) {
-        const card = document.createElement("div")
-        card.classList = "howworkcard"
-        card.width = "25%"
-        card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${i.title}</h3>
-       <button class="start-practice conceptLinkTopic">Link This Concept</button>`
-        document.getElementById("conceptTopicLinksContainer").appendChild(card)
-      card.querySelector(".conceptLinkTopic").addEventListener("click", function() {
-        if (card.classList.contains("selectedQuestion")){
-          card.classList.remove("selectedTopic")
-          card.querySelector(".conceptLinkTopic").innerHTML = "Link This Question"
-        } else {
-          card.classList.add("selectedTopic")
-          card.querySelector(".conceptLinkQuestion").innerHTML = "Remove This Link"
-        }
-      })
+      <p class="par">${i.text}</p><button class="start-practice conceptLinkQuestion">Link This Question</button>`;
+      if (window.MathJax) {
+        MathJax.typesetPromise([card]).catch(() => {});
       }
-    })
-    
+      document
+        .getElementById("conceptQuestionLinksContainer")
+        .appendChild(card);
+      card
+        .querySelector(".conceptLinkQuestion")
+        .addEventListener("click", function () {
+          if (card.classList.contains("selectedQuestion")) {
+            card.classList.remove("selectedQuestion");
+            card.querySelector(".conceptLinkQuestion").innerHTML =
+              "Link This Question";
+          } else {
+            card.classList.add("selectedQuestion");
+            card.querySelector(".conceptLinkQuestion").innerHTML =
+              "Remove This Link";
+          }
+        });
+    });
+    document.getElementById("conceptTopicLinksContainer").innerHTML = "";
+    conceptEntries.forEach((i) => {
+      const card = document.createElement("div");
+      card.classList = "howworkcard";
+      card.width = "25%";
+      card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${i.title}</h3>
+       <button class="start-practice conceptLinkTopic">Link This Concept</button>`;
+      document.getElementById("conceptTopicLinksContainer").appendChild(card);
+      card
+        .querySelector(".conceptLinkTopic")
+        .addEventListener("click", function () {
+          if (card.classList.contains("selectedQuestion")) {
+            card.classList.remove("selectedTopic");
+            card.querySelector(".conceptLinkTopic").innerHTML =
+              "Link This Concept";
+          } else {
+            card.classList.add("selectedTopic");
+            card.querySelector(".conceptLinkTopic").innerHTML =
+              "Remove This Link";
+          }
+        });
+    });
   });
 }
-document.getElementById("addFormula").addEventListener("click", function() {
-  const card = document.createElement("div")
-  card.classList = "howworkcard"
-  card.innerHTML = `<p style="color: var(--text-variant-light); margin-bottom: 0px;">Formula (LaTex)</p><input type="text" class="formulaInput"><div class="formulaRender"></div><p style="color: var(--text-variant-light); margin-bottom: 0px;">Caption:</p><input type="text" class="formulaCaption"><button class="start-practice">Delete Note</button>`
-  document.getElementById("formulaCardsContainer").appendChild(card)
-  card.querySelector(".formulaInput").addEventListener("input", function(){
-    const formula = card.querySelector(".formulaInput").value
-    card.querySelector(".formulaRender").innerHTML = formula
-    if (window.MathJax){
-       MathJax.typesetPromise([document.querySelector(".formulaRender")]).catch(() => {})
+document.getElementById("addFormula").addEventListener("click", function () {
+  const card = document.createElement("div");
+  card.classList = "howworkcard";
+  card.innerHTML = `<p style="color: var(--text-variant-light); margin-bottom: 0px;">Formula (LaTex)</p><input type="text" class="formulaInput"><div class="formulaRender"></div><p style="color: var(--text-variant-light); margin-bottom: 0px;">Caption:</p><input type="text" class="formulaCaption"><button class="start-practice">Delete Note</button>`;
+  document.getElementById("formulaCardsContainer").appendChild(card);
+  card.querySelector(".formulaInput").addEventListener("input", function () {
+    const formula = card.querySelector(".formulaInput").value;
+    card.querySelector(".formulaRender").innerHTML = formula;
+    if (window.MathJax) {
+      MathJax.typesetPromise([document.querySelector(".formulaRender")]).catch(
+        () => {},
+      );
     }
-  })
-  card.querySelector(".start-practice").addEventListener("click", function() {
-    document.getElementById("formulaCardsContainer").removeChild(card)
-  })
-})
-document.getElementById("saveConceptEntry").addEventListener("click", async function() {
-  if (document.getElementById("journalTitleInput").value === "none" || document.getElementById("conceptDefinitionInput").value === "none"){
-    document.getElementById("conceptNotebookSubmissionPannelError").innerHTML = "Please include a title and definition"
-  } else {
-  const entry = {}
-  entry.title = document.getElementById("journalTitleInput").value
-  entry.date = new Date()
-  entry.tags = []
-  document.querySelectorAll(".saveConceptTag").forEach(tag => {
-    if (tag.classList.contains("saintly-tagOrange")) {
-      entry.tags.push(tag.innerHTML)
+  });
+  card.querySelector(".start-practice").addEventListener("click", function () {
+    document.getElementById("formulaCardsContainer").removeChild(card);
+  });
+});
+document
+  .getElementById("saveConceptEntry")
+  .addEventListener("click", async function () {
+    if (
+      document.getElementById("journalTitleInput").value === "none" ||
+      document.getElementById("conceptDefinitionInput").value === "none"
+    ) {
+      document.getElementById(
+        "conceptNotebookSubmissionPannelError",
+      ).innerHTML = "Please include a title and definition";
+    } else {
+      const entry = {};
+      entry.title = document.getElementById("journalTitleInput").value;
+      entry.date = new Date();
+      entry.tags = [];
+      document.querySelectorAll(".saveConceptTag").forEach((tag) => {
+        if (tag.classList.contains("saintly-tagOrange")) {
+          entry.tags.push(tag.innerHTML);
+        }
+      });
+      entry.subTags = [];
+      document.querySelectorAll(".saveConceptSubtag").forEach((tag) => {
+        if (tag.classList.contains("saintly-tagOrange")) {
+          entry.subTags.push(tag.innerHTML);
+        }
+      });
+      entry.formulas = [];
+      entry.description = document.getElementById(
+        "conceptDefinitionInput",
+      ).value;
+      Array.from(
+        document.getElementById("formulaCardsContainer").children,
+      ).forEach((card) => {
+        entry.formulas.push({
+          formula: card.querySelector(".formulaInput").value,
+          caption: card.querySelector(".formulaCaption").value,
+        });
+      });
+      entry.myExplanation = document.getElementById(
+        "conceptExplanationInput",
+      ).value;
+      entry.linkedQuestions = [];
+      entry.entryType = "concept";
+      Array.from(
+        document.getElementById("conceptQuestionLinksContainer").children,
+      ).forEach((question) => {
+        if (question.classList.contains("selectedQuestion")) {
+          entry.linkedQuestions.push(
+            question.querySelector(".amc10subtitle").innerHTML,
+          );
+        }
+      });
+      entry.linkedConcepts = [];
+      Array.from(
+        document.getElementById("conceptTopicLinksContainer").children,
+      ).forEach((question) => {
+        if (question.classList.contains("selectedTopic")) {
+          entry.linkedConcepts.push(
+            question.querySelector(".amc10subtitle").innerHTML,
+          );
+        }
+      });
+      document.getElementById("conceptNotebookSubmissionPannel").style.display =
+        "none";
+      overlay.style.display = "none";
+      saveConceptEntry(entry);
     }
-  })
-  entry.subTags = []
-  document.querySelectorAll(".saveConceptSubtag").forEach(tag => {
-    console.log(tag)
-    if (tag.classList.contains("saintly-tagOrange")){
-      entry.subTags.push(tag.innerHTML)
-    }
-  })
-  entry.formulas = []
-  entry.description = document.getElementById("conceptDefinitionInput").value
-  Array.from(document.getElementById("formulaCardsContainer").children).forEach(card => {
-    entry.formulas.push({
-      formula: card.querySelector(".formulaInput").value,
-      caption: card.querySelector(".formulaCaption").value
-    })
-  })
-  entry.myExplanation = document.getElementById("conceptExplanationInput").value
-  entry.linkedQuestions = []
-  Array.from(document.getElementById("conceptQuestionLinksContainer").children).forEach(question => {
-    if (question.classList.contains("selectedQuestion")) {
-      entry.linkedQuestions.push(question.querySelector(".amc10subtitle").innerHTML)
-    }
-  })
-  entry.linkedConcept= []
-  Array.from(document.getElementById("conceptTopicLinksContainer").children).forEach(question => {
-    if (question.classList.contains("selectedQuestion")) {
-      entry.linkedTopics.push(question.querySelector(".amc10subtitle").innerHTML)
-    }
-  })
-  document.getElementById("conceptNotebookSubmissionPannel").style.display = "none"
-  overlay.style.display = "none"
-  saveConceptEntry(entry)
-  }
-})
+  });
 async function saveConceptEntry(entry) {
   conceptEntries.push(entry);
   const {
@@ -10981,3 +11032,85 @@ async function saveConceptEntry(entry) {
     loadConceptCards();
   }
 }
+function showConceptEntry(note) {
+  conceptIndex = conceptEntries.findIndex(
+    (entry) => entry.title === note.title,
+  );
+  document.getElementById("mathNotebookConceptView").style.display = "none";
+  document.getElementById("mathNotebookConceptViewCards").style.display =
+    "flex";
+  document.getElementById("mathNotebookConceptViewTitle").innerHTML =
+    note.title;
+  document.getElementById("mathNotebookConceptViewExplanation").innerHTML =
+    note.myExplanation;
+  document.getElementById("mathNotebookConceptViewDescription").innerHTML =
+    note.description;
+  document.getElementById("tagContainerConceptView").innerHTML = "";
+  document.getElementById("mathNotebookConceptFormulasView").innerHTML = "";
+  note.tags.forEach((tag) => {
+    const tagSpan = document.createElement("span");
+    tagSpan.classList = "saintly-tag";
+    tagSpan.innerHTML = tag;
+    document.getElementById("tagContainerConceptView").appendChild(tagSpan);
+  });
+  note.subTags.forEach((tag) => {
+    const tagSpan = document.createElement("span");
+    tagSpan.classList = "saintly-tag";
+    tagSpan.innerHTML = tag;
+    document.getElementById("tagContainerConceptView").appendChild(tagSpan);
+  });
+  note.formulas.forEach((formula) => {
+    const formulaDiv = document.createElement("div");
+    formulaDiv.classList = "howworkcard";
+    formulaDiv.innerHTML = `<p style="color: var(--text-color)" class="formulaRender">${formula.formula}</p><p style="color: var(--text-color)" class="formulaCaption">${formula.caption}</p><button class="start-practice deleteFormuaCard">Delete Formula</button>`;
+    document
+      .getElementById("mathNotebookConceptFormulasView")
+      .appendChild(formulaDiv);
+    if (window.MathJax) {
+      MathJax.typesetPromise([
+        formulaDiv.querySelector(".formulaRender"),
+      ]).catch(() => {});
+    }
+  });
+  note.linkedQuestions.forEach((question) => {
+    const questionCard = document.createElement("div");
+    questionCard.classList = "howworkcard";
+    let questionCardIndex = mathNotebook.findIndex(
+      (entry) => entry.title === question,
+    );
+    let questionData = mathNotebook[questionCardIndex];
+    questionCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${questionData.title}</h3>
+    <span class="saintly-tag">${questionData.topic}</span>
+    <p class="par">${questionData.text}</p><button class="start-practice">See This Problem</button>`
+    document.getElementById("mathNotebookLinkedQuestionsView").appendChild(questionCard);
+  });
+  note.linkedConcepts.forEach((topic) => {
+    const topicCard = document.createElement("div");
+    topicCard.classList = "howworkcard";
+    let topicCardIndex = concept.findIndex(
+      (entry) => entry.title === topic,
+    );
+    let topicData = conceptEnries[topicCardIndex];
+    topicCard.classList = "howworkcard";
+    topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${topic}</h3><p class="par">${topicData.description}</p><button class="start-practice">See This Concept</button>`;
+    document.getElementById("mathNotebookLinkedTopicsView").appendChild(topicCard);
+  });
+}
+document
+  .getElementById("carouselButtonLeftConceptViewCards")
+  .addEventListener("click", function () {
+    if (conceptIndex !== 0) {
+      showConceptEntry(conceptEntries[conceptIndex - 1]);
+    } else {
+      showConceptEntry(conceptEntries[conceptEntries.length - 1]);
+    }
+  });
+document
+  .getElementById("carouselButtonRightConceptViewCards")
+  .addEventListener("click", function () {
+    if (conceptIndex !== conceptEntries.length - 1) {
+      showConceptEntry(conceptEntries[conceptIndex + 1]);
+    } else {
+      showConceptEntry(conceptEntries[0]);
+    }
+  });
