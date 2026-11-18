@@ -191,6 +191,42 @@ sunny
 <div id="mathNotebookAllView"style="display: none; flex-wrap: wrap;"></div>
 <div id="mathNotebookCardsView" style="display: none; flex-wrap: wrap;"></div>
     </div>
+<div id="linkedQuestionView" style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+      <span class="howworkcardEditted" style="flex: 75%; width: 75%; flex-direction: column; display: flex;">
+        <button class="start-practice" id="returnToConcept">Return to Concept Entry</button>
+          <h3 id="linkedQuestionTitle" class="amc10subtitle ittyBitty">Title</h3>
+        <p class="par" id="linkedQuestionText">Example Text</p>
+        <span style="display: flex; flex-direction: row; gap: 5px">
+        <input type="text" id="linkedQuestionInput" placeholder="Your Answer">
+        <button class="problemBtn" id="linkedQuestionSubmit">Submit</button>
+        </span>
+        <div id="linkedQuestionChoices">
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+        </div>
+        <div id="linkedQuestionStepOne" class="stepOne" style="display: none">
+        </div>
+        <div style="display: flex; flex-direction: row; gap: 5px">
+          <span class="howworkcard" id="newNoteLinkedQuestion" style="flex: 1; cursor: pointer;">
+            <div class="material-symbols-rounded" style="color: var(--text-variant-light)">add_circle</div>
+            <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">New Entry</div>
+          </span>
+          <span class="howworkcard" id="seePastEntriesLinkedQuestion" style="flex: 1; cursor: pointer;">
+            <div class="material-symbols-rounded" style="color: var(--text-variant-light)">menu_book</div>
+            <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">See Past Entries</div>
+          </span>
+          <span class="howworkcard" id="seeHintsAndStepsLinkedQuestion" style="flex: 1; cursor: pointer;">
+            <div class="material-symbols-rounded" style="color: var(--text-variant-light)">lightbulb_2</div>
+            <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">See Hints and Steps</div>
+          </span>
+        </div>
+        <div class="solution" id="mathNotebookLinkedQuestionSolution"style="display: none"></div>
+      </span>
+    </div>
+
     <div id="mathNotebookQuestionView" style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
       <div id="carouselButtonLeft" class = "carouselButtonMathNotebook">
         <span class="material-symbols-rounded">

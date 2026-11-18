@@ -10154,6 +10154,8 @@ if (resetBtn) {
 }
 
 function createCards() {
+  document.getElementById("mathNotebookConceptView").style.display = "none";
+  document.getElementById("mathNotebookConceptsView").style.display = 'none'
   document.getElementById("mathNotebookConceptViewCards").style.display =
     "none";
 
@@ -10238,15 +10240,15 @@ function openQuestion(question) {
     document.getElementById("notebookQuestionInput").style.display = "none";
     document.getElementById("notebookQuestionSubmit").style.display = "none";
     document.getElementById("notebookQuestionChoices").style.display = "block";
-    document
+    document.getElementById("notebookQuestionChoices")
       .querySelectorAll(".mc-choice-notebook")
       .forEach((button) => (button.style.display = "none"));
     for (let i = 0; i < question.choices.length - 1; i++) {
-      document.querySelectorAll(".mc-choice-notebook")[i].style.display =
+      document.getElementById("notebookQuestionChoices").querySelectorAll(".mc-choice-notebook")[i].style.display =
         "block";
-      document.querySelectorAll(".mc-choice-notebook")[i].innerHTML =
+      document.getElementById("notebookQuestionChoices").querySelectorAll(".mc-choice-notebook")[i].innerHTML =
         question.choices[i];
-      document.querySelectorAll(".mc-choice-notebook")[i].addEventListener(
+      document.getElementById("notebookQuestionChoices").querySelectorAll(".mc-choice-notebook")[i].addEventListener(
         "click",
         function () {
           checkNotebookAnswer(question.choices[i], question);
@@ -10256,7 +10258,7 @@ function openQuestion(question) {
 
       if (window.MathJax) {
         MathJax.typesetPromise([
-          document.querySelectorAll(".mc-choice-notebook")[i],
+          document.getElementById("notebookQuestionChoices").querySelectorAll(".mc-choice-notebook")[i],
         ]).catch(() => {});
       }
     }
@@ -10440,6 +10442,7 @@ document.querySelectorAll(".tab").forEach((tab) => {
   });
 });
 function loadMathNotebookView(mode) {
+  document.getElementById("linkedQuestionView").style.display ="none"
   if (mode === "Questions") {
     createCards();
   } else if (mode == "Concepts") {
@@ -11036,6 +11039,7 @@ function showConceptEntry(note) {
   conceptIndex = conceptEntries.findIndex(
     (entry) => entry.title === note.title,
   );
+  document.getElementById("linkedQuestionView").style.display ="none"
   document.getElementById("mathNotebookConceptView").style.display = "none";
   document.getElementById("mathNotebookConceptViewCards").style.display =
     "flex";
@@ -11083,14 +11087,17 @@ function showConceptEntry(note) {
     <span class="saintly-tag">${questionData.topic}</span>
     <p class="par">${questionData.text}</p><button class="start-practice">See This Problem</button>`
     document.getElementById("mathNotebookLinkedQuestionsView").appendChild(questionCard);
+    questionCard.querySelector(".start-practice").addEventListener("click", function(){
+      openConceptQuestion(questionData, note)
+    })
   });
   note.linkedConcepts.forEach((topic) => {
     const topicCard = document.createElement("div");
     topicCard.classList = "howworkcard";
-    let topicCardIndex = concept.findIndex(
+    let topicCardIndex = conceptEntries.findIndex(
       (entry) => entry.title === topic,
     );
-    let topicData = conceptEnries[topicCardIndex];
+    let topicData = conceptEntries[topicCardIndex];
     topicCard.classList = "howworkcard";
     topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${topic}</h3><p class="par">${topicData.description}</p><button class="start-practice">See This Concept</button>`;
     document.getElementById("mathNotebookLinkedTopicsView").appendChild(topicCard);
@@ -11114,3 +11121,74 @@ document
       showConceptEntry(conceptEntries[0]);
     }
   });
+function openConceptQuestion(question, note) {
+  document.getElementById("returnToConcept").addEventListener("click", function() {
+    showConceptEntry(note)
+  })
+  document.getElementById("linkedQuestionStepOne").style.display = "none";
+  document.getElementById("mathNotebookLinkedQuestionSolution").style.display = "none";
+  document.getElementById("mathNotebookConceptViewCards").style.display = "none";
+  document.getElementById("linkedQuestionView").style.display = "flex";
+  document.getElementById("linkedQuestionTitle").innerHTML =
+    `${question.title}`;
+  document.getElementById("linkedQuestionText").innerHTML =
+    `${question.text}`;
+  if (question.type == "mc") {
+    document.getElementById("linkedQuestionInput").style.display = "none";
+    document.getElementById("linkedQuestionSubmit").style.display = "none";
+    document.getElementById("linkedQuestionChoices").style.display = "block";
+    document.getElementById("linkedQuestionChoices").querySelectorAll(".mc-choice-notebook")
+      .forEach((button) => (button.style.display = "none"));
+    for (let i = 0; i < question.choices.length - 1; i++) {
+      document.getElementById("linkedQuestionChoices").querySelectorAll(".mc-choice-notebook")[i].style.display =
+        "block";
+      document.getElementById("linkedQuestionChoices").querySelectorAll(".mc-choice-notebook")[i].innerHTML =
+        question.choices[i];
+      document.getElementById("linkedQuestionChoices").querySelectorAll(".mc-choice-notebook")[i].addEventListener(
+        "click",
+        function () {
+          checkConceptAnswer(question.choices[i], question);
+        },
+        { once: true },
+      );
+
+      if (window.MathJax) {
+        MathJax.typesetPromise([
+          document.querySelectorAll(".mc-choice-notebook")[i],
+        ]).catch(() => {});
+      }
+    }
+  } else {
+    document.getElementById("linkedQuestionInput").style.display = "block";
+    document.getElementById("linkedQuestionSubmit").style.display = "block";
+    document.getElementById("linkedQuestionChoices").style.display = "none";
+  }
+  if (window.MathJax) {
+    MathJax.typesetPromise([
+      document.getElementById("linkedQuestionText"),
+    ]).catch(() => {});
+  }
+  document
+    .getElementById("linkedQuestionSubmit")
+    .addEventListener("click", function () {
+      checkConceptAnswer(
+        document.getElementById("linkedQuestionInput").value,
+        question,
+      );
+    });
+}
+function checkConceptAnswer(answerEntry, questionData) {
+  document.getElementById("mathNotebookLinkedQuestionSolution").style.display = "block";
+  if (answerEntry === questionData.answer) {
+    document.getElementById("mathNotebookLinkedQuestionSolution").innerHTML =
+      `<p><span class="material-symbols-outlined">check</span> Correct!</p><p>${questionData.solution}`;
+  } else {
+    document.getElementById("mathNotebookLinkedQuestionSolution").innerHTML =
+      `<p><span class="material-symbols-outlined">close_small</span> Incorrect</p><p>${questionData.solution}`;
+  }
+  if (window.MathJax) {
+    MathJax.typesetPromise([
+      document.getElementById("mathNotebookLinkedQuestionSolution"),
+    ]).catch(() => {});
+  }
+}
