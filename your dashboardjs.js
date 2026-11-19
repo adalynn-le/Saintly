@@ -11102,6 +11102,14 @@ function showConceptEntry(note) {
     topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${topic}</h3><p class="par">${topicData.description}</p><button class="start-practice">See This Concept</button>`;
     document.getElementById("mathNotebookLinkedTopicsView").appendChild(topicCard);
   });
+  conceptEntries.forEach(entry => {
+    if (entry.linkedConcepts.includes(note.title)) {
+      const topicCard = document.createElement("div")
+      topicCard.classList = "howworkcard";
+      topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${entry.title}</h3><p class="par">${entry.description}</p><button class="start-practice">See This Concept</button>`
+      document.getElementById("mathNotebookBacklinksView").appendChild(topicCard);
+    }
+  })
 }
 document
   .getElementById("carouselButtonLeftConceptViewCards")
