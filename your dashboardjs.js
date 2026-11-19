@@ -11184,6 +11184,40 @@ function openConceptQuestion(question, note) {
         question,
       );
     });
+document
+  .getElementById("seePastEntriesLinkedQuestion")
+  .addEventListener("click", function () {
+    document.getElementById("seePastQuestionsPannel").style.display = "block";
+    overlay.style.display = "block";
+    document.getElementById("pastEntriesContainer").innerHTML = "";
+    question.notes.forEach((i) => {
+      const entry = document.createElement("span");
+      entry.className = "howworkcard mathNotebookCardNotes";
+      entry.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(i.date)}</p><p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${i.content})}</p>`;
+      if (window.MathJax) {
+        MathJax.typesetPromise([entry]).catch(() => {});
+      }
+      if (mathNotebook[mathNotebookIndex].notes.length === 0) {
+        document.getElementById("pastEntriesContainer").innerHTML =
+          "<p style='color: var(--text-variant-light);'>No Past Entries</p>";
+      }
+      document.getElementById("pastEntriesContainer").appendChild(entry);
+    });
+  });
+document
+  .getElementById("seeHintsAndStepsLinkedQuestion")
+  .addEventListener("click", function () {
+    document.getElementById("linkedQuestionStepOne").style.display = "block";
+    document.getElementById("linkedQuestionStepOne").innerHTML = `
+        <p>Hint: ${question.hint}</p>
+        <p>First Step: ${question.step}</p>`;
+    if (window.MathJax) {
+      MathJax.typesetPromise([
+        document.getElementById("linkedQuestionStepOne"),
+      ]).catch(() => {});
+    }
+  });
+
 }
 function checkConceptAnswer(answerEntry, questionData) {
   document.getElementById("mathNotebookLinkedQuestionSolution").style.display = "block";
@@ -11200,3 +11234,4 @@ function checkConceptAnswer(answerEntry, questionData) {
     ]).catch(() => {});
   }
 }
+
