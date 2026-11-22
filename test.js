@@ -13124,6 +13124,7 @@ supabase.auth.onAuthStateChange(async (event, session) => {
         loadQuestion();
 
     } else {
+        document.getElementById("saveThisProblem").style.display = "none"
         if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
         if (typeof runDiagnostic === "function") runDiagnostic();
         TOPIC_GLOSSARY = [{
