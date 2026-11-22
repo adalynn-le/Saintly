@@ -10477,6 +10477,7 @@ function loadFreeFormCards() {
       card.style.flex = "25%";
       card.style.width = "25%";
       card.innerHTML = `<h3 class="amc10subtitle ittyBitty"style="margin-bottom: 0px;">${note.title}</h3><div style="display: flex; flex-direction: row; gap: 3px; flex-wrap: wrap;margin-top: 0; margin-bottom: 5px;" class="tagContainer" ></div>`;
+      if (note.tags){
       note.tags.forEach((tag) => {
         if (tag.selected == true) {
           const tagSpan = document.createElement("span");
@@ -10485,6 +10486,7 @@ function loadFreeFormCards() {
           card.querySelector(".tagContainer").appendChild(tagSpan);
         }
       });
+    }
       const noteDiv = document.createElement("div");
       noteDiv.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(note.date)}</p>
                                 <p class="notesDisplay" style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${note.description}</p>`;
@@ -10762,6 +10764,7 @@ function loadConceptCards() {
       card.style.flex = "25%";
       card.style.width = "25%";
       card.innerHTML = `<h3 class="amc10subtitle ittyBitty"style="margin-bottom: 0px;">${note.title}</h3><div style="display: flex; flex-direction: row; gap: 3px; flex-wrap: wrap;margin-top: 0; margin-bottom: 5px;" class="tagContainer" ></div>`;
+      if (note.tags){
       note.tags.forEach((tag) => {
         if (tag.selected == true) {
           const tagSpan = document.createElement("span");
@@ -10770,13 +10773,14 @@ function loadConceptCards() {
           card.querySelector(".tagContainer").appendChild(tagSpan);
         }
       });
+    }
       const noteDiv = document.createElement("div");
       noteDiv.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(note.date)}</p>
                                 <p class="notesDisplay" style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px">${note.description}</p>`;
       card.appendChild(noteDiv);
       card.style.cursorStyle = "pointer";
       card.addEventListener("click", function () {
-        showConceptEntry(note);
+        showConceptEntry(note, "")
       });
       document.getElementById("mathNotebookConceptView").appendChild(card);
     }
@@ -11035,7 +11039,7 @@ async function saveConceptEntry(entry) {
     loadConceptCards();
   }
 }
-function showConceptEntry(note) {
+function showConceptEntry(note, lastNote) {
   conceptIndex = conceptEntries.findIndex(
     (entry) => entry.title === note.title,
   );
@@ -11098,16 +11102,35 @@ function showConceptEntry(note) {
       (entry) => entry.title === topic,
     );
     let topicData = conceptEntries[topicCardIndex];
+
     topicCard.classList = "howworkcard";
-    topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${topic}</h3><p class="par">${topicData.description}</p><button class="start-practice">See This Concept</button>`;
+    topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${topic}</h3><div class="lastVisitedContainer"></div><p class="par">${topicData.description}</p><button class="start-practice">See This Concept</button>`;
     document.getElementById("mathNotebookLinkedTopicsView").appendChild(topicCard);
+    if (topicData.title == lastNote){
+        const lastVisitedTag = document.createElement("span")
+        lastVisitedTag.classList = "saintly-tag"
+        lastVisitedTag.innerHTML = ("Last Visited")
+        topicCard.querySelector(".lastVisitedContainer").appendChild(lastVisitedTag)
+      }
+      topicCard.addEventListener("click", function() {
+        showConceptEntry(entry, note.title)
+      })
   });
   conceptEntries.forEach(entry => {
     if (entry.linkedConcepts.includes(note.title)) {
       const topicCard = document.createElement("div")
       topicCard.classList = "howworkcard";
-      topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${entry.title}</h3><p class="par">${entry.description}</p><button class="start-practice">See This Concept</button>`
+      topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${entry.title}</h3><div class="lastVisitedContainer"></div><p class="par">${entry.description}</p><button class="start-practice">See This Concept</button>`
       document.getElementById("mathNotebookBacklinksView").appendChild(topicCard);
+      if (entry.title == lastNote){
+        const lastVisitedTag = document.createElement("span")
+        lastVisitedTag.classList = "saintly-tag"
+        lastVisitedTag.innerHTML = ("Last Visited")
+        topicCard.querySelector(".lastVisitedContainer").appendChild(lastVisitedTag)
+      }
+      topicCard.addEventListener("click", function() {
+        showConceptEntry(entry, note.title)
+      })
     }
   })
 }
@@ -11115,23 +11138,23 @@ document
   .getElementById("carouselButtonLeftConceptViewCards")
   .addEventListener("click", function () {
     if (conceptIndex !== 0) {
-      showConceptEntry(conceptEntries[conceptIndex - 1]);
+      showConceptEntry(conceptEntries[conceptIndex - 1], "");
     } else {
-      showConceptEntry(conceptEntries[conceptEntries.length - 1]);
+      showConceptEntry(conceptEntries[conceptEntries.length - 1], "");
     }
   });
 document
   .getElementById("carouselButtonRightConceptViewCards")
   .addEventListener("click", function () {
     if (conceptIndex !== conceptEntries.length - 1) {
-      showConceptEntry(conceptEntries[conceptIndex + 1]);
+      showConceptEntry(conceptEntries[conceptIndex + 1], "");
     } else {
-      showConceptEntry(conceptEntries[0]);
+      showConceptEntry(conceptEntries[0], "");
     }
   });
 function openConceptQuestion(question, note) {
   document.getElementById("returnToConcept").addEventListener("click", function() {
-    showConceptEntry(note)
+    showConceptEntry(note, "")
   })
   document.getElementById("linkedQuestionStepOne").style.display = "none";
   document.getElementById("mathNotebookLinkedQuestionSolution").style.display = "none";
@@ -11235,3 +11258,6 @@ function checkConceptAnswer(answerEntry, questionData) {
   }
 }
 
+document.getElementById("returnToConceptCarsdView").addEventListener("click", function () {
+  loadConceptCards()
+})
