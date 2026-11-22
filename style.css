@@ -7405,3 +7405,7 @@ transform: rotate(-30deg)
   margin-top: 20px;
   text-align: center;
 }
+.headingAll{
+  font-weight: 300;
+  color: var(--text-variant-light)
+}

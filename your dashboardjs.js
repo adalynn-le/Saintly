@@ -10444,6 +10444,9 @@ function loadMathNotebookView(mode) {
   document.querySelectorAll(".mathNotebookSingleContainer").forEach(container => {
     container.style.display = "none"
   })
+  document.querySelectorAll(".headingAll").forEach(heading => {
+    heading.style.display = "none"
+  })
   if (mode === "Questions") {
     createCards();
   } else if (mode == "Concepts") {
@@ -10452,6 +10455,9 @@ function loadMathNotebookView(mode) {
     loadFreeFormCards();
   } else if (mode === "All") {
     allMode = true
+  document.querySelectorAll(".headingAll").forEach(heading => {
+    heading.style.display = "block"
+  })
     createCards()
     loadConceptCards()
     loadFreeFormCards()
