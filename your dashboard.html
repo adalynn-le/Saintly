@@ -179,19 +179,19 @@ sunny
 <span id="tabsContainer" style="display: flex; flex-direction: row; justify-content: flex-start">
   <button class="tab tabSelected" id="questionsTab">Questions</button>  <button class="tab" id="conceptsTab">Concepts</button>  <button class="tab" id="jouranlsTab">Journals</button><button class="tab" id="allViw">All</button>
 </span>
-    <div id="mathNotebookHidden" style="display: flex; flex-direction: column; align-content: center; align-items: center; justify-items: center; justify-content: center">
+    <div id="mathNotebookHidden" class="mathNotebookContainer"style="display: flex; flex-direction: column; align-content: center; align-items: center; justify-items: center; justify-content: center">
       <div style="display: flex; flex-direction: column; align-content: center; align-items: center; justify-items: center; justify-content: center; gap: 15px;">
       <span class="material-symbols-rounded" style="color: var(--text-variant); font-size: 100px; font-weight: 400">schedule</span>
       </div>
       <div style="font-size: 25px; font-weight: 500; color: var(--text-variant); max-width: 250px; text-align: center;">Save a question, concept, or note to see it in your math notebook!</div>
 </div>
-<div id="mathNotebookConceptView" style="display: none; flex-wrap: wrap; "></div>
-<div id="mathNotebookJournalView"style="display: none; flex-wrap: wrap;"></div>
-<div id="mathNotebookConceptsView"style="display: none; flex-wrap: wrap;"></div>
-<div id="mathNotebookAllView"style="display: none; flex-wrap: wrap;"></div>
-<div id="mathNotebookCardsView" style="display: none; flex-wrap: wrap;"></div>
+<div id="mathNotebookConceptView" class="mathNotebookContainer" style="display: none; flex-wrap: wrap; "></div>
+<div id="mathNotebookJournalView"class="mathNotebookContainer" style="display: none; flex-wrap: wrap;"></div>
+<div id="mathNotebookConceptsView"class="mathNotebookContainer" style="display: none; flex-wrap: wrap;"></div>
+<div id="mathNotebookAllView"class="mathNotebookContainer" style="display: none; flex-wrap: wrap;"></div>
+<div id="mathNotebookCardsView"class="mathNotebookContainer"  style="display: none; flex-wrap: wrap;"></div>
     </div>
-<div id="linkedQuestionView" style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+<div id="linkedQuestionView" class="mathNotebookSingleContainer" style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
       <span class="howworkcardEditted" style="flex: 75%; width: 75%; flex-direction: column; display: flex;">
         <button class="start-practice" id="returnToConcept">Return to Concept Entry</button>
           <h3 id="linkedQuestionTitle" class="amc10subtitle ittyBitty">Title</h3>
@@ -223,7 +223,7 @@ sunny
       </span>
     </div>
 
-    <div id="mathNotebookQuestionView" style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+    <div id="mathNotebookQuestionView" class="mathNotebookSingleContainer"style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
       <div id="carouselButtonLeft" class = "carouselButtonMathNotebook">
         <span class="material-symbols-rounded">
           arrow_back_ios
@@ -268,13 +268,14 @@ sunny
         </span>
       </div>
     </div>
-    <div id="mathNotebookJournalViewCards" style="display: none; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+    <div id="mathNotebookJournalViewCards"class="mathNotebookSingleContainer"style="display: none; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
       <div id="carouselButtonLeftJournalViewCards" class = "carouselButtonMathNotebook">
         <span class="material-symbols-rounded">
           arrow_back_ios
         </span>
       </div>
      <span class="howworkcard" style="display: block; width: 75%; align-self: center; justify-self: center;">
+      <button class="start-practice" id="returnToJournalsView">Return</button>
       <h3 id="mathNotebookJournalViewTitle" style="margin-bottom: 2px" class="amc10subtitle ittyBitty"></h3>
       <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 5px; margin-bottom: 2px;" id="tagContainerJournalView"></span>
       <div id="mathNotebookJournalViewDescription"></div>
@@ -288,7 +289,7 @@ sunny
       </div>
 
     </div>
-  <div id="mathNotebookConceptViewCards" style="display: none; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+  <div id="mathNotebookConceptViewCards" class="mathNotebookSingleContainer"style="display: none; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
       <div id="carouselButtonLeftConceptViewCards" class = "carouselButtonMathNotebook">
         <span class="material-symbols-rounded">
           arrow_back_ios
@@ -327,7 +328,7 @@ sunny
     </span>
     <p style="color: var(--text-variant-light)" id="displaySubtopics">Subtopics <span id="displayTopicsArrow" class="material-symbols-rounded">arrow_back_ios</span></p>
     <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 7px;" id="conceptNotebookSubmissionPannelTagsContainer"></span>
-    <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Title:</p><input style="margin-top: 0px;" type="text" id="journalTitleInput" placeholder="Stars and Bars Journal"><p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Definition:</p>
+    <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Title:</p><input style="margin-top: 0px;" type="text" id="conceptTitleInput" placeholder="Stars and Bars Journal"><p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Definition:</p>
  <textarea id="conceptDefinitionInput"></textarea>
  
 <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Formulas</p>

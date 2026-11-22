@@ -10154,32 +10154,19 @@ if (resetBtn) {
 }
 
 function createCards() {
-  document.getElementById("mathNotebookConceptView").style.display = "none";
-  document.getElementById("mathNotebookConceptsView").style.display = 'none'
-  document.getElementById("mathNotebookConceptViewCards").style.display =
-    "none";
-
-  document.getElementById("mathNotebookJournalViewCards").style.display =
-    "none";
-  document.getElementById("mathNotebookJournalView").style.display = "none";
-  const mathNotebookQuestions = [];
+   const mathNotebookQuestions = [];
   mathNotebook.forEach((note) => {
     if (note.entryType == "question") {
       mathNotebookQuestions.push(note);
     }
   });
-  if (mathNotebookQuestions.length === 0) {
+  if (mathNotebookQuestions.length === 0 && allMode === false) {
     document.getElementById("mathNotebookCardsView").style.display = "none";
     document.getElementById("mathNotebookHidden").style.display = "block";
     document.getElementById("mathNotebookQuestionView").style.display = "none";
     return;
   }
-  document.getElementById("mathNotebookJournalView").style.display = "none";
-  document.getElementById("mathNotebookConceptsView").style.display = "none";
-  document.getElementById("mathNotebookAllView").style.display = "none";
-  document.getElementById("mathNotebookQuestionView").style.display = "none";
-  document.getElementById("mathNotebookHidden").style.display = "none";
-  document.getElementById("mathNotebookCardsView").innerHTML = "";
+ document.getElementById("mathNotebookCardsView").innerHTML = "";
   document.getElementById("mathNotebookCardsView").style.display = "flex";
   mathNotebook.forEach((i) => {
     if (i.entryType == "question") {
@@ -10230,7 +10217,9 @@ function openQuestion(question) {
     (entry) => entry.title === question.title,
   );
   document.getElementById("mathNotebookSolution").style.display = "none";
-  document.getElementById("mathNotebookCardsView").style.display = "none";
+  document.querySelectorAll(".mathNotebookContainer").forEach(container => {
+    container.style.display = "none"
+  })
   document.getElementById("mathNotebookQuestionView").style.display = "flex";
   document.getElementById("notebookQuestionTitle").innerHTML =
     `${question.title}`;
@@ -10329,7 +10318,11 @@ document
 document
   .getElementById("cardViewSwitch")
   .addEventListener("click", function () {
-    createCards();
+    if (allMode === false){
+      loadMathNotebookView("Questions")
+    } else {
+      loadMathNotebookView("All")
+    }
   });
 document
   .getElementById("newNoteQuestion")
@@ -10441,8 +10434,16 @@ document.querySelectorAll(".tab").forEach((tab) => {
     loadMathNotebookView(tab.innerHTML);
   });
 });
+let allMode = false
 function loadMathNotebookView(mode) {
+  allMode = false
   document.getElementById("linkedQuestionView").style.display ="none"
+  document.querySelectorAll(".mathNotebookContainer").forEach(container => {
+    container.style.display = "none"
+  })
+  document.querySelectorAll(".mathNotebookSingleContainer").forEach(container => {
+    container.style.display = "none"
+  })
   if (mode === "Questions") {
     createCards();
   } else if (mode == "Concepts") {
@@ -10450,27 +10451,18 @@ function loadMathNotebookView(mode) {
   } else if (mode === "Journals") {
     loadFreeFormCards();
   } else if (mode === "All") {
+    allMode = true
+    createCards()
+    loadConceptCards()
+    loadFreeFormCards()
+
   }
 }
 let entry = {};
 function loadFreeFormCards() {
-  document.getElementById("mathNotebookConceptViewCards").style.display =
-    "none";
-
-  document.getElementById("mathNotebookJournalViewCards").style.display =
-    "none";
-  document.getElementById("mathNotebookJournalView").style.display = "flex";
-  document.getElementById("mathNotebookAllView").style.display = "none";
-  document.getElementById("mathNotebookQuestionView").style.display = "none";
-  document.getElementById("mathNotebookHidden").style.display = "none";
+    document.getElementById("mathNotebookJournalView").style.display = "flex";
   document.getElementById("mathNotebookJournalView").innerHTML = "";
-  document.getElementById("mathNotebookCardsView").style.display = "none";
-  document.getElementById("mathNotebookJournalView").innerHTML = "";
-  document.getElementById("mathNotebookConceptViewCards").style.display =
-    "none";
-  document.getElementById("mathNotebookConceptsView").style.display = "none";
-  document.getElementById("mathNotebookConceptView").style.display = "none";
-  journalEntries.forEach((note) => {
+   journalEntries.forEach((note) => {
     if (note.entryType == "journal") {
       const card = document.createElement("span");
       card.className = "howworkcard mathNotebookCard";
@@ -10498,6 +10490,7 @@ function loadFreeFormCards() {
       document.getElementById("mathNotebookJournalView").appendChild(card);
     }
   });
+  if (allMode == false ){
   const addCard = document.createElement("span");
   addCard.style.flex = "25%";
   addCard.style.width = "25%";
@@ -10547,8 +10540,10 @@ function loadFreeFormCards() {
           }
         });
       });
+
     });
   });
+}
 }
 document
   .getElementById("createNewJournal")
@@ -10744,19 +10739,9 @@ async function saveNewJournalEntry(studentId, journalTitle, noteContent) {
   }
 }
 function loadConceptCards() {
-  document.getElementById("mathNotebookJournalViewCards").style.display =
-    "none";
   document.getElementById("mathNotebookConceptView").style.display = "flex";
-  document.getElementById("mathNotebookJournalView").style.display = "none";
-  document.getElementById("mathNotebookAllView").style.display = "none";
-  document.getElementById("mathNotebookQuestionView").style.display = "none";
-  document.getElementById("mathNotebookHidden").style.display = "none";
-  document.getElementById("mathNotebookJournalView").innerHTML = "";
-  document.getElementById("mathNotebookCardsView").style.display = "none";
-  document.getElementById("mathNotebookConceptView").innerHTML = "";
+ document.getElementById("mathNotebookConceptView").innerHTML = "";
   document.getElementById("mathNotebookConceptView").replaceChildren();
-  document.getElementById("mathNotebookConceptViewCards").style.display =
-    "none";
   conceptEntries.forEach((note) => {
     if (note.entryType == "concept") {
       const card = document.createElement("span");
@@ -10785,6 +10770,7 @@ function loadConceptCards() {
       document.getElementById("mathNotebookConceptView").appendChild(card);
     }
   });
+  if (allMode == false ) {
   const addCard = document.createElement("span");
   addCard.style.flex = "25%";
   addCard.style.width = "25%";
@@ -10841,7 +10827,9 @@ function loadConceptCards() {
             tagName.selected = !tagName.selected;
           }
         });
+    
       });
+      
     });
     document
       .getElementById("displaySubtopics")
@@ -10938,6 +10926,7 @@ function loadConceptCards() {
     });
   });
 }
+}
 document.getElementById("addFormula").addEventListener("click", function () {
   const card = document.createElement("div");
   card.classList = "howworkcard";
@@ -10960,7 +10949,7 @@ document
   .getElementById("saveConceptEntry")
   .addEventListener("click", async function () {
     if (
-      document.getElementById("journalTitleInput").value === "none" ||
+      document.getElementById("conceptTitleInput").value === "none" ||
       document.getElementById("conceptDefinitionInput").value === "none"
     ) {
       document.getElementById(
@@ -10968,7 +10957,7 @@ document
       ).innerHTML = "Please include a title and definition";
     } else {
       const entry = {};
-      entry.title = document.getElementById("journalTitleInput").value;
+      entry.title = document.getElementById("conceptTitleInput").value;
       entry.date = new Date();
       entry.tags = [];
       document.querySelectorAll(".saveConceptTag").forEach((tag) => {
@@ -11259,5 +11248,16 @@ function checkConceptAnswer(answerEntry, questionData) {
 }
 
 document.getElementById("returnToConceptCarsdView").addEventListener("click", function () {
-  loadConceptCards()
+  if (allMode == false){
+    loadMathNotebookView("Concepts")
+} else {
+ loadMathNotebookView("All") 
+}
+})
+document.getElementById("returnToJournalsView").addEventListener("click", function() {
+  if (allMode == false){
+    loadMathNotebookView("Journals")
+  } else {
+    loadMathNotebookView("All")
+  }
 })
