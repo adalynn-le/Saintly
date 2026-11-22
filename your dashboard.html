@@ -19,8 +19,9 @@
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=calendar_today,kid_star" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,ads_click,bedtime,book,check,close_small,exclamation,handshake,lab_profile,local_fire_department,playlist_add_check,send,star,star_shine,sunny,volunteer_activism,warning" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle,ads_click,bedtime,book,calendar_today,check,close_small,delete,exclamation,handshake,lab_profile,local_fire_department,lightbulb_2,playlist_add_check,send,star,star_shine,sunny,volunteer_activism,warning" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_circle,arrow_back_ios,arrow_forward_ios,calendar_today,lightbulb_2,menu_book,schedule" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -113,7 +114,7 @@ sunny
     <input type="text" id="answer-input" placeholder="Your answer">
 <div id="mc-container" class="hidden">
   <button class="mc-choice problemBtn" id = "mc-choice1"></button>
-  <button class="mc-choice problemBtn" id = "mc-choice2"></button>
+<button class="mc-choice problemBtn" id = "mc-choice2"></button>
   <button class="mc-choice problemBtn" id = "mc-choice3"></button>
   <button class="mc-choice problemBtn" id = "mc-choice4"></button>
   <button class="mc-choice problemBtn" id = "mc-choice5"></button>
@@ -172,6 +173,210 @@ sunny
         <h3 class="leaderboardTitle amc10title ittyBitty percent" id="percentFive">xxx</h3>
   </div>
 </div>
+   </div>
+   <div>
+    <h3 class="amc10subtitle ittyBitty">Your Math Notebook</h3>
+<span id="tabsContainer" style="display: flex; flex-direction: row; justify-content: flex-start">
+  <button class="tab tabSelected" id="questionsTab">Questions</button>  <button class="tab" id="conceptsTab">Concepts</button>  <button class="tab" id="jouranlsTab">Journals</button><button class="tab" id="allViw">All</button>
+</span>
+    <div id="mathNotebookHidden" class="mathNotebookContainer"style="display: flex; flex-direction: column; align-content: center; align-items: center; justify-items: center; justify-content: center">
+      <div style="display: flex; flex-direction: column; align-content: center; align-items: center; justify-items: center; justify-content: center; gap: 15px;">
+      <span class="material-symbols-rounded" style="color: var(--text-variant); font-size: 100px; font-weight: 400">schedule</span>
+      </div>
+      <div style="font-size: 25px; font-weight: 500; color: var(--text-variant); max-width: 250px; text-align: center;">Save a question, concept, or note to see it in your math notebook!</div>
+</div>
+<div id="mathNotebookAllView">
+  <h3 class="headingAll">Concepts</h3>
+<div id="mathNotebookConceptView" class="mathNotebookContainer" style="display: none; flex-wrap: wrap; "></div>
+<h3 class="headingAll">Journals</h3>
+<div id="mathNotebookJournalView"class="mathNotebookContainer" style="display: none; flex-wrap: wrap;"></div>
+<div id="mathNotebookConceptsView"class="mathNotebookContainer" style="display: none; flex-wrap: wrap;"></div>
+<div id="mathNotebookAllView"class="mathNotebookContainer" style="display: none; flex-wrap: wrap;"></div>
+<h3 class="headingAll">Questions</h3>
+<div id="mathNotebookCardsView"class="mathNotebookContainer"  style="display: none; flex-wrap: wrap;"></div>
+</div>
+    </div>
+<div id="linkedQuestionView" class="mathNotebookSingleContainer" style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+      <span class="howworkcardEditted" style="flex: 75%; width: 75%; flex-direction: column; display: flex;">
+        <button class="start-practice" id="returnToConcept">Return to Concept Entry</button>
+          <h3 id="linkedQuestionTitle" class="amc10subtitle ittyBitty">Title</h3>
+        <p class="par" id="linkedQuestionText">Example Text</p>
+        <span style="display: flex; flex-direction: row; gap: 5px">
+        <input type="text" id="linkedQuestionInput" placeholder="Your Answer">
+        <button class="problemBtn" id="linkedQuestionSubmit">Submit</button>
+        </span>
+        <div id="linkedQuestionChoices">
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+        </div>
+        <div id="linkedQuestionStepOne" class="stepOne" style="display: none">
+        </div>
+        <div style="display: flex; flex-direction: row; gap: 5px">
+          <span class="howworkcard" id="seePastEntriesLinkedQuestion" style="flex: 1; cursor: pointer;">
+            <div class="material-symbols-rounded" style="color: var(--text-variant-light)">menu_book</div>
+            <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">See Past Entries</div>
+          </span>
+          <span class="howworkcard" id="seeHintsAndStepsLinkedQuestion" style="flex: 1; cursor: pointer;">
+            <div class="material-symbols-rounded" style="color: var(--text-variant-light)">lightbulb_2</div>
+            <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">See Hints and Steps</div>
+          </span>
+        </div>
+        <div class="solution" id="mathNotebookLinkedQuestionSolution"style="display: none"></div>
+      </span>
+    </div>
+
+    <div id="mathNotebookQuestionView" class="mathNotebookSingleContainer"style="display: flex; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+      <div id="carouselButtonLeft" class = "carouselButtonMathNotebook">
+        <span class="material-symbols-rounded">
+          arrow_back_ios
+        </span>
+      </div>
+      <span class="howworkcardEditted" style="flex: 75%; width: 75%; flex-direction: column; display: flex;">
+        <button class="start-practice" id="cardViewSwitch" style="align-self: flex-start !important;">Switch to Card View</button>
+        <h3 id="notebookQuestionTitle" class="amc10subtitle ittyBitty">Title</h3>
+        <p class="par" id="notebookQuestionText">Example Text</p>
+        <span style="display: flex; flex-direction: row; gap: 5px">
+        <input type="text" id="notebookQuestionInput" placeholder="Your Answer">
+        <button class="problemBtn" id="notebookQuestionSubmit">Submit</button>
+        </span>
+        <div id="notebookQuestionChoices">
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+          <button class="mc-choice-notebook problemBtn"></button>
+        </div>
+        <div id="stepOneNotebook" class="stepOne" style="display: none">
+        </div>
+        <div style="display: flex; flex-direction: row; gap: 5px">
+          <span class="howworkcard" id="newNoteQuestion" style="flex: 1; cursor: pointer;">
+            <div class="material-symbols-rounded" style="color: var(--text-variant-light)">add_circle</div>
+            <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">New Entry</div>
+          </span>
+          <span class="howworkcard" id="seePastEntriesQuestion" style="flex: 1; cursor: pointer;">
+            <div class="material-symbols-rounded" style="color: var(--text-variant-light)">menu_book</div>
+            <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">See Past Entries</div>
+          </span>
+          <span class="howworkcard" id="seeHintsAndStepsQuestion" style="flex: 1; cursor: pointer;">
+            <div class="material-symbols-rounded" style="color: var(--text-variant-light)">lightbulb_2</div>
+            <div style="color: var(--text-variant-light); font-weight: 500; font-size: 20px; margin-top: 20px;">See Hints and Steps</div>
+          </span>
+        </div>
+        <div class="solution" id="mathNotebookSolution"style="display: none"></div>
+      </span>
+      <div id="carouselButtonRight" class = "carouselButtonMathNotebook">
+        <span class="material-symbols-rounded">
+          arrow_forward_ios
+        </span>
+      </div>
+    </div>
+    <div id="mathNotebookJournalViewCards"class="mathNotebookSingleContainer"style="display: none; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+      <div id="carouselButtonLeftJournalViewCards" class = "carouselButtonMathNotebook">
+        <span class="material-symbols-rounded">
+          arrow_back_ios
+        </span>
+      </div>
+     <span class="howworkcard" style="display: block; width: 75%; align-self: center; justify-self: center;">
+      <button class="start-practice" id="returnToJournalsView">Return</button>
+      <h3 id="mathNotebookJournalViewTitle" style="margin-bottom: 2px" class="amc10subtitle ittyBitty"></h3>
+      <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 5px; margin-bottom: 2px;" id="tagContainerJournalView"></span>
+      <div id="mathNotebookJournalViewDescription"></div>
+      <h3 class="amc10subtitle ittyBitty" style="font-size: 20px !important">Entries:</h3>
+      <div id="mathNotebookJournalViewEntriesContainer"></div>
+     </span>
+           <div id="carouselButtonRightJournalViewCards" class = "carouselButtonMathNotebook">
+        <span class="material-symbols-rounded">
+          arrow_forward_ios
+        </span>
+      </div>
+
+    </div>
+  <div id="mathNotebookConceptViewCards" class="mathNotebookSingleContainer"style="display: none; flex-direction: row; justify-content: center; justify-items: center; align-content: center; align-items: center; gap: 20px;">
+      <div id="carouselButtonLeftConceptViewCards" class = "carouselButtonMathNotebook">
+        <span class="material-symbols-rounded">
+          arrow_back_ios
+        </span>
+      </div>
+     <span class="howworkcard" style="display: block; width: 75%; align-self: center; justify-self: center;">
+      <button class="start-practice" id="returnToConceptCarsdView">Return</button>
+      <h3 id="mathNotebookConceptViewTitle" style="margin-bottom: 2px" class="amc10subtitle ittyBitty"></h3>
+      <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 5px; margin-bottom: 2px;" id="tagContainerConceptView"></span>
+      <div id="mathNotebookConceptViewDescription"></div>
+    <div id="mathNotebookConceptViewExplanation"></div>
+
+      <h3 class="amc10subtitle ittyBitty" style="font-size: 20px !important">Formulas:</h3>
+      <div id="mathNotebookConceptFormulasView"></div>
+<h3 class="amc10subtitle ittyBitty" style="font-size: 20px !important">Linked Questions:</h3>
+      <div id="mathNotebookLinkedQuestionsView"></div>
+
+<h3 class="amc10subtitle ittyBitty" style="font-size: 20px !important">Linked Topics:</h3>
+      <div id="mathNotebookLinkedTopicsView"></div>
+<h3 class="amc10subtitle ittyBitty" style="font-size: 20px !important">Backlinks:</h3>
+      <div id="mathNotebookBacklinksView"></div>
+     </span>
+           <div id="carouselButtonRightConceptViewCards" class = "carouselButtonMathNotebook">
+        <span class="material-symbols-rounded">
+          arrow_forward_ios
+        </span>
+      </div>
+
+    </div>
+   
+   <div class="helpPannel" id="conceptNotebookSubmissionPannel" style="overflow: scroll; max-height: 75%; max-width: 90%">
+    <h3 class="amc10subtitle ittiByttiy">Create a New Concept Note</h3>
+    <p style="color: red" id="conceptNotebookSubmissionPannelError"></p>
+        <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px;">
+      <div class="saintly-tag saveConceptTag">Algebra</div>      <div class="saintly-tag saveConceptTag">Geometry</div>      <div class="saintly-tag saveConceptTag">Number Theory</div>      <div class="saintly-tag saveConceptTag">Combinatorics</div>
+    </span>
+    <p style="color: var(--text-variant-light)" id="displaySubtopics">Subtopics <span id="displayTopicsArrow" class="material-symbols-rounded">arrow_back_ios</span></p>
+    <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 7px;" id="conceptNotebookSubmissionPannelTagsContainer"></span>
+    <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Title:</p><input style="margin-top: 0px;" type="text" id="conceptTitleInput" placeholder="Stars and Bars Journal"><p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Definition:</p>
+ <textarea id="conceptDefinitionInput"></textarea>
+ 
+<p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Formulas</p>
+<div id="formulaCardsContainer"></div>
+<div class="howworkcard" id="addFormula"><span class="material-symbols-rounded" style="color: var(--text-variant-light); font-size: 40px; font-weight: 500; align-self: center; justify-self: center;">add_circle</span></div>
+
+<p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">My Explanation</p>
+ <textarea id="conceptExplanationInput"></textarea>
+ 
+<p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Link a Question:</p>
+<div id="conceptQuestionLinksContainer"></div>
+<p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Link a Concept:</p>
+<div id="conceptTopicLinksContainer"></div>
+<button class="start-practice" id="saveConceptEntry">Create New Journal</button>
+   </div>
+   <div class="helpPannel" id="journalNotebookSubmissionPannel">
+    <h3 class="amc10subtitle ittiByttiy">Create a New Journal</h3>
+    <p style="color: red" id="journalNotebookSubmissionPannelError"></p>
+        <span style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px;">
+      <div class="saintly-tag saveJournalTag">Reflection</div>      <div class="saintly-tag saveJournalTag">Study Tip</div>      <div class="saintly-tag saveJournalTag">Test Technique</div>      <div class="saintly-tag saveJournalTag">Concept</div>
+    </span>
+    <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Title:</p><input style="margin-top: 0px;" type="text" id="journalTitleInput" placeholder="Stars and Bars Journal">
+    <p class="par" style="margin-bottom: 0px; color: var(--text-variant-light)">Description: (you can add more entries later)</p>
+    <textarea id="journalDescriptionInput"></textarea>
+    <button class="start-practice" id="createNewJournal">Create New Journal</button>
+   </div>
+   <div class="helpPannel" id="seePastQuestionsPannel" style="width: 75%">
+    <h3 class="amc10subtitle ittyBitty">Past Entries</h3>
+    <div id="pastEntriesContainer" style="display: flex; flex-direction: column; gap: 5px;"></div>
+   </div>
+   <div class="helpPannel" id="newNoteQuestionPannel">
+    <h3 class="amc10subtitle ittyBitty">New Note</h3>
+    <span style="display: flex; gap: 5px; flex-direction: row; flex-wrap: wrap">
+          <span class="saintly-tagOrange saveTag">New Concept</span>
+  <span class="saintly-tagOrange saveTag">Fun!</span>
+  <span class="saintly-tagOrange saveTag">Tricky</span>
+  <span class="saintly-tagOrange saveTag">Need to Review</span>
+<span class="saintly-tagOrange saveTag">Strong Example</span>
+    </span>
+    <p class="par">Insert your text.  Latex will automatically render(surround with a backslash, parentheseis on either side)</p>
+    <textarea style="min-width: 500px;" class="howworkcard" placeholder="Start by adding \(1\) to \(3\)" id="newNoteQuestionPannelTextEntry"></textarea>
+    <div id="newNoteQuestionPannelTextEntryPreview"></div>
+    <button class="start-practice" id="newNoteQuestionSaveEntry">Save Entry</button>
    </div>
 <div class="helpPannel"  id="accountPannel">
   <div id="login">

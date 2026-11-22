@@ -10355,17 +10355,11 @@ checkBtn.addEventListener("click", async function () {
     if (questionType === 'all') {
         checkAnswerAll();
     }
-    // Inside your "Correct Answer" logic block:
-    clearInterval(timerInterval); // Freeze the clock immediately
-
-    // Add current performance metrics to your local totals
+    clearInterval(timerInterval); 
     userTotalTimeSpent += currentQuestionSeconds;
     userTimedQuestionsCount += 1;
-
-    // Update your interface displays
     updateAvgTimerUI();
 
-    // Sync the updated duration metrics directly to your Supabase profiles table
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if (session && !sessionError) {
         const { error: timerSyncError } = await supabase
@@ -13130,6 +13124,7 @@ supabase.auth.onAuthStateChange(async (event, session) => {
         loadQuestion();
 
     } else {
+        document.getElementById("saveThisProblem").style.display = "none"
         if (usernameDisplayModal) usernameDisplayModal.style.display = "none"
         if (typeof runDiagnostic === "function") runDiagnostic();
         TOPIC_GLOSSARY = [{
@@ -13879,4 +13874,97 @@ if (timeLeft) {
     } else {
         document.getElementById("timer-container").style.display = "none"
     }
+}
+
+document.getElementById("saveThisProblem").addEventListener("click", async function() {
+    let questionData = {}
+    if (questionType){
+    if (questionType === "algebra") {
+        questionData = algebraQuestion
+    }
+    if (questionType === "geometry") {
+        questionData = geometryQuestion
+    }
+    if (questionType === "numTheory") {
+        questionData = numQuestion
+    }
+    if (questionType === "probability") {
+       questionData = probQuestion 
+    }
+    if (questionType === 'all') {
+       questionData = allQuestion 
+    }
+}
+    questionData.saved = new Date()
+    questionData.notes = []
+    questionData.tags = [
+        {
+            name: "New Concept",
+            selected: false,
+        },
+        {
+            name: "Fun!",
+            selected: false,
+        },
+        {
+            name: "Tricky",
+            selected: false,
+        },
+        {
+            name: "Need to Review",
+            selected: false,
+        },
+        {
+            name: "Strong Example",
+            selected: false,
+        }
+    ]
+   saveEntry(questionData) 
+
+})
+function saveEntry(questionData) {
+    document.getElementById("notes").value = ""
+    document.getElementById("saveThisQuestionNotesPopUp").style.display = "block"
+    overlay.style.display = "block"
+    document.querySelectorAll(".saveTag").forEach(tag => {
+        tag.addEventListener("click", function() {
+            if (tag.classList.contains("saintly-tagOrange")) {
+                tag.classList.remove("saintly-tagOrange")
+                tag.classList.add("saintly-tag")
+            } else {
+                tag.classList.remove("saintly-tag")
+                tag.classList.add("saintly-tagOrange")
+            }
+            questionData.tags.forEach(tagName => {
+                if (tag.textContent === tagName.name) {
+                    tagName.selected = !tagName.selected
+                }
+            })
+            questionData.entryType = "question"
+        })
+    })
+    document.getElementById("saveToSupabaseNotebook").addEventListener("click", async function() {
+        document.getElementById("saveThisQuestionNotesPopUp").style.display = "none"
+        document.getElementById("overlay").style.display = "none"
+        if (document.getElementById("notes").value !== ""){
+        const notesEntry = {
+            date: new Date(),
+            content: document.getElementById("notes").value
+        }
+        questionData.notes.push(notesEntry)
+
+    }
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (session && !sessionError) {
+ 
+    const userId = session.user.id
+    const { data, error } = await supabase
+  .rpc('append_to_jsonb_array', { 
+    row_id: userId, 
+    new_element: questionData
+  });
+  console.log(`Saved to SupaBase: ${questionData}`)
+}
+    }, {once: true})
+
 }

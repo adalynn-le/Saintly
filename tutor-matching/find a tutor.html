@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Saintly | Absolute Value</title>
+  <link rel="stylesheet" href="\style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma<link rel="apple-touch-icon" sizes="180x180" href="\apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="\favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="\favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">   
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=account_circle,ads_click,bedtime,book,calendar_today,check,close_small,exclamation,handshake,lab_profile,leaderboard,local_fire_department,playlist_add_check,school,select_check_box,send,star,stars,sunny,volunteer_activism,warning" />
+   <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&&display=swapicon_names=chevron_left,chevron_right,person_raised_hand,school,search,star,stars,quiz" />
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap&icon_names=calendar_today,close" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=National+Park:wght@200..800&display=swap&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  setTimeout(() => {
+    loader.style.display = "none";
+    document.body.style.overflow = ""; // restore scrolling
+  }, 300); // slightly shorter
+});
+</script>
+ 
+<meta name="keywords" content="arithmetic, what is arithmetic, AMC 10 practice, AMC 10 prep, AMC 12 prep, AMC 12 practice, competition math problems, free math olympiad prep, free amc10 prep with adaptive practice, AMC solutions, high school math competitions">
+    <meta property="og:title" content="Saintly | Find a Tutor" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://saintlymath.com" />
+<meta property="og:image" content="https://adalynn-le.github.io/Saintly/opengraph6.png" />
+<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="a free program built to make Olympiads, competitions, and learning accessible to all students. Free, high-quality content in the form of 
+    real AMC 10/12 practice problems and comprehensive solutions written by students, for students. Try it out to feel a kind of learning so good it feels saintly" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="\favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="\favicon-16x16.png">
+
+
+</head>
+<body>
+   <div id="loader" style="
+  position: fixed; inset: 0;
+  background: rgb(255, 255, 255);
+  display: flex; align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease;
+">
+  <p style="font-family: 'Instrument Serif', serif;
+     font-size: 48px; color: #77a4ff; font-style: italic;">
+    Saintly
+  </p>
+</div>
+<div id="sidebarPlaceholder"></div>
+<script type="module" src="subfoldersidebar.js"></script>
+<nav id = "top-bar">
+  <a class="aContainer" href="\index.html">Home</a>
+  <p class="aContainer">•</p>
+  <a class="aContainer" href = "find a tutor.html">Find A Tutor</a>
+  <div class="center-align">
+  <button class='topBtn' onclick="window.location.href='\index.html'">
+  <img class="fullLogo" src="/images/fullLogo.png">
+  </button>
+  </div>
+<div class="right-align">
+
+  <span class="material-symbols-outlined airplane helpButton" id="helpButton">
+
+send
+</span>
+<span onclick="window.location.href='volunteer.html'"class="material-symbols-outlined volunteerButton" >
+volunteer_activism
+</span>
+<span class="material-symbols-outlined volunteerButton brightness" id="brightness">
+sunny
+</span>
+    <a href="https://discord.gg/SuAvtn7595" style="justify-self: flex-end;" class="start-practice hover" id="joindiscord">Join Our Discord!</a>
+<button id="accountBtn" style=" height: 34px; display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 6px; color: #88b0ff; font-family: 'National Park', sans-serif; padding: 0 12px; margin: 0 5px; cursor: pointer;  width: auto !important; max-width: fit-content !important;" class="start-practice hover">
+  <span class="material-symbols-outlined" style="margin: 0; font-size: 20px; display: inline-flex; align-items: center; justify-content: center; color: #88b0ff;">
+    account_circle
+  </span>
+  <span style="white-space: nowrap;" id="username-display">Log In</span>
+</button>
+    </div>
+</nav>
+<main> 
+    <div id="overlay"></div>
+    <div class="container">
+    <h1 class="amc10title">Find a Tutor!</h1>
+    <p class="par">Improve your competition math skills through personalized teaching with a dedicated tutor suited to your needs!</p>
+    <div id="tutorSelectionWizard">
+      <h2 class="amc10subtitle ittyBitty">Find Your Perfect Tutor</h2>
+      <p class="par">Help us find a tutor that fits your style, ability, and schedule. Tell us a little bit about yourself!</p>
+      <div class="tutorWizardQuestionContainer" id="fullNameContainer">
+      <h3 class="tutorWizardQuestionTitle">Full Name</h3>
+      <input class="tutorWizardTextEntry" id="fullName" type="text" placeholder="Jane Doe"></input>
+      </div>
+      <div class="tutorWizardQuestionContainer" id="preferredNameContainer">
+      <h3 class="tutorWizardQuestionTitle">Preferred/First Name</h3>
+      <input class="tutorWizardTextEntry" id="preferredName" type="text" placeholder="Jane"></input>
+      </div>
+      <span style="display: flex; flex-direction: row; width: 75%; gap: 10px; padding: 0; justify-content: space-between">
+      <div class="tutorWizardQuestionContainer" id="ageContainer"style="flex: 1">
+      <h3 class="tutorWizardQuestionTitle">Age</h3>
+      <input class="tutorWizardTextEntry" id="age" type="number" placeholder="15" style="width: 550px"></input>
+      </div>
+      <div class="tutorWizardQuestionContainer"id="gradeContainer"style="flex: 1">
+      <h3 class="tutorWizardQuestionTitle" >Grade</h3>
+      <input class="tutorWizardTextEntry" id="grade" type="number" placeholder="9" style="width: 550px; margin-left: 0"></input>
+      </div>
+      <div class="tutorWizardQuestionContainer" id="emailContainer" style="flex: 1">
+      <h3 class="tutorWizardQuestionTitle" >Email</h3>
+      <input class="tutorWizardTextEntry" id="email" type="email" placeholder="jane.doe@example.com" style="width: 550px; margin-left: 0"></input>
+      </div>
+      </span>
+      <div class="tutorWizardQuestionContainer" id="genderContainer" style="flex: 1">
+      <h3 class="tutorWizardQuestionTitle">Gender</h3>
+      <label for = "male">
+        <input name="gender" type="radio" id="male">Male
+      </label>
+      <label for="female">
+        <input name = "gender" type="radio" id="female">Female
+      </label>
+      <label for = "other">
+        <input name="gender" type ="radio" id="other">Other
+      </label>
+      <label for="preferNotToSay">
+        <input name="gender" type="radio" id="preferNotToSay">Prefer Not to Say
+      </label>
+      </div>
+
+<div class="tutorWizardQuestionContainer" id="experienceContainer">
+    <h3 class="tutorWizardQuestionTitle">Experience in Competition Math</h3>
+    <p class="tutorWizardQuestionDescription">
+        Choose the level that best describes your current experience.
+    </p>
+
+    <div class="tutorOptionGrid tutorExperienceGrid">
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="first-time" checked>
+            <span class="tutorOptionContent">
+                <strong>First Time</strong>
+                <small>I've never done competition math before.</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="novice">
+            <span class="tutorOptionContent">
+                <strong>Novice</strong>
+                <small>I've done some competition math and am still learning the basics.</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="intermediate">
+            <span class="tutorOptionContent">
+                <strong>Intermediate</strong>
+                <small>I'm comfortable with competition-style problems.</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="advanced-aime">
+            <span class="tutorOptionContent">
+                <strong>Advanced / AIME</strong>
+                <small>I've competed at an advanced level or qualified for AIME.</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="experience" value="advanced-preparation">
+            <span class="tutorOptionContent">
+                <strong>Advanced Preparation</strong>
+                <small>I'm preparing for very advanced competitions such as USAMO.</small>
+            </span>
+        </label>
+
+    </div>
+</div>
+
+<div class="tutorWizardQuestionContainer subjectPreferenceSection" id="subjectPreferenceContainer">
+
+    <h3 class="tutorWizardQuestionTitle">
+        Subject Preference
+    </h3>
+
+    <p class="tutorWizardQuestionDescription">
+        Drag each subject into the category that best describes
+        how much help you'd like with it.
+    </p>
+
+
+    <div class="subjectPreferenceBoard">
+
+        <div class="subjectCategory">
+
+            <div class="subjectCategoryTitle">
+                Need Help
+            </div>
+
+            <div
+                class="subjectDropZone"
+                data-category="need-help"
+            >
+                <div class="dropPlaceholder">
+                    Drop subjects here
+                </div>
+            </div>
+
+        </div>
+        <div class="subjectCategory">
+
+            <div class="subjectCategoryTitle">
+                Could Use Help
+            </div>
+
+            <div
+                class="subjectDropZone"
+                data-category="could-use-help"
+            >
+                <div class="dropPlaceholder">
+                    Drop subjects here
+                </div>
+            </div>
+
+        </div>
+        <div class="subjectCategory">
+
+            <div class="subjectCategoryTitle">
+                Comfortable
+            </div>
+
+            <div
+                class="subjectDropZone"
+                data-category="comfortable"
+            >
+                <div class="dropPlaceholder">
+                    Drop subjects here
+                </div>
+            </div>
+
+        </div>
+        <div class="subjectCategory">
+
+            <div class="subjectCategoryTitle">
+                No Help Needed
+            </div>
+
+            <div
+                class="subjectDropZone"
+                data-category="no-help"
+            >
+                <div class="dropPlaceholder">
+                    Drop subjects here
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="subjectBank" id="subjectBank">
+
+        <div
+            class="subjectChip"
+            draggable="true"
+            data-subject="Algebra"
+        >
+            Algebra
+        </div>
+
+        <div
+            class="subjectChip"
+            draggable="true"
+            data-subject="Geometry"
+        >
+            Geometry
+        </div>
+
+        <div
+            class="subjectChip"
+            draggable="true"
+            data-subject="Number Theory"
+        >
+            Number Theory
+        </div>
+
+        <div
+            class="subjectChip"
+            draggable="true"
+            data-subject="Combinatorics"
+        >
+            Combinatorics
+        </div>
+
+    </div>
+
+</div>
+
+<div class="tutorWizardQuestionContainer" id="classSizeContainer">
+    <h3 class="tutorWizardQuestionTitle">Preferred Class Size</h3>
+
+    <p class="tutorWizardQuestionDescription">
+        What type of tutoring environment would you prefer?
+    </p>
+
+    <div class="tutorOptionGrid classSizeGrid">
+
+        <label class="tutorOption">
+            <input type="radio" name="classSize" value="individual">
+            <span class="tutorOptionContent">
+                <strong>Individual</strong>
+                <small>One student and one tutor</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="classSize" value="small-group">
+            <span class="tutorOptionContent">
+                <strong>Small Group</strong>
+                <small>A few students learning together</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="classSize" value="large-group">
+            <span class="tutorOptionContent">
+                <strong>Large Group</strong>
+                <small>A larger class environment</small>
+            </span>
+        </label>
+
+        <label class="tutorOption">
+            <input type="radio" name="classSize" value="seminar">
+            <span class="tutorOptionContent">
+                <strong>Seminar</strong>
+                <small>A structured discussion or lesson</small>
+            </span>
+        </label>
+
+    </div>
+</div>
+
+
+
+<div class="tutorWizardQuestionContainer" id="descriptionContainer">
+    <h3 class="tutorWizardQuestionTitle">
+        Tell Us About Yourself
+    </h3>
+
+    <p class="tutorWizardQuestionDescription">
+        Tell your tutor a little about yourself, your experience,
+        your goals, and how you learn best.
+    </p>
+
+    <textarea
+        class="tutorWizardTextEntry tutorWizardTextarea"
+        id="studentDescription"
+        name="studentDescription"
+        rows="7"
+        placeholder="Hello, my name is Jane. I've participated in AMC 8 and AMC 10 before and enjoy competition math because I like solving difficult problems. I would like to get better at geometry and combinatorics. I learn best through worked examples and then trying problems myself..."
+    ></textarea>
+
+    <p class="tutorFieldHint">
+        This description may be shared with tutors you are matched with.
+    </p>
+</div>
+<div class="tutorWizardQuestionContainer availabilitySection" id="availabilityContainer">
+
+    <h3 class="tutorWizardQuestionTitle">
+        Timing
+    </h3>
+
+    <p class="tutorWizardQuestionDescription">
+        Select the times you are usually available each week.
+        Click and drag across the calendar to highlight a time range.
+    </p>
+
+
+    <div class="availabilityTimezone">
+
+        <span class="availabilityTimezoneLabel">
+            Time Zone
+        </span>
+
+        <select
+            class="tutorWizardSelect availabilityTimezoneSelect"
+            id="timeZone"
+            name="timeZone"
+        >
+            <option value="">
+                Select Time Zone
+            </option>
+
+            <option value="PT">
+                Pacific Time
+            </option>
+
+            <option value="MT">
+                Mountain Time
+            </option>
+
+            <option value="CT">
+                Central Time
+            </option>
+
+            <option value="ET">
+                Eastern Time
+            </option>
+
+            <option value="AKT">
+                Alaska Time
+            </option>
+
+            <option value="HT">
+                Hawaii Time
+            </option>
+        </select>
+
+    </div>
+
+
+    <div class="weeklyCalendar">
+
+        <div class="calendarHeader">
+
+            <div class="calendarTimeCorner"></div>
+
+            <div class="calendarDay">Mon</div>
+            <div class="calendarDay">Tue</div>
+            <div class="calendarDay">Wed</div>
+            <div class="calendarDay">Thu</div>
+            <div class="calendarDay">Fri</div>
+            <div class="calendarDay">Sat</div>
+            <div class="calendarDay">Sun</div>
+
+        </div>
+
+
+        <div
+            class="calendarGrid"
+            id="availabilityCalendar"
+        ></div>
+
+    </div>
+
+
+
+</div>
+
+    <button class="start-practice" id="tutorFormComplete">Find my Tutor!</button>
+    <button class="start-practice" id="updateApplicationEdits" style="display: none;">Update Application</button>
+</div>    
+    <div id="tutorCatalogContainer" style="display: none">
+      <h2 class="amc10subtitle ittyBitty">Pick Your Ideal Tutor</h2>
+      <p class="par">We've sorted the perfect tutors for you based on your availability, learning style, and subject preferences. Click to learn more and contact a tutor!</p>
+      <div class="job-search-container">
+    <input
+        type="search"
+        id="jobSearch"
+        class="job-search"
+        placeholder="Search name, description, tags..."
+        aria-label="Search tutors"
+    >
+</div>
+<div id="tutorCardsContainer" style="display: flex; flex-wrap: wrap;" style="display: none"></div>
+</div>
+<div id="faqContainer">
+  <h3 class="amc10title small">Frequently Asked Questions</h3>
+  <p class="par">Understand the tutor selection process and answer any outstanding questions you may have. You may also reach us through our contact form.</p>
+  <h4 class="amc10subtitle">How Does it Work?</h4>
+  <span style="display: flex; flex-direction: row; justify-content: space-between; align-content: flex-start; align-items: flex-start; padding-top: 10px; gap: 10px;">
+    <span class="tutorPathwayNodeContainer howworkcard">
+   <div class="tutorPathwayNode">
+    <span class="material-symbols-rounded">quiz</span>
+   </div>
+    <p class="amc10littleTitleTutorPathway">Tell Us About Yourself</p>
+    <p class="par" style="text-align: left;">Let us know your comfort with competition math, preferred learning styles, etc. so that we can pair you with the perfect tutor!</p>
+</span>
+<div class="tutorPathwayNodeConnector"></div>
+<div class="tutorPathwayNodeContainer howworkcard">
+  <div class="tutorPathwayNode">
+    <span class="material-symbols-rounded">
+     search 
+    </span>
+  </div>
+  <p class="amc10littleTitleTutorPathway">Find the Perfect Tutor</p>
+  <p class="par" style="text-align: left">Browse our catalog of tutors with smart-search tailored to your needs. Look at their reviews, subject mastery, etc. to find one that's perfect for you. </p>
+</div>
+<div class="tutorPathwayNodeConnector "></div>
+<div class="tutorPathwayNodeContainer howworkcard">
+  <div class="tutorPathwayNode">
+    <span class="material-symbols-rounded">
+      calendar_today
+    </span>
+  </div>
+  <p class="amc10littleTitleTutorPathway">Schedule a Session</p>
+  <p class="par" style="text-align: left">See your preferred tutors availability and apply to one of their sessions, or time-slots. We'll send them your application info</p>
+</div>
+<div class="tutorPathwayNodeConnector"></div>
+<div class="tutorPathwayNodeContainer howworkcard">
+  <div class="tutorPathwayNode">
+    <span class="material-symbols-rounded">
+      check
+    </span>
+  </div>
+  <div class="amc10littleTitleTutorPathway">Get Approved</div>
+  <p class="par" style="text-align: left">We'll send you the status of your application within one week</p>
+</div>
+<div class="tutorPathwayNodeConnector"></div>
+<div class="tutorPathwayNodeContainer howworkcard">
+  <div class="tutorPathwayNode">
+    <span class="material-symbols-rounded">
+      star
+    </span>
+  </div>
+<div class="amc10littleTitleTutorPathway">Start Learning!</div>
+<p class="par" style="text-align: left">Join your scheduled zoom calls with your tutor and walk through Saintly's tailored curriculum to prepare for your next competition math exam!</p>
+</div>
+</div>
+<h4 class="amc10subtitle">Why Get Tutored with Saintly?</h4>
+<span style="display: flex; flex-direction: row; justify-content: space-between; align-content: flex-start; align-items: flex-start">
+  <div class="itemContainerWhyTutor howworkcard">
+   <div class="material-symbols-rounded">
+    volunteer_activism
+   </div>
+    <h5 class="amc10littleTitleTutorPathway">Always $0</h5>
+   <p class="par" style="text-align: justify">Saintly is fuled by the idea that <mark class="blue">learning should be effective and accescible for everyone.</mark> All of our tutors are volunteers contributing because they share this goal and appreciation of mathematics. We belive that, just like regular education, advanaced mathematics should not be hidden behind a steep paywall. <mark class="blue">Tutoring will always be free,</mark> and we will never ask you for money or payment. </p> 
+  </div>
+  <div class="itemContainerWhyTutor howworkcard">
+    <div class="material-symbols-rounded">person_raised_hand</div>
+    <h5 class="amc10littleTitleTutorPathway">Real Students, Dedicated Tutors</h5>
+    <p class="par">Our curriculum is created and taught by real students who know what it's like to go through the competition math process. We employ a <mark class="blue">by students, for students</mark> mentality and ephasize that the best way to grow is thorugh teaching. We help our students gain skills in the AMC 10 through comprehensive practice tailored to them, built by the people who understand it best.</p>
+  </div>
+  <div class="itemContainerWhyTutor howworkcard">
+    <div class="material-symbols-rounded">school</div>
+    <h5 class="amc10littleTitleTutorPathway" style="text-align: center;">Structured Curriculum, Rigorous Training</h5>
+    <p class="par">At Saintly, we hold our tutors to the highest degree. We ensure that our <mark class="blue">tutors are kept to a clear code of conduct</mark> and exhibit exemplary behavior. All curriculum is based on or adapted from official, student-written Saintly curriculum. We use dedicated standards to ensure all students get a strong learning experience. </p>
+  </div>
+</span>
+<div style="display: flex; flex-direction: row; gap: 10px; ">
+  <div style= "flex: 1;">
+  <h3 class="amc10subtitle ittyBitty">FAQs</h3>
+    <span class="faqQuestionContainer" style="display: block; border: 2px solid var(--border-color); border-top-left-radius: 10px; border-top-right-radius: 10px; min-height: 10px;  padding: 12px; width: 100%; flex-grow: 1;">
+      <p class="faqText">How does tutoring work?</p>
+      <div class="faqAnswersText hidden" >Saintly's tutoring program is built as a live, personalized embodiment of our curriculum. Students pick tutors or tutoring sessions that fit them best (or use our algorithims to find it for them!) and register for the groups. These sessions, individual, group, or seminar, are led by student experts over zoom. Our tutors use Saintly's tailored curriculum in addition to their own teaching expertise and real-competition math expereince. Meetings are done over Zoom and done online to provide access to all regions.</div>
+    </span>
+      <span class="faqQuestionContainer" style="display: block; border: 2px solid var(--border-color); border-top: 2px solid var(--background-color); min-height: 10px;  padding: 15px; width: 100%; flex-grow: 1;">
+      <p class="faqText">What's the format like?</p>
+      <div class="faqAnswersText hidden" >All meetings are done online with at least one student teacher and volunteer. Students can request sessions to either be one-on-one, in a small group of 3-5, a large class of 5-10, or a "seminar" dedicated to teaching one individual subject in extreme depth. With the consent of all students involved, we record the majority of our meetings for documentation, accountability, and further resources.</div>
+    </span>
+<span class="faqQuestionContainer" style="display: block; border: 2px solid var(--border-color); border-top: 2px solid var(--background-color); min-height: 10px;  padding: 15px; width: 100%; flex-grow: 1;">
+      <p class="faqText">How much does it cost?</p>
+      <p class="faqAnswersText hidden" >$0, forever! Saintly is built to ensure that competition doesn't cost a thing!</p>
+    </span>
+ <span class="faqQuestionContainer" style="display: block; border: 2px solid var(--border-color); border-top: 2px solid var(--background-color); min-height: 10px;  padding: 15px; width: 100%; flex-grow: 1;">
+      <p class="faqText">What will I learn?</p>
+      <p class="faqAnswersText hidden" >Your curriculum will be tutored to you. You can request certain topics and specify weak topics when you request a session. All curriculum is based off of Saintly's curated documentation, articles, and practice, but is expanded for a live and adaptable format.</p>
+    </span>
+     <span class="faqQuestionContainer" style="display: block; border: 2px solid var(--border-color); border-top: 2px solid var(--background-color); min-height: 10px;  padding: 15px; width: 100%; flex-grow: 1;">
+      <p class="faqText">Who's my tutor?</p>
+      <p class="faqAnswersText hidden">After entering some basic information, Saintly's algorithim will sort tutors best suited to your needs. You can read through their descriptions and ratings to pick the ones best for you! All tutors are high school student (less than 18) volunteers dedicated to expanding advanced critical mathematical thinking throughout all communities.</p>
+    </span>
+         <span class="faqQuestionContainer" style="display: block; border: 2px solid var(--border-color); border-top: 2px solid var(--background-color); min-height: 10px;  padding: 15px; width: 100%; flex-grow: 1;">
+      <p class="faqText">Who can be tutored?</p>
+      <p class="faqAnswersText hidden">All students under the age of 18 with access to reliable internet and zoom are elligible to be tutored. A request to be tutored odes not gaurauntee a tutoring position.</p>
+    </span>
+  
+      <span clas="faqQuestionContainer" style="display: block; border: 2px solid var(--border-color); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-top: 2px solid var(--background-color); min-height: 10px;  padding: 15px; width: 100%; flex-grow: 1;">
+      <p class="faqText">How can I get another question answered?</p>
+      <p class="faqAnswersText hidden">If you have any other questions, feel free to contact us at saintly.math@gmail.com</p>
+    </span>
+ 
+ 
+  </div>
+  <div style="flex: 1;">
+  <h3 class="amc10subtitle ittyBitty">Quick Facts</h3>
+  </div>
+  </div>
+
+
+  </div>
+    <div id="locked" class="helpPannel" style="z-index: 1000; display: none;">
+      <h3 class="amc10subtitle ittyBitty">
+        Sign In to Get Tutored!
+      </h3>
+    </div>
+  <div id="availabilityModal" class="helpPannel" style="z-index: 10000; display: none; width: 90%; max-height: 80%; overflow: scroll">
+    <div id="calendarView">
+    <h4 class="amc10subtitle ittyBitty">Schedule a Session</h4>
+    <p class="par" id="calendarScheduleDescription">Find a time that works for you and send a tutor request!
+    </p>
+       <div class="weeklyCalendar" style="overflow: scroll">
+
+        <div class="calendarHeader">
+
+            <div class="calendarTimeCorner"></div>
+
+            <div class="calendarDay">Mon</div>
+            <div class="calendarDay">Tue</div>
+            <div class="calendarDay">Wed</div>
+            <div class="calendarDay">Thu</div>
+            <div class="calendarDay">Fri</div>
+            <div class="calendarDay">Sat</div>
+            <div class="calendarDay">Sun</div>
+
+        </div>
+
+
+        <div
+            class="calendarGrid"
+            id="tutorCalendar"
+        ></div>
+</div>
+    </div>
+    <div id="cardsView">
+      <h4 class="amc10subtitle ittyBitty">Join a Group</h4>
+      <p class="par">Apply to join a preexisting study group or class</p>
+      <div id="tutorGroupCardsContainer"></div>
+
+  </div>
+        <button class="start-practice" id="toggleView">Switch to Classes View</button>
+        </div>
+
+        <div class="helpPannel" id="accountPannel"  style="z-index: 10000;">
+          <div id="login">
+            <h2 class="amc10subtitle ittyBitty">Welcome Back!</h2>
+            <p class="par">Access your progress across all your devices</p>
+            <p id="login-error" style="color: red"></p>
+            <input type="email" id="login-email" placeholder="Email" />
+            <input type="password" id="login-password" placeholder="Password" />
+            <span style="display: flex; flex-direction: row; justify-content: flex-start; gap: 16px">
+
+            </span>
+            <button id="btn-login" class="start-practice">Log In</button>
+            <button class="start-practice" id="btn-request-reset">Forgot Your Password? Send a Reset Email</button>
+
+
+          </div>
+          <div id="signup" style="display: none">
+            <p id="signup-error" style="color: red"></p>
+            <h2 class="amc10subtitle ittyBitty">Make an Account</h2>
+            <p class="par">Want to store your progress, see how you stand in comparison to other students, and climb the
+              leaderboard? Create a free account today!</p>
+            <div id="auth-container">
+              <input type="email" id="auth-email" placeholder="Email" />
+              <input type="password" id="auth-password" placeholder="Password" />
+              <input type="password" id="auth-password-check" placeholder="Confirm Password" />
+              <input type="text" id="auth-username" placeholder="Display Name" />
+            </div>
+            <button id="btn-signup" class="start-practice">Sign Up</button>
+          </div>
+          <a class="amc10subtitle ittyBitty pset-link" href="your dashboard.html" id="btn-dashboard">Username</a>
+          <button id="btn-logout" class="start-practice" style="display: none; cursor: pointer;">Log Out</button>
+          <button id="no-account" class="start-practice">Don't have an account? Sign Up!</button>
+          <button id="btn-delete-account" class="start-practice" style="display: none">
+            Delete Account & Wipe Progress
+          </button>
+        </div>
+
+        <div id="helpPannel" class="helpPannel" style=" z-index: 10000;">
+          <h2>Need Some Help?</h2>
+          <p class="par">Contact us through our form</p>
+          <div data-fs-success></div>
+          <div data-fs-error></div>
+
+          <form action="https://formspree.io/f/mwvwgrwr" method="POST">
+            <label class="formsubmission">
+              Name:
+              <input type="text" name="name" placeholder="First Last">
+            </label>
+            <label class="formsubmission">
+              Email:
+              <input type="email" name="email" placeholder="youremail@gmail.com">
+            </label>
+            <label class="formsubmission">
+              Message:
+              <input type="text" name="message" required></input>
+            </label>
+            <label class="formsubmission">
+              <p>What type of message is this?</p>
+              <div class="mcqwrapper" style="display: flex; flex-wrap: wrap; gap: 8px 16px;">
+                <label class="checkbox-option">
+                  <input type="checkbox" name="messageType"> Reporting an Error
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="messageType"> Suggesting an addition
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="messageType"> Feedback or Review
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="messageType"> Other
+                </label>
+              </div>
+            </label>
+          </form>
+        </div>
+        <div class="helpPannel" id="sessionApplicationModal">
+          <h3 class="amc10subtitle ittyBitty">Want to join this session?</h3>
+          <p class="par">Are you ready to register for a session? We'll send a tutor an email with your application. Please note that an application does not gaurauntee acceptance</p>
+          <div id="applicationPreview"></div>
+          <button class="start-practice" id="editApplication">Edit Application</button>
+          <button class="start-practice" id="emailTutor">Contact this Tutor!</button>
+        </div>
+            <div class="helpPannel" id="privacyPolicy" display="none" style="z-index: 10000;">
+        <h4>Privacy Policy</h4>
+        <h5>Data Collection</h5>
+        <li>We use local storage to track and save your ELO on your device</li>
+        <li>We use Supabase backend to track overall acuracy on questions</li>
+        <li>We trackk individual user usage on our website, pages, etc. by tracking time spent and interaction</li>
+        <h5>How we use your data</h5>
+        <li>To personalize your learning experience</li>
+        <li>We never sell your data to third parties</li>
+        <h5>Children's Privacy</h5>
+        <li>Saintly is intended for students. We encourage parents to monitor their children's internet usage. We do not
+          knowingly collect personal information from children under 13 without parental consent (per COPPA guidelines).
+        </li>
+      </div>
+      <div class="helpPannel" id="termsAndConditions" display="none"  style="z-index: 10000;">
+        <h4>Terms and Conditions</h4>
+        <li>By using Saintly you agree to the terms and conditions</li>
+        <li>You may not scrape the site or re-distribute our unique interactive code without permission.</li>
+        <li>Be "Saintly." No harassment, no attempts to hack the site, and no using the platform to cheat on active
+          competitions.</li>
+        <li>Math is hard! While we strive for 100% accuracy, Saintly is provided "as is." We aren't responsible if a
+          specific formula explanation doesn't lead to a perfect AMC score (though we hope it does!).</li>
+        <li>Saintly and its volunteers are not liable for any damages arising from your use of the site.</li>
+      </div>
+</div>
+    </div>
+
+  </main>
+
+  <div id="overlay"></div>
+
+  </main>
+  <footer class="saintly-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <img class="footer-logo" src="../images/fullLogo.png" height="35px"></img>
+        <p>Making competition math accessible for everyone.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/\index.html">Home</a></li>
+          <li><a href="/volunteer.html">Volunteer</a></li>
+          <li><a href="/am10.html">AMC 10</a></li>
+          <li><a href="/amc10adaptivepractice.html">Adaptive Practice</a></li>
+          <li><a href="/algebralearningpath.html">Algebra</a></li>
+          <li><a href="/topics dash.html">Topics Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <div class="social-icons">
+          <a>saintly.math@gmail.com</a>
+          <span style="display: flex; flex-direction: row">
+            <a href="https://instagram.com/saintly.math" class="fa fa-instagram" style="display: inline-block">
+              <p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>
+                @saintly.math</p>
+            </a>
+          </span>
+          <span style="display: flex; flex-direction: row">
+            <a href="https://pinterest.com/saintlymath" class="fa fa-pinterest" style="display: inline-block">
+              <p style='font-family: "National Park", sans-serif; display: inline-block; margin-left: 10px'>Saintly</p>
+            </a>
+
+          </span>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Privacy</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="myFunction()">Privacy Policy</a></li>
+          <li><a href="javascript:void(0)" onclick="myFunctionTwo()">Terms and Conditions</a></li>
+        </ul>
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Saintly Math. Built with drive.
+    </div>
+  </footer>
+  <div id="overlay"></div>
+  <canvas id="confetti-canvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+  </script>
+  <script>
+    const toggleBrightness = document.getElementById("brightness")
+    const carouselLight = document.querySelectorAll("carousel-logo-light")
+    const carouselDark = document.querySelectorAll("carousel-logo-dark")
+    let colorMode = 'light'
+    let colorModeTrue = localStorage.getItem("colorMode")
+    if (colorModeTrue !== false) {
+      colorMode = colorModeTrue
+      if (colorMode === 'dark') {
+        colorMode = 'dark';
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        toggleBrightness.textContent = "sunny"
+        localStorage.setItem("colorMode", "dark")
+      } else {
+        colorMode = 'light';
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        toggleBrightness.textContent = "bedtime"
+        localStorage.setItem("colorMode", "light")
+      }
+    } else {
+      function toggleSystemTheme() {
+        const root = document.documentElement;
+        if (!root.style.colorScheme) {
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          root.style.colorScheme = prefersDark ? 'dark' : 'light';
+        }
+
+        colorMode = root.style.colorScheme;
+        if (colorMode === 'dark') {
+          root.classList.add('dark');
+          root.classList.remove('light');
+        } else {
+          root.classList.add('light');
+          root.classList.remove('dark');
+        }
+      }
+      toggleSystemTheme();
+    }
+    toggleBrightness.addEventListener("click", function () {
+      if (colorMode === 'dark') {
+        colorMode = 'light';
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+        toggleBrightness.textContent = "bedtime"
+        localStorage.setItem("colorMode", colorMode)
+      } else {
+        colorMode = 'dark';
+        document.documentElement.style.colorScheme = 'dark';
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        toggleBrightness.textContent = "sunny"
+        localStorage.setItem("colorMode", colorMode)
+      }
+    });
+  </script>
+  <script type="module" src="find a tutorjs.js"></script>
+</body>
+</html>
