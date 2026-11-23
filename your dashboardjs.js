@@ -11093,6 +11093,43 @@ const {
       ]).catch(() => {});
     }
   });
+  const addFormulaCard = document.createElement("div")
+  addFormulaCard.classList = "howworkcard"
+  addFormulaCard.innerHTML = `<span style="color: var(--text-variant-light); font-size: 50px; text-align: center; min-height: 100px; align-content: center; justify-content: center;"class="material-symbols-rounded">add_circle</span>`; 
+  addFormulaCard.addEventListener("click", function() {
+const card = document.createElement("div");
+  card.classList = "howworkcard";
+  card.innerHTML = `<p style="color: var(--text-variant-light); margin-bottom: 0px;">Formula (LaTex)</p><input type="text" class="formulaInput"><div class="formulaRender"></div><p style="color: var(--text-variant-light); margin-bottom: 0px;">Caption:</p><input type="text" class="formulaCaption"><button class="start-practice delete-formula">Delete Formula</button><button class="start-practice add-formula">Add Formula</button`;
+  document.getElementById("formulaCardsContainer").appendChild(card);
+  card.querySelector(".formulaInput").addEventListener("input", function () {
+    const formula = card.querySelector(".formulaInput").value;
+    card.querySelector(".formulaRender").innerHTML = formula;
+    if (window.MathJax) {
+      MathJax.typesetPromise([document.querySelector(".formulaRender")]).catch(
+        () => {},
+      );
+    }
+  });
+  card.querySelector(".delete-formula").addEventListener("click", function () {
+    document.getElementById("formulaCardsContainer").removeChild(card);
+  });
+  card.querySelector(".add-formula").addEventListener("click", async function() {
+    const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (session && !sessionError) {
+          const userId = session.user.id;
+          await addFormulaToCard(
+            userId, note, card.querySelector(".formulaInput").value, card.querySelector(".formulaCaption").value
+                    );
+                  }
+  })
+  document.getElementById("mathNotebookConceptFormulasView").appendChild(card)
+
+  })
+
+  document.getElementById("mathNotebookConceptFormulasView").appendChild(addFormulaCard)
   note.linkedQuestions.forEach((question) => {
     const questionCard = document.createElement("div");
     questionCard.classList = "howworkcard";
@@ -11299,6 +11336,37 @@ async function deleteFormulaCard(studentId, note, formula) {
     if (formulaIndex !== -1) {
   conceptEntries[conceptIndex].formulas.splice(formulaIndex, 1);
 }
+    mathNotebookFull = [];
+    journalEntries.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    mathNotebook.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    conceptEntries.forEach((i) => {
+      mathNotebookFull.push(i)
+    })
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({ mathnotebook: mathNotebookFull })
+      .eq("id", studentId);
+
+    if (updateError) throw updateError;
+  } catch (err) {
+    console.error("Error updating notebook:", err);
+  }
+  showConceptEntry(conceptEntries[conceptIndex])
+}
+async function addFormulaToCard(studentId, note, formula, caption) {
+  try {
+    const { data: student, error: fetchError } = await supabase
+      .from("profiles")
+      .select("mathnotebook")
+      .eq("id", studentId)
+      .single();
+
+    if (fetchError) throw fetchError;
+    conceptEntries[conceptIndex].formulas.push({formula: formula, caption: caption})
     mathNotebookFull = [];
     journalEntries.forEach((i) => {
       mathNotebookFull.push(i);
