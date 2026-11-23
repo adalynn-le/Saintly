@@ -11065,7 +11065,10 @@ async function showConceptEntry(note, lastNote) {
   document.getElementById("mathNotebookConceptViewDescription").innerHTML =
     note.description;
   document.getElementById("tagContainerConceptView").innerHTML = "";
+  document.getElementById("mathNotebookLinkedQuestionsView").innerHTML = "";
+  document.getElementById("mathNotebookLinkedTopicsView").innerHTML = ""
   document.getElementById("mathNotebookConceptFormulasView").innerHTML = "";
+  document.getElementById("mathNotebookBacklinksView").innerHTML = ""
   note.tags.forEach((tag) => {
     const tagSpan = document.createElement("span");
     tagSpan.classList = "saintly-tag";
@@ -11149,12 +11152,63 @@ const card = document.createElement("div");
     let questionData = mathNotebook[questionCardIndex];
     questionCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${questionData.title}</h3>
     <span class="saintly-tag">${questionData.topic}</span>
-    <p class="par">${questionData.text}</p><button class="start-practice">See This Problem</button>`
+    <p class="par">${questionData.text}</p><button class="start-practice seeProblem">See This Problem</button><button class="start-practice unlinkProblem">Unlink This Problem</button>`
     document.getElementById("mathNotebookLinkedQuestionsView").appendChild(questionCard);
-    questionCard.querySelector(".start-practice").addEventListener("click", function(){
+    questionCard.querySelector(".seeProblem").addEventListener("click", function(){
       openConceptQuestion(questionData, note)
     })
+    questionCard.querySelector(".unlinkProblem").addEventListener("click", async function() {
+const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (session && !sessionError) {
+          const userId = session.user.id;
+          await unlinkQuestion(
+            userId, note, question
+                    );
+                  }
+    })
   });
+  const addLinkedQuestion = document.createElement("div")
+  addLinkedQuestion.classList = "howworkcard"
+  
+  addLinkedQuestion.innerHTML = `<span style="color: var(--text-variant-light); font-size: 50px; text-align: center; min-height: 100px; align-content: center; justify-content: center;"class="material-symbols-rounded">add_circle</span>`;
+  document.getElementById("mathNotebookAddLinkedQuestionsView").innerHTML = ""
+  addLinkedQuestion.addEventListener("click", function() {
+  document.getElementById("mathNotebookAddLinkedQuestionsView").innerHTML = ""
+mathNotebook.forEach((i) => {
+      const card = document.createElement("div");
+      card.classList = "howworkcard";
+      card.width = "25%";
+      card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${i.title}</h3>
+      <span class="saintly-tag">${i.topic}</span>
+      <p class="par">${i.text}</p><button class="start-practice conceptLinkQuestion">Link This Question</button>`;
+      if (window.MathJax) {
+        MathJax.typesetPromise([card]).catch(() => {});
+      }
+      document
+        .getElementById("mathNotebookAddLinkedQuestionsView")
+        .appendChild(card);
+      card
+        .querySelector(".conceptLinkQuestion")
+        .addEventListener("click", async function () {
+          const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (session && !sessionError) {
+          const userId = session.user.id;
+          await addQuestionToCard(
+            userId, note, i
+                    );
+                  }
+
+          document.getElementById("mathNotebookAddLinkedQuestionsView").innerHTML = ""
+        });
+    });
+  })
+  document.getElementById("mathNotebookLinkedQuestionsView").appendChild(addLinkedQuestion)
   note.linkedConcepts.forEach((topic) => {
     const topicCard = document.createElement("div");
     topicCard.classList = "howworkcard";
@@ -11164,7 +11218,7 @@ const card = document.createElement("div");
     let topicData = conceptEntries[topicCardIndex];
 
     topicCard.classList = "howworkcard";
-    topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${topic}</h3><div class="lastVisitedContainer"></div><p class="par">${topicData.description}</p><button class="start-practice">See This Concept</button>`;
+    topicCard.innerHTML = `<h3 class="amc10subtitle ittyBitty">${topic}</h3><div class="lastVisitedContainer"></div><p class="par">${topicData.description}</p><button class="start-practice seeConcept">See This Concept</button><button class="start-practice unlinkConcept">Unlink Concept</button>`;
     document.getElementById("mathNotebookLinkedTopicsView").appendChild(topicCard);
     if (topicData.title == lastNote){
         const lastVisitedTag = document.createElement("span")
@@ -11172,10 +11226,61 @@ const card = document.createElement("div");
         lastVisitedTag.innerHTML = ("Last Visited")
         topicCard.querySelector(".lastVisitedContainer").appendChild(lastVisitedTag)
       }
-      topicCard.addEventListener("click", function() {
-        showConceptEntry(entry, note.title)
+      topicCard.querySelector(".seeConcept").addEventListener("click", function() {
+        showConceptEntry(topicData, note.title)
+      })
+      topicCard.querySelector(".unlinkConcept").addEventListener("click", async function() {
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (session && !sessionError) {
+          const userId = session.user.id;
+          await unlinkConcept(
+            userId, note,topic 
+                    );
+                  }
+
       })
   });
+  const addLinkedTopic = document.createElement("div")
+  addLinkedTopic.classList = "howworkcard"
+  
+  addLinkedTopic.innerHTML = `<span style="color: var(--text-variant-light); font-size: 50px; text-align: center; min-height: 100px; align-content: center; justify-content: center;"class="material-symbols-rounded">add_circle</span>`;
+  document.getElementById("mathNotebookAddLinkedTopicsView").innerHTML = ""
+  addLinkedTopic.addEventListener("click", function() {
+  document.getElementById("mathNotebookAddLinkedTopicsView").innerHTML = ""
+    conceptEntries.forEach((i) => {
+      if (i.title !== note.title){
+      const card = document.createElement("div");
+      card.classList = "howworkcard";
+      card.width = "25%";
+      card.innerHTML = `<h3 class="amc10subtitle ittyBitty">${i.title}</h3>
+       <button class="start-practice conceptLinkTopic">Link This Concept</button>`;
+      document.getElementById("mathNotebookAddLinkedTopicsView").appendChild(card);
+      card
+        .querySelector(".conceptLinkTopic")
+        .addEventListener("click",  async function () {
+ const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (session && !sessionError) {
+          const userId = session.user.id;
+          await addTopicToCard(
+            userId, note, i
+                    );
+                  }
+
+          document.getElementById("mathNotebookAddLinkedTopicsView").innerHTML = ""
+        
+
+        });
+      }
+    });
+
+  })
+  document.getElementById("mathNotebookLinkedTopicsView").appendChild(addLinkedTopic)
   conceptEntries.forEach(entry => {
     if (entry.linkedConcepts.includes(note.title)) {
       const topicCard = document.createElement("div")
@@ -11377,6 +11482,138 @@ async function addFormulaToCard(studentId, note, formula, caption) {
 
     if (fetchError) throw fetchError;
     conceptEntries[conceptIndex].formulas.push({formula: formula, caption: caption})
+    mathNotebookFull = [];
+    journalEntries.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    mathNotebook.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    conceptEntries.forEach((i) => {
+      mathNotebookFull.push(i)
+    })
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({ mathnotebook: mathNotebookFull })
+      .eq("id", studentId);
+
+    if (updateError) throw updateError;
+  } catch (err) {
+    console.error("Error updating notebook:", err);
+  }
+  showConceptEntry(conceptEntries[conceptIndex])
+}
+async function addQuestionToCard(studentId, note, questionData) {
+  try {
+    const { data: student, error: fetchError } = await supabase
+      .from("profiles")
+      .select("mathnotebook")
+      .eq("id", studentId)
+      .single();
+
+    if (fetchError) throw fetchError;
+    conceptEntries[conceptIndex].linkedQuestions.push(questionData.title)
+    mathNotebookFull = [];
+    journalEntries.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    mathNotebook.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    conceptEntries.forEach((i) => {
+      mathNotebookFull.push(i)
+    })
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({ mathnotebook: mathNotebookFull })
+      .eq("id", studentId);
+
+    if (updateError) throw updateError;
+  } catch (err) {
+    console.error("Error updating notebook:", err);
+  }
+  showConceptEntry(conceptEntries[conceptIndex])
+}
+async function addTopicToCard(studentId, note, questionData) {
+  try {
+    const { data: student, error: fetchError } = await supabase
+      .from("profiles")
+      .select("mathnotebook")
+      .eq("id", studentId)
+      .single();
+
+    if (fetchError) throw fetchError;
+    conceptEntries[conceptIndex].linkedConcepts.push(questionData.title)
+    mathNotebookFull = [];
+    journalEntries.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    mathNotebook.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    conceptEntries.forEach((i) => {
+      mathNotebookFull.push(i)
+    })
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({ mathnotebook: mathNotebookFull })
+      .eq("id", studentId);
+
+    if (updateError) throw updateError;
+  } catch (err) {
+    console.error("Error updating notebook:", err);
+  }
+  showConceptEntry(conceptEntries[conceptIndex])
+}
+async function unlinkQuestion(studentId, note, question) {
+  try {
+    const { data: student, error: fetchError } = await supabase
+      .from("profiles")
+      .select("mathnotebook")
+      .eq("id", studentId)
+      .single();
+
+    if (fetchError) throw fetchError;
+    let questionIndex = conceptEntries[conceptIndex].linkedQuestions.findIndex(questionSearch => questionSearch === question)
+    
+    if (questionIndex !== -1) {
+  conceptEntries[conceptIndex].linkedQuestions.splice(questionIndex, 1);
+}
+    mathNotebookFull = [];
+    journalEntries.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    mathNotebook.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    conceptEntries.forEach((i) => {
+      mathNotebookFull.push(i)
+    })
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({ mathnotebook: mathNotebookFull })
+      .eq("id", studentId);
+
+    if (updateError) throw updateError;
+  } catch (err) {
+    console.error("Error updating notebook:", err);
+  }
+  showConceptEntry(conceptEntries[conceptIndex])
+}
+async function unlinkConcept(studentId, note, concept) {
+  try {
+    const { data: student, error: fetchError } = await supabase
+      .from("profiles")
+      .select("mathnotebook")
+      .eq("id", studentId)
+      .single();
+
+    if (fetchError) throw fetchError;
+    let conceptIndexArray = conceptEntries[conceptIndex].linkedConcepts.findIndex(conceptSearch => conceptSearch === concept)
+    
+    if (conceptIndexArray !== -1) {
+  conceptEntries[conceptIndex].linkedConcepts.splice(conceptIndexArray, 1);
+}
     mathNotebookFull = [];
     journalEntries.forEach((i) => {
       mathNotebookFull.push(i);
