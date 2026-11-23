@@ -10401,7 +10401,7 @@ document
     mathNotebook[mathNotebookIndex].notes.forEach((i) => {
       const entry = document.createElement("span");
       entry.className = "howworkcard mathNotebookCardNotes";
-      entry.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(i.date)}</p><p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${i.content})}</p>`;
+      entry.innerHTML = `<p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${getCorrectDate(i.date)}</p><p style="color: var(--text-variant-light); margin-top: 0px; margin-bottom: 0px;">${i.content}</p>`;
       if (window.MathJax) {
         MathJax.typesetPromise([entry]).catch(() => {});
       }
