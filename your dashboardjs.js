@@ -10381,6 +10381,9 @@ async function addNoteToQuestion(studentId, questionTitle, noteContent) {
     mathNotebook.forEach((i) => {
       mathNotebookFull.push(i);
     });
+    conceptEntries.forEach((i) => {
+      mathNotebookFull.push(i)
+    })
     const { error: updateError } = await supabase
       .from("profiles")
       .update({ mathnotebook: mathNotebookFull })
@@ -10733,6 +10736,9 @@ async function saveNewJournalEntry(studentId, journalTitle, noteContent) {
     mathNotebook.forEach((i) => {
       mathNotebookFull.push(i);
     });
+    conceptEntries.forEach((i) => {
+      mathNotebookFull.push(i)
+    })
 
     const { error: updateError } = await supabase
       .from("profiles")
@@ -11034,7 +11040,7 @@ async function saveConceptEntry(entry) {
     loadConceptCards();
   }
 }
-function showConceptEntry(note, lastNote) {
+async function showConceptEntry(note, lastNote) {
   conceptIndex = conceptEntries.findIndex(
     (entry) => entry.title === note.title,
   );
@@ -11065,7 +11071,19 @@ function showConceptEntry(note, lastNote) {
   note.formulas.forEach((formula) => {
     const formulaDiv = document.createElement("div");
     formulaDiv.classList = "howworkcard";
-    formulaDiv.innerHTML = `<p style="color: var(--text-color)" class="formulaRender">${formula.formula}</p><p style="color: var(--text-color)" class="formulaCaption">${formula.caption}</p><button class="start-practice deleteFormuaCard">Delete Formula</button>`;
+    formulaDiv.innerHTML = `<p style="color: var(--text-color)" class="formulaRender">${formula.formula}</p><p style="color: var(--text-color)" class="formulaCaption">${formula.caption}</p><button class="start-practice deleteFormulaCard">Delete Formula</button>`;
+    formulaDiv.querySelector(".deleteFormulaCard").addEventListener("click", async function() {
+const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (session && !sessionError) {
+          const userId = session.user.id;
+          await deleteFormulaCard(
+            userId, note, formula
+                    );
+                  }
+    })
     document
       .getElementById("mathNotebookConceptFormulasView")
       .appendChild(formulaDiv);
@@ -11267,3 +11285,38 @@ document.getElementById("returnToJournalsView").addEventListener("click", functi
     loadMathNotebookView("All")
   }
 })
+async function deleteFormulaCard(studentId, note, formula) {
+  try {
+    const { data: student, error: fetchError } = await supabase
+      .from("profiles")
+      .select("mathnotebook")
+      .eq("id", studentId)
+      .single();
+
+    if (fetchError) throw fetchError;
+    let formulaIndex = conceptEntries[conceptIndex].formulas.findIndex(formulaSearch => formulaSearch.formula === formula.formula)
+    
+    if (formulaIndex !== -1) {
+  conceptEntries[conceptIndex].formulas.splice(formulaIndex, 1);
+}
+    mathNotebookFull = [];
+    journalEntries.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    mathNotebook.forEach((i) => {
+      mathNotebookFull.push(i);
+    });
+    conceptEntries.forEach((i) => {
+      mathNotebookFull.push(i)
+    })
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({ mathnotebook: mathNotebookFull })
+      .eq("id", studentId);
+
+    if (updateError) throw updateError;
+  } catch (err) {
+    console.error("Error updating notebook:", err);
+  }
+  showConceptEntry(conceptEntries[conceptIndex])
+}
