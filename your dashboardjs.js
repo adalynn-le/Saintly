@@ -10606,6 +10606,11 @@ function showJournalEntry(note) {
     note.title;
   document.getElementById("mathNotebookJournalViewDescription").innerHTML =
     note.description;
+  if (window.MathJax){
+            MathJax.typesetPromise([
+          document.getElementById("mathNotebookJournalViewDescription"),
+        ]).catch(() => {});
+  }
   document.getElementById("tagContainerJournalView").innerHTML = "";
   document.getElementById("mathNotebookJournalViewEntriesContainer").innerHTML =
     "";
@@ -10622,7 +10627,12 @@ function showJournalEntry(note) {
     card.classList = "howworkcard";
     card.style.padding = "10px";
     card.innerHTML = `<h3 class="amc10subtitle ittyBitty" style="color: var(--text-variant-light)">${entry.title} - ${getCorrectDate(entry.date)}</h3>
-                <p>${entry.content}</p> `;
+                <p class="entryContent">${entry.content}</p> `;
+      if (window.MathJax){
+            MathJax.typesetPromise([
+          card.querySelector(".entryContent"),
+        ]).catch(() => {});
+  }
     document
       .getElementById("mathNotebookJournalViewEntriesContainer")
       .appendChild(card);
