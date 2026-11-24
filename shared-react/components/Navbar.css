@@ -1,0 +1,162 @@
+
+.saintly-navbar {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-sizing: border-box;
+
+  background: #FDFFFF;
+  border-bottom: 1px solid #DEDEEC;
+
+  font-family: 'National Park', sans-serif;
+  color: #625C6E;
+
+  position: relative;
+  z-index: 1000;
+
+}
+
+.saintly-navbar button,
+.saintly-navbar a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+.navbar-menu,
+.navbar-icon,
+.navbar-account {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-menu {
+  display: none;
+}
+
+.navbar-home {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-logo img {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+    margin-bottom: 5px;
+}
+
+.navbar-icon {
+  padding: 5px;
+  color: #88B0FF
+}
+
+.navbar-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.navbar-discord {
+  gap: 7px;
+  padding: 7px 12px;
+  font-weight: 500 !important;
+  border: 1.5px solid #88B0FF !important;
+  border-radius: 8px;
+  font-family: 'National Park', sans-serif;
+  color: #88B0FF !important;
+}
+.navbar-discord:hover{
+   color: white !important;
+   background-color: #88b0ff
+}
+.navbar-account:hover{
+   color: white !important;
+   background-color: #88b0ff
+}
+.navbar-account {
+  gap: 7px;
+  padding: 7px 12px;
+  font-weight: 500 !important;
+  border: 1.5px solid #88B0FF !important;
+  border-radius: 8px;
+  font-family: 'National Park', sans-serif;
+  color: #88B0FF !important;
+}
+
+.saintly-sidebar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 240px;
+  height: calc(100vh - 64px);
+  padding: 24px;
+  box-sizing: border-box;
+
+  background: #FDFFFF;
+  border-right: 1px solid #DEDEEC;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+  z-index: 1002;
+}
+
+.saintly-sidebar.open {
+  transform: translateX(0);
+}
+
+.saintly-sidebar a {
+  color: #625C6E;
+  text-decoration: none;
+}
+
+.navbar-overlay {
+  position: fixed;
+  inset: 64px 0 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+@media (max-width: 750px) {
+  .navbar-menu {
+    display: inline-flex;
+  }
+
+  .navbar-home {
+    display: none;
+  }
+
+  .navbar-actions {
+    gap: 10px;
+  }
+
+  .navbar-discord {
+    display: none;
+  }
+}
